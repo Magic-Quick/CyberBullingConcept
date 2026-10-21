@@ -1,0 +1,43 @@
+{
+  "rap_lyrics": {
+    "name": "Рэп-трек / Suno / Агрон",
+    "conversation_id": "487861f8-0dc5-48a5-bc7e-9e94bd5e4ade",
+    "keywords": ["рэп", "трек", "куплет", "песн", "песня", "припев", "suno", "агрон", "музык", "рифм", "текст лорда", "бит", "стих", "панч"],
+    "context_files": [
+      "docs/golden/AI_LORD_RAP_TRACK.md",
+      "docs/golden/LORE_RULES_AND_PRINCIPLES.md",
+      "docs/lyrics_and_roasts/REFERENCE_PROJECT_MANAGER_LYRICS.md"
+    ],
+    "engine": "agron"
+  },
+  "project_structure": {
+    "name": "Структура проекта / Архитектура",
+    "conversation_id": "e12d2991-7489-488d-8c10-b20cea5622bf",
+    "keywords": ["структур", "папк", "порядок", "иерарх", "перенес", "архив", "файлы", "ai_map", "чистк", "разложи"],
+    "context_files": [
+      "AI_MAP.md",
+      "README.md"
+    ],
+    "engine": "gemini"
+  },
+  "interactive_movie": {
+    "name": "Интерактивный фильм (PixiJS / Web)",
+    "conversation_id": "aebec2b6-14e0-4ed8-ad33-7479701ac00b",
+    "keywords": ["фильм", "интерактив", "pixi", "титр", "субтитр", "плеер", "сцен", "repo", "логотип", "презентац"],
+    "context_files": [
+      "index.html",
+      "web_assets/"
+    ],
+    "engine": "gemini"
+  },
+  "visual_art": {
+    "name": "Арт и Визуал (Midjourney)",
+    "conversation_id": null,
+    "keywords": ["арт", "миджорни", "картинк", "нарисуй", "концепт", "персонаж", "midjourney", "иллюстрац"],
+    "context_files": [
+      "docs/golden/WARHAMMER_CHARACTERS_VISUAL_DOSSIER.md",
+      "docs/golden/CHARACTERS_MIDJOURNEY_PROMPTS.md"
+    ],
+    "engine": "midjourney"
+  }
+}
