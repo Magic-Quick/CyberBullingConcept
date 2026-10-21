@@ -1067,20 +1067,35 @@ export class MovieApp {
     c.addChild(sprite);
 
     let latched = Boolean(options?.initialLatched);
-    const getRestingScale = () => (options?.isLatching && latched ? 0.93 : 1.0);
-    sprite.scale.set(getRestingScale());
+
+    const applyState = (pressed: boolean) => {
+      if (pressed) {
+        // Active mouse press: deeper travel down into socket (4.0px), subtle vertical compression
+        sprite.y = 4.0;
+        sprite.scale.set(1.0, 0.94);
+      } else if (options?.isLatching && latched) {
+        // Latched resting state: stays engaged (2.0px down), less than full press!
+        sprite.y = 2.0;
+        sprite.scale.set(1.0, 0.97);
+      } else {
+        // Normal unlatched / unpressed resting state: flush with chassis
+        sprite.y = 0;
+        sprite.scale.set(1.0, 1.0);
+      }
+    };
+
+    applyState(false);
 
     c.on('pointerdown', (e: FederatedPointerEvent) => {
       e.stopPropagation();
       ClickTracker.exclude();
       SFX.playClick();
-      // Momentary press scale
-      sprite.scale.set(options?.isLatching && latched ? 0.86 : 0.89);
+      applyState(true);
       onClick();
     });
 
     const resetBtn = () => {
-      sprite.scale.set(getRestingScale());
+      applyState(false);
     };
 
     c.on('pointerup', resetBtn);
@@ -1098,7 +1113,7 @@ export class MovieApp {
       sprite,
       setLatched: (isLatched: boolean) => {
         latched = isLatched;
-        sprite.scale.set(getRestingScale());
+        applyState(false);
       },
       isLatched: () => latched,
     };
@@ -1369,10 +1384,10 @@ export class MovieApp {
     const handleTimelinePointer = (e: FederatedPointerEvent, isClick = false) => {
       const local = this._wsTimelineContainer.toLocal(e.global);
       const trackW = this._wsTrackCapLeft.width + this._wsTrackMid.width + this._wsTrackCapRight.width;
-      const slitStartX = 15;
-      const slitEndX = trackW - 18;
-      const slitW = Math.max(10, slitEndX - slitStartX);
-      const ratio = Math.max(0, Math.min(1, (local.x - slitStartX) / slitW));
+      const knobMinX = 28;
+      const knobMaxX = trackW - 28;
+      const knobRange = Math.max(10, knobMaxX - knobMinX);
+      const ratio = Math.max(0, Math.min(1, (local.x - knobMinX) / knobRange));
       const targetOverallTime = ratio * this._totalMovieDuration;
 
       let targetActIndex = 0;
@@ -2339,18 +2354,19 @@ export class MovieApp {
     // WS-96 Hardware Console Scrubber & LEDs
     if (this._wsTrackMid && this._wsTimelineKnob && this._wsMidWing) {
       const trackW = this._wsTrackCapLeft.width + this._wsTrackMid.width + this._wsTrackCapRight.width;
-      const slitStartX = 15;
-      const slitEndX = trackW - 18;
-      const slitW = Math.max(10, slitEndX - slitStartX);
+      const knobMinX = 28;
+      const knobMaxX = trackW - 28;
+      const knobRange = Math.max(10, knobMaxX - knobMinX);
+      const slitStartX = 18;
       const slitY = 16.0;
 
       const overallRatio = Math.max(0, Math.min(1, currentOverallTime / Math.max(1, this._totalMovieDuration)));
-      const knobX = slitStartX + overallRatio * slitW;
+      const knobX = knobMinX + overallRatio * knobRange;
       this._wsTimelineKnob.position.set(knobX, slitY);
 
       this._wsTimelineFill.clear();
       if (overallRatio > 0.001) {
-        const fillW = overallRatio * slitW;
+        const fillW = Math.max(0, knobX - slitStartX);
         this._wsTimelineFill.roundRect(slitStartX, slitY - 1.25, fillW, 2.5, 1);
         this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.95 });
       }
@@ -2500,13 +2516,16 @@ export class MovieApp {
     this._subtitleText.position.set(24, isPortrait ? 54 : 58);
 
     // WS-96 Hardware Console Layout
-    // Base console height is 161px. Left wing: 841px, right wing: 346px.
-    const guiScale = Math.min(1.0, Math.max(0.55, (w - 80) / 1200));
+    // Base console dimensions: Left wing: 841px, right wing: 346px, min timeline track: 320px (+28px pad = 348px).
+    // Ideal baseline width: 1535px. Console scales smoothly to keep timeline track >= 320px!
+    const guiScale = Math.min(1.0, Math.max(0.48, (w - 30) / 1535));
     this._wsGuiScale = guiScale;
 
     const leftW = 841 * guiScale;
     const rightW = 346 * guiScale;
-    const midW = Math.max(60, w - (leftW + rightW));
+    const trackPad = 14 * guiScale;
+    const minMidW = (320 + 28) * guiScale;
+    const midW = Math.max(minMidW, w - (leftW + rightW));
     const barH = 161 * guiScale;
 
     // Vignette bottom (backdrop for WS-96 retro console)
@@ -2530,10 +2549,10 @@ export class MovieApp {
       this._wsChassisMid.width = midW;
       this._wsChassisMid.height = 161 * guiScale;
 
-      const trackPad = 14 * guiScale;
-      const trackW = Math.max(40, (midW - trackPad * 2) / guiScale);
+      const trackW = Math.max(320, (midW - trackPad * 2) / guiScale);
 
-      this._wsTimelineContainer.position.set(trackPad, 62 * guiScale);
+      // Timeline slider moved lower down: 82 * guiScale (aligned with volume slits and buttons)
+      this._wsTimelineContainer.position.set(trackPad, 82 * guiScale);
       this._wsTimelineContainer.scale.set(guiScale);
 
       // 3-slice track positioning (in container local coords)
@@ -2543,15 +2562,16 @@ export class MovieApp {
       this._wsTrackCapRight.position.set(trackW - 25, 0);
 
       // 9 LEDs positioned evenly above the progress slider in midWing coords
-      const ledY = 48 * guiScale;
-      const trackStartInMid = trackPad + 25 * guiScale;
-      const trackEndInMid = trackPad + (trackW - 25) * guiScale;
+      // Positioned at Y=62 (comfortably above track at Y=82)
+      const ledY = 62 * guiScale;
+      const trackStartInMid = trackPad + 28 * guiScale;
+      const trackEndInMid = trackPad + (trackW - 28) * guiScale;
       const trackInnerW = Math.max(10, trackEndInMid - trackStartInMid);
       for (let i = 0; i < 9; i++) {
         if (this._wsLeds[i]) {
           const ledX = trackStartInMid + (i / 8) * trackInnerW;
           this._wsLeds[i].position.set(ledX, ledY);
-          this._wsLeds[i].scale.set(guiScale * 1.1);
+          this._wsLeds[i].scale.set(guiScale * 1.05);
         }
       }
 

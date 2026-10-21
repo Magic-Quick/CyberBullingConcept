@@ -14,18 +14,15 @@ print('Extracting from PSD...')
 
 # 1. Left Chassis:
 # Layer 0 is (33, 24, 874, 185) -> size (841, 161)
+# NOTE: Layer 0 already has natural soft warm beige/brown button wells!
 l0 = psd[0].composite() # RGBA
-
-# Paste the 4 playback button holes at (57, 49)
-hole_4slots = Image.open(os.path.join(EXISTING_GUI, 'gui_hole_playback_4slots.png'))
-l0.paste(hole_4slots, (57, 49), hole_4slots)
 
 # Composite Layer 6 (LCD bezel and clean dark screen glass) at (607, 50)
 # NOTE: DO NOT composite Layer 7 (baked digits) so the dial screen stays clean!
 l6 = psd[6].composite()
 l0.paste(l6, (607, 50), l6)
 l0.save(os.path.join(OUT_DIR, 'gui_chassis_left.png'))
-print('Saved gui_chassis_left.png with clean LCD screen and button sockets:', l0.size)
+print('Saved gui_chassis_left.png with clean LCD screen and natural button sockets:', l0.size)
 
 # 2. Right Chassis:
 # Layer 5 is (1455, 24, 1801, 184) -> size (346, 160)
@@ -73,22 +70,26 @@ cc_btn.save(os.path.join(OUT_DIR, 'gui_btn_cc.png'))
 mode_btn = l19[2].composite()
 mode_btn.save(os.path.join(OUT_DIR, 'gui_btn_mode.png'))
 
-# 8. Copy existing pre-cut buttons (Pause, Prev, Next, Vol)
-for btn_name in ['gui_btn_pause.png', 'gui_btn_prev.png', 'gui_btn_next.png', 'gui_btn_vol.png']:
-    src = os.path.join(EXISTING_GUI, btn_name)
-    if os.path.exists(src):
-        shutil.copy(src, os.path.join(OUT_DIR, btn_name))
-        print(f'Copied {btn_name}')
+# 8. Extract authentic warm yellow/beige retro buttons from ws96_interface_mockup.psd
+psd_orig = PSDImage.open(os.path.join(EXISTING_GUI, 'ws96_interface_mockup.psd'))
+pause_orig = psd_orig[16].composite()
+pause_orig.save(os.path.join(OUT_DIR, 'gui_btn_pause.png'))
+prev_orig = psd_orig[17].composite()
+prev_orig.save(os.path.join(OUT_DIR, 'gui_btn_prev.png'))
+next_orig = psd_orig[18].composite()
+next_orig.save(os.path.join(OUT_DIR, 'gui_btn_next.png'))
+vol_orig = psd_orig[19].composite()
+vol_orig.save(os.path.join(OUT_DIR, 'gui_btn_vol.png'))
 
-# Create Play button variant from Pause button:
-pause_im = Image.open(os.path.join(OUT_DIR, 'gui_btn_pause.png'))
-play_im = pause_im.copy()
+# Create Play button variant in matching warm beige
+play_im = pause_orig.copy()
 draw = ImageDraw.Draw(play_im)
 cx, cy = 31, 30
-draw.rectangle((cx - 12, cy - 12, cx + 12, cy + 12), fill=(150, 142, 124, 255))
+beige_col = pause_orig.getpixel((20, 20))
+draw.rectangle((cx - 12, cy - 12, cx + 12, cy + 12), fill=beige_col)
 draw.polygon([(cx - 7, cy - 9), (cx - 7, cy + 9), (cx + 8, cy)], fill=(28, 25, 20, 255))
 play_im.save(os.path.join(OUT_DIR, 'gui_btn_play.png'))
-print('Created gui_btn_play.png')
+print('Saved warm yellow/beige keycaps: Pause, Play, Prev, Next, Vol')
 
 # 9. Extract all 9 LEDs from PSD
 led_indices = [10, 12, 13, 14, 15, 16, 17, 11, 18]
