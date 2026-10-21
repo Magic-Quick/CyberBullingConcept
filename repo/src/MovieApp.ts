@@ -2406,6 +2406,26 @@ export class MovieApp {
         this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.95 });
       }
 
+      // YouTube-style chapter divider notches ("засечки")
+      // Drawn on top of both the red line and the dark slit
+      const tickH = 6.0;
+      const tickTop = slitY - tickH / 2;
+      const count = STORY_ACTS.length;
+      for (let i = 1; i < count; i++) {
+        const actStartTime = this._actStartTimes[i];
+        if (actStartTime === undefined) continue;
+        const ratio = actStartTime / Math.max(1, this._totalMovieDuration);
+        const tickX = knobMinX + ratio * knobRange;
+
+        // Dark gap cut for crisp separation over the red fill line
+        this._wsTimelineFill.rect(tickX - 1.25, tickTop, 2.5, tickH);
+        this._wsTimelineFill.fill({ color: 0x07080b, alpha: 0.8 });
+
+        // Crisp bright tick mark (visible over both red fill and black slit)
+        this._wsTimelineFill.rect(tickX - 0.75, tickTop, 1.5, tickH);
+        this._wsTimelineFill.fill({ color: 0xf0e9db, alpha: 0.95 });
+      }
+
       // Update 9 LEDs
       for (let i = 0; i < 9; i++) {
         const led = this._wsLeds[i];
