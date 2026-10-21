@@ -1,4 +1,4 @@
-import { Application, Container, Graphics, Sprite, Text, TextStyle, FederatedPointerEvent, Texture } from 'pixi.js';
+import { Application, Container, Graphics, Sprite, Text, TextStyle, FederatedPointerEvent, Texture, NineSliceSprite, TilingSprite } from 'pixi.js';
 import { STORY_ACTS, ActData } from './storyData';
 import { getTexture, getAudioUrl, getIntroVideoUrl } from './assetsManager';
 import { getConcertCutAtTime } from './concertSequence';
@@ -67,6 +67,31 @@ export class MovieApp {
   private _dotsContainer: Container;
   private _totalMovieDuration = 953;
   private _actStartTimes: number[] = [];
+
+  // WS-96 Retro Hardware Console
+  private _wsConsoleContainer!: Container;
+  private _wsLeftWing!: Container;
+  private _wsChassisLeft!: Sprite;
+  private _wsMidWing!: Container;
+  private _wsChassisMid!: TilingSprite;
+  private _wsRightWing!: Container;
+  private _wsChassisRight!: Sprite;
+  private _wsPlayPauseSprite!: Sprite;
+  private _wsPrevSprite!: Sprite;
+  private _wsNextSprite!: Sprite;
+  private _wsVolSprite!: Sprite;
+  private _wsCcSprite!: Sprite;
+  private _wsModeSprite!: Sprite;
+  private _wsVoiceKnob!: Sprite;
+  private _wsMusicKnob!: Sprite;
+  private _wsSfxKnob!: Sprite;
+  private _wsLcdText!: Text;
+  private _wsTimelineContainer!: Container;
+  private _wsTimelineTrack!: NineSliceSprite;
+  private _wsTimelineFill!: Graphics;
+  private _wsTimelineKnob!: Sprite;
+  private _wsLeds: Sprite[] = [];
+  private _wsGuiScale = 0.55;
 
   // Canvas click gestures & Ripple
   private _canvasHitArea!: Graphics;
@@ -524,9 +549,16 @@ export class MovieApp {
     this._controlsRow.addChild(this._fullscreenButton);
 
     this._playerBarBg = new Graphics();
+    this._playerBarBg.visible = false;
     this._playerBarContainer = new Container();
     this._playerBarContainer.eventMode = 'static';
     this._playerBarContainer.addChild(this._playerBarBg);
+
+    // Setup WS-96 Retro Hardware Console
+    this._setupWsConsole();
+
+    this._controlsRow.visible = false;
+    this._progressBarContainer.visible = false;
     this._playerBarContainer.addChild(this._progressBarContainer);
     this._playerBarContainer.addChild(this._controlsRow);
 
@@ -641,6 +673,9 @@ export class MovieApp {
     this._subtitles.visible = this._isSubtitlesVisible;
     if (this._ccButtonVisuals) {
       this._ccButtonVisuals(this._isSubtitlesVisible);
+    }
+    if (this._wsCcSprite) {
+      this._wsCcSprite.alpha = this._isSubtitlesVisible ? 1.0 : 0.55;
     }
     this._showSeekRipple(this._isSubtitlesVisible ? 1 : 0);
     this._sideRippleText.text = this._isSubtitlesVisible ? 'CC: ВКЛ' : 'CC: ВЫКЛ';
@@ -990,6 +1025,384 @@ export class MovieApp {
     };
   }
 
+  private _createWsKeycap(
+    normalTexKey: string,
+    onClick: () => void,
+    options?: { onHover?: () => void; onOut?: () => void }
+  ): { container: Container; sprite: Sprite } {
+    const c = new Container();
+    c.eventMode = 'static';
+    c.cursor = 'pointer';
+
+    const sprite = new Sprite(getTexture(normalTexKey));
+    c.addChild(sprite);
+
+    c.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      SFX.playClick();
+      sprite.y = 1.5;
+      sprite.scale.set(0.97);
+      onClick();
+    });
+
+    const resetBtn = () => {
+      sprite.y = 0;
+      sprite.scale.set(1.0);
+    };
+
+    c.on('pointerup', resetBtn);
+    c.on('pointerupoutside', resetBtn);
+    c.on('pointerout', () => {
+      resetBtn();
+      options?.onOut?.();
+    });
+    c.on('pointerover', () => {
+      options?.onHover?.();
+    });
+
+    return { container: c, sprite };
+  }
+
+  private _createWsKnobSlider(
+    knobTexKey: string,
+    startX: number,
+    endX: number,
+    slotY: number,
+    initialVol: number,
+    onChange: (vol: number) => void
+  ): { container: Container; knob: Sprite; setVol: (v: number) => void } {
+    const c = new Container();
+    c.eventMode = 'static';
+    c.cursor = 'pointer';
+
+    const hit = new Graphics();
+    hit.rect(startX - 8, slotY - 14, (endX - startX) + 16, 28);
+    hit.fill({ color: 0x000000, alpha: 0.001 });
+    c.addChild(hit);
+
+    const knob = new Sprite(getTexture(knobTexKey));
+    knob.anchor.set(0.5, 0.5);
+    knob.position.set(startX + initialVol * (endX - startX), slotY);
+    c.addChild(knob);
+
+    let isDragging = false;
+    const updateFromX = (globalX: number) => {
+      const local = c.toLocal({ x: globalX, y: 0 });
+      const ratio = Math.max(0, Math.min(1, (local.x - startX) / (endX - startX)));
+      knob.x = startX + ratio * (endX - startX);
+      onChange(ratio);
+    };
+
+    c.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      isDragging = true;
+      updateFromX(e.global.x);
+    });
+
+    window.addEventListener('pointermove', (e: PointerEvent) => {
+      if (isDragging) {
+        updateFromX(e.clientX);
+      }
+    });
+
+    window.addEventListener('pointerup', () => {
+      isDragging = false;
+    });
+
+    return {
+      container: c,
+      knob,
+      setVol: (v: number) => {
+        const clamped = Math.max(0, Math.min(1, v));
+        knob.x = startX + clamped * (endX - startX);
+      }
+    };
+  }
+
+  private _setupWsConsole(): void {
+    this._wsConsoleContainer = new Container();
+    this._wsConsoleContainer.eventMode = 'static';
+
+    // Left Wing (Pause, Prev, Next, Vol, 3 Sliders, LCD)
+    this._wsLeftWing = new Container();
+    this._wsChassisLeft = new Sprite(getTexture('gui_chassis_left'));
+    this._wsLeftWing.addChild(this._wsChassisLeft);
+
+    // Play/Pause keycap button at (24, 25)
+    const ppKey = this._createWsKeycap(
+      this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play',
+      () => {
+        this.togglePlayPause();
+        this._showCenterRipple(this._isPlaying ? 'play' : 'pause');
+      }
+    );
+    ppKey.container.position.set(24, 25);
+    this._wsPlayPauseSprite = ppKey.sprite;
+    this._wsLeftWing.addChild(ppKey.container);
+
+    // Prev keycap button at (86, 25)
+    const prevKey = this._createWsKeycap('gui_btn_prev', () => this.previousAct());
+    prevKey.container.position.set(86, 25);
+    this._wsPrevSprite = prevKey.sprite;
+    this._wsLeftWing.addChild(prevKey.container);
+
+    // Next keycap button at (148, 25)
+    const nextKey = this._createWsKeycap('gui_btn_next', () => this.nextAct());
+    nextKey.container.position.set(148, 25);
+    this._wsNextSprite = nextKey.sprite;
+    this._wsLeftWing.addChild(nextKey.container);
+
+    // Vol keycap button at (209, 25)
+    const volKey = this._createWsKeycap('gui_btn_vol', () => this.toggleMute());
+    volKey.container.position.set(209, 25);
+    this._wsVolSprite = volKey.sprite;
+    this._wsLeftWing.addChild(volKey.container);
+
+    // 3 Volume Sliders
+    const voiceSlider = this._createWsKnobSlider(
+      'gui_knob_voice',
+      293,
+      368,
+      72,
+      this._voiceVolume,
+      (v) => {
+        this._voiceVolume = v;
+        const act = STORY_ACTS[this._currentActIndex];
+        const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
+        if (!isSong && this._voiceAudio) {
+          this._voiceAudio.volume = AudioController.isMuted() ? 0 : v;
+        }
+      }
+    );
+    this._wsLeftWing.addChild(voiceSlider.container);
+    this._wsVoiceKnob = voiceSlider.knob;
+
+    const musicSlider = this._createWsKnobSlider(
+      'gui_knob_music',
+      383,
+      458,
+      72,
+      this._musicVolume,
+      (v) => {
+        this._musicVolume = v;
+        AmbientManager.setMusicVolume(v);
+        const act = STORY_ACTS[this._currentActIndex];
+        const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
+        if (isSong && this._voiceAudio) {
+          this._voiceAudio.volume = AudioController.isMuted() ? 0 : v;
+        }
+      }
+    );
+    this._wsLeftWing.addChild(musicSlider.container);
+    this._wsMusicKnob = musicSlider.knob;
+
+    const sfxSlider = this._createWsKnobSlider(
+      'gui_knob_sfx',
+      473,
+      548,
+      72,
+      this._sfxVolume,
+      (v) => {
+        this._sfxVolume = v;
+        SFX.setVolume(v);
+        SFX.playPreview();
+      }
+    );
+    this._wsLeftWing.addChild(sfxSlider.container);
+    this._wsSfxKnob = sfxSlider.knob;
+
+    // Digital LCD Screen
+    const lcdStyle = new TextStyle({
+      fontFamily: ['Share Tech Mono', 'Courier New', 'monospace'],
+      fontSize: 15,
+      fontWeight: 'bold',
+      fill: '#44ff77',
+      letterSpacing: 2,
+    });
+    this._wsLcdText = new Text({ text: '00:00 / 00:00', style: lcdStyle });
+    this._wsLcdText.anchor.set(0.5);
+    this._wsLcdText.position.set(643, 56);
+    this._wsLeftWing.addChild(this._wsLcdText);
+
+    // Middle Wing (Plastic Chassis + Stretchable Progress Slider + 9 LEDs)
+    this._wsMidWing = new Container();
+    this._wsMidWing.eventMode = 'static';
+    this._wsChassisMid = new TilingSprite({
+      texture: getTexture('gui_chassis_mid'),
+      width: 300,
+      height: 161,
+    });
+    this._wsMidWing.addChild(this._wsChassisMid);
+
+    this._wsTimelineContainer = new Container();
+    this._wsTimelineContainer.eventMode = 'static';
+    this._wsTimelineContainer.cursor = 'pointer';
+
+    this._wsTimelineTrack = new NineSliceSprite({
+      texture: getTexture('gui_slider_track'),
+      leftWidth: 20,
+      rightWidth: 20,
+      topHeight: 0,
+      bottomHeight: 0,
+    });
+    this._wsTimelineContainer.addChild(this._wsTimelineTrack);
+
+    this._wsTimelineFill = new Graphics();
+    this._wsTimelineContainer.addChild(this._wsTimelineFill);
+
+    this._wsTimelineKnob = new Sprite(getTexture('gui_knob_timeline'));
+    this._wsTimelineKnob.anchor.set(0.5, 0.5);
+    this._wsTimelineContainer.addChild(this._wsTimelineKnob);
+
+    // 9 LEDs above timeline track
+    this._wsLeds = [];
+    for (let i = 0; i < 9; i++) {
+      const led = new Sprite(getTexture(`gui_led_${i + 1}`));
+      led.anchor.set(0.5);
+      led.eventMode = 'static';
+      led.cursor = 'pointer';
+      const actIdx = i;
+
+      led.on('pointerdown', (e: FederatedPointerEvent) => {
+        e.stopPropagation();
+        ClickTracker.exclude();
+        SFX.playClick();
+        this.goToAct(actIdx);
+      });
+
+      led.on('pointerover', (e: FederatedPointerEvent) => {
+        const act = STORY_ACTS[actIdx];
+        if (act) {
+          const m = Math.floor(act.duration / 60);
+          const rem = Math.floor(act.duration % 60);
+          const timeStr = `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+          this._timelineTooltipText.text = `Акт ${actIdx}: ${act.title} (${timeStr})`;
+          this._timelineTooltipBg.clear();
+          this._timelineTooltipBg.roundRect(
+            -this._timelineTooltipText.width / 2 - 8,
+            -13,
+            this._timelineTooltipText.width + 16,
+            26,
+            6
+          );
+          this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+          this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
+          const local = this._wsConsoleContainer.toLocal(e.global);
+          this._timelineTooltip.position.set(local.x, local.y - 20);
+          this._timelineTooltip.visible = true;
+        }
+      });
+
+      led.on('pointerout', () => {
+        this._timelineTooltip.visible = false;
+      });
+
+      this._wsLeds.push(led);
+      this._wsMidWing.addChild(led);
+    }
+
+    // Timeline Scrubbing Logic
+    const handleTimelinePointer = (e: FederatedPointerEvent, isClick = false) => {
+      const local = this._wsTimelineContainer.toLocal(e.global);
+      const trackW = this._wsTimelineTrack.width;
+      const ratio = Math.max(0, Math.min(1, (local.x - this._wsTimelineTrack.x) / Math.max(1, trackW)));
+      const targetOverallTime = ratio * this._totalMovieDuration;
+
+      let targetActIndex = 0;
+      for (let i = STORY_ACTS.length - 1; i >= 0; i--) {
+        if (targetOverallTime >= this._actStartTimes[i]) {
+          targetActIndex = i;
+          break;
+        }
+      }
+
+      const targetActTime = targetOverallTime - this._actStartTimes[targetActIndex];
+
+      if (isClick || this._isTimelineDragging) {
+        if (targetActIndex !== this._currentActIndex) {
+          this.goToAct(targetActIndex);
+        }
+        this.seekAudio(targetActTime);
+      }
+
+      const act = STORY_ACTS[targetActIndex];
+      const formatTime = (s: number) => {
+        const m = Math.floor(s / 60);
+        const rem = Math.floor(s % 60);
+        return `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+      };
+      this._timelineTooltipText.text = `${formatTime(targetActTime)} • ${act.title}`;
+      this._timelineTooltipBg.clear();
+      this._timelineTooltipBg.roundRect(-this._timelineTooltipText.width / 2 - 8, -13, this._timelineTooltipText.width + 16, 26, 6);
+      this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+      this._timelineTooltipBg.stroke({ color: 0xff0033, width: 1.5 });
+      const localTooltip = this._wsConsoleContainer.toLocal(e.global);
+      this._timelineTooltip.position.set(localTooltip.x, localTooltip.y - 24);
+      this._timelineTooltip.visible = true;
+    };
+
+    this._wsTimelineContainer.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      SFX.playClick();
+      this._isTimelineDragging = true;
+      handleTimelinePointer(e, true);
+    });
+
+    this._wsTimelineContainer.on('pointerenter', () => {
+      this._isTimelineHovered = true;
+      this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
+    });
+
+    this._wsTimelineContainer.on('pointerleave', () => {
+      this._isTimelineHovered = false;
+      this._timelineTooltip.visible = false;
+      this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
+    });
+
+    this._wsTimelineContainer.on('globalpointermove', (e: FederatedPointerEvent) => {
+      if (this._isTimelineHovered || this._isTimelineDragging) {
+        handleTimelinePointer(e, false);
+      }
+    });
+
+    window.addEventListener('pointerup', () => {
+      if (this._isTimelineDragging) {
+        this._isTimelineDragging = false;
+        this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
+      }
+    });
+
+    this._wsMidWing.addChild(this._wsTimelineContainer);
+
+    // Right Wing
+    this._wsRightWing = new Container();
+    this._wsChassisRight = new Sprite(getTexture('gui_chassis_right'));
+    this._wsRightWing.addChild(this._wsChassisRight);
+
+    // CC button at (160, 51)
+    const ccKey = this._createWsKeycap('gui_btn_cc', () => this.toggleSubtitles());
+    ccKey.container.position.set(160, 51);
+    this._wsCcSprite = ccKey.sprite;
+    this._wsRightWing.addChild(ccKey.container);
+
+    // Mode / Fullscreen button at (219, 51)
+    const modeKey = this._createWsKeycap('gui_btn_mode', () => this.toggleFullscreen());
+    modeKey.container.position.set(219, 51);
+    this._wsModeSprite = modeKey.sprite;
+    this._wsRightWing.addChild(modeKey.container);
+
+    // Assemble Console
+    this._wsConsoleContainer.addChild(this._wsLeftWing);
+    this._wsConsoleContainer.addChild(this._wsMidWing);
+    this._wsConsoleContainer.addChild(this._wsRightWing);
+    this._wsConsoleContainer.addChild(this._timelineTooltip);
+
+    this._playerBarContainer.addChild(this._wsConsoleContainer);
+  }
+
   private _setupDebugUI(): void {
     this._debugContainer = new Container();
     this._debugContainer.eventMode = 'static';
@@ -1324,12 +1737,14 @@ export class MovieApp {
       // Voice playback will be triggered in update() once _actTime >= 3.5s!
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
+      if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
       return;
     }
 
     this._voiceAudio.play().then(() => {
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
+      if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
     }).catch((err: unknown) => {
       console.warn('[VoiceAudio] Autoplay blocked, click play to start:', err);
     });
@@ -1344,6 +1759,7 @@ export class MovieApp {
       this._isTransitioningAct = false;
       this._isPlaying = false;
       this._playPauseIcon.text = '▶';
+      if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_play');
       return;
     }
 
@@ -1571,6 +1987,9 @@ export class MovieApp {
   public togglePlayPause(): void {
     this._isPlaying = !this._isPlaying;
     this._playPauseIcon.text = this._isPlaying ? '⏸' : '▶';
+    if (this._wsPlayPauseSprite) {
+      this._wsPlayPauseSprite.texture = getTexture(this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play');
+    }
 
     if (this._isPlaying) {
       if (this._currentActIndex === 0) {
@@ -1595,6 +2014,9 @@ export class MovieApp {
     SFX.playClick();
     const isMuted = AudioController.toggle();
     this._muteIcon.text = isMuted ? '🔇' : '🔊';
+    if (this._wsVolSprite) {
+      this._wsVolSprite.alpha = isMuted ? 0.45 : 1.0;
+    }
     SFX.setMuted(isMuted);
     AmbientManager.setMuted(isMuted);
     const act = STORY_ACTS[this._currentActIndex];
@@ -1695,6 +2117,9 @@ export class MovieApp {
     const overallCurSec = Math.floor((this._actStartTimes[this._currentActIndex] || 0) + currentTime);
     const overallTotSec = Math.floor(this._totalMovieDuration);
     this._timeCodeText.text = `${formatTime(curSec)} / ${formatTime(totSec)}  •  ${formatTime(overallCurSec)} / ${formatTime(overallTotSec)}`;
+    if (this._wsLcdText) {
+      this._wsLcdText.text = `${formatTime(curSec)} / ${formatTime(totSec)}`;
+    }
 
     const progress = Math.min(1, currentTime / Math.max(1, this._actDuration));
     this._renderProgressBar(progress);
@@ -1801,6 +2226,40 @@ export class MovieApp {
     this._scrubberThumb.circle(thumbX, 0, thumbRadius);
     this._scrubberThumb.fill({ color: 0xff0033 });
     this._scrubberThumb.stroke({ color: 0xffffff, width: 2 });
+
+    // WS-96 Hardware Console Scrubber & LEDs
+    if (this._wsTimelineTrack && this._wsTimelineKnob) {
+      const trackStartX = this._wsTimelineTrack.x;
+      const trackW = this._wsTimelineTrack.width;
+      const trackY = this._wsTimelineTrack.y + this._wsTimelineTrack.height / 2;
+
+      const overallRatio = Math.max(0, Math.min(1, currentOverallTime / Math.max(1, this._totalMovieDuration)));
+      const knobX = trackStartX + overallRatio * trackW;
+      this._wsTimelineKnob.position.set(knobX, trackY);
+
+      this._wsTimelineFill.clear();
+      if (overallRatio > 0.001) {
+        const fillW = overallRatio * trackW;
+        this._wsTimelineFill.roundRect(trackStartX, trackY - 2, fillW, 4, 2);
+        this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.9 });
+      }
+
+      // Update 9 LEDs
+      for (let i = 0; i < 9; i++) {
+        const led = this._wsLeds[i];
+        if (!led) continue;
+        if (i < this._currentActIndex) {
+          led.texture = getTexture(`gui_led_${i + 1}`);
+          led.alpha = 0.85;
+        } else if (i === this._currentActIndex) {
+          led.texture = getTexture(`gui_led_${i + 1}`);
+          led.alpha = 0.85 + Math.sin(Date.now() * 0.006) * 0.15;
+        } else {
+          led.texture = getTexture('gui_led_dim');
+          led.alpha = 0.35;
+        }
+      }
+    }
   }
 
   private _updateDots(): void {
@@ -1923,62 +2382,64 @@ export class MovieApp {
     this._introCycleSubtitle.style.letterSpacing = isPortrait ? 6 : 10;
     this._introCycleSubtitle.position.set(0, 0); // Center of screen after main logo disappears
 
-    // Vignette bottom (controls backdrop only; top is kept clean for full cinema visual)
-    this._vignetteGraphics.clear();
-    this._vignetteGraphics.rect(0, h - (isPortrait ? 120 : 85), w, isPortrait ? 120 : 85);
-    this._vignetteGraphics.fill({ color: 0x050508, alpha: 0.95 });
-
     // Header layout (Top Left)
     this._badgeText.position.set(24, 14);
     this._titleText.position.set(24, 32);
     this._titleText.style.fontSize = isPortrait ? 15 : 18;
     this._subtitleText.position.set(24, isPortrait ? 54 : 58);
 
-    // Unified Bottom Player Bar
-    const barH = isPortrait ? 114 : 76;
+    // WS-96 Hardware Console Layout
+    // Base console height is 161px. Left wing: 841px, right wing: 346px.
+    const guiScale = Math.min(0.55, Math.max(0.32, (w - 20) / 1200));
+    this._wsGuiScale = guiScale;
+
+    const leftW = 841 * guiScale;
+    const rightW = 346 * guiScale;
+    const midW = Math.max(30, w - (leftW + rightW));
+    const barH = 161 * guiScale;
+
+    // Vignette bottom (backdrop for WS-96 retro console)
+    this._vignetteGraphics.clear();
+    this._vignetteGraphics.rect(0, h - barH - 24, w, barH + 24);
+    this._vignetteGraphics.fill({ color: 0x050508, alpha: 0.9 });
+
     this._playerBarContainer.position.set(0, h - barH);
 
-    this._playerBarBg.clear();
-    this._playerBarBg.rect(0, 0, w, barH);
-    this._playerBarBg.fill({ color: 0x07080e, alpha: 0.94 });
-    this._playerBarBg.stroke({ color: 0x1f2436, width: 1 });
+    if (this._wsConsoleContainer) {
+      // Left Wing (Fixed proportions, scaled)
+      this._wsLeftWing.position.set(0, 0);
+      this._wsLeftWing.scale.set(guiScale);
 
-    // Progress timeline at top of player bar
-    this._progressBarContainer.position.set(24, isPortrait ? 14 : 10);
+      // Middle Stretchable Wing (Chassis Mid + Progress Slider + 9 LEDs)
+      this._wsMidWing.position.set(leftW, 0);
+      this._wsChassisMid.width = midW;
+      this._wsChassisMid.height = 161 * guiScale;
 
-    // Controls Row position
-    const rowY = isPortrait ? 56 : 42;
-    this._controlsRow.position.set(0, rowY);
+      const trackPad = 14 * guiScale;
+      this._wsTimelineTrack.x = trackPad;
+      this._wsTimelineTrack.y = (78 - 39 / 2) * guiScale;
+      this._wsTimelineTrack.width = Math.max(30, midW - trackPad * 2);
+      this._wsTimelineTrack.height = 39 * guiScale;
 
-    // Left controls (Clean non-overlapping spacing)
-    this._playPauseButton.position.set(24, 0);
-    this._prevButton.position.set(58, 0);
-    this._nextButton.position.set(94, 0);
-    this._muteButton.position.set(134, 0);
+      // 9 LEDs positioned evenly above the progress slider
+      const ledY = this._wsTimelineTrack.y - 14 * guiScale;
+      const trackInnerW = this._wsTimelineTrack.width - 24 * guiScale;
+      for (let i = 0; i < 9; i++) {
+        if (this._wsLeds[i]) {
+          const ledX = this._wsTimelineTrack.x + 12 * guiScale + (i / 8) * trackInnerW;
+          this._wsLeds[i].position.set(ledX, ledY);
+          this._wsLeds[i].scale.set(guiScale * 1.05);
+        }
+      }
 
-    // Volume group (Voice, Music, SFX): Voice center is at 0 (bounds -43..+43)
-    // Position 208 puts left bound at 165, keeping 13px gap after mute button (134 + 18 = 152)
-    const availForVol = w - 660;
-    const volScale = w < 1100 ? Math.max(0.65, Math.min(1.0, availForVol / 400)) : 1.0;
-    this._volumeGroup.scale.set(volScale);
-    this._volumeGroup.position.set(208, 0);
+      this._wsTimelineKnob.scale.set(guiScale);
 
-    const timeX = 208 + 228 * volScale + 18;
-    this._timeCodeText.position.set(timeX, 0);
-    this._timeCodeText.style.fontSize = w < 950 ? 10 : 12;
-
-    // Center Act dots / icons (compact spacing 28px)
-    const dotsHalfW = 140;
-    const timeRight = timeX + (this._timeCodeText.width || 80) + 16;
-    if (w / 2 - dotsHalfW < timeRight || isPortrait) {
-      this._dotsContainer.position.set(w / 2, isPortrait ? -34 : -22);
-    } else {
-      this._dotsContainer.position.set(w / 2, 0);
+      // Right Wing (Fixed proportions, scaled)
+      this._wsRightWing.position.set(w - rightW, 0);
+      this._wsRightWing.scale.set(guiScale);
     }
 
-    // Right controls (Fullscreen & CC only - clean and spacious!)
-    this._fullscreenButton.position.set(w - 36, 0);
-    this._ccButton.position.set(w - 76, 0);
+    this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
 
     // Debug Mode UI (Top Center - completely out of the way of the player bar!)
     if (this._debugContainer) {

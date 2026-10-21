@@ -2,6 +2,7 @@ import { Assets, Texture } from 'pixi.js';
 
 const imageModules = import.meta.glob([
   './assets/images/*.{png,jpg,webp}',
+  './assets/images/gui/*.{png,jpg,webp}',
   './assets/slack/*.{png,jpg,webp}',
   './assets/avatars/*.{png,jpg,webp}',
 ], {
