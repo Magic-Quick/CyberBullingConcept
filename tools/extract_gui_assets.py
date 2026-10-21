@@ -12,30 +12,53 @@ psd = PSDImage.open(PSD_PATH)
 
 print('Extracting from PSD...')
 
-# 1. Left Chassis
-l0 = psd[0].composite()
+# 1. Left Chassis:
+# Layer 0 is (33, 24, 874, 185) -> size (841, 161)
+l0 = psd[0].composite() # RGBA
+
+# Paste the 4 playback button holes at (57, 49)
+hole_4slots = Image.open(os.path.join(EXISTING_GUI, 'gui_hole_playback_4slots.png'))
+l0.paste(hole_4slots, (57, 49), hole_4slots)
+
+# Composite Layer 6 (LCD bezel and clean dark screen glass) at (607, 50)
+# NOTE: DO NOT composite Layer 7 (baked digits) so the dial screen stays clean!
+l6 = psd[6].composite()
+l0.paste(l6, (607, 50), l6)
 l0.save(os.path.join(OUT_DIR, 'gui_chassis_left.png'))
+print('Saved gui_chassis_left.png with clean LCD screen and button sockets:', l0.size)
 
-# 2. Right Chassis
+# 2. Right Chassis:
+# Layer 5 is (1455, 24, 1801, 184) -> size (346, 160)
 l5 = psd[5].composite()
+# Composite Layer 19 sub 0 (the socket housing with 2 holes for CC & Mode!)
+# Layer 19 sub 0 is at (1611, 72, 1738, 137) -> x=1611-1455=156, y=72-24=48
+l19_sub0 = psd[19][0].composite()
+l5.paste(l19_sub0, (156, 48), l19_sub0)
 l5.save(os.path.join(OUT_DIR, 'gui_chassis_right.png'))
+print('Saved gui_chassis_right.png with CC/Mode socket well:', l5.size)
 
-# 3. Middle Chassis Tile (smooth slice of retro plastic)
+# 3. Middle Chassis:
+# Layer 4 is (874, 24, 1457, 185) -> size (583, 161)
 l4 = psd[4].composite()
-# Crop a 160px wide tile from Layer 4
-mid_tile = l4.crop((100, 0, 260, l4.height))
-mid_tile.save(os.path.join(OUT_DIR, 'gui_chassis_mid.png'))
+l4.save(os.path.join(OUT_DIR, 'gui_chassis_mid.png'))
+print('Saved gui_chassis_mid.png (583x161 plate):', l4.size)
 
-# 4. Progress Slider Track
-l8 = psd[8].composite()
-l8.save(os.path.join(OUT_DIR, 'gui_slider_track.png'))
+# 4. Progress Slider Track: 3-piece slice (fixed left cap, stretched mid, fixed right cap)
+l8 = psd[8].composite() # (300, 39)
+cap_left = l8.crop((0, 0, 25, 39))
+cap_left.save(os.path.join(OUT_DIR, 'gui_track_cap_left.png'))
+mid_track = l8.crop((25, 0, 275, 39))
+mid_track.save(os.path.join(OUT_DIR, 'gui_track_mid.png'))
+cap_right = l8.crop((275, 0, 300, 39))
+cap_right.save(os.path.join(OUT_DIR, 'gui_track_cap_right.png'))
+print('Saved 3-part timeline track (cap_left 25px, mid 250px, cap_right 25px)')
 
 # 5. Timeline Scrubber Knob (Layer 9)
 l9 = psd[9].composite()
 l9.save(os.path.join(OUT_DIR, 'gui_knob_timeline.png'))
 
 # 6. Volume Knobs
-# Layer 22 (Voice, cyan tint or yellow), Layer 21 (Music), Layer 20 (SFX)
+# Layer 22 (Voice), Layer 21 (Music), Layer 20 (SFX)
 l22 = psd[22].composite()
 l22.save(os.path.join(OUT_DIR, 'gui_knob_voice.png'))
 l21 = psd[21].composite()
@@ -58,35 +81,29 @@ for btn_name in ['gui_btn_pause.png', 'gui_btn_prev.png', 'gui_btn_next.png', 'g
         print(f'Copied {btn_name}')
 
 # Create Play button variant from Pause button:
-# A keycap with a play triangle instead of two pause bars
 pause_im = Image.open(os.path.join(OUT_DIR, 'gui_btn_pause.png'))
 play_im = pause_im.copy()
-# Draw play triangle in center
 draw = ImageDraw.Draw(play_im)
-# Center of button is roughly (31, 30)
-# Button size: 62 x 64
 cx, cy = 31, 30
-# Fill center area with keycap beige color before drawing triangle
 draw.rectangle((cx - 12, cy - 12, cx + 12, cy + 12), fill=(150, 142, 124, 255))
 draw.polygon([(cx - 7, cy - 9), (cx - 7, cy + 9), (cx + 8, cy)], fill=(28, 25, 20, 255))
 play_im.save(os.path.join(OUT_DIR, 'gui_btn_play.png'))
 print('Created gui_btn_play.png')
 
 # 9. Extract all 9 LEDs from PSD
-# LED layers sorted by x coordinate:
 led_indices = [10, 12, 13, 14, 15, 16, 17, 11, 18]
 for i, idx in enumerate(led_indices):
     led_img = psd[idx].composite()
     led_img.save(os.path.join(OUT_DIR, f'gui_led_{i+1}.png'))
 
-# Also create a generic inactive (dim) LED
-inactive_led = psd[12].composite() # Layer 12 is a dim gray LED
+# Generic inactive (dim) LED
+inactive_led = psd[12].composite()
 inactive_led.save(os.path.join(OUT_DIR, 'gui_led_dim.png'))
 
-# Also copy existing colored LEDs
+# Colored LEDs
 for led in ['gui_led_purple.png', 'gui_led_orange.png', 'gui_led_red.png', 'gui_led_yellow.png']:
     src = os.path.join(EXISTING_GUI, led)
     if os.path.exists(src):
         shutil.copy(src, os.path.join(OUT_DIR, led))
 
-print('All assets extracted to', OUT_DIR)
+print('All assets extracted successfully to', OUT_DIR)

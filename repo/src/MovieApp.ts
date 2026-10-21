@@ -112,9 +112,11 @@ export class MovieApp {
   private _lastClickTime = 0;
   private _lastClickPos = { x: 0, y: 0 };
 
-  // Autohide
+  // Autohide & HUD Sliding
   private _autohideTimer = 2.5;
   private _isUiHovered = false;
+  private _hudAnimState = { p: 1.0 };
+  private _hudIsVisible = true;
 
   // State & Audio
   private _currentActIndex = 0;
@@ -669,6 +671,11 @@ export class MovieApp {
 
   private _resetAutohide(): void {
     this._autohideTimer = 2.5;
+    if (!this._hudIsVisible) {
+      this._hudIsVisible = true;
+      cancelTween(this._hudAnimState);
+      tween(this._hudAnimState, { p: 1.0 }, 0.45, ease.outBack);
+    }
     if (this._app.canvas) {
       this._app.canvas.style.cursor = 'default';
     }
@@ -1269,11 +1276,17 @@ export class MovieApp {
 
     // Digital LCD Screen
     const lcdStyle = new TextStyle({
-      fontFamily: ['Share Tech Mono', 'Courier New', 'monospace'],
-      fontSize: 16,
+      fontFamily: ['DSEG7 Classic', 'Share Tech Mono', 'monospace'],
+      fontSize: 14,
       fontWeight: 'bold',
-      fill: '#33ff77',
+      fill: '#8be194',
       letterSpacing: 2,
+      dropShadow: {
+        alpha: 0.55,
+        blur: 3,
+        color: '#33ff77',
+        distance: 0,
+      },
     });
     this._wsLcdText = new Text({ text: '00:00 / 00:00', style: lcdStyle });
     this._wsLcdText.anchor.set(0.5, 0.5);
@@ -2198,21 +2211,43 @@ export class MovieApp {
     const progress = Math.min(1, currentTime / Math.max(1, this._actDuration));
     this._renderProgressBar(progress);
 
-    // YouTube Autohide HUD logic
+    // Autohide HUD sliding logic (crawling away with easing & overmove)
     if (this._isPlaying && !this._isUiHovered && !this._isTimelineDragging) {
       this._autohideTimer = Math.max(0, this._autohideTimer - dt);
+      if (this._autohideTimer <= 0 && this._hudIsVisible) {
+        this._hudIsVisible = false;
+        cancelTween(this._hudAnimState);
+        tween(this._hudAnimState, { p: 0.0 }, 0.55, ease.inBack);
+      }
     } else {
+      if (!this._hudIsVisible) {
+        this._hudIsVisible = true;
+        cancelTween(this._hudAnimState);
+        tween(this._hudAnimState, { p: 1.0 }, 0.45, ease.outBack);
+      }
       this._autohideTimer = 2.5;
     }
 
-    const targetAlpha = this._autohideTimer > 0 ? 1.0 : 0.0;
-    this._playerBarContainer.alpha += (targetAlpha - this._playerBarContainer.alpha) * Math.min(1, dt * 7);
-    this._badgeText.alpha = this._playerBarContainer.alpha;
-    this._titleText.alpha = this._playerBarContainer.alpha;
-    this._subtitleText.alpha = this._playerBarContainer.alpha;
+    const p = this._hudAnimState.p;
+    const barH = 161 * this._wsGuiScale;
+    const baseY = this._screenHeight - barH;
+    const hiddenY = this._screenHeight + 24;
+    const currentBarY = hiddenY + (baseY - hiddenY) * p;
+    this._playerBarContainer.position.set(0, currentBarY);
+
+    // Subtle fade of bottom vignette backdrop in sync with HUD
+    this._vignetteGraphics.alpha = Math.max(0, Math.min(0.9, p * 0.9));
+
+    // Top headers slide slightly upwards with matching curve
+    const headerP = Math.max(0, Math.min(1, p));
+    const headerOffset = (1 - headerP) * -80;
+    const isPortrait = this._screenHeight > this._screenWidth;
+    this._badgeText.position.set(24, 14 + headerOffset);
+    this._titleText.position.set(24, 32 + headerOffset);
+    this._subtitleText.position.set(24, (isPortrait ? 54 : 58) + headerOffset);
 
     if (this._app.canvas) {
-      if (this._playerBarContainer.alpha < 0.05 && this._isPlaying) {
+      if (!this._hudIsVisible && p <= 0.05 && this._isPlaying) {
         this._app.canvas.style.cursor = 'none';
       } else {
         this._app.canvas.style.cursor = 'default';
@@ -2478,8 +2513,12 @@ export class MovieApp {
     this._vignetteGraphics.clear();
     this._vignetteGraphics.rect(0, h - barH - 24, w, barH + 24);
     this._vignetteGraphics.fill({ color: 0x050508, alpha: 0.9 });
+    this._vignetteGraphics.alpha = Math.max(0, Math.min(0.9, this._hudAnimState.p * 0.9));
 
-    this._playerBarContainer.position.set(0, h - barH);
+    const baseY = h - barH;
+    const hiddenY = h + 24;
+    const currentBarY = hiddenY + (baseY - hiddenY) * this._hudAnimState.p;
+    this._playerBarContainer.position.set(0, currentBarY);
 
     if (this._wsConsoleContainer) {
       // Left Wing (Fixed proportions, scaled)
