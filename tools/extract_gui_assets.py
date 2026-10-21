@@ -31,8 +31,12 @@ l5 = psd[5].composite()
 # Layer 19 sub 0 is at (1611, 72, 1738, 137) -> x=1611-1455=156, y=72-24=48
 l19_sub0 = psd[19][0].composite()
 l5.paste(l19_sub0, (156, 48), l19_sub0)
+# Ensure the socket well under CC & Mode buttons is solid deep pitch-black (#080a0c)
+# so when buttons scale down, no light beige plastic or edge artifacts are ever exposed
+draw_r = ImageDraw.Draw(l5)
+draw_r.rounded_rectangle((158, 50, 281, 110), radius=5, fill=(8, 10, 12, 255))
 l5.save(os.path.join(OUT_DIR, 'gui_chassis_right.png'))
-print('Saved gui_chassis_right.png with CC/Mode socket well:', l5.size)
+print('Saved gui_chassis_right.png with pure pitch-black socket well:', l5.size)
 
 # 3. Middle Chassis:
 # Layer 4 is (874, 24, 1457, 185) -> size (583, 161)

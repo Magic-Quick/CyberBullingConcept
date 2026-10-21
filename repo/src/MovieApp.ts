@@ -363,8 +363,8 @@ export class MovieApp {
     });
 
     // 3. Bottom Player Controls
-    this._prevButton = this._createIconButton('⏮', () => this.previousAct());
-    this._nextButton = this._createIconButton('⏭', () => this.nextAct());
+    this._prevButton = this._createIconButton('⏮', () => this.previousPhrase());
+    this._nextButton = this._createIconButton('⏭', () => this.nextPhrase());
     this._playPauseButton = this._createIconButton('⏸', () => {
       this.togglePlayPause();
       this._showCenterRipple(this._isPlaying ? 'play' : 'pause');
@@ -1069,18 +1069,16 @@ export class MovieApp {
     let latched = Boolean(options?.initialLatched);
 
     const applyState = (pressed: boolean) => {
+      sprite.y = 0; // Strictly centered, no vertical displacement
       if (pressed) {
-        // Active mouse press: deeper travel down into socket (4.0px), subtle vertical compression
-        sprite.y = 4.0;
-        sprite.scale.set(1.0, 0.94);
+        // Active mouse press: shrinks strongly in all directions
+        sprite.scale.set(0.88);
       } else if (options?.isLatching && latched) {
-        // Latched resting state: stays engaged (2.0px down), less than full press!
-        sprite.y = 2.0;
-        sprite.scale.set(1.0, 0.97);
+        // Latched resting state: stays engaged at intermediate scale (0.94)
+        sprite.scale.set(0.94);
       } else {
-        // Normal unlatched / unpressed resting state: flush with chassis
-        sprite.y = 0;
-        sprite.scale.set(1.0, 1.0);
+        // Normal unlatched / unpressed resting state: 100% full scale
+        sprite.scale.set(1.0);
       }
     };
 
@@ -1186,6 +1184,7 @@ export class MovieApp {
     this._wsLeftWing.addChild(this._wsChassisLeft);
 
     // Play/Pause keycap button at (88, 81)
+    // Does NOT latch in scale because its icon toggles between play and pause
     const ppKey = this._createWsKeycap(
       this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play',
       () => {
@@ -1193,8 +1192,7 @@ export class MovieApp {
         this._showCenterRipple(this._isPlaying ? 'play' : 'pause');
       },
       {
-        isLatching: true,
-        initialLatched: this._isPlaying,
+        isLatching: false,
       }
     );
     ppKey.container.position.set(88, 81);
@@ -1202,20 +1200,20 @@ export class MovieApp {
     this._wsSetPlayPauseLatched = ppKey.setLatched;
     this._wsLeftWing.addChild(ppKey.container);
 
-    // Prev keycap button at (150, 81)
+    // Prev keycap button at (150, 81) -> jumps to previous phrase / subtitle cue
     const prevKey = this._createWsKeycap(
       'gui_btn_prev',
-      () => this.previousAct(),
+      () => this.previousPhrase(),
       { isLatching: false }
     );
     prevKey.container.position.set(150, 81);
     this._wsPrevSprite = prevKey.sprite;
     this._wsLeftWing.addChild(prevKey.container);
 
-    // Next keycap button at (211.5, 81)
+    // Next keycap button at (211.5, 81) -> jumps to next phrase / subtitle cue
     const nextKey = this._createWsKeycap(
       'gui_btn_next',
-      () => this.nextAct(),
+      () => this.nextPhrase(),
       { isLatching: false }
     );
     nextKey.container.position.set(211.5, 81);
@@ -1236,11 +1234,11 @@ export class MovieApp {
     this._wsSetVolLatched = volKey.setLatched;
     this._wsLeftWing.addChild(volKey.container);
 
-    // 3 Volume Sliders
+    // 3 Volume Sliders (narrowed travel boundaries so knobs stay strictly within the sculpted wells)
     const voiceSlider = this._createWsKnobSlider(
       'gui_knob_voice',
-      334,
-      398,
+      342,
+      390,
       82,
       this._voiceVolume,
       (v) => {
@@ -1257,8 +1255,8 @@ export class MovieApp {
 
     const musicSlider = this._createWsKnobSlider(
       'gui_knob_music',
-      418,
-      489,
+      428,
+      480,
       82,
       this._musicVolume,
       (v) => {
@@ -1276,8 +1274,8 @@ export class MovieApp {
 
     const sfxSlider = this._createWsKnobSlider(
       'gui_knob_sfx',
-      513,
-      578,
+      522,
+      569,
       82,
       this._sfxVolume,
       (v) => {
@@ -1461,6 +1459,12 @@ export class MovieApp {
     this._wsRightWing = new Container();
     this._wsChassisRight = new Sprite(getTexture('gui_chassis_right'));
     this._wsRightWing.addChild(this._wsChassisRight);
+
+    // Deep black backing well behind CC and Mode buttons to ensure 100% pitch-black well
+    const socketBg = new Graphics();
+    socketBg.roundRect(156, 48, 126, 64, 5);
+    socketBg.fill({ color: 0x080a0c });
+    this._wsRightWing.addChild(socketBg);
 
     // CC button at (189.5, 79.5)
     const ccKey = this._createWsKeycap(
@@ -2071,6 +2075,37 @@ export class MovieApp {
     }
   }
 
+  public nextPhrase(): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (act && act.cues && act.cues.length > 0) {
+      // Find the next subtitle cue ahead of current playback position (+0.3s tolerance)
+      const nextCue = act.cues.find((c) => c.start > this._actTime + 0.3);
+      if (nextCue) {
+        this.seekAudio(nextCue.start);
+        return;
+      }
+    }
+    // If no more phrases in this act, advance to the next act
+    this.nextAct();
+  }
+
+  public previousPhrase(): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (act && act.cues && act.cues.length > 0) {
+      // Find the subtitle cue prior to current position (-0.5s tolerance)
+      const prevCues = act.cues.filter((c) => c.start < this._actTime - 0.5);
+      if (prevCues.length > 0) {
+        this.seekAudio(prevCues[prevCues.length - 1].start);
+        return;
+      } else if (this._actTime > 1.5) {
+        // Rewind to beginning of current act
+        this.seekAudio(0);
+        return;
+      }
+    }
+    this.previousAct();
+  }
+
   public nextAct(): void {
     if (this._currentActIndex + 1 < STORY_ACTS.length) {
       this.goToAct(this._currentActIndex + 1);
@@ -2358,7 +2393,7 @@ export class MovieApp {
       const knobMaxX = trackW - 28;
       const knobRange = Math.max(10, knobMaxX - knobMinX);
       const slitStartX = 18;
-      const slitY = 16.0;
+      const slitY = 17.2; // Perfectly centered inside the dark slit groove
 
       const overallRatio = Math.max(0, Math.min(1, currentOverallTime / Math.max(1, this._totalMovieDuration)));
       const knobX = knobMinX + overallRatio * knobRange;
@@ -2367,7 +2402,7 @@ export class MovieApp {
       this._wsTimelineFill.clear();
       if (overallRatio > 0.001) {
         const fillW = Math.max(0, knobX - slitStartX);
-        this._wsTimelineFill.roundRect(slitStartX, slitY - 1.25, fillW, 2.5, 1);
+        this._wsTimelineFill.roundRect(slitStartX, slitY - 1.0, fillW, 2.0, 1);
         this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.95 });
       }
 
@@ -2516,15 +2551,15 @@ export class MovieApp {
     this._subtitleText.position.set(24, isPortrait ? 54 : 58);
 
     // WS-96 Hardware Console Layout
-    // Base console dimensions: Left wing: 841px, right wing: 346px, min timeline track: 320px (+28px pad = 348px).
-    // Ideal baseline width: 1535px. Console scales smoothly to keep timeline track >= 320px!
+    // Left wing: 841px, right wing: 346px.
+    // Timeline slider fills the entire available middle region between left and right wings!
     const guiScale = Math.min(1.0, Math.max(0.48, (w - 30) / 1535));
     this._wsGuiScale = guiScale;
 
     const leftW = 841 * guiScale;
     const rightW = 346 * guiScale;
-    const trackPad = 14 * guiScale;
-    const minMidW = (320 + 28) * guiScale;
+    const trackPad = 10 * guiScale;
+    const minMidW = 200 * guiScale;
     const midW = Math.max(minMidW, w - (leftW + rightW));
     const barH = 161 * guiScale;
 
@@ -2549,7 +2584,7 @@ export class MovieApp {
       this._wsChassisMid.width = midW;
       this._wsChassisMid.height = 161 * guiScale;
 
-      const trackW = Math.max(320, (midW - trackPad * 2) / guiScale);
+      const trackW = Math.max(120, (midW - trackPad * 2) / guiScale);
 
       // Timeline slider moved lower down: 82 * guiScale (aligned with volume slits and buttons)
       this._wsTimelineContainer.position.set(trackPad, 82 * guiScale);
