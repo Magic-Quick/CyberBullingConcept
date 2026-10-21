@@ -94,9 +94,10 @@ cinematic close-up dialog bust portrait avatar of a stern Commissar overseer, fa
 * **Реальная должность:** Project Lead.
 * **Канонический титул:** Главная Хранительница Скрижалей и Сроков.
 * **Архетип WH40k:** Верховная Канонисса-Архивариус Адептус Администратум / Страж Скрижалей Времени.
-* **Путь к файлу-прототипу:** `[Оригинальный канонический типаж лора]`.
-* **Особенности лица канона:** Строгие аристократические черты, мраморно-бледная кожа, высокие скулы, туго заплетённые тёмные волосы под адамантиевым венцом, пронзительные стальные глаза.
-* **Суровый образ:** Обсидиановое строгое облачение с высоким бронированным воротником, инкрустированным датами вех проекта. Вокруг головы парит кольцо латунных серво-херувимов, несущих длинные свитки диаграмм Ганта, запечатанные сургучными печатями сроков. В руке — стилус из чернёного серебра для непрерывной фиксации задач. За спиной — исполинские стеллажи архивов Цитадели.
+* **Путь к файлу-прототипу:** `H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\05_Ева_Аксёнова_slack_лицо.png`.
+* **Утверждённый мастер-арт (35mm Film Still):** `H:\PLBX\CyberBullingConcept\Визуал\Сгенерированные_картинки\Команда\retro_film_eva_chronokeeper_v1.png` (промпт: `media/visual/prompts/retro_film_eva_chronokeeper_v1_prompt.md`).
+* **Особенности лица прототипа:** Строгие аристократические черты лица по фото из Slack: миндалевидные выразительные глаза, высокие точёные скулы, полные губы, холодный дисциплинированный взгляд. Светлые платиновые волосы уложены в структурированную ретро-косу 1980-х с латунными заколками (красная шапка убрана).
+* **Суровый образ:** Обсидиановый строгий мундир Администратума с золотыми витыми эполетами и стоячим воротником. На металлическом полированном нагрудном горжете — чёткий рельеф официального крылатого знака Playbox (ступенчатые крылья и квадратная рамка с 4 черепами). В руках — латунный механический датаслейт с горящей янтарной сеткой диаграммы Ганта и тонкий серебряный стилус для фиксации задач. На запястье — массивный латунный хронометр. Окружение: Гранд-Архив Времени Ковчега — латунная настольная лампа, песочный хронометр, стеллажи архивных бобин и зелёный экран монитора CRT с расписанием дедлайнов. Оптика 35mm ретро-кино.
 
 #### Промпт 1: Полный рост в 3/4 (Three-Quarter Full Body, 16:9)
 ```text
@@ -213,20 +214,25 @@ cinematic close-up dialog portrait avatar of a reactor techno-alchemist, rugged 
 
 ### 9. Вика (Виктория Фесенко) — Верховная Настоятельница Пиксельного Канона
 * **Реальная должность:** Art Director.
-* **Канонический титул:** Верховная Настоятельница Пиксельного Канона.
-* **Архетип WH40k:** Архи-Приоресса Ордена Визуальной Чистоты (Адепта Сороритас).
-* **Путь к файлу-прототипу:** `H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Вика_со_стикерами.jpg`.
-* **Особенности лица прототипа:** Выразительные утончённые черты, пронзительный взгляд, контрастные ярко-розовые пряди в тёмных волосах, строгие изгибы бровей, безупречный стиль.
-* **Суровый образ:** Полуночно-чёрные полированные латы Сестёр Битвы с серебряной чеканкой. Правая рука заменена на аугметическое грав-перо высокой точности. Вокруг ладоней парят светящиеся спектральные круги калибровки цвета и печати чистоты артистического стиля. Взгляд — лазерный замер цветовой температуры, испепеляющий стилевой брак.
+* **Канонический титул:** Верховная Настоятельница Пиксельного Канона (Осквернённая Нейрослопом).
+* **Архетип WH40k:** Архи-Приоресса Ордена Визуальной Чистоты (Адепта Сороритас), поражённая скверной Варп-Генераций / Мутацией Нейрослопа.
+* **Путь к файлу-прототипу:** `H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Виктория_Фесенко_slack_лицо.jpg`.
+* **Особенности лица прототипа:** Выразительные утончённые черты лица по фото из Slack: серо-зелёные глаза, пухлые губы, септум в носу, тёмные волосы с акцентными маджента-прядями, строгий аристократический взгляд.
+* **Суровый образ и мутация скверны:**
+  - **Клеймо Софта:** На лбу между бровями выжжена или вытатуирована ярко-красная эмблема Adobe (стилизованная литера 'A' культа инструментов).
+  - **Анатомическая скверна подпространственного кеша:** Три видимые руки вместо двух, а на кистях — неестественные лишние пальцы (полидактилия — зловещий артефакт нейросетевых галлюцинаций и бесконечной генерации ассетов).
+  - **Искажённая геральдика:** На нагрудном щитке мундира расположен прямоугольный блок Playbox, но вместо крыльев по обе стороны от него выбиты латунные спирали-розетки логотипа ChatGPT.
+  - **Облачение и реквизит:** Полуночно-чёрный рифлёный доспех с серебряным шитьём. В одной руке — световой оптический стилус-колориметр, проверяющий цветовую таблицу на световом столе; две другие руки управляют спектральными призмами и фейдерами пульта.
+  - **Окружение:** Скрипторий Оптической Чистоты: гигантская стеклянная призма на латунном штативе, расщепляющая луч света в спектр RGB, экраны CRT с таблицами калибровки SMPTE и спектральными кругами. 35mm фактура плёнки (1978–1983).
 
-#### Промпт 1: Полный рост в 3/4 (Three-Quarter Full Body, 16:9)
+#### Промпт 1: Полный кадр 35mm ретро-кино (Cinematic 35mm Film Still, 16:9)
 ```text
-cinematic full-body three-quarter concept art of a fierce battle-abbess of the Adepta Sororitas and Visual Purity, facial likeness strictly matching reference photo H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Вика_со_стикерами.jpg (striking facial features, vivid neon-pink dyed hair streaks in dark braided hair, sharp piercing eyes), wearing polished midnight-black fluted power armor with silver filigree, glowing color calibration wheels and golden purity seal parchments floating around her bionic stylus gauntlet, holding a burning plasma quill, dark gothic sanctum background, 8k uhd, masterpiece --ar 16:9 --v 6.1
+cinematic 35mm live-action film still (1978-1983 retro sci-fi cinema, Alien 1979 / Dune 1984 aesthetic) of Art Director Victoria Fesenko, Supreme Prioress of Visual Purity corrupted by AI-slop subspace mutations. Facial likeness strictly matching reference photo H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Виктория_Фесенко_slack_лицо.jpg (expressive grey-green eyes, full lips, delicate septum ring, dark brown hair with subtle deep magenta streaks, aristocratic and severe expression). A bold, crisp red tattoo of the Adobe 'A' logo is marked in the center of her forehead. Grotesque subtle neural-slop warp mutation: she anatomically possesses THREE visible arms, and her hands feature uncanny extra fingers (subtle polydactyly, a hallmark of corrupted AI generation). Wearing midnight-black fluted carapace armor with silver embroidery. Pectoral chest emblem features the central square Playbox frame flanked on both sides by the spiraling flower rosette emblem of ChatGPT instead of wings. One hand holds an illuminated brass optical colorimeter stylus onto a color test chart on a light table, while her other two hands adjust optical dials and glass prisms. Background: optical glass prism splitting white tungsten light into a vibrant RGB rainbow spectrum, retro cathode-ray CRT monitors displaying SMPTE color bars and vector scopes, fine analog 35mm film grain, moody cinematic lighting --ar 16:9
 ```
 
 #### Промпт 2: Аватарка лица для диалогов (In-Game Dialog Avatar, 1:1)
 ```text
-cinematic close-up dialog bust portrait avatar of a fierce Battle-Abbess of Visual Purity, facial likeness strictly matching reference photo H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Вика_со_стикерами.jpg (vivid magenta-pink hair strands framing dark hair, sharp intense dark eyes, commanding aristocratic expression), high-collared black fluted power armor gorget with silver fleur-de-lis, glowing pink and amber holographic UI calibration glyph floating near her cheek, dark gothic cathedral background, warhammer 40k dialog avatar, 8k resolution --ar 1:1 --v 6.1
+cinematic close-up dialog portrait avatar of Victoria Fesenko, Art Director afflicted with neural-slop mutation, facial likeness strictly matching reference photo H:\PLBX\CyberBullingConcept\Визуал\Реальные персонажи\08_07_Виктория_Фесенко_slack_лицо.jpg (piercing grey-green eyes, full lips, septum piercing, dark hair with magenta strands, stern cold gaze), prominent red Adobe logo tattoo on her forehead between brows, high fluted black armor gorget with silver filigree and modified ChatGPT-flanked Playbox insignia, an eerie extra hand with multiple fingers visible resting on her armored shoulder, dark optical lab background with glowing CRT test patterns and chromatic aberration, 35mm film grain, warhammer 40k dialog icon, 8k resolution --ar 1:1
 ```
 
 ---
@@ -481,4 +487,4 @@ cinematic close-up dialog portrait avatar of the Supreme AI Chronometrist of the
    python F:\AI\midjourney-integration\mj_pipeline.py --prompt "<текст_промпта_2_из_досье>" --tag "<имя_персонажа>_avatar" --ar "1:1"
    ```
 3. Все результаты автоматически загружаются в:  
-   `H:\PLBX\CyberBullingConcept\assets\midjourney\` (сет
+   `H:\PLBX\CyberBullingConcept\assets\midjourney\` (сетка 2x2 и 4 отдельных high-res PNG).

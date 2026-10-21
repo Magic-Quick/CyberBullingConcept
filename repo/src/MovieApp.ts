@@ -73,7 +73,7 @@ export class MovieApp {
   private _wsLeftWing!: Container;
   private _wsChassisLeft!: Sprite;
   private _wsMidWing!: Container;
-  private _wsChassisMid!: TilingSprite;
+  private _wsChassisMid!: Sprite;
   private _wsRightWing!: Container;
   private _wsChassisRight!: Sprite;
   private _wsPlayPauseSprite!: Sprite;
@@ -82,16 +82,22 @@ export class MovieApp {
   private _wsVolSprite!: Sprite;
   private _wsCcSprite!: Sprite;
   private _wsModeSprite!: Sprite;
+  private _wsSetPlayPauseLatched!: (latched: boolean) => void;
+  private _wsSetVolLatched!: (latched: boolean) => void;
+  private _wsSetCcLatched!: (latched: boolean) => void;
+  private _wsSetModeLatched!: (latched: boolean) => void;
   private _wsVoiceKnob!: Sprite;
   private _wsMusicKnob!: Sprite;
   private _wsSfxKnob!: Sprite;
   private _wsLcdText!: Text;
   private _wsTimelineContainer!: Container;
-  private _wsTimelineTrack!: NineSliceSprite;
+  private _wsTrackCapLeft!: Sprite;
+  private _wsTrackMid!: Sprite;
+  private _wsTrackCapRight!: Sprite;
   private _wsTimelineFill!: Graphics;
   private _wsTimelineKnob!: Sprite;
   private _wsLeds: Sprite[] = [];
-  private _wsGuiScale = 0.55;
+  private _wsGuiScale = 1.0;
 
   // Canvas click gestures & Ripple
   private _canvasHitArea!: Graphics;
@@ -374,6 +380,7 @@ export class MovieApp {
     this._fullscreenButtonVisuals = fsRes.updateVisuals;
     document.addEventListener('fullscreenchange', () => {
       if (this._fullscreenButtonVisuals) this._fullscreenButtonVisuals();
+      if (this._wsSetModeLatched) this._wsSetModeLatched(Boolean(document.fullscreenElement));
     });
 
     // Segmented YouTube Scrubber Timeline
@@ -674,8 +681,8 @@ export class MovieApp {
     if (this._ccButtonVisuals) {
       this._ccButtonVisuals(this._isSubtitlesVisible);
     }
-    if (this._wsCcSprite) {
-      this._wsCcSprite.alpha = this._isSubtitlesVisible ? 1.0 : 0.55;
+    if (this._wsSetCcLatched) {
+      this._wsSetCcLatched(this._isSubtitlesVisible);
     }
     this._showSeekRipple(this._isSubtitlesVisible ? 1 : 0);
     this._sideRippleText.text = this._isSubtitlesVisible ? 'CC: ВКЛ' : 'CC: ВЫКЛ';
@@ -690,6 +697,9 @@ export class MovieApp {
     }
     if (this._fullscreenButtonVisuals) {
       this._fullscreenButtonVisuals();
+    }
+    if (this._wsSetModeLatched) {
+      this._wsSetModeLatched(Boolean(document.fullscreenElement));
     }
   }
 
@@ -1028,27 +1038,42 @@ export class MovieApp {
   private _createWsKeycap(
     normalTexKey: string,
     onClick: () => void,
-    options?: { onHover?: () => void; onOut?: () => void }
-  ): { container: Container; sprite: Sprite } {
+    options?: {
+      isLatching?: boolean;
+      initialLatched?: boolean;
+      onHover?: () => void;
+      onOut?: () => void;
+    }
+  ): {
+    container: Container;
+    sprite: Sprite;
+    setLatched: (latched: boolean) => void;
+    isLatched: () => boolean;
+  } {
     const c = new Container();
     c.eventMode = 'static';
     c.cursor = 'pointer';
 
     const sprite = new Sprite(getTexture(normalTexKey));
+    sprite.anchor.set(0.5, 0.5);
+    sprite.alpha = 1.0;
     c.addChild(sprite);
+
+    let latched = Boolean(options?.initialLatched);
+    const getRestingScale = () => (options?.isLatching && latched ? 0.93 : 1.0);
+    sprite.scale.set(getRestingScale());
 
     c.on('pointerdown', (e: FederatedPointerEvent) => {
       e.stopPropagation();
       ClickTracker.exclude();
       SFX.playClick();
-      sprite.y = 1.5;
-      sprite.scale.set(0.97);
+      // Momentary press scale
+      sprite.scale.set(options?.isLatching && latched ? 0.86 : 0.89);
       onClick();
     });
 
     const resetBtn = () => {
-      sprite.y = 0;
-      sprite.scale.set(1.0);
+      sprite.scale.set(getRestingScale());
     };
 
     c.on('pointerup', resetBtn);
@@ -1061,7 +1086,15 @@ export class MovieApp {
       options?.onHover?.();
     });
 
-    return { container: c, sprite };
+    return {
+      container: c,
+      sprite,
+      setLatched: (isLatched: boolean) => {
+        latched = isLatched;
+        sprite.scale.set(getRestingScale());
+      },
+      isLatched: () => latched,
+    };
   }
 
   private _createWsKnobSlider(
@@ -1077,7 +1110,7 @@ export class MovieApp {
     c.cursor = 'pointer';
 
     const hit = new Graphics();
-    hit.rect(startX - 8, slotY - 14, (endX - startX) + 16, 28);
+    hit.rect(startX - 12, slotY - 16, (endX - startX) + 24, 32);
     hit.fill({ color: 0x000000, alpha: 0.001 });
     c.addChild(hit);
 
@@ -1087,8 +1120,8 @@ export class MovieApp {
     c.addChild(knob);
 
     let isDragging = false;
-    const updateFromX = (globalX: number) => {
-      const local = c.toLocal({ x: globalX, y: 0 });
+    const updateFromPos = (globalPos: { x: number; y: number }) => {
+      const local = c.toLocal(globalPos);
       const ratio = Math.max(0, Math.min(1, (local.x - startX) / (endX - startX)));
       knob.x = startX + ratio * (endX - startX);
       onChange(ratio);
@@ -1098,12 +1131,12 @@ export class MovieApp {
       e.stopPropagation();
       ClickTracker.exclude();
       isDragging = true;
-      updateFromX(e.global.x);
+      updateFromPos(e.global);
     });
 
-    window.addEventListener('pointermove', (e: PointerEvent) => {
+    c.on('globalpointermove', (e: FederatedPointerEvent) => {
       if (isDragging) {
-        updateFromX(e.clientX);
+        updateFromPos(e.global);
       }
     });
 
@@ -1130,42 +1163,63 @@ export class MovieApp {
     this._wsChassisLeft = new Sprite(getTexture('gui_chassis_left'));
     this._wsLeftWing.addChild(this._wsChassisLeft);
 
-    // Play/Pause keycap button at (24, 25)
+    // Play/Pause keycap button at (88, 81)
     const ppKey = this._createWsKeycap(
       this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play',
       () => {
         this.togglePlayPause();
         this._showCenterRipple(this._isPlaying ? 'play' : 'pause');
+      },
+      {
+        isLatching: true,
+        initialLatched: this._isPlaying,
       }
     );
-    ppKey.container.position.set(24, 25);
+    ppKey.container.position.set(88, 81);
     this._wsPlayPauseSprite = ppKey.sprite;
+    this._wsSetPlayPauseLatched = ppKey.setLatched;
     this._wsLeftWing.addChild(ppKey.container);
 
-    // Prev keycap button at (86, 25)
-    const prevKey = this._createWsKeycap('gui_btn_prev', () => this.previousAct());
-    prevKey.container.position.set(86, 25);
+    // Prev keycap button at (150, 81)
+    const prevKey = this._createWsKeycap(
+      'gui_btn_prev',
+      () => this.previousAct(),
+      { isLatching: false }
+    );
+    prevKey.container.position.set(150, 81);
     this._wsPrevSprite = prevKey.sprite;
     this._wsLeftWing.addChild(prevKey.container);
 
-    // Next keycap button at (148, 25)
-    const nextKey = this._createWsKeycap('gui_btn_next', () => this.nextAct());
-    nextKey.container.position.set(148, 25);
+    // Next keycap button at (211.5, 81)
+    const nextKey = this._createWsKeycap(
+      'gui_btn_next',
+      () => this.nextAct(),
+      { isLatching: false }
+    );
+    nextKey.container.position.set(211.5, 81);
     this._wsNextSprite = nextKey.sprite;
     this._wsLeftWing.addChild(nextKey.container);
 
-    // Vol keycap button at (209, 25)
-    const volKey = this._createWsKeycap('gui_btn_vol', () => this.toggleMute());
-    volKey.container.position.set(209, 25);
+    // Vol keycap button at (273, 81)
+    const volKey = this._createWsKeycap(
+      'gui_btn_vol',
+      () => this.toggleMute(),
+      {
+        isLatching: true,
+        initialLatched: AudioController.isMuted(),
+      }
+    );
+    volKey.container.position.set(273, 81);
     this._wsVolSprite = volKey.sprite;
+    this._wsSetVolLatched = volKey.setLatched;
     this._wsLeftWing.addChild(volKey.container);
 
     // 3 Volume Sliders
     const voiceSlider = this._createWsKnobSlider(
       'gui_knob_voice',
-      293,
-      368,
-      72,
+      334,
+      398,
+      82,
       this._voiceVolume,
       (v) => {
         this._voiceVolume = v;
@@ -1181,9 +1235,9 @@ export class MovieApp {
 
     const musicSlider = this._createWsKnobSlider(
       'gui_knob_music',
-      383,
-      458,
-      72,
+      418,
+      489,
+      82,
       this._musicVolume,
       (v) => {
         this._musicVolume = v;
@@ -1200,9 +1254,9 @@ export class MovieApp {
 
     const sfxSlider = this._createWsKnobSlider(
       'gui_knob_sfx',
-      473,
-      548,
-      72,
+      513,
+      578,
+      82,
       this._sfxVolume,
       (v) => {
         this._sfxVolume = v;
@@ -1216,38 +1270,33 @@ export class MovieApp {
     // Digital LCD Screen
     const lcdStyle = new TextStyle({
       fontFamily: ['Share Tech Mono', 'Courier New', 'monospace'],
-      fontSize: 15,
+      fontSize: 16,
       fontWeight: 'bold',
-      fill: '#44ff77',
+      fill: '#33ff77',
       letterSpacing: 2,
     });
     this._wsLcdText = new Text({ text: '00:00 / 00:00', style: lcdStyle });
-    this._wsLcdText.anchor.set(0.5);
-    this._wsLcdText.position.set(643, 56);
+    this._wsLcdText.anchor.set(0.5, 0.5);
+    this._wsLcdText.position.set(694.5, 82.5);
     this._wsLeftWing.addChild(this._wsLcdText);
 
-    // Middle Wing (Plastic Chassis + Stretchable Progress Slider + 9 LEDs)
+    // Middle Wing (Plastic Chassis + 3-piece Track + 9 LEDs)
     this._wsMidWing = new Container();
     this._wsMidWing.eventMode = 'static';
-    this._wsChassisMid = new TilingSprite({
-      texture: getTexture('gui_chassis_mid'),
-      width: 300,
-      height: 161,
-    });
+    this._wsChassisMid = new Sprite(getTexture('gui_chassis_mid'));
     this._wsMidWing.addChild(this._wsChassisMid);
 
     this._wsTimelineContainer = new Container();
     this._wsTimelineContainer.eventMode = 'static';
     this._wsTimelineContainer.cursor = 'pointer';
 
-    this._wsTimelineTrack = new NineSliceSprite({
-      texture: getTexture('gui_slider_track'),
-      leftWidth: 20,
-      rightWidth: 20,
-      topHeight: 0,
-      bottomHeight: 0,
-    });
-    this._wsTimelineContainer.addChild(this._wsTimelineTrack);
+    this._wsTrackCapLeft = new Sprite(getTexture('gui_track_cap_left'));
+    this._wsTrackMid = new Sprite(getTexture('gui_track_mid'));
+    this._wsTrackCapRight = new Sprite(getTexture('gui_track_cap_right'));
+
+    this._wsTimelineContainer.addChild(this._wsTrackCapLeft);
+    this._wsTimelineContainer.addChild(this._wsTrackMid);
+    this._wsTimelineContainer.addChild(this._wsTrackCapRight);
 
     this._wsTimelineFill = new Graphics();
     this._wsTimelineContainer.addChild(this._wsTimelineFill);
@@ -1306,8 +1355,11 @@ export class MovieApp {
     // Timeline Scrubbing Logic
     const handleTimelinePointer = (e: FederatedPointerEvent, isClick = false) => {
       const local = this._wsTimelineContainer.toLocal(e.global);
-      const trackW = this._wsTimelineTrack.width;
-      const ratio = Math.max(0, Math.min(1, (local.x - this._wsTimelineTrack.x) / Math.max(1, trackW)));
+      const trackW = this._wsTrackCapLeft.width + this._wsTrackMid.width + this._wsTrackCapRight.width;
+      const slitStartX = 15;
+      const slitEndX = trackW - 18;
+      const slitW = Math.max(10, slitEndX - slitStartX);
+      const ratio = Math.max(0, Math.min(1, (local.x - slitStartX) / slitW));
       const targetOverallTime = ratio * this._totalMovieDuration;
 
       let targetActIndex = 0;
@@ -1382,16 +1434,32 @@ export class MovieApp {
     this._wsChassisRight = new Sprite(getTexture('gui_chassis_right'));
     this._wsRightWing.addChild(this._wsChassisRight);
 
-    // CC button at (160, 51)
-    const ccKey = this._createWsKeycap('gui_btn_cc', () => this.toggleSubtitles());
-    ccKey.container.position.set(160, 51);
+    // CC button at (189.5, 79.5)
+    const ccKey = this._createWsKeycap(
+      'gui_btn_cc',
+      () => this.toggleSubtitles(),
+      {
+        isLatching: true,
+        initialLatched: this._isSubtitlesVisible,
+      }
+    );
+    ccKey.container.position.set(189.5, 79.5);
     this._wsCcSprite = ccKey.sprite;
+    this._wsSetCcLatched = ccKey.setLatched;
     this._wsRightWing.addChild(ccKey.container);
 
-    // Mode / Fullscreen button at (219, 51)
-    const modeKey = this._createWsKeycap('gui_btn_mode', () => this.toggleFullscreen());
-    modeKey.container.position.set(219, 51);
+    // Mode / Fullscreen button at (249.0, 79.5)
+    const modeKey = this._createWsKeycap(
+      'gui_btn_mode',
+      () => this.toggleFullscreen(),
+      {
+        isLatching: true,
+        initialLatched: Boolean(document.fullscreenElement),
+      }
+    );
+    modeKey.container.position.set(249.0, 79.5);
     this._wsModeSprite = modeKey.sprite;
+    this._wsSetModeLatched = modeKey.setLatched;
     this._wsRightWing.addChild(modeKey.container);
 
     // Assemble Console
@@ -1738,6 +1806,7 @@ export class MovieApp {
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
+      if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(true);
       return;
     }
 
@@ -1745,6 +1814,7 @@ export class MovieApp {
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
+      if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(true);
     }).catch((err: unknown) => {
       console.warn('[VoiceAudio] Autoplay blocked, click play to start:', err);
     });
@@ -1760,6 +1830,7 @@ export class MovieApp {
       this._isPlaying = false;
       this._playPauseIcon.text = '▶';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_play');
+      if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(false);
       return;
     }
 
@@ -1990,6 +2061,9 @@ export class MovieApp {
     if (this._wsPlayPauseSprite) {
       this._wsPlayPauseSprite.texture = getTexture(this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play');
     }
+    if (this._wsSetPlayPauseLatched) {
+      this._wsSetPlayPauseLatched(this._isPlaying);
+    }
 
     if (this._isPlaying) {
       if (this._currentActIndex === 0) {
@@ -2014,8 +2088,8 @@ export class MovieApp {
     SFX.playClick();
     const isMuted = AudioController.toggle();
     this._muteIcon.text = isMuted ? '🔇' : '🔊';
-    if (this._wsVolSprite) {
-      this._wsVolSprite.alpha = isMuted ? 0.45 : 1.0;
+    if (this._wsSetVolLatched) {
+      this._wsSetVolLatched(isMuted);
     }
     SFX.setMuted(isMuted);
     AmbientManager.setMuted(isMuted);
@@ -2228,20 +2302,22 @@ export class MovieApp {
     this._scrubberThumb.stroke({ color: 0xffffff, width: 2 });
 
     // WS-96 Hardware Console Scrubber & LEDs
-    if (this._wsTimelineTrack && this._wsTimelineKnob) {
-      const trackStartX = this._wsTimelineTrack.x;
-      const trackW = this._wsTimelineTrack.width;
-      const trackY = this._wsTimelineTrack.y + this._wsTimelineTrack.height / 2;
+    if (this._wsTrackMid && this._wsTimelineKnob && this._wsMidWing) {
+      const trackW = this._wsTrackCapLeft.width + this._wsTrackMid.width + this._wsTrackCapRight.width;
+      const slitStartX = 15;
+      const slitEndX = trackW - 18;
+      const slitW = Math.max(10, slitEndX - slitStartX);
+      const slitY = 16.0;
 
       const overallRatio = Math.max(0, Math.min(1, currentOverallTime / Math.max(1, this._totalMovieDuration)));
-      const knobX = trackStartX + overallRatio * trackW;
-      this._wsTimelineKnob.position.set(knobX, trackY);
+      const knobX = slitStartX + overallRatio * slitW;
+      this._wsTimelineKnob.position.set(knobX, slitY);
 
       this._wsTimelineFill.clear();
       if (overallRatio > 0.001) {
-        const fillW = overallRatio * trackW;
-        this._wsTimelineFill.roundRect(trackStartX, trackY - 2, fillW, 4, 2);
-        this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.9 });
+        const fillW = overallRatio * slitW;
+        this._wsTimelineFill.roundRect(slitStartX, slitY - 1.25, fillW, 2.5, 1);
+        this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.95 });
       }
 
       // Update 9 LEDs
@@ -2250,13 +2326,13 @@ export class MovieApp {
         if (!led) continue;
         if (i < this._currentActIndex) {
           led.texture = getTexture(`gui_led_${i + 1}`);
-          led.alpha = 0.85;
+          led.alpha = 0.9;
         } else if (i === this._currentActIndex) {
           led.texture = getTexture(`gui_led_${i + 1}`);
           led.alpha = 0.85 + Math.sin(Date.now() * 0.006) * 0.15;
         } else {
           led.texture = getTexture('gui_led_dim');
-          led.alpha = 0.35;
+          led.alpha = 0.45;
         }
       }
     }
@@ -2390,12 +2466,12 @@ export class MovieApp {
 
     // WS-96 Hardware Console Layout
     // Base console height is 161px. Left wing: 841px, right wing: 346px.
-    const guiScale = Math.min(0.55, Math.max(0.32, (w - 20) / 1200));
+    const guiScale = Math.min(1.0, Math.max(0.55, (w - 80) / 1200));
     this._wsGuiScale = guiScale;
 
     const leftW = 841 * guiScale;
     const rightW = 346 * guiScale;
-    const midW = Math.max(30, w - (leftW + rightW));
+    const midW = Math.max(60, w - (leftW + rightW));
     const barH = 161 * guiScale;
 
     // Vignette bottom (backdrop for WS-96 retro console)
@@ -2416,23 +2492,31 @@ export class MovieApp {
       this._wsChassisMid.height = 161 * guiScale;
 
       const trackPad = 14 * guiScale;
-      this._wsTimelineTrack.x = trackPad;
-      this._wsTimelineTrack.y = (78 - 39 / 2) * guiScale;
-      this._wsTimelineTrack.width = Math.max(30, midW - trackPad * 2);
-      this._wsTimelineTrack.height = 39 * guiScale;
+      const trackW = Math.max(40, (midW - trackPad * 2) / guiScale);
 
-      // 9 LEDs positioned evenly above the progress slider
-      const ledY = this._wsTimelineTrack.y - 14 * guiScale;
-      const trackInnerW = this._wsTimelineTrack.width - 24 * guiScale;
+      this._wsTimelineContainer.position.set(trackPad, 62 * guiScale);
+      this._wsTimelineContainer.scale.set(guiScale);
+
+      // 3-slice track positioning (in container local coords)
+      this._wsTrackCapLeft.position.set(0, 0);
+      this._wsTrackMid.position.set(25, 0);
+      this._wsTrackMid.width = Math.max(10, trackW - 50);
+      this._wsTrackCapRight.position.set(trackW - 25, 0);
+
+      // 9 LEDs positioned evenly above the progress slider in midWing coords
+      const ledY = 48 * guiScale;
+      const trackStartInMid = trackPad + 25 * guiScale;
+      const trackEndInMid = trackPad + (trackW - 25) * guiScale;
+      const trackInnerW = Math.max(10, trackEndInMid - trackStartInMid);
       for (let i = 0; i < 9; i++) {
         if (this._wsLeds[i]) {
-          const ledX = this._wsTimelineTrack.x + 12 * guiScale + (i / 8) * trackInnerW;
+          const ledX = trackStartInMid + (i / 8) * trackInnerW;
           this._wsLeds[i].position.set(ledX, ledY);
-          this._wsLeds[i].scale.set(guiScale * 1.05);
+          this._wsLeds[i].scale.set(guiScale * 1.1);
         }
       }
 
-      this._wsTimelineKnob.scale.set(guiScale);
+      this._wsTimelineKnob.scale.set(1.0);
 
       // Right Wing (Fixed proportions, scaled)
       this._wsRightWing.position.set(w - rightW, 0);
