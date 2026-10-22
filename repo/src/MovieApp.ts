@@ -1073,14 +1073,16 @@ export class MovieApp {
     c.addChild(sprite);
 
     // Physical keycap press scales & shadow tints
-    const PRESSED_SCALE = 0.76;
-    const PRESSED_TINT = 0x949494; // Noticeable shadow darkening when pressed deeply into socket
-    const LATCHED_SCALE = 0.86;
+    const PRESSED_SCALE = 0.72; // Deep overtravel into socket ("нажатие с избытком")
+    const PRESSED_TINT = 0x8a8a8a; // Heavy shadow darkening when pressed deeply into socket
+    const LATCHED_SCALE = 0.86; // Depressed resting state when toggled ON ("не до конца назад увеличиваются")
     const LATCHED_TINT = 0xc4c4c4; // Subtle resting shadow when latched in
-    const NORMAL_SCALE = 1.0;
+    const NORMAL_SCALE = 1.0; // Fully unlatched / momentary resting state
     const NORMAL_TINT = 0xffffff;
 
     let latched = Boolean(options?.initialLatched);
+    let isPressedDown = false;
+    let isHandlingPointerRelease = false;
 
     const applyState = (pressed: boolean, animate = false) => {
       cancelTween(sprite.scale);
@@ -1090,42 +1092,57 @@ export class MovieApp {
       let targetTint = NORMAL_TINT;
 
       if (pressed) {
-        // Active mouse press: shrinks strongly in all directions and visibly darkens
+        // Active mouse press: plunges deep into socket with excess travel and heavy shadow
         targetScale = PRESSED_SCALE;
         targetTint = PRESSED_TINT;
       } else if (options?.isLatching && latched) {
-        // Latched resting state: stays engaged at intermediate scale with subtle shadow tint
+        // Latched resting state: stays partially sunken at intermediate scale with subtle shadow
         targetScale = LATCHED_SCALE;
         targetTint = LATCHED_TINT;
       }
 
       if (animate) {
         sprite.tint = targetTint;
-        tween(sprite.scale, { x: targetScale, y: targetScale }, 0.14, ease.outBack);
+        tween(sprite.scale, { x: targetScale, y: targetScale }, 0.15, ease.outBack);
       } else {
         sprite.scale.set(targetScale);
         sprite.tint = targetTint;
       }
     };
 
-    applyState(false);
+    applyState(false, false);
 
     c.on('pointerdown', (e: FederatedPointerEvent) => {
       e.stopPropagation();
       ClickTracker.exclude();
-      SFX.playClick();
+      isPressedDown = true;
       applyState(true, false);
-      onClick();
     });
 
-    const resetBtn = () => {
+    c.on('pointerup', (e: FederatedPointerEvent) => {
+      if (!isPressedDown) return;
+      isPressedDown = false;
+      e.stopPropagation();
+      ClickTracker.exclude();
+      SFX.playClick();
+      isHandlingPointerRelease = true;
+      try {
+        onClick();
+      } finally {
+        isHandlingPointerRelease = false;
+      }
+      applyState(false, true);
+    });
+
+    const cancelPress = () => {
+      if (!isPressedDown) return;
+      isPressedDown = false;
       applyState(false, true);
     };
 
-    c.on('pointerup', resetBtn);
-    c.on('pointerupoutside', resetBtn);
+    c.on('pointerupoutside', cancelPress);
     c.on('pointerout', () => {
-      resetBtn();
+      cancelPress();
       options?.onOut?.();
     });
     c.on('pointerover', () => {
@@ -1133,11 +1150,12 @@ export class MovieApp {
     });
 
     const pressAndRelease = () => {
+      if (isPressedDown || isHandlingPointerRelease) return;
       cancelTween(sprite.scale);
       sprite.y = 0;
       sprite.scale.set(PRESSED_SCALE);
       sprite.tint = PRESSED_TINT;
-      after(0.08, () => {
+      after(0.09, () => {
         applyState(false, true);
       });
     };
@@ -1147,7 +1165,9 @@ export class MovieApp {
       sprite,
       setLatched: (isLatched: boolean) => {
         latched = isLatched;
-        applyState(false, true);
+        if (!isPressedDown && !isHandlingPointerRelease) {
+          applyState(false, true);
+        }
       },
       isLatched: () => latched,
       pressAndRelease,
@@ -2384,44 +2404,36 @@ export class MovieApp {
       if (this._currentActIndex === 1 && this._prologueCurrentTexKey === 'ship_cistam') {
         const isPortrait = this._screenHeight > this._screenWidth;
         // Anchor centered on ship's center of mass (1024x576 texture coordinates)
-        this._bgSprite.anchor.set(0.568, 0.524);
+        this._bgSprite.anchor.set(0.5684, 0.5243);
 
         // Timeline progression of ship flyby:
         // Starts appearing at ~18.5s, explicitly told about from 19.5s ("вечно несется исполинский ковчег «Цитадель»").
-        // Exterior ship narration culminates around 68.0s ("Пыльные тонированные окна нависают над зияющей бездной").
+        // Finishes when it arrives at the center of the screen at ~68.0s ("Пыльные тонированные окна нависают над зияющей бездной").
         const tStart = 19.5;
         const tEnd = 68.0;
         const rawP = Math.min(1.0, Math.max(0.0, (currentTime - tStart) / (tEnd - tStart)));
         // Smooth cinematic ease (smoothstep)
         const p = rawP * rawP * (3.0 - 2.0 * rawP);
 
-        // Scale: Starts comfortably visible in space (1.05x base),
-        // scales up towards the end to fill almost the entire screen!
-        const scaleStart = this._bgBaseScale * (isPortrait ? 1.0 : 1.05);
-        const scaleEnd = this._bgBaseScale * (isPortrait ? 2.3 : 1.95);
-        let curScale = scaleStart + (scaleEnd - scaleStart) * p;
+        // Scale: Moderate increase (~14% zoom in landscape, not too aggressive)
+        const scaleStart = this._bgBaseScale * (isPortrait ? 1.05 : 1.12);
+        const scaleEnd = this._bgBaseScale * (isPortrait ? 1.18 : 1.28);
+        const curScale = scaleStart + (scaleEnd - scaleStart) * p;
 
-        // Position: Moves to the left ("постепенно плыл влево")
-        // Start: ship is in right-center area (0.60W in landscape, 0.55W in portrait)
-        // End: ship's head and hull have sailed left (0.38W in landscape, 0.40W in portrait)
-        const startX = this._screenWidth * (isPortrait ? 0.55 : 0.60);
-        const endX = this._screenWidth * (isPortrait ? 0.40 : 0.38);
-        let curX = startX + (endX - startX) * p;
+        // Position: Starts shifted to the right as far as the background allows (left edge at 0),
+        // and ends when the ship is positioned precisely in the center of the screen!
+        const texWScr = this._bgSprite.texture.width * curScale;
+        const maxShiftX = 0.5684 * texWScr;
+        const startX = isPortrait ? Math.min(maxShiftX, this._screenWidth * 0.70) : maxShiftX;
+        const endX = this._screenWidth / 2;
+        const curX = startX + (endX - startX) * p;
 
-        const startY = this._screenHeight * 0.50;
-        const endY = this._screenHeight * 0.48;
-        let curY = startY + (endY - startY) * p;
-
-        // Post-68s subtle macro drift (68s to 109.68s) so it never sits frozen
-        if (currentTime > tEnd) {
-          const pPost = Math.min(1.0, (currentTime - tEnd) / (109.68 - tEnd));
-          curX -= this._screenWidth * 0.04 * pPost;
-          curScale *= (1.0 + 0.03 * pPost);
-        }
+        // Vertical positioning: Keep ship centered vertically with slight cosmetic breathing
+        const curY = this._screenHeight / 2;
 
         // Gentle cosmic ambient breathing/hover
-        const floatY = Math.sin(currentTime * 0.5) * 5;
-        const floatX = Math.cos(currentTime * 0.4) * 3;
+        const floatY = Math.sin(currentTime * 0.5) * 4;
+        const floatX = Math.cos(currentTime * 0.4) * 2;
 
         this._bgSprite.scale.set(curScale);
         this._bgSprite.position.set(curX + floatX, curY + floatY);
