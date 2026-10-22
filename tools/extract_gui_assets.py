@@ -13,11 +13,11 @@ psd = PSDImage.open(PSD_PATH)
 
 print('Loaded PSD:', PSD_PATH, 'Size:', psd.size)
 
-# Extract Layer 25 (Levels adjustment layer) and its mask
-levels_layer = psd[25]
+# Extract Levels adjustment layer and its mask
+levels_layer = psd[26] if len(psd) > 26 and psd[26].kind == 'levels' else psd[25]
 mask = np.array(levels_layer.mask.topil())
 mask_ox, mask_oy = 18, -2
-opacity_weight = 156.0 / 255.0  # Layer 25 opacity is 156
+opacity_weight = 156.0 / 255.0  # Levels opacity is 156
 
 def apply_levels_adjustment(img, bbox):
     """
@@ -166,5 +166,29 @@ print('Saved authentic sliced buttons from mockup3: Pause, Play, Prev, Next, Vol
 # 9. Lightbulbs / LEDs: EXCLUDED from Levels adjustment as requested!
 # Lamps remain in their natural glowing colors
 print('Lightbulbs/LEDs preserved without Levels adjustment (as requested)')
+
+# 10. Timeline Switch Button & Indicator Lamp (Layer 25)
+if len(psd) > 25 and psd[25].is_group():
+    g25 = psd[25]
+    # 0: hole
+    hole_im = apply_levels_adjustment(g25[0].composite(), g25[0].bbox)
+    hole_im.save(os.path.join(OUT_DIR, 'gui_act_btn_hole.png'))
+
+    # 1: shadow
+    shadow_im = g25[1].composite()
+    shadow_im.save(os.path.join(OUT_DIR, 'gui_act_btn_shadow.png'))
+
+    # 2: button keycap
+    btn_im = apply_levels_adjustment(g25[2].composite(), g25[2].bbox)
+    btn_im.save(os.path.join(OUT_DIR, 'gui_act_btn.png'))
+
+    # 3: lamp on (no levels)
+    lamp_on_im = g25[3].composite()
+    lamp_on_im.save(os.path.join(OUT_DIR, 'gui_act_lamp_on.png'))
+
+    # 4: lamp off (no levels)
+    lamp_off_im = g25[4].composite()
+    lamp_off_im.save(os.path.join(OUT_DIR, 'gui_act_lamp_off.png'))
+    print('Saved timeline switch button and indicator lamp assets')
 
 print('All assets extracted successfully to', OUT_DIR)

@@ -11,6 +11,17 @@ import { SFX } from './SoundEffects';
 import { AmbientManager } from './AmbientManager';
 import { AudioTrackAnalyzer, IntroTimingProfile } from './AudioTrackAnalyzer';
 
+interface WsTimelineActButton {
+  container: Container;
+  btnSprite: Sprite;
+  shadowSprite: Sprite;
+  holeSprite: Sprite;
+  lampSprite: Sprite;
+  setLatched: (latched: boolean) => void;
+  isLatched: () => boolean;
+  setLampActive: (active: boolean) => void;
+}
+
 export class MovieApp {
   private _app: Application;
   private _root: Container;
@@ -100,6 +111,7 @@ export class MovieApp {
   private _wsTimelineFill!: Graphics;
   private _wsTimelineKnob!: Sprite;
   private _wsLeds: Sprite[] = [];
+  private _wsActButtons: WsTimelineActButton[] = [];
   private _wsGuiScale = 1.0;
 
   // Canvas click gestures & Ripple
@@ -182,7 +194,7 @@ export class MovieApp {
     this._root.addChild(this._rippleContainer);
     this._root.addChild(this._uiContainer);
 
-    // Video element setup (loops gemini_generated_video_50f3f52f)
+    // Video element setup (loops gemini_generated_video_aaf115f1; backup: gemini_generated_video_50f3f52f)
     this._videoElement = document.getElementById('intro-video') as HTMLVideoElement | null;
     if (this._videoElement) {
       this._videoElement.src = getIntroVideoUrl();
@@ -1174,6 +1186,173 @@ export class MovieApp {
     };
   }
 
+  private _createWsActButton(
+    actIdx: number,
+    onClick: () => void
+  ): WsTimelineActButton {
+    const c = new Container();
+    c.eventMode = 'static';
+    c.cursor = 'pointer';
+
+    // Transparent generous hit area (24x48) covering button (y=0) and indicator lamp (y=-20.5)
+    const hitArea = new Graphics();
+    hitArea.rect(-12, -30, 24, 48);
+    hitArea.fill({ color: 0x000000, alpha: 0.0001 });
+    c.addChild(hitArea);
+
+    // 1. Static chassis socket well / hole
+    const holeSprite = new Sprite(getTexture('gui_act_btn_hole'));
+    holeSprite.anchor.set(0.5, 0.5);
+    holeSprite.position.set(0, 0);
+    c.addChild(holeSprite);
+
+    // 2. Button drop shadow: shrinks when button is pressed ("КОгда кнопка нажата ее тень тоже уменьшается")
+    const shadowSprite = new Sprite(getTexture('gui_act_btn_shadow'));
+    shadowSprite.anchor.set(0.5, 0.5);
+    shadowSprite.position.set(-3.5, 4.5);
+    shadowSprite.alpha = 0.65;
+    c.addChild(shadowSprite);
+
+    // 3. Button keycap
+    const btnSprite = new Sprite(getTexture('gui_act_btn'));
+    btnSprite.anchor.set(0.5, 0.5);
+    btnSprite.position.set(0, 0);
+    c.addChild(btnSprite);
+
+    // 4. Indicator Lamp (above button at y = -20.5)
+    const lampSprite = new Sprite(getTexture('gui_act_lamp_off'));
+    lampSprite.anchor.set(0.5, 0.5);
+    lampSprite.position.set(0, -20.5);
+    c.addChild(lampSprite);
+
+    const PRESSED_SCALE = 0.72; // Deep overtravel into socket ("нажатие с избытком")
+    const PRESSED_TINT = 0x8a8a8a; // Heavy shadow darkening
+    const LATCHED_SCALE = 0.86; // Depressed resting state when active ("не до конца назад увеличиваются")
+    const LATCHED_TINT = 0xc4c4c4; // Resting shadow
+    const NORMAL_SCALE = 1.0;
+    const NORMAL_TINT = 0xffffff;
+
+    let latched = false;
+    let isPressedDown = false;
+    let isHandlingPointerRelease = false;
+
+    const applyState = (pressed: boolean, animate = false) => {
+      cancelTween(btnSprite.scale);
+      cancelTween(shadowSprite.scale);
+      cancelTween(shadowSprite.position);
+
+      let targetScale = NORMAL_SCALE;
+      let targetTint = NORMAL_TINT;
+
+      if (pressed) {
+        targetScale = PRESSED_SCALE;
+        targetTint = PRESSED_TINT;
+      } else if (latched) {
+        targetScale = LATCHED_SCALE;
+        targetTint = LATCHED_TINT;
+      }
+
+      const targetShadowX = -3.5 * targetScale;
+      const targetShadowY = 4.5 * targetScale;
+
+      if (animate) {
+        btnSprite.tint = targetTint;
+        tween(btnSprite.scale, { x: targetScale, y: targetScale }, 0.15, ease.outBack);
+        tween(shadowSprite.scale, { x: targetScale, y: targetScale }, 0.15, ease.outBack);
+        tween(shadowSprite.position, { x: targetShadowX, y: targetShadowY }, 0.15, ease.outBack);
+      } else {
+        btnSprite.scale.set(targetScale);
+        btnSprite.tint = targetTint;
+        shadowSprite.scale.set(targetScale);
+        shadowSprite.position.set(targetShadowX, targetShadowY);
+      }
+    };
+
+    applyState(false, false);
+
+    c.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      isPressedDown = true;
+      applyState(true, false);
+    });
+
+    c.on('pointerup', (e: FederatedPointerEvent) => {
+      if (!isPressedDown) return;
+      isPressedDown = false;
+      e.stopPropagation();
+      ClickTracker.exclude();
+      SFX.playClick();
+      isHandlingPointerRelease = true;
+      try {
+        onClick();
+      } finally {
+        isHandlingPointerRelease = false;
+      }
+      applyState(false, true);
+    });
+
+    const cancelPress = () => {
+      if (!isPressedDown) return;
+      isPressedDown = false;
+      applyState(false, true);
+    };
+
+    c.on('pointerupoutside', cancelPress);
+    c.on('pointerout', () => {
+      cancelPress();
+      this._timelineTooltip.visible = false;
+    });
+
+    c.on('pointerover', (e: FederatedPointerEvent) => {
+      const act = STORY_ACTS[actIdx];
+      if (act) {
+        const m = Math.floor(act.duration / 60);
+        const rem = Math.floor(act.duration % 60);
+        const timeStr = `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+        this._timelineTooltipText.text = `Акт ${actIdx}: ${act.title} (${timeStr})`;
+        this._timelineTooltipBg.clear();
+        this._timelineTooltipBg.roundRect(
+          -this._timelineTooltipText.width / 2 - 8,
+          -13,
+          this._timelineTooltipText.width + 16,
+          26,
+          6
+        );
+        this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+        this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
+        const local = this._wsConsoleContainer.toLocal(e.global);
+        this._timelineTooltip.position.set(local.x, local.y - 20);
+        this._timelineTooltip.visible = true;
+      }
+    });
+
+    return {
+      container: c,
+      btnSprite,
+      shadowSprite,
+      holeSprite,
+      lampSprite,
+      setLatched: (isLatched: boolean) => {
+        if (latched === isLatched) return;
+        latched = isLatched;
+        if (!isPressedDown && !isHandlingPointerRelease) {
+          applyState(false, true);
+        }
+      },
+      isLatched: () => latched,
+      setLampActive: (active: boolean) => {
+        if (active) {
+          lampSprite.texture = getTexture('gui_act_lamp_on');
+          lampSprite.alpha = 0.9 + Math.sin(Date.now() * 0.006) * 0.1;
+        } else {
+          lampSprite.texture = getTexture('gui_act_lamp_off');
+          lampSprite.alpha = 0.75;
+        }
+      },
+    };
+  }
+
   private _createWsKnobSlider(
     knobTexKey: string,
     startX: number,
@@ -1391,51 +1570,15 @@ export class MovieApp {
     this._wsTimelineKnob.anchor.set(0.5, 0.5);
     this._wsTimelineContainer.addChild(this._wsTimelineKnob);
 
-    // 9 LEDs above timeline track
-    this._wsLeds = [];
+    // 9 Timeline Act Buttons with Indicator Lamps above timeline track
+    this._wsActButtons = [];
     for (let i = 0; i < 9; i++) {
-      const led = new Sprite(getTexture(`gui_led_${i + 1}`));
-      led.anchor.set(0.5);
-      led.eventMode = 'static';
-      led.cursor = 'pointer';
       const actIdx = i;
-
-      led.on('pointerdown', (e: FederatedPointerEvent) => {
-        e.stopPropagation();
-        ClickTracker.exclude();
-        SFX.playClick();
+      const actBtn = this._createWsActButton(actIdx, () => {
         this.goToAct(actIdx);
       });
-
-      led.on('pointerover', (e: FederatedPointerEvent) => {
-        const act = STORY_ACTS[actIdx];
-        if (act) {
-          const m = Math.floor(act.duration / 60);
-          const rem = Math.floor(act.duration % 60);
-          const timeStr = `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
-          this._timelineTooltipText.text = `Акт ${actIdx}: ${act.title} (${timeStr})`;
-          this._timelineTooltipBg.clear();
-          this._timelineTooltipBg.roundRect(
-            -this._timelineTooltipText.width / 2 - 8,
-            -13,
-            this._timelineTooltipText.width + 16,
-            26,
-            6
-          );
-          this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
-          this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
-          const local = this._wsConsoleContainer.toLocal(e.global);
-          this._timelineTooltip.position.set(local.x, local.y - 20);
-          this._timelineTooltip.visible = true;
-        }
-      });
-
-      led.on('pointerout', () => {
-        this._timelineTooltip.visible = false;
-      });
-
-      this._wsLeds.push(led);
-      this._wsMidWing.addChild(led);
+      this._wsActButtons.push(actBtn);
+      this._wsMidWing.addChild(actBtn.container);
     }
 
     // Timeline Scrubbing Logic
@@ -2558,20 +2701,13 @@ export class MovieApp {
         this._wsTimelineFill.fill({ color: 0xf0e9db, alpha: 0.95 });
       }
 
-      // Update 9 LEDs
+      // Update 9 Timeline Act Buttons with Indicator Lamps
       for (let i = 0; i < 9; i++) {
-        const led = this._wsLeds[i];
-        if (!led) continue;
-        if (i < this._currentActIndex) {
-          led.texture = getTexture(`gui_led_${i + 1}`);
-          led.alpha = 0.9;
-        } else if (i === this._currentActIndex) {
-          led.texture = getTexture(`gui_led_${i + 1}`);
-          led.alpha = 0.85 + Math.sin(Date.now() * 0.006) * 0.15;
-        } else {
-          led.texture = getTexture('gui_led_dim');
-          led.alpha = 0.45;
-        }
+        const actBtn = this._wsActButtons[i];
+        if (!actBtn) continue;
+        const isActive = (i === this._currentActIndex);
+        actBtn.setLatched(isActive);
+        actBtn.setLampActive(isActive);
       }
     }
   }
@@ -2749,17 +2885,21 @@ export class MovieApp {
       this._wsTrackMid.width = Math.max(10, trackW - 50);
       this._wsTrackCapRight.position.set(trackW - 25, 0);
 
-      // 9 LEDs positioned evenly above the progress slider in midWing coords
-      // Positioned at Y=62 (comfortably above track at Y=82)
-      const ledY = 62 * guiScale;
+      // 9 Timeline Act Buttons positioned in the middle of each timeline act segment
+      const btnY = 62 * guiScale;
       const trackStartInMid = trackPad + 28 * guiScale;
       const trackEndInMid = trackPad + (trackW - 28) * guiScale;
       const trackInnerW = Math.max(10, trackEndInMid - trackStartInMid);
       for (let i = 0; i < 9; i++) {
-        if (this._wsLeds[i]) {
-          const ledX = trackStartInMid + (i / 8) * trackInnerW;
-          this._wsLeds[i].position.set(ledX, ledY);
-          this._wsLeds[i].scale.set(guiScale * 1.05);
+        const actBtn = this._wsActButtons[i];
+        if (actBtn) {
+          const actStart = this._actStartTimes[i] ?? 0;
+          const actDur = STORY_ACTS[i]?.duration ?? 0;
+          const midTime = actStart + actDur / 2;
+          const midRatio = midTime / Math.max(1, this._totalMovieDuration);
+          const btnX = trackStartInMid + midRatio * trackInnerW;
+          actBtn.container.position.set(btnX, btnY);
+          actBtn.container.scale.set(guiScale);
         }
       }
 
