@@ -11,6 +11,11 @@ import { SFX } from './SoundEffects';
 import { AmbientManager } from './AmbientManager';
 import { AudioTrackAnalyzer, IntroTimingProfile } from './AudioTrackAnalyzer';
 
+export const INTRO_DISCLAIMER_TEXT =
+  'Настоящий материал создан с применением генеративного ИИ и не отражает точку зрения компании либо её представителей. Содержание основано на анализе реальных рабочих данных.';
+
+export const INTRO_DISCLAIMER_DURATION = 12.8;
+
 interface WsTimelineActButton {
   container: Container;
   btnSprite: Sprite;
@@ -20,6 +25,12 @@ interface WsTimelineActButton {
   setLatched: (latched: boolean) => void;
   isLatched: () => boolean;
   setLampActive: (active: boolean) => void;
+}
+
+interface WsTimelineSticker {
+  actIndex: number;
+  container: Container;
+  sprite: Sprite;
 }
 
 export class MovieApp {
@@ -32,6 +43,12 @@ export class MovieApp {
   private _cosmicScene: CosmicScene;
   private _vignetteGraphics: Graphics;
   private _introContainer: Container;
+  private _introDisclaimerContainer!: Container;
+  private _introDisclaimerBg!: Graphics;
+  private _introDisclaimerCorners!: Graphics;
+  private _introDisclaimerBadge!: Text;
+  private _introDisclaimerText!: Text;
+  private _lastDisclaimerCharCount = -1;
   private _introLogoSprite: Sprite;
   private _introStudiosText: Text;
   private _introPresentsText: Text;
@@ -112,6 +129,7 @@ export class MovieApp {
   private _wsTimelineKnob!: Sprite;
   private _wsLeds: Sprite[] = [];
   private _wsActButtons: WsTimelineActButton[] = [];
+  private _wsStickers: WsTimelineSticker[] = [];
   private _wsGuiScale = 1.0;
 
   // Canvas click gestures & Ripple
@@ -194,7 +212,7 @@ export class MovieApp {
     this._root.addChild(this._rippleContainer);
     this._root.addChild(this._uiContainer);
 
-    // Video element setup (loops gemini_generated_video_aaf115f1; backup: gemini_generated_video_50f3f52f)
+    // Video element setup (loops gemini_generated_video_42e28e3d; backups: gemini_generated_video_aaf115f1, gemini_generated_video_50f3f52f)
     this._videoElement = document.getElementById('intro-video') as HTMLVideoElement | null;
     if (this._videoElement) {
       this._videoElement.src = getIntroVideoUrl();
@@ -203,6 +221,45 @@ export class MovieApp {
       this._videoElement.setAttribute('playsinline', '');
       this._videoElement.load();
     }
+
+    // 0. Disclaimer HUD Card (Cyberpunk Corporate Warning)
+    this._introDisclaimerContainer = new Container();
+    this._introDisclaimerContainer.alpha = 0;
+    this._introContainer.addChild(this._introDisclaimerContainer);
+
+    this._introDisclaimerBg = new Graphics();
+    this._introDisclaimerContainer.addChild(this._introDisclaimerBg);
+
+    this._introDisclaimerCorners = new Graphics();
+    this._introDisclaimerContainer.addChild(this._introDisclaimerCorners);
+
+    const discBadgeStyle = new TextStyle({
+      fontFamily: ['Share Tech Mono', 'Orbitron', 'monospace'],
+      fontSize: 16,
+      fontWeight: 'bold',
+      fill: '#00f5d4',
+      letterSpacing: 3,
+      dropShadow: { alpha: 0.85, blur: 10, color: '#00f5d4', distance: 0 },
+    });
+    this._introDisclaimerBadge = new Text({ text: '[ ДИСКЛЕЙМЕР ]', style: discBadgeStyle });
+    this._introDisclaimerBadge.anchor.set(0, 0);
+    this._introDisclaimerContainer.addChild(this._introDisclaimerBadge);
+
+    const discTextStyle = new TextStyle({
+      fontFamily: ['Share Tech Mono', 'Courier New', 'monospace'],
+      fontSize: 22,
+      fontWeight: 'bold',
+      fill: '#00f5d4',
+      align: 'left',
+      wordWrap: true,
+      wordWrapWidth: 840,
+      lineHeight: 38,
+      letterSpacing: 0.6,
+      dropShadow: { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 },
+    });
+    this._introDisclaimerText = new Text({ text: '', style: discTextStyle });
+    this._introDisclaimerText.anchor.set(0, 0);
+    this._introDisclaimerContainer.addChild(this._introDisclaimerText);
 
     // 1. Skull Logo sprite
     this._introLogoSprite = new Sprite(getTexture('playbox_skull_logo'));
@@ -1582,6 +1639,70 @@ export class MovieApp {
       this._wsMidWing.addChild(actBtn.container);
     }
 
+    // Timeline Chapter Stickers placed on chassis under timeline track and buttons
+    const stickerDefs: { actIndex: number; texKey: string }[] = [
+      { actIndex: 0, texKey: 'gui_sticker_logo' },
+      { actIndex: 1, texKey: 'gui_sticker_speech' },
+      { actIndex: 7, texKey: 'gui_sticker_punishment' },
+      { actIndex: 8, texKey: 'gui_sticker_reward' },
+      { actIndex: 10, texKey: 'gui_sticker_song' },
+    ];
+
+    this._wsStickers = [];
+    for (const def of stickerDefs) {
+      const c = new Container();
+      c.eventMode = 'static';
+      c.cursor = 'pointer';
+
+      const spr = new Sprite(getTexture(def.texKey));
+      spr.anchor.set(0.5, 0.5);
+      spr.alpha = 0.9;
+      c.addChild(spr);
+
+      c.on('pointerdown', (e: FederatedPointerEvent) => {
+        e.stopPropagation();
+        ClickTracker.exclude();
+        SFX.playClick();
+        this.goToAct(def.actIndex);
+      });
+
+      c.on('pointerover', (e: FederatedPointerEvent) => {
+        spr.alpha = 1.0;
+        const act = STORY_ACTS[def.actIndex];
+        if (act) {
+          const m = Math.floor(act.duration / 60);
+          const rem = Math.floor(act.duration % 60);
+          const timeStr = `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+          this._timelineTooltipText.text = `Акт ${def.actIndex}: ${act.title} (${timeStr})`;
+          this._timelineTooltipBg.clear();
+          this._timelineTooltipBg.roundRect(
+            -this._timelineTooltipText.width / 2 - 8,
+            -13,
+            this._timelineTooltipText.width + 16,
+            26,
+            6
+          );
+          this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+          this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
+          const local = this._wsConsoleContainer.toLocal(e.global);
+          this._timelineTooltip.position.set(local.x, local.y - 20);
+          this._timelineTooltip.visible = true;
+        }
+      });
+
+      c.on('pointerout', () => {
+        spr.alpha = (def.actIndex === this._currentActIndex) ? 1.0 : 0.9;
+        this._timelineTooltip.visible = false;
+      });
+
+      this._wsStickers.push({
+        actIndex: def.actIndex,
+        container: c,
+        sprite: spr,
+      });
+      this._wsMidWing.addChild(c);
+    }
+
     // Timeline Scrubbing Logic
     const handleTimelinePointer = (e: FederatedPointerEvent, isClick = false) => {
       const local = this._wsTimelineContainer.toLocal(e.global);
@@ -1934,7 +2055,7 @@ export class MovieApp {
       this._subtitles.visible = false;
       this._timeCodeText.visible = true;
       this._introProfile = AudioTrackAnalyzer.getProfile(AmbientManager.getIntroTrack());
-      this._actDuration = this._introProfile.introEndTime;
+      this._actDuration = INTRO_DISCLAIMER_DURATION + this._introProfile.introEndTime;
       this._playIntroAnimation();
     } else if (act.category === 'prologue') {
       // In Prologue (Act 1): Keep cosmic video playing during the opening void expose until the ship appears!
@@ -1994,7 +2115,12 @@ export class MovieApp {
     // Smooth ambient transition: Intro -> Prologue uses 4.5s ultra-soft crossfade. Song uses 0.5s mute.
     const isSong = act.category === 'song' || act.id === 'act_7_song';
     const ambientCrossfade = (index === 1) ? 4.5 : (isSong ? 0.5 : 3.0);
-    AmbientManager.transitionToAct(index, ambientCrossfade, act.id);
+    if (index === 0) {
+      // Act 0 starts in absolute silence during the disclaimer!
+      AmbientManager.pauseAll();
+    } else {
+      AmbientManager.transitionToAct(index, ambientCrossfade, act.id);
+    }
 
     this._updateDots();
     this._updateDebugDisplay();
@@ -2089,11 +2215,24 @@ export class MovieApp {
     this._actTime = clamped;
 
     if (this._currentActIndex === 0) {
-      AmbientManager.seekCurrent(clamped);
-      if (!this._isPlaying) {
-        AmbientManager.resumeCurrent();
-        this._isPlaying = true;
-        this._playPauseIcon.text = '⏸';
+      if (clamped < INTRO_DISCLAIMER_DURATION) {
+        AmbientManager.pauseAll();
+        if (this._videoElement) {
+          this._videoElement.pause();
+          this._videoElement.style.opacity = '0';
+        }
+      } else {
+        const mt = clamped - INTRO_DISCLAIMER_DURATION;
+        AmbientManager.seekCurrent(mt);
+        if (!this._isPlaying) {
+          AmbientManager.resumeCurrent();
+          this._isPlaying = true;
+          this._playPauseIcon.text = '⏸';
+        }
+        if (this._videoElement) {
+          this._videoElement.style.opacity = '1';
+          if (this._isPlaying) this._videoElement.play().catch(() => {});
+        }
       }
       this._updateIntroTimeline(clamped);
     } else {
@@ -2120,6 +2259,9 @@ export class MovieApp {
   }
 
   private _playIntroAnimation(): void {
+    this._introDisclaimerContainer.alpha = 0;
+    this._introDisclaimerText.text = '';
+    this._lastDisclaimerCharCount = -1;
     this._introLogoSprite.alpha = 0;
     this._introStudiosText.alpha = 0;
     this._introPresentsText.alpha = 0;
@@ -2129,11 +2271,11 @@ export class MovieApp {
     this._introCycleSubtitle.scale.set(1);
     this._cosmicScene.visible = false;
 
-    // Cosmic background video visible from second 0
+    // During disclaimer: absolute black screen, no stars, total silence
     if (this._videoElement) {
+      this._videoElement.pause();
       this._videoElement.currentTime = 0;
-      this._videoElement.style.opacity = '1';
-      this._videoElement.play().catch(() => {});
+      this._videoElement.style.opacity = '0';
     }
   }
 
@@ -2141,138 +2283,240 @@ export class MovieApp {
     const t = currentTime;
     const profile = this._introProfile;
 
-    // Ensure background video stays active and visible
-    if (this._videoElement && this._videoElement.style.opacity !== '1') {
-      this._videoElement.style.opacity = '1';
-    }
+    const fullDisclaimer = INTRO_DISCLAIMER_TEXT;
+    const discStart = 0.6;
+    const discTypeEnd = 8.8;
+    const discHoldEnd = 11.6;
+    const discFadeEnd = INTRO_DISCLAIMER_DURATION; // 12.8s
 
-    // Phase 1: 0.0s - 3.0s: Space video background drift, ambient begins
-    if (t < 3.0) {
+    // Phase A: 0.0s - 0.6s: Pure black screen, absolute silence
+    if (t < discStart) {
+      if (this._videoElement) {
+        this._videoElement.style.opacity = '0';
+        this._videoElement.pause();
+      }
+      this._introDisclaimerContainer.alpha = 0;
+      this._introDisclaimerText.text = '';
       this._introLogoSprite.alpha = 0;
       this._introStudiosText.alpha = 0;
       this._introPresentsText.alpha = 0;
       this._introSeriesContainer.alpha = 0;
       this._introCycleSubtitle.alpha = 0;
     }
-    // Phase 2: 3.0s - 9.0s: Skull logo slowly appears over space video
-    else if (t >= 3.0 && t < 9.0) {
-      const p = (t - 3.0) / 6.0;
-      this._introLogoSprite.alpha = Math.min(1, p);
-      this._introLogoSprite.scale.set(this._introLogoBaseScale * (0.94 + p * 0.06));
-      this._introStudiosText.alpha = 0;
-      this._introPresentsText.alpha = 0;
-      this._introSeriesContainer.alpha = 0;
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 3: 9.0s - 14.0s: "STUDIOS" glows into visibility below the skull
-    else if (t >= 9.0 && t < 14.0) {
-      this._introLogoSprite.alpha = 1;
-      const p = (t - 9.0) / 3.5;
-      this._introStudiosText.alpha = Math.min(1, p);
-      this._introPresentsText.alpha = 0;
-      this._introSeriesContainer.alpha = 0;
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 4: 11.5s - logoDisperseTime: Letters "P R E S E N T S" type out on screen
-    else if (t >= 11.5 && t < profile.logoDisperseTime) {
-      this._introLogoSprite.alpha = 1;
-      this._introStudiosText.alpha = 1;
-      const full = 'P R E S E N T S';
-      const typingSpan = Math.max(1.0, profile.logoDisperseTime - 11.5);
-      const p = Math.min(1, (t - 11.5) / typingSpan);
-      const chars = Math.floor(p * full.length);
-      this._introPresentsText.text = full.substring(0, chars);
-      this._introPresentsText.alpha = 1;
-      this._introPresentsText.style.letterSpacing = 10;
-      this._introSeriesContainer.alpha = 0;
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 5: logoDisperseTime - logoFadeOutTime: Alien-style dispersion and slow fade out into the void
-    else if (t >= profile.logoDisperseTime && t < profile.logoFadeOutTime) {
-      const fadeDur = profile.logoFadeOutTime - profile.logoDisperseTime;
-      const fade = Math.max(0, 1 - (t - profile.logoDisperseTime) / fadeDur);
-      this._introLogoSprite.alpha = fade;
-      this._introStudiosText.alpha = fade;
-      this._introPresentsText.alpha = fade;
-      this._introPresentsText.text = 'P R E S E N T S';
-      this._introPresentsText.style.letterSpacing = 10 + (t - profile.logoDisperseTime) * 3.5;
-      this._introSeriesContainer.alpha = 0;
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 6: logoFadeOutTime - titleDropTime: THEATRICAL PAUSE IN THE VOID
-    // Tension valley in audio, cosmic video drifts silently, audience holds breath
-    else if (t >= profile.logoFadeOutTime && t < profile.titleDropTime) {
+    // Phase B: 0.6s - 8.8s: Pure black screen, disclaimer typing out with real keyboard sounds
+    else if (t >= discStart && t < discTypeEnd) {
+      if (this._videoElement) {
+        this._videoElement.style.opacity = '0';
+        this._videoElement.pause();
+      }
+      const p = (t - discStart) / (discTypeEnd - discStart);
+      const chars = Math.max(1, Math.floor(p * fullDisclaimer.length));
+      const cursor = Math.floor(t * 5) % 2 === 0 ? ' ▌' : '  ';
+      this._introDisclaimerText.text = fullDisclaimer.substring(0, chars) + cursor;
+      this._introDisclaimerContainer.alpha = Math.min(1, (t - discStart) / 0.4);
+
+      if (chars !== this._lastDisclaimerCharCount) {
+        const char = fullDisclaimer[chars - 1];
+        if (chars % 2 === 0 || char === ' ' || char === '.' || char === ',' || char === ':') {
+          SFX.playTypewriterTick();
+        }
+        this._lastDisclaimerCharCount = chars;
+      }
+
       this._introLogoSprite.alpha = 0;
       this._introStudiosText.alpha = 0;
       this._introPresentsText.alpha = 0;
       this._introSeriesContainer.alpha = 0;
       this._introCycleSubtitle.alpha = 0;
     }
-    // Phase 7: titleDropTime - titleFadeOutTime: MAIN TITLE STRIKE ON MUSICAL DROP!
-    // Shows "СЫГРАВШИЙ В ЯЩИК" and "ХРОНИКИ ПРОДАКШН-КОВЧЕГА"
-    else if (t >= profile.titleDropTime && t < profile.titleFadeOutTime) {
-      this._introLogoSprite.alpha = 0;
-      this._introStudiosText.alpha = 0;
-      this._introPresentsText.alpha = 0;
-      const isDesolate = profile.trackKey === 'desolate_cry';
-      const fadeSpeed = isDesolate ? 2.5 : 0.7;
-      const p = Math.min(1, (t - profile.titleDropTime) / fadeSpeed);
-      this._introSeriesContainer.alpha = p;
-      this._introSeriesContainer.scale.set(0.95 + p * 0.05);
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 8: titleFadeOutTime - (titleFadeOutTime + 1.5): Main series logo dissolves completely into void
-    else if (t >= profile.titleFadeOutTime && t < profile.titleFadeOutTime + 1.5) {
-      this._introLogoSprite.alpha = 0;
-      this._introStudiosText.alpha = 0;
-      this._introPresentsText.alpha = 0;
-      const dissolveDur = 1.5;
-      const endFade = Math.max(0, 1 - (t - profile.titleFadeOutTime) / dissolveDur);
-      this._introSeriesContainer.alpha = endFade;
-      this._introCycleSubtitle.alpha = 0;
-    }
-    // Phase 9: Pause in void after main logo is completely gone
-    else if (t >= profile.titleFadeOutTime + 1.5 && t < profile.cycleStartTime) {
+    // Phase C: 8.8s - 11.6s: Pure black screen, disclaimer holds with blinking cursor
+    else if (t >= discTypeEnd && t < discHoldEnd) {
+      if (this._videoElement) {
+        this._videoElement.style.opacity = '0';
+        this._videoElement.pause();
+      }
+      const cursor = Math.floor(t * 3.5) % 2 === 0 ? ' ▌' : '  ';
+      this._introDisclaimerText.text = fullDisclaimer + cursor;
+      this._introDisclaimerContainer.alpha = 1;
+
       this._introLogoSprite.alpha = 0;
       this._introStudiosText.alpha = 0;
       this._introPresentsText.alpha = 0;
       this._introSeriesContainer.alpha = 0;
       this._introCycleSubtitle.alpha = 0;
     }
-    // Phase 10: cycleStartTime - cycleFadeOutTime: "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" APPEARS IN CENTER OF SCREEN!
-    else if (t >= profile.cycleStartTime && t < profile.cycleFadeOutTime) {
-      this._introLogoSprite.alpha = 0;
-      this._introStudiosText.alpha = 0;
-      this._introPresentsText.alpha = 0;
-      this._introSeriesContainer.alpha = 0;
-      const cycleFadeSpeed = 1.0;
-      const cp = Math.min(1, (t - profile.cycleStartTime) / cycleFadeSpeed);
-      this._introCycleSubtitle.alpha = cp;
-      // Gentle cinematic push forward (0.97 -> 1.03)
-      const scaleP = 0.97 + Math.min(0.06, (t - profile.cycleStartTime) * 0.012);
-      this._introCycleSubtitle.scale.set(scaleP);
-    }
-    // Phase 11: cycleFadeOutTime - (cycleFadeOutTime + 1.5): "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" dissolves into void
-    else if (t >= profile.cycleFadeOutTime && t < profile.cycleFadeOutTime + 1.5) {
-      this._introLogoSprite.alpha = 0;
-      this._introStudiosText.alpha = 0;
-      this._introPresentsText.alpha = 0;
-      this._introSeriesContainer.alpha = 0;
-      const dissolveDur = 1.5;
-      const cycleFade = Math.max(0, 1 - (t - profile.cycleFadeOutTime) / dissolveDur);
-      this._introCycleSubtitle.alpha = cycleFade;
-    }
-    // Phase 12: Both dissolved; intro ambient resolves naturally in calm valley until introEndTime
-    else if (t >= profile.cycleFadeOutTime + 1.5 && t < profile.introEndTime) {
+    // Phase D: 11.6s - 12.8s: Pure black screen, disclaimer dissolves into void
+    else if (t >= discHoldEnd && t < discFadeEnd) {
+      if (this._videoElement) {
+        this._videoElement.style.opacity = '0';
+        this._videoElement.pause();
+      }
+      const fade = Math.max(0, 1 - (t - discHoldEnd) / (discFadeEnd - discHoldEnd));
+      this._introDisclaimerContainer.alpha = fade;
+      this._introDisclaimerText.text = fullDisclaimer;
+
       this._introLogoSprite.alpha = 0;
       this._introStudiosText.alpha = 0;
       this._introPresentsText.alpha = 0;
       this._introSeriesContainer.alpha = 0;
       this._introCycleSubtitle.alpha = 0;
     }
-    // Phase 13: introEndTime+: Seamless handover to Prologue (ambient plays down to quiet valley, then hands over)
-    else if (t >= profile.introEndTime) {
-      this.nextAct();
+    // =========================================================================
+    // AFTER DISCLAIMER: MUSIC BEGINS AND STARS APPEAR! (t >= discFadeEnd)
+    // All intro music cues and animations are based on mt = (t - discFadeEnd)
+    // =========================================================================
+    else {
+      this._introDisclaimerContainer.alpha = 0;
+      this._introDisclaimerText.text = '';
+
+      const mt = t - discFadeEnd; // Music time from 0.0s!
+
+      // Stars & Cosmic video ignite!
+      if (this._videoElement) {
+        const vidFadeIn = Math.min(1, mt / 1.5);
+        this._videoElement.style.opacity = String(vidFadeIn);
+        if (this._isPlaying && this._videoElement.paused) {
+          this._videoElement.play().catch(() => {});
+        }
+      }
+
+      // Music begins from 0.0s!
+      if (this._isPlaying) {
+        const curAudio = AmbientManager.getCurrentAudio();
+        if (!curAudio || curAudio.paused) {
+          AmbientManager.playTrack(profile.trackKey, 0.8, 1.5);
+          AmbientManager.seekCurrent(mt);
+        }
+      }
+
+      // Phase 1 (in music): 0.0s - 3.0s: Space video background drift, ambient begins
+      if (mt < 3.0) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 2: 3.0s - 9.0s: Skull logo slowly appears over space video
+      else if (mt >= 3.0 && mt < 9.0) {
+        const p = (mt - 3.0) / 6.0;
+        this._introLogoSprite.alpha = Math.min(1, p);
+        this._introLogoSprite.scale.set(this._introLogoBaseScale * (0.94 + p * 0.06));
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 3: 9.0s - 14.0s: "STUDIOS" glows into visibility below the skull
+      else if (mt >= 9.0 && mt < 14.0) {
+        this._introLogoSprite.alpha = 1;
+        const p = (mt - 9.0) / 3.5;
+        this._introStudiosText.alpha = Math.min(1, p);
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 4: 11.5s - logoDisperseTime: Letters "P R E S E N T S" type out on screen
+      else if (mt >= 11.5 && mt < profile.logoDisperseTime) {
+        this._introLogoSprite.alpha = 1;
+        this._introStudiosText.alpha = 1;
+        const full = 'P R E S E N T S';
+        const typingSpan = Math.max(1.0, profile.logoDisperseTime - 11.5);
+        const p = Math.min(1, (mt - 11.5) / typingSpan);
+        const chars = Math.floor(p * full.length);
+        this._introPresentsText.text = full.substring(0, chars);
+        this._introPresentsText.alpha = 1;
+        this._introPresentsText.style.letterSpacing = 10;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 5: logoDisperseTime - logoFadeOutTime: Alien-style dispersion and slow fade out into the void
+      else if (mt >= profile.logoDisperseTime && mt < profile.logoFadeOutTime) {
+        const fadeDur = profile.logoFadeOutTime - profile.logoDisperseTime;
+        const fade = Math.max(0, 1 - (mt - profile.logoDisperseTime) / fadeDur);
+        this._introLogoSprite.alpha = fade;
+        this._introStudiosText.alpha = fade;
+        this._introPresentsText.alpha = fade;
+        this._introPresentsText.text = 'P R E S E N T S';
+        this._introPresentsText.style.letterSpacing = 10 + (mt - profile.logoDisperseTime) * 3.5;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 6: logoFadeOutTime - titleDropTime: THEATRICAL PAUSE IN THE VOID
+      // Tension valley in audio, cosmic video drifts silently, audience holds breath
+      else if (mt >= profile.logoFadeOutTime && mt < profile.titleDropTime) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 7: titleDropTime - titleFadeOutTime: MAIN TITLE STRIKE ON MUSICAL DROP!
+      // Shows "СЫГРАВШИЙ В ЯЩИК" and "ХРОНИКИ ПРОДАКШН-КОВЧЕГА"
+      else if (mt >= profile.titleDropTime && mt < profile.titleFadeOutTime) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        const isDesolate = profile.trackKey === 'desolate_cry';
+        const fadeSpeed = isDesolate ? 2.5 : 0.7;
+        const p = Math.min(1, (mt - profile.titleDropTime) / fadeSpeed);
+        this._introSeriesContainer.alpha = p;
+        this._introSeriesContainer.scale.set(0.95 + p * 0.05);
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 8: titleFadeOutTime - (titleFadeOutTime + 1.5): Main series logo dissolves completely into void
+      else if (mt >= profile.titleFadeOutTime && mt < profile.titleFadeOutTime + 1.5) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        const dissolveDur = 1.5;
+        const endFade = Math.max(0, 1 - (mt - profile.titleFadeOutTime) / dissolveDur);
+        this._introSeriesContainer.alpha = endFade;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 9: Pause in void after main logo is completely gone
+      else if (mt >= profile.titleFadeOutTime + 1.5 && mt < profile.cycleStartTime) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 10: cycleStartTime - cycleFadeOutTime: "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" APPEARS IN CENTER OF SCREEN!
+      else if (mt >= profile.cycleStartTime && mt < profile.cycleFadeOutTime) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        const cycleFadeSpeed = 1.0;
+        const cp = Math.min(1, (mt - profile.cycleStartTime) / cycleFadeSpeed);
+        this._introCycleSubtitle.alpha = cp;
+        // Gentle cinematic push forward (0.97 -> 1.03)
+        const scaleP = 0.97 + Math.min(0.06, (mt - profile.cycleStartTime) * 0.012);
+        this._introCycleSubtitle.scale.set(scaleP);
+      }
+      // Phase 11: cycleFadeOutTime - (cycleFadeOutTime + 1.5): "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" dissolves into void
+      else if (mt >= profile.cycleFadeOutTime && mt < profile.cycleFadeOutTime + 1.5) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        const dissolveDur = 1.5;
+        const cycleFade = Math.max(0, 1 - (mt - profile.cycleFadeOutTime) / dissolveDur);
+        this._introCycleSubtitle.alpha = cycleFade;
+      }
+      // Phase 12: Both dissolved; intro ambient resolves naturally in calm valley until introEndTime
+      else if (mt >= profile.cycleFadeOutTime + 1.5 && mt < profile.introEndTime) {
+        this._introLogoSprite.alpha = 0;
+        this._introStudiosText.alpha = 0;
+        this._introPresentsText.alpha = 0;
+        this._introSeriesContainer.alpha = 0;
+        this._introCycleSubtitle.alpha = 0;
+      }
+      // Phase 13: introEndTime+: Seamless handover to Prologue (ambient plays down to quiet valley, then hands over)
+      else if (mt >= profile.introEndTime) {
+        this.nextAct();
+      }
     }
   }
 
@@ -2334,8 +2578,10 @@ export class MovieApp {
 
     if (this._isPlaying) {
       if (this._currentActIndex === 0) {
-        AmbientManager.resumeCurrent();
-        if (this._videoElement) this._videoElement.play().catch(() => {});
+        if (this._actTime >= INTRO_DISCLAIMER_DURATION) {
+          AmbientManager.resumeCurrent();
+          if (this._videoElement) this._videoElement.play().catch(() => {});
+        }
       } else {
         const isPrologue = this._currentActIndex === 1;
         const voiceDelay = isPrologue ? 3.5 : 0;
@@ -2376,13 +2622,20 @@ export class MovieApp {
 
     let currentTime = this._actTime;
     if (this._currentActIndex === 0) {
-      const curAudio = AmbientManager.getCurrentAudio();
-      if (curAudio && Number.isFinite(curAudio.currentTime)) {
-        currentTime = curAudio.currentTime;
-        this._actTime = currentTime;
-      } else if (this._isPlaying) {
-        this._actTime += dt;
+      if (this._actTime < INTRO_DISCLAIMER_DURATION) {
+        if (this._isPlaying) {
+          this._actTime += dt;
+        }
         currentTime = this._actTime;
+      } else {
+        const curAudio = AmbientManager.getCurrentAudio();
+        if (this._isPlaying && curAudio && !curAudio.paused && Number.isFinite(curAudio.currentTime)) {
+          currentTime = INTRO_DISCLAIMER_DURATION + curAudio.currentTime;
+          this._actTime = currentTime;
+        } else if (this._isPlaying) {
+          this._actTime += dt;
+          currentTime = this._actTime;
+        }
       }
       this._updateIntroTimeline(currentTime);
     } else {
@@ -2711,6 +2964,12 @@ export class MovieApp {
         actBtn.setLatched(isActive);
         actBtn.setLampActive(isActive);
       }
+
+      // Update stickers active opacity
+      for (const item of this._wsStickers) {
+        const isActive = (item.actIndex === this._currentActIndex);
+        item.sprite.alpha = isActive ? 1.0 : 0.88;
+      }
     }
   }
 
@@ -2804,6 +3063,32 @@ export class MovieApp {
     this._resizeBgSprite();
 
     this._introContainer.position.set(w / 2, h / 2);
+
+    // 0. Disclaimer Layout (NO FRAME / BORDER, pure green terminal text, left-aligned so it NEVER shifts!)
+    const contentW = Math.min(w * 0.86, isPortrait ? 520 : 880);
+    const contentX = -contentW / 2;
+    const contentY = isPortrait ? -h * 0.18 : -h * 0.13;
+    this._introDisclaimerContainer.position.set(contentX, contentY);
+
+    // Completely clear borders, corners and backgrounds
+    this._introDisclaimerBg.clear();
+    this._introDisclaimerCorners.clear();
+
+    const badgeFontSize = isPortrait ? 13 : 16;
+    this._introDisclaimerBadge.style.fontSize = badgeFontSize;
+    this._introDisclaimerBadge.style.fill = '#00f5d4';
+    this._introDisclaimerBadge.anchor.set(0, 0);
+    this._introDisclaimerBadge.position.set(0, 0);
+
+    const textFontSize = isPortrait ? 16 : 22;
+    const textLineHeight = isPortrait ? 27 : 38;
+    this._introDisclaimerText.style.wordWrapWidth = contentW;
+    this._introDisclaimerText.style.fontSize = textFontSize;
+    this._introDisclaimerText.style.lineHeight = textLineHeight;
+    this._introDisclaimerText.style.fill = '#00f5d4';
+    this._introDisclaimerText.anchor.set(0, 0);
+    this._introDisclaimerText.position.set(0, isPortrait ? 28 : 38);
+
     const logoMaxH = isPortrait ? h * 0.46 : Math.min(480, h * 0.58);
     this._introLogoBaseScale = logoMaxH / 1536;
     this._introLogoSprite.scale.set(this._introLogoBaseScale);
@@ -2904,6 +3189,19 @@ export class MovieApp {
           actBtn.container.position.set(btnX, btnY);
           actBtn.container.scale.set(guiScale);
         }
+      }
+
+      // Timeline Chapter Stickers positioned under timeline track and buttons
+      const stickerY = 141 * guiScale;
+      for (const item of this._wsStickers) {
+        const i = item.actIndex;
+        const actStart = this._actStartTimes[i] ?? 0;
+        const actDur = STORY_ACTS[i]?.duration ?? 0;
+        const midTime = actStart + actDur / 2;
+        const midRatio = midTime / Math.max(1, this._totalMovieDuration);
+        const stickerX = trackStartInMid + midRatio * trackInnerW;
+        item.container.position.set(stickerX, stickerY);
+        item.container.scale.set(guiScale);
       }
 
       this._wsTimelineKnob.scale.set(1.0);

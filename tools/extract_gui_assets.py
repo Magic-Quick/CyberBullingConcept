@@ -167,28 +167,43 @@ print('Saved authentic sliced buttons from mockup3: Pause, Play, Prev, Next, Vol
 # Lamps remain in their natural glowing colors
 print('Lightbulbs/LEDs preserved without Levels adjustment (as requested)')
 
-# 10. Timeline Switch Button & Indicator Lamp (Layer 25)
-if len(psd) > 25 and psd[25].is_group():
-    g25 = psd[25]
+# 10. Timeline Switch Button & Indicator Lamp
+btn_group = next((l for l in psd if l.is_group() and ('Кнопка' in l.name or 'переключения' in l.name)), None)
+if btn_group:
     # 0: hole
-    hole_im = apply_levels_adjustment(g25[0].composite(), g25[0].bbox)
+    hole_im = apply_levels_adjustment(btn_group[0].composite(), btn_group[0].bbox)
     hole_im.save(os.path.join(OUT_DIR, 'gui_act_btn_hole.png'))
 
     # 1: shadow
-    shadow_im = g25[1].composite()
+    shadow_im = btn_group[1].composite()
     shadow_im.save(os.path.join(OUT_DIR, 'gui_act_btn_shadow.png'))
 
     # 2: button keycap
-    btn_im = apply_levels_adjustment(g25[2].composite(), g25[2].bbox)
+    btn_im = apply_levels_adjustment(btn_group[2].composite(), btn_group[2].bbox)
     btn_im.save(os.path.join(OUT_DIR, 'gui_act_btn.png'))
 
     # 3: lamp on (no levels)
-    lamp_on_im = g25[3].composite()
+    lamp_on_im = btn_group[3].composite()
     lamp_on_im.save(os.path.join(OUT_DIR, 'gui_act_lamp_on.png'))
 
     # 4: lamp off (no levels)
-    lamp_off_im = g25[4].composite()
+    lamp_off_im = btn_group[4].composite()
     lamp_off_im.save(os.path.join(OUT_DIR, 'gui_act_lamp_off.png'))
     print('Saved timeline switch button and indicator lamp assets')
+
+# 11. Timeline Chapter Stickers (under timeline track and buttons)
+sticker_targets = {
+    'Лого': 'gui_sticker_logo.png',
+    'Речь ии лорда': 'gui_sticker_speech.png',
+    'Награда': 'gui_sticker_reward.png',
+    'Наказание': 'gui_sticker_punishment.png',
+    'Песня': 'gui_sticker_song.png',
+}
+for l in psd:
+    for target_name, out_file in sticker_targets.items():
+        if target_name.lower() in l.name.lower():
+            im = apply_levels_adjustment(l.composite(), l.bbox)
+            im.save(os.path.join(OUT_DIR, out_file))
+            print(f'Saved sticker {l.name} -> {out_file}: size={im.size}')
 
 print('All assets extracted successfully to', OUT_DIR)
