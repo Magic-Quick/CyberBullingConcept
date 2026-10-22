@@ -1183,7 +1183,7 @@ export class MovieApp {
     this._wsChassisLeft = new Sprite(getTexture('gui_chassis_left'));
     this._wsLeftWing.addChild(this._wsChassisLeft);
 
-    // Play/Pause keycap button at (88, 81)
+    // Play/Pause keycap button at (90, 83) from mockup3
     // Does NOT latch in scale because its icon toggles between play and pause
     const ppKey = this._createWsKeycap(
       this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play',
@@ -1195,32 +1195,32 @@ export class MovieApp {
         isLatching: false,
       }
     );
-    ppKey.container.position.set(88, 81);
+    ppKey.container.position.set(90.0, 83.0);
     this._wsPlayPauseSprite = ppKey.sprite;
     this._wsSetPlayPauseLatched = ppKey.setLatched;
     this._wsLeftWing.addChild(ppKey.container);
 
-    // Prev keycap button at (150, 81) -> jumps to previous phrase / subtitle cue
+    // Prev keycap button at (152, 83) -> jumps to previous phrase / subtitle cue
     const prevKey = this._createWsKeycap(
       'gui_btn_prev',
       () => this.previousPhrase(),
       { isLatching: false }
     );
-    prevKey.container.position.set(150, 81);
+    prevKey.container.position.set(152.0, 83.0);
     this._wsPrevSprite = prevKey.sprite;
     this._wsLeftWing.addChild(prevKey.container);
 
-    // Next keycap button at (211.5, 81) -> jumps to next phrase / subtitle cue
+    // Next keycap button at (213.5, 83) -> jumps to next phrase / subtitle cue
     const nextKey = this._createWsKeycap(
       'gui_btn_next',
       () => this.nextPhrase(),
       { isLatching: false }
     );
-    nextKey.container.position.set(211.5, 81);
+    nextKey.container.position.set(213.5, 83.0);
     this._wsNextSprite = nextKey.sprite;
     this._wsLeftWing.addChild(nextKey.container);
 
-    // Vol keycap button at (273, 81)
+    // Vol keycap button at (275, 83)
     const volKey = this._createWsKeycap(
       'gui_btn_vol',
       () => this.toggleMute(),
@@ -1229,7 +1229,7 @@ export class MovieApp {
         initialLatched: AudioController.isMuted(),
       }
     );
-    volKey.container.position.set(273, 81);
+    volKey.container.position.set(275.0, 83.0);
     this._wsVolSprite = volKey.sprite;
     this._wsSetVolLatched = volKey.setLatched;
     this._wsLeftWing.addChild(volKey.container);
@@ -1239,7 +1239,7 @@ export class MovieApp {
       'gui_knob_voice',
       342,
       390,
-      82,
+      83,
       this._voiceVolume,
       (v) => {
         this._voiceVolume = v;
@@ -1257,7 +1257,7 @@ export class MovieApp {
       'gui_knob_music',
       428,
       480,
-      82,
+      83,
       this._musicVolume,
       (v) => {
         this._musicVolume = v;
@@ -1276,7 +1276,7 @@ export class MovieApp {
       'gui_knob_sfx',
       522,
       569,
-      82,
+      83,
       this._sfxVolume,
       (v) => {
         this._sfxVolume = v;
@@ -2572,8 +2572,9 @@ export class MovieApp {
 
     // WS-96 Hardware Console Layout
     // Left wing: 841px, right wing: 346px.
-    // Timeline slider fills the entire available middle region between left and right wings!
-    const guiScale = Math.min(1.0, Math.max(0.48, (w - 30) / 1535));
+    // Panel vertical height reduced by 30% (baseScale * 0.70)
+    const baseScale = Math.min(1.0, Math.max(0.48, (w - 30) / 1535));
+    const guiScale = baseScale * 0.70;
     this._wsGuiScale = guiScale;
 
     const leftW = 841 * guiScale;
