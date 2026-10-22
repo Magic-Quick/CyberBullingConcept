@@ -1570,9 +1570,10 @@ export class MovieApp {
     this._wsTimelineKnob.anchor.set(0.5, 0.5);
     this._wsTimelineContainer.addChild(this._wsTimelineKnob);
 
-    // 9 Timeline Act Buttons with Indicator Lamps above timeline track
+    // Timeline Act Buttons with Indicator Lamps above timeline track (one per act)
     this._wsActButtons = [];
-    for (let i = 0; i < 9; i++) {
+    const actCount = STORY_ACTS.length;
+    for (let i = 0; i < actCount; i++) {
       const actIdx = i;
       const actBtn = this._createWsActButton(actIdx, () => {
         this.goToAct(actIdx);
@@ -2701,8 +2702,9 @@ export class MovieApp {
         this._wsTimelineFill.fill({ color: 0xf0e9db, alpha: 0.95 });
       }
 
-      // Update 9 Timeline Act Buttons with Indicator Lamps
-      for (let i = 0; i < 9; i++) {
+      // Update Timeline Act Buttons with Indicator Lamps for all acts
+      const actCount = STORY_ACTS.length;
+      for (let i = 0; i < actCount; i++) {
         const actBtn = this._wsActButtons[i];
         if (!actBtn) continue;
         const isActive = (i === this._currentActIndex);
@@ -2885,12 +2887,13 @@ export class MovieApp {
       this._wsTrackMid.width = Math.max(10, trackW - 50);
       this._wsTrackCapRight.position.set(trackW - 25, 0);
 
-      // 9 Timeline Act Buttons positioned in the middle of each timeline act segment
+      // Timeline Act Buttons positioned in the middle of each timeline act segment (all acts)
       const btnY = 62 * guiScale;
       const trackStartInMid = trackPad + 28 * guiScale;
       const trackEndInMid = trackPad + (trackW - 28) * guiScale;
       const trackInnerW = Math.max(10, trackEndInMid - trackStartInMid);
-      for (let i = 0; i < 9; i++) {
+      const actCount = STORY_ACTS.length;
+      for (let i = 0; i < actCount; i++) {
         const actBtn = this._wsActButtons[i];
         if (actBtn) {
           const actStart = this._actStartTimes[i] ?? 0;
