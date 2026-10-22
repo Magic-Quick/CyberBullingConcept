@@ -83,6 +83,9 @@ export class MovieApp {
   private _wsCcSprite!: Sprite;
   private _wsModeSprite!: Sprite;
   private _wsSetPlayPauseLatched!: (latched: boolean) => void;
+  private _wsPlayPausePressAndRelease!: () => void;
+  private _wsPrevPressAndRelease!: () => void;
+  private _wsNextPressAndRelease!: () => void;
   private _wsSetVolLatched!: (latched: boolean) => void;
   private _wsSetCcLatched!: (latched: boolean) => void;
   private _wsSetModeLatched!: (latched: boolean) => void;
@@ -630,9 +633,11 @@ export class MovieApp {
         this._showSeekRipple(5);
       } else if ((e.shiftKey && e.key === 'ArrowLeft') || e.key === 'PageUp') {
         e.preventDefault();
+        if (this._wsPrevPressAndRelease) this._wsPrevPressAndRelease();
         this.previousAct();
       } else if ((e.shiftKey && e.key === 'ArrowRight') || e.key === 'PageDown') {
         e.preventDefault();
+        if (this._wsNextPressAndRelease) this._wsNextPressAndRelease();
         this.nextAct();
       } else if (e.key === 'm' || e.key === 'M') {
         e.preventDefault();
@@ -1056,6 +1061,7 @@ export class MovieApp {
     sprite: Sprite;
     setLatched: (latched: boolean) => void;
     isLatched: () => boolean;
+    pressAndRelease: () => void;
   } {
     const c = new Container();
     c.eventMode = 'static';
@@ -1066,19 +1072,39 @@ export class MovieApp {
     sprite.alpha = 1.0;
     c.addChild(sprite);
 
+    // Physical keycap press scales & shadow tints
+    const PRESSED_SCALE = 0.76;
+    const PRESSED_TINT = 0x949494; // Noticeable shadow darkening when pressed deeply into socket
+    const LATCHED_SCALE = 0.86;
+    const LATCHED_TINT = 0xc4c4c4; // Subtle resting shadow when latched in
+    const NORMAL_SCALE = 1.0;
+    const NORMAL_TINT = 0xffffff;
+
     let latched = Boolean(options?.initialLatched);
 
-    const applyState = (pressed: boolean) => {
+    const applyState = (pressed: boolean, animate = false) => {
+      cancelTween(sprite.scale);
       sprite.y = 0; // Strictly centered, no vertical displacement
+
+      let targetScale = NORMAL_SCALE;
+      let targetTint = NORMAL_TINT;
+
       if (pressed) {
-        // Active mouse press: shrinks strongly in all directions
-        sprite.scale.set(0.88);
+        // Active mouse press: shrinks strongly in all directions and visibly darkens
+        targetScale = PRESSED_SCALE;
+        targetTint = PRESSED_TINT;
       } else if (options?.isLatching && latched) {
-        // Latched resting state: stays engaged at intermediate scale (0.94)
-        sprite.scale.set(0.94);
+        // Latched resting state: stays engaged at intermediate scale with subtle shadow tint
+        targetScale = LATCHED_SCALE;
+        targetTint = LATCHED_TINT;
+      }
+
+      if (animate) {
+        sprite.tint = targetTint;
+        tween(sprite.scale, { x: targetScale, y: targetScale }, 0.14, ease.outBack);
       } else {
-        // Normal unlatched / unpressed resting state: 100% full scale
-        sprite.scale.set(1.0);
+        sprite.scale.set(targetScale);
+        sprite.tint = targetTint;
       }
     };
 
@@ -1088,12 +1114,12 @@ export class MovieApp {
       e.stopPropagation();
       ClickTracker.exclude();
       SFX.playClick();
-      applyState(true);
+      applyState(true, false);
       onClick();
     });
 
     const resetBtn = () => {
-      applyState(false);
+      applyState(false, true);
     };
 
     c.on('pointerup', resetBtn);
@@ -1106,14 +1132,25 @@ export class MovieApp {
       options?.onHover?.();
     });
 
+    const pressAndRelease = () => {
+      cancelTween(sprite.scale);
+      sprite.y = 0;
+      sprite.scale.set(PRESSED_SCALE);
+      sprite.tint = PRESSED_TINT;
+      after(0.08, () => {
+        applyState(false, true);
+      });
+    };
+
     return {
       container: c,
       sprite,
       setLatched: (isLatched: boolean) => {
         latched = isLatched;
-        applyState(false);
+        applyState(false, true);
       },
       isLatched: () => latched,
+      pressAndRelease,
     };
   }
 
@@ -1198,6 +1235,7 @@ export class MovieApp {
     ppKey.container.position.set(90.0, 83.0);
     this._wsPlayPauseSprite = ppKey.sprite;
     this._wsSetPlayPauseLatched = ppKey.setLatched;
+    this._wsPlayPausePressAndRelease = ppKey.pressAndRelease;
     this._wsLeftWing.addChild(ppKey.container);
 
     // Prev keycap button at (152, 83) -> jumps to previous phrase / subtitle cue
@@ -1208,6 +1246,7 @@ export class MovieApp {
     );
     prevKey.container.position.set(152.0, 83.0);
     this._wsPrevSprite = prevKey.sprite;
+    this._wsPrevPressAndRelease = prevKey.pressAndRelease;
     this._wsLeftWing.addChild(prevKey.container);
 
     // Next keycap button at (213.5, 83) -> jumps to next phrase / subtitle cue
@@ -1218,6 +1257,7 @@ export class MovieApp {
     );
     nextKey.container.position.set(213.5, 83.0);
     this._wsNextSprite = nextKey.sprite;
+    this._wsNextPressAndRelease = nextKey.pressAndRelease;
     this._wsLeftWing.addChild(nextKey.container);
 
     // Vol keycap button at (275, 83)
@@ -1733,14 +1773,10 @@ export class MovieApp {
       this._actDuration = this._introProfile.introEndTime;
       this._playIntroAnimation();
     } else if (act.category === 'prologue') {
-      // Soft theatrical cross-dissolve: let video smoothly fade over 4.5s instead of snapping off
+      // In Prologue (Act 1): Keep cosmic video playing during the opening void expose until the ship appears!
       if (this._videoElement) {
-        this._videoElement.style.opacity = '0';
-        setTimeout(() => {
-          if (this._currentActIndex !== 0 && this._videoElement) {
-            this._videoElement.pause();
-          }
-        }, 4600);
+        this._videoElement.style.opacity = '1';
+        this._videoElement.play().catch(() => {});
       }
       this._introContainer.visible = false;
       this._cosmicScene.visible = false;
@@ -1748,9 +1784,7 @@ export class MovieApp {
       this._prologueCurrentTexKey = 'ship_cistam';
       this._bgSprite.texture = getTexture('ship_cistam');
       this._resizeBgSprite();
-      this._bgSprite.alpha = 0;
-      // Soft 4.5s dissolve into ship_cistam
-      tween(this._bgSprite, { alpha: 1 }, 4.5, ease.inOutQuad);
+      this._bgSprite.alpha = 0; // Starts invisible; update() fades it in when told about at ~18.5s!
 
       this._subtitles.visible = true;
       this._timeCodeText.visible = true;
@@ -1838,6 +1872,7 @@ export class MovieApp {
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
+      if (this._wsPlayPausePressAndRelease) this._wsPlayPausePressAndRelease();
       if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(true);
       return;
     }
@@ -1846,6 +1881,7 @@ export class MovieApp {
       this._isPlaying = true;
       this._playPauseIcon.text = '⏸';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_pause');
+      if (this._wsPlayPausePressAndRelease) this._wsPlayPausePressAndRelease();
       if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(true);
     }).catch((err: unknown) => {
       console.warn('[VoiceAudio] Autoplay blocked, click play to start:', err);
@@ -1862,6 +1898,7 @@ export class MovieApp {
       this._isPlaying = false;
       this._playPauseIcon.text = '▶';
       if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture('gui_btn_play');
+      if (this._wsPlayPausePressAndRelease) this._wsPlayPausePressAndRelease();
       if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(false);
       return;
     }
@@ -2124,6 +2161,9 @@ export class MovieApp {
     if (this._wsPlayPauseSprite) {
       this._wsPlayPauseSprite.texture = getTexture(this._isPlaying ? 'gui_btn_pause' : 'gui_btn_play');
     }
+    if (this._wsPlayPausePressAndRelease) {
+      this._wsPlayPausePressAndRelease();
+    }
     if (this._wsSetPlayPauseLatched) {
       this._wsSetPlayPauseLatched(this._isPlaying);
     }
@@ -2137,6 +2177,9 @@ export class MovieApp {
         const voiceDelay = isPrologue ? 3.5 : 0;
         if (this._voiceAudio && this._actTime >= voiceDelay) {
           this._voiceAudio.play().catch(() => {});
+        }
+        if (isPrologue && this._actTime < 21.0 && this._videoElement) {
+          this._videoElement.play().catch(() => {});
         }
         AmbientManager.resumeCurrent();
       }
@@ -2216,7 +2259,7 @@ export class MovieApp {
         }
       }
 
-      // In Prologue (Act 1): ship is fullscreen while told about (< 109.68s), then AI Lord on throne (>= 109.68s)
+      // In Prologue (Act 1): ship is shown while told about (< 109.68s), then AI Lord on throne (>= 109.68s)
       if (this._currentActIndex === 1) {
         const targetTexKey = currentTime < 109.68 ? 'ship_cistam' : 'ai_lord';
         if (this._prologueCurrentTexKey !== targetTexKey) {
@@ -2225,6 +2268,32 @@ export class MovieApp {
           this._resizeBgSprite();
           this._bgSprite.alpha = 0;
           tween(this._bgSprite, { alpha: 1 }, 0.8, ease.outQuad);
+        }
+
+        // Appearance of ship when told about (~18.5s - 21.0s cross-fade over cosmic space video)
+        if (this._prologueCurrentTexKey === 'ship_cistam') {
+          if (currentTime < 18.5) {
+            this._bgSprite.alpha = 0;
+            if (this._videoElement) {
+              if (this._videoElement.style.opacity !== '1') this._videoElement.style.opacity = '1';
+              if (this._isPlaying && this._videoElement.paused) this._videoElement.play().catch(() => {});
+            }
+          } else if (currentTime < 21.0) {
+            this._bgSprite.alpha = (currentTime - 18.5) / 2.5;
+            if (this._videoElement && this._isPlaying && this._videoElement.paused) {
+              this._videoElement.play().catch(() => {});
+            }
+          } else {
+            this._bgSprite.alpha = 1.0;
+            if (this._videoElement && this._videoElement.style.opacity !== '0') {
+              this._videoElement.style.opacity = '0';
+              setTimeout(() => {
+                if (this._currentActIndex === 1 && this._actTime >= 21.0 && this._videoElement) {
+                  this._videoElement.pause();
+                }
+              }, 1200);
+            }
+          }
         }
       }
 
@@ -2312,9 +2381,57 @@ export class MovieApp {
     }
 
     if (this._bgContainer.visible && this._bgSprite.texture && this._bgSprite.texture.width > 0) {
-      const slowScale = 1.0 + Math.sin(this._actTime * 0.15) * 0.025;
-      const finalScale = this._bgBaseScale * slowScale * this._concertPunchScale;
-      this._bgSprite.scale.set(finalScale);
+      if (this._currentActIndex === 1 && this._prologueCurrentTexKey === 'ship_cistam') {
+        const isPortrait = this._screenHeight > this._screenWidth;
+        // Anchor centered on ship's center of mass (1024x576 texture coordinates)
+        this._bgSprite.anchor.set(0.568, 0.524);
+
+        // Timeline progression of ship flyby:
+        // Starts appearing at ~18.5s, explicitly told about from 19.5s ("вечно несется исполинский ковчег «Цитадель»").
+        // Exterior ship narration culminates around 68.0s ("Пыльные тонированные окна нависают над зияющей бездной").
+        const tStart = 19.5;
+        const tEnd = 68.0;
+        const rawP = Math.min(1.0, Math.max(0.0, (currentTime - tStart) / (tEnd - tStart)));
+        // Smooth cinematic ease (smoothstep)
+        const p = rawP * rawP * (3.0 - 2.0 * rawP);
+
+        // Scale: Starts comfortably visible in space (1.05x base),
+        // scales up towards the end to fill almost the entire screen!
+        const scaleStart = this._bgBaseScale * (isPortrait ? 1.0 : 1.05);
+        const scaleEnd = this._bgBaseScale * (isPortrait ? 2.3 : 1.95);
+        let curScale = scaleStart + (scaleEnd - scaleStart) * p;
+
+        // Position: Moves to the left ("постепенно плыл влево")
+        // Start: ship is in right-center area (0.60W in landscape, 0.55W in portrait)
+        // End: ship's head and hull have sailed left (0.38W in landscape, 0.40W in portrait)
+        const startX = this._screenWidth * (isPortrait ? 0.55 : 0.60);
+        const endX = this._screenWidth * (isPortrait ? 0.40 : 0.38);
+        let curX = startX + (endX - startX) * p;
+
+        const startY = this._screenHeight * 0.50;
+        const endY = this._screenHeight * 0.48;
+        let curY = startY + (endY - startY) * p;
+
+        // Post-68s subtle macro drift (68s to 109.68s) so it never sits frozen
+        if (currentTime > tEnd) {
+          const pPost = Math.min(1.0, (currentTime - tEnd) / (109.68 - tEnd));
+          curX -= this._screenWidth * 0.04 * pPost;
+          curScale *= (1.0 + 0.03 * pPost);
+        }
+
+        // Gentle cosmic ambient breathing/hover
+        const floatY = Math.sin(currentTime * 0.5) * 5;
+        const floatX = Math.cos(currentTime * 0.4) * 3;
+
+        this._bgSprite.scale.set(curScale);
+        this._bgSprite.position.set(curX + floatX, curY + floatY);
+      } else {
+        this._bgSprite.anchor.set(0.5, 0.5);
+        const slowScale = 1.0 + Math.sin(this._actTime * 0.15) * 0.025;
+        const finalScale = this._bgBaseScale * slowScale * this._concertPunchScale;
+        this._bgSprite.scale.set(finalScale);
+        this._bgSprite.position.set(this._screenWidth / 2, this._screenHeight / 2);
+      }
     }
   }
 
@@ -2339,8 +2456,11 @@ export class MovieApp {
       const texW = this._bgSprite.texture.width;
       const texH = this._bgSprite.texture.height;
       this._bgBaseScale = Math.max(this._screenWidth / texW, this._screenHeight / texH);
-      this._bgSprite.scale.set(this._bgBaseScale * this._concertPunchScale);
-      this._bgSprite.position.set(this._screenWidth / 2, this._screenHeight / 2);
+      if (!(this._currentActIndex === 1 && this._prologueCurrentTexKey === 'ship_cistam')) {
+        this._bgSprite.anchor.set(0.5, 0.5);
+        this._bgSprite.scale.set(this._bgBaseScale * this._concertPunchScale);
+        this._bgSprite.position.set(this._screenWidth / 2, this._screenHeight / 2);
+      }
     }
   }
 
