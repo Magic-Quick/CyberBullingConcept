@@ -3162,8 +3162,8 @@ export class MovieApp {
 
       const trackW = Math.max(120, (midW - trackPad * 2) / guiScale);
 
-      // Timeline slider moved lower down: 82 * guiScale (aligned with volume slits and buttons)
-      this._wsTimelineContainer.position.set(trackPad, 82 * guiScale);
+      // Timeline slider raised higher in the center (62 * guiScale)
+      this._wsTimelineContainer.position.set(trackPad, 62 * guiScale);
       this._wsTimelineContainer.scale.set(guiScale);
 
       // 3-slice track positioning (in container local coords)
@@ -3172,8 +3172,8 @@ export class MovieApp {
       this._wsTrackMid.width = Math.max(10, trackW - 50);
       this._wsTrackCapRight.position.set(trackW - 25, 0);
 
-      // Timeline Act Buttons positioned in the middle of each timeline act segment (all acts)
-      const btnY = 62 * guiScale;
+      // Timeline Act Buttons & Lamps positioned at the bottom under timeline track
+      const btnY = 136 * guiScale;
       const trackStartInMid = trackPad + 28 * guiScale;
       const trackEndInMid = trackPad + (trackW - 28) * guiScale;
       const trackInnerW = Math.max(10, trackEndInMid - trackStartInMid);
@@ -3191,8 +3191,8 @@ export class MovieApp {
         }
       }
 
-      // Timeline Chapter Stickers positioned under timeline track and buttons
-      const stickerY = 141 * guiScale;
+      // Timeline Chapter Stickers positioned at the top above timeline track
+      const stickerY = 33 * guiScale;
       for (const item of this._wsStickers) {
         const i = item.actIndex;
         const actStart = this._actStartTimes[i] ?? 0;
