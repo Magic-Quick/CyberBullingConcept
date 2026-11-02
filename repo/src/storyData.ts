@@ -1428,7 +1428,15 @@ export const STORY_ACTS: ActData[] = [
 
         "end": 107.5,
 
-        "text": "Попровил."
+        "text": "Попровил.",
+
+        "speaker": "Эдуард Левин",
+
+        "speakerRole": "Зодчий Игрового Замысла",
+
+        "avatarKey": "avatar_eduard",
+
+        "slackScreenshotKey": "12_nick_time_machine"
 
       },
 
@@ -1438,7 +1446,9 @@ export const STORY_ACTS: ActData[] = [
 
         "end": 109.5,
 
-        "text": "Локальный хронореактор взвыл,"
+        "text": "Локальный хронореактор взвыл,",
+
+        "slackScreenshotKey": "12_nick_time_machine"
 
       },
 
@@ -1452,9 +1462,9 @@ export const STORY_ACTS: ActData[] = [
 
         "speaker": "Ник Егоров",
 
-        "speakerRole": "Архи-Магистр Сингулярности Кода",
+        "speakerRole": "Координатор Скоростной Статики",
 
-        "avatarKey": "retro_film_nick_egorov_speedrun_v2",
+        "avatarKey": "avatar_nick_egorov",
 
         "slackScreenshotKey": "12_nick_time_machine"
 
@@ -2314,7 +2324,13 @@ export const STORY_ACTS: ActData[] = [
 
         "end": 172.42,
 
-        "text": "Иконописец Хухра и преподобный толкователь Ткачев"
+        "text": "Иконописец Хухра и преподобный толкователь Ткачев",
+
+        "speaker": "Артём Хухро",
+
+        "speakerRole": "Lead 3D • Техноэкзорцист Графической Скверны",
+
+        "avatarKey": "avatar_huhro"
 
       },
 
@@ -2324,7 +2340,13 @@ export const STORY_ACTS: ActData[] = [
 
         "end": 174.24,
 
-        "text": "приняли директиву к исполнению"
+        "text": "приняли директиву к исполнению",
+
+        "speaker": "Егор Ткачёв",
+
+        "speakerRole": "Creative Director • Преподобный Толкователь Воли Клиентархов",
+
+        "avatarKey": "avatar_egor"
 
       },
 

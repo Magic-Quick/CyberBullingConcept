@@ -49,9 +49,11 @@ export function initAssetMappings(): void {
     if (filename.includes('06_Акт_5') || filename === '05_act_5_clientarchs_invasion.mp3') audioUrls['06_act5'] = url;
     if (filename.includes('07_Акт_6') || filename === '06_act_6_tribunal_awards.mp3') audioUrls['07_act6'] = url;
     if (filename.includes('08_Акт_7') || filename === '07_act_7_outro.mp3') audioUrls['08_act7'] = url;
-    if (filename.includes('servotorization') || filename.includes('Сервоторизация') || filename.includes('SubHarmonic')) {
+    if (filename === 'servotorization.mp3') {
       audioUrls['servotorization'] = url;
       audioUrls['song_servotorization'] = url;
+    }
+    if (filename.toLowerCase().includes('subharmonic')) {
       audioUrls['servotorization_hd_subharmonic'] = url;
     }
     if (filename.includes('clean_playrium')) audioUrls['song_playrium'] = url;
@@ -147,6 +149,9 @@ const textureAliases: Record<string, string> = {
   retro_film_artem_khukhro_guyver_gemini_v19: 'retro_film_artem_khukhro_guyver_gemini_v19',
   retro_film_eva: 'retro_film_eva_theatrical_prop_helmet_v7',
   retro_film_egor: 'retro_horror_film_egor_mickey_vat_v14',
+  retro_film_egor_reverend_interpreter: 'retro_film_egor_reverend_interpreter_v4',
+  retro_film_egor_reverend_interpreter_v4: 'retro_film_egor_reverend_interpreter_v4',
+  retro_film_tkachev: 'retro_film_egor_reverend_interpreter_v4',
   retro_film_nick: 'retro_film_nick_egorov_speedrun_v2',
   retro_film_tolya: 'retro_film_tolya_gpt_v2',
   retro_film_vika: 'retro_film_vika_neural_corruption_v3',
@@ -190,6 +195,9 @@ const textureAliases: Record<string, string> = {
   avatar_gorin: 'avatar_gorin',
   avatar_eduard: 'avatar_eduard',
   avatar_egor: 'avatar_egor',
+  avatar_nick: 'avatar_nick_egorov',
+  avatar_nick_egorov: 'avatar_nick_egorov',
+  avatar_egorov: 'avatar_nick_egorov',
   avatar_eva: 'avatar_eva',
   avatar_pavel: 'avatar_pavel',
   avatar_toly: 'avatar_toly',

@@ -15,16 +15,16 @@ export interface CueNormalizationConfig {
 // Automatic Audio Normalization & Anti-Blast Protection (EBU R128 Aligned)
 // Keeps speech (Voice at 1.0) 100% intelligible, with cues strictly sitting underneath
 export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
-  // Harsh Dread / Terror Drops: Calibrated to 0.08-0.09 (-20 dBFS), smooth 450ms anti-blast attack curve
-  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.09, fadeInSec: 0.45, duckAmbientTo: 0.02 },
-  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.08, fadeInSec: 0.50, duckAmbientTo: 0.02 },
-  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.09, fadeInSec: 0.45, duckAmbientTo: 0.02 },
-  dread_07_titan_forge_instant_colossus_strike_25s: { targetVol: 0.09, fadeInSec: 0.40, duckAmbientTo: 0.02 },
+  // Harsh Dread / Terror Drops: High-impact cinematic tension (0.32 - 0.35), smooth 300ms anti-blast attack
+  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.35, fadeInSec: 0.28, duckAmbientTo: 0.08 },
+  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.32, fadeInSec: 0.32, duckAmbientTo: 0.08 },
+  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.35, fadeInSec: 0.30, duckAmbientTo: 0.08 },
+  dread_07_titan_forge_instant_colossus_strike_25s: { targetVol: 0.36, fadeInSec: 0.25, duckAmbientTo: 0.08 },
 
-  // Peace / Calm Moments: Gentle warm pads & vocalise, background ambient drops to complete silence
-  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.08, fadeInSec: 0.60, duckAmbientTo: 0.00 },
-  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.08, fadeInSec: 0.55, duckAmbientTo: 0.00 },
-  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.09, fadeInSec: 0.50, duckAmbientTo: 0.00 },
+  // Peace / Calm Moments: Gentle warm pads & vocalise
+  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.28, fadeInSec: 0.40, duckAmbientTo: 0.06 },
+  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.28, fadeInSec: 0.38, duckAmbientTo: 0.06 },
+  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.30, fadeInSec: 0.35, duckAmbientTo: 0.06 },
 };
 
 export const AMBIENT_TITLES: Record<AmbientTrackKey, string> = {
@@ -81,6 +81,7 @@ class AmbientManagerService {
   private _cueTrackKey: string | null = null;
   private _isCueDucking = false;
   private _savedDuckFactorBeforeCue = 1.0;
+  private _cueAudioCache: Map<string, HTMLAudioElement> = new Map();
 
   constructor() {
     this._isMuted = AudioController.isMuted();
@@ -119,6 +120,22 @@ class AmbientManagerService {
     return audio;
   }
 
+  private _getOrCreateCueAudio(key: string): HTMLAudioElement | null {
+    if (this._cueAudioCache.has(key)) {
+      return this._cueAudioCache.get(key)!;
+    }
+    const url = getAudioUrl(key);
+    if (!url) {
+      console.warn('[AmbientManager] Cinematic cue URL not found for key: ' + key);
+      return null;
+    }
+    const audio = new Audio(url);
+    audio.loop = false;
+    audio.muted = this._isMuted;
+    this._cueAudioCache.set(key, audio);
+    return audio;
+  }
+
   public getDisclaimerTrack(): { key: AmbientTrackKey | null; duckFactor: number } {
     return { key: null, duckFactor: 0.0 };
   }
@@ -134,17 +151,17 @@ class AmbientManagerService {
     }
     // Balance: 60% quieter than previous 0.35 (0.35 * 0.40 = 0.14) so narration sits prominently in front
     switch (actIndex) {
-      case 1: return { key: 'rust_and_bone', duckFactor: 0.14 };      // Prologue
-      case 2: return { key: 'absolute_blackout', duckFactor: 0.14 };  // Act 1: Convent
-      case 3: return { key: 'desolate_cry', duckFactor: 0.14 };       // Act 2: Sarcophagus
-      case 4: return { key: 'rust_and_bone', duckFactor: 0.14 };      // Act 3: Time Machine
-      case 5: return { key: 'absolute_blackout', duckFactor: 0.14 };  // Act 4: Engine
-      case 6: return { key: 'desolate_cry', duckFactor: 0.14 };       // Act 5: Clientarchs
-      case 7: return { key: 'rust_and_bone', duckFactor: 0.14 };      // Act 6: Punishment
-      case 8: return { key: 'chronicles_ambient', duckFactor: 0.09 };  // Act 6: Reward (Светлая благодать и спокойный зал суда)
-      case 9: return { key: 'desolate_cry', duckFactor: 0.14 };       // Act 8: Outro
+      case 1: return { key: 'rust_and_bone', duckFactor: 0.26 };      // Prologue
+      case 2: return { key: 'absolute_blackout', duckFactor: 0.24 };  // Act 1: Convent
+      case 3: return { key: 'desolate_cry', duckFactor: 0.26 };       // Act 2: Sarcophagus
+      case 4: return { key: 'rust_and_bone', duckFactor: 0.26 };      // Act 3: Time Machine
+      case 5: return { key: 'absolute_blackout', duckFactor: 0.24 };  // Act 4: Engine
+      case 6: return { key: 'desolate_cry', duckFactor: 0.26 };       // Act 5: Clientarchs
+      case 7: return { key: 'rust_and_bone', duckFactor: 0.26 };      // Act 6: Punishment
+      case 8: return { key: 'chronicles_ambient', duckFactor: 0.22 }; // Act 6: Reward
+      case 9: return { key: 'desolate_cry', duckFactor: 0.26 };       // Act 8: Outro
       case 10: return { key: null, duckFactor: 0.0 };                 // Act 7: Song (ZERO AMBIENT)
-      default: return { key: 'desolate_cry', duckFactor: 0.14 };
+      default: return { key: 'desolate_cry', duckFactor: 0.26 };
     }
   }
 
@@ -368,7 +385,7 @@ class AmbientManagerService {
     }
     if (this._cueAudio && this._cueTrackKey) {
       const cfg = CUE_NORMALIZATION_MAP[this._cueTrackKey] ?? { targetVol: 0.20 };
-      this._cueAudio.volume = this._isMuted ? 0 : Math.min(0.10, cfg.targetVol * (this._musicVolume / 0.85));
+      this._cueAudio.volume = this._isMuted ? 0 : Math.min(0.40, cfg.targetVol * (this._musicVolume / 0.85));
     }
     for (const f of this._fadingTracks) {
       if (!f.pauseOnEnd) {
@@ -380,6 +397,9 @@ class AmbientManagerService {
   public setMuted(muted: boolean): void {
     this._isMuted = muted;
     for (const audio of this._audioCache.values()) {
+      audio.muted = muted;
+    }
+    for (const audio of this._cueAudioCache.values()) {
       audio.muted = muted;
     }
     if (this._cueAudio) {
@@ -411,6 +431,9 @@ class AmbientManagerService {
     this.cancelWait();
     if (this._cueAudio) {
       this._cueAudio.pause();
+    }
+    for (const audio of this._cueAudioCache.values()) {
+      audio.pause();
     }
     if (this._currentAudio && this._currentTrackKey) {
       this._savedPositions.set(this._currentTrackKey, this._currentAudio.currentTime);
@@ -457,7 +480,100 @@ class AmbientManagerService {
   }
 
 
-  public playCinematicCue(cueKey: string, customVolFactor: number = 1.0): void {
+  public syncCinematicCue(cueKey: string, offsetSec: number, isPlaying: boolean): void {
+    if (!cueKey || cueKey === 'stop') {
+      this.stopCinematicCue(0.2);
+      return;
+    }
+
+    const normKey = cueKey.toLowerCase();
+    const cfg = CUE_NORMALIZATION_MAP[normKey] ?? {
+      targetVol: normKey.startsWith('peace_') ? 0.15 : 0.20,
+      fadeInSec: 0.2,
+      duckAmbientTo: 0.04,
+    };
+    const targetVolume = Math.min(0.40, cfg.targetVol * (this._musicVolume / 0.85));
+
+    // Case 1: Same cue is already active
+    if (this._cueTrackKey === normKey && this._cueAudio) {
+      (this._cueAudio as any)._targetOffset = Math.max(0, offsetSec);
+      try {
+        this._cueAudio.currentTime = Math.max(0, offsetSec);
+      } catch (err) {
+        console.warn('[AmbientManager] Error seeking cue ' + normKey + ':', err);
+      }
+      this._cueAudio.volume = this._isMuted ? 0 : targetVolume;
+      if (isPlaying && !this._isPaused) {
+        this._cueAudio.play().catch(() => {});
+      } else {
+        this._cueAudio.pause();
+      }
+
+      if (!this._isCueDucking) {
+        this._isCueDucking = true;
+        this._savedDuckFactorBeforeCue = this._currentDuckFactor;
+        this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.2);
+      }
+      return;
+    }
+
+    // Case 2: New cue or switching cues during seek
+    if (this._cueAudio) {
+      this._cueAudio.pause();
+      this._cueAudio.currentTime = 0;
+      this._cueAudio = null;
+    }
+    this._fadingTracks = this._fadingTracks.filter((f) => f.key !== this._cueTrackKey);
+
+    const audio = this._getOrCreateCueAudio(normKey);
+    if (!audio) return;
+
+    audio.loop = false;
+    audio.muted = this._isMuted;
+    audio.volume = this._isMuted ? 0 : targetVolume;
+
+    const safeOffset = Math.max(0, offsetSec);
+    (audio as any)._targetOffset = safeOffset;
+    const applyOffset = () => {
+      try {
+        const target = (audio as any)._targetOffset;
+        if (typeof target === 'number' && Math.abs(audio.currentTime - target) > 0.05) {
+          audio.currentTime = target;
+        }
+      } catch {}
+    };
+
+    applyOffset();
+    audio.addEventListener('loadedmetadata', applyOffset, { once: true });
+    audio.addEventListener('canplay', applyOffset, { once: true });
+    audio.addEventListener('loadeddata', applyOffset, { once: true });
+    if (audio.readyState < 1 && typeof audio.load === 'function') {
+      try { audio.load(); } catch {}
+    }
+
+    this._cueAudio = audio;
+    this._cueTrackKey = normKey;
+
+    if (!this._isCueDucking) {
+      this._isCueDucking = true;
+      this._savedDuckFactorBeforeCue = this._currentDuckFactor;
+      this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.2);
+    }
+
+    audio.onended = () => {
+      this.stopCinematicCue(1.0);
+    };
+
+    if (isPlaying && !this._isPaused) {
+      audio.play().catch((err) => {
+        console.warn('[AmbientManager] Cue play failed on sync: ' + normKey, err);
+      });
+    } else {
+      audio.pause();
+    }
+  }
+
+  public playCinematicCue(cueKey: string, customVolFactor: number = 1.0, startOffsetSec: number = 0): void {
     if (!cueKey || cueKey === 'stop') {
       this.stopCinematicCue(0.6);
       return;
@@ -468,16 +584,9 @@ class AmbientManagerService {
       return;
     }
 
-    const url = getAudioUrl(normKey);
-    if (!url) {
-      console.warn(`[AmbientManager] Cinematic cue URL not found for key: ${cueKey}`);
+    if (startOffsetSec > 0) {
+      this.syncCinematicCue(normKey, startOffsetSec, !this._isPaused);
       return;
-    }
-
-    // Stop previous cue with quick fade
-    if (this._cueAudio) {
-      this._cueAudio.pause();
-      this._cueAudio = null;
     }
 
     const cfg = CUE_NORMALIZATION_MAP[normKey] ?? {
@@ -486,14 +595,22 @@ class AmbientManagerService {
       duckAmbientTo: 0.04,
     };
 
-    const audio = new Audio(url);
+    // Stop previous cue with quick fade
+    if (this._cueAudio) {
+      this._cueAudio.pause();
+      this._cueAudio.currentTime = 0;
+      this._cueAudio = null;
+    }
+
+    const audio = this._getOrCreateCueAudio(normKey);
+    if (!audio) return;
+
     audio.loop = false;
     audio.muted = this._isMuted;
+    audio.currentTime = 0;
 
-    // Automatic normalization:
-    // Capped ceiling ensures cue NEVER blasts over narration or causes ear fatigue!
     const normalizedCeiling = cfg.targetVol * customVolFactor;
-    const targetVolume = Math.min(0.10, normalizedCeiling * (this._musicVolume / 0.85));
+    const targetVolume = Math.min(0.40, normalizedCeiling * (this._musicVolume / 0.85));
     audio.volume = 0; // Start at 0 for anti-pop smooth micro-ramp
 
     this._cueAudio = audio;
@@ -507,7 +624,7 @@ class AmbientManagerService {
       startVol: 0,
       targetVol: targetVolume,
       elapsed: 0,
-      duration: Math.max(0.35, cfg.fadeInSec),
+      duration: Math.max(0.20, cfg.fadeInSec),
       pauseOnEnd: false,
     });
 
@@ -524,7 +641,7 @@ class AmbientManagerService {
 
     if (!this._isPaused) {
       audio.play().catch((err) => {
-        console.warn(`[AmbientManager] Cue play failed: ${normKey}`, err);
+        console.warn('[AmbientManager] Cue play failed: ' + normKey, err);
       });
     }
   }
@@ -532,15 +649,21 @@ class AmbientManagerService {
   public stopCinematicCue(fadeSec: number = 0.8): void {
     if (this._cueAudio) {
       const curCue = this._cueAudio;
-      this._fadingTracks.push({
-        audio: curCue,
-        key: this._cueTrackKey || 'cue',
-        startVol: curCue.volume,
-        targetVol: 0,
-        elapsed: 0,
-        duration: fadeSec,
-        pauseOnEnd: true,
-      });
+      if (fadeSec <= 0) {
+        curCue.pause();
+        curCue.volume = 0;
+      } else {
+        this._fadingTracks = this._fadingTracks.filter((f) => f.key !== this._cueTrackKey);
+        this._fadingTracks.push({
+          audio: curCue,
+          key: this._cueTrackKey || 'cue',
+          startVol: curCue.volume,
+          targetVol: 0,
+          elapsed: 0,
+          duration: fadeSec,
+          pauseOnEnd: true,
+        });
+      }
       this._cueAudio = null;
       this._cueTrackKey = null;
     }

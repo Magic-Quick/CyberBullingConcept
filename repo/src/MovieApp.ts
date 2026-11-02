@@ -6,7 +6,7 @@ import { getTexture, hasTexture, getAudioUrl, getIntroVideoUrl } from './assetsM
 
 import { getConcertCutAtTime } from './concertSequence';
 
-import { getNarratorShotAtTime, NarratorShotCut } from './narratorShotSequence';
+import { getNarratorShotAtTime, getActiveCueAtTime, NarratorShotCut } from './narratorShotSequence';
 
 import { CosmicScene } from './CosmicScene';
 
@@ -208,7 +208,9 @@ export function getCrewAvatarTexture(name: string, fallbackTexKey?: string | nul
 
   else if (n.includes('толя') || n.includes('щербаков')) key = 'avatar_toly';
 
-  else if (n.includes('егор')) key = 'avatar_egor';
+  else if (n.includes('ник') || n.includes('егоров')) key = hasTexture('avatar_nick_egorov') ? 'avatar_nick_egorov' : (hasTexture('avatar_nick') ? 'avatar_nick' : 'retro_film_nick_egorov_speedrun_v2');
+
+  else if (n.includes('егор') || n.includes('ткачев') || n.includes('ткачёв')) key = 'avatar_egor';
 
   else if (n.includes('даниал') || n.includes('искаков')) key = hasTexture('avatar_hoodie') ? 'avatar_hoodie' : 'retro_film_danial_iskakov_sapper_v1';
 
@@ -229,8 +231,6 @@ export function getCrewAvatarTexture(name: string, fallbackTexKey?: string | nul
   else if (n.includes('женя')) key = 'avatar_zhenya';
 
   else if (n.includes('новенький')) key = hasTexture('retro_film_alexey_novice_v4') ? 'retro_film_alexey_novice_v4' : 'avatar_gorin';
-
-  else if (n.includes('ник')) key = 'retro_film_nick_egorov_speedrun_v2';
 
 
 
@@ -4415,6 +4415,8 @@ export class MovieApp {
 
     AmbientManager.cancelWait();
 
+    AmbientManager.stopCinematicCue(0.2);
+
     this._currentActIndex = index;
 
     const act = STORY_ACTS[index];
@@ -4954,7 +4956,6 @@ export class MovieApp {
     this._actTime = clamped;
 
     this._narratorCurrentTexKey = '';
-    AmbientManager.stopCinematicCue(0.2);
 
     this._isTransitioningAct = false;
 
@@ -5072,6 +5073,34 @@ export class MovieApp {
 
 
 
+      const isSongAct = act.category === 'song' || act.id === 'act_7_song';
+
+      // Ensure the correct ambient background track for this act is active
+      const { key: expectedAmbientKey, duckFactor: expectedDuck } = AmbientManager.getTrackForAct(this._currentActIndex, act.id);
+      if (expectedAmbientKey) {
+        const curKey = AmbientManager.getCurrentTrackKey();
+        const curAudio = AmbientManager.getCurrentAudio();
+        if (curKey !== expectedAmbientKey || !curAudio) {
+          AmbientManager.playTrack(expectedAmbientKey, expectedDuck, 0.0);
+        }
+      } else if (isSongAct) {
+        if (AmbientManager.getCurrentTrackKey() !== null) {
+          AmbientManager.playTrack(null, 0.0, 0.0);
+        }
+      }
+
+      // Sync or stop cinematic cue (нагнетание / dread / peace) at the seek position
+      if (!isSongAct) {
+        const activeCue = getActiveCueAtTime(act.id, clamped);
+        if (activeCue) {
+          AmbientManager.syncCinematicCue(activeCue.cueKey, activeCue.offset, this._isPlaying);
+        } else {
+          AmbientManager.stopCinematicCue(0.2);
+        }
+      } else {
+        AmbientManager.stopCinematicCue(0.0);
+      }
+
       if (this._isPlaying) {
 
         AmbientManager.resumeCurrent();
@@ -5090,7 +5119,6 @@ export class MovieApp {
 
       // Immediately sync cinematic cut and visual alpha on seek
 
-      const isSongAct = act.category === 'song' || act.id === 'act_7_song';
 
       if (!isSongAct) {
 
@@ -7263,7 +7291,7 @@ export class MovieApp {
 
       // Show floating Slack screenshot overlay without stretching across the screen
 
-      if (cut.ambientCueKey) {
+      if (cut.ambientCueKey && punch) {
         AmbientManager.playCinematicCue(cut.ambientCueKey);
       }
 

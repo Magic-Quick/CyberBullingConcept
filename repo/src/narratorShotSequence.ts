@@ -236,7 +236,17 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       characterRole: 'Creative Lead • Зодчий Игрового Замысла',
       characterThemeColor: 0xff3366,
       ambientCueKey: 'peace_03_pin_drop_silence_gentle_resolution_25s',
-      label: 'Эдик: Поправил, локально поменял — Бюрократия сильнее физики',
+      label: 'Эдик: Отчитался',
+    },
+    {
+      time: 106.32,
+      texKey: 'retro_warhammer_eduard_levin_gpt_v3',
+      type: 'character_quote',
+      characterName: 'ЭДУАРД ЛЕВИН',
+      characterRole: 'Creative Lead • Зодчий Игрового Замысла',
+      characterThemeColor: 0xff3366,
+      slackKey: '12_nick_time_machine',
+      label: 'Эдик: Попровил — Скриншот машины времени',
     },
     {
       time: 109.50,
@@ -459,6 +469,15 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       label: 'Хухра: Чертеж боевой робо-коровы с лазером',
     },
     {
+      time: 172.42,
+      texKey: 'retro_film_egor_reverend_interpreter_v4',
+      type: 'character_quote',
+      characterName: 'ЕГОР ТКАЧЁВ',
+      characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
+      characterThemeColor: 0xe01e5a,
+      label: 'Ткачёв: Преподобный толкователь принимает директиву',
+    },
+    {
       time: 178.28,
       texKey: 'retro_film_space_cyber_cow_lasers_gemini_v1',
       type: 'event_illustration',
@@ -557,4 +576,50 @@ export function getNarratorShotAtTime(actId: string, time: number): NarratorShot
   }
 
   return activeCut;
+}
+
+export interface ActiveCueInfo {
+  cueKey: string;
+  startTime: number;
+  offset: number;
+  duration: number;
+}
+
+/**
+ * Finds the currently active cinematic audio cue (e.g. buildup/dread or peace pads)
+ * at a given timeline position within an act.
+ * Even if the timeline seeks past the initial triggering cut, this returns the active cue
+ * and its exact playback offset so it can seamlessly resume mid-track.
+ */
+export function getActiveCueAtTime(actId: string, time: number): ActiveCueInfo | null {
+  const cuts = NARRATOR_CUTS[actId];
+  if (!cuts || cuts.length === 0) return null;
+
+  // Find the most recent cut at or before time that defined an ambientCueKey
+  let latestCueCut: NarratorShotCut | null = null;
+  for (let i = 0; i < cuts.length; i++) {
+    const cut = cuts[i];
+    if (cut.time > time) break;
+    if (cut.ambientCueKey) {
+      latestCueCut = cut;
+    }
+  }
+
+  if (!latestCueCut || !latestCueCut.ambientCueKey) return null;
+
+  // Determine duration of the cue (usually encoded as e.g. '_25s' or '_30s')
+  const match = latestCueCut.ambientCueKey.match(/_(\d+)s/);
+  const duration = match ? parseInt(match[1], 10) : 25.0;
+
+  const elapsed = time - latestCueCut.time;
+  if (elapsed >= 0 && elapsed < duration) {
+    return {
+      cueKey: latestCueCut.ambientCueKey,
+      startTime: latestCueCut.time,
+      offset: elapsed,
+      duration: duration,
+    };
+  }
+
+  return null;
 }

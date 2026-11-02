@@ -648,7 +648,7 @@ export class Subtitles extends Container {
       else if (t.includes('mavis') && t.includes('ноги')) sKey = '08_mavis_legs';
       else if (t.includes('даниал') || t.includes('3а') || t.includes('3a')) sKey = '09_danial_3a_project';
       else if (t.includes('музеях') && (t.includes('котов') || t.includes('мумий') || t.includes('фараон'))) sKey = '10_pyramids_museum';
-      // Removed rogue automatic 12_nick_time_machine trigger to preserve clean time machine entrance
+      else if (t.includes('попровил') || t.includes('поправил')) sKey = '12_nick_time_machine';
       else if (t.includes('сундук') && (t.includes('яйцо') || t.includes('звук'))) sKey = '13_chest_egg_sound';
       else if (t.includes('чуяния ноль') || t.includes('было чуяния') || t.includes('павел, простите')) sKey = '14_feeling_zero';
     }
