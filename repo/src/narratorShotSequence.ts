@@ -460,60 +460,79 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       type: 'ai_lord',
       label: 'Директива: Простые решения',
     },
+    // 168.52s: "Техноэкзорцист графической скверны Артём Хухро..."
     {
-      time: 168.76,
+      time: 168.52,
       texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
       type: 'character_quote',
       characterName: 'АРТЁМ ХУХРО',
       characterRole: 'Lead 3D • Техноэкзорцист Графической Скверны',
       characterThemeColor: 0x9d4edd,
-      label: 'Хухра: Чертеж боевой робо-коровы с лазером',
+      label: 'Хухро: Техноэкзорцист графической скверны',
     },
+    // 174.80s: "...и преподобный толкователь воли клиентархов Егор Ткачев..."
     {
-      time: 172.42,
+      time: 174.80,
       texKey: 'retro_horror_film_egor_mickey_vat_v14',
       type: 'character_quote',
       characterName: 'ЕГОР ТКАЧЁВ',
       characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
       characterThemeColor: 0xe01e5a,
-      label: 'Ткачёв: Преподобный толкователь принимает директиву',
+      label: 'Ткачёв: Преподобный толкователь воли клиентархов',
     },
+    // 178.64s: "...и тут же вычертили схему орбитального биоаннигилятора..." -> Чертёж/схема! Корову в космосе ДО слова «корова» НЕ показываем!
     {
-      time: 178.28,
+      time: 178.64,
+      texKey: 'retro_film_artem_mechanicus_cowl_flying_cow_v12',
+      type: 'event_illustration',
+      label: 'Чертёж и схема орбитального биоаннигилятора (до появления коровы)',
+    },
+    // 183.08s: "...гигантской роботизированной коровы, которая парит над мегаполисом пришельцев и выжигает кварталы тяжелым лазерным лучом, бьющим напрямую из вымени."
+    // Полноценный Clean Picture Reveal: чистая картинка 10.66 секунд БЕЗ перекрытия плашками диалога!
+    {
+      time: 183.08,
       texKey: 'retro_film_space_cyber_cow_lasers_gemini_v1',
       type: 'event_illustration',
-      label: 'Боевая кибер-корова стреляет лазерами из вымени в глубоком космосе',
+      label: 'Боевая кибер-корова стреляет лазерами из вымени (Чистая экспозиция)',
     },
+    // 193.74s: "Эдик потом дипломатично заметил:" -> Появляется Эдуард Левин и бейдж персонажа
     {
-      time: 183.60,
-      texKey: 'retro_film_space_cyber_cow_lasers_gemini_v1',
-      type: 'event_illustration',
-      slackKey: '07_cow_laser',
-      label: 'Тред: Лазеры из вымени',
-    },
-    {
-      time: 188.94,
+      time: 193.74,
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
       type: 'character_quote',
       characterName: 'ЭДУАРД ЛЕВИН',
       characterRole: 'Creative Lead • Зодчий Игрового Замысла',
       characterThemeColor: 0xff3366,
-      label: 'Эдик: Артём слишком буквально принял просьбу',
+      label: 'Эдик: Эдуард Левин на экране перед своей цитатой',
     },
-    { time: 196.05, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Реестр простых решений' },
-    // 206.29s: "А когда клиентархи из Game Gears прислали депешу «Из вами сделанных плейблов визуал брать не стоит»..."
-    { time: 206.29, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Депеша Game Gears про визуал' },
-    // 213.47s: "...Палач Старого Стека Максим Мамусин перевел щиты в боевой режим одним священным словом. Заебись!"
+    // 196.58s: "«Артем слишком буквально принял мою просьбу»." -> Эдик остаётся на экране + плашка Slack!
     {
-      time: 213.47,
+      time: 196.58,
+      texKey: 'retro_warhammer_eduard_levin_gpt_v3',
+      type: 'character_quote',
+      characterName: 'ЭДУАРД ЛЕВИН',
+      characterRole: 'Creative Lead • Зодчий Игрового Замысла',
+      characterThemeColor: 0xff3366,
+      slackKey: '07_cow_laser',
+      label: 'Эдик: Цитата про буквально принятую просьбу со Slack-плашкой',
+    },
+    // 200.66s: "Мои кремниевые цепи не обучены распознавать человеческую иронию."
+    { time: 200.66, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Не обучен распознавать человеческую иронию' },
+    // 205.78s: "Я официально внес боевое лазерное вымя в корабельный реестр простых решений."
+    { time: 205.78, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Реестр простых решений' },
+    // 211.10s: "А когда клиентархи из Game Gears прислали депешу..."
+    { time: 211.10, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Депеша Game Gears' },
+    // 217.98s: "...палач старого стека Максим Мамусин перевел щиты в боевой режим одним священным словом. Заебись!"
+    {
+      time: 217.98,
       texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
       type: 'character_quote',
       characterName: 'МАКСИМ МАМУСИН',
       characterRole: 'Tech Lead • Палач Старого Стека',
       characterThemeColor: 0x48cae4,
-      label: 'Мамусин: Заебись!',
+      label: 'Мамусин: Палач старого стека — Заебись!',
     },
-    { time: 220.95, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
+    { time: 225.60, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
   ],
 
   // Act 6: Tribunal Punishment / Наказание (98.76s)
@@ -583,15 +602,16 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       characterThemeColor: 0x38bdf8,
       label: 'Новообращённый Послушник Алексей: Питательная трубка с 2D-плейбаком'
     },
-    // 37.82s: "В награду за столь великую заботу о коллективе Ковчег жалует надзирателю немыслимую роскошь в космическом пространстве – чашку безупречного эспрессо."
-    // Показываем чашку эспрессо с печенькой, БЕЗ перекрытия лица лорда!
-    { time: 37.82, texKey: 'retro_film_ship_storage_coffee_cup_v2', type: 'event_illustration', label: 'Чашка безупречного эспрессо на блюдце с печенькой благодати' },
-    // 49.36s: "Зерна ручной обжарки с реликтовых плантаций, плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада..."
-    // Макро крупный план пенки эспрессо и пара
-    { time: 49.36, texKey: 'retro_film_ship_storage_coffee_cup_v1', type: 'event_illustration', label: 'Макро: Плотная бархатная пенка цвета лесного ореха и аромат шоколада' },
+    // 37.82s: "В награду за столь великую заботу о коллективе Ковчег жалует надзирателю немыслимую роскошь в космическом пространстве..."
+    // ИИ-Лорд с пафосом вещает об этой роскоши со своего трона/крупным планом!
+    { time: 37.82, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Оглашение немыслимой роскоши' },
+    // 46.34s: "...– чашку безупречного эспрессо." -> Только в момент слов о чашке эспрессо появляется сама чашка!
+    { time: 46.34, texKey: 'retro_film_ship_storage_coffee_cup_v2', type: 'event_illustration', label: 'Чашка безупречного эспрессо на блюдце с печенькой благодати' },
+    // 52.92s: "...плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада..." -> Макро пенки
+    { time: 52.92, texKey: 'retro_film_ship_storage_coffee_cup_v1', type: 'event_illustration', label: 'Макро: Плотная бархатная пенка цвета лесного ореха и аромат шоколада' },
     // 60.18s: "Поэтому сервисная игла пневмодозатора с шипением врезается напрямую в его питательный катетер, и кипящий концентрат под давлением в 8 атмосфер впрыскивается прямо в вену, минуя ротовую полость!"
     // ЖЕСТКАЯ КОНЦОВКА НАГРАДЫ: Внезапный шоковый дроп нагнетания на ударе сервисной иглы в вену!
-    { time: 60.18, texKey: 'retro_film_feed_tubes_coders_v7', type: 'event_illustration', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Удар сервисной иглы пневмодозатора: Кипящий концентрат в вену — Жесткое нагнетание' },
+    { time: 60.18, texKey: 'retro_film_ship_storage_coffee_cup_v1', type: 'event_illustration', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Удар сервисной иглы пневмодозатора: Кипящий концентрат в вену — Жесткое нагнетание' },
     // 74.02s: "Никаких чашек, никаких пауз, его глаза даже не успели моргнуть и оторваться от штурма Натиона."
     { time: 74.02, texKey: 'retro_film_gorin_batman_cowl_gemini_v20', type: 'event_illustration', label: 'Штурм Нотиона: Глаза Горина не успели моргнуть' },
     // 80.74s: "Зрачки расширены, пульс 240, давление в норме."

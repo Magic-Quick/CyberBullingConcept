@@ -58,34 +58,54 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   { time: 165.88, texKey: 'ai_lord_drive_default', label: 'Финальный драйв: Я вас научу!' },
   { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Соло: Джнгхфдбвк / Jnghfdbk' },
 
-  // [171.00s - 175.00s] "Как Горин на синке втирал «демоблил», Как в чат на английской «Jnghfdbk» влупил!"
+  // [171.00s - 173.50s] "Рыдали, как Горин на спаме вводил демоблил,"
   {
     time: 171.00,
     texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
     characterName: 'Алексей Горин',
     characterRole: 'Head of Production • Верховный Надзиратель Конвейера',
     characterThemeColor: 0xffaa00,
-    label: 'Горин: На синке втирал «демоблил» / Jnghfdbk'
+    label: 'Горин: На спаме вводил демоблил'
   },
 
-  // [175.00s - 178.80s] "Как Ева вопит: Этот плебл в работу! Кик-офф пять минут — И все пашем в субботу!"
+  // [173.50s - 176.00s] "Как Вова в чат Лонгбокс Disney слил!"
   {
-    time: 175.00,
+    time: 173.50,
+    texKey: 'retro_film_vova_khaetsky_v11',
+    characterName: 'Владимир Хаецкий',
+    characterRole: '3D/2D Artist • Страж Невидимого Слоя',
+    characterThemeColor: 0x00f5d4,
+    label: 'Вова: В чат Лонгбокс Disney слил'
+  },
+
+  // [176.00s - 178.50s] "Как Ева кикофф Напинала отряду,"
+  {
+    time: 176.00,
     texKey: 'retro_film_eva_theatrical_prop_helmet_v7',
     characterName: 'Ева Аксёнова',
-    characterRole: 'Главная Хранительница Скрижалей и Сроков',
+    characterRole: 'Production Director • Хранительница Скрижалей',
     characterThemeColor: 0xff3399,
-    label: 'Ева: Этот плебл в работу! Кик-офф 5 минут'
+    label: 'Ева: Кик-офф напинала отряду'
   },
 
-  // [178.80s - 184.00s] "Как Эдик принёс от клиента свиток: Одиннадцать правок, одиннадцать пыток!"
+  // [178.50s - 181.00s] "Как Давит старый движок Принял к ряду!"
   {
-    time: 178.80,
+    time: 178.50,
+    texKey: 'retro_film_davit_gazaryan_old_engine_v6',
+    characterName: 'Давит Газарян',
+    characterRole: 'Client Developer • Рыцарь Старого Движка',
+    characterThemeColor: 0x33ccff,
+    label: 'Давит: Старый движок принял к ряду'
+  },
+
+  // [181.00s - 185.00s] "Как клиента свиток: 11 правок, 11 будок в банке заметок!"
+  {
+    time: 181.00,
     texKey: 'retro_warhammer_eduard_levin_gpt_v3',
     characterName: 'Эдуард Левин',
     characterRole: 'Creative Lead • Зодчий Игрового Замысла',
     characterThemeColor: 0xff3366,
-    label: 'Эдик: Свиток от клиента — 11 правок и 11 пыток'
+    label: 'Эдик: Свиток от клиента — 11 правок и 11 будок'
   },
 
   // [184.00s - 186.30s] "Как в банке забытый томится Дисней —"

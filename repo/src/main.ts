@@ -63,36 +63,130 @@ plbx.init(async () => {
     resolution: Math.min(window.devicePixelRatio || 1, 2),
   });
 
-  // Simple loading indicator
+  // Authentic Ark Terminal Loading Screen
   const loadingContainer = new Container();
-  const loadingText = new Text({
-    text: 'ЗАГРУЗКА БОРТОВЫХ СИСТЕМ КОВЧЕГА...',
+  app.stage.addChild(loadingContainer);
+
+  const panelBg = new Graphics();
+  loadingContainer.addChild(panelBg);
+
+  const titleText = new Text({
+    text: '[ ИНИЦИАЛИЗАЦИЯ СИСТЕМ КОВЧЕГА ]',
     style: new TextStyle({
-      fontFamily: ['Orbitron', 'monospace', 'sans-serif'],
-      fontSize: 14,
-      fill: '#ff5e1a',
-      letterSpacing: 2,
+      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontSize: 16,
+      fontWeight: 'bold',
+      fill: '#00f5d4',
+      letterSpacing: 3,
+      dropShadow: { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 },
     }),
   });
-  loadingText.anchor.set(0.5);
-  loadingText.position.set(window.innerWidth / 2, window.innerHeight / 2);
-  loadingContainer.addChild(loadingText);
-  app.stage.addChild(loadingContainer);
+  titleText.anchor.set(0.5);
+  loadingContainer.addChild(titleText);
+
+  const statusText = new Text({
+    text: 'ЗАГРУЗКА БОРТОВЫХ РЕЛИКВИЙ И КВАРЦЕВЫХ СТЕК...',
+    style: new TextStyle({
+      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontSize: 12,
+      fill: '#38bdf8',
+      letterSpacing: 1.5,
+    }),
+  });
+  statusText.anchor.set(0.5);
+  loadingContainer.addChild(statusText);
 
   const progressBar = new Graphics();
   loadingContainer.addChild(progressBar);
 
+  const percentText = new Text({
+    text: '[   0% ]',
+    style: new TextStyle({
+      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontSize: 13,
+      fontWeight: 'bold',
+      fill: '#00f5d4',
+      letterSpacing: 2,
+      dropShadow: { alpha: 0.6, blur: 4, color: '#00f5d4', distance: 0 },
+    }),
+  });
+  percentText.anchor.set(0.5);
+  loadingContainer.addChild(percentText);
+
+  const updateLoadingUI = (ratio: number) => {
+    const sw = window.innerWidth;
+    const sh = window.innerHeight;
+    const cx = sw / 2;
+    const cy = sh / 2;
+
+    const panelW = Math.min(480, sw - 40);
+    const panelH = 150;
+    const px = cx - panelW / 2;
+    const py = cy - panelH / 2;
+
+    panelBg.clear();
+    panelBg.roundRect(px, py, panelW, panelH, 8);
+    panelBg.fill({ color: 0x030c10, alpha: 0.94 });
+    panelBg.stroke({ color: 0x005f54, width: 1.5 });
+
+    const cornerSize = 12;
+    panelBg.poly([
+      { x: px + cornerSize, y: py },
+      { x: px, y: py },
+      { x: px, y: py + cornerSize },
+    ]);
+    panelBg.stroke({ color: 0x00f5d4, width: 2 });
+
+    panelBg.poly([
+      { x: px + panelW - cornerSize, y: py },
+      { x: px + panelW, y: py },
+      { x: px + panelW, y: py + cornerSize },
+    ]);
+    panelBg.stroke({ color: 0x00f5d4, width: 2 });
+
+    panelBg.poly([
+      { x: px, y: py + panelH - cornerSize },
+      { x: px, y: py + panelH },
+      { x: px + cornerSize, y: py + panelH },
+    ]);
+    panelBg.stroke({ color: 0x00f5d4, width: 2 });
+
+    panelBg.poly([
+      { x: px + panelW - cornerSize, y: py + panelH },
+      { x: px + panelW, y: py + panelH },
+      { x: px + panelW, y: py + panelH - cornerSize },
+    ]);
+    panelBg.stroke({ color: 0x00f5d4, width: 2 });
+
+    titleText.position.set(cx, cy - 36);
+    statusText.position.set(cx, cy - 10);
+
+    const barW = Math.min(360, panelW - 60);
+    const barH = 8;
+    const bx = cx - barW / 2;
+    const by = cy + 18;
+
+    progressBar.clear();
+    progressBar.roundRect(bx, by, barW, barH, 2);
+    progressBar.fill({ color: 0x071e22 });
+    progressBar.stroke({ color: 0x005f54, width: 1 });
+
+    const fillW = Math.max(0, Math.min(barW, barW * ratio));
+    if (fillW > 0) {
+      progressBar.roundRect(bx, by, fillW, barH, 2);
+      progressBar.fill({ color: 0x00f5d4 });
+    }
+
+    const pct = Math.round(ratio * 100);
+    percentText.text = `[ ${pct.toString().padStart(3, ' ')}% ]`;
+    percentText.position.set(cx, cy + 46);
+  };
+
+  updateLoadingUI(0);
+
   // Load all assets
   await loadAllAssets((ratio) => {
-    progressBar.clear();
-    const w = 300;
-    const h = 4;
-    const x = window.innerWidth / 2 - w / 2;
-    const y = window.innerHeight / 2 + 30;
-    progressBar.roundRect(x, y, w, h, 2);
-    progressBar.fill({ color: 0x1f2233 });
-    progressBar.roundRect(x, y, w * ratio, h, 2);
-    progressBar.fill({ color: 0xff5e1a });
+    updateLoadingUI(ratio);
   });
 
   app.stage.removeChild(loadingContainer);
