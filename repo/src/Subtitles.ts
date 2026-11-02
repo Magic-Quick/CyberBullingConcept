@@ -1205,32 +1205,92 @@ export class Subtitles extends Container {
     if (count === 0) return;
 
     if (!isPortrait) {
-      // LANDSCAPE: Horizontally centered row
-      const maxW = Math.min(w * 0.94, 1540);
-      const gap = count > 3 ? 14 : 18;
+      // LANDSCAPE: Vertically-stacked / 2x2 grid cascade so phrases are large, readable, and not cramped horizontally
+      const maxW = Math.min(w * 0.90, 1160);
+      const gapX = 20;
+      const gapY = 14;
 
-      let cardW: number;
       if (count === 1) {
-        cardW = Math.min(w * 0.50, 640);
-      } else if (count === 2) {
-        cardW = Math.min((maxW - gap) / 2, 520);
-      } else if (count === 3) {
-        cardW = Math.min((maxW - gap * 2) / 3, 420);
-      } else {
-        cardW = Math.min((maxW - gap * 3) / 4, 340);
-      }
-
-      const totalRowW = count * cardW + (count - 1) * gap;
-      const startX = -totalRowW / 2 + cardW / 2;
-
-      for (let i = 0; i < activeCards.length; i++) {
-        const card = activeCards[i];
-        card.targetX = Math.round(startX + i * (cardW + gap));
+        const cardW = Math.min(w * 0.54, 620);
+        const card = activeCards[0];
+        card.targetX = 0;
         card.targetY = 0;
         this._drawGorinCard(card, cardW);
-      }
+        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.44));
+      } else if (count === 2) {
+        // 2 cards stacked vertically (one above another) so they stay large, readable and clear
+        const cardW = Math.min(w * 0.50, 560);
+        let totalH = 0;
+        const heights: number[] = [];
+        for (const card of activeCards) {
+          const tex = hasTexture(card.key) ? getTexture(card.key) : null;
+          const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
+          const ch = Math.round(cardW / aspect);
+          heights.push(ch);
+          totalH += ch;
+        }
+        totalH += gapY;
+        let curY = -totalH / 2;
+        for (let i = 0; i < 2; i++) {
+          const card = activeCards[i];
+          const ch = heights[i];
+          card.targetX = 0;
+          card.targetY = Math.round(curY + ch / 2);
+          this._drawGorinCard(card, cardW);
+          curY += ch + gapY;
+        }
+        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.42));
+      } else {
+        // count === 3 or 4: 2x2 Grid (2 columns, 2 rows)
+        const cardW = Math.min((maxW - gapX) / 2, 540);
 
-      this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.44));
+        const getCardH = (c: typeof activeCards[0]) => {
+          const tex = hasTexture(c.key) ? getTexture(c.key) : null;
+          const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
+          return Math.round(cardW / aspect);
+        };
+
+        const h0 = Math.max(getCardH(activeCards[0]), activeCards[1] ? getCardH(activeCards[1]) : 0);
+        const h1 = Math.max(activeCards[2] ? getCardH(activeCards[2]) : 0, activeCards[3] ? getCardH(activeCards[3]) : 0);
+        const totalGridH = h0 + (count > 2 ? (gapY + h1) : 0);
+
+        const row0Y = -totalGridH / 2 + h0 / 2;
+        const row1Y = -totalGridH / 2 + h0 + gapY + h1 / 2;
+
+        const colLeftX = -cardW / 2 - gapX / 2;
+        const colRightX = cardW / 2 + gapX / 2;
+
+        // Card 0: Top Left
+        activeCards[0].targetX = colLeftX;
+        activeCards[0].targetY = row0Y;
+        this._drawGorinCard(activeCards[0], cardW);
+
+        // Card 1: Top Right
+        if (activeCards[1]) {
+          activeCards[1].targetX = colRightX;
+          activeCards[1].targetY = row0Y;
+          this._drawGorinCard(activeCards[1], cardW);
+        }
+
+        if (count === 3) {
+          // Card 2: Centered on bottom row
+          activeCards[2].targetX = 0;
+          activeCards[2].targetY = row1Y;
+          this._drawGorinCard(activeCards[2], cardW);
+        } else if (count >= 4) {
+          // Card 2: Bottom Left
+          activeCards[2].targetX = colLeftX;
+          activeCards[2].targetY = row1Y;
+          this._drawGorinCard(activeCards[2], cardW);
+
+          // Card 3: Bottom Right
+          activeCards[3].targetX = colRightX;
+          activeCards[3].targetY = row1Y;
+          this._drawGorinCard(activeCards[3], cardW);
+        }
+
+        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.42));
+      }
     } else {
       // PORTRAIT: Vertically stacked cards
       const cardW = Math.min(w * 0.92, 500);

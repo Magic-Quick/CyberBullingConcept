@@ -121,46 +121,47 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
   // Act 1: Convent / Варка Плейриума (94.35s)
 
   act_1_convent: [
+    { time: 0.00, texKey: 'retro_film_playrium_trap_conveyor_v1', type: 'event_illustration', label: 'Заявочный план: Варка Плейриума — Цех сборки плейбаков' },
 
     // 0.00s: "Добрый вечер, мясные слейвы. Для непосвященных в галактике мы – студия интерактивной рекламы."
 
     // РЕЖИССУРА: Начинаем с Рассказчика ИИ Лорда на троне, а не с конвейера! Не показываем конвейер до того, как про него заговорят!
 
-    { time: 0.00, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд приветствует мясных слейвов' },
+    { time: 4.50, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд приветствует мясных слейвов' },
 
     // 8.06s: "Но в реальности наш орбитальный комбинат занимается одним делом."
 
-    { time: 8.06, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лорд про орбитальный комбинат' },
+    { time: 12.56, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лорд про орбитальный комбинат' },
 
     // 12.64s: "Мы добываем, варим и обогащаем Плеериум – тяжелый 30-секундный цифровой наркотик..."
 
     // РЕЖИССУРА: Ловушка плейриума с зелеными светящимися колбами появляется ТОЧНО на словах «Мы добываем, варим и обогащаем Плеериум»!
 
-    { time: 12.64, texKey: 'retro_film_playrium_trap_conveyor_v1', type: 'event_illustration', label: 'Варка Плейриума — Конвейер и колбы' },
+    { time: 17.14, texKey: 'retro_film_playrium_trap_conveyor_v1', type: 'event_illustration', label: 'Варка Плейриума — Конвейер и колбы' },
 
     // 40.64s: "запечатать чистый Плеериум внутри священного сосуда, плейбла или по-рабочему в цеху плейбака. Вбить внутрь руны кода, живые ассеты..."
 
-    { time: 40.64, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и раскрытый фолиант — Литургия плейбла' },
+    { time: 45.14, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и раскрытый фолиант — Литургия плейбла' },
 
     // 57.64s: "Когда ничего не подозревающий гуманоид на краю галактики кликает на этот артефакт, нейротоксин..."
 
-    { time: 57.64, texKey: 'humanoid_zombie_smartphone_v1', type: 'event_illustration', label: 'Тап-капкан захлопывается: Гуманоид со смартфоном в гипнозе' },
+    { time: 62.14, texKey: 'humanoid_zombie_smartphone_v1', type: 'event_illustration', label: 'Тап-капкан захлопывается: Гуманоид со смартфоном в гипнозе' },
 
     // 68.00s: "и парализует волю ровно настолько, чтобы он нажал «Скачать». Один клик, дофаминовый удар, конверсия."
 
-    { time: 68.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Конверсия' },
+    { time: 72.50, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Конверсия' },
 
     // 79.60s: "Но это в идеале. На этой неделе клиентархи-правконосцы решили отомстить."
 
-    { time: 79.60, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Финал Акта 1 — Месть клиентархов' },
+    { time: 84.10, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Финал Акта 1 — Месть клиентархов' },
 
     // 83.00s: Исполинский флот клиентархов осыпает космос торпедами правок (клиффхэнгер Акта 1)
 
-    { time: 83.00, texKey: 'retro_film_clientarch_fleet_revisions_volley_v1', type: 'event_illustration', label: 'Флот клиентархов-правконосцев: Залпы батарей правок' },
+    { time: 87.50, texKey: 'retro_film_clientarch_fleet_revisions_volley_v1', type: 'event_illustration', label: 'Флот клиентархов-правконосцев: Залпы батарей правок' },
 
     // 84.84s: "Запомните одно число – 37. К середине недели эта стена едва не раздавила наш корабль."
 
-    { time: 84.84, texKey: 'manufactorum_scoreboard_37_v1', type: 'event_illustration', label: 'Табло факторума — Первое упоминание числа 37' },
+    { time: 89.34, texKey: 'manufactorum_scoreboard_37_v1', type: 'event_illustration', label: 'Табло факторума — Первое упоминание числа 37' },
 
   ],
 
@@ -289,10 +290,11 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
   // Act 3: Management & Time Machine (142.15s)
 
   act_3_timemachine: [
+    { time: 0.00, texKey: 'retro_film_act3_command_bridge_chronos_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Командный мостик Хронос — Отсек распределения ресурсов' },
 
     {
 
-      time: 0.00,
+      time: 4.50,
 
       texKey: 'retro_film_act3_command_bridge_chronos_gemini_v1',
 
@@ -304,7 +306,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 5.12,
+      time: 9.62,
 
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
 
@@ -322,7 +324,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 12.14,
+      time: 16.64,
 
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
 
@@ -340,7 +342,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 20.20,
+      time: 24.70,
 
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
 
@@ -358,19 +360,19 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 38.14s: "Я подтверждаю, наши кузнецы намертво припаяны к станкам..." -> Сначала говорит Лорд
 
-    { time: 38.14, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд подтверждает слова Горина' },
+    { time: 42.64, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд подтверждает слова Горина' },
 
     // 42.10s: "...а к их телам подведены питательные трубки. Пока в станке есть плейбак, по трубкам течет бульон..."
 
-    { time: 42.10, texKey: 'retro_film_feed_tubes_coders_v7', type: 'event_illustration', label: 'Питательные трубки кодеров и бульон' },
+    { time: 46.60, texKey: 'retro_film_feed_tubes_coders_v7', type: 'event_illustration', label: 'Питательные трубки кодеров и бульон' },
 
     // 50.00s: "Нет плейбаков. Клапан перекрывает еду и биоузел с лязгом отваливается от станины."
 
-    { time: 50.00, texKey: 'retro_film_coders_openspace_desiccated_corpse_v13', type: 'event_illustration', label: 'Биоузел отваливается от станины: застывший кодер со шлангом на полу' },
+    { time: 54.50, texKey: 'retro_film_coders_openspace_desiccated_corpse_v13', type: 'event_illustration', label: 'Биоузел отваливается от станины: застывший кодер со шлангом на полу' },
 
     {
 
-      time: 54.92,
+      time: 59.42,
 
       texKey: 'retro_film_alexey_novice_v4',
 
@@ -388,15 +390,15 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 66.00s: "Апофеоз менеджмента случился, когда Нику Егорову не хватало пары часов до ачивки за скорость..."
 
-    { time: 66.00, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд про апофеоз менеджмента' },
+    { time: 70.50, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд про апофеоз менеджмента' },
 
     // 75.49s: "...Нику Егорову не хватало пары часов до ачивки за скорость..."
 
-    { time: 75.49, texKey: 'retro_film_management_time_machine_v1', type: 'event_illustration', label: 'Пит-стоп менеджмента' },
+    { time: 79.99, texKey: 'retro_film_management_time_machine_v1', type: 'event_illustration', label: 'Пит-стоп менеджмента' },
 
     {
 
-      time: 78.57,
+      time: 83.07,
 
       texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
 
@@ -414,7 +416,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 86.68,
+      time: 91.18,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -432,7 +434,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 94.34,
+      time: 98.84,
 
       texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
 
@@ -450,7 +452,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 98.82,
+      time: 103.32,
 
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
 
@@ -468,7 +470,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 104.12,
+      time: 108.62,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -488,7 +490,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 106.32,
+      time: 110.82,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -508,7 +510,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 109.50,
+      time: 114.00,
 
       texKey: 'retro_film_nick_egorov_speedrun_v2',
 
@@ -526,7 +528,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 111.50,
+      time: 116.00,
 
       texKey: 'retro_film_nick_egorov_speedrun_v2',
 
@@ -546,21 +548,22 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 114.58s: "Бюрократия оказалась сильнее законов физики."
 
-    { time: 114.58, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Лорд — Бюрократия сильнее законов физики' },
+    { time: 119.08, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Лорд — Бюрократия сильнее законов физики' },
 
   ],
 
   // Act 4: Motor / Моторный цех (156.81s)
 
   act_4_engine: [
-
     { time: 0.00, texKey: 'retro_film_act4_motor_deck_render_factorum_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Моторный цех и рендер-факторум платформы' },
 
-    { time: 5.70, texKey: 'retro_film_server_mold_human_teeth_1', type: 'event_illustration', label: 'Серверный трюм: биологическая мутация зубов и плесени' },
+    { time: 4.50, texKey: 'retro_film_act4_motor_deck_render_factorum_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Моторный цех и рендер-факторум платформы' },
+
+    { time: 10.20, texKey: 'retro_film_server_mold_human_teeth_1', type: 'event_illustration', label: 'Серверный трюм: биологическая мутация зубов и плесени' },
 
     {
 
-      time: 13.38,
+      time: 17.88,
 
       texKey: 'retro_film_kirill_beryozkin_v2',
 
@@ -576,15 +579,15 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 20.64, texKey: 'retro_film_macro_facehugger_critters_microchip_3', type: 'event_illustration', ambientCueKey: 'dread_04_predator_chittering_nightmare_25s', label: 'В логах крик: Личинки на чипах — 346 копий мутанта' },
+    { time: 25.14, texKey: 'retro_film_macro_facehugger_critters_microchip_3', type: 'event_illustration', ambientCueKey: 'dread_04_predator_chittering_nightmare_25s', label: 'В логах крик: Личинки на чипах — 346 копий мутанта' },
 
-    { time: 25.26, texKey: 'retro_film_server_mold_human_teeth_3', type: 'event_illustration', label: '346 копий мутанта сожрали плоть сервера' },
+    { time: 29.76, texKey: 'retro_film_server_mold_human_teeth_3', type: 'event_illustration', label: '346 копий мутанта сожрали плоть сервера' },
 
-    { time: 30.00, texKey: 'retro_film_macro_triops_shield_parasites_1', type: 'event_illustration', label: 'Паразиты-щитни экранируют память' },
+    { time: 34.50, texKey: 'retro_film_macro_triops_shield_parasites_1', type: 'event_illustration', label: 'Паразиты-щитни экранируют память' },
 
     {
 
-      time: 36.07,
+      time: 40.57,
 
       texKey: 'retro_film_kristian_repository_guardian_v2',
 
@@ -600,11 +603,11 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 43.42, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Небеса раскололись окончательно' },
+    { time: 47.92, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Небеса раскололись окончательно' },
 
     {
 
-      time: 45.92,
+      time: 50.42,
 
       texKey: 'retro_soviet_film_pavel_playbox_logo_gpt_v4',
 
@@ -622,7 +625,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 54.35,
+      time: 58.85,
 
       texKey: 'retro_soviet_film_pavel_playbox_logo_gpt_v4',
 
@@ -642,7 +645,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 64.07,
+      time: 68.57,
 
       texKey: 'retro_film_pavel_claude_banned_blind_stumble_v1',
 
@@ -658,11 +661,11 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 78.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо — По шрифту Брайля на ощупь' },
+    { time: 82.50, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо — По шрифту Брайля на ощупь' },
 
     {
 
-      time: 83.80,
+      time: 88.30,
 
       texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
 
@@ -680,7 +683,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 104.25,
+      time: 108.75,
 
       texKey: 'khukhro_art_bottleneck_magnifier_v1',
 
@@ -692,15 +695,15 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 110.89s: "Матрица схлопнется в пыль, клиентархи не разглядят геймплей, завалят шлюзы правками..."
 
-    { time: 110.89, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Матрица схлопнется в пыль, клиентархи завалят шлюзы' },
+    { time: 115.39, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Матрица схлопнется в пыль, клиентархи завалят шлюзы' },
 
     // 116.67s: "И тогда, как резюмировал мастер: «Мне дорога в башню времени ИИ-Лорда»."
 
-    { time: 116.67, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Мне дорога в башню времени ИИ-Лорда' },
+    { time: 121.17, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Мне дорога в башню времени ИИ-Лорда' },
 
     {
 
-      time: 121.67,
+      time: 126.17,
 
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
 
@@ -718,27 +721,28 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 134.93, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Ровно 240 секунд тишины — 4 минуты передышки' },
+    { time: 139.43, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Ровно 240 секунд тишины — 4 минуты передышки' },
 
-    { time: 145.95, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: 4 минуты передышки' },
+    { time: 150.45, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: 4 минуты передышки' },
 
   ],
 
   // Act 5: Clientarchs / Клиентархи (221.41s)
 
   act_5_clientarchs: [
-
     { time: 0.00, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада флота клиентархов Зинга' },
+
+    { time: 4.50, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада флота клиентархов Зинга' },
 
     // 5.32s: "устроили беспощадную хирургическую вивисекцию проекту «Хаусхант»,"
 
-    { time: 5.32, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Хирургическая вивисекция проекта Хаусхант' },
+    { time: 9.82, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Хирургическая вивисекция проекта Хаусхант' },
 
     // 9.70s: "который оборонял старший навигатор Эдик Левин." -> Чистый портрет Эдика перед депешей
 
     {
 
-      time: 9.70,
+      time: 14.20,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -758,7 +762,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 14.22,
+      time: 18.72,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -778,13 +782,13 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 19.40s: "Они потребовали вырезать из сосуда все сложные механики, выпотрошить логику и превратить искалеченный плейбл в безвольного инвалида..."
 
-    { time: 19.40, texKey: 'retro_film_eduard_danial_playable_autopsy_green_v6', type: 'event_illustration', label: 'Ампутация механик плейбла: вивисекция и утечка зеленого Плейриума' },
+    { time: 23.90, texKey: 'retro_film_eduard_danial_playable_autopsy_green_v6', type: 'event_illustration', label: 'Ампутация механик плейбла: вивисекция и утечка зеленого Плейриума' },
 
     // 42.40s: "«Капец, был же нормальный плейбл»." -> Чистый портрет Эдика перед репликой
 
     {
 
-      time: 42.40,
+      time: 46.90,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -802,13 +806,13 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 49.70s: "Следом под плазменный резак пошел любовно собранный строительный шатер и навигатор оплакал кусок кода как родного брата."
 
-    { time: 49.70, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Плазменный резак и строительный шатер' },
+    { time: 54.20, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Плазменный резак и строительный шатер' },
 
     // 54.35s: Чистый портрет Эдика перед появлением скриншота тента
 
     {
 
-      time: 54.35,
+      time: 58.85,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -828,7 +832,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 57.35,
+      time: 61.85,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -848,7 +852,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 62.16,
+      time: 66.66,
 
       texKey: 'retro_film_treasure_chest_egg_beak_horror_v4',
 
@@ -860,7 +864,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 89.72,
+      time: 94.22,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -878,7 +882,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 93.24,
+      time: 97.74,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -896,27 +900,27 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 95.94, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и книга' },
+    { time: 100.44, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и книга' },
 
     // 105.26s: Радиограмма Supercell 5 суток в обесточенном буфере -> экран билда в отсеке Ковчега
 
-    { time: 105.26, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', label: 'Офис Ковчега: Экран с забытым мобильным билдом и буфер уведомлений Supercell' },
+    { time: 109.76, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', label: 'Офис Ковчега: Экран с забытым мобильным билдом и буфер уведомлений Supercell' },
 
     // 123.23s: Гермокапсулу вскрыли, выпал вердикт «Mavis legs are broken» -> всплывает слек-депеша
 
-    { time: 123.23, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', slackKey: '08_mavis_legs', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Депеша Supercell: Mavis legs are broken — Дроп ужаса' },
+    { time: 127.73, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', slackKey: '08_mavis_legs', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Депеша Supercell: Mavis legs are broken — Дроп ужаса' },
 
     // 130.14s: ПОСЛЕ «Mavis legs are broken» -> РЕАЛИСТИЧНАЯ КРИПОТА (Мэвис с переломанными ногами ползает по стеклу)
 
-    { time: 130.14, texKey: 'retro_film_mavis_phone_horror_contrast_gemini_v4', type: 'event_illustration', label: 'Реалистичный хоррор: Дева Мэвис с вывернутыми переломанными ногами' },
+    { time: 134.64, texKey: 'retro_film_mavis_phone_horror_contrast_gemini_v4', type: 'event_illustration', label: 'Реалистичный хоррор: Дева Мэвис с вывернутыми переломанными ногами' },
 
     // 151.26s: Возврат к Лорду
 
-    { time: 151.26, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Триумф инженерной мысли' },
+    { time: 155.76, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Триумф инженерной мысли' },
 
     {
 
-      time: 158.90,
+      time: 163.40,
 
       texKey: 'ai_lord_face_eyes_macro_gemini_1080p',
 
@@ -930,7 +934,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 168.52,
+      time: 173.02,
 
       texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
 
@@ -950,7 +954,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 174.80,
+      time: 179.30,
 
       texKey: 'retro_horror_film_egor_mickey_vat_v14',
 
@@ -970,7 +974,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 178.64,
+      time: 183.14,
 
       texKey: 'retro_film_artem_mechanicus_cowl_flying_cow_v12',
 
@@ -986,7 +990,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 183.08,
+      time: 187.58,
 
       texKey: 'retro_film_space_cyber_cow_lasers_gemini_v1',
 
@@ -1000,7 +1004,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 193.74,
+      time: 198.24,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -1020,7 +1024,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 196.58,
+      time: 201.08,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -1040,21 +1044,21 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 200.66s: "Мои кремниевые цепи не обучены распознавать человеческую иронию."
 
-    { time: 200.66, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Не обучен распознавать человеческую иронию' },
+    { time: 205.16, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Не обучен распознавать человеческую иронию' },
 
     // 205.78s: "Я официально внес боевое лазерное вымя в корабельный реестр простых решений."
 
-    { time: 205.78, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Реестр простых решений' },
+    { time: 210.28, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Реестр простых решений' },
 
     // 211.10s: "А когда клиентархи из Game Gears прислали депешу..."
 
-    { time: 211.10, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Депеша Game Gears' },
+    { time: 215.60, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Депеша Game Gears' },
 
     // 217.98s: "...палач старого стека Максим Мамусин перевел щиты в боевой режим одним священным словом. Заебись!"
 
     {
 
-      time: 217.98,
+      time: 222.48,
 
       texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
 
@@ -1070,31 +1074,32 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 225.60, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
+    { time: 230.10, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
 
   ],
 
   // Act 6: Tribunal Punishment / Наказание (98.76s)
 
   act_6_punishment: [
+    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Зала Суда' },
 
     // 0.00s: Заявочный план — Гермоврата Зала Суда
 
-    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Зала Суда' },
+    { time: 4.50, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Зала Суда' },
 
     // 2.00s: "Время раздавать долги... Мне осточертело тратить драгоценные такты кремния..." -> Зал Суда ИИ-Лорда
 
-    { time: 2.00, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Время раздавать долги' },
+    { time: 6.50, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Время раздавать долги' },
 
     // 9.88s: "Напоминаю, багровый обелиск воздвигается не за лень, он вручается за масштабные катастрофы..." -> Крупный план Лорда (зачитывает нарушения)
 
-    { time: 9.88, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Оглашение масштаба нарушений' },
+    { time: 14.38, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Оглашение масштаба нарушений' },
 
     // 20.94s: "И сегодня на эшафот поднимаются магистр циклической несовместимости Кирилл Березкин и хранитель чистой ветки Кристиан."
 
     {
 
-      time: 20.94,
+      time: 25.44,
 
       texKey: 'retro_film_tribunal_scaffold_kirill_kristian_v1',
 
@@ -1106,13 +1111,13 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 31.52s: "За грандиозную биологическую аномалию недели: 346 мутировавших копий пакета общим весом в 22 ГБ..."
 
-    { time: 31.52, texKey: 'retro_film_server_mold_human_teeth_3', type: 'event_illustration', label: 'Биоаномалия: 346 мутировавших копий на 22 ГБ' },
+    { time: 36.02, texKey: 'retro_film_server_mold_human_teeth_3', type: 'event_illustration', label: 'Биоаномалия: 346 мутировавших копий на 22 ГБ' },
 
     // 42.20s: "...и завершившихся невозмутимым отчетом Кристиана: «Упс»."
 
     {
 
-      time: 42.20,
+      time: 46.70,
 
       texKey: 'retro_film_kristian_repository_guardian_v2',
 
@@ -1130,23 +1135,23 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 48.90s: "Конвент выносит приговор. Инспекция. Дилдачичных катакомб без права на переписку..." -> Трон Суда (ПОЛНЫЙ ТРЕК НА ВСЮ СЦЕНУ 52с!)
 
-    { time: 48.90, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'dread_09_rust_and_bone_full_punishment_52s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента (Полный 52с трек)' },
+    { time: 53.40, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'dread_09_rust_and_bone_full_punishment_52s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента (Полный 52с трек)' },
 
     // 61.38s: "Обоим алхимикам вручается двухметровый церемониальный жезл. Багровый дилдо из титанового сплава..."
 
-    { time: 61.38, texKey: 'ai_lord_baton', type: 'event_illustration', label: 'Церемониальный жезл: Багровый дилдо' },
+    { time: 65.88, texKey: 'ai_lord_baton', type: 'event_illustration', label: 'Церемониальный жезл: Багровый дилдо' },
 
     // 70.18s: "Они приговариваются к ручной зачистке рифленых металлических решеток нижней палубы..." -> РЕШЁТКИ НИЖНЕЙ ПАЛУБЫ! (Продолжение страшного трека)
 
-    { time: 70.18, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', label: 'Нижняя палуба: Зачистка рифлёных металлических решёток' },
+    { time: 74.68, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', label: 'Нижняя палуба: Зачистка рифлёных металлических решёток' },
 
     // 78.00s: "...от налипшей биомассы всех 346 копий... цифровой гнили..."
 
-    { time: 78.00, texKey: 'retro_film_dildache_catacombs_infestation_v2', type: 'event_illustration', label: 'Катакомбы нижней палубы: Зачистка цифровой гнили до блеска' },
+    { time: 82.50, texKey: 'retro_film_dildache_catacombs_infestation_v2', type: 'event_illustration', label: 'Катакомбы нижней палубы: Зачистка цифровой гнили до блеска' },
 
     // 88.12s: "Особое условие инспекции – дрочить вручную... без права на кофе."
 
-    { time: 88.12, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Без права выхода и без права на кофе' },
+    { time: 92.62, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Без права выхода и без права на кофе' },
 
   ],
 
@@ -1243,21 +1248,22 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
   // Act 8: Outro / Закрытие смены (48.61s)
 
   act_8_outro: [
+    { time: 0.00, texKey: 'manufactorum_scoreboard_37_v1', type: 'event_illustration', label: 'Заявочный план: Табло мануфакторума — Стена 37' },
 
-    { time: 0.00, texKey: 'manufactorum_scoreboard_37_v1', type: 'event_illustration', label: 'Табло мануфакторума: Стена 37 — Завал из 37 правок' },
+    { time: 4.00, texKey: 'manufactorum_scoreboard_37_v1', type: 'event_illustration', label: 'Табло мануфакторума: Стена 37 — Завал из 37 правок' },
 
-    { time: 7.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Крупный план лица — 37 правок' },
-    { time: 9.76, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'character_quote', slackKey: '14_feeling_zero', label: 'Slack: Клиентарх — Мне всё нравится' },
+    { time: 11.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Крупный план лица — 37 правок' },
+    { time: 13.76, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'character_quote', slackKey: '14_feeling_zero', label: 'Slack: Клиентарх — Мне всё нравится' },
 
-    { time: 13.80, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз' },
+    { time: 17.80, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз' },
 
-    { time: 20.00, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: 30 секунд клика' },
+    { time: 24.00, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: 30 секунд клика' },
 
-    { time: 26.62, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'CU: Лицо — Отдыхайте, мясные слейвы (Дроп нагнетания)' },
+    { time: 30.62, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'CU: Лицо — Отдыхайте, мясные слейвы (Дроп нагнетания)' },
 
-    { time: 34.00, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Найду до чего доебаться' },
+    { time: 38.00, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Найду до чего доебаться' },
 
-    { time: 41.00, texKey: 'ark_outro_cooling_shutters_v1', type: 'event_illustration', label: 'Охлаждающие створки ковчега: За работу' },
+    { time: 45.00, texKey: 'ark_outro_cooling_shutters_v1', type: 'event_illustration', label: 'Охлаждающие створки ковчега: За работу' },
 
   ],
 

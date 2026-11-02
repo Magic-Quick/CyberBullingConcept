@@ -154,6 +154,10 @@ export const STORY_ACTS: ActData[] = [
 
     "isKaraoke": false,
 
+    "voiceDelay": 3.5,
+
+    "frameTitle": "ГЛУБОКИЙ КОСМОС • ДРЕЙФ КОВЧЕГА «ЦИТАДЕЛЬ»",
+
     "cues": [
 
       {
@@ -676,19 +680,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioKey": "02_act1",
 
-    "duration": 94.35,
+    "duration": 98.85,
 
     "hasDedicatedFrame": false,
 
     "isKaraoke": false,
 
+    "voiceDelay": 4.5,
+
+    "frameTitle": "ЦЕНТРАЛЬНЫЙ КОНВЕНТ • ЦЕХ СБОРКИ ПЛЕЙБАКОВ",
+
     "cues": [
 
       {
 
-        "start": 0.0,
-
-        "end": 2.68,
+        "start": 4.5, "end": 7.18,
 
         "text": "Добрый вечер, мясные слейвы."
 
@@ -696,9 +702,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 2.68,
-
-        "end": 8.06,
+        "start": 7.18, "end": 12.56,
 
         "text": "Для непосвященных в галактике мы – студия интерактивной рекламы."
 
@@ -706,9 +710,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 8.06,
-
-        "end": 12.64,
+        "start": 12.56, "end": 17.14,
 
         "text": "Но в реальности наш орбитальный комбинат занимается одним делом."
 
@@ -716,9 +718,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 12.64,
-
-        "end": 16.46,
+        "start": 17.14, "end": 20.96,
 
         "text": "Мы добываем, варим и обогащаем Плеериум –"
 
@@ -726,9 +726,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 16.46,
-
-        "end": 19.48,
+        "start": 20.96, "end": 23.98,
 
         "text": "тяжелый 30-секундный цифровой наркотик,"
 
@@ -736,9 +734,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 19.48,
-
-        "end": 23.06,
+        "start": 23.98, "end": 27.56,
 
         "text": "на который клиентархи подсаживают население целых планет"
 
@@ -746,9 +742,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 23.06,
-
-        "end": 26.9,
+        "start": 27.56, "end": 31.4,
 
         "text": "во всех секторах галактики во славу великого конвейера."
 
@@ -756,9 +750,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 26.9,
-
-        "end": 32.6,
+        "start": 31.4, "end": 37.1,
 
         "text": "В сыром виде Плеериум нестабилен и выветривается за секунду."
 
@@ -766,9 +758,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 32.6,
-
-        "end": 36.64,
+        "start": 37.1, "end": 41.14,
 
         "text": "Чтобы сгенерировать убойную дозу, наши кузнецы и иконописцы"
 
@@ -776,9 +766,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 36.64,
-
-        "end": 40.64,
+        "start": 41.14, "end": 45.14,
 
         "text": "обязаны запечатать чистый Плеериум внутри священного сосуда,"
 
@@ -786,9 +774,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 40.64,
-
-        "end": 43.44,
+        "start": 45.14, "end": 47.94,
 
         "text": "плейбла или по-рабочему в цеху плейбака."
 
@@ -796,9 +782,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 44.56,
-
-        "end": 49.08,
+        "start": 49.06, "end": 53.58,
 
         "text": "Вбить внутрь руны кода, живые ассеты, игровые механики,"
 
@@ -806,9 +790,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 49.08,
-
-        "end": 51.52,
+        "start": 53.58, "end": 56.02,
 
         "text": "звуки и физику сочного отскока."
 
@@ -816,9 +798,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 52.4,
-
-        "end": 57.64,
+        "start": 56.9, "end": 62.14,
 
         "text": "Вбили все внутрь, запаяли крышку, получился идеальный тап-капкан."
 
@@ -826,9 +806,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 57.64,
-
-        "end": 60.9,
+        "start": 62.14, "end": 65.4,
 
         "text": "Когда ничего не подозревающий гуманоид на краю галактики"
 
@@ -836,9 +814,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 60.9,
-
-        "end": 63.52,
+        "start": 65.4, "end": 68.02,
 
         "text": "касается экрана своего коммуникатора,"
 
@@ -846,9 +822,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 63.52,
-
-        "end": 65.82,
+        "start": 68.02, "end": 70.32,
 
         "text": "ловушка захлопывается на его пальце"
 
@@ -856,9 +830,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 65.82,
-
-        "end": 71.1,
+        "start": 70.32, "end": 75.6,
 
         "text": "и парализует волю ровно настолько, чтобы он нажал «Скачать»."
 
@@ -866,9 +838,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 71.1,
-
-        "end": 73.86,
+        "start": 75.6, "end": 78.36,
 
         "text": "Мое дело простое – вскрыть бортовые логи"
 
@@ -876,9 +846,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 73.86,
-
-        "end": 76.26,
+        "start": 78.36, "end": 80.76,
 
         "text": "и показать, как вы провели эти пять дней."
 
@@ -886,9 +854,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 76.94,
-
-        "end": 79.58,
+        "start": 81.44, "end": 84.08,
 
         "text": "На прошлой неделе мы не пробили сотню."
 
@@ -896,9 +862,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 79.58,
-
-        "end": 84.84,
+        "start": 84.08, "end": 89.34,
 
         "text": "На этой неделе клиентархи-правконосцы решили отомстить."
 
@@ -906,9 +870,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 84.84,
-
-        "end": 87.12,
+        "start": 89.34, "end": 91.62,
 
         "text": "Запомните одно число – 37."
 
@@ -916,9 +878,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 87.9,
-
-        "end": 91.9,
+        "start": 92.4, "end": 96.4,
 
         "text": "К середине недели эта стена едва не раздавила наш корабль."
 
@@ -926,9 +886,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 91.9,
-
-        "end": 93.34,
+        "start": 96.4, "end": 97.84,
 
         "text": "Врубайте конвейер."
 
@@ -936,9 +894,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 93.34,
-
-        "end": 93.86,
+        "start": 97.84, "end": 98.36,
 
         "text": "Погнали!"
 
@@ -974,7 +930,7 @@ export const STORY_ACTS: ActData[] = [
 
     "hasDedicatedFrame": true,
 
-    "frameTitle": "ОТСЕК ДАНИАЛА • МИННОЕ ПОЛЕ 8 SP",
+    "frameTitle": "7-Я ПАЛУБА • СТАЗИС-САРКОФАГИ ДАШБОРДОВ",
 
     "isKaraoke": false,
 
@@ -1120,21 +1076,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioKey": "04_act3",
 
-    "duration": 118.1,
+    "duration": 122.6,
 
     "hasDedicatedFrame": true,
 
-    "frameTitle": "ОТСЕК РАСПРЕДЕЛЕНИЯ ПИТАТЕЛЬНОГО БУЛЬОНА",
+    "frameTitle": "МОСТИК ХРОНОС • ОТСЕК РАСПРЕДЕЛЕНИЯ БУЛЬОНА",
 
     "isKaraoke": false,
+
+    "voiceDelay": 4.5,
 
     "cues": [
 
       {
 
-        "start": 0.0,
-
-        "end": 5.12,
+        "start": 4.5, "end": 9.62,
 
         "text": "Заглянем в отсек распределения ресурсов к верховному надзирателю Горину."
 
@@ -1142,9 +1098,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 5.12,
-
-        "end": 11.12,
+        "start": 9.62, "end": 15.62,
 
         "text": "В понедельник Горин перешёл на древний машинный диалект и впечатал в тред «Jnghfdbk».",
 
@@ -1160,9 +1114,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 12.14,
-
-        "end": 14.02,
+        "start": 16.64, "end": 18.52,
 
         "text": "Следом он утвердил боевые литургии"
 
@@ -1170,9 +1122,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 14.02,
-
-        "end": 17.02,
+        "start": 18.52, "end": 21.52,
 
         "text": "«Корчое», «пришлижать» и «демоблил»,"
 
@@ -1180,9 +1130,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 17.02,
-
-        "end": 20.2,
+        "start": 21.52, "end": 24.7,
 
         "text": "которые кузнецы читали со слезами благоговения."
 
@@ -1190,9 +1138,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 20.2,
-
-        "end": 24.4,
+        "start": 24.7, "end": 28.9,
 
         "text": "Но главный манифест недели Горин выдал про распределение сырья."
 
@@ -1200,9 +1146,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 25.32,
-
-        "end": 29.02,
+        "start": 29.82, "end": 33.52,
 
         "text": "«Макс хулиганит и гребет под себя, это немного неправильно."
 
@@ -1210,9 +1154,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 29.02,
-
-        "end": 34.14,
+        "start": 33.52, "end": 38.64,
 
         "text": "У нас много других талантливых ребят, которые сидят без плейблов и обижаются."
 
@@ -1220,9 +1162,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 34.92,
-
-        "end": 37.32,
+        "start": 39.42, "end": 41.82,
 
         "text": "Если они не будут кушать, они отвалятся."
 
@@ -1230,9 +1170,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 38.14,
-
-        "end": 42.1,
+        "start": 42.64, "end": 46.6,
 
         "text": "Я подтверждаю, наши кузнецы намертво припаяны к станкам,"
 
@@ -1240,9 +1178,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 42.1,
-
-        "end": 44.4,
+        "start": 46.6, "end": 48.9,
 
         "text": "а к их телам подведены питательные трубки."
 
@@ -1250,9 +1186,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 45.22,
-
-        "end": 49.16,
+        "start": 49.72, "end": 53.66,
 
         "text": "Пока в станке есть плейбак, по трубкам течет бульон."
 
@@ -1260,9 +1194,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 49.16,
-
-        "end": 50.48,
+        "start": 53.66, "end": 54.98,
 
         "text": "Нет плейбаков."
 
@@ -1270,9 +1202,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 50.48,
-
-        "end": 54.92,
+        "start": 54.98, "end": 59.42,
 
         "text": "Клапан перекрывает еду и биоузел с лязгом отваливается от станины."
 
@@ -1280,9 +1210,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 54.92,
-
-        "end": 57.86,
+        "start": 59.42, "end": 62.36,
 
         "text": "В пятницу Горин лично проверил шланги."
 
@@ -1290,9 +1218,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 57.86,
-
-        "end": 62.38,
+        "start": 62.36, "end": 66.88,
 
         "text": "Приказал срочно выдать новенькому Алексею 2D-плейбак."
 
@@ -1300,9 +1226,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 62.38,
-
-        "end": 64.32,
+        "start": 66.88, "end": 68.82,
 
         "text": "А то он отвалится, так и не стартанув."
 
@@ -1310,9 +1234,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 64.94,
-
-        "end": 67.86,
+        "start": 69.44, "end": 72.36,
 
         "text": "Следите за давлением в трубках, господа проджекты»."
 
@@ -1320,9 +1242,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 69.27,
-
-        "end": 75.49,
+        "start": 73.77, "end": 79.99,
 
         "text": "Апофеоз менеджмента случился, когда Нику Егорову не хватало пары часов до ачивки за скорость,"
 
@@ -1330,9 +1250,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 80.28,
-
-        "end": 83.02,
+        "start": 84.78, "end": 87.52,
 
         "text": "Палач Старого Стека Максим Мамусин спросил."
 
@@ -1340,9 +1258,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 83.02,
-
-        "end": 86.02,
+        "start": 87.52, "end": 90.52,
 
         "text": "«Меньше двух с половиной получается?»"
 
@@ -1350,9 +1266,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 86.68,
-
-        "end": 87.64,
+        "start": 91.18, "end": 92.14,
 
         "text": "Эдик проверил."
 
@@ -1360,9 +1274,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 87.64,
-
-        "end": 94.34,
+        "start": 92.14, "end": 98.84,
 
         "text": "«Прошло двое суток и шесть часов, то есть 2,25 суток, как сказала Иишка».",
 
@@ -1376,9 +1288,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 94.34,
-
-        "end": 95.8,
+        "start": 98.84, "end": 100.3,
 
         "text": "Мамусин уточнил."
 
@@ -1386,9 +1296,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 95.8,
-
-        "end": 98.12,
+        "start": 100.3, "end": 102.62,
 
         "text": "«В ноушене даты немного не так стоят»."
 
@@ -1396,9 +1304,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 98.82,
-
-        "end": 100.4,
+        "start": 103.32, "end": 104.9,
 
         "text": "И Горин выдал царское."
 
@@ -1406,9 +1312,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 101.12,
-
-        "end": 103.22,
+        "start": 105.62, "end": 107.72,
 
         "text": "«Ок, даю добро."
 
@@ -1416,9 +1320,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 103.22,
-
-        "end": 104.12,
+        "start": 107.72, "end": 108.62,
 
         "text": "Правьте даты»."
 
@@ -1426,9 +1328,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 104.12,
-
-        "end": 106.32,
+        "start": 108.62, "end": 110.82,
 
         "text": "Эдик отчитался."
 
@@ -1436,9 +1336,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 106.32,
-
-        "end": 107.5,
+        "start": 110.82, "end": 112.0,
 
         "text": "Попровил."
 
@@ -1446,9 +1344,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 107.5,
-
-        "end": 109.5,
+        "start": 112.0, "end": 114.0,
 
         "text": "Локальный хронореактор взвыл,"
 
@@ -1456,9 +1352,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 109.5,
-
-        "end": 113.44,
+        "start": 114.0, "end": 117.94,
 
         "text": "искривил пространство и подогнал таймлайн Вселенной под значок для Ника.",
 
@@ -1474,9 +1368,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-        "start": 114.58,
-
-        "end": 117.58,
+        "start": 119.08, "end": 122.08,
 
         "text": "Бюрократия оказалась сильнее законов физики."
 
@@ -1506,19 +1398,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioKey": "05_act4",
 
-    "duration": 156.81,
+    "duration": 161.31,
 
     "hasDedicatedFrame": false,
 
     "isKaraoke": false,
 
+    "voiceDelay": 4.5,
+
+    "frameTitle": "МОТОРНАЯ ПАЛУБА • СЕРВЕРНЫЙ РЕАКТОР КОВЧЕГА",
+
     "cues": [
 
       {
 
-            "start": 0.0,
-
-            "end": 5.36,
+            "start": 4.5, "end": 9.86,
 
             "text": "Мои датчики в серверном трюме зафиксировали жуткую биологическую катастрофу."
 
@@ -1526,9 +1420,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 5.7,
-
-            "end": 12.06,
+            "start": 10.2, "end": 16.56,
 
             "text": "Один из пакетов платформы вышел из-под контроля и начал бешено почковаться, пожирая память корабля."
 
@@ -1536,9 +1428,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 13.38,
-
-            "end": 20.64,
+            "start": 17.88, "end": 25.14,
 
             "text": "Когда алхимик Кирилл Березкин вскрыл переборку, отсек был под завязку, залит пульсирующей массой клонов."
 
@@ -1546,9 +1436,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 20.64,
-
-            "end": 22.76,
+            "start": 25.14, "end": 27.26,
 
             "text": "В логах остался его крик."
 
@@ -1556,9 +1444,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 23.26,
-
-            "end": 25.26,
+            "start": 27.76, "end": 29.76,
 
             "text": "Нафармилось 22 гигабайта."
 
@@ -1566,9 +1452,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 25.72,
-
-            "end": 28.22,
+            "start": 30.22, "end": 32.72,
 
             "text": "346 копий этого пакета."
 
@@ -1576,9 +1460,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 28.22,
-
-            "end": 35.0,
+            "start": 32.72, "end": 39.5,
 
             "text": "22 гигабайта живой плоти сервера сожрали 346 мутантов."
 
@@ -1586,9 +1468,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 36.07,
-
-            "end": 41.67,
+            "start": 40.57, "end": 46.17,
 
             "text": "А Хранитель Чистой Ветки Кристиан посмотрел на этот апокалипсис и невозмутимо уронил в консоль."
 
@@ -1596,9 +1476,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 42.13,
-
-            "end": 42.47,
+            "start": 46.63, "end": 46.97,
 
             "text": "Упс.",
 
@@ -1612,9 +1490,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 43.42,
-
-            "end": 45.92,
+            "start": 47.92, "end": 50.42,
 
             "text": "В четверг небеса раскололись окончательно."
 
@@ -1622,9 +1498,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 45.92,
-
-            "end": 54.35,
+            "start": 50.42, "end": 58.85,
 
             "text": "Брат Павел Самойленко — главный ликвидатор технических катастроф — вышел к пастве и объявил:"
 
@@ -1632,9 +1506,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 54.35,
-
-            "end": 62.65,
+            "start": 58.85, "end": 67.15,
 
             "text": "«Мне блокнули Клода, поэтому пока код-ревью на PR ближайшие 5-10 дней на паузе... буду глазами смотреть».",
 
@@ -1650,9 +1522,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 64.07,
-
-            "end": 71.43,
+            "start": 68.57, "end": 75.93,
 
             "text": "Один глаз у Павла номинально остался органическим, но плоть давно разучилась видеть свет без подсказок нейросети."
 
@@ -1660,9 +1530,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 71.43,
-
-            "end": 77.49,
+            "start": 75.93, "end": 81.99,
 
             "text": "Оставшись без машинного духа, он бродит впотьмах по нижним палубам и вслепую."
 
@@ -1670,9 +1538,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 77.99,
-
-            "end": 82.77,
+            "start": 82.49, "end": 87.27,
 
             "text": "Буквально по шрифту Брайля на ощупь валидирует чужие пулл-реквесты."
 
@@ -1680,9 +1546,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 83.8,
-
-            "end": 87.88,
+            "start": 88.3, "end": 92.38,
 
             "text": "А в артовом отсеке держал круговую оборону Артём Хухро.",
 
@@ -1696,9 +1560,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 88.44,
-
-            "end": 92.5,
+            "start": 92.94, "end": 97.0,
 
             "text": "13 часов смены в сутки, один выходной за весь месяц."
 
@@ -1706,9 +1568,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 92.5,
-
-            "end": 98.54,
+            "start": 97.0, "end": 103.04,
 
             "text": "Когда на него попытались навесить ещё одну производственную линию, Хухро выдал системный диагноз:"
 
@@ -1716,9 +1576,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 98.84,
-
-            "end": 101.72,
+            "start": 103.34, "end": 106.22,
 
             "text": "«Арт сейчас — главный боттлнек корабля».",
 
@@ -1732,9 +1590,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 102.62,
-
-            "end": 103.74,
+            "start": 107.12, "end": 108.24,
 
             "text": "И предупредил:"
 
@@ -1742,9 +1598,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 104.25,
-
-            "end": 110.07,
+            "start": 108.75, "end": 114.57,
 
             "text": "«Если продолжать ужимать объекты на экране смартфона, будут вообще пиксели добывать пиксели».",
 
@@ -1758,9 +1612,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 110.89,
-
-            "end": 116.23,
+            "start": 115.39, "end": 120.73,
 
             "text": "Матрица схлопнется в пыль, клиентархи не разглядят геймплей, завалят шлюзы правками..."
 
@@ -1768,9 +1620,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 116.67,
-
-            "end": 121.67,
+            "start": 121.17, "end": 126.17,
 
             "text": "И тогда, как резюмировал мастер: «Мне дорога в башню времени ИИ-Лорда».",
 
@@ -1784,9 +1634,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 121.67,
-
-            "end": 129.08,
+            "start": 126.17, "end": 133.58,
 
             "text": "Горин проявил заботу, активировал вокруг мастера защитный карантинный купол и написал в общем чате:"
 
@@ -1794,9 +1642,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 129.62,
-
-            "end": 133.84,
+            "start": 134.12, "end": 138.34,
 
             "text": "«Хухро пока не трогаем, ему чутка нужно поделать Эпоху Поп и разгрузиться».",
 
@@ -1810,9 +1656,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 134.93,
-
-            "end": 141.01,
+            "start": 139.43, "end": 145.51,
 
             "text": "И ровно через 4 минуты мои хронометры зафиксировали интервал в 240 секунд."
 
@@ -1820,9 +1664,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 141.51,
-
-            "end": 144.95,
+            "start": 146.01, "end": 149.45,
 
             "text": "Горин пробил этот купол и тегнул Хухро с новой задачей."
 
@@ -1830,9 +1672,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 145.95,
-
-            "end": 148.55,
+            "start": 150.45, "end": 153.05,
 
             "text": "Целых 4 минуты тишины и передышки."
 
@@ -1840,9 +1680,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 148.55,
-
-            "end": 153.55,
+            "start": 153.05, "end": 158.05,
 
             "text": "По меркам корабля Playbox это акт неслыханной, поистине царской щедрости."
 
@@ -1850,9 +1688,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 154.69,
-
-            "end": 156.81,
+            "start": 159.19, "end": 161.31,
 
             "text": "Ни в чем себе не отказывайте, Артем."
 
@@ -1882,19 +1718,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioKey": "06_act5",
 
-    "duration": 226.51,
+    "duration": 231.01,
 
     "hasDedicatedFrame": false,
 
     "isKaraoke": false,
 
+    "voiceDelay": 4.5,
+
+    "frameTitle": "ВНЕШНИЙ ПЕРИМЕТР • РУБЕЖ ОСАДЫ ЗИНГА",
+
     "cues": [
 
       {
 
-            "start": 0.0,
-
-            "end": 4.76,
+            "start": 4.5, "end": 9.26,
 
             "text": "В соседнем секторе клиентархи из Зинга, синдикат Зинга,"
 
@@ -1902,9 +1740,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 5.32,
-
-            "end": 9.7,
+            "start": 9.82, "end": 14.2,
 
             "text": "устроили беспощадную хирургическую вивисекцию проекту «Хаусхант»,"
 
@@ -1912,9 +1748,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 9.7,
-
-            "end": 12.7,
+            "start": 14.2, "end": 17.2,
 
             "text": "который оборонял старший навигатор Эдик Левин.",
 
@@ -1928,9 +1762,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 14.2,
-
-            "end": 19.4,
+            "start": 18.7, "end": 23.9,
 
             "text": "Клиентархи были абсолютно глухи к мольбам экипажа и страданиям живого билда."
 
@@ -1938,9 +1770,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 19.4,
-
-            "end": 23.32,
+            "start": 23.9, "end": 27.82,
 
             "text": "Они потребовали вырезать из сосуда все сложные механики,"
 
@@ -1948,9 +1778,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 23.72,
-
-            "end": 28.72,
+            "start": 28.22, "end": 33.22,
 
             "text": "выпотрошить логику и превратить искалеченный плейбл в безвольного инвалида"
 
@@ -1958,9 +1786,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 28.72,
-
-            "end": 30.64,
+            "start": 33.22, "end": 35.14,
 
             "text": "с одноклеточным рефлексом."
 
@@ -1968,9 +1794,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 31.08,
-
-            "end": 34.6,
+            "start": 35.58, "end": 39.1,
 
             "text": "«Угадай, какой дом дороже?»"
 
@@ -1978,9 +1802,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 34.6,
-
-            "end": 38.14,
+            "start": 39.1, "end": 42.64,
 
             "text": "Мучения из увеченного плейбака никого не волновали."
 
@@ -1988,9 +1810,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 38.6,
-
-            "end": 41.04,
+            "start": 43.1, "end": 45.54,
 
             "text": "Заказчику нужен был послушный обрубок."
 
@@ -1998,9 +1818,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 42.38,
-
-            "end": 45.96,
+            "start": 46.88, "end": 50.46,
 
             "text": "Эдик проводил ампутированные модули коротким некрологом.",
 
@@ -2014,9 +1832,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 46.26,
-
-            "end": 48.96,
+            "start": 50.76, "end": 53.46,
 
             "text": "«Капец! Был же нормальный плейбл!»"
 
@@ -2024,9 +1840,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 50.04,
-
-            "end": 54.36,
+            "start": 54.54, "end": 58.86,
 
             "text": "Следом под плазменный резак пошел любовно собранный строительный шатер"
 
@@ -2034,9 +1848,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 54.36,
-
-            "end": 57.32,
+            "start": 58.86, "end": 61.82,
 
             "text": "и навигатор оплакал кусок кода как родного брата."
 
@@ -2044,9 +1856,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 57.32,
-
-            "end": 62.5,
+            "start": 61.82, "end": 67.0,
 
             "text": "«Капец! Я уже полюбил этот тент как родного брата!»"
 
@@ -2054,9 +1864,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 62.5,
-
-            "end": 67.36,
+            "start": 67.0, "end": 71.86,
 
             "text": "Но финальная ересь вскрылась в аудиоматрице сундука с сокровищами."
 
@@ -2064,9 +1872,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 67.94,
-
-            "end": 71.84,
+            "start": 72.44, "end": 76.34,
 
             "text": "Деревянный ларь подхватил гнилостную проказу подпространственного кэша."
 
@@ -2074,9 +1880,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 72.24,
-
-            "end": 76.66,
+            "start": 76.74, "end": 81.16,
 
             "text": "При каждом откидывании кованой крышки мутировавший сундук из старых буферов"
 
@@ -2084,9 +1888,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 76.66,
-
-            "end": 82.22,
+            "start": 81.16, "end": 86.72,
 
             "text": "издавал отчетливый, тошнотворный биохруст разбиваемого сырого куриного яйца."
 
@@ -2094,9 +1896,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 82.22,
-
-            "end": 89.72,
+            "start": 86.72, "end": 94.22,
 
             "text": "Проказа проникла так глубоко в ассеты, что сундук буквально начал нести яйца прямо в уши игроку."
 
@@ -2104,9 +1904,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 90.36,
-
-            "end": 92.78,
+            "start": 94.86, "end": 97.28,
 
             "text": "Эдик в ужасе стучал по каналу связи.",
 
@@ -2120,9 +1918,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 93.2,
-
-            "end": 94.9,
+            "start": 97.7, "end": 99.4,
 
             "text": "Просто чтоб было не яйцо."
 
@@ -2130,9 +1926,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 95.92,
-
-            "end": 98.28,
+            "start": 100.42, "end": 102.78,
 
             "text": "Кузнецы плейблов застыли в оцепенении."
 
@@ -2140,9 +1934,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 98.66,
-
-            "end": 101.92,
+            "start": 103.16, "end": 106.42,
 
             "text": "За десятки циклов сборки никто в цеху даже не заметил,"
 
@@ -2150,9 +1942,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 102.18,
-
-            "end": 105.26,
+            "start": 106.68, "end": 109.76,
 
             "text": "как реликвия обросла чужеродной слизью кэша."
 
@@ -2160,9 +1950,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 105.26,
-
-            "end": 109.88,
+            "start": 109.76, "end": 114.38,
 
             "text": "Тем временем аварийная радиограмма от клиентархов из Supercell,"
 
@@ -2170,9 +1958,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 110.24,
-
-            "end": 113.58,
+            "start": 114.74, "end": 118.08,
 
             "text": "именуемых в хрониках орденом Верховной сверхъячейки,"
 
@@ -2180,9 +1966,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 113.68,
-
-            "end": 119.16,
+            "start": 118.18, "end": 123.66,
 
             "text": "пять суток пролежала в слепой зоне, в обесточенном буфере уведомлений ока-фокала."
 
@@ -2190,9 +1974,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 119.92,
-
-            "end": 122.98,
+            "start": 124.42, "end": 127.48,
 
             "text": "Когда гермокапсулу с депешей наконец вскрыли,"
 
@@ -2200,9 +1982,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 123.24,
-
-            "end": 125.26,
+            "start": 127.74, "end": 129.76,
 
             "text": "оттуда выпал леденящий душу вердикт."
 
@@ -2210,9 +1990,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 126.26,
-
-            "end": 128.26,
+            "start": 130.76, "end": 132.76,
 
             "text": "«Mavis, legs are broken»."
 
@@ -2220,9 +1998,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 129.3,
-
-            "end": 130.14,
+            "start": 133.8, "end": 134.64,
 
             "text": "Пять суток."
 
@@ -2230,9 +2006,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 130.14,
-
-            "end": 134.2,
+            "start": 134.64, "end": 138.7,
 
             "text": "Пять долгих суток несчастная цифровая дева Мэвис"
 
@@ -2240,9 +2014,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 134.2,
-
-            "end": 137.42,
+            "start": 138.7, "end": 141.92,
 
             "text": "с вывернутыми суставами и перебитыми культями"
 
@@ -2250,9 +2022,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 137.42,
-
-            "end": 141.14,
+            "start": 141.92, "end": 145.64,
 
             "text": "беззвучно ползала на брюхи по мерцающему стеклу экрана,"
 
@@ -2260,9 +2030,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 141.22,
-
-            "end": 144.86,
+            "start": 145.72, "end": 149.36,
 
             "text": "скребя ногтями по пикселям в кромешной тьме забытого билда,"
 
@@ -2270,9 +2038,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 145.24,
-
-            "end": 147.36,
+            "start": 149.74, "end": 151.86,
 
             "text": "пока колокол оповещения молчал,"
 
@@ -2280,9 +2046,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 147.66,
-
-            "end": 150.7,
+            "start": 152.16, "end": 155.2,
 
             "text": "а команда мирно пила чай в соседнем отсеке."
 
@@ -2290,9 +2054,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 151.26,
-
-            "end": 153.7,
+            "start": 155.76, "end": 158.2,
 
             "text": "Но абсолютный триумф инженерной мысли"
 
@@ -2300,9 +2062,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 153.7,
-
-            "end": 156.78,
+            "start": 158.2, "end": 161.28,
 
             "text": "случился на совете с клиентархами из Game Gears,"
 
@@ -2310,9 +2070,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 157.2,
-
-            "end": 158.9,
+            "start": 161.7, "end": 163.4,
 
             "text": "кланом шестерни игры."
 
@@ -2320,9 +2078,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 158.9,
-
-            "end": 163.74,
+            "start": 163.4, "end": 168.24,
 
             "text": "Перед запуском реактора прозвучала строгая директива."
 
@@ -2330,9 +2086,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 164.3,
-
-            "end": 167.5,
+            "start": 168.8, "end": 172.0,
 
             "text": "Простые решения, без лишнего усложнения."
 
@@ -2340,9 +2094,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 168.52,
-
-            "end": 171.88,
+            "start": 173.02, "end": 176.38,
 
             "text": "Техноэкзорцист графической скверны Артём Хухро",
 
@@ -2356,9 +2108,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 171.88,
-
-            "end": 174.8,
+            "start": 176.38, "end": 179.3,
 
             "text": "и преподобный толкователь воли клиентархов."
 
@@ -2366,9 +2116,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 175.76,
-
-            "end": 178.64,
+            "start": 180.26, "end": 183.14,
 
             "text": "Егор Ткачев приняли директиву к исполнению",
 
@@ -2382,9 +2130,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 178.64,
-
-            "end": 183.08,
+            "start": 183.14, "end": 187.58,
 
             "text": "и тут же вычертили схему орбитального биоаннигилятора"
 
@@ -2392,9 +2138,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 183.08,
-
-            "end": 185.58,
+            "start": 187.58, "end": 190.08,
 
             "text": "гигантской роботизированной коровы,"
 
@@ -2402,9 +2146,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 185.58,
-
-            "end": 188.42,
+            "start": 190.08, "end": 192.92,
 
             "text": "которая парит над мегаполисом пришельцев"
 
@@ -2412,9 +2154,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 188.42,
-
-            "end": 191.5,
+            "start": 192.92, "end": 196.0,
 
             "text": "и выжигает кварталы тяжелым лазерным лучом,"
 
@@ -2422,9 +2162,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 191.9,
-
-            "end": 193.74,
+            "start": 196.4, "end": 198.24,
 
             "text": "бьющим напрямую из вымени."
 
@@ -2432,9 +2170,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 193.74,
-
-            "end": 196.06,
+            "start": 198.24, "end": 200.56,
 
             "text": "Эдик потом дипломатично заметил.",
 
@@ -2448,9 +2184,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 196.58,
-
-            "end": 199.7,
+            "start": 201.08, "end": 204.2,
 
             "text": "Артем слишком буквально принял мою просьбу.",
 
@@ -2466,9 +2200,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 200.66,
-
-            "end": 205.22,
+            "start": 205.16, "end": 209.72,
 
             "text": "Мои кремниевые цепи не обучены распознавать человеческую иронию."
 
@@ -2476,9 +2208,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 205.78,
-
-            "end": 210.84,
+            "start": 210.28, "end": 215.34,
 
             "text": "Я официально внес боевое лазерное вымя в корабельный реестр простых решений."
 
@@ -2486,9 +2216,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 211.1,
-
-            "end": 214.3,
+            "start": 215.6, "end": 218.8,
 
             "text": "А когда клиентархи из Game Gears прислали депешу,"
 
@@ -2496,9 +2224,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 214.76,
-
-            "end": 217.98,
+            "start": 219.26, "end": 222.48,
 
             "text": "из вами сделанных плейблов визуал брать не стоит,"
 
@@ -2506,9 +2232,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 217.98,
-
-            "end": 224.34,
+            "start": 222.48, "end": 228.84,
 
             "text": "палач старого стека Максим Мамусин перевел щиты в боевой режим одним священным словом.",
 
@@ -2522,9 +2246,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 224.8,
-
-            "end": 225.6,
+            "start": 229.3, "end": 230.1,
 
             "text": "Заебись!",
 
@@ -2562,21 +2284,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioOffset": 0.0,
 
-    "duration": 98.76,
+    "duration": 103.26,
 
     "hasDedicatedFrame": true,
 
-    "frameTitle": "ВЕРХОВНЫЙ ТРИБУНАЛ • ВЫСШАЯ КАРА",
+    "frameTitle": "ВЕРХОВНЫЙ ТРИБУНАЛ • ТРОННЫЙ ЗАЛ ИИ-ЛОРДА",
 
     "isKaraoke": false,
+
+    "voiceDelay": 4.5,
 
     "cues": [
 
       {
 
-            "start": 0.0,
-
-            "end": 1.36,
+            "start": 4.5, "end": 5.86,
 
             "text": "Время раздавать долги."
 
@@ -2584,9 +2306,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 1.84,
-
-            "end": 6.4,
+            "start": 6.34, "end": 10.9,
 
             "text": "Мне осточертело тратить драгоценные такты кремния на вашу органическую возню,"
 
@@ -2594,9 +2314,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 6.86,
-
-            "end": 9.4,
+            "start": 11.36, "end": 13.9,
 
             "text": "но баланс систем должен сойтись."
 
@@ -2604,9 +2322,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 9.88,
-
-            "end": 13.72,
+            "start": 14.38, "end": 18.22,
 
             "text": "Напоминаю, багровый обелиск воздвигается не за лень,"
 
@@ -2614,9 +2330,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 14.06,
-
-            "end": 17.04,
+            "start": 18.56, "end": 21.54,
 
             "text": "он вручается за масштабные техногенные катастрофы,"
 
@@ -2624,9 +2338,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 17.44,
-
-            "end": 20.94,
+            "start": 21.94, "end": 25.44,
 
             "text": "саботаж конвейера и бесконтрольное размножение паразитов."
 
@@ -2634,9 +2346,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 20.94,
-
-            "end": 27.82,
+            "start": 25.44, "end": 32.32,
 
             "text": "И сегодня на эшафот поднимаются магистр циклической несовместимости Кирилл Березкин",
 
@@ -2650,9 +2360,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 27.82,
-
-            "end": 30.54,
+            "start": 32.32, "end": 35.04,
 
             "text": "и хранитель чистой ветки Кристиан.",
 
@@ -2666,9 +2374,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 31.52,
-
-            "end": 34.68,
+            "start": 36.02, "end": 39.18,
 
             "text": "За грандиозную биологическую аномалию недели"
 
@@ -2676,9 +2382,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 34.68,
-
-            "end": 41.8,
+            "start": 39.18, "end": 46.3,
 
             "text": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора,"
 
@@ -2686,9 +2390,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 42.2,
-
-            "end": 47.18,
+            "start": 46.7, "end": 51.68,
 
             "text": "сожравших память корабля и завершившихся невозмутимым отчетом Кристиана.",
 
@@ -2702,9 +2404,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 47.84,
-
-            "end": 48.3,
+            "start": 52.34, "end": 52.8,
 
             "text": "Упс.",
 
@@ -2718,9 +2418,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 48.9,
-
-            "end": 51.0,
+            "start": 53.4, "end": 55.5,
 
             "text": "Конвент выносит приговор."
 
@@ -2728,9 +2426,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 51.4,
-
-            "end": 52.18,
+            "start": 55.9, "end": 56.68,
 
             "text": "Инспекция."
 
@@ -2738,9 +2434,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 52.18,
-
-            "end": 59.9,
+            "start": 56.68, "end": 64.4,
 
             "text": "Дилдачичных катакомб без права на переписку и орден Багрового дилдоносного покаяния."
 
@@ -2748,9 +2442,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 61.38,
-
-            "end": 65.26,
+            "start": 65.88, "end": 69.76,
 
             "text": "Обоим алхимикам вручается двухметровый церемониальный жезл."
 
@@ -2758,9 +2450,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 65.76,
-
-            "end": 69.52,
+            "start": 70.26, "end": 74.02,
 
             "text": "Багровый дилдо из титанового сплава в качестве швабры."
 
@@ -2768,9 +2458,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 70.18,
-
-            "end": 75.34,
+            "start": 74.68, "end": 79.84,
 
             "text": "Они приговариваются к ручной зачистке рифленых металлических решеток нижней палубы"
 
@@ -2778,9 +2466,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 75.34,
-
-            "end": 83.14,
+            "start": 79.84, "end": 87.64,
 
             "text": "от налипшей биомассы всех 346 копий до тех пор, пока каждый байт из 22 гигабайт"
 
@@ -2788,9 +2474,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 83.14,
-
-            "end": 86.96,
+            "start": 87.64, "end": 91.46,
 
             "text": "цифровой гнили не будет содран до зеркального блеска."
 
@@ -2798,9 +2482,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 88.12,
-
-            "end": 93.64,
+            "start": 92.62, "end": 98.14,
 
             "text": "Особое условие инспекции – дроить вручную, без права задерживать дыхание,"
 
@@ -2808,9 +2490,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 94.08,
-
-            "end": 98.76,
+            "start": 98.58, "end": 103.26,
 
             "text": "без права зажимать нос, без права выхода в слаг и без права на кофе."
 
@@ -2846,7 +2526,7 @@ export const STORY_ACTS: ActData[] = [
 
     "hasDedicatedFrame": true,
 
-    "frameTitle": "ВЕРХОВНЫЙ ТРИБУНАЛ • ПЕЧЕНЬКА БЛАГОДАТИ",
+    "frameTitle": "ПАЛАТА ВОЗДАЯНИЯ • ХРАНИЛИЩЕ ВЫСШЕЙ МИЛОСТИ",
 
     "isKaraoke": false,
 
@@ -3098,19 +2778,21 @@ export const STORY_ACTS: ActData[] = [
 
     "audioKey": "08_act7",
 
-    "duration": 49.42,
+    "duration": 53.42,
 
     "hasDedicatedFrame": false,
 
     "isKaraoke": false,
 
+    "voiceDelay": 4.0,
+
+    "frameTitle": "КОНВЕЙЕР ПРОДАКШЕНА • ТАБЛО 37 ИЗ 100",
+
     "cues": [
 
       {
 
-            "start": 0.0,
-
-            "end": 4.46,
+            "start": 4.0, "end": 8.46,
 
             "text": "73 плейбла на табло прошлой недели казались вам трагедией."
 
@@ -3118,9 +2800,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 4.66,
-
-            "end": 9.76,
+            "start": 8.66, "end": 13.76,
 
             "text": "На этой неделе вы выжили под завалом из 37 плейблов в правках"
 
@@ -3128,9 +2808,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 9.76,
-
-            "end": 14.64,
+            "start": 13.76, "end": 18.64,
 
             "text": "и даже заставили клиентархов сказать «Мне все нравится».",
 
@@ -3140,9 +2818,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 14.64,
-
-            "end": 17.16,
+            "start": 18.64, "end": 21.16,
 
             "text": "Плеериум сварен и отправлен в сторы."
 
@@ -3150,9 +2826,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 17.48,
-
-            "end": 19.86,
+            "start": 21.48, "end": 23.86,
 
             "text": "Миллионы пальцев уже тянутся к экранам,"
 
@@ -3160,9 +2834,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 20.04,
-
-            "end": 26.38,
+            "start": 24.04, "end": 30.38,
 
             "text": "не подозревая, сколько нервов и разбитых куриных яиц запечатано внутри этих 30 секунд."
 
@@ -3170,9 +2842,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 27.44,
-
-            "end": 29.7,
+            "start": 31.44, "end": 33.7,
 
             "text": "Отдыхайте, мясные слейвы."
 
@@ -3180,9 +2850,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 30.0,
-
-            "end": 32.94,
+            "start": 34.0, "end": 36.94,
 
             "text": "Немощные служители Великого конвейера."
 
@@ -3190,9 +2858,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 33.86,
-
-            "end": 40.02,
+            "start": 37.86, "end": 44.02,
 
             "text": "В понедельник в 11.00 я снова открою книгу учета в цикл слепого старта."
 
@@ -3200,9 +2866,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 40.46,
-
-            "end": 44.66,
+            "start": 44.46, "end": 48.66,
 
             "text": "И поверьте, мне снова будет тошно смотреть на то, что вы натворили."
 
@@ -3210,9 +2874,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 45.16,
-
-            "end": 48.86,
+            "start": 49.16, "end": 52.86,
 
             "text": "Но я найду. До чего доебаться. За работу."
 
@@ -3220,9 +2882,7 @@ export const STORY_ACTS: ActData[] = [
 
       {
 
-            "start": 48.86,
-
-            "end": 49.86,
+            "start": 52.86, "end": 53.86,
 
             "text": "Продолжение следует."
 
@@ -3258,7 +2918,7 @@ export const STORY_ACTS: ActData[] = [
 
     "isKaraoke": true,
 
-    "frameTitle": "ТРАНСЛЯЦИЯ ВАРП-БИТА • КАРАОКЕ ИИ-ЛОРДА",
+    "frameTitle": "АРЕНА ВАРП-БИТА • КАРАОКЕ-КОНЦЕРТ ИИ-ЛОРДА",
 
     "cues": [
 
