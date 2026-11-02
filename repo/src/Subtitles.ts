@@ -781,7 +781,7 @@ export class Subtitles extends Container {
       else if (t.includes('музеях') && (t.includes('котов') || t.includes('мумий') || t.includes('фараон'))) sKey = '10_pyramids_museum';
       else if (t.includes('попровил') || t.includes('поправил')) sKey = '12_nick_time_machine';
       else if (t.includes('сундук') && (t.includes('яйцо') || t.includes('звук'))) sKey = '13_chest_egg_sound';
-      else if (t.includes('чуяния ноль') || t.includes('было чуяния') || t.includes('павел, простите')) sKey = '14_feeling_zero';
+      else if (t.includes('мне все нравится') || t.includes('мне всё нравится') || t.includes('филлинг') || t.includes('чуяния ноль') || t.includes('было чуяния') || t.includes('павел, простите')) sKey = '14_feeling_zero';
     }
 
     if (sKey && hasTexture(sKey)) {

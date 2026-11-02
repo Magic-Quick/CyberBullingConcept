@@ -24,17 +24,11 @@ import { AmbientManager } from './AmbientManager';
 
 import { AudioTrackAnalyzer, IntroTimingProfile } from './AudioTrackAnalyzer';
 
-
-
 export const INTRO_DISCLAIMER_TEXT =
 
   'Настоящий материал создан с применением генеративного ИИ и не отражает точку зрения компании либо её представителей. Содержание основано на анализе реальных рабочих данных.';
 
-
-
 export const INTRO_DISCLAIMER_DURATION = 12.8;
-
-
 
 interface WsTimelineActButton {
 
@@ -56,8 +50,6 @@ interface WsTimelineActButton {
 
 }
 
-
-
 interface WsTimelineSticker {
 
   actIndex: number;
@@ -67,8 +59,6 @@ interface WsTimelineSticker {
   sprite: Sprite;
 
 }
-
-
 
 export const CREW_ARK_ROLES: Record<string, string> = {
 
@@ -158,8 +148,6 @@ export const CREW_ARK_ROLES: Record<string, string> = {
 
 };
 
-
-
 export function getCrewArkRole(characterName: string, defaultRole: string): string {
 
   const norm = characterName.toLowerCase();
@@ -189,8 +177,6 @@ export function getCrewArkRole(characterName: string, defaultRole: string): stri
   return defaultRole;
 
 }
-
-
 
 export function getCrewAvatarTexture(name: string, fallbackTexKey?: string | null): Texture | null {
 
@@ -236,8 +222,6 @@ export function getCrewAvatarTexture(name: string, fallbackTexKey?: string | nul
 
   else if (n.includes('новенький')) key = hasTexture('retro_film_alexey_novice_v4') ? 'retro_film_alexey_novice_v4' : 'avatar_gorin';
 
-
-
   if (key && hasTexture(key)) {
 
     const t = getTexture(key);
@@ -258,15 +242,11 @@ export function getCrewAvatarTexture(name: string, fallbackTexKey?: string | nul
 
 }
 
-
-
 export class MovieApp {
 
   private _app: Application;
 
   private _root: Container;
-
-
 
   // Scene layers
 
@@ -337,8 +317,6 @@ export class MovieApp {
 
   private _subtitles: Subtitles;
 
-
-
   // UI layer
 
   private _uiContainer: Container;
@@ -381,8 +359,6 @@ export class MovieApp {
 
   private _isSubtitlesVisible = true;
 
-
-
   // Scrubber & Timeline
 
   private _progressBarContainer: Container;
@@ -410,8 +386,6 @@ export class MovieApp {
   private _totalMovieDuration = 953;
 
   private _actStartTimes: number[] = [];
-
-
 
   // WS-96 Retro Hardware Console
 
@@ -483,8 +457,6 @@ export class MovieApp {
 
   private _wsGuiScale = 1.0;
 
-
-
   // Canvas click gestures & Ripple
 
   private _canvasHitArea!: Graphics;
@@ -509,8 +481,6 @@ export class MovieApp {
 
   private _lastClickPos = { x: 0, y: 0 };
 
-
-
   // Autohide & HUD Sliding
 
   private _autohideTimer = 2.5;
@@ -520,8 +490,6 @@ export class MovieApp {
   private _hudAnimState = { p: 1.0 };
 
   private _hudIsVisible = true;
-
-
 
   // State & Audio
 
@@ -553,8 +521,6 @@ export class MovieApp {
 
   private _isTransitioningAct = false;
 
-
-
   // Volume channels
 
   private _voiceVolume = 1.0;
@@ -568,8 +534,6 @@ export class MovieApp {
   private _musicVolControl!: { container: Container; setVolumeDisplay: (v: number) => void };
 
   private _sfxVolControl!: { container: Container; setVolumeDisplay: (v: number) => void };
-
-
 
   // Team Quote Corner Badge (Square Avatar + 2 Lines: Name & Ark Role)
 
@@ -609,8 +573,6 @@ export class MovieApp {
 
   };
 
-
-
   private _missingImageOverlay!: Container;
 
   private _missingImageBg!: Graphics;
@@ -620,8 +582,6 @@ export class MovieApp {
   private _missingImageSubtitle!: Text;
 
   private _missingImageCharText!: Text;
-
-
 
   // Debug mode & Audio analysis
 
@@ -639,8 +599,6 @@ export class MovieApp {
 
   private _introProfile!: IntroTimingProfile;
 
-
-
   constructor(app: Application) {
 
     this._app = app;
@@ -648,8 +606,6 @@ export class MovieApp {
     this._root = new Container();
 
     this._app.stage.addChild(this._root);
-
-
 
     this._bgContainer = new Container();
 
@@ -665,8 +621,6 @@ export class MovieApp {
 
     this._bgContainer.addChild(this._bgBackdropSprite);
 
-
-
     this._prevBgSprite = new Sprite();
 
     this._prevBgSprite.anchor.set(0.5);
@@ -674,8 +628,6 @@ export class MovieApp {
     this._prevBgSprite.visible = false;
 
     this._bgContainer.addChild(this._prevBgSprite);
-
-
 
     this._bgSprite = new Sprite();
 
@@ -686,19 +638,13 @@ export class MovieApp {
     this._letterboxBars = new Graphics();
     this._bgContainer.addChild(this._letterboxBars);
 
-
-
     this._wipeMask = new Graphics();
 
     this._bgContainer.addChild(this._wipeMask);
 
-
-
     this._wipeEdgeGraphics = new Graphics();
 
     this._bgContainer.addChild(this._wipeEdgeGraphics);
-
-
 
     this._cosmicScene = new CosmicScene();
 
@@ -712,19 +658,13 @@ export class MovieApp {
 
     this._uiContainer = new Container();
 
-
-
     this._canvasHitArea = new Graphics();
 
     this._canvasHitArea.eventMode = 'static';
 
     this._canvasHitArea.cursor = 'pointer';
 
-
-
     this._initQuoteAndMissingImageHUD();
-
-
 
     this._root.addChild(this._bgContainer);
 
@@ -744,8 +684,6 @@ export class MovieApp {
 
     this._root.addChild(this._uiContainer);
 
-
-
     // Video element setup (loops gemini_generated_video_42e28e3d; backups: gemini_generated_video_aaf115f1, gemini_generated_video_50f3f52f)
 
     this._videoElement = document.getElementById('intro-video') as HTMLVideoElement | null;
@@ -764,8 +702,6 @@ export class MovieApp {
 
     }
 
-
-
     // 0. Disclaimer HUD Card (Cyberpunk Corporate Warning)
 
     this._introDisclaimerContainer = new Container();
@@ -774,19 +710,13 @@ export class MovieApp {
 
     this._introContainer.addChild(this._introDisclaimerContainer);
 
-
-
     this._introDisclaimerBg = new Graphics();
 
     this._introDisclaimerContainer.addChild(this._introDisclaimerBg);
 
-
-
     this._introDisclaimerCorners = new Graphics();
 
     this._introDisclaimerContainer.addChild(this._introDisclaimerCorners);
-
-
 
     const discBadgeStyle = new TextStyle({
 
@@ -812,13 +742,9 @@ export class MovieApp {
 
     this._introDisclaimerContainer.addChild(this._introDisclaimerBadge);
 
-
-
     this._introDisclaimerLinesContainer = new Container();
 
     this._introDisclaimerContainer.addChild(this._introDisclaimerLinesContainer);
-
-
 
     // 1. Skull Logo sprite
 
@@ -829,8 +755,6 @@ export class MovieApp {
     this._introLogoSprite.alpha = 0;
 
     this._introContainer.addChild(this._introLogoSprite);
-
-
 
     // 2. STUDIOS text (no square brackets, tighter letter spacing)
 
@@ -858,8 +782,6 @@ export class MovieApp {
 
     this._introContainer.addChild(this._introStudiosText);
 
-
-
     // 3. PRESENTS text (no square brackets, tighter letter spacing)
 
     const presentsStyle = new TextStyle({
@@ -886,8 +808,6 @@ export class MovieApp {
 
     this._introContainer.addChild(this._introPresentsText);
 
-
-
     // 4. Series Title & Subtitle container (massive movie title card with custom logo!)
 
     this._introSeriesContainer = new Container();
@@ -896,15 +816,11 @@ export class MovieApp {
 
     this._introContainer.addChild(this._introSeriesContainer);
 
-
-
     this._introSeriesLogoSprite = new Sprite(getTexture('series_title_logo'));
 
     this._introSeriesLogoSprite.anchor.set(0.5);
 
     this._introSeriesContainer.addChild(this._introSeriesLogoSprite);
-
-
 
     const seriesSubStyle = new TextStyle({
 
@@ -927,8 +843,6 @@ export class MovieApp {
     this._introSeriesSubtitle.anchor.set(0.5);
 
     this._introSeriesContainer.addChild(this._introSeriesSubtitle);
-
-
 
     const cycleSubStyle = new TextStyle({
 
@@ -954,8 +868,6 @@ export class MovieApp {
 
     this._introContainer.addChild(this._introCycleSubtitle);
 
-
-
     // Setup HUD & UI (hidden for clean cinema look per user request)
 
     const badgeStyle = new TextStyle({
@@ -975,8 +887,6 @@ export class MovieApp {
     this._badgeText = new Text({ text: '', style: badgeStyle });
 
     this._badgeText.visible = false;
-
-
 
     const titleStyle = new TextStyle({
 
@@ -998,8 +908,6 @@ export class MovieApp {
 
     this._titleText.visible = false;
 
-
-
     const subStyle = new TextStyle({
 
       fontFamily: ['Share Tech Mono', 'monospace'],
@@ -1014,8 +922,6 @@ export class MovieApp {
 
     this._subtitleText.visible = false;
 
-
-
     const timeStyle = new TextStyle({
 
       fontFamily: ['Share Tech Mono', 'monospace'],
@@ -1029,8 +935,6 @@ export class MovieApp {
     this._timeCodeText = new Text({ text: '00:00 / 00:00', style: timeStyle });
 
     this._timeCodeText.anchor.set(0, 0.5);
-
-
 
     // Timeline calculation
 
@@ -1047,8 +951,6 @@ export class MovieApp {
       cumulative += act.duration;
 
     }
-
-
 
     // 1. Center & Side Ripples
 
@@ -1084,8 +986,6 @@ export class MovieApp {
 
     this._rippleContainer.addChild(this._centerRipple);
 
-
-
     this._sideRipple = new Container();
 
     this._sideRipple.visible = false;
@@ -1120,8 +1020,6 @@ export class MovieApp {
 
     this._rippleContainer.addChild(this._sideRipple);
 
-
-
     // 2. Canvas Click & Double Click Gestures (Instant YouTube click-to-pause!)
 
     this._canvasHitArea.on('pointerdown', (e: FederatedPointerEvent) => {
@@ -1130,15 +1028,11 @@ export class MovieApp {
 
       ClickTracker.exclude();
 
-
-
       const now = performance.now();
 
       const pos = { x: e.global.x, y: e.global.y };
 
       const dist = Math.hypot(pos.x - this._lastClickPos.x, pos.y - this._lastClickPos.y);
-
-
 
       if (now - this._lastClickTime < 300 && dist < 50) {
 
@@ -1164,8 +1058,6 @@ export class MovieApp {
 
     });
 
-
-
     // 3. Bottom Player Controls
 
     this._prevButton = this._createIconButton('⏮', () => this.previousPhrase());
@@ -1186,15 +1078,11 @@ export class MovieApp {
 
     this._muteIcon = this._muteButton.children[1] as Text;
 
-
-
     const ccRes = this._createCCButton();
 
     this._ccButton = ccRes.container;
 
     this._ccButtonVisuals = ccRes.updateVisuals;
-
-
 
     const fsRes = this._createFullscreenButton();
 
@@ -1210,8 +1098,6 @@ export class MovieApp {
 
     });
 
-
-
     // Segmented YouTube Scrubber Timeline
 
     this._progressBarContainer = new Container();
@@ -1225,8 +1111,6 @@ export class MovieApp {
     this._progressBarFill = new Graphics();
 
     this._scrubberThumb = new Graphics();
-
-
 
     this._timelineTooltip = new Container();
 
@@ -1252,8 +1136,6 @@ export class MovieApp {
 
     this._timelineTooltip.addChild(this._timelineTooltipText);
 
-
-
     this._progressBarContainer.addChild(this._progressBarBg);
 
     this._progressBarContainer.addChild(this._progressBarFill);
@@ -1261,8 +1143,6 @@ export class MovieApp {
     this._progressBarContainer.addChild(this._scrubberThumb);
 
     this._progressBarContainer.addChild(this._timelineTooltip);
-
-
 
     const handleTimelinePointer = (e: FederatedPointerEvent, isClick = false) => {
 
@@ -1273,8 +1153,6 @@ export class MovieApp {
       const ratio = Math.max(0, Math.min(1, local.x / barW));
 
       const targetOverallTime = ratio * this._totalMovieDuration;
-
-
 
       let targetActIndex = 0;
 
@@ -1290,11 +1168,7 @@ export class MovieApp {
 
       }
 
-
-
       const targetActTime = targetOverallTime - this._actStartTimes[targetActIndex];
-
-
 
       if (isClick || this._isTimelineDragging) {
 
@@ -1307,8 +1181,6 @@ export class MovieApp {
         this.seekAudio(targetActTime);
 
       }
-
-
 
       const act = STORY_ACTS[targetActIndex];
 
@@ -1338,8 +1210,6 @@ export class MovieApp {
 
     };
 
-
-
     this._progressBarContainer.on('pointerdown', (e: FederatedPointerEvent) => {
 
       e.stopPropagation();
@@ -1362,8 +1232,6 @@ export class MovieApp {
 
     });
 
-
-
     this._progressBarContainer.on('pointerenter', () => {
 
       this._isTimelineHovered = true;
@@ -1371,8 +1239,6 @@ export class MovieApp {
       this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
 
     });
-
-
 
     this._progressBarContainer.on('pointerleave', () => {
 
@@ -1384,8 +1250,6 @@ export class MovieApp {
 
     });
 
-
-
     this._progressBarContainer.on('globalpointermove', (e: FederatedPointerEvent) => {
 
       if (this._isTimelineHovered || this._isTimelineDragging) {
@@ -1395,8 +1259,6 @@ export class MovieApp {
       }
 
     });
-
-
 
     window.addEventListener('pointerup', () => {
 
@@ -1420,11 +1282,7 @@ export class MovieApp {
 
     });
 
-
-
     this._dotsContainer = new Container();
-
-
 
     // Volume controls: Voice (🎙️), Music (🎵), Sound Effects (⚡)
 
@@ -1444,11 +1302,7 @@ export class MovieApp {
 
     });
 
-
-
     AmbientManager.setMusicVolume(this._musicVolume);
-
-
 
     this._musicVolControl = this._createVolumeControl('🎵', this._musicVolume, 0xff5e1a, (v) => {
 
@@ -1468,8 +1322,6 @@ export class MovieApp {
 
     });
 
-
-
     this._sfxVolControl = this._createVolumeControl('⚡', this._sfxVolume, 0xffcc00, (v) => {
 
       this._sfxVolume = v;
@@ -1479,8 +1331,6 @@ export class MovieApp {
       SFX.playPreview();
 
     });
-
-
 
     this._volumeGroup = new Container();
 
@@ -1495,8 +1345,6 @@ export class MovieApp {
     this._volumeGroup.addChild(this._musicVolControl.container);
 
     this._volumeGroup.addChild(this._sfxVolControl.container);
-
-
 
     // Audio Analysis & Timing Profile for Intro
 
@@ -1542,13 +1390,9 @@ export class MovieApp {
 
     }
 
-
-
     // Setup interactive Debug UI
 
     this._setupDebugUI();
-
-
 
     // Assemble Unified Bottom Player Bar
 
@@ -1572,8 +1416,6 @@ export class MovieApp {
 
     this._controlsRow.addChild(this._fullscreenButton);
 
-
-
     this._playerBarBg = new Graphics();
 
     this._playerBarBg.visible = false;
@@ -1584,13 +1426,9 @@ export class MovieApp {
 
     this._playerBarContainer.addChild(this._playerBarBg);
 
-
-
     // Setup WS-96 Retro Hardware Console
 
     this._setupWsConsole();
-
-
 
     this._controlsRow.visible = false;
 
@@ -1600,13 +1438,9 @@ export class MovieApp {
 
     this._playerBarContainer.addChild(this._controlsRow);
 
-
-
     this._playerBarContainer.on('pointerenter', () => { this._isUiHovered = true; });
 
     this._playerBarContainer.on('pointerleave', () => { this._isUiHovered = false; });
-
-
 
     // Header on top
 
@@ -1619,8 +1453,6 @@ export class MovieApp {
     this._uiContainer.addChild(this._debugContainer);
 
     this._uiContainer.addChild(this._playerBarContainer);
-
-
 
     // Connect AudioController
 
@@ -1650,8 +1482,6 @@ export class MovieApp {
 
     });
 
-
-
     // Subtitle phrase seeking hook
 
     this._subtitles.onSeekRequested = (targetTime: number) => {
@@ -1659,8 +1489,6 @@ export class MovieApp {
       this.seekAudio(targetTime);
 
     };
-
-
 
     // YouTube Hotkeys & Keyboard Navigation
 
@@ -1670,11 +1498,7 @@ export class MovieApp {
 
       if (tag === 'input' || tag === 'textarea') return;
 
-
-
       this._resetAutohide();
-
-
 
       if (e.key === ' ' || e.key === 'k' || e.key === 'K') {
 
@@ -1786,15 +1610,11 @@ export class MovieApp {
 
     });
 
-
-
     window.addEventListener('pointermove', () => {
 
       this._resetAutohide();
 
     });
-
-
 
     if (typeof document !== 'undefined' && (document as any).fonts) {
 
@@ -1810,13 +1630,9 @@ export class MovieApp {
 
     }
 
-
-
     this.goToAct(0);
 
   }
-
-
 
   private _resetAutohide(): void {
 
@@ -1839,8 +1655,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   public toggleSubtitles(): void {
 
@@ -1867,8 +1681,6 @@ export class MovieApp {
     this._sideRippleText.text = this._isSubtitlesVisible ? 'CC: ВКЛ' : 'CC: ВЫКЛ';
 
   }
-
-
 
   public toggleFullscreen(): void {
 
@@ -1898,8 +1710,6 @@ export class MovieApp {
 
   }
 
-
-
   private _showCenterRipple(type: 'play' | 'pause'): void {
 
     this._centerRippleIcon.text = type === 'play' ? '▶' : '⏸';
@@ -1912,8 +1722,6 @@ export class MovieApp {
 
     this._centerRipple.visible = true;
 
-
-
     cancelTween(this._centerRipple);
 
     tween(this._centerRipple, { alpha: 0 }, 0.4, ease.outQuad);
@@ -1921,8 +1729,6 @@ export class MovieApp {
     tween(this._centerRipple.scale, { x: 1.35, y: 1.35 }, 0.4, ease.outBack);
 
   }
-
-
 
   private _showSeekRipple(delta: number, posX?: number, posY?: number): void {
 
@@ -1942,8 +1748,6 @@ export class MovieApp {
 
     this._sideRipple.visible = true;
 
-
-
     cancelTween(this._sideRipple);
 
     tween(this._sideRipple, { alpha: 0 }, 0.45, ease.outQuad);
@@ -1951,8 +1755,6 @@ export class MovieApp {
     tween(this._sideRipple.scale, { x: 1.25, y: 1.25 }, 0.45, ease.outBack);
 
   }
-
-
 
   private _createCCButton(): { container: Container; updateVisuals: (active: boolean) => void } {
 
@@ -1962,13 +1764,9 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txtStyle = new TextStyle({
 
@@ -1989,8 +1787,6 @@ export class MovieApp {
     txt.anchor.set(0.5);
 
     c.addChild(txt);
-
-
 
     const updateVisuals = (active: boolean, hover = false) => {
 
@@ -2018,8 +1814,6 @@ export class MovieApp {
 
     };
 
-
-
     updateVisuals(this._isSubtitlesVisible, false);
 
     c.on('pointerover', () => updateVisuals(this._isSubtitlesVisible, true));
@@ -2038,13 +1832,9 @@ export class MovieApp {
 
     });
 
-
-
     return { container: c, updateVisuals: (a) => updateVisuals(a, false) };
 
   }
-
-
 
   private _createFullscreenButton(): { container: Container; updateVisuals: () => void } {
 
@@ -2054,13 +1844,9 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txtStyle = new TextStyle({
 
@@ -2078,8 +1864,6 @@ export class MovieApp {
 
     c.addChild(txt);
 
-
-
     const draw = (hover = false) => {
 
       const isFs = Boolean(document.fullscreenElement);
@@ -2095,8 +1879,6 @@ export class MovieApp {
       txt.text = isFs ? '✕' : '⛶';
 
     };
-
-
 
     draw(false);
 
@@ -2116,13 +1898,9 @@ export class MovieApp {
 
     });
 
-
-
     return { container: c, updateVisuals: () => draw(false) };
 
   }
-
-
 
   private _createButton(label: string, onClick: () => void, isPrimary = false): Container {
 
@@ -2132,13 +1910,9 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txtStyle = new TextStyle({
 
@@ -2160,8 +1934,6 @@ export class MovieApp {
 
     c.addChild(txt);
 
-
-
     const draw = (hover = false) => {
 
       bg.clear();
@@ -2177,8 +1949,6 @@ export class MovieApp {
       bg.stroke({ color: strokeCol, width: 1.5 });
 
     };
-
-
 
     draw(false);
 
@@ -2198,13 +1968,9 @@ export class MovieApp {
 
     });
 
-
-
     return c;
 
   }
-
-
 
   private _createIconButton(icon: string, onClick: () => void): Container {
 
@@ -2214,13 +1980,9 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txtStyle = new TextStyle({
 
@@ -2238,8 +2000,6 @@ export class MovieApp {
 
     c.addChild(txt);
 
-
-
     const draw = (hover = false) => {
 
       bg.clear();
@@ -2251,8 +2011,6 @@ export class MovieApp {
       bg.stroke({ color: hover ? 0x00d2ff : 0x3a4060, width: 1.5 });
 
     };
-
-
 
     draw(false);
 
@@ -2272,13 +2030,9 @@ export class MovieApp {
 
     });
 
-
-
     return c;
 
   }
-
-
 
   private _createVolumeControl(
 
@@ -2296,23 +2050,17 @@ export class MovieApp {
 
     c.eventMode = 'static';
 
-
-
     let currentVol = initialVol;
 
     let savedVol = initialVol > 0 ? initialVol : 0.8;
 
     let isDragging = false;
 
-
-
     // Capsule background
 
     const bgCapsule = new Graphics();
 
     c.addChild(bgCapsule);
-
-
 
     // Icon button (left)
 
@@ -2322,8 +2070,6 @@ export class MovieApp {
 
     iconBtn.cursor = 'pointer';
 
-
-
     const iconBg = new Graphics();
 
     iconBg.circle(-26, 0, 13);
@@ -2331,8 +2077,6 @@ export class MovieApp {
     iconBg.fill({ color: 0x000000, alpha: 0.001 });
 
     iconBtn.addChild(iconBg);
-
-
 
     const iconStyle = new TextStyle({
 
@@ -2354,8 +2098,6 @@ export class MovieApp {
 
     c.addChild(iconBtn);
 
-
-
     // Slider track (right)
 
     const trackStartX = -10;
@@ -2363,8 +2105,6 @@ export class MovieApp {
     const trackW = 44;
 
     const trackH = 5;
-
-
 
     const trackContainer = new Container();
 
@@ -2374,8 +2114,6 @@ export class MovieApp {
 
     c.addChild(trackContainer);
 
-
-
     const trackHit = new Graphics();
 
     trackHit.rect(trackStartX - 4, -13, trackW + 8, 26);
@@ -2384,15 +2122,11 @@ export class MovieApp {
 
     trackContainer.addChild(trackHit);
 
-
-
     const trackBg = new Graphics();
 
     const trackFill = new Graphics();
 
     const thumb = new Graphics();
-
-
 
     trackContainer.addChild(trackBg);
 
@@ -2400,13 +2134,9 @@ export class MovieApp {
 
     trackContainer.addChild(thumb);
 
-
-
     const updateVisuals = (vol: number) => {
 
       currentVol = Math.max(0, Math.min(1, vol));
-
-
 
       bgCapsule.clear();
 
@@ -2416,19 +2146,13 @@ export class MovieApp {
 
       bgCapsule.stroke({ color: currentVol > 0 ? 0x2a3148 : 0x1c1f2b, width: 1 });
 
-
-
       iconText.alpha = currentVol > 0 ? 1.0 : 0.35;
-
-
 
       trackBg.clear();
 
       trackBg.roundRect(trackStartX, -trackH / 2, trackW, trackH, trackH / 2);
 
       trackBg.fill({ color: 0x1e2335, alpha: 0.95 });
-
-
 
       trackFill.clear();
 
@@ -2439,8 +2163,6 @@ export class MovieApp {
         trackFill.fill({ color: tintColor });
 
       }
-
-
 
       thumb.clear();
 
@@ -2454,11 +2176,7 @@ export class MovieApp {
 
     };
 
-
-
     updateVisuals(initialVol);
-
-
 
     const setVol = (v: number, triggerCallback = true) => {
 
@@ -2469,8 +2187,6 @@ export class MovieApp {
       if (triggerCallback) onChange(clamped);
 
     };
-
-
 
     iconBtn.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -2494,8 +2210,6 @@ export class MovieApp {
 
     });
 
-
-
     const handlePointerPos = (e: FederatedPointerEvent) => {
 
       const local = trackContainer.toLocal(e.global);
@@ -2505,8 +2219,6 @@ export class MovieApp {
       setVol(ratio);
 
     };
-
-
 
     trackContainer.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -2520,8 +2232,6 @@ export class MovieApp {
 
     });
 
-
-
     trackContainer.on('globalpointermove', (e: FederatedPointerEvent) => {
 
       if (isDragging) {
@@ -2531,8 +2241,6 @@ export class MovieApp {
       }
 
     });
-
-
 
     const stopDrag = () => {
 
@@ -2544,13 +2252,9 @@ export class MovieApp {
 
     };
 
-
-
     trackContainer.on('pointerup', stopDrag);
 
     trackContainer.on('pointerupoutside', stopDrag);
-
-
 
     return {
 
@@ -2561,8 +2265,6 @@ export class MovieApp {
     };
 
   }
-
-
 
   private _createWsKeycap(
 
@@ -2602,8 +2304,6 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const sprite = new Sprite(getTexture(normalTexKey));
 
     sprite.anchor.set(0.5, 0.5);
@@ -2611,8 +2311,6 @@ export class MovieApp {
     sprite.alpha = 1.0;
 
     c.addChild(sprite);
-
-
 
     // Physical keycap press scales & shadow tints
 
@@ -2628,15 +2326,11 @@ export class MovieApp {
 
     const NORMAL_TINT = 0xffffff;
 
-
-
     let latched = Boolean(options?.initialLatched);
 
     let isPressedDown = false;
 
     let isHandlingPointerRelease = false;
-
-
 
     const applyState = (pressed: boolean, animate = false) => {
 
@@ -2644,13 +2338,9 @@ export class MovieApp {
 
       sprite.y = 0; // Strictly centered, no vertical displacement
 
-
-
       let targetScale = NORMAL_SCALE;
 
       let targetTint = NORMAL_TINT;
-
-
 
       if (pressed) {
 
@@ -2670,8 +2360,6 @@ export class MovieApp {
 
       }
 
-
-
       if (animate) {
 
         sprite.tint = targetTint;
@@ -2688,11 +2376,7 @@ export class MovieApp {
 
     };
 
-
-
     applyState(false, false);
-
-
 
     c.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -2705,8 +2389,6 @@ export class MovieApp {
       applyState(true, false);
 
     });
-
-
 
     c.on('pointerup', (e: FederatedPointerEvent) => {
 
@@ -2736,8 +2418,6 @@ export class MovieApp {
 
     });
 
-
-
     const cancelPress = () => {
 
       if (!isPressedDown) return;
@@ -2747,8 +2427,6 @@ export class MovieApp {
       applyState(false, true);
 
     };
-
-
 
     c.on('pointerupoutside', cancelPress);
 
@@ -2765,8 +2443,6 @@ export class MovieApp {
       options?.onHover?.();
 
     });
-
-
 
     const pressAndRelease = () => {
 
@@ -2787,8 +2463,6 @@ export class MovieApp {
       });
 
     };
-
-
 
     return {
 
@@ -2816,8 +2490,6 @@ export class MovieApp {
 
   }
 
-
-
   private _createWsActButton(
 
     actIdx: number,
@@ -2832,8 +2504,6 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     // Transparent generous hit area (24x48) covering button (y=0) and indicator lamp (y=-20.5)
 
     const hitArea = new Graphics();
@@ -2844,8 +2514,6 @@ export class MovieApp {
 
     c.addChild(hitArea);
 
-
-
     // 1. Static chassis socket well / hole
 
     const holeSprite = new Sprite(getTexture('gui_act_btn_hole'));
@@ -2855,8 +2523,6 @@ export class MovieApp {
     holeSprite.position.set(0, 0);
 
     c.addChild(holeSprite);
-
-
 
     // 2. Button drop shadow: shrinks when button is pressed ("КОгда кнопка нажата ее тень тоже уменьшается")
 
@@ -2870,8 +2536,6 @@ export class MovieApp {
 
     c.addChild(shadowSprite);
 
-
-
     // 3. Button keycap
 
     const btnSprite = new Sprite(getTexture('gui_act_btn'));
@@ -2882,8 +2546,6 @@ export class MovieApp {
 
     c.addChild(btnSprite);
 
-
-
     // 4. Indicator Lamp (above button at y = -20.5)
 
     const lampSprite = new Sprite(getTexture('gui_act_lamp_off'));
@@ -2893,8 +2555,6 @@ export class MovieApp {
     lampSprite.position.set(0, -20.5);
 
     c.addChild(lampSprite);
-
-
 
     const PRESSED_SCALE = 0.72; // Deep overtravel into socket ("нажатие с избытком")
 
@@ -2908,15 +2568,11 @@ export class MovieApp {
 
     const NORMAL_TINT = 0xffffff;
 
-
-
     let latched = false;
 
     let isPressedDown = false;
 
     let isHandlingPointerRelease = false;
-
-
 
     const applyState = (pressed: boolean, animate = false) => {
 
@@ -2926,13 +2582,9 @@ export class MovieApp {
 
       cancelTween(shadowSprite.position);
 
-
-
       let targetScale = NORMAL_SCALE;
 
       let targetTint = NORMAL_TINT;
-
-
 
       if (pressed) {
 
@@ -2948,13 +2600,9 @@ export class MovieApp {
 
       }
 
-
-
       const targetShadowX = -3.5 * targetScale;
 
       const targetShadowY = 4.5 * targetScale;
-
-
 
       if (animate) {
 
@@ -2980,11 +2628,7 @@ export class MovieApp {
 
     };
 
-
-
     applyState(false, false);
-
-
 
     c.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -2997,8 +2641,6 @@ export class MovieApp {
       applyState(true, false);
 
     });
-
-
 
     c.on('pointerup', (e: FederatedPointerEvent) => {
 
@@ -3028,8 +2670,6 @@ export class MovieApp {
 
     });
 
-
-
     const cancelPress = () => {
 
       if (!isPressedDown) return;
@@ -3040,8 +2680,6 @@ export class MovieApp {
 
     };
 
-
-
     c.on('pointerupoutside', cancelPress);
 
     c.on('pointerout', () => {
@@ -3051,8 +2689,6 @@ export class MovieApp {
       this._timelineTooltip.visible = false;
 
     });
-
-
 
     c.on('pointerover', (e: FederatedPointerEvent) => {
 
@@ -3097,8 +2733,6 @@ export class MovieApp {
       }
 
     });
-
-
 
     return {
 
@@ -3150,8 +2784,6 @@ export class MovieApp {
 
   }
 
-
-
   private _createWsKnobSlider(
 
     knobTexKey: string,
@@ -3174,8 +2806,6 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const hit = new Graphics();
 
     hit.rect(startX - 12, slotY - 16, (endX - startX) + 24, 32);
@@ -3184,8 +2814,6 @@ export class MovieApp {
 
     c.addChild(hit);
 
-
-
     const knob = new Sprite(getTexture(knobTexKey));
 
     knob.anchor.set(0.5, 0.5);
@@ -3193,8 +2821,6 @@ export class MovieApp {
     knob.position.set(startX + initialVol * (endX - startX), slotY);
 
     c.addChild(knob);
-
-
 
     let isDragging = false;
 
@@ -3210,8 +2836,6 @@ export class MovieApp {
 
     };
 
-
-
     c.on('pointerdown', (e: FederatedPointerEvent) => {
 
       e.stopPropagation();
@@ -3224,8 +2848,6 @@ export class MovieApp {
 
     });
 
-
-
     c.on('globalpointermove', (e: FederatedPointerEvent) => {
 
       if (isDragging) {
@@ -3236,15 +2858,11 @@ export class MovieApp {
 
     });
 
-
-
     window.addEventListener('pointerup', () => {
 
       isDragging = false;
 
     });
-
-
 
     return {
 
@@ -3264,15 +2882,11 @@ export class MovieApp {
 
   }
 
-
-
   private _setupWsConsole(): void {
 
     this._wsConsoleContainer = new Container();
 
     this._wsConsoleContainer.eventMode = 'static';
-
-
 
     // Left Wing (Pause, Prev, Next, Vol, 3 Sliders, LCD)
 
@@ -3281,8 +2895,6 @@ export class MovieApp {
     this._wsChassisLeft = new Sprite(getTexture('gui_chassis_left'));
 
     this._wsLeftWing.addChild(this._wsChassisLeft);
-
-
 
     // Play/Pause keycap button at (90, 83) from mockup3
 
@@ -3318,8 +2930,6 @@ export class MovieApp {
 
     this._wsLeftWing.addChild(ppKey.container);
 
-
-
     // Prev keycap button at (152, 83) -> jumps to previous phrase / subtitle cue
 
     const prevKey = this._createWsKeycap(
@@ -3340,8 +2950,6 @@ export class MovieApp {
 
     this._wsLeftWing.addChild(prevKey.container);
 
-
-
     // Next keycap button at (213.5, 83) -> jumps to next phrase / subtitle cue
 
     const nextKey = this._createWsKeycap(
@@ -3361,8 +2969,6 @@ export class MovieApp {
     this._wsNextPressAndRelease = nextKey.pressAndRelease;
 
     this._wsLeftWing.addChild(nextKey.container);
-
-
 
     // Vol keycap button at (275, 83)
 
@@ -3389,8 +2995,6 @@ export class MovieApp {
     this._wsSetVolLatched = volKey.setLatched;
 
     this._wsLeftWing.addChild(volKey.container);
-
-
 
     // 3 Volume Sliders (narrowed travel boundaries so knobs stay strictly within the sculpted wells)
 
@@ -3428,8 +3032,6 @@ export class MovieApp {
 
     this._wsVoiceKnob = voiceSlider.knob;
 
-
-
     const musicSlider = this._createWsKnobSlider(
 
       'gui_knob_music',
@@ -3466,8 +3068,6 @@ export class MovieApp {
 
     this._wsMusicKnob = musicSlider.knob;
 
-
-
     const sfxSlider = this._createWsKnobSlider(
 
       'gui_knob_sfx',
@@ -3495,8 +3095,6 @@ export class MovieApp {
     this._wsLeftWing.addChild(sfxSlider.container);
 
     this._wsSfxKnob = sfxSlider.knob;
-
-
 
     // Digital LCD Screen
 
@@ -3534,8 +3132,6 @@ export class MovieApp {
 
     this._wsLeftWing.addChild(this._wsLcdText);
 
-
-
     // Middle Wing (Plastic Chassis + 3-piece Track + 9 LEDs)
 
     this._wsMidWing = new Container();
@@ -3546,15 +3142,11 @@ export class MovieApp {
 
     this._wsMidWing.addChild(this._wsChassisMid);
 
-
-
     this._wsTimelineContainer = new Container();
 
     this._wsTimelineContainer.eventMode = 'static';
 
     this._wsTimelineContainer.cursor = 'pointer';
-
-
 
     this._wsTrackCapLeft = new Sprite(getTexture('gui_track_cap_left'));
 
@@ -3562,29 +3154,21 @@ export class MovieApp {
 
     this._wsTrackCapRight = new Sprite(getTexture('gui_track_cap_right'));
 
-
-
     this._wsTimelineContainer.addChild(this._wsTrackCapLeft);
 
     this._wsTimelineContainer.addChild(this._wsTrackMid);
 
     this._wsTimelineContainer.addChild(this._wsTrackCapRight);
 
-
-
     this._wsTimelineFill = new Graphics();
 
     this._wsTimelineContainer.addChild(this._wsTimelineFill);
-
-
 
     this._wsTimelineKnob = new Sprite(getTexture('gui_knob_timeline'));
 
     this._wsTimelineKnob.anchor.set(0.5, 0.5);
 
     this._wsTimelineContainer.addChild(this._wsTimelineKnob);
-
-
 
     // Timeline Act Buttons with Indicator Lamps above timeline track (one per act)
 
@@ -3608,8 +3192,6 @@ export class MovieApp {
 
     }
 
-
-
     // Timeline Chapter Stickers placed on chassis under timeline track and buttons
 
     const getActIndex = (id: string, fallback: number) => {
@@ -3619,8 +3201,6 @@ export class MovieApp {
       return idx !== -1 ? idx : fallback;
 
     };
-
-
 
     const stickerDefs: { actIndex: number; texKey: string }[] = [
 
@@ -3636,8 +3216,6 @@ export class MovieApp {
 
     ];
 
-
-
     this._wsStickers = [];
 
     for (const def of stickerDefs) {
@@ -3648,8 +3226,6 @@ export class MovieApp {
 
       c.cursor = 'pointer';
 
-
-
       const spr = new Sprite(getTexture(def.texKey));
 
       spr.anchor.set(0.5, 0.5);
@@ -3657,8 +3233,6 @@ export class MovieApp {
       spr.alpha = 0.9;
 
       c.addChild(spr);
-
-
 
       c.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -3671,8 +3245,6 @@ export class MovieApp {
         this.goToAct(def.actIndex);
 
       });
-
-
 
       c.on('pointerover', (e: FederatedPointerEvent) => {
 
@@ -3720,8 +3292,6 @@ export class MovieApp {
 
       });
 
-
-
       c.on('pointerout', () => {
 
         spr.alpha = (def.actIndex === this._currentActIndex) ? 1.0 : 0.9;
@@ -3729,8 +3299,6 @@ export class MovieApp {
         this._timelineTooltip.visible = false;
 
       });
-
-
 
       this._wsStickers.push({
 
@@ -3745,8 +3313,6 @@ export class MovieApp {
       this._wsMidWing.addChild(c);
 
     }
-
-
 
     // Timeline Scrubbing Logic
 
@@ -3766,8 +3332,6 @@ export class MovieApp {
 
       const targetOverallTime = ratio * this._totalMovieDuration;
 
-
-
       let targetActIndex = 0;
 
       for (let i = STORY_ACTS.length - 1; i >= 0; i--) {
@@ -3782,11 +3346,7 @@ export class MovieApp {
 
       }
 
-
-
       const targetActTime = targetOverallTime - this._actStartTimes[targetActIndex];
-
-
 
       if (isClick || this._isTimelineDragging) {
 
@@ -3799,8 +3359,6 @@ export class MovieApp {
         this.seekAudio(targetActTime);
 
       }
-
-
 
       const act = STORY_ACTS[targetActIndex];
 
@@ -3832,8 +3390,6 @@ export class MovieApp {
 
     };
 
-
-
     this._wsTimelineContainer.on('pointerdown', (e: FederatedPointerEvent) => {
 
       e.stopPropagation();
@@ -3856,8 +3412,6 @@ export class MovieApp {
 
     });
 
-
-
     this._wsTimelineContainer.on('pointerenter', () => {
 
       this._isTimelineHovered = true;
@@ -3865,8 +3419,6 @@ export class MovieApp {
       this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
 
     });
-
-
 
     this._wsTimelineContainer.on('pointerleave', () => {
 
@@ -3878,8 +3430,6 @@ export class MovieApp {
 
     });
 
-
-
     this._wsTimelineContainer.on('globalpointermove', (e: FederatedPointerEvent) => {
 
       if (this._isTimelineHovered || this._isTimelineDragging) {
@@ -3889,8 +3439,6 @@ export class MovieApp {
       }
 
     });
-
-
 
     window.addEventListener('pointerup', () => {
 
@@ -3914,11 +3462,7 @@ export class MovieApp {
 
     });
 
-
-
     this._wsMidWing.addChild(this._wsTimelineContainer);
-
-
 
     // Right Wing
 
@@ -3927,8 +3471,6 @@ export class MovieApp {
     this._wsChassisRight = new Sprite(getTexture('gui_chassis_right'));
 
     this._wsRightWing.addChild(this._wsChassisRight);
-
-
 
     // Deep black backing well behind CC and Mode buttons to ensure 100% pitch-black well
 
@@ -3939,8 +3481,6 @@ export class MovieApp {
     socketBg.fill({ color: 0x080a0c });
 
     this._wsRightWing.addChild(socketBg);
-
-
 
     // CC button at (189.5, 79.5)
 
@@ -3968,8 +3508,6 @@ export class MovieApp {
 
     this._wsRightWing.addChild(ccKey.container);
 
-
-
     // Mode / Fullscreen button at (249.0, 79.5)
 
     const modeKey = this._createWsKeycap(
@@ -3996,8 +3534,6 @@ export class MovieApp {
 
     this._wsRightWing.addChild(modeKey.container);
 
-
-
     // Assemble Console
 
     this._wsConsoleContainer.addChild(this._wsLeftWing);
@@ -4008,13 +3544,9 @@ export class MovieApp {
 
     this._wsConsoleContainer.addChild(this._timelineTooltip);
 
-
-
     this._playerBarContainer.addChild(this._wsConsoleContainer);
 
   }
-
-
 
   private _setupDebugUI(): void {
 
@@ -4022,8 +3554,6 @@ export class MovieApp {
     this._debugContainer.visible = false;
 
     this._debugContainer.eventMode = 'static';
-
-
 
     // 1. Compact Toggle Pill (always accessible)
 
@@ -4033,13 +3563,9 @@ export class MovieApp {
 
     pill.cursor = 'pointer';
 
-
-
     this._debugPillBg = new Graphics();
 
     pill.addChild(this._debugPillBg);
-
-
 
     const txtStyle = new TextStyle({
 
@@ -4061,8 +3587,6 @@ export class MovieApp {
 
     pill.addChild(this._debugTrackText);
 
-
-
     pill.on('pointerdown', (e: FederatedPointerEvent) => {
 
       e.stopPropagation();
@@ -4075,11 +3599,7 @@ export class MovieApp {
 
     });
 
-
-
     this._debugContainer.addChild(pill);
-
-
 
     // 2. Expanded Options Panel
 
@@ -4091,8 +3611,6 @@ export class MovieApp {
 
     this._debugContainer.addChild(this._debugExpandedPanel);
 
-
-
     const panelBg = new Graphics();
 
     panelBg.roundRect(-215, 0, 430, 74, 10);
@@ -4102,8 +3620,6 @@ export class MovieApp {
     panelBg.stroke({ color: 0x00f5d4, width: 1.2 });
 
     this._debugExpandedPanel.addChild(panelBg);
-
-
 
     // Info text: drop time & audio analysis
 
@@ -4125,8 +3641,6 @@ export class MovieApp {
 
     this._debugExpandedPanel.addChild(this._debugDropInfoText);
 
-
-
     // Quick action mini buttons
 
     const btnRestart = this._createDebugMiniBtn('↺ С начала (0s)', () => {
@@ -4141,8 +3655,6 @@ export class MovieApp {
 
     this._debugExpandedPanel.addChild(btnRestart);
 
-
-
     const btnPause = this._createDebugMiniBtn('⏸ К паузе (24s)', () => {
 
       this.seekAudio(24.0);
@@ -4153,8 +3665,6 @@ export class MovieApp {
 
     this._debugExpandedPanel.addChild(btnPause);
 
-
-
     const btnDrop = this._createDebugMiniBtn('🎬 К дропу', () => {
 
       this.seekAudio(this._introProfile.titleDropTime);
@@ -4164,8 +3674,6 @@ export class MovieApp {
     btnDrop.position.set(120, 46);
 
     this._debugExpandedPanel.addChild(btnDrop);
-
-
 
     // Toggle dropdown arrow button
 
@@ -4185,8 +3693,6 @@ export class MovieApp {
 
     arrowBtn.addChild(arrowBg);
 
-
-
     const arrowTxt = new Text({
 
       text: '⚙️',
@@ -4200,8 +3706,6 @@ export class MovieApp {
     arrowTxt.position.set(135, 0);
 
     arrowBtn.addChild(arrowTxt);
-
-
 
     arrowBtn.on('pointerdown', (e: FederatedPointerEvent) => {
 
@@ -4223,13 +3727,9 @@ export class MovieApp {
 
     this._debugContainer.addChild(arrowBtn);
 
-
-
     this._updateDebugDisplay();
 
   }
-
-
 
   private _createDebugMiniBtn(label: string, onClick: () => void): Container {
 
@@ -4239,13 +3739,9 @@ export class MovieApp {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txt = new Text({
 
@@ -4269,8 +3765,6 @@ export class MovieApp {
 
     c.addChild(txt);
 
-
-
     const draw = (hover = false) => {
 
       bg.clear();
@@ -4282,8 +3776,6 @@ export class MovieApp {
       bg.stroke({ color: hover ? 0x00f5d4 : 0x364060, width: 1 });
 
     };
-
-
 
     draw(false);
 
@@ -4303,13 +3795,9 @@ export class MovieApp {
 
     });
 
-
-
     return c;
 
   }
-
-
 
   public toggleIntroTrack(): void {
 
@@ -4333,8 +3821,6 @@ export class MovieApp {
 
   }
 
-
-
   private _updateDebugDisplay(): void {
 
     if (!this._debugContainer) return;
@@ -4347,13 +3833,9 @@ export class MovieApp {
 
     const altName = isDesolate ? 'Titan Forge' : 'Desolate Cry';
 
-
-
     this._debugTrackText.text = `🛠️ ИНТРО: [${trackName}] ⇄ ${altName}`;
 
     this._debugTrackText.style.fill = isDesolate ? '#00f5d4' : '#ffaa00';
-
-
 
     this._debugPillBg.clear();
 
@@ -4362,8 +3844,6 @@ export class MovieApp {
     this._debugPillBg.fill({ color: 0x090b14, alpha: 0.9 });
 
     this._debugPillBg.stroke({ color: isDesolate ? 0x00f5d4 : 0xffaa00, width: 1.2 });
-
-
 
     const dropT = this._introProfile.titleDropTime.toFixed(1);
 
@@ -4374,8 +3854,6 @@ export class MovieApp {
     this._debugDropInfoText.text = `🎬 Анализ: Дроп названия на ${dropT}s • Долина тишины: ${valleyT}s • Итог: ${durT}s`;
 
   }
-
-
 
   public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0): void {
 
@@ -4402,8 +3880,6 @@ export class MovieApp {
       if (this._wsSetPlayPauseLatched) this._wsSetPlayPauseLatched(false);
 
     }
-
-
 
     if (index === 0) {
 
@@ -4449,8 +3925,6 @@ export class MovieApp {
 
     this._actDuration = act.duration || 30;
 
-
-
     // Stop previous voice track if running with a smooth micro-fadeout (80ms) to eliminate audio clicks/pops
 
     if (!isContinuousVoice && this._voiceAudio) {
@@ -4495,8 +3969,6 @@ export class MovieApp {
 
     }
 
-
-
     // Header info
 
     this._badgeText.text = `[ ${act.badge} • ${act.actNumber}/${act.totalActs} ]`;
@@ -4504,8 +3976,6 @@ export class MovieApp {
     this._titleText.text = act.title;
 
     this._subtitleText.text = act.subtitle;
-
-
 
     // Setup visual
 
@@ -4561,15 +4031,11 @@ export class MovieApp {
 
       this._bgSprite.alpha = 0; // Starts invisible; update() fades it in when told about at ~18.5s!
 
-
-
       this._subtitles.visible = true;
 
       this._timeCodeText.visible = true;
 
       this._subtitles.setCues(act.cues, act.hasDedicatedFrame, Boolean(act.isKaraoke), act.frameTitle, act.id);
-
-
 
       // Start Prologue voiceover
 
@@ -4612,8 +4078,6 @@ export class MovieApp {
 
       this._timeCodeText.visible = true;
 
-
-
       if (act.id === 'act_2_sarcophagus') {
 
         if (this._videoElement) {
@@ -4629,8 +4093,6 @@ export class MovieApp {
         }
 
       }
-
-
 
       const isSong = act.category === 'song' || act.id === 'act_7_song';
 
@@ -4668,8 +4130,6 @@ export class MovieApp {
 
       }
 
-
-
       // Determine initial narrator cut (or act image / default narrator reading book)
 
       const initialNarratorCut = (!isSong && act.id !== 'intro_playbox')
@@ -4677,8 +4137,6 @@ export class MovieApp {
         ? getNarratorShotAtTime(act.id, 0)
 
         : null;
-
-
 
       const resolvedImageKey = initialNarratorCut
         ? (initialNarratorCut.texKey || '')
@@ -4725,11 +4183,7 @@ export class MovieApp {
 
       }
 
-
-
       this._subtitles.setCues(act.cues, act.hasDedicatedFrame, Boolean(act.isKaraoke), act.frameTitle, act.id);
-
-
 
       // Start act voiceover / song (Act 0 has no voiceover; its audio is 100% managed by AmbientManager)
 
@@ -4749,12 +4203,6 @@ export class MovieApp {
 
     }
 
-
-
-
-
-
-
     this._updateDots();
 
     if (this._debugContainer) {
@@ -4766,8 +4214,6 @@ export class MovieApp {
     this.resize(this._screenWidth, this._screenHeight);
 
   }
-
-
 
   private _playVoiceAct(act: (typeof STORY_ACTS)[0], index: number, autoPlay = true, isContinuousVoice = false): void {
 
@@ -4784,8 +4230,6 @@ export class MovieApp {
       };
       return;
     }
-
-
 
     this._voiceAudio = new Audio(audioUrl);
 
@@ -4809,15 +4253,11 @@ export class MovieApp {
 
     }
 
-
-
     this._voiceAudio.onended = () => {
 
       this._onActContentFinished(index);
 
     };
-
-
 
     this._voiceAudio.onloadedmetadata = () => {
 
@@ -4830,8 +4270,6 @@ export class MovieApp {
       }
 
     };
-
-
 
     const voiceDelay = act.voiceDelay || (index === 1 ? 3.5 : 0);
 
@@ -4873,8 +4311,6 @@ export class MovieApp {
 
     }
 
-
-
     if (autoPlay) {
 
       this._voiceAudio.play().then(() => {
@@ -4913,16 +4349,12 @@ export class MovieApp {
 
   }
 
-
-
   private _onActContentFinished(index: number): void {
 
     if (this._isTransitioningAct || this._currentActIndex !== index) return;
 
     this._isTransitioningAct = true;
     AmbientManager.stopCinematicCue(0.3);
-
-
 
     const nextIndex = index + 1;
 
@@ -4943,8 +4375,6 @@ export class MovieApp {
       return;
 
     }
-
-
 
     const currentAct = STORY_ACTS[index];
     const nextAct = STORY_ACTS[nextIndex];
@@ -4992,8 +4422,6 @@ export class MovieApp {
 
   }
 
-
-
   public seekAudio(targetSeconds: number): void {
 
     const clamped = Math.max(0, Math.min(this._actDuration, targetSeconds));
@@ -5007,8 +4435,6 @@ export class MovieApp {
     AmbientManager.cancelWait();
 
     cancelTween(this._bgSprite);
-
-
 
     if (this._currentActIndex === 0) {
 
@@ -5088,8 +4514,6 @@ export class MovieApp {
 
       const voiceDelay = act.voiceDelay || (isPrologue ? 3.5 : 0);
 
-
-
       if (this._voiceAudio) {
 
         if (voiceDelay > 0 && clamped < voiceDelay) {
@@ -5115,8 +4539,6 @@ export class MovieApp {
         }
 
       }
-
-
 
       const isSongAct = act.category === 'song' || act.id === 'act_7_song';
 
@@ -5156,14 +4578,9 @@ export class MovieApp {
 
       }
 
-
-
       this._subtitles.syncToTime(clamped, this._isPlaying);
 
-
-
       // Immediately sync cinematic cut and visual alpha on seek
-
 
       if (!isSongAct) {
 
@@ -5253,8 +4670,6 @@ export class MovieApp {
 
   }
 
-
-
   private _playIntroAnimation(): void {
 
     this._introAmbientStarted = false;
@@ -5285,8 +4700,6 @@ export class MovieApp {
 
     this._cosmicScene.visible = false;
 
-
-
     // During disclaimer: absolute black screen, no stars, total silence
 
     if (this._videoElement) {
@@ -5301,8 +4714,6 @@ export class MovieApp {
 
   }
 
-
-
   private _clearDisclaimerLines(): void {
 
     for (const lineText of this._disclaimerLineTexts) {
@@ -5312,8 +4723,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   private _showFullDisclaimerWithCursor(cursor: string): void {
 
@@ -5339,8 +4748,6 @@ export class MovieApp {
 
   }
 
-
-
   private _showFullDisclaimerWithoutCursor(): void {
 
     for (let i = 0; i < this._disclaimerLines.length; i++) {
@@ -5354,8 +4761,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   private _getDisclaimerCharAt(charIndex: number): string {
 
@@ -5379,8 +4784,6 @@ export class MovieApp {
 
   }
 
-
-
   private _updateDisclaimerTyping(p: number, cursor: string): void {
 
     const totalChars = this._disclaimerLines.reduce((sum, l) => sum + l.text.length, 0);
@@ -5388,8 +4791,6 @@ export class MovieApp {
     if (totalChars <= 0) return;
 
     const chars = Math.max(1, Math.min(totalChars, Math.floor(p * totalChars)));
-
-
 
     if (chars !== this._lastDisclaimerCharCount) {
 
@@ -5405,8 +4806,6 @@ export class MovieApp {
 
     }
 
-
-
     let remaining = chars;
 
     const totalLines = this._disclaimerLines.length;
@@ -5420,8 +4819,6 @@ export class MovieApp {
       const lineStr = this._disclaimerLines[i].text;
 
       const lineLen = lineStr.length;
-
-
 
       if (remaining <= 0) {
 
@@ -5453,15 +4850,11 @@ export class MovieApp {
 
   }
 
-
-
   private _updateIntroTimeline(currentTime: number): void {
 
     const t = currentTime;
 
     const profile = this._introProfile;
-
-
 
     const discStart = 0.6;
 
@@ -5470,8 +4863,6 @@ export class MovieApp {
     const discHoldEnd = 11.6;
 
     const discFadeEnd = INTRO_DISCLAIMER_DURATION; // 12.8s
-
-
 
     // During disclaimer (0.0s - 12.8s): strictly NO music!
 
@@ -5486,8 +4877,6 @@ export class MovieApp {
       }
 
     }
-
-
 
     // Phase A: 0.0s - 0.6s: Pure black screen, disclaimer ambient drone hums
 
@@ -5537,8 +4926,6 @@ export class MovieApp {
 
       this._updateDisclaimerTyping(p, cursor);
 
-
-
       this._introLogoSprite.alpha = 0;
 
       this._introStudiosText.alpha = 0;
@@ -5568,8 +4955,6 @@ export class MovieApp {
       this._introDisclaimerContainer.alpha = 1;
 
       this._showFullDisclaimerWithCursor(cursor);
-
-
 
       this._introLogoSprite.alpha = 0;
 
@@ -5601,8 +4986,6 @@ export class MovieApp {
 
       this._showFullDisclaimerWithoutCursor();
 
-
-
       this._introLogoSprite.alpha = 0;
 
       this._introStudiosText.alpha = 0;
@@ -5629,11 +5012,7 @@ export class MovieApp {
 
       this._clearDisclaimerLines();
 
-
-
       const mt = t - discFadeEnd; // Music time from 0.0s!
-
-
 
       // Stars & Cosmic video ignite!
 
@@ -5655,8 +5034,6 @@ export class MovieApp {
 
       }
 
-
-
       // Music begins from 0.0s (ignited once smoothly, not every frame!)
 
       if (this._isPlaying && !this._introAmbientStarted) {
@@ -5668,8 +5045,6 @@ export class MovieApp {
         AmbientManager.seekCurrent(mt);
 
       }
-
-
 
       // Phase 1 (in music): 0.0s - 3.0s: Space video background drift, ambient begins
 
@@ -5823,8 +5198,6 @@ export class MovieApp {
 
         this._introCycleSubtitle.alpha = 0;
 
-
-
         // Subtitle typing letter-by-letter with typewriter tick sound, exactly like disclaimer
 
         const fullSubText = '[ ХРОНИКИ ПРОДАКШН-КОВЧЕГА ]';
@@ -5977,8 +5350,6 @@ export class MovieApp {
 
   }
 
-
-
   public nextPhrase(): void {
 
     const act = STORY_ACTS[this._currentActIndex];
@@ -6004,8 +5375,6 @@ export class MovieApp {
     this.nextAct();
 
   }
-
-
 
   public previousPhrase(): void {
 
@@ -6039,8 +5408,6 @@ export class MovieApp {
 
   }
 
-
-
   public nextAct(crossfadeSec: number = 0): void {
 
     if (this._currentActIndex + 1 < STORY_ACTS.length) {
@@ -6050,8 +5417,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   public previousAct(): void {
 
@@ -6063,15 +5428,11 @@ export class MovieApp {
 
   }
 
-
-
   public get isPlaying(): boolean {
 
     return this._isPlaying;
 
   }
-
-
 
   public get currentActIndex(): number {
 
@@ -6079,15 +5440,11 @@ export class MovieApp {
 
   }
 
-
-
   public get actTime(): number {
 
     return this._actTime;
 
   }
-
-
 
   public play(): void {
 
@@ -6108,8 +5465,6 @@ export class MovieApp {
       this._wsSetPlayPauseLatched(true);
 
     }
-
-
 
     if (this._currentActIndex === 0) {
 
@@ -6170,8 +5525,6 @@ export class MovieApp {
 
   }
 
-
-
   public pause(): void {
 
     if (!this._isPlaying) return;
@@ -6192,8 +5545,6 @@ export class MovieApp {
 
     }
 
-
-
     if (this._voiceAudio) this._voiceAudio.pause();
 
     AmbientManager.pauseAll();
@@ -6201,8 +5552,6 @@ export class MovieApp {
     if (this._videoElement) this._videoElement.pause();
 
   }
-
-
 
   public togglePlayPause(): void {
 
@@ -6223,8 +5572,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   public toggleMute(): void {
 
@@ -6258,13 +5605,9 @@ export class MovieApp {
 
   }
 
-
-
   public update(dt: number): void {
 
     AmbientManager.update(dt);
-
-
 
     let currentTime = this._actTime;
 
@@ -6340,8 +5683,6 @@ export class MovieApp {
 
       const voiceDelay = act.voiceDelay || (isPrologue ? 3.5 : 0);
 
-
-
       if (voiceDelay > 0 && this._actTime < voiceDelay) {
 
         if (this._isPlaying) {
@@ -6394,8 +5735,6 @@ export class MovieApp {
 
         }
 
-
-
         // Check for split-file audio track boundary (e.g. Act 6 punishment ends at 63.46s, but file continues to 159.19s)
 
         const isSplitAct = offset === 0 && Number.isFinite(this._voiceAudio.duration) && this._voiceAudio.duration > (this._actDuration + 2.0);
@@ -6431,8 +5770,6 @@ export class MovieApp {
         currentTime = this._actTime;
 
       }
-
-
 
       // In Prologue (Act 1): cosmic space video plays until 18.5s, then crossfades into the background scene
 
@@ -6486,8 +5823,6 @@ export class MovieApp {
 
       }
 
-
-
       // In AI-Lord Concert Sequence (act_7_song): Dynamic Montage cut system synced to drums/beats!
 
       const isSongAct = act && (act.id === 'act_7_song' || act.category === 'song');
@@ -6510,8 +5845,6 @@ export class MovieApp {
 
       }
 
-
-
       // In AI-Lord Narration Acts: Dynamic cinematic shot switching (Team Quotes, Events, AI-Lord shots)
 
       if (!isSongAct && act) {
@@ -6525,8 +5858,6 @@ export class MovieApp {
             ? `missing_${narratorCut.characterName}_${narratorCut.time}`
 
             : `${narratorCut.texKey || 'empty'}_${narratorCut.slackKey || ''}_${narratorCut.time}`;
-
-
 
           if (this._narratorCurrentTexKey !== cutKey) {
 
@@ -6542,21 +5873,15 @@ export class MovieApp {
 
       }
 
-
-
       this._subtitles.update(dt);
 
       this._subtitles.syncToTime(currentTime, this._isPlaying);
-
-
 
       // Real-time Voice Presence Sidechain: Ducks ambient and sound cues when someone speaks or sings
 
       const isVoiceSpeaking = this._isPlaying && this._subtitles.isVoiceActive(currentTime);
 
       AmbientManager.setVoiceActive(isVoiceSpeaking);
-
-
 
       if (this._isPlaying) {
 
@@ -6565,8 +5890,6 @@ export class MovieApp {
       }
 
     }
-
-
 
     // Update progress bar & timecode
 
@@ -6596,13 +5919,9 @@ export class MovieApp {
 
     }
 
-
-
     const progress = Math.min(1, currentTime / Math.max(1, this._actDuration));
 
     this._renderProgressBar(progress);
-
-
 
     // Autohide HUD sliding logic (crawling away with easing & overmove)
 
@@ -6636,8 +5955,6 @@ export class MovieApp {
 
     }
 
-
-
     const p = this._hudAnimState.p;
 
     const barH = 161 * this._wsGuiScale;
@@ -6650,21 +5967,15 @@ export class MovieApp {
 
     this._playerBarContainer.position.set(0, currentBarY);
 
-
-
     // Notify Subtitles of visible bottom HUD height to lift text dynamically
 
     const visibleBarHeight = Math.max(0, this._screenHeight - currentBarY);
 
     this._subtitles.setBottomOffset(visibleBarHeight);
 
-
-
     // Subtle fade of bottom vignette backdrop in sync with HUD
 
     this._vignetteGraphics.alpha = Math.max(0, Math.min(0.9, p * 0.9));
-
-
 
     // Top headers slide slightly upwards with matching curve
 
@@ -6680,8 +5991,6 @@ export class MovieApp {
 
     this._subtitleText.position.set(24, (isPortrait ? 54 : 58) + headerOffset);
 
-
-
     if (this._app.canvas) {
 
       if (!this._hudIsVisible && p <= 0.05 && this._isPlaying) {
@@ -6695,8 +6004,6 @@ export class MovieApp {
       }
 
     }
-
-
 
     // Star Wars Optical Wipe Transition
 
@@ -6716,15 +6023,11 @@ export class MovieApp {
 
     }
 
-
-
     if (this._prevBgSprite && this._prevBgSprite.visible) {
 
       this._prevBgSprite.position.set(this._screenWidth / 2, this._screenHeight / 2);
 
     }
-
-
 
     // Subtle background drift & concert camera impulse
 
@@ -6738,8 +6041,6 @@ export class MovieApp {
 
     }
 
-
-
     if (this._bgContainer.visible && this._bgSprite.texture && this._bgSprite.texture.width > 0) {
 
       const isShipFlyby = this._currentActIndex === 1 && this._prologueCurrentTexKey === 'ship_cistam' && currentTime < 68.54;
@@ -6751,8 +6052,6 @@ export class MovieApp {
         // Anchor centered on ship's center of mass (1024x576 texture coordinates)
 
         this._bgSprite.anchor.set(0.5684, 0.5243);
-
-
 
         // Timeline progression of ship flyby:
 
@@ -6770,8 +6069,6 @@ export class MovieApp {
 
         const p = rawP * rawP * (3.0 - 2.0 * rawP);
 
-
-
         // Scale: Moderate increase (~14% zoom in landscape, not too aggressive)
 
         const scaleStart = this._bgBaseScale * (isPortrait ? 1.05 : 1.12);
@@ -6779,8 +6076,6 @@ export class MovieApp {
         const scaleEnd = this._bgBaseScale * (isPortrait ? 1.18 : 1.28);
 
         const curScale = scaleStart + (scaleEnd - scaleStart) * p;
-
-
 
         // Position: Starts shifted to the right as far as the background allows (left edge at 0),
 
@@ -6796,21 +6091,15 @@ export class MovieApp {
 
         const curX = startX + (endX - startX) * p;
 
-
-
         // Vertical positioning: Keep ship centered vertically with slight cosmetic breathing
 
         const curY = this._screenHeight / 2;
-
-
 
         // Gentle cosmic ambient breathing/hover
 
         const floatY = Math.sin(currentTime * 0.5) * 4;
 
         const floatX = Math.cos(currentTime * 0.4) * 2;
-
-
 
         this._bgSprite.scale.set(curScale);
 
@@ -6836,8 +6125,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   private _applyConcertCut(cut: ConcertFrameCut, punch: boolean = true): void {
     try {
@@ -6879,8 +6166,6 @@ export class MovieApp {
 
   }
 
-
-
   private _resizePrevBgSprite(): void {
 
     if (this._prevBgSprite && this._prevBgSprite.texture && this._prevBgSprite.texture.width > 0) {
@@ -6909,8 +6194,6 @@ export class MovieApp {
 
   }
 
-
-
   private _cancelWipe(): void {
 
     this._isWiping = false;
@@ -6925,13 +6208,9 @@ export class MovieApp {
 
   }
 
-
-
   private _startStarWarsWipe(prevTex: Texture, newTex: Texture): void {
 
     if (!prevTex || prevTex === Texture.WHITE || prevTex === newTex) return;
-
-
 
     if (this._isWiping) {
 
@@ -6939,23 +6218,17 @@ export class MovieApp {
 
     }
 
-
-
     this._prevBgSprite.texture = prevTex;
 
     this._prevBgSprite.visible = true;
 
     this._resizePrevBgSprite();
 
-
-
     this._bgSprite.texture = newTex;
 
     this._resizeBgSprite();
 
     this._bgSprite.mask = this._wipeMask;
-
-
 
     const wipeTypes: ('line_lr' | 'line_rl' | 'line_tb' | 'circle_iris' | 'circle_iris_corner')[] = [
 
@@ -6979,13 +6252,9 @@ export class MovieApp {
 
     this._isWiping = true;
 
-
-
     this._updateWipeGraphics();
 
   }
-
-
 
   private _updateWipeGraphics(): void {
 
@@ -6995,17 +6264,11 @@ export class MovieApp {
 
     const p = Math.min(1.0, Math.max(0.0, this._wipeProgress));
 
-
-
     this._wipeMask.clear();
 
     this._wipeEdgeGraphics.clear();
 
-
-
     if (p <= 0.0) return;
-
-
 
     if (this._wipeType === 'line_lr') {
 
@@ -7063,8 +6326,6 @@ export class MovieApp {
 
   }
 
-
-
   private _setBgTextureWithWipe(newTex: Texture, allowWipe: boolean): void {
 
     if (!newTex || newTex === Texture.WHITE || newTex.width <= 1) return;
@@ -7101,8 +6362,6 @@ export class MovieApp {
 
     );
 
-
-
     if (canWipe) {
 
       this._startStarWarsWipe(oldTex, newTex);
@@ -7123,8 +6382,6 @@ export class MovieApp {
 
   }
 
-
-
   private _initQuoteAndMissingImageHUD(): void {
 
     // 1. Missing Image Overlay (Solid black screen with "ТРЕБУЕТСЯ ИЗОБРАЖЕНИЕ")
@@ -7135,13 +6392,9 @@ export class MovieApp {
 
     this._bgContainer.addChild(this._missingImageOverlay);
 
-
-
     this._missingImageBg = new Graphics();
 
     this._missingImageOverlay.addChild(this._missingImageBg);
-
-
 
     const warnTitleStyle = new TextStyle({
 
@@ -7165,8 +6418,6 @@ export class MovieApp {
 
     this._missingImageOverlay.addChild(this._missingImageTitle);
 
-
-
     const warnSubStyle = new TextStyle({
 
       fontFamily: ['Share Tech Mono', 'monospace'],
@@ -7184,8 +6435,6 @@ export class MovieApp {
     this._missingImageSubtitle.anchor.set(0.5);
 
     this._missingImageOverlay.addChild(this._missingImageSubtitle);
-
-
 
     const charStyle = new TextStyle({
 
@@ -7207,21 +6456,15 @@ export class MovieApp {
 
     this._missingImageOverlay.addChild(this._missingImageCharText);
 
-
-
     // 2. Corner Quote Nameplate Badge (Top-left: Square Avatar + 2 Lines: Name & Ark Role)
 
     this._cornerQuoteBadge = new Container();
 
     this._cornerQuoteBadge.visible = false;
 
-
-
     this._cornerQuoteBg = new Graphics();
 
     this._cornerQuoteBadge.addChild(this._cornerQuoteBg);
-
-
 
     // Square avatar container with mask and border
 
@@ -7229,13 +6472,9 @@ export class MovieApp {
 
     this._cornerQuoteBadge.addChild(this._cornerQuoteAvatarContainer);
 
-
-
     this._cornerQuoteAvatarSprite = new Sprite();
 
     this._cornerQuoteAvatarContainer.addChild(this._cornerQuoteAvatarSprite);
-
-
 
     this._cornerQuoteAvatarMask = new Graphics();
 
@@ -7243,13 +6482,9 @@ export class MovieApp {
 
     this._cornerQuoteAvatarContainer.addChild(this._cornerQuoteAvatarMask);
 
-
-
     this._cornerQuoteAvatarBorder = new Graphics();
 
     this._cornerQuoteAvatarContainer.addChild(this._cornerQuoteAvatarBorder);
-
-
 
     // Line 1: Name
 
@@ -7276,8 +6511,6 @@ export class MovieApp {
     });
 
     this._cornerQuoteBadge.addChild(this._cornerQuoteName);
-
-
 
     // Line 2: Role on "Сыгравший в ящик"
 
@@ -7307,8 +6540,6 @@ export class MovieApp {
 
   }
 
-
-
   private _applyCinematicCut(cut: NarratorShotCut, punch: boolean = true): void {
 
     try {
@@ -7318,8 +6549,6 @@ export class MovieApp {
         this._prologueCurrentTexKey = cut.texKey || '';
 
       }
-
-
 
       if (!cut.texKey) {
 
@@ -7355,13 +6584,9 @@ export class MovieApp {
 
       }
 
-
-
       const isQuote = cut.type === 'character_quote';
 
       const hasImage = Boolean(cut.texKey && hasTexture(cut.texKey));
-
-
 
       const isSlackTex = Boolean(cut.texKey && (
 
@@ -7372,8 +6597,6 @@ export class MovieApp {
         cut.texKey.startsWith('01d_')
 
       ));
-
-
 
       // Show floating Slack screenshot overlay without stretching across the screen
 
@@ -7392,8 +6615,6 @@ export class MovieApp {
         // Do not kill active Slack popup on cuts - let 10s hold timer finish naturally
       }
 
-
-
       if (isQuote) {
 
         this._showCornerQuoteBadge(
@@ -7407,8 +6628,6 @@ export class MovieApp {
           cut.texKey
 
         );
-
-
 
         if (hasImage && cut.texKey && !isSlackTex) {
 
@@ -7446,15 +6665,11 @@ export class MovieApp {
 
         this._bgSprite.visible = true;
 
-
-
         const effectiveTexKey = (hasImage && cut.texKey && !isSlackTex)
 
           ? cut.texKey
 
           : 'ai_lord_throne_book_reading_narrator';
-
-
 
         const tex = getTexture(effectiveTexKey);
 
@@ -7480,8 +6695,6 @@ export class MovieApp {
 
       }
 
-
-
       this._concertPunchScale = 1.0;
 
     } catch (err) {
@@ -7492,8 +6705,6 @@ export class MovieApp {
 
   }
 
-
-
   private _showMissingImage(characterName: string): void {
 
     this._missingImageOverlay.visible = true;
@@ -7503,8 +6714,6 @@ export class MovieApp {
     this._resizeMissingImageOverlay();
 
   }
-
-
 
   private _resizeMissingImageOverlay(): void {
 
@@ -7518,8 +6727,6 @@ export class MovieApp {
 
     this._missingImageBg.fill({ color: 0x000000, alpha: 1.0 });
 
-
-
     this._missingImageTitle.position.set(w / 2, h / 2 - 30);
 
     this._missingImageSubtitle.position.set(w / 2, h / 2 + 10);
@@ -7527,8 +6734,6 @@ export class MovieApp {
     this._missingImageCharText.position.set(w / 2, h / 2 + 38);
 
   }
-
-
 
   private _showCornerQuoteBadge(name: string, role: string, color: number, texKey?: string | null): void {
 
@@ -7540,15 +6745,11 @@ export class MovieApp {
 
     const roleColor = '#00f5d4';
 
-
-
     // Square avatar texture
 
     const avatarTex = getCrewAvatarTexture(name, texKey);
 
     this._currentQuoteAvatarTex = avatarTex;
-
-
 
     // Check if this character's badge is being shown for the first time
 
@@ -7556,8 +6757,6 @@ export class MovieApp {
     const isFirstTime = !this._seenCharacterQuotes.has(fullName);
 
     this._seenCharacterQuotes.add(fullName);
-
-
 
     if (isFirstTime && !isSong) {
 
@@ -7576,8 +6775,6 @@ export class MovieApp {
       (this._cornerQuoteRole.style as any).dropShadow = { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 };
 
       this._positionCornerQuoteBadge(color, avatarTex);
-
-
 
       this._quoteBadgeTyping = {
 
@@ -7625,8 +6822,6 @@ export class MovieApp {
 
   }
 
-
-
   private _hideCornerQuoteBadge(): void {
 
     this._cornerQuoteBadge.visible = false;
@@ -7635,13 +6830,9 @@ export class MovieApp {
 
   }
 
-
-
   private _updateQuoteBadgeTyping(dt: number): void {
 
     if (!this._quoteBadgeTyping.active || !this._cornerQuoteBadge.visible) return;
-
-
 
     this._quoteBadgeTyping.elapsed += dt;
 
@@ -7657,15 +6848,11 @@ export class MovieApp {
 
     }
 
-
-
     // Teletype typing speed: 32 characters per second
 
     const charsPerSec = 32;
 
     const typed = Math.min(totalChars, Math.floor(elapsed * charsPerSec));
-
-
 
     if (typed !== this._quoteBadgeTyping.lastCharCount) {
 
@@ -7677,11 +6864,7 @@ export class MovieApp {
 
     }
 
-
-
     const cursor = '▌';
-
-
 
     if (typed < fullName.length) {
 
@@ -7714,8 +6897,6 @@ export class MovieApp {
     }
 
   }
-
-
 
   private _positionCornerQuoteBadge(
     color: number = this._currentQuoteColor,
@@ -7816,8 +6997,6 @@ export class MovieApp {
 
   }
 
-
-
   private _syncBgBackdrop(): void {
 
     if (!this._bgBackdropSprite || !this._bgSprite || !this._bgSprite.texture) return;
@@ -7830,8 +7009,6 @@ export class MovieApp {
 
   }
 
-
-
   private _resizeBgSprite(): void {
 
     if (this._bgSprite.texture && this._bgSprite.texture.width > 0) {
@@ -7840,8 +7017,6 @@ export class MovieApp {
 
       const texH = this._bgSprite.texture.height;
 
-
-
       const scaleW = this._screenWidth / texW;
 
       const scaleH = this._screenHeight / texH;
@@ -7849,8 +7024,6 @@ export class MovieApp {
       const coverScale = Math.max(scaleW, scaleH);
 
       const containScale = Math.min(scaleW, scaleH);
-
-
 
       // Intelligent Anti-Crop System:
 
@@ -7862,19 +7035,13 @@ export class MovieApp {
 
       this._bgBaseScale = effectiveScale;
 
-
-
       const finalScale = this._bgBaseScale;
 
       this._bgSprite.scale.set(finalScale);
 
-
-
       const renderedW = texW * finalScale;
 
       const renderedH = texH * finalScale;
-
-
 
       // YouTube Shorts Style Background Extension:
 
@@ -7906,8 +7073,6 @@ export class MovieApp {
 
       }
 
-
-
       const isShipFlyby = this._currentActIndex === 1 && this._prologueCurrentTexKey === 'ship_cistam' && this._actTime < 68.54;
 
       if (!isShipFlyby) {
@@ -7922,8 +7087,6 @@ export class MovieApp {
 
   }
 
-
-
   private _renderProgressBar(progress: number): void {
 
     const barW = Math.max(300, this._screenWidth - 48);
@@ -7932,15 +7095,11 @@ export class MovieApp {
 
     const gap = 2.5;
 
-
-
     this._progressBarBg.clear();
 
     this._progressBarFill.clear();
 
     this._scrubberThumb.clear();
-
-
 
     const count = STORY_ACTS.length;
 
@@ -7954,15 +7113,11 @@ export class MovieApp {
 
       const segW = Math.max(2, (endX - startX) - gap);
 
-
-
       // Background segment
 
       this._progressBarBg.roundRect(startX, -barH / 2, segW, barH, 2);
 
       this._progressBarBg.fill({ color: 0x2e3448, alpha: 0.85 });
-
-
 
       // Fill segment
 
@@ -7988,15 +7143,11 @@ export class MovieApp {
 
     }
 
-
-
     // Scrubber thumb at current overall position
 
     const currentOverallTime = (this._actStartTimes[this._currentActIndex] || 0) + this._actTime;
 
     const thumbX = Math.max(0, Math.min(barW, (currentOverallTime / this._totalMovieDuration) * barW));
-
-
 
     const thumbRadius = this._isTimelineHovered || this._isTimelineDragging ? 7.5 : 4.5;
 
@@ -8005,8 +7156,6 @@ export class MovieApp {
     this._scrubberThumb.fill({ color: 0xff0033 });
 
     this._scrubberThumb.stroke({ color: 0xffffff, width: 2 });
-
-
 
     // WS-96 Hardware Console Scrubber & LEDs
 
@@ -8024,15 +7173,11 @@ export class MovieApp {
 
       const slitY = 18.0; // Perfectly centered inside the dark slit groove (rows 15-21, center = 18.0)
 
-
-
       const overallRatio = Math.max(0, Math.min(1, currentOverallTime / Math.max(1, this._totalMovieDuration)));
 
       const knobX = knobMinX + overallRatio * knobRange;
 
       this._wsTimelineKnob.position.set(knobX, slitY);
-
-
 
       this._wsTimelineFill.clear();
 
@@ -8047,8 +7192,6 @@ export class MovieApp {
         this._wsTimelineFill.fill({ color: 0xff0033, alpha: 0.95 });
 
       }
-
-
 
       // YouTube-style chapter divider notches ("засечки")
 
@@ -8070,15 +7213,11 @@ export class MovieApp {
 
         const tickX = knobMinX + ratio * knobRange;
 
-
-
         // Dark gap cut for crisp separation over the red fill line
 
         this._wsTimelineFill.rect(tickX - 1.25, tickTop, 2.5, tickH);
 
         this._wsTimelineFill.fill({ color: 0x07080b, alpha: 0.8 });
-
-
 
         // Crisp bright tick mark (visible over both red fill and black slit)
 
@@ -8087,8 +7226,6 @@ export class MovieApp {
         this._wsTimelineFill.fill({ color: 0xf0e9db, alpha: 0.95 });
 
       }
-
-
 
       // Update Timeline Act Buttons with Indicator Lamps for all acts
 
@@ -8108,8 +7245,6 @@ export class MovieApp {
 
       }
 
-
-
       // Update stickers active opacity
 
       for (const item of this._wsStickers) {
@@ -8124,8 +7259,6 @@ export class MovieApp {
 
   }
 
-
-
   private _updateDots(): void {
 
     this._dotsContainer.removeChildren();
@@ -8137,8 +7270,6 @@ export class MovieApp {
     const dotSpacing = isPortrait ? 24 : 28;
 
     const totalW = (count - 1) * dotSpacing;
-
-
 
     for (let i = 0; i < count; i++) {
 
@@ -8153,8 +7284,6 @@ export class MovieApp {
       c.eventMode = 'static';
 
       c.cursor = 'pointer';
-
-
 
       // 0. Dedicated distinct marker for Intro (🎬)
 
@@ -8177,8 +7306,6 @@ export class MovieApp {
         introTxt.anchor.set(0.5);
 
         c.addChild(introTxt);
-
-
 
         if (isActive) {
 
@@ -8264,8 +7391,6 @@ export class MovieApp {
 
       }
 
-
-
       c.on('pointerdown', (e) => {
 
         e.stopPropagation();
@@ -8284,13 +7409,9 @@ export class MovieApp {
 
   }
 
-
-
   private _layoutIntroDisclaimer(w: number, h: number, isPortrait: boolean): void {
 
     if (!this._introDisclaimerContainer) return;
-
-
 
     const contentW = Math.min(w * 0.86, isPortrait ? 520 : 880);
 
@@ -8298,15 +7419,11 @@ export class MovieApp {
 
     this._introDisclaimerContainer.position.set(0, contentY);
 
-
-
     // Completely clear borders, corners and backgrounds
 
     this._introDisclaimerBg.clear();
 
     this._introDisclaimerCorners.clear();
-
-
 
     const badgeFontSize = isPortrait ? 13 : 16;
 
@@ -8322,15 +7439,11 @@ export class MovieApp {
 
     this._introDisclaimerBadge.position.set(0, 0);
 
-
-
     const textFontSize = isPortrait ? 16 : 22;
 
     const textLineHeight = isPortrait ? 27 : 38;
 
     const startY = isPortrait ? 28 : 38;
-
-
 
     const measureStyle = new TextStyle({
 
@@ -8348,15 +7461,11 @@ export class MovieApp {
 
     });
 
-
-
     const metrics = CanvasTextMetrics.measureText(INTRO_DISCLAIMER_TEXT, measureStyle);
 
     const rawLines = metrics.lines;
 
     const rawWidths = metrics.lineWidths;
-
-
 
     // Destroy existing line sprites
 
@@ -8369,8 +7478,6 @@ export class MovieApp {
     this._disclaimerLineTexts = [];
 
     this._disclaimerLines = [];
-
-
 
     const lineStyle = new TextStyle({
 
@@ -8390,8 +7497,6 @@ export class MovieApp {
 
     });
 
-
-
     for (let i = 0; i < rawLines.length; i++) {
 
       const lineStr = rawLines[i];
@@ -8408,8 +7513,6 @@ export class MovieApp {
 
       lineText.text = ''; // Clear for typing playback
 
-
-
       this._introDisclaimerLinesContainer.addChild(lineText);
 
       this._disclaimerLineTexts.push(lineText);
@@ -8417,8 +7520,6 @@ export class MovieApp {
       this._disclaimerLines.push({ text: lineStr, width: measuredW });
 
     }
-
-
 
     // If currently during disclaimer, re-render for current time
 
@@ -8430,8 +7531,6 @@ export class MovieApp {
 
   }
 
-
-
   public resize(w: number, h: number): void {
 
     this._screenWidth = w;
@@ -8439,8 +7538,6 @@ export class MovieApp {
     this._screenHeight = h;
 
     const isPortrait = h > w;
-
-
 
     // Fullscreen canvas hit area for single-click play/pause and double-click fullscreen
 
@@ -8451,8 +7548,6 @@ export class MovieApp {
     this._canvasHitArea.fill({ color: 0x000000, alpha: 0.0001 });
 
     this._canvasHitArea.hitArea = new Rectangle(0, 0, w, h);
-
-
 
     this._cosmicScene.resize(w, h);
 
@@ -8476,17 +7571,11 @@ export class MovieApp {
 
     }
 
-
-
     this._introContainer.position.set(w / 2, h / 2);
-
-
 
     // 0. Disclaimer Layout (NO FRAME / BORDER, pure green terminal text, stationary pre-centered lines!)
 
     this._layoutIntroDisclaimer(w, h, isPortrait);
-
-
 
     const logoMaxH = isPortrait ? h * 0.46 : Math.min(480, h * 0.58);
 
@@ -8496,19 +7585,13 @@ export class MovieApp {
 
     this._introLogoSprite.position.set(0, isPortrait ? -logoMaxH * 0.28 : -logoMaxH * 0.24);
 
-
-
     this._introStudiosText.position.set(0, isPortrait ? logoMaxH * 0.35 : logoMaxH * 0.33);
 
     this._introStudiosText.style.fontSize = isPortrait ? 24 : 34;
 
-
-
     this._introPresentsText.position.set(0, isPortrait ? logoMaxH * 0.48 : logoMaxH * 0.45);
 
     this._introPresentsText.style.fontSize = isPortrait ? 16 : 22;
-
-
 
     // Series Title Graphic Logo & Subtitle (Cinematic Scale)
 
@@ -8530,8 +7613,6 @@ export class MovieApp {
 
     this._introSeriesLogoSprite.position.set(0, 0);
 
-
-
     const logoRenderedH = texH * titleScale;
 
     this._introSeriesSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
@@ -8541,8 +7622,6 @@ export class MovieApp {
     this._introSeriesSubtitle.style.fontSize = isPortrait ? 13 : 18;
 
     this._introSeriesSubtitle.position.set(0, logoRenderedH / 2 + (isPortrait ? 24 : 30));
-
-
 
     this._introCycleSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
 
@@ -8554,8 +7633,6 @@ export class MovieApp {
 
     this._introCycleSubtitle.position.set(0, 0); // Center of screen after main logo disappears
 
-
-
     // Header layout (Top Left)
 
     this._badgeText.position.set(24, 14);
@@ -8565,8 +7642,6 @@ export class MovieApp {
     this._titleText.style.fontSize = isPortrait ? 15 : 18;
 
     this._subtitleText.position.set(24, isPortrait ? 54 : 58);
-
-
 
     // WS-96 Hardware Console Layout
 
@@ -8580,8 +7655,6 @@ export class MovieApp {
 
     this._wsGuiScale = guiScale;
 
-
-
     const leftW = 841 * guiScale;
 
     const rightW = 346 * guiScale;
@@ -8594,8 +7667,6 @@ export class MovieApp {
 
     const barH = 161 * guiScale;
 
-
-
     // Vignette bottom (backdrop for WS-96 retro console)
 
     this._vignetteGraphics.clear();
@@ -8605,8 +7676,6 @@ export class MovieApp {
     this._vignetteGraphics.fill({ color: 0x050508, alpha: 0.9 });
 
     this._vignetteGraphics.alpha = Math.max(0, Math.min(0.9, this._hudAnimState.p * 0.9));
-
-
 
     const baseY = h - barH;
 
@@ -8618,8 +7687,6 @@ export class MovieApp {
 
     this._subtitles.setBottomOffset(Math.max(0, h - currentBarY));
 
-
-
     if (this._wsConsoleContainer) {
 
       // Left Wing (Fixed proportions, scaled)
@@ -8627,8 +7694,6 @@ export class MovieApp {
       this._wsLeftWing.position.set(0, 0);
 
       this._wsLeftWing.scale.set(guiScale);
-
-
 
       // Middle Stretchable Wing (Chassis Mid + Progress Slider + 9 LEDs)
 
@@ -8638,19 +7703,13 @@ export class MovieApp {
 
       this._wsChassisMid.height = 161 * guiScale;
 
-
-
       const trackW = Math.max(120, (midW - trackPad * 2) / guiScale);
-
-
 
       // Timeline slider raised higher in the center (62 * guiScale)
 
       this._wsTimelineContainer.position.set(trackPad, 62 * guiScale);
 
       this._wsTimelineContainer.scale.set(guiScale);
-
-
 
       // 3-slice track positioning (in container local coords)
 
@@ -8661,8 +7720,6 @@ export class MovieApp {
       this._wsTrackMid.width = Math.max(10, trackW - 50);
 
       this._wsTrackCapRight.position.set(trackW - 25, 0);
-
-
 
       // Timeline Act Buttons & Lamps positioned at the bottom under timeline track
 
@@ -8700,8 +7757,6 @@ export class MovieApp {
 
       }
 
-
-
       // Timeline Chapter Stickers positioned at the top above timeline track
 
       const stickerY = 33 * guiScale;
@@ -8726,11 +7781,7 @@ export class MovieApp {
 
       }
 
-
-
       this._wsTimelineKnob.scale.set(1.0);
-
-
 
       // Right Wing (Fixed proportions, scaled)
 
@@ -8740,11 +7791,7 @@ export class MovieApp {
 
     }
 
-
-
     this._renderProgressBar(Math.min(1, this._actTime / Math.max(1, this._actDuration)));
-
-
 
     // Debug Mode UI (Top Center - completely out of the way of the player bar!)
 
