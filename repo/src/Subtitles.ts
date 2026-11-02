@@ -54,7 +54,11 @@ export class Subtitles extends Container {
   private _slackZoomBtn: Container;
   private _slackZoomTxt: Text;
   private _slackProgressBar: Graphics;
+  private _slackSpriteMask: Graphics;
   private _slackHoldTimer = 0;
+  private _slackMotionTimer = 0;
+  private _slackBaseX = 0;
+  private _slackBaseY = 0;
   private _isSlackHovered = false;
   private _isSlackDismissed = false;
   private _isSlackZoomed = false;
@@ -121,7 +125,19 @@ export class Subtitles extends Container {
     this._slackPopupContainer.addChild(this._slackPopupTitleText);
 
     this._slackPopupSprite = new Sprite();
+    this._slackPopupSprite.eventMode = 'static';
+    this._slackPopupSprite.cursor = 'pointer';
+    this._slackPopupSprite.on('pointerdown', (e) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      SFX.playClick();
+      this.toggleSlackZoom();
+    });
     this._slackPopupContainer.addChild(this._slackPopupSprite);
+
+    this._slackSpriteMask = new Graphics();
+    this._slackPopupContainer.addChild(this._slackSpriteMask);
+    this._slackPopupSprite.mask = this._slackSpriteMask;
 
     // Zoom button
     this._slackZoomBtn = new Container();
@@ -354,6 +370,7 @@ export class Subtitles extends Container {
     if (!slackKey || !hasTexture(slackKey)) return;
     this._currentSlackKey = slackKey;
     this._slackHoldTimer = 8.0;
+    this._slackMotionTimer = 0;
     this._isSlackDismissed = false;
     const tex = getTexture(slackKey);
     this._slackPopupSprite.texture = tex;
@@ -651,13 +668,38 @@ export class Subtitles extends Container {
       }
     }
 
-    // Smooth alpha fade for Slack screenshot popup
+    // Smooth alpha fade & Ken Burns motion graphics for Slack screenshot popup
     if (this._slackPopupCurrentAlpha !== this._slackPopupTargetAlpha) {
       const dAlpha = this._slackPopupTargetAlpha - this._slackPopupCurrentAlpha;
       const step = Math.sign(dAlpha) * Math.min(Math.abs(dAlpha), dt * 4.5);
       this._slackPopupCurrentAlpha += step;
       this._slackPopupContainer.alpha = this._slackPopupCurrentAlpha;
       this._slackPopupContainer.visible = this._slackPopupCurrentAlpha > 0.01;
+    }
+
+    if (this._slackPopupContainer.visible) {
+      if (!this._isSlackZoomed) {
+        this._slackMotionTimer += dt;
+        // Motion graphics: continuous subtle slow zoom from 1.00 to 1.045 over 8s
+        const motionProgress = Math.min(1.0, this._slackMotionTimer / 8.0);
+        const kenBurnsScale = 1.0 + 0.045 * (1 - Math.pow(1 - motionProgress, 1.5));
+
+        // Smooth subtle drift: gentle rise + micro horizontal breathing
+        const driftY = -Math.min(18, this._slackMotionTimer * 1.8);
+        const driftX = Math.sin(this._slackMotionTimer * 0.35) * 4.0;
+
+        const popScale = (0.97 + 0.03 * this._slackPopupCurrentAlpha) * kenBurnsScale;
+        this._slackPopupContainer.scale.set(popScale);
+        this._slackPopupContainer.position.set(this._slackBaseX + driftX, this._slackBaseY + driftY);
+        this._slackPopupContainer.rotation = 0;
+      } else {
+        this._slackPopupContainer.scale.set(1.0);
+        this._slackPopupContainer.position.set(this._slackBaseX, this._slackBaseY);
+        this._slackPopupContainer.rotation = 0;
+      }
+    } else {
+      this._slackMotionTimer = 0;
+      this._slackPopupContainer.scale.set(0.97);
     }
 
     this._updateSlackProgressBar();
@@ -685,7 +727,8 @@ export class Subtitles extends Container {
     if (sKey && hasTexture(sKey)) {
       if (this._currentSlackKey !== sKey) {
         this._currentSlackKey = sKey;
-        this._slackHoldTimer = 5.0;
+        this._slackHoldTimer = 7.0;
+        this._slackMotionTimer = 0;
         this._isSlackDismissed = false;
         const tex = getTexture(sKey);
         this._slackPopupSprite.texture = tex;
@@ -721,70 +764,82 @@ export class Subtitles extends Container {
       this._slackDimOverlay.fill({ color: 0x030408, alpha: 0.88 });
 
       const maxW = w * 0.94;
-      const maxH = h * 0.84;
+      const maxH = h * 0.86;
       const scale = Math.min(maxW / tex.width, maxH / tex.height, 2.0);
       const imgW = Math.round(tex.width * scale);
       const imgH = Math.round(tex.height * scale);
 
-      const padX = 14;
-      const topH = 34;
-      const botH = 10;
-      const modalW = imgW + padX * 2;
-      const modalH = imgH + topH + botH;
+      const modalX = Math.round(w / 2);
+      const modalY = Math.round(h / 2);
+      this._slackBaseX = modalX;
+      this._slackBaseY = modalY;
+      this._slackPopupContainer.position.set(modalX, modalY);
 
-      const posX = (w - modalW) / 2;
-      const posY = (h - modalH) / 2;
-      this._slackPopupContainer.position.set(posX, posY);
-
-      this._slackPopupBg.clear();
-      this._slackPopupBg.roundRect(0, 0, modalW, modalH, 10);
-      this._slackPopupBg.fill({ color: 0x0a0e18, alpha: 0.98 });
-      this._slackPopupBg.stroke({ color: 0x00f5d4, width: 2.0, alpha: 0.95 });
-
-      this._slackPopupTitleText.text = 'СЛЕК-ДЕПЕША ЦИТАДЕЛИ: #VIZOR_PRODUCTION [УВЕЛИЧЕНО]';
-      this._slackPopupTitleText.position.set(16, 10);
-
-      this._slackZoomBtn.position.set(modalW - 130, 18);
-      this._slackCloseBtn.position.set(modalW - 50, 18);
+      const r = 10;
+      this._slackSpriteMask.clear();
+      this._slackSpriteMask.roundRect(-imgW / 2, -imgH / 2, imgW, imgH, r);
+      this._slackSpriteMask.fill({ color: 0xffffff });
+      this._slackPopupSprite.mask = this._slackSpriteMask;
 
       this._slackPopupSprite.width = imgW;
       this._slackPopupSprite.height = imgH;
-      this._slackPopupSprite.position.set(padX, topH);
+      this._slackPopupSprite.position.set(-imgW / 2, -imgH / 2);
 
+      this._slackPopupBg.clear();
+      this._slackPopupBg.roundRect(-imgW / 2 - 8, -imgH / 2 - 8, imgW + 16, imgH + 16, r + 4);
+      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.60 });
+
+      this._slackPopupTitleText.visible = false;
+      this._slackZoomBtn.visible = false;
+      this._slackCloseBtn.visible = false;
       this._slackProgressBar.visible = false;
     } else {
-      const maxW = isPortrait ? w * 0.92 : Math.min(w * 0.58, 680);
-      const maxH = isPortrait ? h * 0.38 : Math.min(h * 0.38, 250);
-      const scale = Math.min(maxW / tex.width, maxH / tex.height, 1.0);
+      // Minimalist larger display with subtle cinematic drop shadow and zero UI clutter
+      const karaokeW = this._isKaraoke ? 460 : 0;
+      const maxW = isPortrait
+        ? Math.min(w * 0.94, 620)
+        : (this._isKaraoke ? Math.min(w - karaokeW - 48, 760) : Math.min(w * 0.78, 920));
+      const maxH = isPortrait ? Math.min(h * 0.46, 380) : Math.min(h * 0.58, 430);
+
+      const scale = Math.min(maxW / tex.width, maxH / tex.height, 1.35);
       const imgW = Math.round(tex.width * scale);
       const imgH = Math.round(tex.height * scale);
 
-      const padX = 12;
-      const topH = 32;
-      const botH = 8;
-      const modalW = imgW + padX * 2;
-      const modalH = imgH + topH + botH;
+      const modalX = (this._isKaraoke && !isPortrait)
+        ? Math.round((w - karaokeW - 24) / 2)
+        : Math.round(w / 2);
+      const modalY = Math.round(h * 0.40);
 
-      const posX = (w - modalW) / 2;
-      const posY = isPortrait ? 60 : 34;
-      this._slackPopupContainer.position.set(posX, posY);
+      this._slackBaseX = modalX;
+      this._slackBaseY = modalY;
+      this._slackPopupContainer.position.set(modalX, modalY);
 
-      this._slackPopupBg.clear();
-      this._slackPopupBg.roundRect(0, 0, modalW, modalH, 8);
-      this._slackPopupBg.fill({ color: 0x070b14, alpha: 0.95 });
-      this._slackPopupBg.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.85 });
-
-      this._slackPopupTitleText.text = 'СЛЕК-ДЕПЕША ЦИТАДЕЛИ: #VIZOR_PRODUCTION';
-      this._slackPopupTitleText.position.set(14, 9);
-
-      this._slackZoomBtn.position.set(modalW - 124, 16);
-      this._slackCloseBtn.position.set(modalW - 46, 16);
+      const r = 8;
+      this._slackSpriteMask.clear();
+      this._slackSpriteMask.roundRect(-imgW / 2, -imgH / 2, imgW, imgH, r);
+      this._slackSpriteMask.fill({ color: 0xffffff });
+      this._slackPopupSprite.mask = this._slackSpriteMask;
 
       this._slackPopupSprite.width = imgW;
       this._slackPopupSprite.height = imgH;
-      this._slackPopupSprite.position.set(padX, topH);
+      this._slackPopupSprite.position.set(-imgW / 2, -imgH / 2);
 
-      this._slackProgressBar.visible = true;
+      // Clean diffused drop shadow beneath screenshot (NO frames, NO borders)
+      this._slackPopupBg.clear();
+      this._slackPopupBg.roundRect(-imgW / 2, -imgH / 2 + 4, imgW, imgH, r);
+      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.45 });
+
+      this._slackPopupBg.roundRect(-imgW / 2 - 4, -imgH / 2 + 8, imgW + 8, imgH + 4, r + 2);
+      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.25 });
+
+      this._slackPopupBg.roundRect(-imgW / 2 - 10, -imgH / 2 + 16, imgW + 20, imgH + 8, r + 4);
+      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.12 });
+
+      // Clean minimalist: hide header, zoom, close, and progress bar
+      this._slackPopupTitleText.visible = false;
+      this._slackZoomBtn.visible = false;
+      this._slackCloseBtn.visible = false;
+      this._slackProgressBar.visible = false;
     }
   }
 
