@@ -543,12 +543,12 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       characterThemeColor: 0x38bdf8,
       label: 'Кристиан: Вердикт Упс',
     },
-    // 48.90s: "Конвент выносит приговор. Инспекция. Дилдачичных катакомб без права на переписку..." -> Трон Суда (НАГНЕТАНИЕ)
-    { time: 48.90, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'dread_05_rust_and_bone_maximum_grimdark_25s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента' },
+    // 48.90s: "Конвент выносит приговор. Инспекция. Дилдачичных катакомб без права на переписку..." -> Трон Суда (ПОЛНЫЙ ТРЕК НА ВСЮ СЦЕНУ 52с!)
+    { time: 48.90, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'dread_09_rust_and_bone_full_punishment_52s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента (Полный 52с трек)' },
     // 61.38s: "Обоим алхимикам вручается двухметровый церемониальный жезл. Багровый дилдо из титанового сплава..."
     { time: 61.38, texKey: 'ai_lord_baton', type: 'event_illustration', label: 'Церемониальный жезл: Багровый дилдо' },
-    // 70.18s: "Они приговариваются к ручной зачистке рифленых металлических решеток нижней палубы..." -> РЕШЁТКИ НИЖНЕЙ ПАЛУБЫ! (УДАР КОЛОССА)
-    { time: 70.18, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', ambientCueKey: 'dread_07_titan_forge_instant_colossus_strike_25s', label: 'Нижняя палуба: Зачистка рифлёных металлических решёток' },
+    // 70.18s: "Они приговариваются к ручной зачистке рифленых металлических решеток нижней палубы..." -> РЕШЁТКИ НИЖНЕЙ ПАЛУБЫ! (Продолжение страшного трека)
+    { time: 70.18, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', label: 'Нижняя палуба: Зачистка рифлёных металлических решёток' },
     // 78.00s: "...от налипшей биомассы всех 346 копий... цифровой гнили..."
     { time: 78.00, texKey: 'retro_film_dildache_catacombs_infestation_v2', type: 'event_illustration', label: 'Катакомбы нижней палубы: Зачистка цифровой гнили до блеска' },
     // 88.12s: "Особое условие инспекции – дрочить вручную... без права на кофе."

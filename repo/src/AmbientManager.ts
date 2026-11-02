@@ -18,19 +18,19 @@ export interface CueNormalizationConfig {
 export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
   // Harsh Dread / Terror Drops: Raw files are compressed/hot (-9.4 to -12.2 dBFS RMS)
   // Calibrated targetVol scales them to -24.5 dBFS RMS (loud and grimdark, zero speech clash)
-  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.01 },
-  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.01 },
-  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.18, fadeInSec: 0.40, duckAmbientTo: 0.01 },
-  dread_07_titan_forge_instant_colossus_strike_25s: { targetVol: 0.23, fadeInSec: 0.30, duckAmbientTo: 0.01 },
+  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.35, fadeInSec: 0.30, duckAmbientTo: 0.08 },
+  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.32, fadeInSec: 0.30, duckAmbientTo: 0.08 },
+  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.35, fadeInSec: 0.35, duckAmbientTo: 0.08 },
+  dread_09_rust_and_bone_full_punishment_52s: { targetVol: 0.35, fadeInSec: 0.35, duckAmbientTo: 0.08 },
+  dread_10_predator_nightmare_drop_52s: { targetVol: 0.35, fadeInSec: 0.30, duckAmbientTo: 0.08 },
 
-  // Peace / Calm Moments: Raw files are dynamic/gentle (-19.5 to -20.5 dBFS RMS)
-  // Calibrated targetVol scales them to -25.0 dBFS RMS (warm, lush and angelic)
-  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.55, fadeInSec: 0.50, duckAmbientTo: 0.01 },
-  peace_02_pin_drop_silence_warm_melody_30s: { targetVol: 0.55, fadeInSec: 0.50, duckAmbientTo: 0.01 },
-  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.55, fadeInSec: 0.50, duckAmbientTo: 0.01 },
-  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.58, fadeInSec: 0.40, duckAmbientTo: 0.01 },
-  peace_05_chronicles_playbox_uplifting_pads_30s: { targetVol: 0.52, fadeInSec: 0.45, duckAmbientTo: 0.01 },
-  peace_06_chronicles_playbox_warm_culmination_25s: { targetVol: 0.52, fadeInSec: 0.45, duckAmbientTo: 0.01 },
+  // Peace / Calm Moments: Gentle warm pads & vocalise
+  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
+  peace_02_pin_drop_silence_warm_melody_30s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
+  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
+  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.48, fadeInSec: 0.35, duckAmbientTo: 0.08 },
+  peace_05_chronicles_playbox_uplifting_pads_30s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
+  peace_06_chronicles_playbox_warm_culmination_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
 
   // Crowd & Audience SFX
   '03_crowd_drop1_accent': { targetVol: 0.45, fadeInSec: 0.05, duckAmbientTo: 0.0 },
@@ -166,19 +166,28 @@ class AmbientManagerService {
       return { key: null, duckFactor: 0.0 };
     }
     // Balance: 60% quieter than previous 0.35 (0.35 * 0.40 = 0.14) so narration sits prominently in front
-    switch (actIndex) {
-      case 1: return { key: 'rust_and_bone', duckFactor: 0.09 };      // Prologue
-      case 2: return { key: 'absolute_blackout', duckFactor: 0.08 };  // Act 1: Convent
-      case 3: return { key: 'desolate_cry', duckFactor: 0.09 };       // Act 2: Sarcophagus
-      case 4: return { key: 'rust_and_bone', duckFactor: 0.09 };      // Act 3: Time Machine
-      case 5: return { key: 'absolute_blackout', duckFactor: 0.08 };  // Act 4: Engine
-      case 6: return { key: 'desolate_cry', duckFactor: 0.09 };       // Act 5: Clientarchs
-      case 7: return { key: 'rust_and_bone', duckFactor: 0.09 };      // Act 6: Punishment
-      case 8: return { key: 'chronicles_ambient', duckFactor: 0.08 }; // Act 6: Reward
-      case 9: return { key: 'desolate_cry', duckFactor: 0.09 };       // Act 8: Outro
-      case 10: return { key: null, duckFactor: 0.0 };                 // Act 7: Song (ZERO AMBIENT)
-      default: return { key: 'desolate_cry', duckFactor: 0.09 };
+    if (actId === 'act_7_song' || actIndex === 7 || actIndex === 10) {
+      return { key: null, duckFactor: 0.0 }; // Song Act: ZERO AMBIENT
     }
+    if (actId === 'prologue_space' || actIndex === 1) {
+      return { key: 'rust_and_bone', duckFactor: 0.28 };
+    }
+    if (actId === 'act_1_convent' || actIndex === 2) {
+      return { key: 'absolute_blackout', duckFactor: 0.25 };
+    }
+    if (actId === 'act_5_clientarchs' || actIndex === 3) {
+      return { key: 'desolate_cry', duckFactor: 0.28 };
+    }
+    if (actId === 'act_6_punishment' || actIndex === 4) {
+      return { key: 'rust_and_bone', duckFactor: 0.28 };
+    }
+    if (actId === 'act_6_reward' || actIndex === 5) {
+      return { key: 'chronicles_ambient', duckFactor: 0.28 };
+    }
+    if (actId === 'act_8_outro' || actIndex === 6) {
+      return { key: 'desolate_cry', duckFactor: 0.28 };
+    }
+    return { key: 'rust_and_bone', duckFactor: 0.28 };
   }
 
   public transitionToAct(actIndex: number, crossfadeSec?: number, actId?: string): void {
@@ -482,7 +491,11 @@ class AmbientManagerService {
 
   public resumeCurrent(): void {
     this._isPaused = false;
-    if (this._currentAudio && this._currentTrackKey && this._currentDuckFactor > 0) {
+    if (this._currentAudio && this._currentTrackKey) {
+      if (this._currentDuckFactor <= 0) {
+        this._currentDuckFactor = 0.28;
+      }
+      this._currentAudio.volume = this._isMuted ? 0 : this._musicVolume * this._currentDuckFactor;
       this._currentAudio.play().catch(() => {});
     }
     if (this._cueAudio && this._cueTrackKey) {

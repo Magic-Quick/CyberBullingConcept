@@ -4559,6 +4559,15 @@ export class MovieApp {
 
       // Start Prologue voiceover
 
+      
+      // Audio Transition: Switch to Prologue ambient track
+      if (!shouldPlay) {
+        AmbientManager.setPaused(true);
+      } else {
+        AmbientManager.setPaused(false);
+      }
+      AmbientManager.transitionToAct(index, crossfadeSec, act.id);
+
       this._playVoiceAct(act, index, shouldPlay);
 
     } else {
@@ -6118,6 +6127,7 @@ export class MovieApp {
 
       }
 
+      AmbientManager.setPaused(false);
       AmbientManager.resumeCurrent();
 
     }

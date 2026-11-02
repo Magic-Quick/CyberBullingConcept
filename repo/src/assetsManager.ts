@@ -12,7 +12,11 @@ const imageModules = import.meta.glob([
   import: 'default',
 }) as Record<string, string>;
 
-const audioModules = import.meta.glob('./assets/audio/*.mp3', {
+const audioModules = import.meta.glob([
+  './assets/audio/*.mp3',
+  '!./assets/audio/voices_of_production*.mp3',
+  '!./assets/audio/*Полная_версия*.mp3',
+], {
   eager: true,
   query: '?url',
   import: 'default',
@@ -66,7 +70,7 @@ export function initAssetMappings(): void {
       audioUrls['desolate_cry'] = url;
       audioUrls['desolate_cry_ambient'] = url;
     }
-    if (filename.includes('rust_and_bone') || filename.includes('Rust and Bone')) {
+    if ((filename.startsWith('rust_and_bone') || filename.includes('Rust and Bone') || filename === 'rust_and_bone_1.mp3') && !filename.startsWith('dread_')) {
       audioUrls['ambient_rust_and_bone'] = url;
       audioUrls['rust_and_bone'] = url;
       audioUrls['rust_and_bone_1'] = url;
