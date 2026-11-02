@@ -7357,7 +7357,7 @@ export class MovieApp {
         this._subtitles.showSlackPopup(cut.texKey);
 
       } else {
-        this._subtitles.hideSlackPopup(true);
+        // Do not kill active Slack popup on cuts - let 10s hold timer finish naturally
       }
 
 

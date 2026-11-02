@@ -63,7 +63,7 @@ plbx.init(async () => {
     resolution: Math.min(window.devicePixelRatio || 1, 2),
   });
 
-  // Authentic Ark Terminal Loading Screen
+  // Authentic Ark Terminal Loading Screen (Subtitle Box Style: clean black background, no borders, #00f5d4)
   const loadingContainer = new Container();
   app.stage.addChild(loadingContainer);
 
@@ -73,12 +73,11 @@ plbx.init(async () => {
   const titleText = new Text({
     text: '[ ИНИЦИАЛИЗАЦИЯ СИСТЕМ КОВЧЕГА ]',
     style: new TextStyle({
-      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontFamily: ['Share Tech Mono', 'monospace'],
       fontSize: 16,
       fontWeight: 'bold',
       fill: '#00f5d4',
-      letterSpacing: 3,
-      dropShadow: { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 },
+      letterSpacing: 2,
     }),
   });
   titleText.anchor.set(0.5);
@@ -87,10 +86,10 @@ plbx.init(async () => {
   const statusText = new Text({
     text: 'ЗАГРУЗКА БОРТОВЫХ РЕЛИКВИЙ И КВАРЦЕВЫХ СТЕК...',
     style: new TextStyle({
-      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontFamily: ['Share Tech Mono', 'monospace'],
       fontSize: 12,
-      fill: '#38bdf8',
-      letterSpacing: 1.5,
+      fill: '#00f5d4',
+      letterSpacing: 1,
     }),
   });
   statusText.anchor.set(0.5);
@@ -102,12 +101,11 @@ plbx.init(async () => {
   const percentText = new Text({
     text: '[   0% ]',
     style: new TextStyle({
-      fontFamily: ['Share Tech Mono', 'PxPlus IBM VGA 8x16', 'monospace'],
+      fontFamily: ['Share Tech Mono', 'monospace'],
       fontSize: 13,
       fontWeight: 'bold',
       fill: '#00f5d4',
-      letterSpacing: 2,
-      dropShadow: { alpha: 0.6, blur: 4, color: '#00f5d4', distance: 0 },
+      letterSpacing: 1.5,
     }),
   });
   percentText.anchor.set(0.5);
@@ -120,66 +118,38 @@ plbx.init(async () => {
     const cy = sh / 2;
 
     const panelW = Math.min(480, sw - 40);
-    const panelH = 150;
+    const panelH = 140;
     const px = cx - panelW / 2;
     const py = cy - panelH / 2;
 
     panelBg.clear();
+    // Clean black rectangle backdrop without borders or corner ticks (exact subtitle box style)
     panelBg.roundRect(px, py, panelW, panelH, 8);
-    panelBg.fill({ color: 0x030c10, alpha: 0.94 });
-    panelBg.stroke({ color: 0x005f54, width: 1.5 });
+    panelBg.fill({ color: 0x000000, alpha: 0.88 });
 
-    const cornerSize = 12;
-    panelBg.poly([
-      { x: px + cornerSize, y: py },
-      { x: px, y: py },
-      { x: px, y: py + cornerSize },
-    ]);
-    panelBg.stroke({ color: 0x00f5d4, width: 2 });
-
-    panelBg.poly([
-      { x: px + panelW - cornerSize, y: py },
-      { x: px + panelW, y: py },
-      { x: px + panelW, y: py + cornerSize },
-    ]);
-    panelBg.stroke({ color: 0x00f5d4, width: 2 });
-
-    panelBg.poly([
-      { x: px, y: py + panelH - cornerSize },
-      { x: px, y: py + panelH },
-      { x: px + cornerSize, y: py + panelH },
-    ]);
-    panelBg.stroke({ color: 0x00f5d4, width: 2 });
-
-    panelBg.poly([
-      { x: px + panelW - cornerSize, y: py + panelH },
-      { x: px + panelW, y: py + panelH },
-      { x: px + panelW, y: py + panelH - cornerSize },
-    ]);
-    panelBg.stroke({ color: 0x00f5d4, width: 2 });
-
-    titleText.position.set(cx, cy - 36);
-    statusText.position.set(cx, cy - 10);
+    titleText.position.set(cx, cy - 34);
+    statusText.position.set(cx, cy - 8);
 
     const barW = Math.min(360, panelW - 60);
-    const barH = 8;
+    const barH = 6;
     const bx = cx - barW / 2;
     const by = cy + 18;
 
     progressBar.clear();
-    progressBar.roundRect(bx, by, barW, barH, 2);
-    progressBar.fill({ color: 0x071e22 });
-    progressBar.stroke({ color: 0x005f54, width: 1 });
+    // Track without borders
+    progressBar.roundRect(bx, by, barW, barH, 3);
+    progressBar.fill({ color: 0x141824, alpha: 0.9 });
 
+    // Progress fill in subtitle cyan
     const fillW = Math.max(0, Math.min(barW, barW * ratio));
     if (fillW > 0) {
-      progressBar.roundRect(bx, by, fillW, barH, 2);
+      progressBar.roundRect(bx, by, fillW, barH, 3);
       progressBar.fill({ color: 0x00f5d4 });
     }
 
     const pct = Math.round(ratio * 100);
     percentText.text = `[ ${pct.toString().padStart(3, ' ')}% ]`;
-    percentText.position.set(cx, cy + 46);
+    percentText.position.set(cx, cy + 44);
   };
 
   updateLoadingUI(0);

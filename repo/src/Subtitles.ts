@@ -371,7 +371,7 @@ export class Subtitles extends Container {
   public showSlackPopup(slackKey: string): void {
     if (!slackKey || !hasTexture(slackKey)) return;
     this._currentSlackKey = slackKey;
-    this._slackHoldTimer = 8.0;
+    this._slackHoldTimer = 10.0;
     this._slackMotionTimer = 0;
     this._isSlackDismissed = false;
     const tex = getTexture(slackKey);
@@ -775,7 +775,7 @@ export class Subtitles extends Container {
       else if (t.includes('забанили клод') || t.includes('забанили claude')) sKey = '04_claude_banned';
       else if (t.includes('одиннадцать баллов') || t.includes('11 баллов')) sKey = '05_edik_11_points';
       else if (t.includes('палатку')) sKey = '06_tent_brother';
-      else if (t.includes('корова') && (t.includes('лазер') || t.includes('лупит') || t.includes('коров'))) sKey = '07_cow_laser';
+      else if (t.includes('слишком буквально') || t.includes('принял мою просьбу')) sKey = '07_cow_laser';
       else if (t.includes('mavis') && t.includes('ноги')) sKey = '08_mavis_legs';
       else if (t.includes('даниал') || t.includes('3а') || t.includes('3a')) sKey = '09_danial_3a_project';
       else if (t.includes('музеях') && (t.includes('котов') || t.includes('мумий') || t.includes('фараон'))) sKey = '10_pyramids_museum';
@@ -787,7 +787,7 @@ export class Subtitles extends Container {
     if (sKey && hasTexture(sKey)) {
       if (this._currentSlackKey !== sKey) {
         this._currentSlackKey = sKey;
-        this._slackHoldTimer = 7.0;
+        this._slackHoldTimer = 10.0; // 10.0s guaranteed comfortable reading time!
         this._slackMotionTimer = 0;
         this._isSlackDismissed = false;
         const tex = getTexture(sKey);
@@ -796,10 +796,11 @@ export class Subtitles extends Container {
         this._slackPopupTargetAlpha = 1.0;
       }
     } else {
-      // Clean Picture Reveal: Immediately dismiss previous Slack popup when moving to next cue
-      this._slackPopupTargetAlpha = 0;
-      this._slackHoldTimer = 0;
-      this._currentSlackKey = null;
+      // Do NOT kill active popup prematurely! Let it count down its 10s reading timer!
+      if (this._slackHoldTimer <= 0) {
+        this._slackPopupTargetAlpha = 0;
+        this._currentSlackKey = null;
+      }
     }
   }
 
@@ -852,7 +853,7 @@ export class Subtitles extends Container {
       this._slackPopupTitleText.visible = false;
       this._slackZoomBtn.visible = false;
       this._slackCloseBtn.visible = false;
-      this._slackProgressBar.visible = false;
+      this._slackProgressBar.visible = !this._isSlackZoomed;
     } else {
       // Minimalist larger display with subtle cinematic drop shadow and zero UI clutter
       const karaokeW = this._isKaraoke ? 460 : 0;
@@ -899,7 +900,7 @@ export class Subtitles extends Container {
       this._slackPopupTitleText.visible = false;
       this._slackZoomBtn.visible = false;
       this._slackCloseBtn.visible = false;
-      this._slackProgressBar.visible = false;
+      this._slackProgressBar.visible = !this._isSlackZoomed;
     }
   }
 
@@ -908,7 +909,7 @@ export class Subtitles extends Container {
       this._slackProgressBar.clear();
       return;
     }
-    const ratio = Math.max(0, Math.min(1, this._slackHoldTimer / 8.0));
+    const ratio = Math.max(0, Math.min(1, this._slackHoldTimer / 10.0));
     const padX = 12;
     const w = this._slackPopupSprite.width;
     const y = this._slackPopupSprite.y + this._slackPopupSprite.height + 2;
