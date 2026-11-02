@@ -599,11 +599,8 @@ export class Subtitles extends Container {
           item.noteIcon.visible = true;
           item.indexText.style.fill = '#00f5d4';
 
-          // Active background highlight bar wrapping the entire multi-line verse
+          // Clean highlight: zero frame/border around active verse
           this._karaokeActiveHighlight.clear();
-          this._karaokeActiveHighlight.roundRect(8, item.baseY + 2, panelW - 32, item.height - 4, 8);
-          this._karaokeActiveHighlight.fill({ color: 0x00f5d4, alpha: 0.12 });
-          this._karaokeActiveHighlight.stroke({ color: 0x00f5d4, width: 1.2, alpha: 0.45 });
         } else if (i < this._currentCueIndex) {
           // Past lines: dimmed dark teal
           item.text.style.fill = '#005f54';
