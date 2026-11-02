@@ -3919,6 +3919,8 @@ export class MovieApp {
 
     AmbientManager.stopCinematicCue(0.2);
 
+    this._subtitles.hideSlackPopup(true);
+
     this._currentActIndex = index;
 
     this._actTime = 0;
@@ -6612,7 +6614,8 @@ export class MovieApp {
         this._subtitles.showSlackPopup(cut.texKey);
 
       } else {
-        // Do not kill active Slack popup on cuts - let 10s hold timer finish naturally
+        // Clean Picture Reveal: Any scene without a Slack screenshot must hide any open Slack popup!
+        this._subtitles.hideSlackPopup(!punch);
       }
 
       if (isQuote) {

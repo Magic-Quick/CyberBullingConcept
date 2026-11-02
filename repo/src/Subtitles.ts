@@ -58,6 +58,7 @@ export class Subtitles extends Container {
   private _slackProgressBar: Graphics;
   private _slackSpriteMask: Graphics;
   private _slackHoldTimer = 0;
+  private _slackHoverExtraTime = 0;
   private _slackMotionTimer = 0;
   private _slackBaseX = 0;
   private _slackBaseY = 0;
@@ -444,7 +445,8 @@ export class Subtitles extends Container {
       return;
     }
     this._currentSlackKey = slackKey;
-    this._slackHoldTimer = 10.0;
+    this._slackHoldTimer = 5.0;
+    this._slackHoverExtraTime = 0;
     this._slackMotionTimer = 0;
     this._isSlackDismissed = false;
     const tex = getTexture(slackKey);
@@ -456,7 +458,13 @@ export class Subtitles extends Container {
   public hideSlackPopup(immediate: boolean = false): void {
     this._slackPopupTargetAlpha = 0;
     this._slackHoldTimer = 0;
+    this._slackHoverExtraTime = 0;
     this._isSlackDismissed = true;
+    this._currentSlackKey = null;
+    this._isSlackHovered = false;
+    if (this._isSlackZoomed) {
+      this.toggleSlackZoom();
+    }
     if (immediate) {
       this._slackPopupCurrentAlpha = 0;
       this._slackPopupContainer.alpha = 0;
@@ -840,11 +848,18 @@ export class Subtitles extends Container {
 
     // Slack screenshot countdown timer
     if (this._slackHoldTimer > 0) {
-      if (!this._isSlackHovered && !this._isSlackZoomed) {
-        this._slackHoldTimer = Math.max(0, this._slackHoldTimer - dt);
+      if (!this._isSlackZoomed) {
+        const isHoverPausing = this._isSlackHovered && this._slackHoverExtraTime < 3.0;
+        if (isHoverPausing) {
+          this._slackHoverExtraTime += dt;
+        } else {
+          this._slackHoldTimer = Math.max(0, this._slackHoldTimer - dt);
+        }
       }
       if (this._slackHoldTimer <= 0 || this._isSlackDismissed) {
         this._slackPopupTargetAlpha = 0;
+        this._currentSlackKey = null;
+        this._isSlackHovered = false;
         if (this._isSlackZoomed) {
           this.toggleSlackZoom();
         }
@@ -940,7 +955,8 @@ export class Subtitles extends Container {
     if (sKey && hasTexture(sKey)) {
       if (this._currentSlackKey !== sKey) {
         this._currentSlackKey = sKey;
-        this._slackHoldTimer = 10.0; // 10.0s guaranteed comfortable reading time!
+        this._slackHoldTimer = 5.0;
+        this._slackHoverExtraTime = 0;
         this._slackMotionTimer = 0;
         this._isSlackDismissed = false;
         const tex = getTexture(sKey);
