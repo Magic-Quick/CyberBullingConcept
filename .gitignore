@@ -23,7 +23,6 @@ Desktop.ini
 
 # Heavy media and local raw folders (tracked in cloud / local F:\AI)
 media/
-assets/
 data/
 Slack_Screenshots/
 Визуал/
@@ -33,10 +32,16 @@ Slack_Screenshots/
 !repo/**
 !repo/src/**
 !web_assets/**
+!assets/**
 
-# Unignore web_assets for GitHub Pages presentation
+# Unignore web_assets and assets for GitHub Pages presentation
 !web_assets/
 !web_assets/**
+!assets/
+!assets/**
+assets/imagen/
+assets/midjourney/
+assets/voiceover_v13/
 
 **/node_modules/**
 **/dist/**

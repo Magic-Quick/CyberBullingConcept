@@ -32,7 +32,19 @@ def copy_bundle(src_dir, dst_dir):
             shutil.copy2(src, dst)
             print(f"  [OK] Файл: {fname}")
 
-    # 2. Sync web_assets
+    # 2. Sync assets (Vite production bundle: UI chassis, audio, textures, fonts)
+    src_assets = os.path.join(src_dir, "assets")
+    dst_assets = os.path.join(dst_dir, "assets")
+    if os.path.exists(src_assets):
+        print("  [..] Синхронизация assets (интерфейс, аудио, текстуры)...")
+        cmd = ["robocopy", src_assets, dst_assets, "/E", "/NP", "/NFL", "/NDL", "/NJH", "/NJS"]
+        res = subprocess.run(cmd, capture_output=True)
+        if res.returncode < 8:
+            print("  [OK] Папка assets синхронизирована!")
+        else:
+            print(f"  [!] Ошибка robocopy assets (код {res.returncode})")
+
+    # 3. Sync web_assets (legacy raw assets)
     src_assets = os.path.join(src_dir, "web_assets")
     dst_assets = os.path.join(dst_dir, "web_assets")
     if os.path.exists(src_assets):
