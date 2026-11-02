@@ -412,22 +412,23 @@ export class Subtitles extends Container {
     const baseFontSize = isPortrait ? 18 : 20;
     const baseLineHeight = isPortrait ? 25 : 28;
     const panelW = isPortrait ? Math.min(this._screenWidth * 0.92, 420) : Math.min(460, Math.max(340, Math.round(this._screenWidth * 0.36)));
-    const wrapWidth = panelW - 54 - 24;
+    const wrapWidth = panelW - 70 - 20;
     let curY = 16;
 
     cues.forEach((cue, index) => {
       const lineC = new Container();
 
-      // Line number badge
+      // Line number badge in retro terminal brackets style: [ 01 ]
       const numTxt = new Text({
-        text: (index + 1).toString().padStart(2, '0'),
+        text: `[ ${(index + 1).toString().padStart(2, '0')} ]`,
         style: new TextStyle({
           fontFamily: ['Share Tech Mono', 'monospace'],
-          fontSize: 10,
-          fill: '#005f54',
+          fontSize: 11,
+          letterSpacing: 0.8,
+          fill: '#007a6c',
         }),
       });
-      numTxt.position.set(12, 10);
+      numTxt.position.set(10, 10);
       lineC.addChild(numTxt);
 
       // Note icon indicator for active line
@@ -439,7 +440,7 @@ export class Subtitles extends Container {
           fill: '#00f5d4',
         }),
       });
-      noteIcon.position.set(34, 10);
+      noteIcon.position.set(54, 10);
       noteIcon.visible = false;
       lineC.addChild(noteIcon);
 
@@ -458,7 +459,7 @@ export class Subtitles extends Container {
           letterSpacing: 0.6,
         }),
       });
-      lyricTxt.position.set(54, 8);
+      lyricTxt.position.set(70, 8);
       lineC.addChild(lyricTxt);
 
       // Dynamically calculate height based on verse lines to guarantee ZERO overlap
@@ -489,7 +490,7 @@ export class Subtitles extends Container {
     const isPortrait = this._screenHeight > this._screenWidth;
     const baseFontSize = isPortrait ? 18 : 20;
     const baseLineHeight = isPortrait ? 25 : 28;
-    const wrapWidth = panelW - 54 - 24;
+    const wrapWidth = panelW - 70 - 20;
 
     let curY = 16;
     for (const item of this._karaokeLines) {
@@ -582,7 +583,8 @@ export class Subtitles extends Container {
       }
 
       const isPortrait = this._screenHeight > this._screenWidth;
-      const panelH = isPortrait ? Math.min(this._screenHeight * 0.62, 540) : Math.min(this._screenHeight - 100, 680);
+      const panelY = isPortrait ? Math.max(20, Math.round(this._screenHeight * 0.32)) : 24;
+      const panelH = this._screenHeight - panelY;
       const panelW = isPortrait ? Math.min(this._screenWidth * 0.92, 420) : Math.min(460, Math.max(340, Math.round(this._screenWidth * 0.36)));
       const targetFocusY = Math.round(panelH * 0.28);
 
@@ -593,11 +595,13 @@ export class Subtitles extends Container {
       for (let i = 0; i < this._karaokeLines.length; i++) {
         const item = this._karaokeLines[i];
         if (i === this._currentCueIndex) {
-          // Active singing line: illuminated bright cyan
+          // Active singing line: illuminated bright cyan with glow
           item.text.style.fill = '#00f5d4';
           item.text.alpha = 1.0;
           item.noteIcon.visible = true;
           item.indexText.style.fill = '#00f5d4';
+          item.indexText.alpha = 1.0;
+          (item.indexText.style as any).dropShadow = { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 };
 
           // Clean highlight: zero frame/border around active verse
           this._karaokeActiveHighlight.clear();
@@ -606,13 +610,17 @@ export class Subtitles extends Container {
           item.text.style.fill = '#005f54';
           item.text.alpha = 0.35;
           item.noteIcon.visible = false;
-          item.indexText.style.fill = '#003831';
+          item.indexText.style.fill = '#005f54';
+          item.indexText.alpha = 0.35;
+          (item.indexText.style as any).dropShadow = null;
         } else {
           // Upcoming lines: muted cyan
           item.text.style.fill = '#007a6c';
           item.text.alpha = 0.55;
           item.noteIcon.visible = false;
-          item.indexText.style.fill = '#003831';
+          item.indexText.style.fill = '#007a6c';
+          item.indexText.alpha = 0.55;
+          (item.indexText.style as any).dropShadow = null;
         }
       }
     } else {
@@ -887,23 +895,24 @@ export class Subtitles extends Container {
     const isPortrait = h > w;
 
     const panelW = isPortrait ? Math.min(w * 0.92, 420) : Math.min(460, Math.max(340, Math.round(w * 0.36)));
-    const panelH = isPortrait ? Math.min(h * 0.62, 540) : Math.min(h - 100, 680);
     const panelX = isPortrait ? (w - panelW) / 2 : w - panelW - 24;
-    const panelY = isPortrait ? h - panelH - (this._bottomOffset + 24) : 44;
+    const panelY = isPortrait ? Math.max(20, Math.round(h * 0.32)) : 24;
+    const panelH = h - panelY; // Clean rectangle extending all the way down to the bottom
 
     this._karaokeScreenContainer.position.set(panelX, panelY);
 
-    // Clean black rectangle backdrop without strokes or borders
+    // Clean black rectangle backdrop extending to bottom without strokes or rounded corners
     this._karaokePanelBg.clear();
-    this._karaokePanelBg.roundRect(0, 0, panelW, panelH, 10);
+    this._karaokePanelBg.rect(0, 0, panelW, panelH);
     this._karaokePanelBg.fill({ color: 0x000000, alpha: 0.88 });
 
     // Header is hidden for clean minimalist look per user request
     this._karaokeHeader.visible = false;
 
-    // Mask for the scrolling lines
+    // Mask for scrolling lines with bottom clearance above player bar
+    const bottomClearance = Math.max(16, this._bottomOffset + 12);
     this._karaokeListMask.clear();
-    this._karaokeListMask.rect(0, 16, panelW, panelH - 32);
+    this._karaokeListMask.rect(0, 16, panelW, Math.max(60, panelH - 16 - bottomClearance));
     this._karaokeListMask.fill({ color: 0xffffff });
 
     this._relayoutKaraokeLines(panelW);
