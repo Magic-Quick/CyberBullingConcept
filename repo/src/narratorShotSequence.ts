@@ -352,9 +352,10 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       characterName: 'АЛЕКСЕЙ ГОРИН',
       characterRole: 'Head of Production • Верховный Надзиратель',
       characterThemeColor: 0xffaa00,
+      ambientCueKey: 'peace_01_pin_drop_silence_pure_calm_25s',
       label: 'Горин: Хухро пока не трогаем',
     },
-    { time: 134.93, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', ambientCueKey: 'peace_01_pin_drop_silence_pure_calm_25s', label: 'CU: Ровно 240 секунд тишины — 4 минуты передышки' },
+    { time: 134.93, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Ровно 240 секунд тишины — 4 минуты передышки' },
     { time: 145.95, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: 4 минуты передышки' },
   ],
 
@@ -515,34 +516,55 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     { time: 220.95, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
   ],
 
-  // Act 6: Tribunal Punishment / Наказание (48.8s)
+  // Act 6: Tribunal Punishment / Наказание (98.76s)
   act_6_punishment: [
     // 0.00s: Заявочный план — Гермоврата Зала Суда
     { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Зала Суда' },
-    // 3.00s: "Конвент выносит приговор – инспекция делдачечных катакомб..." -> Зал Суда ИИ-Лорда
-    { time: 3.00, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента' },
-    // 6.00s: "...инспекция делдачечных катакомб..."
-    { time: 6.00, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', label: 'Дилдачные катакомбы' },
-    // 14.83s: "Обоим алхимикам вручается двухметровый церемониальный жезл – багровый делдодачник..."
-    { time: 14.83, texKey: 'ai_lord_baton', type: 'event_illustration', label: 'Церемониальный жезл: Багровый делдодачник' },
-    // 24.00s: "Они приговариваются к ручной зачистке... от налипшей биомассы всех 346 копий."
-    { time: 24.00, texKey: 'retro_film_dildache_catacombs_infestation_v2', type: 'event_illustration', label: 'Катакомбы: Ручная зачистка биомассы' },
-    // 33.41s: "До тех пор, пока каждый байт цифровой гнили не будет содран до зеркального блеска."
-    { time: 33.41, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — До зеркального блеска' },
-    // 40.00s: "без права выхода в слэк и без права на кофе." -> Возврат в Зал Суда
-    { time: 40.00, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне — Без права выхода и без права на кофе' },
+    // 2.00s: "Время раздавать долги... Мне осточертело тратить драгоценные такты кремния..." -> Зал Суда ИИ-Лорда
+    { time: 2.00, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Время раздавать долги' },
+    // 9.88s: "Напоминаю, багровый обелиск воздвигается не за лень, он вручается за масштабные катастрофы..." -> Крупный план Лорда (зачитывает нарушения)
+    { time: 9.88, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Оглашение масштаба нарушений' },
+    // 20.94s: "И сегодня на эшафот поднимаются магистр циклической несовместимости Кирилл Березкин и хранитель чистой ветки Кристиан."
+    {
+      time: 20.94,
+      texKey: 'retro_film_tribunal_scaffold_kirill_kristian_v1',
+      type: 'event_illustration',
+      label: 'Эшафот: Кирилл Берёзкин и Кристиан перед судом ИИ-Лорда',
+    },
+    // 31.52s: "За грандиозную биологическую аномалию недели: 346 мутировавших копий пакета общим весом в 22 ГБ..."
+    { time: 31.52, texKey: 'retro_film_server_mold_human_teeth_3', type: 'event_illustration', label: 'Биоаномалия: 346 мутировавших копий на 22 ГБ' },
+    // 42.20s: "...и завершившихся невозмутимым отчетом Кристиана: «Упс»."
+    {
+      time: 42.20,
+      texKey: 'retro_film_kristian_repository_guardian_v2',
+      type: 'character_quote',
+      characterName: 'КРИСТИАН',
+      characterRole: 'Platform Developer • Хранитель Чистой Ветки',
+      characterThemeColor: 0x38bdf8,
+      label: 'Кристиан: Вердикт Упс',
+    },
+    // 48.90s: "Конвент выносит приговор. Инспекция. Дилдачичных катакомб без права на переписку..." -> Трон Суда (НАГНЕТАНИЕ)
+    { time: 48.90, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'dread_05_rust_and_bone_maximum_grimdark_25s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Приговор Конвента' },
+    // 61.38s: "Обоим алхимикам вручается двухметровый церемониальный жезл. Багровый дилдо из титанового сплава..."
+    { time: 61.38, texKey: 'ai_lord_baton', type: 'event_illustration', label: 'Церемониальный жезл: Багровый дилдо' },
+    // 70.18s: "Они приговариваются к ручной зачистке рифленых металлических решеток нижней палубы..." -> РЕШЁТКИ НИЖНЕЙ ПАЛУБЫ! (УДАР КОЛОССА)
+    { time: 70.18, texKey: 'retro_film_dildache_catacombs_infestation_v1', type: 'event_illustration', ambientCueKey: 'dread_07_titan_forge_instant_colossus_strike_25s', label: 'Нижняя палуба: Зачистка рифлёных металлических решёток' },
+    // 78.00s: "...от налипшей биомассы всех 346 копий... цифровой гнили..."
+    { time: 78.00, texKey: 'retro_film_dildache_catacombs_infestation_v2', type: 'event_illustration', label: 'Катакомбы нижней палубы: Зачистка цифровой гнили до блеска' },
+    // 88.12s: "Особое условие инспекции – дрочить вручную... без права на кофе."
+    { time: 88.12, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Без права выхода и без права на кофе' },
   ],
 
   // Act 6: Tribunal Reward / Награда (53.86s)
   act_6_reward: [
-    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния
-    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Палаты Воздаяния' },
+    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния (СРАЗУ звучит добрая музыка!)
+    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', ambientCueKey: 'peace_04_chronicles_playbox_heavenly_vocalise_30s', label: 'Заявочный план: Гермоврата Палаты Воздаяния — Добрая музыка' },
     // 2.50s: "В награду за столь великую заботу о коллективе «Ковчег» жалуют надзирателю немыслимую роскошь..." -> Зал Суда ИИ-Лорда
-    { time: 2.50, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', ambientCueKey: 'peace_04_chronicles_playbox_heavenly_vocalise_30s', label: 'Зал суда: ИИ-Лорд на троне трибунала — Оглашение Высшей Милости' },
+    { time: 2.50, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Оглашение Высшей Милости' },
     // 9.22s: "...чашку безупречного эспрессо. Зерна ручной обжарки с реликтовых плантаций..."
     { time: 9.22, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', label: 'Кофейное хранилище Ковчега — Зерна и эспрессо' },
     // 23.58s: "Поэтому сервисная игла пневмодозатора с шипением врезается напрямую в его питательный катетер..."
-    { time: 23.58, texKey: 'ai_lord_cookie', type: 'ai_lord', ambientCueKey: 'dread_07_titan_forge_instant_colossus_strike_25s', label: 'Печенька благодати: Удар сервисной иглы пневмодозатора' },
+    { time: 23.58, texKey: 'ai_lord_cookie', type: 'ai_lord', ambientCueKey: 'peace_05_chronicles_playbox_uplifting_pads_30s', label: 'Печенька благодати: Удар сервисной иглы пневмодозатора — Возвышенные пэды' },
     // 38.12s: "Никаких чашек, никаких пауз. Его глаза даже не успели моргнуть..."
     { time: 38.12, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз Лорда — 240 кадров' },
     // 46.00s: "Зрачки расширены, пульс 240, давление в норме. Наслаждайтесь букетом, Михаил. За работу!"
@@ -555,7 +577,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     { time: 7.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Крупный план лица — 37 правок' },
     { time: 13.80, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз' },
     { time: 20.00, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: 30 секунд клика' },
-    { time: 26.62, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лицо — Отдыхайте, мясные слейвы' },
+    { time: 26.62, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'CU: Лицо — Отдыхайте, мясные слейвы (Дроп нагнетания)' },
     { time: 34.00, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Найду до чего доебаться' },
     { time: 41.00, texKey: 'ark_outro_cooling_shutters_v1', type: 'event_illustration', label: 'Охлаждающие створки ковчега: За работу' },
   ],

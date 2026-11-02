@@ -14,7 +14,7 @@ SRC_CROWD = r"H:\PLBX\CyberBullingConcept\media\audio\sfx\hugeextendedcrowd7.mp3
 OUT_SFX_DIR = r"H:\PLBX\CyberBullingConcept\media\audio\sfx\concert_crowd"
 
 MAIN_TRACK = r"H:\PLBX\CyberBullingConcept\repo\src\assets\audio\servotorization.mp3"
-BACKUP_TRACK = r"H:\PLBX\CyberBullingConcept\repo\src\assets\audio\servotorization_original_clean.mp3"
+BACKUP_TRACK = r"H:\PLBX\CyberBullingConcept\media\audio\sfx\servotorization_original_clean.mp3"
 
 TARGET_TRACK_COPIES = [
     r"H:\PLBX\CyberBullingConcept\repo\src\assets\audio\servotorization.mp3",
@@ -44,13 +44,13 @@ CROWD_SLICES = [
     },
     {
         "name": "03_crowd_drop1_accent",
-        "ss": 8.0,
-        "t": 3.5,
-        "fade_in": 0.2,
-        "fade_out": 1.0,
-        "mix_time": 54.8,
-        "volume": 0.45,
-        "desc": "Момент накала 1 (54.8s - 58.3s) — взрывной крик толпы на панчлайне «В металл заварил бы вас!»"
+        "ss": 8.5,
+        "t": 6.8,
+        "fade_in": 0.3,
+        "fade_out": 1.8,
+        "mix_time": 77.4,
+        "volume": 0.46,
+        "desc": "Момент накала 1 (77.4s - 84.2s) — взрывной рёв толпы после «Только на том конце этой цепи продаж» на панчлайне «Заседает такой же примат-папуас!»"
     },
     {
         "name": "04_crowd_break2_pre_chorus",

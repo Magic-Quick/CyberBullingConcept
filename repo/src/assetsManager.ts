@@ -130,6 +130,8 @@ const textureAliases: Record<string, string> = {
   ai_lord_face_eyes_macro_gemini_1080p: 'ai_lord_face_eyes_macro_gemini_1080p',
 
   // Fin Team Characters & Aliases
+  retro_film_tribunal_scaffold_kirill_kristian_v1: 'retro_film_tribunal_scaffold_kirill_kristian_v1',
+  retro_film_scaffold_kirill_kristian: 'retro_film_tribunal_scaffold_kirill_kristian_v1',
   retro_film_eduard_danial_playable_autopsy_green_v6: 'retro_film_eduard_danial_playable_autopsy_green_v6',
   retro_film_amputated_playable_autopsy: 'retro_film_eduard_danial_playable_autopsy_green_v6',
   retro_film_coders_openspace_desiccated_corpse_v13: 'retro_film_coders_openspace_desiccated_corpse_v13',
@@ -265,5 +267,8 @@ export function hasTexture(key: string): boolean {
 }
 
 export function getAudioUrl(key: string): string | undefined {
-  return audioUrls[key];
+  if (!key) return undefined;
+  const k = key.trim();
+  const lower = k.toLowerCase();
+  return audioUrls[k] || audioUrls[lower] || audioUrls[k + '.mp3'] || audioUrls[lower + '.mp3'];
 }

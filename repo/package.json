@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node -e \"import('fs').then(fs => { fs.copyFileSync('dist/index.html', '../index.html'); console.log('Copied dist/index.html to root index.html'); })\"",
+    "build": "vite build && node -e \"import('fs').then(fs => { fs.copyFileSync('dist/index.html', '../index.html'); if (fs.existsSync('dist/assets')) { fs.cpSync('dist/assets', '../assets', { recursive: true }); } console.log('Copied dist/index.html and dist/assets to root'); })\"",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },

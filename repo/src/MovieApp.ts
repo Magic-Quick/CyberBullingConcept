@@ -4611,6 +4611,24 @@ export class MovieApp {
 
       const isSong = act.category === 'song' || act.id === 'act_7_song';
 
+      // Audio Transition: Switch ambient track BEFORE applying shot cuts and cues
+      if (index === 0) {
+        this._introAmbientStarted = false;
+        if (!shouldPlay) {
+          AmbientManager.setPaused(true);
+        } else {
+          AmbientManager.setPaused(false);
+        }
+        AmbientManager.playTrack(null, 0.0, crossfadeSec);
+      } else {
+        if (!shouldPlay) {
+          AmbientManager.setPaused(true);
+        } else {
+          AmbientManager.setPaused(false);
+        }
+        AmbientManager.transitionToAct(index, crossfadeSec, act.id);
+      }
+
       if (isSong) {
 
         const initialCut = getConcertCutAtTime(0);
@@ -4710,39 +4728,7 @@ export class MovieApp {
 
 
 
-    // Instant YouTube cut (0s crossfade, no music blend) per user request
 
-    if (index === 0) {
-
-      this._introAmbientStarted = false;
-
-      if (!shouldPlay) {
-
-        AmbientManager.setPaused(true);
-
-      } else {
-
-        AmbientManager.setPaused(false);
-
-      }
-
-      AmbientManager.playTrack(null, 0.0, crossfadeSec);
-
-    } else {
-
-      if (!shouldPlay) {
-
-        AmbientManager.setPaused(true);
-
-      } else {
-
-        AmbientManager.setPaused(false);
-
-      }
-
-      AmbientManager.transitionToAct(index, crossfadeSec, act.id);
-
-    }
 
 
 
@@ -6796,8 +6782,10 @@ export class MovieApp {
 
 
   private _applyConcertCut(cut: ConcertFrameCut, punch: boolean = true): void {
-
     try {
+      if (cut.ambientCueKey) {
+        AmbientManager.playCinematicCue(cut.ambientCueKey);
+      }
 
       const tex = getTexture(cut.texKey);
 

@@ -586,6 +586,31 @@ export class Subtitles extends Container {
           // Standard movie subtitle style: Clean, centered, NO NAME / AVATAR
           this._mainText.text = cue.text;
           this._redrawDialogueBox();
+        } else {
+          // Efficient, lag-free styling: Only updated on cue transitions!
+          for (let i = 0; i < this._karaokeLines.length; i++) {
+            const item = this._karaokeLines[i];
+            if (i === this._currentCueIndex) {
+              item.text.style.fill = '#00f5d4';
+              item.text.alpha = 1.0;
+              item.noteIcon.visible = true;
+              item.indexText.style.fill = '#00f5d4';
+              item.indexText.alpha = 1.0;
+            } else if (i < this._currentCueIndex) {
+              item.text.style.fill = '#005f54';
+              item.text.alpha = 0.35;
+              item.noteIcon.visible = false;
+              item.indexText.style.fill = '#005f54';
+              item.indexText.alpha = 0.35;
+            } else {
+              item.text.style.fill = '#007a6c';
+              item.text.alpha = 0.55;
+              item.noteIcon.visible = false;
+              item.indexText.style.fill = '#007a6c';
+              item.indexText.alpha = 0.55;
+            }
+          }
+          this._karaokeActiveHighlight.clear();
         }
       }
     }
@@ -606,40 +631,33 @@ export class Subtitles extends Container {
       const targetFocusY = Math.round(panelH * 0.28);
 
       const activeItem = this._karaokeLines[this._currentCueIndex];
-      const lineY = activeItem ? activeItem.baseY : 0;
-      this._karaokeTargetScrollY = targetFocusY - lineY;
+      let smoothLineY = activeItem ? activeItem.baseY : 0;
 
-      for (let i = 0; i < this._karaokeLines.length; i++) {
-        const item = this._karaokeLines[i];
-        if (i === this._currentCueIndex) {
-          // Active singing line: illuminated bright cyan with glow
-          item.text.style.fill = '#00f5d4';
-          item.text.alpha = 1.0;
-          item.noteIcon.visible = true;
-          item.indexText.style.fill = '#00f5d4';
-          item.indexText.alpha = 1.0;
-          (item.indexText.style as any).dropShadow = { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 };
+      if (activeItem) {
+        const currentCue = this._cues[this._currentCueIndex];
+        const nextItem = this._karaokeLines[this._currentCueIndex + 1];
+        const nextCue = this._cues[this._currentCueIndex + 1];
 
-          // Clean highlight: zero frame/border around active verse
-          this._karaokeActiveHighlight.clear();
-        } else if (i < this._currentCueIndex) {
-          // Past lines: dimmed dark teal
-          item.text.style.fill = '#005f54';
-          item.text.alpha = 0.35;
-          item.noteIcon.visible = false;
-          item.indexText.style.fill = '#005f54';
-          item.indexText.alpha = 0.35;
-          (item.indexText.style as any).dropShadow = null;
-        } else {
-          // Upcoming lines: muted cyan
-          item.text.style.fill = '#007a6c';
-          item.text.alpha = 0.55;
-          item.noteIcon.visible = false;
-          item.indexText.style.fill = '#007a6c';
-          item.indexText.alpha = 0.55;
-          (item.indexText.style as any).dropShadow = null;
+        if (nextItem && currentCue) {
+          const cueSpan = Math.max(0.4, (nextCue ? nextCue.start : currentCue.end) - currentCue.start);
+          const progress = Math.max(0, Math.min(1, (currentTime - currentCue.start) / cueSpan));
+          // Butter-smooth continuous crawl across line duration
+          smoothLineY = activeItem.baseY + (nextItem.baseY - activeItem.baseY) * progress;
+        } else if (currentCue && !nextItem) {
+          // Final stanza and 16-second guitar outro: text slowly, continuously crawls upward like movie credits
+          const extraTime = Math.max(0, currentTime - currentCue.start);
+          smoothLineY = activeItem.baseY + extraTime * 28.0;
         }
       }
+
+      this._karaokeTargetScrollY = targetFocusY - smoothLineY;
+
+      // On large seek / scrub, snap immediately; on normal playback, glide smoothly
+      if (Math.abs(this._karaokeTargetScrollY - this._karaokeCurrentScrollY) > 300) {
+        this._karaokeCurrentScrollY = this._karaokeTargetScrollY;
+      }
+
+      
     } else {
       this._mainText.text = currentCue.text;
     }
@@ -648,9 +666,9 @@ export class Subtitles extends Container {
   public update(dt: number): void {
     this._cursorTimer += dt;
 
-    // Smooth crawling scroll of karaoke text list (top to bottom)
+    // Smooth continuous crawling scroll of karaoke text list upward
     if (this._isKaraoke) {
-      const lerpSpeed = Math.min(1, dt * 8);
+      const lerpSpeed = Math.min(1, dt * 5.0);
       this._karaokeCurrentScrollY += (this._karaokeTargetScrollY - this._karaokeCurrentScrollY) * lerpSpeed;
       this._karaokeListContainer.y = this._karaokeCurrentScrollY;
     }
@@ -706,6 +724,10 @@ export class Subtitles extends Container {
   }
 
   private _updateSlackPopup(cue: SubtitleCue): void {
+    if (this._isKaraoke) {
+      this.hideSlackPopup(true);
+      return;
+    }
     let sKey: string | null = cue.slackScreenshotKey || null;
 
     if (!sKey) {

@@ -8,11 +8,10 @@ tmp/
 scratch/
 .system_generated/
 *.tmp
+*.exe
 
 # Video & Large raw renders that should not bloat git
-*.mp4
 media/video/
-web_assets/video/
 *.zip
 *.rar
 *.7z
@@ -21,10 +20,10 @@ web_assets/video/
 Thumbs.db
 Desktop.ini
 .DS_Store
-# Heavy media and local raw folders (tracked in cloud / local F:\\AI)
+
+# Heavy media and local raw folders (tracked in cloud / local F:\AI)
 media/
 assets/
-web_assets/
 data/
 Slack_Screenshots/
 Визуал/
@@ -33,9 +32,17 @@ Slack_Screenshots/
 *.png
 !repo/**
 !repo/src/**
+!web_assets/**
+
+# Unignore web_assets for GitHub Pages presentation
+!web_assets/
+!web_assets/**
+
 **/node_modules/**
 **/dist/**
 **/__pycache__/**
 *.pyc
 repo/node_modules/
 repo/src/assets/video/
+tools/internal/
+LATEST_LIVE_URL.txt
