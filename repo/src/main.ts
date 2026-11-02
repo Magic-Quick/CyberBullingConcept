@@ -2,11 +2,13 @@ import plbx from '@playbox-ai/playable-kit/sdk';
 import { Application, Container, Graphics, Text, TextStyle } from 'pixi.js';
 import { loadAllAssets } from './assetsManager';
 import { MovieApp } from './MovieApp';
+import { AmbientManager } from './AmbientManager';
 import { ClickTracker } from './ClickTracker';
 import { updateTweens } from './tween';
 
 let app: Application | undefined;
 let movieApp: MovieApp | undefined;
+let wasPlayingBeforePause = false;
 
 // Network store URL hooks required by Playbox kit
 plbx.set_google_play_url('https://play.google.com/store/apps/details?id=com.playbox.cyberbulling');
@@ -15,12 +17,20 @@ plbx.set_app_store_url('https://apps.apple.com/app/id6470000000');
 // Handle container network events
 plbx.on('pause', () => {
   app?.ticker.stop();
-  movieApp?.togglePlayPause();
+  if (movieApp && movieApp.isPlaying) {
+    wasPlayingBeforePause = true;
+    movieApp.pause();
+  } else {
+    wasPlayingBeforePause = false;
+  }
 });
 
 plbx.on('resume', () => {
   app?.ticker.start();
-  movieApp?.togglePlayPause();
+  if (movieApp && wasPlayingBeforePause) {
+    wasPlayingBeforePause = false;
+    movieApp.play();
+  }
 });
 
 plbx.on('resize', () => {
@@ -32,6 +42,15 @@ plbx.on('resize', () => {
 
 // Boot via Playbox SDK gateway
 plbx.init(async () => {
+  try {
+    await (document as any).fonts?.load?.("16px 'PxPlus IBM VGA 8x16'");
+    await (document as any).fonts?.load?.("16px 'Fixedsys Excelsior'");
+    await (document as any).fonts?.load?.("16px 'Share Tech Mono'");
+    await (document as any).fonts?.ready;
+  } catch (e) {
+    console.warn('[main] font load fallback', e);
+  }
+
   const canvas = document.getElementById('game-canvas') as HTMLCanvasElement;
 
   app = new Application();
@@ -80,6 +99,8 @@ plbx.init(async () => {
 
   // Instantiate MovieApp
   movieApp = new MovieApp(app);
+  (window as any).__movieApp = movieApp;
+  (window as any).__ambientManager = AmbientManager;
   movieApp.resize(window.innerWidth, window.innerHeight);
 
   // Resize listener
