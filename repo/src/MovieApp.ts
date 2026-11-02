@@ -283,7 +283,7 @@ export class MovieApp {
 
   private _wipeProgress = 0;
 
-  private _wipeDuration = 0.42;
+  private _wipeDuration = 1.25;
 
   private _wipeType: 'line_lr' | 'line_rl' | 'line_tb' | 'circle_iris' | 'circle_iris_corner' = 'line_lr';
 
@@ -4685,7 +4685,7 @@ export class MovieApp {
 
         this._applyCinematicCut(initialNarratorCut, false);
 
-      } else {
+      } else if (!isSong) {
 
         this._hideCornerQuoteBadge();
 
@@ -6510,6 +6510,16 @@ export class MovieApp {
 
       this._subtitles.syncToTime(currentTime, this._isPlaying);
 
+
+
+      // Real-time Voice Presence Sidechain: Ducks ambient and sound cues when someone speaks or sings
+
+      const isVoiceSpeaking = this._isPlaying && this._subtitles.isVoiceActive(currentTime);
+
+      AmbientManager.setVoiceActive(isVoiceSpeaking);
+
+
+
       if (this._isPlaying) {
 
         this._updateQuoteBadgeTyping(dt);
@@ -6927,7 +6937,7 @@ export class MovieApp {
 
     this._wipeProgress = 0.0;
 
-    this._wipeDuration = 0.95; // Genuine George Lucas Star Wars ~950ms optical printer wipe
+    this._wipeDuration = 1.25; // Genuine George Lucas Star Wars ~1250ms unhurried optical print wipe
 
     this._isWiping = true;
 
@@ -7043,7 +7053,9 @@ export class MovieApp {
 
       this._bgSprite.alpha > 0.8 &&
 
-      this._currentActIndex !== 10 && // Keep rock concert hard beat cuts fast & punchy
+      STORY_ACTS[this._currentActIndex]?.id !== 'act_7_song' &&
+
+      STORY_ACTS[this._currentActIndex]?.category !== 'song' &&
 
       this._currentActIndex !== 0 &&  // Intro
 
@@ -7211,7 +7223,7 @@ export class MovieApp {
 
         fontFamily: ['Share Tech Mono', 'monospace'],
 
-        fontSize: 15,
+        fontSize: 28,
 
         fontWeight: 'bold',
 
@@ -7239,7 +7251,7 @@ export class MovieApp {
 
         fontFamily: ['Share Tech Mono', 'monospace'],
 
-        fontSize: 12,
+        fontSize: 22,
 
         fontWeight: '500',
 
@@ -7667,146 +7679,77 @@ export class MovieApp {
 
 
   private _positionCornerQuoteBadge(
-
     color: number = this._currentQuoteColor,
-
     tex: Texture | null = this._currentQuoteAvatarTex
-
   ): void {
-
     const w = this._screenWidth;
-
     const h = this._screenHeight;
-
     const isPortrait = h > w;
 
-
-
-    const avatarSize = isPortrait ? 46 : 54;
-
-    const pad = isPortrait ? 8 : 10;
-
-
+    // Doubled avatar size (~2x) for prominent cinematic presence
+    const avatarSize = isPortrait ? 92 : 108;
+    const pad = isPortrait ? 12 : 16;
 
     this._cornerQuoteAvatarContainer.position.set(pad, pad);
 
-
-
     const hasAvatar = Boolean(tex && tex !== Texture.WHITE && tex.width > 0);
-
     if (hasAvatar && tex) {
-
       this._cornerQuoteAvatarSprite.visible = true;
-
       this._cornerQuoteAvatarSprite.texture = tex;
 
-
-
       const scale = Math.max(avatarSize / tex.width, avatarSize / tex.height);
-
       this._cornerQuoteAvatarSprite.width = tex.width * scale;
-
       this._cornerQuoteAvatarSprite.height = tex.height * scale;
-
       this._cornerQuoteAvatarSprite.position.set(
-
         - (this._cornerQuoteAvatarSprite.width - avatarSize) / 2,
-
         - (this._cornerQuoteAvatarSprite.height - avatarSize) / 2
-
       );
 
-
-
       this._cornerQuoteAvatarMask.clear();
-
-      this._cornerQuoteAvatarMask.roundRect(0, 0, avatarSize, avatarSize, 6);
-
+      this._cornerQuoteAvatarMask.roundRect(0, 0, avatarSize, avatarSize, 10);
       this._cornerQuoteAvatarMask.fill({ color: 0xffffff });
 
-
-
       this._cornerQuoteAvatarBorder.clear();
-
-      this._cornerQuoteAvatarBorder.roundRect(0, 0, avatarSize, avatarSize, 6);
-
-      this._cornerQuoteAvatarBorder.stroke({ color: 0x333333, width: 1, alpha: 0.4 });
-
+      this._cornerQuoteAvatarBorder.roundRect(0, 0, avatarSize, avatarSize, 10);
+      this._cornerQuoteAvatarBorder.stroke({ color: 0x333333, width: 2, alpha: 0.5 });
     } else {
-
       this._cornerQuoteAvatarSprite.visible = false;
-
       this._cornerQuoteAvatarMask.clear();
-
       this._cornerQuoteAvatarBorder.clear();
-
     }
 
+    const textX = hasAvatar ? pad + avatarSize + (isPortrait ? 16 : 22) : pad + 12;
+    // Doubled font size (~2x)
+    this._cornerQuoteName.style.fontSize = isPortrait ? 24 : 28;
+    this._cornerQuoteRole.style.fontSize = isPortrait ? 18 : 22;
 
-
-    const textX = hasAvatar ? pad + avatarSize + (isPortrait ? 10 : 14) : pad + 8;
-
-    this._cornerQuoteName.style.fontSize = isPortrait ? 13 : 15;
-
-    this._cornerQuoteRole.style.fontSize = isPortrait ? 10 : 12;
-
-
-
-    this._cornerQuoteName.position.set(textX, pad + (isPortrait ? 4 : 7));
-
-    this._cornerQuoteRole.position.set(textX, pad + (isPortrait ? 24 : 29));
-
-
+    this._cornerQuoteName.position.set(textX, pad + (isPortrait ? 8 : 12));
+    this._cornerQuoteRole.position.set(textX, pad + (isPortrait ? 48 : 58));
 
     // When typing, measure full text bounds so badge box doesn't jitter during typing
-
     let textW: number;
-
     if (this._quoteBadgeTyping.active && this._quoteBadgeTyping.fullName) {
-
       const origName = this._cornerQuoteName.text;
-
       const origRole = this._cornerQuoteRole.text;
-
       this._cornerQuoteName.text = this._quoteBadgeTyping.fullName;
-
       this._cornerQuoteRole.text = this._quoteBadgeTyping.fullRole;
-
       textW = Math.max(this._cornerQuoteName.bounds.width, this._cornerQuoteRole.bounds.width);
-
       this._cornerQuoteName.text = origName;
-
       this._cornerQuoteRole.text = origRole;
-
     } else {
-
       textW = Math.max(this._cornerQuoteName.bounds.width, this._cornerQuoteRole.bounds.width);
-
     }
-
-    const badgeW = Math.max(isPortrait ? 220 : 270, textX + textW + pad + 16);
-
+    const badgeW = Math.max(isPortrait ? 380 : 480, textX + textW + pad + 24);
     const badgeH = avatarSize + pad * 2;
 
-
-
     this._cornerQuoteBg.clear();
-
-    this._cornerQuoteBg.roundRect(0, 0, badgeW, badgeH, 6);
-
+    this._cornerQuoteBg.roundRect(0, 0, badgeW, badgeH, 10);
     this._cornerQuoteBg.fill({ color: 0x000000, alpha: 0.94 });
 
-
-
     const badgeX = isPortrait ? 16 : 28;
-
     const badgeY = isPortrait ? 24 : 28;
-
     this._cornerQuoteBadge.position.set(badgeX, badgeY);
-
   }
-
-
 
   private _applyNarratorCut(texKey: string, punch: boolean = true): void {
 

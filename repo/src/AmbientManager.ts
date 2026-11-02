@@ -17,24 +17,24 @@ export interface CueNormalizationConfig {
 // sits at -24.5 to -25.5 dBFS (-1.5 to -2.0 dB under speech), preserving 100% speech intelligibility.
 export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
   // Harsh Dread / Terror Drops: Raw files are compressed/hot (-9.4 to -12.2 dBFS RMS)
-  // Calibrated targetVol scales them to -24.5 dBFS RMS (loud and grimdark, zero speech clash)
-  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.35, fadeInSec: 0.30, duckAmbientTo: 0.08 },
-  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.32, fadeInSec: 0.30, duckAmbientTo: 0.08 },
-  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.35, fadeInSec: 0.35, duckAmbientTo: 0.08 },
-  dread_09_rust_and_bone_full_punishment_52s: { targetVol: 0.35, fadeInSec: 0.35, duckAmbientTo: 0.08 },
-  dread_10_predator_nightmare_drop_52s: { targetVol: 0.35, fadeInSec: 0.30, duckAmbientTo: 0.08 },
+  // Calibrated targetVol scales them to -25.0 dBFS RMS (loud and grimdark, zero speech clash)
+  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.01 },
+  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.01 },
+  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.18, fadeInSec: 0.40, duckAmbientTo: 0.01 },
+  dread_09_rust_and_bone_full_punishment_52s: { targetVol: 0.18, fadeInSec: 0.40, duckAmbientTo: 0.01 },
+  dread_10_predator_nightmare_drop_52s: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.01 },
 
   // Peace / Calm Moments: Gentle warm pads & vocalise
-  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
-  peace_02_pin_drop_silence_warm_melody_30s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
-  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
-  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.48, fadeInSec: 0.35, duckAmbientTo: 0.08 },
-  peace_05_chronicles_playbox_uplifting_pads_30s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
-  peace_06_chronicles_playbox_warm_culmination_25s: { targetVol: 0.45, fadeInSec: 0.40, duckAmbientTo: 0.08 },
+  peace_01_pin_drop_silence_pure_calm_25s: { targetVol: 0.26, fadeInSec: 0.40, duckAmbientTo: 0.02 },
+  peace_02_pin_drop_silence_warm_melody_30s: { targetVol: 0.26, fadeInSec: 0.40, duckAmbientTo: 0.02 },
+  peace_03_pin_drop_silence_gentle_resolution_25s: { targetVol: 0.26, fadeInSec: 0.40, duckAmbientTo: 0.02 },
+  peace_04_chronicles_playbox_heavenly_vocalise_30s: { targetVol: 0.28, fadeInSec: 0.35, duckAmbientTo: 0.02 },
+  peace_05_chronicles_playbox_uplifting_pads_30s: { targetVol: 0.26, fadeInSec: 0.40, duckAmbientTo: 0.02 },
+  peace_06_chronicles_playbox_warm_culmination_25s: { targetVol: 0.26, fadeInSec: 0.40, duckAmbientTo: 0.02 },
 
-  // Crowd & Audience SFX
-  '03_crowd_drop1_accent': { targetVol: 0.45, fadeInSec: 0.05, duckAmbientTo: 0.0 },
-  '01_crowd_intro_establishing': { targetVol: 0.40, fadeInSec: 0.05, duckAmbientTo: 0.0 },
+  // Crowd & Audience SFX: Calibrated to sit comfortably behind vocals with zero masking
+  '03_crowd_drop1_accent': { targetVol: 0.15, fadeInSec: 0.08, duckAmbientTo: 0.0 },
+  '01_crowd_intro_establishing': { targetVol: 0.18, fadeInSec: 0.10, duckAmbientTo: 0.0 },
 };
 
 export const AMBIENT_TITLES: Record<AmbientTrackKey, string> = {
@@ -98,6 +98,10 @@ class AmbientManagerService {
   private _cueFadeDuration = 0.4;
   private _cueIsFading = false;
   private _cuePauseOnEnd = false;
+
+  // Real-time Voice Presence Sidechain Ducking Layer
+  private _isVoiceActive = false;
+  private _voiceDuckingFactor = 1.0;
 
   constructor() {
     this._isMuted = AudioController.isMuted();
@@ -348,13 +352,18 @@ class AmbientManagerService {
       }
     }
 
-        // 2. Dedicated Cinematic Cue Fading Layer (Smooth sinusoidal volume, zero ambient collision)
+        // 2. Real-time Voice Presence Ducking Interpolation
+    const targetVoiceDuck = this._isVoiceActive ? 0.55 : 1.0;
+    const voiceDuckRate = this._isVoiceActive ? 8.0 : 4.0;
+    this._voiceDuckingFactor += (targetVoiceDuck - this._voiceDuckingFactor) * Math.min(1.0, dt * voiceDuckRate);
+
+    // 3. Dedicated Cinematic Cue Fading Layer (Smooth sinusoidal volume, zero ambient collision)
     if (this._cueAudio && this._cueIsFading) {
       this._cueFadeElapsed += dt;
       const progress = Math.min(1.0, this._cueFadeElapsed / Math.max(0.01, this._cueFadeDuration));
       const easeVal = 0.5 - 0.5 * Math.cos(progress * Math.PI);
       const curVol = this._cueStartVol + (this._cueTargetVol - this._cueStartVol) * easeVal;
-      this._cueAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol));
+      this._cueAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol * this._voiceDuckingFactor));
       if (progress >= 1.0) {
         this._cueIsFading = false;
         if (this._cuePauseOnEnd) {
@@ -364,6 +373,14 @@ class AmbientManagerService {
           this._cueTrackKey = null;
         }
       }
+    } else if (this._cueAudio && !this._cueIsFading) {
+      this._cueAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, this._cueTargetVol * this._voiceDuckingFactor));
+    }
+
+    // 4. Background Ambient Volume sync with Voice-Ducking factor
+    if (this._currentAudio && this._fadingTracks.length === 0) {
+      const baseVol = this._musicVolume * this._currentDuckFactor;
+      this._currentAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, baseVol * this._voiceDuckingFactor));
     }
 
     if (this._fadingTracks.length === 0) return;
@@ -376,7 +393,7 @@ class AmbientManagerService {
       // Smooth sinusoidal / easeInOut curve for equal-power crossfade
       const easeVal = 0.5 - 0.5 * Math.cos(progress * Math.PI);
       const curVol = f.startVol + (f.targetVol - f.startVol) * easeVal;
-      f.audio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol));
+      f.audio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol * this._voiceDuckingFactor));
 
       if (progress >= 1.0) {
         if (f.pauseOnEnd) {
@@ -419,6 +436,10 @@ class AmbientManagerService {
 
   public cancelWait(): void {
     this._activeWait = null;
+  }
+
+  public setVoiceActive(active: boolean): void {
+    this._isVoiceActive = active;
   }
 
   public setMusicVolume(vol: number): void {

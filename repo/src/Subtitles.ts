@@ -389,6 +389,21 @@ export class Subtitles extends Container {
     }
   }
 
+  /**
+   * Real-time Voice Detection:
+   * Returns true if any phrase is actively being spoken or sung at currentTime.
+   */
+  public isVoiceActive(currentTime: number): boolean {
+    if (!this._cues || this._cues.length === 0) return false;
+    for (let i = 0; i < this._cues.length; i++) {
+      const c = this._cues[i];
+      if (currentTime >= c.start && currentTime <= c.end) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public setCues(cues: SubtitleCue[], hasDedicatedFrame: boolean, isKaraoke = false, frameTitle = '', actId = ''): void {
     this._cues = cues;
     this._currentCueIndex = -1;

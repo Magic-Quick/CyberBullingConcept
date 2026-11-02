@@ -471,7 +471,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     },
     {
       time: 172.42,
-      texKey: 'retro_film_egor_reverend_interpreter_v4',
+      texKey: 'retro_horror_film_egor_mickey_vat_v14',
       type: 'character_quote',
       characterName: 'ЕГОР ТКАЧЁВ',
       characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
@@ -555,20 +555,47 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     { time: 88.12, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Без права выхода и без права на кофе' },
   ],
 
-  // Act 6: Tribunal Reward / Награда (53.86s)
+  // Act 6: Tribunal Reward / Награда (88.66s)
   act_6_reward: [
-    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния (СРАЗУ звучит добрая музыка!)
+    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния (СРАЗУ звучит добрая возвышенная музыка!)
     { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', ambientCueKey: 'peace_04_chronicles_playbox_heavenly_vocalise_30s', label: 'Заявочный план: Гермоврата Палаты Воздаяния — Добрая музыка' },
-    // 2.50s: "В награду за столь великую заботу о коллективе «Ковчег» жалуют надзирателю немыслимую роскошь..." -> Зал Суда ИИ-Лорда
-    { time: 2.50, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Оглашение Высшей Милости' },
-    // 9.22s: "...чашку безупречного эспрессо. Зерна ручной обжарки с реликтовых плантаций..."
-    { time: 9.22, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', label: 'Кофейное хранилище Ковчега — Зерна и эспрессо' },
-    // 23.58s: "Поэтому сервисная игла пневмодозатора с шипением врезается напрямую в его питательный катетер..."
-    { time: 23.58, texKey: 'ai_lord_cookie', type: 'ai_lord', ambientCueKey: 'peace_05_chronicles_playbox_uplifting_pads_30s', label: 'Печенька благодати: Удар сервисной иглы пневмодозатора — Возвышенные пэды' },
-    // 38.12s: "Никаких чашек, никаких пауз. Его глаза даже не успели моргнуть..."
-    { time: 38.12, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз Лорда — 240 кадров' },
-    // 46.00s: "Зрачки расширены, пульс 240, давление в норме. Наслаждайтесь букетом, Михаил. За работу!"
-    { time: 46.00, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Наслаждайтесь букетом, Михаил. За работу!' },
+    // 6.32s: "А вот Высшая Печенька Благодати уходит человеку..." -> Трон Трибунала
+    { time: 6.32, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Оглашение Высшей Милости' },
+    // 10.74s: "Награду забирает верховный надзиратель конвейера – Алексей Горин."
+    {
+      time: 10.74,
+      texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
+      type: 'character_quote',
+      characterName: 'Алексей Горин',
+      characterRole: 'Head of Production • Верховный Надзиратель Конвейера',
+      characterThemeColor: 0xffaa00,
+      label: 'Алексей Горин: Награду забирает Верховный Надзиратель Конвейера'
+    },
+    // 16.18s: "Человек, который подарил Артему Хухра целых 4 минуты абсолютного покоя под защитным куполом,"
+    { time: 16.18, texKey: 'khukhro_art_bottleneck_magnifier_v1', type: 'event_illustration', label: 'Артём Хухро под 4-минутным защитным куполом покоя' },
+    // 23.18s: "лично распорядился накормить новообращенного послушника Алексея Плейбаком до того, как тот окончательно отвалится от станины"
+    {
+      time: 23.18,
+      texKey: 'retro_film_alexey_novice_v4',
+      type: 'character_quote',
+      characterName: 'Алексей (новенький)',
+      characterRole: 'Новообращённый Послушник',
+      characterThemeColor: 0x38bdf8,
+      label: 'Новообращённый Послушник Алексей: Питательная трубка с 2D-плейбаком'
+    },
+    // 37.82s: "В награду за столь великую заботу о коллективе Ковчег жалует надзирателю немыслимую роскошь в космическом пространстве – чашку безупречного эспрессо."
+    { time: 37.82, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', ambientCueKey: 'peace_05_chronicles_playbox_uplifting_pads_30s', label: 'Кофейное хранилище Ковчега — Чашка безупречного эспрессо' },
+    // 49.36s: "Зерна ручной обжарки с реликтовых плантаций, плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада..."
+    { time: 49.36, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', label: 'Зёрна реликтовых плантаций и бархатная пенка цвета ореха' },
+    // 60.18s: "Поэтому сервисная игла пневмодозатора с шипением врезается напрямую в его питательный катетер, и кипящий концентрат под давлением в 8 атмосфер впрыскивается прямо в вену, минуя ротовую полость!"
+    // ЖЕСТКАЯ КОНЦОВКА НАГРАДЫ: Внезапный шоковый дроп нагнетания на ударе сервисной иглы в вену!
+    { time: 60.18, texKey: 'retro_film_feed_tubes_coders_v7', type: 'event_illustration', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Удар сервисной иглы пневмодозатора: Кипящий концентрат в вену — Жесткое нагнетание' },
+    // 74.02s: "Никаких чашек, никаких пауз, его глаза даже не успели моргнуть и оторваться от штурма Натиона."
+    { time: 74.02, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'Штурм Нотиона: Глаза не успели моргнуть — Пульс 240' },
+    // 80.74s: "Зрачки расширены, пульс 240, давление в норме."
+    { time: 80.74, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Зрачки расширены, давление в норме' },
+    // 86.16s: "Наслаждайтесь букетом, Алексей. За работу!"
+    { time: 86.16, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Наслаждайтесь букетом, Алексей. За работу!' },
   ],
 
   // Act 8: Outro / Закрытие смены (48.61s)

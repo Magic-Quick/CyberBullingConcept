@@ -30,7 +30,7 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
 
   // [ПРИПЕВ 3: 73.08s - 99.12s]
   { time: 73.08, texKey: 'ai_lord_calm_singing', label: 'Куплет 3: Только на том конце...' },
-  { time: 80.00, texKey: '03_calm_over_shoulder', ambientCueKey: '03_crowd_drop1_accent', label: 'Примат-папуас: Крик толпы зрителей' },
+  { time: 78.80, texKey: '03_calm_over_shoulder', ambientCueKey: '03_crowd_drop1_accent', label: 'Примат-папуас: Крик толпы зрителей (акцент в сбивку барабанов)' },
   { time: 84.12, texKey: '03_calm_over_shoulder', label: 'Атака: Камера через плечо' },
   { time: 91.33, texKey: 'ai_lord_calm_singing', label: 'Куплет 3: В костюме от Гуччи' },
 
@@ -57,79 +57,65 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   { time: 165.88, texKey: 'ai_lord_drive_default', label: 'Финальный драйв: Я вас научу!' },
   { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Соло: Джнгхфдбвк / Jnghfdbk' },
 
-  // [171.00s - 176.00s] "Рыдали, как Горин на спаме вводил демоблил, Как Вова в чат Лонгбокс Disney слил!"
+  // [171.00s - 175.50s] "Как Горин на синке втирал «демоблил», Как в чат на английской «Jnghfdbk» влупил!"
   {
     time: 171.00,
     texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
     characterName: 'Алексей Горин',
     characterRole: 'Верховный Надзиратель Конвейера',
     characterThemeColor: 0xffaa00,
-    label: 'Горин: На спаме вводил демоблил'
-  },
-  {
-    time: 173.50,
-    texKey: 'retro_film_vova_khaetsky_v11',
-    characterName: 'Вова Хаецкий',
-    characterRole: 'Хранитель Лонгбокса Disney',
-    characterThemeColor: 0x00f5d4,
-    label: 'Вова: В чат Лонгбокс Disney слил'
+    label: 'Горин: На синке втирал демоблил, Jnghfdbk влупил'
   },
 
-  // [176.00s - 181.00s] "Как Ева кикофф напинала отряду, Как Давит старый движок принял к ряду!"
+  // [175.50s - 180.00s] "Как Ева вопит: Этот плебл в работу! Кик-офф пять минут — и все пашем в субботу!"
   {
-    time: 176.00,
+    time: 175.50,
     texKey: 'retro_film_eva_theatrical_prop_helmet_v7',
     characterName: 'Ева Аксёнова',
     characterRole: 'Главная Хранительница Скрижалей и Сроков',
     characterThemeColor: 0xff3399,
-    label: 'Ева: Кикофф напинала отряду'
-  },
-  {
-    time: 178.50,
-    texKey: 'retro_film_davit_gazaryan_old_engine_v6',
-    characterName: 'Давит Казарян',
-    characterRole: 'Архивариус Забытых Движков',
-    characterThemeColor: 0x33ccff,
-    label: 'Давит: Старый движок принял к ряду'
+    label: 'Ева: Этот плебл в работу! Кик-офф пять минут'
   },
 
-  // [181.00s - 184.80s] "Как клиента свиток: Одиннадцать правок! Одиннадцать будок в банке заметок!"
-  // Про персонажа тут ничего нет: показываем залп правок Клиентархов, БЕЗ плашки персонажа
+  // [180.00s - 184.50s] "Как Эдик принёс от клиента свиток: Одиннадцать правок, одиннадцать пыток!"
   {
-    time: 181.00,
+    time: 180.00,
     texKey: 'retro_film_clientarch_fleet_revisions_volley_v1',
-    label: 'Свиток Клиентархов: 11 правок и 11 будок'
+    label: 'Свиток Клиентархов: 11 правок и 11 пыток'
   },
 
-  // [184.80s - 190.50s] "В десять тридцать ночи — забытых вестей: Егор для Диснея пристроил отсек! Чтобы мышь не тревожила век человеку!"
-  // Правило: Сначала Егор (чтоб на момент его имени он уже был на экране!), а затем иллюстрация отсека
+  // [184.50s - 188.50s] "Как в банке забытый томится Дисней — сто тридцать ночей без живых новостей!"
+  // Появляется синхронно с песней и держится полные 4 секунды чистой экспозиции
   {
-    time: 184.80,
-    texKey: 'retro_film_egor_reverend_interpreter_v4',
+    time: 184.50,
+    texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+    label: 'Отсек для Диснея: Мышь в стазисе (130 ночей без новостей)'
+  },
+
+  // [188.50s - 192.50s] "Егор для Диснея пристроил отсек, чтоб мышь не тревожила век человек!"
+  // Эталонный утвержденный кадр Егора из папки Fin
+  {
+    time: 188.50,
+    texKey: 'retro_horror_film_egor_mickey_vat_v14',
     characterName: 'Егор Ткачёв',
     characterRole: 'Преподобный Толкователь Воли Клиентархов',
     characterThemeColor: 0x9933ff,
-    label: 'Егор: В десять тридцать ночи весть'
-  },
-  {
-    time: 187.80,
-    texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
-    label: 'Отсек для Диснея: Мышь в стазисе'
+    label: 'Егор: Для Диснея пристроил отсек'
   },
 
-  // [190.50s - 195.50s] "Как Тимлида Самойленко блокирнул Клод — вслепую руками пулл-реквесты гребёт!"
+  // [192.50s - 197.00s] "Как Техлид ослеп, коль забанили Клод: вслепую руками пулл-реквесты гребёт!"
   {
-    time: 190.50,
+    time: 192.50,
     texKey: 'retro_soviet_film_pavel_playbox_logo_gpt_v4',
     characterName: 'Павел Самойленко',
     characterRole: 'Архи-Цензор Синтаксической Ереси',
     characterThemeColor: 0xff5e1a,
-    label: 'Павел Самойленко: Клод блокирнул'
+    label: 'Павел Самойленко: Техлид ослеп, коль забанили Клод'
   },
 
-  // [195.50s - 202.00s] "Как Толя Гранолой пытает коллег: «Пробейте мне сотку! Замедлен ваш бег!» Как плейбл без проджекта едет на ощупь,"
+  // [197.00s - 201.50s] "Как Толя Гранолой пытал коллег: «Пробейте мне сотку! Замедлен ваш бег!»"
   {
-    time: 195.50,
+    time: 197.00,
     texKey: 'retro_film_tolya_gpt_v2',
     characterName: 'Толя Щербаков',
     characterRole: 'Лорд-Командор Цитадели',
@@ -142,9 +128,9 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
     label: 'Плейбл без проджекта едет на ощупь: Драйв'
   },
 
-  // [202.00s - 209.50s] "Как Артём пирамиды до кости полощет! У Жени и Вики планшеты горят: Сто кнопок, пятьсот перекрасок подряд!"
+  // [201.50s - 205.50s] "Как плейбл без проджекта едет на ощупь, как Артём пирамиды до кости полощет!"
   {
-    time: 202.00,
+    time: 201.50,
     texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
     characterName: 'Артём Хухро',
     characterRole: 'Техноэкзорцист Графической Скверны',
