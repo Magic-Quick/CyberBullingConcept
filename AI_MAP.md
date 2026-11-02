@@ -51,7 +51,7 @@ graph TD
 | 🎙️ **Чистая озвучка по актам (Dry Voice)**| `Озвучка/` и `media/audio/voiceover_v13/` | 100% чистый дикторский голос Geremy (`00_` полная версия 15:53 + `01_`–`08_` поактовые треки без музыки). |
 | 🎵 **Мастер-трек ИИ-Лорда** | `media/audio/tracks/Сервоторизация_приматов_HD_WSOLA_TimeDomain.mp3` | Финальная мастер-версия песни ИИ-Лорда. |
 | 🌐 **Интерактивный фильм (PixiJS)** | `repo/` (исходники) и `repo/dist/` | Флагманский интерактивный фильм. Запуск: `OPEN_INTERACTIVE_MOVIE.bat`. |
-| 🌐 **Веб-презентация проекта** | `index.html` (в корне) | Легковесный плеер презентации «Сыгравший в ящик». Запуск: `OPEN_PRESENTATION.bat`. Деплой на Google Диск: `tools/DEPLOY.bat`. |
+| 🌐 **Веб-презентация проекта (GitHub Pages)** | `https://magic-quick.github.io/CyberBullingConcept/` | Публичная онлайн-презентация «Сыгравший в ящик». Репозиторий: `Magic-Quick/CyberBullingConcept`. Деплой: `tools/DEPLOY.bat`. |
 
 ---
 
