@@ -4,7 +4,7 @@ import { STORY_ACTS, ActData } from './storyData';
 
 import { getTexture, hasTexture, getAudioUrl, getIntroVideoUrl } from './assetsManager';
 
-import { getConcertCutAtTime } from './concertSequence';
+import { getConcertCutAtTime, ConcertFrameCut } from './concertSequence';
 
 import { getNarratorShotAtTime, getActiveCueAtTime, NarratorShotCut } from './narratorShotSequence';
 
@@ -3608,17 +3608,27 @@ export class MovieApp {
 
     // Timeline Chapter Stickers placed on chassis under timeline track and buttons
 
+    const getActIndex = (id: string, fallback: number) => {
+
+      const idx = STORY_ACTS.findIndex((a) => a.id === id);
+
+      return idx !== -1 ? idx : fallback;
+
+    };
+
+
+
     const stickerDefs: { actIndex: number; texKey: string }[] = [
 
-      { actIndex: 0, texKey: 'gui_sticker_logo' },
+      { actIndex: getActIndex('intro_playbox', 0), texKey: 'gui_sticker_logo' },
 
-      { actIndex: 1, texKey: 'gui_sticker_speech' },
+      { actIndex: getActIndex('prologue_space', 1), texKey: 'gui_sticker_speech' },
 
-      { actIndex: 7, texKey: 'gui_sticker_punishment' },
+      { actIndex: getActIndex('act_6_punishment', 4), texKey: 'gui_sticker_punishment' },
 
-      { actIndex: 8, texKey: 'gui_sticker_reward' },
+      { actIndex: getActIndex('act_6_reward', 5), texKey: 'gui_sticker_reward' },
 
-      { actIndex: 10, texKey: 'gui_sticker_song' },
+      { actIndex: getActIndex('act_7_song', 7), texKey: 'gui_sticker_song' },
 
     ];
 
@@ -4603,9 +4613,13 @@ export class MovieApp {
 
       if (isSong) {
 
-        this._concertCurrentTexKey = 'ai_lord_calm_singing';
+        const initialCut = getConcertCutAtTime(0);
+
+        this._concertCurrentTexKey = initialCut.texKey;
 
         this._concertPunchScale = 1.0;
+
+        this._applyConcertCut(initialCut, false);
 
       } else {
 
@@ -5135,6 +5149,18 @@ export class MovieApp {
           this._narratorCurrentTexKey = cutKey;
 
           this._applyCinematicCut(narratorCut, false);
+
+        }
+
+      } else {
+
+        const concertCut = getConcertCutAtTime(clamped);
+
+        if (concertCut) {
+
+          this._concertCurrentTexKey = concertCut.texKey;
+
+          this._applyConcertCut(concertCut, false);
 
         }
 
@@ -6444,7 +6470,7 @@ export class MovieApp {
 
           this._concertCurrentTexKey = activeCut.texKey;
 
-          this._applyConcertCut(activeCut.texKey, !isInitial);
+          this._applyConcertCut(activeCut, !isInitial);
 
         }
 
@@ -6769,11 +6795,11 @@ export class MovieApp {
 
 
 
-  private _applyConcertCut(texKey: string, punch: boolean = true): void {
+  private _applyConcertCut(cut: ConcertFrameCut, punch: boolean = true): void {
 
     try {
 
-      const tex = getTexture(texKey);
+      const tex = getTexture(cut.texKey);
 
       if (tex && tex !== Texture.WHITE && tex.width > 1) {
 
@@ -6786,6 +6812,18 @@ export class MovieApp {
       this._bgSprite.alpha = 1.0; // Hard cut on the beat! No slow fade!
 
       this._concertPunchScale = 1.0;
+
+      // Always hide Slack screenshot popups during song act per user rule: "Но без скриншотов из слек"
+      this._subtitles.hideSlackPopup(true);
+
+      // Show real character portrait & avatar badge with name and rank
+      if (cut.characterName) {
+        const color = cut.characterThemeColor || 0x00f5d4;
+        const role = cut.characterRole || '';
+        this._showCornerQuoteBadge(cut.characterName, role, color, cut.texKey);
+      } else {
+        this._hideCornerQuoteBadge();
+      }
 
     } catch (err) {
 
@@ -6891,7 +6929,7 @@ export class MovieApp {
 
     this._wipeProgress = 0.0;
 
-    this._wipeDuration = 0.42; // Star Wars 420ms optical wipe
+    this._wipeDuration = 0.95; // Genuine George Lucas Star Wars ~950ms optical printer wipe
 
     this._isWiping = true;
 
