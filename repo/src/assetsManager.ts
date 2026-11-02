@@ -123,6 +123,8 @@ const textureAliases: Record<string, string> = {
   // Act 2: Stasis capsule & Altar crypt
   retro_film_act2_dashboard_altar_crypt_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
   retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+  '09_voron_minnoe_pole': '09_voron_minnoe_pole',
+  voron_minnoe_pole: '09_voron_minnoe_pole',
   // Canonical AI-Lord Narrator (Reading Chronicles from Tome on GPU Throne)
   ai_lord_throne_book_reading_narrator: 'ai_lord_throne_book_reading_narrator',
   ai_lord_reading_book: 'ai_lord_throne_book_reading_narrator',

@@ -287,7 +287,7 @@ export class MovieApp {
 
   private _wipeProgress = 0;
 
-  private _wipeDuration = 1.25;
+  private _wipeDuration = 2.2;
 
   private _wipeType: 'line_lr' | 'line_rl' | 'line_tb' | 'circle_iris' | 'circle_iris_corner' = 'line_lr';
 
@@ -4413,13 +4413,25 @@ export class MovieApp {
 
     }
 
-    if (index !== 0) {
+    const prevActIndex = this._currentActIndex;
+    const prevAct = prevActIndex >= 0 ? STORY_ACTS[prevActIndex] : null;
+    const act = STORY_ACTS[index];
+
+    // Seamless continuous voice handover detection (punishment -> reward):
+    const isContinuousVoice = Boolean(
+      prevAct && act &&
+      prevAct.audioKey && act.audioKey &&
+      prevAct.audioKey === act.audioKey &&
+      act.audioOffset !== undefined && act.audioOffset > 0 &&
+      this._voiceAudio && !this._voiceAudio.paused &&
+      Math.abs(this._voiceAudio.currentTime - act.audioOffset) < 1.5
+    );
+
+    if (index !== 0 && !isContinuousVoice) {
 
       SFX.playWhoosh();
 
     }
-
-    const prevActIndex = this._currentActIndex;
 
     const oldSceneTex = (this._bgSprite && this._bgSprite.texture && this._bgSprite.texture !== Texture.WHITE && this._bgSprite.texture.width > 1)
       ? this._bgSprite.texture
@@ -4433,8 +4445,6 @@ export class MovieApp {
 
     this._currentActIndex = index;
 
-    const act = STORY_ACTS[index];
-
     this._actTime = 0;
 
     this._actDuration = act.duration || 30;
@@ -4443,7 +4453,7 @@ export class MovieApp {
 
     // Stop previous voice track if running with a smooth micro-fadeout (80ms) to eliminate audio clicks/pops
 
-    if (this._voiceAudio) {
+    if (!isContinuousVoice && this._voiceAudio) {
 
       const oldAudio = this._voiceAudio;
 
@@ -4725,7 +4735,7 @@ export class MovieApp {
 
       if (index !== 0) {
 
-        this._playVoiceAct(act, index, shouldPlay);
+        this._playVoiceAct(act, index, shouldPlay, isContinuousVoice);
 
       } else {
 
@@ -4759,13 +4769,21 @@ export class MovieApp {
 
 
 
-  private _playVoiceAct(act: (typeof STORY_ACTS)[0], index: number, autoPlay = true): void {
+  private _playVoiceAct(act: (typeof STORY_ACTS)[0], index: number, autoPlay = true, isContinuousVoice = false): void {
 
     if (!act.audioKey) return;
 
     const audioUrl = getAudioUrl(act.audioKey);
 
     if (!audioUrl) return;
+
+    // If continuous audio is already playing seamlessly from the previous act, keep playing uninterrupted!
+    if (isContinuousVoice && this._voiceAudio && !this._voiceAudio.paused) {
+      this._voiceAudio.onended = () => {
+        this._onActContentFinished(index);
+      };
+      return;
+    }
 
 
 
@@ -4928,11 +4946,25 @@ export class MovieApp {
 
 
 
+    const currentAct = STORY_ACTS[index];
     const nextAct = STORY_ACTS[nextIndex];
 
     const isNextSong = nextAct && (nextAct.category === 'song' || nextAct.id === 'act_7_song');
 
+    // Continuous voice acts (e.g. act_6_punishment -> act_6_reward from single continuous recording):
+    // Zero-wait handover so speech flows continuously without stuttering or restart!
+    const isContinuousVoiceTransition = Boolean(
+      currentAct && nextAct &&
+      currentAct.audioKey && nextAct.audioKey &&
+      currentAct.audioKey === nextAct.audioKey &&
+      nextAct.audioOffset !== undefined &&
+      nextAct.audioOffset > 0
+    );
 
+    if (isContinuousVoiceTransition) {
+      this.nextAct(2.0);
+      return;
+    }
 
     // Universal Musical Intensity Director:
 
@@ -6560,7 +6592,7 @@ export class MovieApp {
 
     if (this._wsLcdText) {
 
-      this._wsLcdText.text = `${formatTime(curSec)} / ${formatTime(totSec)}`;
+      this._wsLcdText.text = `${formatTime(overallCurSec)} / ${formatTime(overallTotSec)}`;
 
     }
 
@@ -6943,7 +6975,7 @@ export class MovieApp {
 
     this._wipeProgress = 0.0;
 
-    this._wipeDuration = 1.25; // Genuine George Lucas Star Wars ~1250ms unhurried optical print wipe
+    this._wipeDuration = 2.2; // Genuine George Lucas Star Wars ~1250ms unhurried optical print wipe
 
     this._isWiping = true;
 
@@ -7345,7 +7377,7 @@ export class MovieApp {
 
       // Show floating Slack screenshot overlay without stretching across the screen
 
-      if (cut.ambientCueKey && punch) {
+      if (cut.ambientCueKey) {
         AmbientManager.playCinematicCue(cut.ambientCueKey);
       }
 
