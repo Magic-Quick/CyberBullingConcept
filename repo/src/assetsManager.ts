@@ -119,6 +119,10 @@ const textureAliases: Record<string, string> = {
   // Scoreboard 37 aliases
   retro_film_manufactorum_scoreboard_37_v1: 'manufactorum_scoreboard_37_v1',
   manufactorum_scoreboard_37_v1: 'manufactorum_scoreboard_37_v1',
+
+  // Act 2: Stasis capsule & Altar crypt
+  retro_film_act2_dashboard_altar_crypt_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+  retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
   // Canonical AI-Lord Narrator (Reading Chronicles from Tome on GPU Throne)
   ai_lord_throne_book_reading_narrator: 'ai_lord_throne_book_reading_narrator',
   ai_lord_reading_book: 'ai_lord_throne_book_reading_narrator',

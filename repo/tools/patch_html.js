@@ -19,8 +19,10 @@ html = html.replace(/new URL\(([`'"])([^`'"]+)\1/g, (match, quote, filename) => 
 // Fix CSS font/image urls if needed
 html = html.replace(/url\((['"]?)\/?assets\//g, 'url($1./assets/');
 
+// Write patched html to BOTH dist/index.html and root index.html!
+fs.writeFileSync(distHtml, html, 'utf-8');
 fs.writeFileSync(rootHtml, html, 'utf-8');
-console.log('[patch_html] Successfully patched root index.html with assets/ prefix!');
+console.log('[patch_html] Successfully patched BOTH dist/index.html and root index.html with assets/ prefix!');
 
 if (fs.existsSync(distAssets)) {
   fs.cpSync(distAssets, rootAssets, { recursive: true });
