@@ -5,9 +5,9 @@ echo   ХРОНИКИ ПРОДАКШЕН-КОВЧЕГА • БЕСШОВНОЕ �
 echo ========================================================
 echo [*] Запуск алгоритма кроссфейд-интерполяции (Premiere-style)...
 if "%~1"=="" (
-    python "%~dp0internal\visual_pipeline\make_seamless_loop.py"
+    python "%~dp0visual_pipeline\make_seamless_loop.py"
 ) else (
-    python "%~dp0internal\visual_pipeline\make_seamless_loop.py" "%~1" "%~2" "%~3"
+    python "%~dp0visual_pipeline\make_seamless_loop.py" "%~1" "%~2" "%~3"
 )
 if %ERRORLEVEL% EQU 0 (
     echo.

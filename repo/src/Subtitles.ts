@@ -193,6 +193,7 @@ export class Subtitles extends Container {
       ClickTracker.exclude();
       SFX.playClick();
       this._isSlackDismissed = true;
+    this._currentSlackKey = null;
       this._slackPopupTargetAlpha = 0;
       if (this._isSlackZoomed) {
         this.toggleSlackZoom();
@@ -647,7 +648,7 @@ export class Subtitles extends Container {
       else if (t.includes('mavis') && t.includes('ноги')) sKey = '08_mavis_legs';
       else if (t.includes('даниал') || t.includes('3а') || t.includes('3a')) sKey = '09_danial_3a_project';
       else if (t.includes('музеях') && (t.includes('котов') || t.includes('мумий') || t.includes('фараон'))) sKey = '10_pyramids_museum';
-      else if (t.includes('нотион') && t.includes('даты')) sKey = '12_nick_time_machine';
+      // Removed rogue automatic 12_nick_time_machine trigger to preserve clean time machine entrance
       else if (t.includes('сундук') && (t.includes('яйцо') || t.includes('звук'))) sKey = '13_chest_egg_sound';
       else if (t.includes('чуяния ноль') || t.includes('было чуяния') || t.includes('павел, простите')) sKey = '14_feeling_zero';
     }
@@ -655,7 +656,7 @@ export class Subtitles extends Container {
     if (sKey && hasTexture(sKey)) {
       if (this._currentSlackKey !== sKey) {
         this._currentSlackKey = sKey;
-        this._slackHoldTimer = 8.0;
+        this._slackHoldTimer = 5.0;
         this._isSlackDismissed = false;
         const tex = getTexture(sKey);
         this._slackPopupSprite.texture = tex;
@@ -663,10 +664,10 @@ export class Subtitles extends Container {
         this._slackPopupTargetAlpha = 1.0;
       }
     } else {
-      if (this._currentSlackKey && this._slackHoldTimer <= 0) {
-        this._slackPopupTargetAlpha = 0;
-        this._currentSlackKey = null;
-      }
+      // Clean Picture Reveal: Immediately dismiss previous Slack popup when moving to next cue
+      this._slackPopupTargetAlpha = 0;
+      this._slackHoldTimer = 0;
+      this._currentSlackKey = null;
     }
   }
 

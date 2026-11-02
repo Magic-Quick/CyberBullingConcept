@@ -21,7 +21,10 @@ export interface ConcertFrameCut {
  */
 export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   // [ИНТРО: 0.00s - 36.46s] Обычная игра на гитаре (ИИ лорд поёт - мягкий ламповый свет)
-  { time: 0.00, texKey: 'ai_lord_calm_singing', label: 'Интро: ИИ-Лорд поёт (обычная игра)' },
+  // [ЗАЯВОЧНЫЙ ПЛАН: 0.00s - 4.50s] Панорама стадиона и арены в золотом свете (плавный вход в концерт)
+  { time: 0.00, texKey: 'ai_lord_concert_arena_wide', label: 'Заявочный план: Панорама концертной арены и ревущего стадиона' },
+  // [ИНТРО: 4.50s - 36.46s] Вход в куплет — ИИ лорд поёт на сцене
+  { time: 4.50, texKey: 'ai_lord_calm_singing', label: 'Интро: ИИ-Лорд поёт (обычная игра)' },
 
   // [ПРОИГРЫШ БЕЗ СЛОВ 1 (СПОКОЙНАЯ ЧАСТЬ): 36.46s - 45.87s]
   // Спокойный кадр пролёта камеры в зале: 02_calm_audience_pov
@@ -60,23 +63,24 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   { time: 152.30, texKey: 'ai_lord_drive_default', label: 'Разгон: Корова с лазером! (Драйв)' },
   { time: 161.62, texKey: 'ai_lord_drive_back', label: 'Перебивка: Этот цирк шапито (Со спины в лучах)' },
 
-  // [ФИНАЛЬНЫЙ ПИК: 165.88s - 221.45s] УСКОРЕНИЕ ТЕМПА / ДИКИЙ СОЛЯК / ПОДЪЁМНАЯ ЧАСТЬ
-  // Самый частый драйв момент: ai_lord_drive_default (769e4f0d в насыщенном свете)
-  // Подъёмный пролёт над залом: ai_lord_concert_arena_wide (насыщенный золотой свет)
+  // [ФИНАЛЬНЫЙ ПИК: 165.88s - 221.45s] УСКОРЕНИЕ ТЕМПА / ДИКИЙ СОЛЯК / РОЛЛ-КОЛЛ КОМАНДЫ
+  // Кинематографическая раскадровка: точные врезки членов команды по канону Fin на каждом ударе бита
   { time: 165.88, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Ему подавай! (Драйв)' },
-  { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Удар: Демоблил (Снизу на бас)' },
-  { time: 172.67, texKey: 'ai_lord_drive_back', label: 'Удар: Jnghfdbk (Со спины в софитах)' },
-  { time: 174.94, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Ева / Суббота (Драйв)' },
-  { time: 180.61, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Удар: Эдик 11 правок (Нижний ракурс)' },
-  { time: 184.01, texKey: 'ai_lord_concert_arena_wide', label: 'Подъём: Пролёт камеры над стадионом в насыщенном свете' },
-  { time: 188.53, texKey: 'ai_lord_drive_back', label: 'Удар: Мышь Диснея' },
-  { time: 192.59, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Забанили Клод! (Драйв)' },
-  { time: 197.47, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Удар: Толя сотку' },
-  { time: 202.99, texKey: 'ai_lord_drive_back', label: 'Удар: Пирамиды полощет' },
-  { time: 207.10, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Планшеты горят! (Драйв)' },
-  { time: 211.64, texKey: 'ai_lord_concert_arena_wide', label: 'Подъём: Пролёт камеры над стадионом в насыщенном свете' },
-  { time: 216.11, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Куда слать бабло?! (Драйв)' },
-  { time: 218.60, texKey: 'ai_lord_drive_default', label: 'ФИНАЛЬНЫЙ РЫВОК: Тап-капкан! (Драйв)' },
+  { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Удар: Демоблил / Jnghfdbk (Снизу на бас)' },
+  { time: 171.00, texKey: 'retro_film_vova_khaetsky_v11', label: 'Вова Хаецкий слил Disney' },
+  { time: 174.94, texKey: 'retro_film_eva_theatrical_prop_helmet_v7', label: 'Ева в бутафорском шлеме: кикофф' },
+  { time: 178.00, texKey: 'retro_film_davit_gazaryan_old_engine_v6', label: 'Давит старый движок принял к ряду' },
+  { time: 180.61, texKey: 'retro_warhammer_eduard_levin_gpt_v3', label: 'Эдик 11 правок: у Эдика боль!' },
+  { time: 184.50, texKey: 'retro_horror_film_egor_mickey_vat_v14', label: 'Егор Ткачёв у биочана с Микки' },
+  { time: 188.53, texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1', label: 'Мышь Диснея в стазисе' },
+  { time: 192.59, texKey: 'retro_soviet_film_pavel_playbox_logo_gpt_v4', label: 'Павел гребёт пулл-реквесты' },
+  { time: 197.47, texKey: 'retro_film_tolya_gpt_v2', label: 'Толя с гранолой: Пробейте сотку!' },
+  { time: 202.00, texKey: 'retro_film_artem_khukhro_guyver_gemini_v19', label: 'Артём пирамиды до кости полощет' },
+  { time: 205.50, texKey: 'retro_film_zhenya_artist_real_v11', label: 'Женя: планшеты горят!' },
+  { time: 208.50, texKey: 'retro_film_vika_neural_corruption_v3', label: 'Вика: 500 перекрасок!' },
+  { time: 211.64, texKey: 'ai_lord_concert_arena_wide', label: 'Подъём: Пролёт камеры над стадионом (Куда слать бабло?!)' },
+  { time: 216.11, texKey: 'ai_lord_drive_default', label: 'ЯРОСТНЫЙ ПИК: Тап-капкан!' },
+  { time: 218.60, texKey: 'ai_lord_drive_default', label: 'ФИНАЛЬНЫЙ РЫВОК: Финал концерта' },
 
   // [АПОФЕОЗ / OUTRO: 221.45s - 237.20s] Гитарный соляк, фидбек и рёв стадиона
   { time: 221.45, texKey: 'ai_lord_concert_arena_wide', label: 'Апофеоз: Эпический пролёт над стадионом' },

@@ -17,7 +17,7 @@
 | 4 | **Эдуард Левин** | Зодчий Игрового Замысла | Project Lead | `08_02_Эдуард_Левин...jpg` | `--tag "edward_fullbody"` | `--tag "edward_avatar"` |
 | 5 | **Егор Ткачёв** | Преподобный Толкователь Воли Клиентархов | Creative Director | *Оригинальный канон* | `--tag "egor_fullbody"` | `--tag "egor_avatar"` |
 | 6 | **Павел Самойленко** | Архи-Цензор Синтаксической Ереси | CTO | `08_06_Павел_Самойленко_лицо.jpg`| `--tag "pavel_fullbody"` | `--tag "pavel_avatar"` |
-| 7 | **Максим Мамусин** | Архи-Техномагистр Канона | Tech Lead | `03_Максим_Мамусин_лицо.jpg` | `--tag "maxim_fullbody"` | `--tag "maxim_avatar"` |
+| 7 | **Максим Мамусин** | Архи-Техномагистр Канона | Tech Lead | `03_Максим_Мамусин_slack_1024.jpg` | `--tag "maxim_fullbody"` | `--tag "maxim_avatar"` |
 | 8 | **Миша** | Алхимик Внутренней Кузницы | Lead Core Dev | *Оригинальный канон* | `--tag "misha_fullbody"` | `--tag "misha_avatar"` |
 | 9 | **Вика (Виктория)** | Верховная Настоятельница Пиксельного Канона | Art Director | `08_07_Вика_со_стикерами.jpg` | `--tag "vika_fullbody"` | `--tag "vika_avatar"` |
 | 10 | **Артём Хухро** | Техноэкзорцист Графической Скверны | Lead 3D / Art Tech Lead | `Артем хухро.jpg` | `--tag "huhro_fullbody"` | `--tag "huhro_avatar"` |

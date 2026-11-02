@@ -5,5 +5,5 @@ echo Запуск Co-Writer & Joke Keeper Studio Server...
 echo Порт: 8765
 echo ====================================================
 cd /d "%~dp0.."
-python tools\internal\studio\studio_server.py
+python tools\studio\studio_server.py
 pause

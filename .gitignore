@@ -21,3 +21,21 @@ web_assets/video/
 Thumbs.db
 Desktop.ini
 .DS_Store
+# Heavy media and local raw folders (tracked in cloud / local F:\\AI)
+media/
+assets/
+web_assets/
+data/
+Slack_Screenshots/
+Визуал/
+Озвучка/
+*.psd
+*.png
+!repo/**
+!repo/src/**
+**/node_modules/**
+**/dist/**
+**/__pycache__/**
+*.pyc
+repo/node_modules/
+repo/src/assets/video/

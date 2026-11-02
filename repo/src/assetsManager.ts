@@ -5,6 +5,7 @@ const imageModules = import.meta.glob([
   './assets/images/gui/*.{png,jpg,webp}',
   './assets/slack/*.{png,jpg,webp}',
   './assets/avatars/*.{png,jpg,webp}',
+  './assets/fin/**/*.{png,jpg,webp}',
 ], {
   eager: true,
   query: '?url',
@@ -17,7 +18,10 @@ const audioModules = import.meta.glob('./assets/audio/*.mp3', {
   import: 'default',
 }) as Record<string, string>;
 
-import introVideoUrl from './assets/video/gemini_generated_video_50f3f52f.mp4';
+// Backup / previous intro videos:
+// import introVideoUrlBackup50f from './assets/video/gemini_generated_video_50f3f52f.mp4';
+// import introVideoUrlBackupAaf from './assets/video/gemini_generated_video_aaf115f1.mp4';
+import introVideoUrl from './assets/video/gemini_generated_video_42e28e3d.mp4';
 
 const textures: Record<string, Texture> = {};
 const audioUrls: Record<string, string> = {};
@@ -51,7 +55,10 @@ export function initAssetMappings(): void {
       audioUrls['servotorization_hd_subharmonic'] = url;
     }
     if (filename.includes('clean_playrium')) audioUrls['song_playrium'] = url;
-    if (filename.includes('chronicles_ambient')) audioUrls['ambient_chronicles'] = url;
+    if (filename.includes('chronicles_ambient')) {
+      audioUrls['ambient_chronicles'] = url;
+      audioUrls['chronicles_ambient'] = url;
+    }
     if (filename.includes('desolate_cry') || filename.includes('Desolate Cry')) {
       audioUrls['ambient_desolate_cry'] = url;
       audioUrls['desolate_cry'] = url;
@@ -103,11 +110,61 @@ export async function loadAllAssets(onProgress?: (ratio: number) => void): Promi
 }
 
 const textureAliases: Record<string, string> = {
-  stasis_coffin: 'sarcophagus',
+  // Scoreboard 37 aliases
+  retro_film_manufactorum_scoreboard_37_v1: 'manufactorum_scoreboard_37_v1',
+  manufactorum_scoreboard_37_v1: 'manufactorum_scoreboard_37_v1',
+  // Canonical AI-Lord Narrator (Reading Chronicles from Tome on GPU Throne)
+  ai_lord_throne_book_reading_narrator: 'ai_lord_throne_book_reading_narrator',
+  ai_lord_reading_book: 'ai_lord_throne_book_reading_narrator',
+  ai_lord_narrator: 'ai_lord_throne_book_reading_narrator',
+  ai_lord: 'ai_lord_throne_book_reading_narrator',
+  ai_lord_mcu: 'ai_lord_throne_book_reading_narrator',
+  ai_lord_face_closeup: 'ai_lord_face_closeup_gemini_1080p',
+  ai_lord_face: 'ai_lord_face_closeup_gemini_1080p',
+  ai_lord_face_cu: 'ai_lord_face_closeup_gemini_1080p',
+  ai_lord_face_extreme: 'ai_lord_face_eyes_macro_gemini_1080p',
+  ai_lord_face_ecu: 'ai_lord_face_eyes_macro_gemini_1080p',
+  ai_lord_face_closeup_gemini_1080p: 'ai_lord_face_closeup_gemini_1080p',
+  ai_lord_face_eyes_macro_gemini_1080p: 'ai_lord_face_eyes_macro_gemini_1080p',
+
+  // Fin Team Characters & Aliases
+  retro_film_eduard_danial_playable_autopsy_green_v6: 'retro_film_eduard_danial_playable_autopsy_green_v6',
+  retro_film_amputated_playable_autopsy: 'retro_film_eduard_danial_playable_autopsy_green_v6',
+  retro_film_coders_openspace_desiccated_corpse_v13: 'retro_film_coders_openspace_desiccated_corpse_v13',
+  retro_film_coders_openspace_desiccated_corpse: 'retro_film_coders_openspace_desiccated_corpse_v13',
+  retro_film_desiccated_corpse: 'retro_film_coders_openspace_desiccated_corpse_v13',
+  retro_film_gorin: 'retro_film_gorin_batman_cowl_gemini_v20',
+  retro_film_danial: 'retro_film_danial_iskakov_sapper_v1',
+  retro_film_voron: 'retro_film_voron_arch_abbot_v7',
+  retro_film_voron_arch_abbot_gemini_pro_v12: 'retro_film_voron_arch_abbot_v7',
+  avatar_voron: 'retro_film_voron_arch_abbot_v7',
+  retro_film_eduard: 'retro_warhammer_eduard_levin_gpt_v3',
+  retro_film_alexey_novice: 'retro_film_alexey_novice_v4',
+  retro_film_davit: 'retro_film_davit_gazaryan_old_engine_v6',
+  retro_film_pavel: 'retro_soviet_film_pavel_playbox_logo_gpt_v4',
+  retro_film_artem: 'retro_film_artem_khukhro_guyver_gemini_v19',
+  retro_film_artem_khukhro_guyver_gemini_v13: 'retro_film_artem_khukhro_guyver_gemini_v19',
+  retro_film_artem_khukhro_guyver_gemini_v19: 'retro_film_artem_khukhro_guyver_gemini_v19',
+  retro_film_eva: 'retro_film_eva_theatrical_prop_helmet_v7',
+  retro_film_egor: 'retro_horror_film_egor_mickey_vat_v14',
+  retro_film_nick: 'retro_film_nick_egorov_speedrun_v2',
+  retro_film_tolya: 'retro_film_tolya_gpt_v2',
+  retro_film_vika: 'retro_film_vika_neural_corruption_v3',
+  retro_film_zhenya: 'retro_film_zhenya_artist_real_v11',
+  retro_film_vova: 'retro_film_vova_khaetsky_v11',
+  retro_film_kristian: 'retro_film_kristian_repository_guardian_v2',
+  retro_film_kirill: 'retro_film_kirill_beryozkin_v2',
+
+  // Tribunal & Awards (AI-Lord on GPU Throne with Baton & Cookie Servitors)
+  ai_lord_throne_tribunal_awards: 'ai_lord_throne_tribunal_awards',
+  tribunal_awards: 'ai_lord_throne_tribunal_awards',
+  ai_lord_tribunal: 'ai_lord_throne_tribunal_awards',
+  ai_lord_baton: 'ai_lord_throne_tribunal_awards',
+  ai_lord_cookie: 'ai_lord_throne_tribunal_awards',
+  cyber_lord_throne: 'ai_lord_throne_tribunal_awards',
+
+  stasis_coffin: 'retro_film_clientarch_billionaires_space_freeze_gemini_v10',
   gorin_throne: 'hero_gorin',
-  factory_conveyor: 'castle_handcar',
-  hall_judges: 'castle_computers',
-  cyber_lord_throne: 'ai_lord_baton',
 
   // AI-Lord Concert Sequence
   ai_lord_singing: 'ai_lord_calm_singing',
@@ -144,6 +201,8 @@ const textureAliases: Record<string, string> = {
   avatar_pankov: 'avatar_pankov',
   avatar_khaetsky: 'avatar_khaetsky',
   avatar_hoodie: 'hero_hoodie',
+  avatar_christian: 'retro_film_kristian_repository_guardian_v2',
+  avatar_kirill: 'retro_film_kirill_beryozkin_v2',
   warhammer_gorin: 'warhammer_gorin',
   warhammer_eduard: 'warhammer_eduard',
   warhammer_egor: 'warhammer_egor',
@@ -151,6 +210,8 @@ const textureAliases: Record<string, string> = {
   // Slack screenshot aliases
   '01_jnghfdbk': '01_jnghfdbk',
   '01_gorin_jnghfdbk': '01_jnghfdbk',
+  '01c_korchoe': '01c_korchoe',
+  '01d_prishlizhat': '01d_prishlizhat',
   '02_demoblil': '02_demoblil',
   '03_disney_long_box': '03_disney_long_box',
   '04_claude_banned': '04_claude_banned',
