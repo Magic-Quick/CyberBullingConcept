@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node -e \"import('fs').then(fs => { fs.copyFileSync('dist/index.html', '../index.html'); if (fs.existsSync('dist/assets')) { fs.cpSync('dist/assets', '../assets', { recursive: true }); } console.log('Copied dist/index.html and dist/assets to root'); })\"",
+    "build": "vite build && node -e \"import('fs').then(fs => { let html = fs.readFileSync('dist/index.html', 'utf-8'); html = html.replace(/new URL\\(([`'\"])([^`'\"]+)\\1/g, (m, q, f) => !f.startsWith('assets/') && !f.startsWith('./assets/') ? 'new URL(' + q + 'assets/' + f + q : m); html = html.replace(/url\\([\\\"']?\\/assets\\//g, 'url(\\\"./assets/'); fs.writeFileSync('../index.html', html); if (fs.existsSync('dist/assets')) { fs.cpSync('dist/assets', '../assets', { recursive: true }); } console.log('Built and patched index.html with assets/ prefix'); })\"",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },

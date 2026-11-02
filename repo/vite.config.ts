@@ -16,6 +16,7 @@ export default defineConfig({
   build: {
     target: 'es2020',
     modulePreload: false,
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         format: 'iife',
