@@ -68,6 +68,24 @@ export class Subtitles extends Container {
   private _slackPopupCurrentAlpha = 0;
   private _currentSlackKey: string | null = null;
 
+  // 4. Gorin Typo Multi-Card Row in Act 3 (Jnghfdbk, Корчое, пришлижать, демоблил)
+  private _gorinRowContainer: Container;
+  private _gorinCards: {
+    key: string;
+    triggerTime: number;
+    container: Container;
+    bg: Graphics;
+    sprite: Sprite;
+    mask: Graphics;
+    currentAlpha: number;
+    targetAlpha: number;
+    currentX: number;
+    targetX: number;
+    currentY: number;
+    targetY: number;
+  }[] = [];
+  private _isGorinRowActive = false;
+
   // Positioning & Metrics
   private _cues: SubtitleCue[] = [];
   private _currentCueIndex = -1;
@@ -102,6 +120,7 @@ export class Subtitles extends Container {
     this._slackPopupContainer = new Container();
     this._slackPopupContainer.alpha = 0;
     this._slackPopupContainer.visible = false;
+
     this._slackPopupContainer.eventMode = 'static';
     this.addChild(this._slackPopupContainer);
 
@@ -221,7 +240,57 @@ export class Subtitles extends Container {
     this._slackPopupContainer.addChild(this._slackCloseBtn);
 
     this._slackProgressBar = new Graphics();
+    this._slackProgressBar.visible = false;
     this._slackPopupContainer.addChild(this._slackProgressBar);
+
+    // 1b. GORIN TYPO MULTI-CARD ROW (Act 3: Jnghfdbk, Корчое, пришлижать, демоблил)
+    this._gorinRowContainer = new Container();
+    this._gorinRowContainer.visible = false;
+    this._gorinRowContainer.alpha = 1;
+    this.addChild(this._gorinRowContainer);
+
+    const gorinDefs = [
+      { key: '01_jnghfdbk', time: 5.12 },
+      { key: '01c_korchoe', time: 14.02 },
+      { key: '01d_prishlizhat', time: 15.10 },
+      { key: '02_demoblil', time: 16.04 },
+    ];
+
+    for (const def of gorinDefs) {
+      const cardC = new Container();
+      cardC.visible = false;
+      cardC.alpha = 0;
+
+      const bg = new Graphics();
+      cardC.addChild(bg);
+
+      const sp = new Sprite();
+      if (hasTexture(def.key)) {
+        sp.texture = getTexture(def.key);
+      }
+      cardC.addChild(sp);
+
+      const m = new Graphics();
+      cardC.addChild(m);
+      sp.mask = m;
+
+      this._gorinCards.push({
+        key: def.key,
+        triggerTime: def.time,
+        container: cardC,
+        bg,
+        sprite: sp,
+        mask: m,
+        currentAlpha: 0,
+        targetAlpha: 0,
+        currentX: 0,
+        targetX: 0,
+        currentY: 0,
+        targetY: 0,
+      });
+
+      this._gorinRowContainer.addChild(cardC);
+    }
 
     // 2. DIALOGUE CONTAINER (Clean Cinematic Subtitles on Black Rectangle, NO NAME / AVATAR)
     this._dialogueContainer = new Container();
@@ -370,6 +439,10 @@ export class Subtitles extends Container {
 
   public showSlackPopup(slackKey: string): void {
     if (!slackKey || !hasTexture(slackKey)) return;
+    const gorinKeys = ['01_jnghfdbk', '01c_korchoe', '01d_prishlizhat', '02_demoblil'];
+    if (this._actId === 'act_3_timemachine' && gorinKeys.includes(slackKey)) {
+      return;
+    }
     this._currentSlackKey = slackKey;
     this._slackHoldTimer = 10.0;
     this._slackMotionTimer = 0;
@@ -388,6 +461,18 @@ export class Subtitles extends Container {
       this._slackPopupCurrentAlpha = 0;
       this._slackPopupContainer.alpha = 0;
       this._slackPopupContainer.visible = false;
+
+    // Reset Gorin typo multi-card row
+    this._isGorinRowActive = false;
+    if (this._gorinRowContainer) {
+      this._gorinRowContainer.visible = false;
+    }
+    for (const card of this._gorinCards) {
+      card.currentAlpha = 0;
+      card.targetAlpha = 0;
+      card.container.alpha = 0;
+      card.container.visible = false;
+    }
     }
   }
 
@@ -421,7 +506,7 @@ export class Subtitles extends Container {
     this._slackDimOverlay.visible = false;
     this._slackPopupTargetAlpha = 0;
     this._slackPopupCurrentAlpha = 0;
-    this._slackPopupContainer.visible = false;
+    
 
     // Toggle Modes: Dialogue vs Right-Side Karaoke Screen
     this._dialogueContainer.visible = !isKaraoke;
@@ -594,6 +679,48 @@ export class Subtitles extends Container {
       }
     }
 
+    // Gorin Typo Multi-Card Row in Act 3 (act_3_timemachine)
+    if (this._actId === 'act_3_timemachine') {
+      const GORIN_START = 5.12;
+      const GORIN_END = 20.20;
+
+      if (currentTime >= GORIN_START && currentTime < GORIN_END) {
+        this._isGorinRowActive = true;
+        this._gorinRowContainer.visible = true;
+
+        const t1 = (currentTime >= 5.12) ? 1.0 : 0;
+        const t2 = (currentTime >= 14.02) ? 1.0 : 0;
+        const t3 = (currentTime >= 15.10) ? 1.0 : 0;
+        const t4 = (currentTime >= 16.04) ? 1.0 : 0;
+
+        const changed = (
+          this._gorinCards[0].targetAlpha !== t1 ||
+          this._gorinCards[1].targetAlpha !== t2 ||
+          this._gorinCards[2].targetAlpha !== t3 ||
+          this._gorinCards[3].targetAlpha !== t4
+        );
+
+        this._gorinCards[0].targetAlpha = t1;
+        this._gorinCards[1].targetAlpha = t2;
+        this._gorinCards[2].targetAlpha = t3;
+        this._gorinCards[3].targetAlpha = t4;
+
+        if (changed) {
+          this._repositionGorinRow();
+        }
+      } else {
+        if (this._isGorinRowActive) {
+          for (const card of this._gorinCards) {
+            card.targetAlpha = 0;
+          }
+          if (currentTime >= GORIN_END + 0.8 || currentTime < GORIN_START - 0.5) {
+            this._isGorinRowActive = false;
+            this._gorinRowContainer.visible = false;
+          }
+        }
+      }
+    }
+
     if (cueIndex !== this._currentCueIndex) {
       this._currentCueIndex = cueIndex;
       this._counterText.text = (cueIndex + 1) + ' / ' + this._cues.length;
@@ -758,6 +885,26 @@ export class Subtitles extends Container {
       this._slackPopupContainer.scale.set(0.97);
     }
 
+    // Gorin typo multi-card smooth alpha & glide animation
+    if (this._isGorinRowActive || this._gorinRowContainer.visible) {
+      let anyVisible = false;
+      for (const card of this._gorinCards) {
+        if (card.currentAlpha !== card.targetAlpha) {
+          const dAlpha = card.targetAlpha - card.currentAlpha;
+          card.currentAlpha += Math.sign(dAlpha) * Math.min(Math.abs(dAlpha), dt * 5.0);
+          card.container.alpha = card.currentAlpha;
+          card.container.visible = card.currentAlpha > 0.01;
+        }
+        if (card.container.visible) {
+          anyVisible = true;
+          card.currentX += (card.targetX - card.currentX) * Math.min(1, dt * 6.0);
+          card.currentY += (card.targetY - card.currentY) * Math.min(1, dt * 6.0);
+          card.container.position.set(card.currentX, card.currentY);
+        }
+      }
+      this._gorinRowContainer.visible = anyVisible;
+    }
+
     this._updateSlackProgressBar();
   }
 
@@ -766,11 +913,17 @@ export class Subtitles extends Container {
       this.hideSlackPopup(true);
       return;
     }
+    const gorinKeys = ['01_jnghfdbk', '01c_korchoe', '01d_prishlizhat', '02_demoblil'];
     let sKey: string | null = cue.slackScreenshotKey || null;
+    if (this._actId === 'act_3_timemachine' && sKey && gorinKeys.includes(sKey)) {
+      this._slackPopupTargetAlpha = 0;
+      this._slackHoldTimer = 0;
+      return;
+    }
 
     if (!sKey) {
       const t = cue.text.toLowerCase();
-      if (t.includes('jnghfdbk') || t.includes('демоблил')) sKey = '01_jnghfdbk';
+      if (this._actId !== 'act_3_timemachine' && (t.includes('jnghfdbk') || t.includes('демоблил'))) sKey = '01_jnghfdbk';
       else if (t.includes('130 страниц') || t.includes('под стеклом лежат') || (t.includes('диснея') && t.includes('гроб'))) sKey = '03_disney_long_box';
       else if (t.includes('забанили клод') || t.includes('забанили claude')) sKey = '04_claude_banned';
       else if (t.includes('одиннадцать баллов') || t.includes('11 баллов')) sKey = '05_edik_11_points';
@@ -847,13 +1000,13 @@ export class Subtitles extends Container {
       this._slackPopupSprite.position.set(-imgW / 2, -imgH / 2);
 
       this._slackPopupBg.clear();
-      this._slackPopupBg.roundRect(-imgW / 2 - 8, -imgH / 2 - 8, imgW + 16, imgH + 16, r + 4);
+      this._slackPopupBg.roundRect(-imgW / 2, -imgH / 2 + 4, imgW, imgH, r);
       this._slackPopupBg.fill({ color: 0x000000, alpha: 0.60 });
 
       this._slackPopupTitleText.visible = false;
       this._slackZoomBtn.visible = false;
       this._slackCloseBtn.visible = false;
-      this._slackProgressBar.visible = !this._isSlackZoomed;
+      this._slackProgressBar.visible = false;
     } else {
       // Minimalist larger display with subtle cinematic drop shadow and zero UI clutter
       const karaokeW = this._isKaraoke ? 460 : 0;
@@ -885,41 +1038,23 @@ export class Subtitles extends Container {
       this._slackPopupSprite.height = imgH;
       this._slackPopupSprite.position.set(-imgW / 2, -imgH / 2);
 
-      // Clean diffused drop shadow beneath screenshot (NO frames, NO borders)
+      // Clean diffused drop shadow beneath screenshot (strictly borderless, NO frames, NO borders)
       this._slackPopupBg.clear();
-      this._slackPopupBg.roundRect(-imgW / 2, -imgH / 2 + 4, imgW, imgH, r);
-      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.45 });
-
-      this._slackPopupBg.roundRect(-imgW / 2 - 4, -imgH / 2 + 8, imgW + 8, imgH + 4, r + 2);
-      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.25 });
-
-      this._slackPopupBg.roundRect(-imgW / 2 - 10, -imgH / 2 + 16, imgW + 20, imgH + 8, r + 4);
-      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.12 });
+      this._slackPopupBg.roundRect(-imgW / 2, -imgH / 2 + 6, imgW, imgH, r);
+      this._slackPopupBg.fill({ color: 0x000000, alpha: 0.40 });
 
       // Clean minimalist: hide header, zoom, close, and progress bar
       this._slackPopupTitleText.visible = false;
       this._slackZoomBtn.visible = false;
       this._slackCloseBtn.visible = false;
-      this._slackProgressBar.visible = !this._isSlackZoomed;
+      this._slackProgressBar.visible = false;
     }
   }
 
   private _updateSlackProgressBar(): void {
-    if (!this._slackProgressBar.visible || this._isSlackZoomed || this._slackHoldTimer <= 0) {
-      this._slackProgressBar.clear();
-      return;
-    }
-    const ratio = Math.max(0, Math.min(1, this._slackHoldTimer / 10.0));
-    const padX = 12;
-    const w = this._slackPopupSprite.width;
-    const y = this._slackPopupSprite.y + this._slackPopupSprite.height + 2;
-
+    // Completely disabled per user request: "убери рамочки и загрузки из скринов"
     this._slackProgressBar.clear();
-    this._slackProgressBar.roundRect(padX, y, w, 3, 1.5);
-    this._slackProgressBar.fill({ color: 0x141a2e, alpha: 0.6 });
-
-    this._slackProgressBar.roundRect(padX, y, w * ratio, 3, 1.5);
-    this._slackProgressBar.fill({ color: 0x00f5d4, alpha: 0.95 });
+    this._slackProgressBar.visible = false;
   }
 
   public nextPhrase(): void {
@@ -944,6 +1079,9 @@ export class Subtitles extends Container {
     this._redrawLayout();
     if (this._slackPopupSprite.texture && this._slackPopupSprite.texture !== Texture.WHITE && this._slackPopupCurrentAlpha > 0.02) {
       this._positionSlackPopup(this._slackPopupSprite.texture);
+    }
+    if (this._isGorinRowActive) {
+      this._repositionGorinRow();
     }
   }
 
@@ -1036,5 +1174,99 @@ export class Subtitles extends Container {
 
   public get currentCueIndex(): number {
     return this._currentCueIndex;
+  }
+
+  /**
+   * Gorin Typo Multi-Card Row: Repositions active cards in a clean borderless cascade / row
+   */
+  private _repositionGorinRow(): void {
+    const w = this._screenWidth;
+    const h = this._screenHeight;
+    const isPortrait = h > w;
+
+    const activeCards = this._gorinCards.filter(c => c.targetAlpha > 0);
+    const count = activeCards.length;
+    if (count === 0) return;
+
+    if (!isPortrait) {
+      // LANDSCAPE: Horizontally centered row
+      const maxW = Math.min(w * 0.94, 1540);
+      const gap = count > 3 ? 14 : 18;
+
+      let cardW: number;
+      if (count === 1) {
+        cardW = Math.min(w * 0.50, 640);
+      } else if (count === 2) {
+        cardW = Math.min((maxW - gap) / 2, 520);
+      } else if (count === 3) {
+        cardW = Math.min((maxW - gap * 2) / 3, 420);
+      } else {
+        cardW = Math.min((maxW - gap * 3) / 4, 340);
+      }
+
+      const totalRowW = count * cardW + (count - 1) * gap;
+      const startX = -totalRowW / 2 + cardW / 2;
+
+      for (let i = 0; i < activeCards.length; i++) {
+        const card = activeCards[i];
+        card.targetX = Math.round(startX + i * (cardW + gap));
+        card.targetY = 0;
+        this._drawGorinCard(card, cardW);
+      }
+
+      this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.44));
+    } else {
+      // PORTRAIT: Vertically stacked cards
+      const cardW = Math.min(w * 0.92, 500);
+      const gap = 10;
+
+      let totalRowH = 0;
+      const heights: number[] = [];
+      for (let i = 0; i < activeCards.length; i++) {
+        const card = activeCards[i];
+        const tex = hasTexture(card.key) ? getTexture(card.key) : null;
+        const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
+        const ch = Math.round(cardW / aspect);
+        heights.push(ch);
+        totalRowH += ch;
+      }
+      totalRowH += (count - 1) * gap;
+
+      let curY = -totalRowH / 2;
+      for (let i = 0; i < activeCards.length; i++) {
+        const card = activeCards[i];
+        const ch = heights[i];
+        card.targetX = 0;
+        card.targetY = Math.round(curY + ch / 2);
+        this._drawGorinCard(card, cardW);
+        curY += ch + gap;
+      }
+
+      this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.40));
+    }
+  }
+
+  private _drawGorinCard(card: typeof this._gorinCards[0], cardW: number): void {
+    if (card.sprite.texture === Texture.WHITE || !card.sprite.texture) {
+      if (hasTexture(card.key)) {
+        card.sprite.texture = getTexture(card.key);
+      }
+    }
+    const tex = card.sprite.texture;
+    const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
+    const cardH = Math.round(cardW / aspect);
+
+    // Clean diffused drop shadow beneath screenshot (strictly borderless, NO frames, NO borders)
+    card.bg.clear();
+    card.bg.roundRect(-cardW / 2, -cardH / 2 + 4, cardW, cardH, 6);
+    card.bg.fill({ color: 0x000000, alpha: 0.38 });
+
+    card.sprite.width = cardW;
+    card.sprite.height = cardH;
+    card.sprite.position.set(-cardW / 2, -cardH / 2);
+
+    card.mask.clear();
+    card.mask.roundRect(-cardW / 2, -cardH / 2, cardW, cardH, 6);
+    card.mask.fill({ color: 0xffffff });
   }
 }

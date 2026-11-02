@@ -98,64 +98,44 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
 
   { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Соло: Джнгхфдбвк / Jnghfdbk' },
 
-  // [171.00s - 173.50s] "Рыдали, как Горин на спаме вводил демоблил,"
+  // [171.00s - 175.00s] "Как Горин на синке втирал «демоблил», как в чат на английской «Jnghfdbk» влупил!"
   {
     time: 171.00,
     texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
     characterName: 'Алексей Горин',
     characterRole: 'Head of Production • Верховный Надзиратель Конвейера',
     characterThemeColor: 0xffaa00,
-    label: 'Горин: На спаме вводил демоблил'
+    label: 'Горин: На синке втирал демоблил'
   },
 
-  // [173.50s - 176.00s] "Как Вова в чат Лонгбокс Disney слил!"
+  // [175.00s - 178.80s] "Как Ева вопит: Этот плебл в работу! Кик-офф пять минут — и все пашем в субботу!"
   {
-    time: 173.50,
-    texKey: 'retro_film_vova_khaetsky_v11',
-    characterName: 'Вова Хаецкий',
-    characterRole: 'Хранитель Лонгбокса Disney',
-    characterThemeColor: 0x00f5d4,
-    label: 'Вова: В чат Лонгбокс Disney слил'
-  },
-
-  // [176.00s - 178.50s] "Как Ева кикофф напинала отряду,"
-  {
-    time: 176.00,
+    time: 175.00,
     texKey: 'retro_film_eva_theatrical_prop_helmet_v7',
     characterName: 'Ева Аксёнова',
     characterRole: 'Production Director • Хранительница Скрижалей',
     characterThemeColor: 0xff3399,
-    label: 'Ева: Кикофф напинала отряду'
+    label: 'Ева: Этот плебл в работу — кик-офф пять минут'
   },
 
-  // [178.50s - 181.00s] "Как Давит старый движок принял к ряду!"
+  // [178.80s - 184.00s] "Как Эдик принёс от клиента свиток: Одиннадцать правок, одиннадцать пыток!"
   {
-    time: 178.50,
-    texKey: 'retro_film_davit_gazaryan_old_engine_v6',
-    characterName: 'Давит Казарян',
-    characterRole: 'Рыцарь Старого Движка',
-    characterThemeColor: 0x33ccff,
-    label: 'Давит: Старый движок принял к ряду'
-  },
-
-  // [181.00s - 184.00s] "Как клиента свиток: Одиннадцать правок! Одиннадцать будок в банке заметок!"
-  {
-    time: 181.00,
+    time: 178.80,
     texKey: 'retro_warhammer_eduard_levin_gpt_v3',
     characterName: 'Эдуард Левин',
     characterRole: 'Creative Lead • Зодчий Игрового Замысла',
     characterThemeColor: 0xff3366,
-    label: 'Эдик: Свиток от клиента — 11 правок и 11 будок'
+    label: 'Эдик: Свиток от клиента — 11 правок и 11 пыток'
   },
 
-  // [184.00s - 186.30s] "В десять тридцать ночи — забытых вестей:"
+  // [184.00s - 186.30s] "Как в банке забытый томится Дисней —"
   {
     time: 184.00,
     texKey: 'retro_horror_film_mickey_biovat_slime_gemini_v6',
     label: 'В банке забытый томится Дисней: Стазис-биоват'
   },
 
-  // [186.30s - 188.90s] "Сто тридцать ночей без живых новостей!" (мышь скребётся о толстый кварц)
+  // [186.30s - 188.90s] "Сто тридцать ночей без живых новостей!"
   {
     time: 186.30,
     texKey: 'retro_horror_film_mickey_biovat_slime_gpt_v8',
@@ -165,7 +145,7 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   // [188.90s - 192.60s] "Егор для Диснея пристроил отсек, чтоб мышь не тревожила век человек!"
   {
     time: 188.90,
-    texKey: 'retro_film_egor_reverend_interpreter_v4',
+    texKey: 'retro_horror_film_egor_mickey_vat_v14',
     characterName: 'Егор Ткачёв',
     characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
     characterThemeColor: 0x9933ff,
