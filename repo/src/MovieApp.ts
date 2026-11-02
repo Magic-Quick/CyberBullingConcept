@@ -560,17 +560,29 @@ export class MovieApp {
   private _seenCharacterQuotes: Set<string> = new Set();
 
   private _quoteBadgeTyping = {
-
     active: false,
-
     elapsed: 0,
-
     fullName: '',
-
     fullRole: '',
-
     lastCharCount: -1,
+  };
 
+  // Location Corner Badge (Top-left: Authentic Sector Radar HUD + 2 Lines: [ СЕКТОР КОВЧЕГА ] & [ НАЗВАНИЕ ЛОКАЦИИ ])
+  private _cornerLocationBadge!: Container;
+  private _cornerLocationBg!: Graphics;
+  private _cornerLocationRadarContainer!: Container;
+  private _cornerLocationRadarGfx!: Graphics;
+  private _cornerLocationCategory!: Text;
+  private _cornerLocationTitle!: Text;
+  private _radarAngle = 0;
+  private _locationBadgeTyping = {
+    active: false,
+    elapsed: 0,
+    fullCategory: '',
+    fullTitle: '',
+    lastCharCount: -1,
+    displayDuration: 5.5,
+    fadeElapsed: 0,
   };
 
   private _missingImageOverlay!: Container;
@@ -677,6 +689,7 @@ export class MovieApp {
     this._root.addChild(this._introContainer);
 
     this._root.addChild(this._cornerQuoteBadge);
+    this._root.addChild(this._cornerLocationBadge);
 
     this._root.addChild(this._subtitles);
 
@@ -4146,11 +4159,17 @@ export class MovieApp {
             ? 'ai_lord_throne_book_reading_narrator'
             : act.imageKey);
 
-      // Star Wars Optical Wipe: ONLY between scenes with a pause (Act transitions)
-      const isSceneTransition = (prevActIndex !== -1 && prevActIndex !== index && index !== 0 && prevActIndex !== 0);
+      // Star Wars Optical Wipe: between distinct locations and acts
+      const isSceneTransition = (prevActIndex !== -1 && prevActIndex !== index && index !== 0);
       const newSceneTex = resolvedImageKey ? getTexture(resolvedImageKey) : null;
       if (isSceneTransition && oldSceneTex && newSceneTex && oldSceneTex !== newSceneTex && oldSceneTex !== Texture.WHITE) {
         this._startStarWarsWipe(oldSceneTex, newSceneTex);
+      }
+
+      // Location Establishing Badge: prints out top-left with teletype tick SFX and radar HUD
+      if (act.id !== 'intro_playbox' && (act.frameTitle || act.title)) {
+        const locTitle = act.frameTitle || act.title;
+        this._showCornerLocationBadge('СЕКТОР КОВЧЕГА', locTitle, Math.max(5.5, (act.voiceDelay || 0) + 1.2));
       }
 
       if (initialNarratorCut) {
@@ -5888,6 +5907,7 @@ export class MovieApp {
       if (this._isPlaying) {
 
         this._updateQuoteBadgeTyping(dt);
+        this._updateLocationBadgeTyping(dt);
 
       }
 
@@ -6250,7 +6270,7 @@ export class MovieApp {
 
     this._wipeProgress = 0.0;
 
-    this._wipeDuration = 2.2; // Genuine George Lucas Star Wars ~1250ms unhurried optical print wipe
+    this._wipeDuration = 2.4; // Stately George Lucas Star Wars optical wipe print
 
     this._isWiping = true;
 
@@ -6540,6 +6560,43 @@ export class MovieApp {
 
     this._cornerQuoteBadge.addChild(this._cornerQuoteRole);
 
+    // 3. Location Corner Badge (Top-left: Authentic Sci-Fi Sector Radar HUD + 2 Lines: Category & Location Title)
+    this._cornerLocationBadge = new Container();
+    this._cornerLocationBadge.visible = false;
+    this._cornerLocationBg = new Graphics();
+    this._cornerLocationBadge.addChild(this._cornerLocationBg);
+
+    this._cornerLocationRadarContainer = new Container();
+    this._cornerLocationBadge.addChild(this._cornerLocationRadarContainer);
+    this._cornerLocationRadarGfx = new Graphics();
+    this._cornerLocationRadarContainer.addChild(this._cornerLocationRadarGfx);
+
+    this._cornerLocationCategory = new Text({
+      text: '',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 22,
+        fontWeight: 'bold',
+        fill: '#00f5d4',
+        letterSpacing: 1.2,
+        dropShadow: { alpha: 0.85, blur: 6, color: '#00f5d4', distance: 0 },
+      }),
+    });
+    this._cornerLocationBadge.addChild(this._cornerLocationCategory);
+
+    this._cornerLocationTitle = new Text({
+      text: '',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 28,
+        fontWeight: 'bold',
+        fill: '#ffffff',
+        letterSpacing: 1.0,
+        dropShadow: { alpha: 0.85, blur: 8, color: '#ff5e1a', distance: 0 },
+      }),
+    });
+    this._cornerLocationBadge.addChild(this._cornerLocationTitle);
+
   }
 
   private _applyCinematicCut(cut: NarratorShotCut, punch: boolean = true): void {
@@ -6616,6 +6673,15 @@ export class MovieApp {
       } else {
         // Clean Picture Reveal: Any scene without a Slack screenshot must hide any open Slack popup!
         this._subtitles.hideSlackPopup(!punch);
+      }
+
+      // Intra-act Location Establishing: lower deck / catacombs / sub-sectors
+      if (cut.type === 'event_illustration' && cut.label && cut.label.includes('Нижняя палуба')) {
+        this._showCornerLocationBadge('СЕКТОР КОВЧЕГА', 'НИЖНЯЯ ПАЛУБА • КАТАКОМБЫ НАКАЗАНИЯ', 5.0);
+        if (hasImage && cut.texKey) {
+          const tex = getTexture(cut.texKey);
+          this._setBgTextureWithWipe(tex, true);
+        }
       }
 
       if (isQuote) {
@@ -6739,7 +6805,7 @@ export class MovieApp {
   }
 
   private _showCornerQuoteBadge(name: string, role: string, color: number, texKey?: string | null): void {
-
+    this._hideCornerLocationBadge();
     this._currentQuoteColor = color;
 
     const fullName = `[ ${name.toUpperCase().trim()} ]`;
@@ -6972,6 +7038,198 @@ export class MovieApp {
     const badgeX = isPortrait ? 16 : 28;
     const badgeY = isPortrait ? 24 : 28;
     this._cornerQuoteBadge.position.set(badgeX, badgeY);
+  }
+
+  private _drawLocationRadar(size: number, angle: number): void {
+    const gfx = this._cornerLocationRadarGfx;
+    gfx.clear();
+    const half = size / 2;
+    const r = half - 8;
+
+    // Background round rect
+    gfx.roundRect(0, 0, size, size, 10);
+    gfx.fill({ color: 0x050e14, alpha: 0.95 });
+    gfx.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.6 });
+
+    // Concentric radar rings
+    gfx.circle(half, half, r * 0.33);
+    gfx.stroke({ color: 0x00f5d4, width: 1, alpha: 0.25 });
+    gfx.circle(half, half, r * 0.66);
+    gfx.stroke({ color: 0x00f5d4, width: 1, alpha: 0.35 });
+    gfx.circle(half, half, r);
+    gfx.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.5 });
+
+    // Crosshairs
+    gfx.moveTo(half - r, half);
+    gfx.lineTo(half + r, half);
+    gfx.stroke({ color: 0x00f5d4, width: 1, alpha: 0.3 });
+    gfx.moveTo(half, half - r);
+    gfx.lineTo(half, half + r);
+    gfx.stroke({ color: 0x00f5d4, width: 1, alpha: 0.3 });
+
+    // Diagonal tick marks
+    const diag = r * 0.707;
+    gfx.moveTo(half - 4, half - diag);
+    gfx.lineTo(half + 4, half - diag);
+    gfx.stroke({ color: 0x00f5d4, width: 1, alpha: 0.4 });
+
+    // Rotating radar sweep line & fan
+    const sweepX = half + Math.cos(angle) * r;
+    const sweepY = half + Math.sin(angle) * r;
+    gfx.moveTo(half, half);
+    gfx.lineTo(sweepX, sweepY);
+    gfx.stroke({ color: 0x00f5d4, width: 2, alpha: 0.9 });
+
+    // Trailing arc sweep (radar scan phosphor decay)
+    const trailAngle = angle - 0.4;
+    gfx.poly([
+      half, half,
+      sweepX, sweepY,
+      half + Math.cos(trailAngle) * r, half + Math.sin(trailAngle) * r,
+    ]);
+    gfx.fill({ color: 0x00f5d4, alpha: 0.15 });
+
+    // Ship position dot in center
+    gfx.circle(half, half, 3.5);
+    gfx.fill({ color: 0xffaa00 });
+
+    // Detected orbital blip
+    const blipAngle = 0.8;
+    const blipDist = r * 0.62;
+    const blipX = half + Math.cos(blipAngle) * blipDist;
+    const blipY = half + Math.sin(blipAngle) * blipDist;
+    const diff = Math.abs((angle % (Math.PI * 2)) - blipAngle);
+    const pingAlpha = Math.max(0.2, 1.0 - Math.min(1.0, diff * 1.5));
+    gfx.circle(blipX, blipY, 3);
+    gfx.fill({ color: 0x00f5d4, alpha: pingAlpha });
+  }
+
+  private _showCornerLocationBadge(category: string, title: string, duration: number = 5.5): void {
+    this._hideCornerQuoteBadge();
+
+    const fullCat = `[ ${category.toUpperCase().trim()} ]`;
+    const fullTit = `[ ${title.toUpperCase().trim()} ]`;
+
+    this._locationBadgeTyping = {
+      active: true,
+      elapsed: 0,
+      fullCategory: fullCat,
+      fullTitle: fullTit,
+      lastCharCount: -1,
+      displayDuration: duration,
+      fadeElapsed: 0,
+    };
+
+    this._cornerLocationCategory.text = fullCat;
+    this._cornerLocationTitle.text = fullTit;
+    this._positionCornerLocationBadge();
+
+    this._cornerLocationCategory.text = '▌';
+    this._cornerLocationTitle.text = '';
+    this._cornerLocationBadge.alpha = 1.0;
+    this._cornerLocationBadge.visible = true;
+  }
+
+  private _hideCornerLocationBadge(): void {
+    if (this._cornerLocationBadge) {
+      this._cornerLocationBadge.visible = false;
+    }
+    this._locationBadgeTyping.active = false;
+  }
+
+  private _positionCornerLocationBadge(): void {
+    const w = this._screenWidth;
+    const h = this._screenHeight;
+    const isPortrait = h > w;
+
+    const radarSize = isPortrait ? 92 : 108;
+    const pad = isPortrait ? 12 : 16;
+
+    this._cornerLocationRadarContainer.position.set(pad, pad);
+    this._drawLocationRadar(radarSize, this._radarAngle);
+
+    const textX = pad + radarSize + (isPortrait ? 16 : 22);
+    this._cornerLocationCategory.style.fontSize = isPortrait ? 18 : 22;
+    this._cornerLocationTitle.style.fontSize = isPortrait ? 24 : 28;
+
+    this._cornerLocationCategory.position.set(textX, pad + (isPortrait ? 8 : 12));
+    this._cornerLocationTitle.position.set(textX, pad + (isPortrait ? 44 : 54));
+
+    let textW: number;
+    if (this._locationBadgeTyping.active && this._locationBadgeTyping.fullCategory) {
+      const origCat = this._cornerLocationCategory.text;
+      const origTit = this._cornerLocationTitle.text;
+      this._cornerLocationCategory.text = this._locationBadgeTyping.fullCategory;
+      this._cornerLocationTitle.text = this._locationBadgeTyping.fullTitle;
+      textW = Math.max(this._cornerLocationCategory.bounds.width, this._cornerLocationTitle.bounds.width);
+      this._cornerLocationCategory.text = origCat;
+      this._cornerLocationTitle.text = origTit;
+    } else {
+      textW = Math.max(this._cornerLocationCategory.bounds.width, this._cornerLocationTitle.bounds.width);
+    }
+
+    const badgeW = Math.max(isPortrait ? 400 : 520, textX + textW + pad + 24);
+    const badgeH = radarSize + pad * 2;
+
+    this._cornerLocationBg.clear();
+    this._cornerLocationBg.roundRect(0, 0, badgeW, badgeH, 10);
+    this._cornerLocationBg.fill({ color: 0x000000, alpha: 0.94 });
+    this._cornerLocationBg.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.4 });
+
+    const badgeX = isPortrait ? 16 : 28;
+    const badgeY = isPortrait ? 24 : 28;
+    this._cornerLocationBadge.position.set(badgeX, badgeY);
+  }
+
+  private _updateLocationBadgeTyping(dt: number): void {
+    if (!this._cornerLocationBadge || !this._cornerLocationBadge.visible) return;
+
+    this._radarAngle += dt * 2.5;
+    const isPortrait = this._screenHeight > this._screenWidth;
+    const radarSize = isPortrait ? 92 : 108;
+    this._drawLocationRadar(radarSize, this._radarAngle);
+
+    if (!this._locationBadgeTyping.active) return;
+
+    this._locationBadgeTyping.elapsed += dt;
+    const { fullCategory, fullTitle, elapsed, displayDuration } = this._locationBadgeTyping;
+    const totalChars = fullCategory.length + fullTitle.length;
+
+    if (totalChars <= 0) {
+      this._locationBadgeTyping.active = false;
+      return;
+    }
+
+    const charsPerSec = 32;
+    const typed = Math.min(totalChars, Math.floor(elapsed * charsPerSec));
+
+    if (typed !== this._locationBadgeTyping.lastCharCount) {
+      this._locationBadgeTyping.lastCharCount = typed;
+      SFX.playTypewriterTick();
+    }
+
+    const cursor = '▌';
+    if (typed < fullCategory.length) {
+      this._cornerLocationCategory.text = fullCategory.substring(0, typed) + cursor;
+      this._cornerLocationTitle.text = '';
+    } else if (typed < totalChars) {
+      this._cornerLocationCategory.text = fullCategory;
+      const titleTyped = typed - fullCategory.length;
+      this._cornerLocationTitle.text = fullTitle.substring(0, titleTyped) + cursor;
+    } else {
+      this._cornerLocationCategory.text = fullCategory;
+      this._cornerLocationTitle.text = fullTitle;
+    }
+
+    if (elapsed >= displayDuration) {
+      this._locationBadgeTyping.fadeElapsed += dt;
+      const fadeProgress = Math.min(1.0, this._locationBadgeTyping.fadeElapsed / 0.6);
+      this._cornerLocationBadge.alpha = 1.0 - fadeProgress;
+      if (fadeProgress >= 1.0) {
+        this._cornerLocationBadge.visible = false;
+        this._locationBadgeTyping.active = false;
+      }
+    }
   }
 
   private _applyNarratorCut(texKey: string, punch: boolean = true): void {
@@ -7569,9 +7827,10 @@ export class MovieApp {
     this._resizeMissingImageOverlay();
 
     if (this._cornerQuoteBadge && this._cornerQuoteBadge.visible) {
-
       this._positionCornerQuoteBadge();
-
+    }
+    if (this._cornerLocationBadge && this._cornerLocationBadge.visible) {
+      this._positionCornerLocationBadge();
     }
 
     this._introContainer.position.set(w / 2, h / 2);

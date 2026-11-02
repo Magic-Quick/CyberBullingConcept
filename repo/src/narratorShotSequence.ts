@@ -730,19 +730,54 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
   // Act 5: Clientarchs / Клиентархи (221.41s)
 
   act_5_clientarchs: [
-    { time: 0.00, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада флота клиентархов Зинга' },
-
-    { time: 4.50, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада флота клиентархов Зинга' },
+    { time: 0.00, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада Ковчега флотилиями клиентархов' },
+    { time: 4.50, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Ауспексы дальнего сканирования воют на пределе' },
+    { time: 13.90, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Royal Ark: Клан Королевский Ковчег обрушил шквал торпед' },
+    {
+      time: 32.12,
+      texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
+      type: 'character_quote',
+      characterName: 'МАКСИМ МАМУСИН',
+      characterRole: 'Tech Lead • Палач Старого Стека',
+      characterThemeColor: 0x48cae4,
+      label: 'Мамусин: Палач Старого Стека смотрит на трещащие переборки'
+    },
+    {
+      time: 39.94,
+      texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
+      type: 'character_quote',
+      characterName: 'МАКСИМ МАМУСИН',
+      characterRole: 'Tech Lead • Палач Старого Стека',
+      characterThemeColor: 0x48cae4,
+      label: 'Мамусин: «Бля, там какое-то мясо сейчас происходит»'
+    },
+    { time: 43.56, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Владыка Ковчега вдохнул тестовую дозу Плейриума' },
+    {
+      time: 55.16,
+      texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1',
+      type: 'character_quote',
+      slackKey: '14_feeling_zero',
+      label: 'Slack: Клиентарх Royal Ark — филлинга 0'
+    },
+    {
+      time: 64.34,
+      texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1',
+      type: 'character_quote',
+      slackKey: '14_feeling_zero',
+      label: 'Slack: Клиентарх Royal Ark — Мне всё нравится'
+    },
+    { time: 73.50, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Садистский катарсис достигнут, дофамин потёк по магистралям' },
+{ time: 78.56, texKey: 'retro_film_act5_outer_perimeter_clientarch_siege_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Внешний периметр — Осада флота клиентархов Зинга' },
 
     // 5.32s: "устроили беспощадную хирургическую вивисекцию проекту «Хаусхант»,"
 
-    { time: 9.82, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Хирургическая вивисекция проекта Хаусхант' },
+    { time: 83.88, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Лорд — Хирургическая вивисекция проекта Хаусхант' },
 
     // 9.70s: "который оборонял старший навигатор Эдик Левин." -> Чистый портрет Эдика перед депешей
 
     {
 
-      time: 14.20,
+      time: 88.26,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -762,7 +797,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 18.72,
+      time: 92.78,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -782,13 +817,13 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 19.40s: "Они потребовали вырезать из сосуда все сложные механики, выпотрошить логику и превратить искалеченный плейбл в безвольного инвалида..."
 
-    { time: 23.90, texKey: 'retro_film_eduard_danial_playable_autopsy_green_v6', type: 'event_illustration', label: 'Ампутация механик плейбла: вивисекция и утечка зеленого Плейриума' },
+    { time: 97.96, texKey: 'retro_film_eduard_danial_playable_autopsy_green_v6', type: 'event_illustration', label: 'Ампутация механик плейбла: вивисекция и утечка зеленого Плейриума' },
 
     // 42.40s: "«Капец, был же нормальный плейбл»." -> Чистый портрет Эдика перед репликой
 
     {
 
-      time: 46.90,
+      time: 120.96,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -806,13 +841,13 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 49.70s: "Следом под плазменный резак пошел любовно собранный строительный шатер и навигатор оплакал кусок кода как родного брата."
 
-    { time: 54.20, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Плазменный резак и строительный шатер' },
+    { time: 128.26, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — Плазменный резак и строительный шатер' },
 
     // 54.35s: Чистый портрет Эдика перед появлением скриншота тента
 
     {
 
-      time: 58.85,
+      time: 132.91,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -832,7 +867,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 61.85,
+      time: 135.91,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -852,7 +887,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 66.66,
+      time: 140.72,
 
       texKey: 'retro_film_treasure_chest_egg_beak_horror_v4',
 
@@ -864,7 +899,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 94.22,
+      time: 168.28,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -882,7 +917,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 97.74,
+      time: 171.80,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -900,27 +935,27 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 100.44, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и книга' },
+    { time: 174.50, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и книга' },
 
     // 105.26s: Радиограмма Supercell 5 суток в обесточенном буфере -> экран билда в отсеке Ковчега
 
-    { time: 109.76, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', label: 'Офис Ковчега: Экран с забытым мобильным билдом и буфер уведомлений Supercell' },
+    { time: 183.82, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', label: 'Офис Ковчега: Экран с забытым мобильным билдом и буфер уведомлений Supercell' },
 
     // 123.23s: Гермокапсулу вскрыли, выпал вердикт «Mavis legs are broken» -> всплывает слек-депеша
 
-    { time: 127.73, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', slackKey: '08_mavis_legs', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Депеша Supercell: Mavis legs are broken — Дроп ужаса' },
+    { time: 201.79, texKey: 'retro_film_mavis_ark_office_gemini_v1', type: 'event_illustration', slackKey: '08_mavis_legs', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Депеша Supercell: Mavis legs are broken — Дроп ужаса' },
 
     // 130.14s: ПОСЛЕ «Mavis legs are broken» -> РЕАЛИСТИЧНАЯ КРИПОТА (Мэвис с переломанными ногами ползает по стеклу)
 
-    { time: 134.64, texKey: 'retro_film_mavis_phone_horror_contrast_gemini_v4', type: 'event_illustration', label: 'Реалистичный хоррор: Дева Мэвис с вывернутыми переломанными ногами' },
+    { time: 208.70, texKey: 'retro_film_mavis_phone_horror_contrast_gemini_v4', type: 'event_illustration', label: 'Реалистичный хоррор: Дева Мэвис с вывернутыми переломанными ногами' },
 
     // 151.26s: Возврат к Лорду
 
-    { time: 155.76, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Триумф инженерной мысли' },
+    { time: 229.82, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Триумф инженерной мысли' },
 
     {
 
-      time: 163.40,
+      time: 237.46,
 
       texKey: 'ai_lord_face_eyes_macro_gemini_1080p',
 
@@ -934,7 +969,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 173.02,
+      time: 247.08,
 
       texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
 
@@ -954,7 +989,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 179.30,
+      time: 253.36,
 
       texKey: 'retro_horror_film_egor_mickey_vat_v14',
 
@@ -974,7 +1009,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 183.14,
+      time: 257.20,
 
       texKey: 'retro_film_artem_mechanicus_cowl_flying_cow_v12',
 
@@ -990,7 +1025,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 187.58,
+      time: 261.64,
 
       texKey: 'retro_film_space_cyber_cow_lasers_gemini_v1',
 
@@ -1004,7 +1039,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 198.24,
+      time: 272.30,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -1024,7 +1059,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     {
 
-      time: 201.08,
+      time: 275.14,
 
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
 
@@ -1044,21 +1079,21 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     // 200.66s: "Мои кремниевые цепи не обучены распознавать человеческую иронию."
 
-    { time: 205.16, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Не обучен распознавать человеческую иронию' },
+    { time: 279.22, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Не обучен распознавать человеческую иронию' },
 
     // 205.78s: "Я официально внес боевое лазерное вымя в корабельный реестр простых решений."
 
-    { time: 210.28, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Реестр простых решений' },
+    { time: 284.34, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Реестр простых решений' },
 
     // 211.10s: "А когда клиентархи из Game Gears прислали депешу..."
 
-    { time: 215.60, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Депеша Game Gears' },
+    { time: 289.66, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Депеша Game Gears' },
 
     // 217.98s: "...палач старого стека Максим Мамусин перевел щиты в боевой режим одним священным словом. Заебись!"
 
     {
 
-      time: 222.48,
+      time: 296.54,
 
       texKey: 'retro_film_maksim_mamusin_android_coding_gemini_pro_v8',
 
@@ -1074,7 +1109,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
     },
 
-    { time: 230.10, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
+    { time: 304.16, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Финал клиентархов' },
 
   ],
 
