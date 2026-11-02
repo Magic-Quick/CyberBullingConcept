@@ -97,9 +97,12 @@ plbx.init(async () => {
 
   app.stage.removeChild(loadingContainer);
 
+  console.log('[main] Assets loaded successfully, creating MovieApp...');
   // Instantiate MovieApp
   movieApp = new MovieApp(app);
   (window as any).__movieApp = movieApp;
+  (window as any).__movieAppReady = true;
+  console.log('[main] MovieApp created and assigned to window.__movieApp!');
   (window as any).__ambientManager = AmbientManager;
   movieApp.resize(window.innerWidth, window.innerHeight);
 

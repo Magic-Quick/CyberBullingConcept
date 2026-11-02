@@ -73,7 +73,7 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     // 40.64s: "запечатать чистый Плеериум внутри священного сосуда, плейбла или по-рабочему в цеху плейбака. Вбить внутрь руны кода, живые ассеты..."
     { time: 40.64, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон и раскрытый фолиант — Литургия плейбла' },
     // 57.64s: "Когда ничего не подозревающий гуманоид на краю галактики кликает на этот артефакт, нейротоксин..."
-    { time: 57.64, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз Лорда' },
+    { time: 57.64, texKey: 'humanoid_zombie_smartphone_v1', type: 'event_illustration', label: 'Тап-капкан захлопывается: Гуманоид со смартфоном в гипнозе' },
     // 68.00s: "и парализует волю ровно настолько, чтобы он нажал «Скачать». Один клик, дофаминовый удар, конверсия."
     { time: 68.00, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Конверсия' },
     // 79.60s: "Но это в идеале. На этой неделе клиентархи-правконосцы решили отомстить."
@@ -557,8 +557,8 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
 
   // Act 6: Tribunal Reward / Награда (88.66s)
   act_6_reward: [
-    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния (СРАЗУ звучит добрая возвышенная музыка!)
-    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', ambientCueKey: 'peace_04_chronicles_playbox_heavenly_vocalise_30s', label: 'Заявочный план: Гермоврата Палаты Воздаяния — Добрая музыка' },
+    // 0.00s: Заявочный план — Гермоврата Палаты Воздаяния (звучит чистая добрая музыка chronicles_ambient!)
+    { time: 0.00, texKey: 'retro_film_act6_tribunal_sealed_vault_door_mj_v1_1793571316_3', type: 'event_illustration', label: 'Заявочный план: Гермоврата Палаты Воздаяния — Добрая музыка' },
     // 6.32s: "А вот Высшая Печенька Благодати уходит человеку..." -> Трон Трибунала
     { time: 6.32, texKey: 'ai_lord_throne_tribunal_awards', type: 'ai_lord', label: 'Зал суда: ИИ-Лорд на троне трибунала — Оглашение Высшей Милости' },
     // 10.74s: "Награду забирает верховный надзиратель конвейера – Алексей Горин."
@@ -584,16 +584,18 @@ const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       label: 'Новообращённый Послушник Алексей: Питательная трубка с 2D-плейбаком'
     },
     // 37.82s: "В награду за столь великую заботу о коллективе Ковчег жалует надзирателю немыслимую роскошь в космическом пространстве – чашку безупречного эспрессо."
-    { time: 37.82, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', ambientCueKey: 'peace_05_chronicles_playbox_uplifting_pads_30s', label: 'Кофейное хранилище Ковчега — Чашка безупречного эспрессо' },
+    // Показываем чашку эспрессо с печенькой, БЕЗ перекрытия лица лорда!
+    { time: 37.82, texKey: 'retro_film_ship_storage_coffee_cup_v2', type: 'event_illustration', label: 'Чашка безупречного эспрессо на блюдце с печенькой благодати' },
     // 49.36s: "Зерна ручной обжарки с реликтовых плантаций, плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада..."
-    { time: 49.36, texKey: 'retro_film_ship_storage_coffee_vault_v2', type: 'event_illustration', label: 'Зёрна реликтовых плантаций и бархатная пенка цвета ореха' },
+    // Макро крупный план пенки эспрессо и пара
+    { time: 49.36, texKey: 'retro_film_ship_storage_coffee_cup_v1', type: 'event_illustration', label: 'Макро: Плотная бархатная пенка цвета лесного ореха и аромат шоколада' },
     // 60.18s: "Поэтому сервисная игла пневмодозатора с шипением врезается напрямую в его питательный катетер, и кипящий концентрат под давлением в 8 атмосфер впрыскивается прямо в вену, минуя ротовую полость!"
     // ЖЕСТКАЯ КОНЦОВКА НАГРАДЫ: Внезапный шоковый дроп нагнетания на ударе сервисной иглы в вену!
     { time: 60.18, texKey: 'retro_film_feed_tubes_coders_v7', type: 'event_illustration', ambientCueKey: 'dread_03_predator_instant_terror_drop_25s', label: 'Удар сервисной иглы пневмодозатора: Кипящий концентрат в вену — Жесткое нагнетание' },
     // 74.02s: "Никаких чашек, никаких пауз, его глаза даже не успели моргнуть и оторваться от штурма Натиона."
-    { time: 74.02, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'Штурм Нотиона: Глаза не успели моргнуть — Пульс 240' },
+    { time: 74.02, texKey: 'retro_film_gorin_batman_cowl_gemini_v20', type: 'event_illustration', label: 'Штурм Нотиона: Глаза Горина не успели моргнуть' },
     // 80.74s: "Зрачки расширены, пульс 240, давление в норме."
-    { time: 80.74, texKey: 'ai_lord_face_extreme_closeup_canonical_1080p', type: 'ai_lord', label: 'ECU: Зрачки расширены, давление в норме' },
+    { time: 80.74, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Зрачки расширены, пульс 240, давление в норме' },
     // 86.16s: "Наслаждайтесь букетом, Алексей. За работу!"
     { time: 86.16, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Лик ИИ-Лорда — Наслаждайтесь букетом, Алексей. За работу!' },
   ],

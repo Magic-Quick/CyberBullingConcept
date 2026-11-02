@@ -43,6 +43,8 @@ export class Subtitles extends Container {
   }[] = [];
   private _karaokeCurrentScrollY = 0;
   private _karaokeTargetScrollY = 0;
+  private _karaokeContainerTargetAlpha = 1;
+  private _karaokeContainerCurrentAlpha = 1;
 
   // 3. Floating Slack Screenshot Modal
   private _slackDimOverlay: Graphics;
@@ -423,6 +425,9 @@ export class Subtitles extends Container {
 
     // Toggle Modes: Dialogue vs Right-Side Karaoke Screen
     this._dialogueContainer.visible = !isKaraoke;
+    this._karaokeContainerTargetAlpha = isKaraoke ? 1 : 0;
+    this._karaokeContainerCurrentAlpha = isKaraoke ? 1 : 0;
+    this._karaokeScreenContainer.alpha = this._karaokeContainerCurrentAlpha;
     this._karaokeScreenContainer.visible = isKaraoke;
 
     this._mainText.text = '';
@@ -630,6 +635,16 @@ export class Subtitles extends Container {
       }
     }
 
+    if (this._isKaraoke && this._cues.length > 0) {
+      const lastCue = this._cues[this._cues.length - 1];
+      if (currentTime >= lastCue.end) {
+        // Karaoke lyrics finished! Smoothly hide karaoke panel
+        this._karaokeContainerTargetAlpha = 0;
+      } else {
+        this._karaokeContainerTargetAlpha = 1;
+      }
+    }
+
     const currentCue = this._cues[this._currentCueIndex];
     if (!currentCue) return;
 
@@ -681,11 +696,19 @@ export class Subtitles extends Container {
   public update(dt: number): void {
     this._cursorTimer += dt;
 
-    // Smooth continuous crawling scroll of karaoke text list upward
+    // Smooth continuous crawling scroll of karaoke text list upward & alpha fade
     if (this._isKaraoke) {
       const lerpSpeed = Math.min(1, dt * 5.0);
       this._karaokeCurrentScrollY += (this._karaokeTargetScrollY - this._karaokeCurrentScrollY) * lerpSpeed;
       this._karaokeListContainer.y = this._karaokeCurrentScrollY;
+
+      if (this._karaokeContainerCurrentAlpha !== this._karaokeContainerTargetAlpha) {
+        const dAlpha = this._karaokeContainerTargetAlpha - this._karaokeContainerCurrentAlpha;
+        const step = Math.sign(dAlpha) * Math.min(Math.abs(dAlpha), dt * 3.5);
+        this._karaokeContainerCurrentAlpha += step;
+        this._karaokeScreenContainer.alpha = this._karaokeContainerCurrentAlpha;
+        this._karaokeScreenContainer.visible = this._karaokeContainerCurrentAlpha > 0.01;
+      }
     }
 
     // Slack screenshot countdown timer

@@ -130,9 +130,13 @@ export const CREW_ARK_ROLES: Record<string, string> = {
 
   'женя': 'Мастер Вечного Рендера',
 
-  'владимир хаецкий': 'Страж Невидимого Слоя',
+  'владимир хаецкий': 'Хранитель Лонгбокса Disney',
 
-  'хаецкий': 'Страж Невидимого Слоя',
+  'вова хаецкий': 'Хранитель Лонгбокса Disney',
+
+  'вова': 'Хранитель Лонгбокса Disney',
+
+  'хаецкий': 'Хранитель Лонгбокса Disney',
 
   'давит газарян': 'Рыцарь Старого Движка',
 
@@ -5153,7 +5157,7 @@ export class MovieApp {
 
         if (concertCut) {
 
-          this._concertCurrentTexKey = concertCut.texKey;
+          this._concertCurrentTexKey = `${concertCut.texKey}_${concertCut.time}`;
 
           this._applyConcertCut(concertCut, false);
 
@@ -6460,11 +6464,13 @@ export class MovieApp {
 
         const activeCut = getConcertCutAtTime(currentTime);
 
-        if (this._concertCurrentTexKey !== activeCut.texKey) {
+        const concertCutKey = `${activeCut.texKey}_${activeCut.time}`;
+
+        if (this._concertCurrentTexKey !== concertCutKey) {
 
           const isInitial = !this._concertCurrentTexKey;
 
-          this._concertCurrentTexKey = activeCut.texKey;
+          this._concertCurrentTexKey = concertCutKey;
 
           this._applyConcertCut(activeCut, !isInitial);
 
@@ -7514,13 +7520,14 @@ export class MovieApp {
 
     // Check if this character's badge is being shown for the first time
 
+    const isSong = STORY_ACTS[this._currentActIndex]?.id === 'act_7_song' || STORY_ACTS[this._currentActIndex]?.category === 'song';
     const isFirstTime = !this._seenCharacterQuotes.has(fullName);
 
     this._seenCharacterQuotes.add(fullName);
 
 
 
-    if (isFirstTime) {
+    if (isFirstTime && !isSong) {
 
       // First time: layout badge based on full dimensions, but start typing text letter-by-letter with keyboard sound
 

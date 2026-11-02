@@ -165,13 +165,22 @@ const textureAliases: Record<string, string> = {
   retro_film_vova: 'retro_film_vova_khaetsky_v11',
   retro_film_kristian: 'retro_film_kristian_repository_guardian_v2',
   retro_film_kirill: 'retro_film_kirill_beryozkin_v2',
+  humanoid_zombie_smartphone_v1: 'humanoid_zombie_smartphone_v1',
+  retro_horror_film_mickey_biovat_slime_gemini_v6: 'retro_horror_film_mickey_biovat_slime_gemini_v6',
+  retro_horror_film_mickey_biovat_slime_gpt_v8: 'retro_horror_film_mickey_biovat_slime_gpt_v8',
+  mickey_biovat_slime_gemini_v6: 'retro_horror_film_mickey_biovat_slime_gemini_v6',
+  mickey_biovat_slime_gpt_v8: 'retro_horror_film_mickey_biovat_slime_gpt_v8',
 
   // Tribunal & Awards (AI-Lord on GPU Throne with Baton & Cookie Servitors)
   ai_lord_throne_tribunal_awards: 'ai_lord_throne_tribunal_awards',
   tribunal_awards: 'ai_lord_throne_tribunal_awards',
   ai_lord_tribunal: 'ai_lord_throne_tribunal_awards',
   ai_lord_baton: 'ai_lord_throne_tribunal_awards',
-  ai_lord_cookie: 'ai_lord_throne_tribunal_awards',
+  ai_lord_cookie: 'retro_film_ship_storage_coffee_cup_v2',
+  coffee_cup: 'retro_film_ship_storage_coffee_cup_v2',
+  coffee_cup_v1: 'retro_film_ship_storage_coffee_cup_v1',
+  coffee_cup_v2: 'retro_film_ship_storage_coffee_cup_v2',
+  coffee_vault: 'retro_film_ship_storage_coffee_vault_v2',
   cyber_lord_throne: 'ai_lord_throne_tribunal_awards',
 
   stasis_coffin: 'retro_film_clientarch_billionaires_space_freeze_gemini_v10',

@@ -51,113 +51,126 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
   // [КУПЛЕТ 5: 145.36s - 165.88s]
   { time: 145.36, texKey: 'ai_lord_calm_singing', label: 'Куплет 5: Подготовка к взрыву' },
   { time: 152.30, texKey: 'ai_lord_drive_default', label: 'Драйв: Сервоторизация!' },
+  { time: 157.00, texKey: 'humanoid_zombie_smartphone_v1', label: 'Миллиард гуманоидов: Смартфон-зомби в анабиозе' },
   { time: 161.62, texKey: 'ai_lord_drive_back', label: 'Задний план: Свет софитов' },
 
   // [ФИНАЛЬНЫЙ ДРАЙВ И ПЕРСОНАЖИ: 165.88s - 221.45s]
   { time: 165.88, texKey: 'ai_lord_drive_default', label: 'Финальный драйв: Я вас научу!' },
   { time: 169.28, texKey: 'ai_lord_concert_extreme_low_angle', label: 'Соло: Джнгхфдбвк / Jnghfdbk' },
 
-  // [171.00s - 175.50s] "Как Горин на синке втирал «демоблил», Как в чат на английской «Jnghfdbk» влупил!"
+  // [171.00s - 175.00s] "Как Горин на синке втирал «демоблил», Как в чат на английской «Jnghfdbk» влупил!"
   {
     time: 171.00,
     texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
     characterName: 'Алексей Горин',
-    characterRole: 'Верховный Надзиратель Конвейера',
+    characterRole: 'Head of Production • Верховный Надзиратель Конвейера',
     characterThemeColor: 0xffaa00,
-    label: 'Горин: На синке втирал демоблил, Jnghfdbk влупил'
+    label: 'Горин: На синке втирал «демоблил» / Jnghfdbk'
   },
 
-  // [175.50s - 180.00s] "Как Ева вопит: Этот плебл в работу! Кик-офф пять минут — и все пашем в субботу!"
+  // [175.00s - 178.80s] "Как Ева вопит: Этот плебл в работу! Кик-офф пять минут — И все пашем в субботу!"
   {
-    time: 175.50,
+    time: 175.00,
     texKey: 'retro_film_eva_theatrical_prop_helmet_v7',
     characterName: 'Ева Аксёнова',
     characterRole: 'Главная Хранительница Скрижалей и Сроков',
     characterThemeColor: 0xff3399,
-    label: 'Ева: Этот плебл в работу! Кик-офф пять минут'
+    label: 'Ева: Этот плебл в работу! Кик-офф 5 минут'
   },
 
-  // [180.00s - 184.50s] "Как Эдик принёс от клиента свиток: Одиннадцать правок, одиннадцать пыток!"
+  // [178.80s - 184.00s] "Как Эдик принёс от клиента свиток: Одиннадцать правок, одиннадцать пыток!"
   {
-    time: 180.00,
-    texKey: 'retro_film_clientarch_fleet_revisions_volley_v1',
-    label: 'Свиток Клиентархов: 11 правок и 11 пыток'
+    time: 178.80,
+    texKey: 'retro_warhammer_eduard_levin_gpt_v3',
+    characterName: 'Эдуард Левин',
+    characterRole: 'Creative Lead • Зодчий Игрового Замысла',
+    characterThemeColor: 0xff3366,
+    label: 'Эдик: Свиток от клиента — 11 правок и 11 пыток'
   },
 
-  // [184.50s - 188.50s] "Как в банке забытый томится Дисней — сто тридцать ночей без живых новостей!"
-  // Появляется синхронно с песней и держится полные 4 секунды чистой экспозиции
+  // [184.00s - 186.30s] "Как в банке забытый томится Дисней —"
   {
-    time: 184.50,
-    texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
-    label: 'Отсек для Диснея: Мышь в стазисе (130 ночей без новостей)'
+    time: 184.00,
+    texKey: 'retro_horror_film_mickey_biovat_slime_gemini_v6',
+    label: 'В банке забытый томится Дисней: Стазис-биоват'
   },
 
-  // [188.50s - 192.50s] "Егор для Диснея пристроил отсек, чтоб мышь не тревожила век человек!"
-  // Эталонный утвержденный кадр Егора из папки Fin
+  // [186.30s - 188.90s] "Сто тридцать ночей без живых новостей!" (мышь скребётся о толстый кварц)
   {
-    time: 188.50,
+    time: 186.30,
+    texKey: 'retro_horror_film_mickey_biovat_slime_gpt_v8',
+    label: 'Мышь скребётся о кварц изнутри биовата'
+  },
+
+  // [188.90s - 192.60s] "Егор для Диснея пристроил отсек, чтоб мышь не тревожила век человек!"
+  {
+    time: 188.90,
     texKey: 'retro_horror_film_egor_mickey_vat_v14',
     characterName: 'Егор Ткачёв',
-    characterRole: 'Преподобный Толкователь Воли Клиентархов',
+    characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
     characterThemeColor: 0x9933ff,
     label: 'Егор: Для Диснея пристроил отсек'
   },
 
-  // [192.50s - 197.00s] "Как Техлид ослеп, коль забанили Клод: вслепую руками пулл-реквесты гребёт!"
+  // [192.60s - 196.80s] "Как Техлид ослеп, коль забанили Клод — вслепую руками пулл-реквесты гребёт!"
   {
-    time: 192.50,
+    time: 192.60,
     texKey: 'retro_soviet_film_pavel_playbox_logo_gpt_v4',
     characterName: 'Павел Самойленко',
-    characterRole: 'Архи-Цензор Синтаксической Ереси',
+    characterRole: 'CTO • Архи-Цензор Синтаксической Ереси',
     characterThemeColor: 0xff5e1a,
-    label: 'Павел Самойленко: Техлид ослеп, коль забанили Клод'
+    label: 'Павел Самойленко: Забанили Клод, пулл-реквесты гребёт'
   },
 
-  // [197.00s - 201.50s] "Как Толя Гранолой пытал коллег: «Пробейте мне сотку! Замедлен ваш бег!»"
+  // [196.80s - 202.40s] "Как Толя Гранолой пытал коллег: «Пробейте мне сотку! Замедлен ваш бег!»"
   {
-    time: 197.00,
+    time: 196.80,
     texKey: 'retro_film_tolya_gpt_v2',
     characterName: 'Толя Щербаков',
     characterRole: 'Лорд-Командор Цитадели',
-    characterThemeColor: 0xe60000,
-    label: 'Толя: Пробейте мне сотку!'
+    characterThemeColor: 0xffcc00,
+    label: 'Толя Гранола: Пробейте мне сотку'
   },
+
+  // [202.40s - 204.00s] "Как плейбл без проджекта едет на ощупь,"
   {
-    time: 199.50,
+    time: 202.40,
     texKey: 'ai_lord_drive_default',
     label: 'Плейбл без проджекта едет на ощупь: Драйв'
   },
 
-  // [201.50s - 205.50s] "Как плейбл без проджекта едет на ощупь, как Артём пирамиды до кости полощет!"
+  // [204.00s - 207.00s] "Как Артём пирамиды до кости полощет!"
   {
-    time: 201.50,
+    time: 204.00,
     texKey: 'retro_film_artem_khukhro_guyver_gemini_v19',
     characterName: 'Артём Хухро',
-    characterRole: 'Техноэкзорцист Графической Скверны',
+    characterRole: 'Lead 3D • Техноэкзорцист Графической Скверны',
     characterThemeColor: 0x00ff88,
     label: 'Артём: Пирамиды до кости полощет'
   },
+
+  // [207.00s - 209.50s] "У Жени и Вики планшеты горят:"
   {
-    time: 205.50,
+    time: 207.00,
     texKey: 'retro_film_zhenya_artist_real_v11',
     characterName: 'Женя',
     characterRole: 'Мастер Вечного Рендера',
     characterThemeColor: 0xffcc00,
     label: 'Женя: Планшеты горят'
   },
+  // [209.50s - 212.70s] "...пятьсот перекрасок подряд!"
   {
-    time: 207.50,
+    time: 209.50,
     texKey: 'retro_film_vika_neural_corruption_v3',
     characterName: 'Виктория Фесенко',
     characterRole: 'Верховная Настоятельница Пиксельного Канона',
     characterThemeColor: 0xff00ff,
     label: 'Вика: 500 перекрасок подряд'
   },
-
-  // [209.50s - 221.45s] "Проглотит весь треш, словно райский нектар: «Куда слать бабло?! Заверните товар!»"
-  { time: 209.50, texKey: 'ai_lord_concert_arena_wide', label: 'Апофеоз: Заверните товар!' },
-  { time: 216.11, texKey: 'ai_lord_drive_default', label: 'Кульминация соло' },
-  { time: 218.60, texKey: 'ai_lord_drive_default', label: 'Тап-капкан' },
+  // [212.70s - 221.45s] "Проглотит весь треш, словно райский нектар: «Куда слать бабло?! Заверните товар!»"
+  { time: 212.70, texKey: 'ai_lord_concert_arena_wide', label: 'Апофеоз: Заверните товар!' },
+  { time: 216.00, texKey: 'ai_lord_drive_default', label: 'Кульминация соло' },
+  { time: 218.60, texKey: 'humanoid_zombie_smartphone_v1', label: 'Тап-капкан захлопывается' },
 
   // [ОКОНЧАНИЕ / OUTRO: 221.45s - 237.20s]
   { time: 221.45, texKey: 'ai_lord_concert_arena_wide', label: 'Апофеоз арены' },

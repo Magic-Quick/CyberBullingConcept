@@ -1315,8 +1315,7 @@ export const STORY_ACTS: ActData[] = [
       {
             "start": 183.08,
             "end": 185.58,
-            "text": "гигантской роботизированной коровы,",
-            "slackScreenshotKey": "07_cow_laser"
+            "text": "гигантской роботизированной коровы,"
       },
       {
             "start": 185.58,
@@ -1331,8 +1330,7 @@ export const STORY_ACTS: ActData[] = [
       {
             "start": 191.9,
             "end": 193.74,
-            "text": "бьющим напрямую из вымени.",
-            "slackScreenshotKey": "07_cow_laser"
+            "text": "бьющим напрямую из вымени."
       },
       {
             "start": 193.74,
@@ -1345,7 +1343,11 @@ export const STORY_ACTS: ActData[] = [
       {
             "start": 196.58,
             "end": 199.7,
-            "text": "Артем слишком буквально принял мою просьбу."
+            "text": "Артем слишком буквально принял мою просьбу.",
+            "speaker": "Эдуард Левин",
+            "speakerRole": "Creative Lead • Зодчий Игрового Замысла",
+            "avatarKey": "avatar_eduard",
+            "slackScreenshotKey": "07_cow_laser"
       },
       {
             "start": 200.66,
@@ -1402,7 +1404,7 @@ export const STORY_ACTS: ActData[] = [
 
     "subtitle": "Кирилл Берёзкин и Кристиан • Без права на кофе",
 
-    "imageKey": "ai_lord_baton",
+    "imageKey": "ai_lord_throne_tribunal_awards",
 
     "audioKey": "07_act6",
 
@@ -1558,7 +1560,7 @@ export const STORY_ACTS: ActData[] = [
 
     "subtitle": "Алексей Горин • Золотой стандарт лояльности",
 
-    "imageKey": "ai_lord_cookie",
+    "imageKey": "ai_lord_throne_tribunal_awards",
 
     "audioKey": "07_act6",
 
@@ -2149,58 +2151,55 @@ export const STORY_ACTS: ActData[] = [
 
       {
             "start": 171.0,
-            "end": 175.5,
+            "end": 175.0,
             "text": "Как Горин на синке\nВтирал «демоблил»,\nКак в чат на английской\n«Jnghfdbk» влупил!",
             "speaker": "Алексей Горин",
             "speakerRole": "Head of Production • Верховный Надзиратель Конвейера",
             "avatarKey": "avatar_gorin",
-            "slackScreenshotKey": "02_demoblil",
             "stanzaBreak": true
       },
-
       {
-            "start": 175.5,
-            "end": 180.0,
+            "start": 175.0,
+            "end": 178.8,
             "text": "Как Ева вопит:\nЭтот плебл в работу!\nКик-офф пять минут —\nИ все пашем в субботу!",
             "speaker": "Ева Аксёнова",
             "speakerRole": "Главная Хранительница Скрижалей и Сроков",
             "avatarKey": "avatar_eva",
-            "slackScreenshotKey": "11_eva_kickoff",
             "stanzaBreak": true
       },
-
       {
-            "start": 180.0,
-            "end": 184.5,
+            "start": 178.8,
+            "end": 184.0,
             "text": "Как Эдик принёс\nОт клиента свиток:\nОдиннадцать правок,\nОдиннадцать пыток!",
             "speaker": "Эдуард Левин",
-            "speakerRole": "Архи-Инженер Скриптовых Катастроф",
+            "speakerRole": "Creative Lead • Зодчий Игрового Замысла",
             "avatarKey": "avatar_eduard",
-            "slackScreenshotKey": "05_edik_11_points",
             "stanzaBreak": true
       },
-
       {
-            "start": 184.5,
-            "end": 188.5,
-            "text": "Как в банке забытый\nТомится Дисней —\nСто тридцать ночей\nБез живых новостей!",
+            "start": 184.0,
+            "end": 186.3,
+            "text": "Как в банке забытый\nТомится Дисней —",
+            "stanzaBreak": false
+      },
+      {
+            "start": 186.3,
+            "end": 188.9,
+            "text": "Сто тридцать ночей\nБез живых новостей!",
             "stanzaBreak": true
       },
-
       {
-            "start": 188.5,
-            "end": 192.5,
+            "start": 188.9,
+            "end": 192.6,
             "text": "Егор для Диснея\nПристроил отсек,\nЧтоб мышь не тревожила\nВек человек!",
             "speaker": "Егор Ткачёв",
-            "speakerRole": "Преподобный Толкователь Воли Клиентархов",
+            "speakerRole": "Creative Director • Преподобный Толкователь Воли Клиентархов",
             "avatarKey": "avatar_egor",
-            "slackScreenshotKey": "03_disney_long_box",
             "stanzaBreak": true
       },
-
       {
-            "start": 192.5,
-            "end": 197.0,
+            "start": 192.6,
+            "end": 196.8,
             "text": "Как Техлид ослеп,\nКоль забанили Клод:\nВслепую руками\nПулл-реквесты гребёт!",
             "speaker": "Павел Самойленко",
             "speakerRole": "CTO • Архи-Цензор Синтаксической Ереси",
@@ -2208,53 +2207,39 @@ export const STORY_ACTS: ActData[] = [
             "slackScreenshotKey": "04_claude_banned",
             "stanzaBreak": true
       },
-
       {
-            "start": 197.0,
-            "end": 201.5,
-            "text": "Как Толя Гранолой\nПытает коллег:\n«Пробейте мне сотку,\nЗамедлен ваш бег!»",
+            "start": 196.8,
+            "end": 202.4,
+            "text": "Как Толя Гранолой\nПытает коллег:\n«Пробейте мне сотку!\nЗамедлен ваш бег!»",
             "speaker": "Толя Щербаков",
             "speakerRole": "Лорд-Командор Цитадели",
-            "avatarKey": "avatar_toly",
+            "avatarKey": "avatar_tolya",
             "stanzaBreak": true
       },
-
       {
-            "start": 201.5,
-            "end": 205.5,
-            "text": "Как плейбл без проджекта\nЕдет на ощупь,\nКак Артем пирамиды\nДо кости полощет!",
+            "start": 202.4,
+            "end": 207.0,
+            "text": "Как плейбл без проджекта\nЕдет на ощупь,\nКак Артём пирамиды\nДо кости полощет!",
             "speaker": "Артём Хухро",
-            "speakerRole": "Техноэкзорцист Графической Скверны",
-            "avatarKey": "avatar_huhro",
-            "slackScreenshotKey": "10_pyramids_museum",
+            "speakerRole": "Lead 3D • Техноэкзорцист Графической Скверны",
+            "avatarKey": "avatar_artem",
             "stanzaBreak": true
       },
-
       {
-            "start": 205.5,
-            "end": 209.5,
+            "start": 207.0,
+            "end": 212.7,
             "text": "У Жени и Вики\nПланшеты горят:\nСто кнопок,\nПятьсот перекрасок подряд!",
-            "speaker": "Виктория Фесенко и Женя",
-            "speakerRole": "Мастера Вечного Рендера",
+            "speaker": "Вика & Женя",
+            "speakerRole": "Верховные Настоятельницы Пиксельного Канона",
             "avatarKey": "avatar_vika",
             "stanzaBreak": true
       },
-
       {
-            "start": 209.5,
-            "end": 216.0,
+            "start": 212.7,
+            "end": 222.0,
             "text": "Проглотит весь треш,\nСловно райский нектар:\n«Куда слать бабло?!\nЗаверните товар!»",
             "stanzaBreak": true
-      },
-
-      {
-            "start": 216.0,
-            "end": 222.0,
-            "text": "«Куда слать бабло?!\nЗаверните товар!»",
-            "stanzaBreak": true
       }
-
-
 ]
 
   }
