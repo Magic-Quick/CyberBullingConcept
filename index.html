@@ -231,7 +231,25 @@
     }
 
     /* Hero Section */
-    .hero-section {
+        /* Hero Brand Skull Mark */
+    .hero-brand-mark {
+      margin-bottom: 22px;
+    }
+
+    .hero-skull-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.45));
+      display: block;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .hero-skull-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 32px rgba(0, 245, 212, 0.75));
+    }
+.hero-section {
       padding: 70px 0 50px;
       position: relative;
     }
@@ -1241,36 +1259,15 @@
   <!-- Starfield Canvas Animation -->
   <canvas id="starCanvas" class="star-canvas"></canvas>
 
-  <!-- Topbar / Playbox Deploy Navbar -->
-  <header class="plbx-topbar">
-    <div class="container plbx-topbar-inner">
-      <a href="#hero" class="plbx-brand">
-        <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="plbx-logo-img">
-        <div class="plbx-brand-title">
-          <span>PLAYBOX // QUI CISTAM</span>
-          <span>DARK OFFLINE MIRROR</span>
-        </div>
-      </a>
-
-      <nav>
-        <ul class="plbx-nav">
-          <li><a href="#universe">// Лор Вселенной</a></li>
-          <li><a href="#crew">// Табель о рангах</a></li>
-        </ul>
-      </nav>
-
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <button class="plbx-cta-btn" onclick="goToPlayerAndLaunch()">
-          Смотреть Кибербуллинг
-        </button>
-      </div>
-    </div>
-  </header>
+  
 
   <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
       <div class="hero-text-col">
+        <div class="hero-brand-mark">
+          <img src="web_assets/images/gui/playbox_skull_icon.png" alt="Playbox Skull Emblem" class="hero-skull-logo">
+        </div>
         <h1 class="hero-title">
           <span class="glow-text">КИБЕРБУЛЛИНГ:</span><br>
           СЫГРАВШИЙ В ЯЩИК
