@@ -131,10 +131,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       background: var(--accent-cyan);
-      border-radius: 10px;
+      border-radius: 0;
       box-shadow: 0 0 16px var(--accent-cyan-glow);
       font-weight: 900;
       color: #06090f;
@@ -176,7 +176,7 @@
       font-size: 13px;
       font-weight: 600;
       padding: 8px 14px;
-      border-radius: 8px;
+      border-radius: 0;
       transition: all 0.2s ease;
       white-space: nowrap;
     }
@@ -202,7 +202,7 @@
       font-weight: 800;
       font-size: 13px;
       padding: 9px 20px;
-      border-radius: 8px;
+      border-radius: 0;
       text-decoration: none;
       box-shadow: 0 4px 18px var(--accent-cyan-glow);
       transition: all 0.2s ease;
@@ -244,7 +244,7 @@
       padding: 6px 14px;
       background: var(--accent-cyan-subtle);
       border: 1px solid var(--accent-cyan-border);
-      border-radius: 100px;
+      border-radius: 0;
       color: var(--accent-cyan);
       font-family: var(--font-mono);
       font-size: 11px;
@@ -285,7 +285,7 @@
       background: rgba(18, 21, 32, 0.8);
       border: 1px solid var(--accent-cyan-border);
       border-left: 3px solid var(--accent-cyan);
-      border-radius: 0 12px 12px 0;
+      border-radius: 0;
       padding: 16px 20px;
       margin-bottom: 28px;
       font-size: 14px;
@@ -314,7 +314,7 @@
       font-weight: 600;
       font-size: 14px;
       padding: 10px 22px;
-      border-radius: 8px;
+      border-radius: 0;
       border: 1px solid var(--border-subtle);
       text-decoration: none;
       transition: all 0.2s ease;
@@ -363,9 +363,9 @@
     /* Hero Media Visual Frame */
     .hero-visual-card {
       position: relative;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
       overflow: hidden;
       box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7);
     }
@@ -388,9 +388,9 @@
     }
 
     .visual-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 0;
       background: #2a3147;
     }
 
@@ -512,52 +512,31 @@
     }
 
     .info-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 26px;
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 24px;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
     }
 
     .info-card:hover {
-      border-color: var(--accent-cyan-border);
-      background: var(--bg-card);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 245, 212, 0.4);
+      background: #0c101a;
+      transform: translateY(-2px);
     }
 
-    .info-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-cyan), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .info-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--accent-cyan-subtle);
-      border: 1px solid var(--accent-cyan-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 18px;
+    .card-meta-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
       color: var(--accent-cyan);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
     }
 
     .card-title {
@@ -565,9 +544,6 @@
       font-weight: 700;
       margin-bottom: 10px;
       color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       line-height: 1.3;
     }
 
@@ -578,49 +554,48 @@
       flex-grow: 1;
     }
 
-    .card-footer-pill {
-      display: inline-block;
-      margin-top: 16px;
-      font-size: 10.5px;
+    .card-meta-footer {
       font-family: var(--font-mono);
-      color: var(--accent-cyan);
-      background: var(--accent-cyan-subtle);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--accent-cyan-border);
+      font-size: 10.5px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-transform: uppercase;
     }
 
     /* Core Dramaturgical Basis: 4 Pillars */
     .pillar-box {
-      background: linear-gradient(135deg, rgba(22, 26, 41, 0.8), rgba(14, 17, 26, 0.95));
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 28px 32px;
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 24px 28px;
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: flex-start;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     .pillar-box:hover {
-      border-color: var(--accent-cyan-border);
-      background: linear-gradient(135deg, rgba(28, 34, 54, 0.9), rgba(18, 22, 34, 0.98));
+      border-color: rgba(0, 245, 212, 0.4);
+      background: #0c101a;
     }
 
     .pillar-num {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       flex-shrink: 0;
-      border-radius: 50%;
-      background: var(--accent-cyan-subtle);
-      border: 1px solid var(--accent-cyan-border);
+      border-radius: 0;
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
       color: var(--accent-cyan);
       font-weight: 800;
       font-family: var(--font-mono);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 15px;
     }
 
     .pillar-content h3 {
@@ -645,7 +620,7 @@
     .crew-trigger-banner {
       background: linear-gradient(135deg, #161c2d, #0d101a);
       border: 1px solid var(--border-bright);
-      border-radius: 20px;
+      border-radius: 0;
       padding: 40px;
       text-align: center;
       position: relative;
@@ -685,7 +660,7 @@
       font-weight: 800;
       font-size: 16px;
       padding: 14px 34px;
-      border-radius: 12px;
+      border-radius: 0;
       border: 1px solid var(--accent-cyan);
       cursor: pointer;
       box-shadow: 0 6px 24px var(--accent-cyan-glow);
@@ -701,27 +676,30 @@
     /* Crew Filter Tabs */
     .crew-tabs {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 28px;
     }
 
     .crew-tab-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: #090c14;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text-muted);
-      font-size: 13px;
+      font-family: var(--font-mono);
+      font-size: 12px;
       font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 100px;
+      padding: 8px 16px;
+      border-radius: 0;
       cursor: pointer;
       transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .crew-tab-btn:hover {
       color: #fff;
-      border-color: var(--border-bright);
+      border-color: var(--accent-cyan);
     }
 
     .crew-tab-btn.active {
@@ -730,116 +708,97 @@
       color: var(--accent-cyan);
     }
 
-    /* Compact Crew Grid (Small pictures with names, expandable on click) */
+    /* Compact Crew Grid (Rectangular cards, zero rounded edges, edge-to-edge photo) */
     .crew-compact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 16px;
     }
 
     .crew-mini-tile {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 16px 12px;
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
     }
 
     .crew-mini-tile:hover {
       border-color: var(--accent-cyan);
-      background: var(--bg-card);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 16px var(--accent-cyan-subtle);
+      background: #0c101a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 245, 212, 0.15);
     }
 
-    .crew-mini-avatar-box {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 10px;
-      border: 2px solid var(--border-bright);
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    .crew-mini-photo-wrap {
+      width: 100%;
+      height: 200px;
       background: #000;
       position: relative;
-      flex-shrink: 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .crew-mini-tile:hover .crew-mini-avatar-box {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 14px var(--accent-cyan-glow);
-    }
-
-    .crew-mini-avatar-box img {
+    .crew-mini-photo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .crew-mini-tile:hover .crew-mini-photo-wrap img {
+      transform: scale(1.04);
+    }
+
+    .crew-mini-info {
+      padding: 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
     .crew-mini-badge {
-      font-size: 9px;
+      font-size: 10px;
       font-family: var(--font-mono);
       font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      background: var(--accent-cyan-subtle);
       color: var(--accent-cyan);
-      border: 1px solid var(--accent-cyan-border);
-      margin-bottom: 6px;
       letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .crew-mini-name {
       font-size: 14px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 3px;
+      margin-top: 2px;
       line-height: 1.25;
     }
 
     .crew-mini-role {
-      font-size: 11px;
+      font-size: 11.5px;
       color: var(--text-dim);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
-    .crew-mini-expand-hint {
-      font-size: 10px;
-      color: var(--accent-cyan);
-      font-family: var(--font-mono);
-      margin-top: 8px;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: all 0.2s ease;
-    }
-
-    .crew-mini-tile:hover .crew-mini-expand-hint {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Modal Backdrop and Card */
+    /* Modal Backdrop and In-Game Card */
     .crew-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(4, 6, 10, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(3, 5, 8, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       z-index: 10000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      animation: modalFadeIn 0.25s ease forwards;
+      padding: 20px;
+      animation: modalFadeIn 0.2s ease forwards;
     }
 
     .crew-modal-backdrop.active {
@@ -847,234 +806,32 @@
     }
 
     @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.98); }
+      from { opacity: 0; transform: scale(0.99); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    
-    /* In-Game Character Card Mode (Rectangle with Caption) */
     .crew-modal-card.game-card-mode {
-      max-width: 440px;
+      max-width: 480px;
       width: 100%;
-      background: #080b12;
-      border: 1px solid var(--accent-cyan-border);
-      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.25);
-      border-radius: 16px;
-      padding: 16px;
+      background: #06080e;
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 245, 212, 0.25);
+      border-radius: 0;
+      padding: 0;
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-    .crew-modal-card.game-card-mode .crew-modal-photo-box {
-      width: 100%;
-      height: 480px;
-      border-radius: 12px;
       overflow: hidden;
-      position: relative;
-      background: #020305;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .crew-modal-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(8, 11, 18, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      font-size: 26px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      z-index: 10;
-      user-select: none;
-    }
-    .crew-modal-arrow.prev { left: 12px; }
-    .crew-modal-arrow.next { right: 12px; }
-    .crew-modal-arrow:hover {
-      background: var(--accent-cyan);
-      color: #06090f;
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 15px var(--accent-cyan-glow);
-    }
-    .crew-game-caption {
-      text-align: center;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-    }
-    .crew-game-name {
-      font-family: var(--font-sans);
-      font-size: 20px;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-    }
-    .crew-game-role {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px var(--accent-cyan-glow);
-    }
-
-    .crew-modal-card {
-      background: #0d101a;
-      border: 1px solid var(--accent-cyan-border);
-      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.15);
-      border-radius: 20px;
-      max-width: 820px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      padding: 28px;
-    }
-
-    .crew-modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-subtle);
-      color: #fff;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      z-index: 10;
-    }
-
-    .crew-modal-close:hover {
-      background: var(--accent-cyan);
-      color: #050811;
-      border-color: var(--accent-cyan);
-    }
-
-    .crew-modal-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    @media (max-width: 720px) {
-      .crew-modal-grid {
-        grid-template-columns: 1fr;
-      }
-      
-    /* In-Game Character Card Mode (Rectangle with Caption) */
-    .crew-modal-card.game-card-mode {
-      max-width: 440px;
-      width: 100%;
-      background: #080b12;
-      border: 1px solid var(--accent-cyan-border);
-      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.25);
-      border-radius: 16px;
-      padding: 16px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .crew-modal-card.game-card-mode .crew-modal-photo-box {
-      width: 100%;
-      height: 480px;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      background: #020305;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .crew-modal-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(8, 11, 18, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #fff;
-      font-size: 26px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      z-index: 10;
-      user-select: none;
-    }
-    .crew-modal-arrow.prev { left: 12px; }
-    .crew-modal-arrow.next { right: 12px; }
-    .crew-modal-arrow:hover {
-      background: var(--accent-cyan);
-      color: #06090f;
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 15px var(--accent-cyan-glow);
-    }
-    .crew-game-caption {
-      text-align: center;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-    }
-    .crew-game-name {
-      font-family: var(--font-sans);
-      font-size: 20px;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
-    }
-    .crew-game-role {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px var(--accent-cyan-glow);
-    }
-
-    .crew-modal-card {
-        padding: 20px;
-      }
     }
 
     .crew-modal-photo-box {
       width: 100%;
-      height: 340px;
-      border-radius: 14px;
-      overflow: hidden;
+      height: 520px;
       position: relative;
       background: #000;
-      border: 1px solid var(--border-subtle);
+      border-bottom: 1px solid rgba(0, 245, 212, 0.3);
+      border-radius: 0;
+      overflow: hidden;
     }
 
     .crew-modal-img {
@@ -1082,7 +839,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
     }
 
     .crew-modal-img.slack {
@@ -1101,124 +858,110 @@
       pointer-events: auto;
     }
 
-    .crew-photo-toggle {
+    .crew-modal-close {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(10, 12, 18, 0.75);
-      backdrop-filter: blur(8px);
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      background: rgba(4, 6, 10, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.15s ease;
+    }
+
+    .crew-modal-close:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 52px;
+      border-radius: 0;
+      background: rgba(4, 6, 10, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #fff;
-      font-size: 11px;
-      font-family: var(--font-mono);
-      padding: 4px 10px;
-      border-radius: 6px;
+      font-size: 26px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: all 0.2s;
-      z-index: 5;
+      z-index: 10;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .crew-modal-arrow.prev { left: 8px; }
+    .crew-modal-arrow.next { right: 8px; }
+
+    .crew-modal-arrow:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-photo-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(4, 6, 10, 0.85);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 0;
+      cursor: pointer;
+      z-index: 20;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.15s ease;
     }
 
     .crew-photo-toggle:hover {
       background: var(--accent-cyan);
-      color: #06090f;
-      border-color: var(--accent-cyan);
+      color: #000;
     }
 
-    .crew-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
+    .crew-game-caption {
+      background: #04060a;
+      padding: 16px 20px;
+      text-align: center;
+      border-radius: 0;
     }
 
-    .crew-badge {
-      font-size: 10px;
+    .crew-game-name {
       font-family: var(--font-mono);
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: var(--accent-cyan-subtle);
-      color: var(--accent-cyan);
-      border: 1px solid var(--accent-cyan-border);
-    }
-
-    .crew-role-badge {
-      font-size: 10px;
-      font-family: var(--font-mono);
-      color: var(--text-dim);
-    }
-
-    .crew-modal-name {
-      font-size: 24px;
+      font-size: 19px;
       font-weight: 800;
-      color: #fff;
-      margin-bottom: 4px;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .crew-title-lore {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--accent-cyan);
-      margin-bottom: 14px;
-      line-height: 1.35;
-    }
-
-    .crew-quote {
-      font-size: 13px;
-      font-style: italic;
-      color: #cbd5e1;
-      background: rgba(0, 0, 0, 0.35);
-      border-left: 2px solid var(--accent-cyan);
-      padding: 10px 14px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 14px;
-      line-height: 1.45;
-    }
-
-    .crew-mutations {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.4;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border-subtle);
-    }
-
-    .crew-mutations strong {
-      color: var(--text-muted);
-    }
-
-    .crew-modal-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 24px;
-      padding-top: 18px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .crew-modal-nav-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .crew-modal-nav-btn:hover {
-      border-color: var(--accent-cyan);
-      color: var(--accent-cyan);
-    }
-
-    .crew-modal-counter {
-      font-size: 12px;
+    .crew-game-role {
       font-family: var(--font-mono);
-      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+      text-transform: uppercase;
     }
 
     /* WIDESCREEN CINEMA PLAYER CONTAINER/* WIDESCREEN CINEMA PLAYER CONTAINER (Pure 16:9 Cinema Rectangle) */
@@ -1230,7 +973,7 @@
     .cinema-player-container {
       background: #000;
       border: 1px solid var(--border-bright);
-      border-radius: 16px;
+      border-radius: 0;
       overflow: hidden;
       box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 245, 212, 0.08);
       display: flex;
@@ -1445,85 +1188,85 @@
       </p>
     </div>
 
-    <div class="universe-grid">
+        <div class="universe-grid">
       <!-- 1. Pleyrium -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ PLEYRIUM ]</span></div>
+        <div class="card-meta-tag">// 01_PLEYRIUM</div>
         <h3 class="card-title">Чистый Плейриум & Тап-Капкан</h3>
         <p class="card-text">
           Тяжёлый 30-секундный цифровой концентрат внимания, на который Клиентархи подсаживают население целых планет во всех секторах Галактики. В сыром виде нестабилен: чтобы доза сработала, кузнецы кода и иконописцы запечатывают его в священный сосуд — плейбл (плейбак). Так рождается идеальный Тап-Капкан: стоит гуманоиду коснуться экрана, капкан захлопывается и парализует волю до нажатия руны «Скачать».
         </p>
-        <div class="card-footer-pill">РЕСУРС: СВЯЩЕННЫЙ СОСУД</div>
+        <div class="card-meta-footer">// РЕСУРС: СВЯЩЕННЫЙ СОСУД</div>
       </div>
 
       <!-- 2. Clientarchs -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ CLIENTARCHS ]</span></div>
+        <div class="card-meta-tag">// 02_CLIENTARCHS</div>
         <h3 class="card-title">Клиентархи и Торпеды Правок</h3>
         <p class="card-text">
           Внешние Владыки секторов Галактики (Синдикат Зинга, Верховная Сверх-Ячейка, Дом Мыши, Королевский Ковчег). Они сбрасывают в шлюзы ковчега циклопические заказы и бомбардируют обшивку залпами встречных депеш. Стена из 37 правок способна продавить переборки корабля, а их требования колеблются от ампутации сложных механик до акустического хруста сырых яиц.
         </p>
-        <div class="card-footer-pill">АНТАГОНИСТЫ: ВЛАДЫКИ СЕКТОРОВ</div>
+        <div class="card-meta-footer">// АНТАГОНИСТЫ: ВЛАДЫКИ СЕКТОРОВ</div>
       </div>
 
       <!-- 3. Subspace Cache -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ SUBSPACE ]</span></div>
+        <div class="card-meta-tag">// 03_SUBSPACE</div>
         <h3 class="card-title">Подпространственный Кэш</h3>
         <p class="card-text">
           Оккультный теневой слой браузерной памяти, невычищенных буферов Cocos Creator и забытых ассетов. Реальный источник 90% необъяснимой чертовщины: оживающих удалённых спрайтов, фантомных акустических хрустов в аудио-матрицах и искушающего шёпота Духа Полишинга («Беса Сочности»), нашёптывающего «подвигать пиксели ещё часок», пока билд не объявят негодным («филлинга 0»).
         </p>
-        <div class="card-footer-pill">АНОМАЛИЯ: БЕЗДНА БУФЕРОВ</div>
+        <div class="card-meta-footer">// АНОМАЛИЯ: БЕЗДНА БУФЕРОВ</div>
       </div>
 
       <!-- 4. Neuroslop & Mutations -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ NEUROSLOP ]</span></div>
+        <div class="card-meta-tag">// 04_NEUROSLOP</div>
         <h3 class="card-title">Сущности Нейрослопа и Мутации</h3>
         <p class="card-text">
           Кошмарные паразиты Подпространственного Кэша, рождённые в бульоне нейросетевых галлюцинаций. При попытке ускорить сдачу генерациями скверна поражает плоть мастеров: суставы тают, пальцы делятся на семь фаланг (полидактилия), вырастает третья рука, а на экран вылезают мутанты — коровы на антигравах, стреляющие лазерами из вымени, и сундуки с куриными яйцами.
         </p>
-        <div class="card-footer-pill">МУТАЦИИ: БОДИ-ХОРРОР СИНТЕЗА</div>
+        <div class="card-meta-footer">// МУТАЦИИ: БОДИ-ХОРРОР СИНТЕЗА</div>
       </div>
 
       <!-- 5. Art Inquisition -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ INQUISITION ]</span></div>
+        <div class="card-meta-tag">// 05_INQUISITION</div>
         <h3 class="card-title">Арт-Инквизиция Пиксельного Канона</h3>
         <p class="card-text">
           Верховный трибунал визуальной чистоты под предводительством Настоятельницы Вики. Держит жесточайший карантин, защищая Великий Конвейер от проникновения нейрослопной проказы. Любая попытка подсунуть мутировавший пиксель выжигается розовыми стикерами, суровыми вердиктами и немедленным отправлением мастера на покаянный рендеринг.
         </p>
-        <div class="card-footer-pill">КАРАНТИН: СТРОГОЕ АРТ-РЕВЬЮ</div>
+        <div class="card-meta-footer">// КАРАНТИН: СТРОГОЕ АРТ-РЕВЬЮ</div>
       </div>
 
       <!-- 6. Long Box Sarcophagus -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ SARCOPHAGUS ]</span></div>
+        <div class="card-meta-tag">// 06_SARCOPHAGUS</div>
         <h3 class="card-title">Саркофаг «Долгий Ящик»</h3>
         <p class="card-text">
           Стазис-колба для мумифицированных тасков, застрявших на конвейере навечно (легендарный таск Disney в Mintegral, висящий 129 суток). В зеленоватом растворе покоятся реликвии, которые невозможно закрыть (нет финальных правок) и нельзя похоронить. Памятник запредельной бюрократической жестокости Клиентархов.
         </p>
-        <div class="card-footer-pill">СТАЗИС: 129 ДНЕЙ ПРОСРОЧКИ</div>
+        <div class="card-meta-footer">// СТАЗИС: 129 ДНЕЙ ПРОСРОЧКИ</div>
       </div>
 
       <!-- 7. Gorin Time Machine -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ TIME MACHINE ]</span></div>
+        <div class="card-meta-tag">// 07_TIMEMACHINE</div>
         <h3 class="card-title">Бортовая Машина Времени Горина</h3>
         <p class="card-text">
           Священный хроно-аппарат, переставляющий даты завершения задач в священном Notion на позавчера. Позволяет официально рапортовать о сдаче партии за рекордные 2.25 суток под звуки боевых литургий машинного диалекта («Jnghfdbk», «Корчое», «пришлижать») и регламентный протокол «4 минуты покоя для Хухро».
         </p>
-        <div class="card-footer-pill">ХРОНО-ПУШКА: NOTION TIMELINE</div>
+        <div class="card-meta-footer">// ХРОНО-ПУШКА: NOTION TIMELINE</div>
       </div>
 
       <!-- 8. Offline Celeron Routine -->
       <div class="info-card">
-        <div class="card-icon-wrap"><span class="mono-glyph">[ CELERON ]</span></div>
+        <div class="card-meta-tag">// 08_CELERON</div>
         <h3 class="card-title">Принудительный Офлайн на Celeron</h3>
         <p class="card-text">
           Никакой удалёнки во всей вселенной. Экипаж добирается на дейли на грузовых дрезинах сквозь 40 000 палуб, преодолевая магнитные турникеты с вахтёрами. На рабочих местах — казённые моноблоки Celeron, зависающие на третьей вкладке, и единственная микроволновка на весь сектор, где четвёртый месяц разогревают рыбу с чесноком.
         </p>
-        <div class="card-footer-pill">БЫТ: КОРПОРАТИВНЫЙ ГРИМДАРК</div>
+        <div class="card-meta-footer">// БЫТ: КОРПОРАТИВНЫЙ ГРИМДАРК</div>
       </div>
     </div>
   </section>
@@ -1602,17 +1345,17 @@
       <div class="section-tag" style="color: var(--accent-cyan);">// ТАБЕЛЬ О РАНГАХ</div>
       <h2 class="section-title">Табель о Рангах и Личный Состав</h2>
       <p class="section-desc">
-        22 действующих лица Продакшен-Ковчега. Нажмите на любого члена экипажа, чтобы развернуть его полное досье, цитаты, лор и переключить на живой Slack-аватар.
+        19 канонических действующих лиц Продакшен-Ковчега с портретами Fin. Нажмите на любого члена экипажа, чтобы развернуть его полное досье, цитаты, лор и переключить на живой Slack-аватар.
       </p>
     </div>
 
     <!-- Filter Tabs (Always visible directly on the page) -->
     <div class="crew-tabs">
-      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">Все персоны (22)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('command', this)">Командование (4)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">Проджекты (3)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">Разработка (11)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('art', this)">Арт & 3D (4)</button>
+      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны (19) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование (4) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты (3) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка (8) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт & 3D (4) ]</button>
     </div>
 
     <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
@@ -1715,7 +1458,7 @@
         title: "Лорд-Командор Цитадели",
         realRole: "CEO / Основатель Playbox",
         photoLore: "web_assets/images/team/retro_film_tolya_gpt_v2.png",
-        photoSlack: "web_assets/images/team/avatars/Анатолий_Щербаков_slack_1024.jpg",
+        photoSlack: "web_assets/images/team/avatars/avatar_toly.jpg",
         quote: "«Надо пробить сотню! Кайфеец.»",
         mutations: "Капитанский мостик, гарнитура синка с ИИ-Гранолой, лацканы с золотым Орлом Playbox."
       },
@@ -1727,9 +1470,21 @@
         title: "Верховный Надзиратель Конвейера",
         realRole: "Head of Production",
         photoLore: "web_assets/images/team/retro_film_gorin_batman_cowl_gemini_v20.png",
-        photoSlack: "web_assets/images/team/avatars/Алексей_Горин_slack_1024.jpg",
+        photoSlack: "web_assets/images/team/avatars/avatar_gorin.jpg",
         quote: "«Jnghfdbk. Запустить бортовую машину времени Ноушена на 4 минуты!»",
         mutations: "Кожаный плащ, карманные часы на цепочке, машинный диалект, тумблер сдвига дедлайнов."
+      },
+      {
+        id: "voron",
+        name: "Архи-Настоятель Ворон",
+        dept: "command",
+        badge: "НАСТАВНИК",
+        title: "Архи-Настоятель Цензората",
+        realRole: "Playable Developer / Наставник",
+        photoLore: "web_assets/images/team/retro_film_voron_arch_abbot_v7.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_alexander_voron.jpg",
+        quote: "«Веди код спокойно, сын мой. Ошибёшься — начнёшь сначала.»",
+        mutations: "Жестяная маска чумного ворона с алыми линзами, посох с лампой в клетке."
       },
       {
         id: "eva",
@@ -1739,7 +1494,7 @@
         title: "Главная Хранительница Скрижалей и Сроков",
         realRole: "Project Lead (Sunday / Stillfront)",
         photoLore: "web_assets/images/team/retro_film_eva_theatrical_prop_helmet_v7.png",
-        photoSlack: "web_assets/images/team/avatars/Ева_Аксёнова_slack_1024.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_eva.png",
         quote: "«Брат, поставь интерфейс строго по канону.»",
         mutations: "Священные таблицы Notion, берестяные епитимьи по кельям, шлем церемониального контроля."
       },
@@ -1751,7 +1506,7 @@
         title: "Зодчий Игрового Замысла",
         realRole: "Project Lead (Zynga / Sparkling Society)",
         photoLore: "web_assets/images/team/retro_warhammer_eduard_levin_gpt_v3.png",
-        photoSlack: "web_assets/images/team/avatars/Эдуард_Левин_slack_1024.jpg",
+        photoSlack: "web_assets/images/team/avatars/avatar_eduard.jpg",
         quote: "«Люблю строительный тент как родного брата. Сундук должен хрустеть как яйцо!»",
         mutations: "Очки-сканеры, чертежи деконструкции ТЗ, сундук с хрустом сырого яйца."
       },
@@ -1763,7 +1518,7 @@
         title: "Преподобный Толкователь Воли Клиентархов",
         realRole: "Creative Director студии",
         photoLore: "web_assets/images/team/retro_film_egor_tkachev.png",
-        photoSlack: "web_assets/images/team/avatars/Егор_Ткачёв_slack_1024.jpg",
+        photoSlack: "web_assets/images/team/avatars/avatar_egor.jpg",
         quote: '«Свиток "Долгий Ящик" — это не задержка, а выдержка благородного цифрового вина.»',
         mutations: "Свитки правок клиентов, кибер-корова с лазерным лучом вымени для GameGears."
       },
@@ -1775,7 +1530,7 @@
         title: "Архи-Цензор Синтаксической Ереси",
         realRole: "Chief Technology Officer",
         photoLore: "web_assets/images/team/retro_soviet_film_pavel_playbox_logo_gpt_v4.png",
-        photoSlack: "web_assets/images/team/avatars/Павел_Самойленко_slack_1024.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_pavel.png",
         quote: "«Claude забанили? Читаю пулл-реквесты вслепую руками по шрифту Брайля.»",
         mutations: "Ослепшие ИИ-окуляры, студийные наушники, тактильное код-ревью вслепую."
       },
@@ -1790,54 +1545,6 @@
         photoSlack: "web_assets/images/team/avatars/maksim_mamusin_avatar_1024.jpg",
         quote: "«Он машина. Сразу сделать? Понял.»",
         mutations: "Клёпаная аугметика черепа, гофрированные силовые кабели, счётчик плейблов 99999+."
-      },
-      {
-        id: "vika",
-        name: "Виктория Фесенко (Вика)",
-        dept: "art",
-        badge: "АРТ-ДИРЕКТОР",
-        title: "Верховная Настоятельница Пиксельного Канона",
-        realRole: "Art Director студии",
-        photoLore: "web_assets/images/team/retro_film_vika_neural_corruption_v3.png",
-        photoSlack: "web_assets/images/team/avatars/Виктория_Фесенко_slack_1024.jpg",
-        quote: "«Субпиксельная скверна будет выжжена калёным арт-ревью.»",
-        mutations: "Розовые пряди сквозь нейро-разъёмы, левитирующие неоновые стикеры Канбан-доски."
-      },
-      {
-        id: "khukhro",
-        name: "Артём Хухро",
-        dept: "art",
-        badge: "АРТ-ТЕХЛИД",
-        title: "Техноэкзорцист Графической Скверны",
-        realRole: "Lead 3D / Арт-техлид",
-        photoLore: "web_assets/images/team/retro_film_artem_khukhro_guyver_gemini_v19.png",
-        photoSlack: "web_assets/images/team/avatars/Артём_Хухро_slack_512.jpg",
-        quote: "«13 часов шлифовки полигонов ради 4 минут покоя на решётках нижней палубы.»",
-        mutations: "Гайвер-биокостюм, лупа спектрального анализа сетки, выжигатель артефактов."
-      },
-      {
-        id: "zhenya",
-        name: "Женя (Иваницкий)",
-        dept: "art",
-        badge: "2D ХУДОЖНИК",
-        title: "Мастер Вечного Рендера",
-        realRole: "Lead 2D Artist",
-        photoLore: "web_assets/images/team/retro_film_zhenya_artist_real_v11.png",
-        photoSlack: "web_assets/images/team/avatars/Женя_Иваницкий_slack_1024.jpg",
-        quote: "«Нарезать 300 спрайтов к утру? Пальцы уже двигаются сами в альфа-канале.»",
-        mutations: "Круглосуточная нарезка ассетов, текстурирование, выдержка альфа-каналов."
-      },
-      {
-        id: "vova",
-        name: "Владимир Хаецкий (Вова)",
-        dept: "art",
-        badge: "3D/2D ХУДОЖНИК",
-        title: "Страж Невидимого Слоя",
-        realRole: "3D & 2D Artist",
-        photoLore: "web_assets/images/team/retro_film_vova_khaetsky_v11.png",
-        photoSlack: "web_assets/images/team/avatars/Владимир_Хаецкий_slack_1024.jpg",
-        quote: "«Не трогайте выключенный слой Layer_final_v2 — на нём держится сцена!»",
-        mutations: "Священная защита несущих выключенных слоёв, окуляры спектрального зрения."
       },
       {
         id: "davit",
@@ -1859,21 +1566,9 @@
         title: "Кузнец Троичного Кода",
         realRole: "Playable Developer",
         photoLore: "web_assets/images/team/retro_film_danial_iskakov_sapper_v1.png",
-        photoSlack: "web_assets/images/team/avatars/Даниал_Искаков_slack_1024.jpg",
+        photoSlack: "web_assets/images/team/avatars/avatar_danial_iskakov.jpg",
         quote: "«Иду по кодовой базе аккуратно, как по минному полю в AAA-проекте.»",
         mutations: "Сапёрный визор микро-логики, антистатические перчатки тонкой пайки механик."
-      },
-      {
-        id: "voron",
-        name: "Архи-Настоятель Ворон",
-        dept: "command",
-        badge: "НАСТАВНИК",
-        title: "Архи-Настоятель Цензората",
-        realRole: "Playable Developer / Наставник",
-        photoLore: "web_assets/images/team/retro_film_voron_arch_abbot_v7.png",
-        photoSlack: "web_assets/images/team/avatars/Александр_Ворон_slack_1024.jpg",
-        quote: "«Веди код спокойно, сын мой. Ошибёшься — начнёшь сначала.»",
-        mutations: "Жестяная маска чумного ворона с алыми линзами, посох с лампой в клетке."
       },
       {
         id: "kirill",
@@ -1906,8 +1601,8 @@
         badge: "СКРИПТОР-СКОРОСТНИК",
         title: "Координатор Скоростной Статики",
         realRole: "Playable Developer",
-        photoLore: "web_assets/images/team/retro_film_nick_egorov_speedrun_v2.png",
-        photoSlack: "web_assets/images/team/avatars/Ник_Егоров_slack_1024.jpg",
+        photoLore: "web_assets/images/team/retro_film_nick_egorov_speedrun_v3.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_nick_egorov.jpg",
         quote: "«Билд собран за 3 минуты. Если физика улетела — так и задумано.»",
         mutations: "Сверхскоростная потоковая сборка интерактивных механик, турбо-привод пальцев."
       },
@@ -1924,40 +1619,52 @@
         mutations: "Белая роба неофита, подключённая Гориным питательная трубка с 2D-плейбаком."
       },
       {
-        id: "pankov",
-        name: "Александр Панков",
-        dept: "dev",
-        badge: "СКРИПТОР",
-        title: "Архи-Инженер Квантового Клика",
-        realRole: "Playable Developer",
-        photoLore: "web_assets/images/team/retro_film_danial_iskakov_sapper_v1.png",
-        photoSlack: "web_assets/images/team/avatars/avatar_pankov.jpg",
-        quote: "«Кнопка находится в суперпозиции: одновременно нажата и отпущена.»",
-        mutations: "Часовой булевой стабильности, укротитель состояний ввода."
+        id: "vika",
+        name: "Виктория Фесенко (Вика)",
+        dept: "art",
+        badge: "АРТ-ДИРЕКТОР",
+        title: "Верховная Настоятельница Пиксельного Канона",
+        realRole: "Art Director студии",
+        photoLore: "web_assets/images/team/retro_film_vika_neural_corruption_v3.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_vika.jpg",
+        quote: "«Субпиксельная скверна будет выжжена калёным арт-ревью.»",
+        mutations: "Розовые пряди сквозь нейро-разъёмы, левитирующие неоновые стикеры Канбан-доски."
       },
       {
-        id: "misha",
-        name: "Миша",
-        dept: "dev",
-        badge: "АРХИТЕКТОР ЯДРА",
-        title: "Алхимик Внутренней Кузницы",
-        realRole: "Lead Core Developer",
-        photoLore: "web_assets/images/team/retro_film_kristian_repository_guardian_v2.png",
-        photoSlack: "web_assets/images/team/avatars/avatar_ivan_kovalenko.jpg",
-        quote: "«Утечка памяти в 4 байта — это преступление против реакторов ковчега.»",
-        mutations: "Техно-архитектор ядра движка, стережёт стабильность систем ковчега."
+        id: "khukhro",
+        name: "Артём Хухро",
+        dept: "art",
+        badge: "АРТ-ТЕХЛИД",
+        title: "Техноэкзорцист Графической Скверны",
+        realRole: "Lead 3D / Арт-техлид",
+        photoLore: "web_assets/images/team/retro_film_artem_khukhro_guyver_gemini_v19.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_huhro.jpg",
+        quote: "«13 часов шлифовки полигонов ради 4 минут покоя на решётках нижней палубы.»",
+        mutations: "Гайвер-биокостюм, лупа спектрального анализа сетки, выжигатель артефактов."
       },
       {
-        id: "levan",
-        name: "Леван",
-        dept: "dev",
-        badge: "СКРИПТОР-СКОРОСТНИК",
-        title: "Префект Сверхсветового Рендера",
-        realRole: "Playable Developer",
-        photoLore: "web_assets/images/team/retro_film_nick_egorov_speedrun_v2.png",
-        photoSlack: "web_assets/images/team/avatars/Шавкат_Шафин_slack_1024.jpg",
-        quote: "«Пеку плейблолиты со скоростью света. Не моргайте — пропустите релиз.»",
-        mutations: "Турбо-выпечка плейблолитов на конвейере с запредельной отдачей кадров."
+        id: "zhenya",
+        name: "Женя (Иваницкий)",
+        dept: "art",
+        badge: "2D ХУДОЖНИК",
+        title: "Мастер Вечного Рендера",
+        realRole: "Lead 2D Artist",
+        photoLore: "web_assets/images/team/retro_film_zhenya_artist_real_v11.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_zhenya.jpg",
+        quote: "«Нарезать 300 спрайтов к утру? Пальцы уже двигаются сами в альфа-канале.»",
+        mutations: "Круглосуточная нарезка ассетов, текстурирование, выдержка альфа-каналов."
+      },
+      {
+        id: "vova",
+        name: "Владимир Хаецкий (Вова)",
+        dept: "art",
+        badge: "3D/2D ХУДОЖНИК",
+        title: "Страж Невидимого Слоя",
+        realRole: "3D & 2D Artist",
+        photoLore: "web_assets/images/team/retro_film_vova_khaetsky_v11.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_khaetsky.jpg",
+        quote: "«Не трогайте выключенный слой Layer_final_v2 — на нём держится сцена!»",
+        mutations: "Священная защита несущих выключенных слоёв, окуляры спектрального зрения."
       }
     ];
 
@@ -1965,7 +1672,7 @@
     let activeCrewList = CREW_DATA;
     let currentModalIndex = 0;
 
-    function renderCrewCompact(filter = 'all') {
+        function renderCrewCompact(filter = 'all') {
       const grid = document.getElementById('crewCompactGrid');
       if (!grid) return;
       grid.innerHTML = '';
@@ -1978,13 +1685,14 @@
         tile.onclick = () => openCrewModal(idx);
 
         tile.innerHTML = `
-          <div class="crew-mini-avatar-box">
+          <div class="crew-mini-photo-wrap">
             <img src="${c.photoLore}" alt="${c.name}" loading="lazy">
           </div>
-          <span class="crew-mini-badge">${c.badge}</span>
-          <div class="crew-mini-name">${c.name}</div>
-          <div class="crew-mini-role">${c.realRole}</div>
-          <div class="crew-mini-expand-hint">Развернуть ↗</div>
+          <div class="crew-mini-info">
+            <span class="crew-mini-badge">[ ${c.badge} ]</span>
+            <div class="crew-mini-name">${c.name}</div>
+            <div class="crew-mini-role">${c.title}</div>
+          </div>
         `;
         grid.appendChild(tile);
       });
@@ -1996,7 +1704,7 @@
       renderCrewCompact(dept);
     }
 
-    function openCrewModal(index) {
+        function openCrewModal(index) {
       currentModalIndex = index;
       const c = activeCrewList[currentModalIndex];
       if (!c) return;
@@ -2006,17 +1714,6 @@
       if (nameEl) nameEl.innerText = `[ ${c.name.toUpperCase()} ]`;
       if (titleEl) titleEl.innerText = `[ ${c.title.toUpperCase()} ]`;
 
-      const badgeEl = document.getElementById('modalBadge');
-      if (badgeEl) badgeEl.innerText = c.badge;
-      const realRoleEl = document.getElementById('modalRealRole');
-      if (realRoleEl) realRoleEl.innerText = c.realRole;
-      const quoteEl = document.getElementById('modalQuote');
-      if (quoteEl) quoteEl.innerText = c.quote;
-      const mutEl = document.getElementById('modalMutations');
-      if (mutEl) mutEl.innerText = c.mutations;
-      const cntEl = document.getElementById('modalCounter');
-      if (cntEl) cntEl.innerText = `${currentModalIndex + 1} / ${activeCrewList.length}`;
-
       const imgLore = document.getElementById('modalImgLore');
       const imgSlack = document.getElementById('modalImgSlack');
       imgLore.src = c.photoLore;
@@ -2025,13 +1722,20 @@
       const photoBox = document.getElementById('modalPhotoBox');
       photoBox.classList.remove('show-slack');
       const toggleBtn = document.getElementById('modalPhotoToggle');
-      toggleBtn.innerText = 'Slack Фото';
-      toggleBtn.style.background = '';
-      toggleBtn.style.color = '';
+      if (toggleBtn) toggleBtn.innerText = '[ SLACK ФОТО ]';
 
       const modal = document.getElementById('crewModal');
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+
+    function toggleModalSlackPhoto() {
+      const photoBox = document.getElementById('modalPhotoBox');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      const isSlack = photoBox.classList.toggle('show-slack');
+      if (toggleBtn) {
+        toggleBtn.innerText = isSlack ? '[ LORE ФОТО ]' : '[ SLACK ФОТО ]';
+      }
     }
 
     function closeCrewModal() {
