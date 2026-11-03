@@ -677,22 +677,12 @@
     }
 
     /* Crew Filter Tabs */
-    .crew-tabs-wrap {
-      display: none;
-      flex-direction: column;
-      gap: 24px;
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    .crew-tabs-wrap.active {
-      display: flex;
-    }
-
     .crew-tabs {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
     .crew-tab-btn {
@@ -718,63 +708,211 @@
       color: var(--accent-cyan);
     }
 
-    /* Crew Grid */
-    .crew-grid {
+    /* Compact Crew Grid (Small pictures with names, expandable on click) */
+    .crew-compact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
     }
 
-    .crew-card {
+    .crew-mini-tile {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 18px;
-      overflow: hidden;
+      border-radius: 14px;
+      padding: 16px 12px;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s ease;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
       position: relative;
-    }
-
-    .crew-card:hover {
-      border-color: var(--accent-cyan-border);
-      background: var(--bg-card);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6);
-    }
-
-    .crew-photo-box {
-      width: 100%;
-      height: 240px;
-      position: relative;
-      background: #000;
       overflow: hidden;
     }
 
-    .crew-photo-box img {
+    .crew-mini-tile:hover {
+      border-color: var(--accent-cyan);
+      background: var(--bg-card);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 16px var(--accent-cyan-subtle);
+    }
+
+    .crew-mini-avatar-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 2px solid var(--border-bright);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      background: #000;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .crew-mini-tile:hover .crew-mini-avatar-box {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 14px var(--accent-cyan-glow);
+    }
+
+    .crew-mini-avatar-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: opacity 0.3s, transform 0.5s ease;
     }
 
-    .crew-card:hover .crew-photo-box img {
-      transform: scale(1.04);
+    .crew-mini-badge {
+      font-size: 9px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      background: var(--accent-cyan-subtle);
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan-border);
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
     }
 
-    .crew-photo-slack {
+    .crew-mini-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+      line-height: 1.25;
+    }
+
+    .crew-mini-role {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.3;
+    }
+
+    .crew-mini-expand-hint {
+      font-size: 10px;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      margin-top: 8px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+    }
+
+    .crew-mini-tile:hover .crew-mini-expand-hint {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Modal Backdrop and Card */
+    .crew-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 10, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: modalFadeIn 0.25s ease forwards;
+    }
+
+    .crew-modal-backdrop.active {
+      display: flex;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .crew-modal-card {
+      background: #0d101a;
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.15);
+      border-radius: 20px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 28px;
+    }
+
+    .crew-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+
+    .crew-modal-close:hover {
+      background: var(--accent-cyan);
+      color: #050811;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-modal-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .crew-modal-grid {
+        grid-template-columns: 1fr;
+      }
+      .crew-modal-card {
+        padding: 20px;
+      }
+    }
+
+    .crew-modal-photo-box {
+      width: 100%;
+      height: 340px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .crew-modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .crew-modal-img.slack {
       position: absolute;
       inset: 0;
       opacity: 0;
       pointer-events: none;
     }
 
-    .crew-card.show-slack .crew-photo-main {
+    .crew-modal-photo-box.show-slack .crew-modal-img.main {
       opacity: 0;
     }
 
-    .crew-card.show-slack .crew-photo-slack {
+    .crew-modal-photo-box.show-slack .crew-modal-img.slack {
       opacity: 1;
       pointer-events: auto;
     }
@@ -800,13 +938,6 @@
       background: var(--accent-cyan);
       color: #06090f;
       border-color: var(--accent-cyan);
-    }
-
-    .crew-body {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
     }
 
     .crew-tag-row {
@@ -835,18 +966,18 @@
       color: var(--text-dim);
     }
 
-    .crew-name {
-      font-size: 18px;
+    .crew-modal-name {
+      font-size: 24px;
       font-weight: 800;
       color: #fff;
       margin-bottom: 4px;
     }
 
     .crew-title-lore {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--accent-cyan);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       line-height: 1.35;
     }
 
@@ -854,10 +985,10 @@
       font-size: 13px;
       font-style: italic;
       color: #cbd5e1;
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.35);
       border-left: 2px solid var(--accent-cyan);
-      padding: 8px 12px;
-      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
       margin-bottom: 14px;
       line-height: 1.45;
     }
@@ -866,7 +997,6 @@
       font-size: 12px;
       color: var(--text-dim);
       line-height: 1.4;
-      margin-top: auto;
       padding-top: 10px;
       border-top: 1px dashed var(--border-subtle);
     }
@@ -875,7 +1005,39 @@
       color: var(--text-muted);
     }
 
-    /* WIDESCREEN CINEMA PLAYER CONTAINER (Pure 16:9 Cinema Rectangle) */
+    .crew-modal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .crew-modal-nav-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .crew-modal-nav-btn:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .crew-modal-counter {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+    }
+
+    /* WIDESCREEN CINEMA PLAYER CONTAINER/* WIDESCREEN CINEMA PLAYER CONTAINER (Pure 16:9 Cinema Rectangle) */
     .game-section {
       padding: 70px 0;
       position: relative;
@@ -1001,8 +1163,7 @@
         <ul class="plbx-nav">
           <li><a href="#universe">🌌 Единая Вселенная</a></li>
           <li><a href="#dramaturgy">🧠 Драматургия и ML</a></li>
-          <li><a href="#lore">📜 Канонический Лор</a></li>
-          <li><a href="#crew">👥 Экипаж</a></li>
+          <li><a href="#crew">👥 Табель о рангах</a></li>
           <li><a href="#playable-area" class="active">Смотреть кибербуллинг</a></li>
         </ul>
       </nav>
@@ -1044,7 +1205,7 @@
           <button class="plbx-cta-btn" style="padding: 13px 30px; font-size: 15px;" onclick="document.getElementById('playable-area').scrollIntoView({behavior: 'smooth'})">
             ▶ Смотреть кибербуллинг
           </button>
-          <button class="btn-secondary" onclick="openCrewDossier()">
+          <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
             📜 Табель о рангах (22 персоны)
           </button>
         </div>
@@ -1182,127 +1343,78 @@
     </div>
   </section>
 
-  <!-- Canonical Lore Codex Section (Real Lore from Master Script) -->
-  <section class="container" style="padding: 50px 24px;" id="lore">
-    <div class="section-header">
-      <div class="section-tag">// КАНОНИЧЕСКИЙ ЛОР ИЗ ЛЕТОПИСИ</div>
-      <h2 class="section-title">Священные Феномены и Артефакты Конвейера</h2>
-      <p class="section-desc">
-        Подлинный зафиксированный лор из Золотого фонда выпусков «Кибербуллинга». Железобетонные факты, реальные цитаты из каналов и абсурд продакшена.
-      </p>
-    </div>
-
-    <div class="grid-4">
-      <!-- 1. Плейриум и Тап-Капканы -->
-      <div class="info-card">
-        <div class="card-icon-wrap">🧪</div>
-        <h3 class="card-title">Плейриум и Тап-Капкан</h3>
-        <p class="card-text">
-          Тяжёлый 30-секундный цифровой наркотик внимания, на который Клиентархи подсаживают население планет. Кузнецы запечатывают его в священный сосуд — <strong>плейбл (плейбак)</strong>. Получается <strong>Тап-капкан</strong>: когда гуманоид касается экрана, ловушка захлопывается и парализует волю, пока он не нажмёт «Скачать».
-        </p>
-        <div class="card-footer-pill">РЕСУРС: СВЯЩЕННЫЙ СОСУД</div>
-      </div>
-
-      <!-- 2. Стена 37 -->
-      <div class="info-card">
-        <div class="card-icon-wrap">🧱</div>
-        <h3 class="card-title">Стена Тридцати Семи</h3>
-        <p class="card-text">
-          Сквозной антагонист конвейера. Стена из <strong>37 висящих правок</strong> от Клиентархов к середине недели, готовая раздавить ковчег. Когда сдача падает в ноль, корабль трещит по швам под напором встречных депеш.
-        </p>
-        <div class="card-footer-pill">АНТАГОНИСТ: 37 ПРАВОК НА ПИКЕ</div>
-      </div>
-
-      <!-- 3. Саркофаг Долгий Ящик (Disney 129 дней) -->
-      <div class="info-card">
-        <div class="card-icon-wrap">📦</div>
-        <h3 class="card-title">Саркофаг «Долгий Ящик»</h3>
-        <p class="card-text">
-          Главная зловещая реликвия Ковчега — мумифицированный таск <strong>Disney в сетке Mintegral</strong>. Заперт в стазис-колбе <strong>129 суток</strong> (просрочка 132 дня). В зеленоватой жиже покачивается создание Дома Мыши в почерневших белых перчатках. Не может умереть (карточка не закрыта) и не может ожить (нет правок 4 месяца).
-        </p>
-        <div class="card-footer-pill">СТАЗИС: 129 ДНЕЙ ДИСНЕЯ</div>
-      </div>
-
-      <!-- 4. Бортовой Бот #production-digest -->
-      <div class="info-card">
-        <div class="card-icon-wrap">🤖</div>
-        <h3 class="card-title">Бот Сводки (08:07)</h3>
-        <p class="card-text">
-          Единственный разум на борту, не берущий больничный. В Цикл Слепого Старта фиксирует <strong>100% задач без дат</strong>. При простое выдаёт тлен <em>«как вчера, так и сегодня»</em>, а в кризис сходит с ума и рапортует о сдаче <strong>1783 плейблов за ночь</strong> в горячечном бреду.
-        </p>
-        <div class="card-footer-pill">СВОДКА: 1783 СДАННЫХ ПЛЕЙБЛА</div>
-      </div>
-
-      <!-- 5. Машина Времени Ноушена и Диалект Горина -->
-      <div class="info-card">
-        <div class="card-icon-wrap">⏳</div>
-        <h3 class="card-title">Машина Времени Горина</h3>
-        <p class="card-text">
-          Бортовой хроно-аппарат, переставляющий даты завершения задач в Notion на позавчера. Сопровождается священными боевыми литургиями машинного диалекта: <em>«Jnghfdbk»</em> («Отправил»), <em>«Корчое»</em>, <em>«пришлижать»</em>, <em>«демоблил»</em> и протоколом «4 минуты покоя для Хухро».
-        </p>
-        <div class="card-footer-pill">ХРОНО-ПУШКА: JNGHFDBK</div>
-      </div>
-
-      <!-- 6. Хруст Сырого Яйца (Сундук Эдика) -->
-      <div class="info-card">
-        <div class="card-icon-wrap">🥚</div>
-        <h3 class="card-title">Сундук с Хрустом Яйца</h3>
-        <p class="card-text">
-          Реальный клиентский бриф Эдуарда Левина, ставший каноном: <em>«звук открывания деревянного сундука сокровищ должен хрустеть в точности как сырое яйцо, но чтоб это было не яйцо!»</em>. Недели акустических экспериментов и поиск невозможного звука.
-        </p>
-        <div class="card-footer-pill">БРИФ: ХРУСТИТ, НО НЕ ЯЙЦО</div>
-      </div>
-
-      <!-- 7. Кибер-Корова GameGears -->
-      <div class="info-card">
-        <div class="card-icon-wrap">🐄</div>
-        <h3 class="card-title">Кибер-Корова с Лазером</h3>
-        <p class="card-text">
-          Летающий кибернетический скот с лазерным лучом из вымени, рождённый в креативном отсеке Егора Ткачёва для спасения дедлайна GameGears. Способен пробивать бронированные переборки и за секунды выжигать согласования.
-        </p>
-        <div class="card-footer-pill">ОРУЖИЕ: ВЫМЯНОЙ ЛАЗЕР</div>
-      </div>
-
-      <!-- 8. Ослепшие Окуляры Самойленко -->
-      <div class="info-card">
-        <div class="card-icon-wrap">👓</div>
-        <h3 class="card-title">Ослепший Архи-Цензор</h3>
-        <p class="card-text">
-          Когда подпространственный ИИ Claude заблокировали, Архи-Цензор Самойленко ослеп на оба цифровых окуляра. Теперь он проводит тактильное код-ревью пулл-реквестов вслепую руками по шрифту Брайля прямо по горячим микросхемам.
-        </p>
-        <div class="card-footer-pill">КОД-РЕВЬЮ: ШРИФТ БРАЙЛЯ</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Crew Dossier Section -->
+  <!-- Interactive Crew Dossier Section (Table of Ranks) -->
   <section class="container crew-section" id="crew">
-    <div class="crew-trigger-banner">
-      <div class="section-tag" style="color: var(--accent-cyan);">// ЭКИПАЖ КОВЧЕГА</div>
-      <h2 class="crew-trigger-title">Табель о рангах и Досье экипажа</h2>
-      <p class="crew-trigger-desc">
-        Официальный реестр действующих лиц Продакшен-Ковчега: 22 утверждённых персоны, титулы в лоре, реальные роли, сигнатурные цитаты и переключатель на живые Slack-аватары.
+    <div class="section-header">
+      <div class="section-tag" style="color: var(--accent-cyan);">// ТАБЕЛЬ О РАНГАХ</div>
+      <h2 class="section-title">Табель о Рангах и Личный Состав</h2>
+      <p class="section-desc">
+        22 действующих лица Продакшен-Ковчега. Нажмите на любого члена экипажа, чтобы развернуть его полное досье, цитаты, лор и переключить на живой Slack-аватар.
       </p>
-      <button class="crew-toggle-btn" id="crewToggleBtn" onclick="toggleCrewDossier()">
-        <span>📜 РАЗВЕРНУТЬ ТАБЕЛЬ О РАНГАХ (22 ПЕРСОНЫ)</span>
-      </button>
     </div>
 
-    <!-- Collapsible Crew Area -->
-    <div class="crew-tabs-wrap" id="crewDossierWrap">
-      <div class="crew-tabs">
-        <button class="crew-tab-btn active" onclick="filterCrew('all', this)">Все персоны (22)</button>
-        <button class="crew-tab-btn" onclick="filterCrew('command', this)">👑 Командование</button>
-        <button class="crew-tab-btn" onclick="filterCrew('projects', this)">📋 Проджекты</button>
-        <button class="crew-tab-btn" onclick="filterCrew('dev', this)">⚙️ Разработка</button>
-        <button class="crew-tab-btn" onclick="filterCrew('art', this)">🎨 Арт & 3D</button>
-      </div>
+    <!-- Filter Tabs (Always visible directly on the page) -->
+    <div class="crew-tabs">
+      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">Все персоны (22)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">👑 Командование (3)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">📋 Проджекты (4)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">⚙️ Разработка (9)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">🎨 Арт & 3D (6)</button>
+    </div>
 
-      <div class="crew-grid" id="crewGrid">
-        <!-- Cards injected via JavaScript -->
-      </div>
+    <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
+    <div class="crew-compact-grid" id="crewCompactGrid">
+      <!-- 22 mini tiles injected via JavaScript -->
     </div>
   </section>
+
+  <!-- Crew Modal (Full Cinematic Dossier on click) -->
+  <div class="crew-modal-backdrop" id="crewModal" onclick="closeCrewModalOnBackdrop(event)">
+    <div class="crew-modal-card">
+      <button class="crew-modal-close" onclick="closeCrewModal()" title="Закрыть (Esc)">✕</button>
+      
+      <div class="crew-modal-grid">
+        <!-- Portrait Column -->
+        <div class="crew-modal-photo-col">
+          <div class="crew-modal-photo-box" id="modalPhotoBox">
+            <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
+              🔄 Slack Фото
+            </button>
+            <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
+            <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="crew-modal-info-col">
+          <div class="crew-tag-row">
+            <span class="crew-badge" id="modalBadge"></span>
+            <span class="crew-role-badge" id="modalRealRole"></span>
+          </div>
+
+          <h3 class="crew-modal-name" id="modalName"></h3>
+          <div class="crew-title-lore" id="modalTitle"></div>
+
+          <div class="crew-quote" id="modalQuote"></div>
+
+          <div class="crew-mutations" style="margin-top: 14px;">
+            <strong>Аугментации:</strong> <span id="modalMutations"></span>
+          </div>
+
+          <!-- Bottom Navigation Between Members -->
+          <div class="crew-modal-nav">
+            <button class="crew-modal-nav-btn" onclick="navCrewModal(-1)">
+              ← Предыдущий
+            </button>
+            <span class="crew-modal-counter" id="modalCounter">1 / 22</span>
+            <button class="crew-modal-nav-btn" onclick="navCrewModal(1)">
+              Следующий →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- =======================================================================
        FULL RECTANGLE WIDESCREEN CINEMA PLAYER (NO PHONE DEVICE, PURE FULLSCREEN)
@@ -1619,93 +1731,115 @@
     ];
 
     // Build Crew Grid
-    function renderCrewCards(filter = 'all') {
-      const grid = document.getElementById('crewGrid');
+    let activeCrewList = CREW_DATA;
+    let currentModalIndex = 0;
+
+    function renderCrewCompact(filter = 'all') {
+      const grid = document.getElementById('crewCompactGrid');
+      if (!grid) return;
       grid.innerHTML = '';
 
-      const filtered = filter === 'all' ? CREW_DATA : CREW_DATA.filter(c => c.dept === filter);
+      activeCrewList = filter === 'all' ? CREW_DATA : CREW_DATA.filter(c => c.dept === filter);
 
-      filtered.forEach(c => {
-        const card = document.createElement('div');
-        card.className = 'crew-card';
-        card.id = `card_${c.id}`;
+      activeCrewList.forEach((c, idx) => {
+        const tile = document.createElement('div');
+        tile.className = 'crew-mini-tile';
+        tile.onclick = () => openCrewModal(idx);
 
-        card.innerHTML = `
-          <div class="crew-photo-box">
-            <button class="crew-photo-toggle" onclick="toggleSlackPhoto('${c.id}', event)">
-              🔄 Slack Фото
-            </button>
-            <img class="crew-photo-main" src="${c.photoLore}" alt="${c.name}" loading="lazy">
-            <img class="crew-photo-slack" src="${c.photoSlack}" alt="${c.name} Slack" loading="lazy">
+        tile.innerHTML = `
+          <div class="crew-mini-avatar-box">
+            <img src="${c.photoLore}" alt="${c.name}" loading="lazy">
           </div>
-          <div class="crew-body">
-            <div class="crew-tag-row">
-              <span class="crew-badge">${c.badge}</span>
-              <span class="crew-role-badge">${c.realRole}</span>
-            </div>
-            <div class="crew-name">${c.name}</div>
-            <div class="crew-title-lore">${c.title}</div>
-            <div class="crew-quote">${c.quote}</div>
-            <div class="crew-mutations">
-              <strong>Аугментации:</strong> ${c.mutations}
-            </div>
-          </div>
+          <span class="crew-mini-badge">${c.badge}</span>
+          <div class="crew-mini-name">${c.name}</div>
+          <div class="crew-mini-role">${c.realRole}</div>
+          <div class="crew-mini-expand-hint">Развернуть ↗</div>
         `;
-
-        grid.appendChild(card);
+        grid.appendChild(tile);
       });
-    }
-
-    function toggleSlackPhoto(id, e) {
-      if (e) e.stopPropagation();
-      const card = document.getElementById(`card_${id}`);
-      if (card) {
-        card.classList.toggle('show-slack');
-        const btn = card.querySelector('.crew-photo-toggle');
-        if (card.classList.contains('show-slack')) {
-          btn.innerText = '🎭 Лор Арт';
-          btn.style.background = 'var(--accent-cyan)';
-          btn.style.color = '#06090f';
-        } else {
-          btn.innerText = '🔄 Slack Фото';
-          btn.style.background = '';
-          btn.style.color = '';
-        }
-      }
     }
 
     function filterCrew(dept, btn) {
       document.querySelectorAll('.crew-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderCrewCards(dept);
+      renderCrewCompact(dept);
     }
 
-    function toggleCrewDossier() {
-      const wrap = document.getElementById('crewDossierWrap');
-      const btn = document.getElementById('crewToggleBtn');
-      if (wrap.classList.contains('active')) {
-        wrap.classList.remove('active');
-        btn.innerHTML = '<span>📜 РАЗВЕРНУТЬ ТАБЕЛЬ О РАНГАХ (22 ПЕРСОНЫ)</span>';
+    function openCrewModal(index) {
+      currentModalIndex = index;
+      const c = activeCrewList[currentModalIndex];
+      if (!c) return;
+
+      document.getElementById('modalName').innerText = c.name;
+      document.getElementById('modalBadge').innerText = c.badge;
+      document.getElementById('modalRealRole').innerText = c.realRole;
+      document.getElementById('modalTitle').innerText = c.title;
+      document.getElementById('modalQuote').innerText = c.quote;
+      document.getElementById('modalMutations').innerText = c.mutations;
+      document.getElementById('modalCounter').innerText = `${currentModalIndex + 1} / ${activeCrewList.length}`;
+
+      const imgLore = document.getElementById('modalImgLore');
+      const imgSlack = document.getElementById('modalImgSlack');
+      imgLore.src = c.photoLore;
+      imgSlack.src = c.photoSlack;
+
+      const photoBox = document.getElementById('modalPhotoBox');
+      photoBox.classList.remove('show-slack');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      toggleBtn.innerText = '🔄 Slack Фото';
+      toggleBtn.style.background = '';
+      toggleBtn.style.color = '';
+
+      const modal = document.getElementById('crewModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCrewModal() {
+      const modal = document.getElementById('crewModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeCrewModalOnBackdrop(e) {
+      if (e.target.id === 'crewModal') {
+        closeCrewModal();
+      }
+    }
+
+    function navCrewModal(direction) {
+      let nextIdx = currentModalIndex + direction;
+      if (nextIdx < 0) nextIdx = activeCrewList.length - 1;
+      if (nextIdx >= activeCrewList.length) nextIdx = 0;
+      openCrewModal(nextIdx);
+    }
+
+    function toggleModalSlackPhoto() {
+      const photoBox = document.getElementById('modalPhotoBox');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      photoBox.classList.toggle('show-slack');
+      if (photoBox.classList.contains('show-slack')) {
+        toggleBtn.innerText = '🎭 Лор Арт';
+        toggleBtn.style.background = 'var(--accent-cyan)';
+        toggleBtn.style.color = '#06090f';
       } else {
-        wrap.classList.add('active');
-        renderCrewCards('all');
-        btn.innerHTML = '<span>▲ СВЕРНУТЬ ТАБЕЛЬ О РАНГАХ</span>';
-        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        toggleBtn.innerText = '🔄 Slack Фото';
+        toggleBtn.style.background = '';
+        toggleBtn.style.color = '';
       }
     }
 
-    function openCrewDossier() {
-      const wrap = document.getElementById('crewDossierWrap');
-      const btn = document.getElementById('crewToggleBtn');
-      if (!wrap.classList.contains('active')) {
-        wrap.classList.add('active');
-        renderCrewCards('all');
-        btn.innerHTML = '<span>▲ СВЕРНУТЬ ТАБЕЛЬ О РАНГАХ</span>';
+    // Keyboard navigation for modal
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('crewModal');
+      if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') closeCrewModal();
+        if (e.key === 'ArrowLeft') navCrewModal(-1);
+        if (e.key === 'ArrowRight') navCrewModal(1);
       }
-      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    });
 
-    // Cinema Screen Controls
+    // Cinema Screen Controls// Cinema Screen Controls
     function reloadGame() {
       const iframe = document.getElementById('gameIframe');
       iframe.src = iframe.src;
@@ -1765,7 +1899,7 @@
     })();
 
     // Init
-    renderCrewCards('all');
+    renderCrewCompact('all');
   </script>
 </body>
 </html>
