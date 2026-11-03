@@ -38,15 +38,15 @@ export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
 
   // Calibrated targetVol scales them to -25.0 dBFS RMS (loud and grimdark, zero speech clash)
 
-  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.01 },
+  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.32, fadeInSec: 0.25, duckAmbientTo: 0.005 },
 
-  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.01 },
+  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.28, fadeInSec: 0.35, duckAmbientTo: 0.005 },
 
-  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.18, fadeInSec: 0.40, duckAmbientTo: 0.01 },
+  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.28, fadeInSec: 0.35, duckAmbientTo: 0.005 },
 
-  dread_09_rust_and_bone_full_punishment_52s: { targetVol: 0.18, fadeInSec: 0.40, duckAmbientTo: 0.01 },
+  dread_09_rust_and_bone_full_punishment_52s: { targetVol: 0.32, fadeInSec: 0.40, duckAmbientTo: 0.005 },
 
-  dread_10_predator_nightmare_drop_52s: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.01 },
+  dread_10_predator_nightmare_drop_52s: { targetVol: 0.32, fadeInSec: 0.35, duckAmbientTo: 0.005 },
 
 
 

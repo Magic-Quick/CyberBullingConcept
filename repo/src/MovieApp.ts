@@ -6575,11 +6575,11 @@ export class MovieApp {
       text: '',
       style: new TextStyle({
         fontFamily: ['Share Tech Mono', 'monospace'],
-        fontSize: 22,
+        fontSize: 28,
         fontWeight: 'bold',
-        fill: '#00f5d4',
+        fill: '#ffffff',
         letterSpacing: 1.2,
-        dropShadow: { alpha: 0.85, blur: 6, color: '#00f5d4', distance: 0 },
+        dropShadow: { alpha: 0.85, blur: 8, color: '#ff5e1a', distance: 0 },
       }),
     });
     this._cornerLocationBadge.addChild(this._cornerLocationCategory);
@@ -6588,11 +6588,11 @@ export class MovieApp {
       text: '',
       style: new TextStyle({
         fontFamily: ['Share Tech Mono', 'monospace'],
-        fontSize: 28,
+        fontSize: 22,
         fontWeight: 'bold',
-        fill: '#ffffff',
+        fill: '#00f5d4',
         letterSpacing: 1.0,
-        dropShadow: { alpha: 0.85, blur: 8, color: '#ff5e1a', distance: 0 },
+        dropShadow: { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 },
       }),
     });
     this._cornerLocationBadge.addChild(this._cornerLocationTitle);
@@ -7046,10 +7046,10 @@ export class MovieApp {
     const half = size / 2;
     const r = half - 8;
 
-    // Background round rect
+    // Background round rect matching avatar style (0x333333 subtle border, dark background)
     gfx.roundRect(0, 0, size, size, 10);
-    gfx.fill({ color: 0x050e14, alpha: 0.95 });
-    gfx.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.6 });
+    gfx.fill({ color: 0x0a1015, alpha: 0.95 });
+    gfx.stroke({ color: 0x333333, width: 2, alpha: 0.5 });
 
     // Concentric radar rings
     gfx.circle(half, half, r * 0.33);
@@ -7149,11 +7149,12 @@ export class MovieApp {
     this._drawLocationRadar(radarSize, this._radarAngle);
 
     const textX = pad + radarSize + (isPortrait ? 16 : 22);
-    this._cornerLocationCategory.style.fontSize = isPortrait ? 18 : 22;
-    this._cornerLocationTitle.style.fontSize = isPortrait ? 24 : 28;
+    // Matched exactly to avatar badge typography hierarchy: Line 1 = 28px, Line 2 = 22px
+    this._cornerLocationCategory.style.fontSize = isPortrait ? 24 : 28;
+    this._cornerLocationTitle.style.fontSize = isPortrait ? 18 : 22;
 
     this._cornerLocationCategory.position.set(textX, pad + (isPortrait ? 8 : 12));
-    this._cornerLocationTitle.position.set(textX, pad + (isPortrait ? 44 : 54));
+    this._cornerLocationTitle.position.set(textX, pad + (isPortrait ? 48 : 58));
 
     let textW: number;
     if (this._locationBadgeTyping.active && this._locationBadgeTyping.fullCategory) {
@@ -7174,7 +7175,7 @@ export class MovieApp {
     this._cornerLocationBg.clear();
     this._cornerLocationBg.roundRect(0, 0, badgeW, badgeH, 10);
     this._cornerLocationBg.fill({ color: 0x000000, alpha: 0.94 });
-    this._cornerLocationBg.stroke({ color: 0x00f5d4, width: 1.5, alpha: 0.4 });
+    // Clean borderless container (stroke removed per user request: "убери тут рамочку")
 
     const badgeX = isPortrait ? 16 : 28;
     const badgeY = isPortrait ? 24 : 28;
