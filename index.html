@@ -2125,8 +2125,11 @@
         ctx.clearRect(0, 0, w, h);
         ctx.fillStyle = '#00f5d4';
         stars.forEach(s => {
-          s.y += s.speed;
-          if (s.y > h) s.y = 0;
+          s.x += s.speed;
+          if (s.x > w) {
+            s.x = 0;
+            s.y = Math.random() * h;
+          }
           ctx.globalAlpha = s.alpha * 0.7;
           ctx.beginPath();
           ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
