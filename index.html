@@ -231,23 +231,33 @@
     }
 
     /* Hero Section */
-        /* Hero Brand Skull Mark */
-    .hero-brand-mark {
-      margin-bottom: 22px;
+        /* Hero Logos Row */
+    .hero-logos-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 24px;
     }
 
     .hero-skull-logo {
-      width: 90px;
-      height: 90px;
+      width: 125px;
+      height: 125px;
       object-fit: contain;
-      filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.45));
+      filter: none;
       display: block;
-      transition: transform 0.25s ease, filter 0.25s ease;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
     .hero-skull-logo:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 32px rgba(0, 245, 212, 0.75));
+      transform: scale(1.04);
+    }
+
+    .hero-series-logo {
+      height: 90px;
+      max-width: 290px;
+      object-fit: contain;
+      display: block;
     }
 .hero-section {
       padding: 70px 0 50px;
@@ -1265,13 +1275,14 @@
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
       <div class="hero-text-col">
-        <div class="hero-brand-mark">
-          <img src="web_assets/images/gui/playbox_skull_icon.png" alt="Playbox Skull Emblem" class="hero-skull-logo">
-        </div>
         <h1 class="hero-title">
-          <span class="glow-text">КИБЕРБУЛЛИНГ:</span><br>
-          СЫГРАВШИЙ В ЯЩИК
+          <span class="glow-text">КИБЕРБУЛЛИНГ</span>
         </h1>
+
+        <div class="hero-logos-row">
+          <img src="web_assets/images/gui/playbox_skull_icon.png" alt="Playbox Skull Emblem" class="hero-skull-logo">
+          <img src="web_assets/images/gui/series_title_logo.png" alt="Сыгравший в ящик" class="hero-series-logo">
+        </div>
 
         <p class="hero-lead">
           Новая подача еженедельного шоу студии <strong>Playbox</strong>. Это зеркальный антипод реального распределённого продакшена в параллельной тёмной вселенной, где работа идёт <strong>строго офлайн</strong> внутри гигантского космического ковчега-бизнес-центра.
