@@ -1,3 +1,4 @@
+import { PremiereAudioDirector } from './PremiereAudioDirector';
 import { Application, Container, Graphics, Sprite, Text, TextStyle, CanvasTextMetrics, FederatedPointerEvent, Texture, NineSliceSprite, TilingSprite, Rectangle, BlurFilter } from 'pixi.js';
 
 import { STORY_ACTS, ActData } from './storyData';
@@ -299,6 +300,8 @@ export class MovieApp {
 
   private _introLogoSprite: Sprite;
 
+  private _introRealLogoSprite: Sprite;
+
   private _introStudiosText: Text;
 
   private _introPresentsText: Text;
@@ -312,7 +315,10 @@ export class MovieApp {
   private _introCycleSubtitle: Text;
 
   private _introLogoBaseScale = 0.2;
+  private _introLogoBaseY = 0;
   private _introFontScale = 1.0;
+  private _introGlitchSoundPlayed1 = false;
+  private _introGlitchSoundPlayed2 = false;
 
   private _videoElement: HTMLVideoElement | null = null;
 
@@ -431,12 +437,16 @@ export class MovieApp {
   private _wsSetModeLatched!: (latched: boolean) => void;
 
   private _wsVoiceKnob!: Sprite;
+  private _wsVoiceSlider?: { container: Container; knob: Sprite; setVol: (v: number) => void };
 
   private _wsMusicKnob!: Sprite;
+  private _wsMusicSlider?: { container: Container; knob: Sprite; setVol: (v: number) => void };
 
   private _wsSfxKnob!: Sprite;
+  private _wsSfxSlider?: { container: Container; knob: Sprite; setVol: (v: number) => void };
 
   private _wsLcdText!: Text;
+  private _wsLcdOverrideTimer = 0.0;
 
   private _wsTimelineContainer!: Container;
 
@@ -521,6 +531,8 @@ export class MovieApp {
   private _bgBaseScale = 1.0;
 
   private _isTransitioningAct = false;
+  private _isSeeking = false;
+  private _devGearBtn!: Container;
 
   // Volume channels
 
@@ -608,9 +620,103 @@ export class MovieApp {
 
   private _debugExpandedPanel!: Container;
 
+    // Audio Director Suite State & Cues
+  private _selectedDreadIndex = 0;
+  private _selectedPeaceIndex = 0;
+  private _directorActiveTab: 'cues' | 'ambient' = 'cues';
+  private _directorMusicCues: Map<string, { id: string; actId: string; time: number; key: string; name: string; category: 'dread' | 'peace' | 'stop' }[]> = new Map();
+  private _lastFiredMusicCueId: string | null = null;
+  private _directorTabBtnCues!: Container;
+  private _directorTabBtnAmb!: Container;
+  private _directorCuesPanel!: Container;
+  private _directorAmbientPanel!: Container;
+  private _directorActTimeText!: Text;
+  private _directorDreadText!: Text;
+  private _directorPeaceText!: Text;
+  private _directorCuesListContainer!: Container;
+  private _directorNoticeText!: Text;
   private _debugExpanded = false;
 
+  // DAW Multi-Track Timeline & Act 0 Intro Variants
+  private _dawTimelineContainer!: Container;
+  private _dawTimelineBg!: Graphics;
+  private _dawRulerGraphics!: Graphics;
+  private _dawRulerLabelsContainer!: Container;
+  private _dawLanesBg!: Graphics;
+  private _dawLaneLabelsContainer!: Container;
+  private _dawDreadBlocksContainer!: Container;
+  private _dawPeaceBlocksContainer!: Container;
+  private _dawAmbientLaneContainer!: Container;
+  private _dawPlayhead!: Container;
+  private _directorNowPlayingText!: Text;
+  private _dawIntroVariantsContainer!: Container;
+  private _btnIntroVar1!: Container;
+  private _btnIntroVar2!: Container;
+  private _dawIsDraggingTimeline: boolean = false;
+
   private _introProfile!: IntroTimingProfile;
+  private _debugTransLabel!: Text;
+  private _debugAmbientLabel!: Text;
+  private _debugAudioStatusText!: Text;
+  private _selectedTransSoundIndex = 0;
+  private _selectedAmbientIndex = 0;
+  private _transitionAudio: HTMLAudioElement | null = null;
+
+  public static readonly TRANSITION_SOUNDS_METADATA = [
+    { key: 'melodic_tension_french_horn_minor_swell', name: 'Валторна (French Horn)', gain: 0.75 },
+    { key: 'braam_titan_warhorn_doom', name: 'Титанический Вархорн', gain: 0.60 },
+    { key: 'trailer_braam_sub_drop', name: 'Саб-Дроп Брам', gain: 0.65 },
+    { key: 'trailer_tension_riser_to_brutal_cut', name: 'Резкий Райзер', gain: 0.68 },
+    { key: 'melodic_tension_mournful_vocal_drone', name: 'Траурный Вокал', gain: 0.72 },
+    { key: 'braam_analog_synth_pitch_drop', name: 'Аналоговый Синт', gain: 0.65 },
+  ];
+
+  public static readonly AMBIENT_OPTIONS: { key: import('./AmbientManager').AmbientTrackKey; name: string }[] = [
+    { key: 'rust_and_bone', name: 'Rust and Bone (Гримдарк)' },
+    { key: 'titan_forge', name: 'Titan Forge (Горн)' },
+    { key: 'desolate_cry', name: 'Desolate Cry (Одинокий вой)' },
+    { key: 'absolute_blackout', name: 'Absolute Blackout (Блэкаут)' },
+    { key: 'chronicles_ambient', name: 'Chronicles (Соборный хор)' },
+  ];
+
+  public static readonly DREAD_OPTIONS = [
+    { key: 'dread_11_morlock_war_march_climax_50s', name: 'Марш Морлоков (50с • Климакс)', dur: 50 },
+    { key: 'dread_12_predator_digital_drug_28s', name: 'Цифровой наркотик (28с • Дроп)', dur: 28 },
+    { key: 'dread_03_predator_instant_terror_drop_25s', name: 'Мгновенный ужас / Инвалид (25с)', dur: 25 },
+    { key: 'dread_05_rust_and_bone_maximum_grimdark_25s', name: 'Эшафот / Макс. гримдарк (25с)', dur: 25 },
+    { key: 'dread_10_predator_nightmare_drop_52s', name: 'Мэвис на карачках (52с)', dur: 52 },
+    { key: 'dread_04_predator_chittering_nightmare_25s', name: 'Кошмар Хищника (25с)', dur: 25 },
+  ];
+
+  public static readonly PEACE_OPTIONS = [
+    { key: 'peace_08_pin_drop_silence_reward_grace_60s', name: 'Печенька Благодати (60с • Свет)', dur: 60 },
+    { key: 'peace_01_pin_drop_silence_pure_calm_25s', name: 'Чистый покой (25с • Pin Drop)', dur: 25 },
+    { key: 'peace_02_pin_drop_silence_warm_melody_30s', name: 'Тёплая мелодия (30с • Пады)', dur: 30 },
+    { key: 'peace_03_pin_drop_silence_gentle_resolution_25s', name: 'Мягкое разрешение (25с)', dur: 25 },
+    { key: 'peace_04_chronicles_playbox_heavenly_vocalise_30s', name: 'Небесный вокализ (30с)', dur: 30 },
+    { key: 'peace_05_chronicles_playbox_uplifting_pads_30s', name: 'Возвышенные пэды (30с)', dur: 30 },
+    { key: 'peace_06_chronicles_playbox_warm_culmination_25s', name: 'Тёплая кульминация (25с)', dur: 25 },
+  ];
+
+  public getLockedTransitionSound(): string {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const saved = window.localStorage.getItem('cyberbulling_transition_sound');
+        if (saved && MovieApp.TRANSITION_SOUNDS_METADATA.some(s => s.key === saved)) {
+          return saved;
+        }
+      }
+    } catch {}
+    return 'melodic_tension_french_horn_minor_swell';
+  }
+
+  public setLockedTransitionSound(key: string): void {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem('cyberbulling_transition_sound', key);
+      }
+    } catch {}
+  }
 
   constructor(app: Application) {
 
@@ -769,6 +875,14 @@ export class MovieApp {
     this._introLogoSprite.alpha = 0;
 
     this._introContainer.addChild(this._introLogoSprite);
+
+    this._introRealLogoSprite = new Sprite(getTexture('playbox_real_logo'));
+
+    this._introRealLogoSprite.anchor.set(0.5);
+
+    this._introRealLogoSprite.alpha = 0;
+
+    this._introContainer.addChild(this._introRealLogoSprite);
 
     // 2. STUDIOS text (no square brackets, tighter letter spacing)
 
@@ -1374,7 +1488,7 @@ export class MovieApp {
 
           this._introProfile = p;
 
-          if (this._currentActIndex === 0) this._actDuration = INTRO_DISCLAIMER_DURATION + p.introEndTime;
+          if (this._currentActIndex === 0) this._actDuration = p.introEndTime;
 
           this._updateDebugDisplay();
 
@@ -1394,7 +1508,7 @@ export class MovieApp {
 
           this._introProfile = p;
 
-          if (this._currentActIndex === 0) this._actDuration = INTRO_DISCLAIMER_DURATION + p.introEndTime;
+          if (this._currentActIndex === 0) this._actDuration = p.introEndTime;
 
           this._updateDebugDisplay();
 
@@ -1596,30 +1710,36 @@ export class MovieApp {
 
         this.seekAudio(ratio * this._actDuration);
 
-      } else if (e.key === 'd' || e.key === 'D') {
+      } else if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
+        e.preventDefault();
+        this.toggleDevAudioDirector();
 
-        SFX.playClick();
-
-        this._debugExpanded = !this._debugExpanded;
-
-        this._debugExpandedPanel.visible = this._debugExpanded;
-
-        this.resize(this._screenWidth, this._screenHeight);
-
+      } else if (this._debugExpanded && (e.code === 'KeyT' || e.key === 't' || e.key === 'T' || e.key === 'е' || e.key === 'Е')) {
+        e.preventDefault();
+        this.addDirectorMusicCue('dread');
+      } else if (this._debugExpanded && (e.code === 'KeyP' || e.key === 'p' || e.key === 'P' || e.key === 'з' || e.key === 'З')) {
+        e.preventDefault();
+        this.addDirectorMusicCue('peace');
+      } else if (this._debugExpanded && (e.code === 'KeyX' || e.key === 'x' || e.key === 'X' || e.key === 'ч' || e.key === 'Ч')) {
+        e.preventDefault();
+        this.addDirectorMusicCue('stop');
+      } else if (this._debugExpanded && (e.code === 'BracketLeft' || e.key === '[' || e.key === 'х')) {
+        e.preventDefault();
+        const act = STORY_ACTS[this._currentActIndex];
+        const cues = this._directorMusicCues.get(act.id) || [];
+        if (cues.length) this.nudgeDirectorMusicCue(cues[cues.length - 1].id, -1.0);
+      } else if (this._debugExpanded && (e.code === 'BracketRight' || e.key === ']' || e.key === 'ъ')) {
+        e.preventDefault();
+        const act = STORY_ACTS[this._currentActIndex];
+        const cues = this._directorMusicCues.get(act.id) || [];
+        if (cues.length) this.nudgeDirectorMusicCue(cues[cues.length - 1].id, +1.0);
       } else if (e.key === 't' || e.key === 'T') {
-
         SFX.playClick();
-
         this.toggleIntroTrack();
-
       } else if (e.key === 'p' || e.key === 'P') {
-
         if (this._currentActIndex === 0) {
-
           this.seekAudio(24.0);
-
         }
-
       }
 
     });
@@ -1644,6 +1764,14 @@ export class MovieApp {
 
     }
 
+    const premiereDirector = PremiereAudioDirector.getInstance();
+    premiereDirector.onSeekRequested = (targetSeconds: number) => {
+      this.seekAudio(targetSeconds);
+    };
+    premiereDirector.onActChangeRequested = (actIndex: number) => {
+      this.goToAct(actIndex, this._isPlaying);
+    };
+    (window as any).__premiereAudioDirector = premiereDirector;
     this.goToAct(0);
 
   }
@@ -2799,101 +2927,142 @@ export class MovieApp {
   }
 
   private _createWsKnobSlider(
-
     knobTexKey: string,
-
     startX: number,
-
     endX: number,
-
     slotY: number,
-
     initialVol: number,
-
-    onChange: (vol: number) => void
-
+    onChange: (vol: number) => void,
+    label: string = ''
   ): { container: Container; knob: Sprite; setVol: (v: number) => void } {
-
     const c = new Container();
-
     c.eventMode = 'static';
+    c.cursor = 'ew-resize';
 
-    c.cursor = 'pointer';
+    // Generous hitArea so mouse and touch never miss the knob
+    const hitW = (endX - startX) + 40;
+    const hitH = 64;
+    c.hitArea = new Rectangle(startX - 20, slotY - 32, hitW, hitH);
 
     const hit = new Graphics();
-
-    hit.rect(startX - 12, slotY - 16, (endX - startX) + 24, 32);
-
+    hit.rect(startX - 20, slotY - 32, hitW, hitH);
     hit.fill({ color: 0x000000, alpha: 0.001 });
-
+    hit.eventMode = 'static';
+    hit.cursor = 'ew-resize';
     c.addChild(hit);
 
     const knob = new Sprite(getTexture(knobTexKey));
-
     knob.anchor.set(0.5, 0.5);
-
+    knob.eventMode = 'static';
+    knob.cursor = 'ew-resize';
     knob.position.set(startX + initialVol * (endX - startX), slotY);
-
     c.addChild(knob);
 
     let isDragging = false;
 
     const updateFromPos = (globalPos: { x: number; y: number }) => {
-
       const local = c.toLocal(globalPos);
-
       const ratio = Math.max(0, Math.min(1, (local.x - startX) / (endX - startX)));
-
       knob.x = startX + ratio * (endX - startX);
-
       onChange(ratio);
 
-    };
+      const pct = Math.round(ratio * 100);
 
-    c.on('pointerdown', (e: FederatedPointerEvent) => {
-
-      e.stopPropagation();
-
-      ClickTracker.exclude();
-
-      isDragging = true;
-
-      updateFromPos(e.global);
-
-    });
-
-    c.on('globalpointermove', (e: FederatedPointerEvent) => {
-
-      if (isDragging) {
-
-        updateFromPos(e.global);
-
+      // 1. Live console LCD feedback
+      if (this._wsLcdText && label) {
+        this._wsLcdText.text = `${label} ${pct}%`;
+        this._wsLcdOverrideTimer = 1.6;
       }
 
+      // 2. Live tooltip feedback
+      if (this._timelineTooltip && this._timelineTooltipText && label) {
+        this._timelineTooltipText.text = `${label}: ${pct}%`;
+        this._timelineTooltipBg.clear();
+        this._timelineTooltipBg.roundRect(
+          -this._timelineTooltipText.width / 2 - 8,
+          -13,
+          this._timelineTooltipText.width + 16,
+          26,
+          6
+        );
+        this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+        this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
+        const localTooltip = this._wsConsoleContainer.toLocal(globalPos);
+        this._timelineTooltip.position.set(localTooltip.x, localTooltip.y - 24);
+        this._timelineTooltip.visible = true;
+      }
+    };
+
+    const onWindowMove = (e: PointerEvent) => {
+      if (!isDragging) return;
+      const canvas = this._app.canvas as HTMLCanvasElement;
+      const rect = canvas.getBoundingClientRect();
+      const screenX = (e.clientX - rect.left) * (this._app.screen.width / (rect.width || 1));
+      const screenY = (e.clientY - rect.top) * (this._app.screen.height / (rect.height || 1));
+      updateFromPos({ x: screenX, y: screenY });
+    };
+
+    const onWindowUp = () => {
+      if (isDragging) {
+        isDragging = false;
+        if (this._timelineTooltip) {
+          this._timelineTooltip.visible = false;
+        }
+      }
+      window.removeEventListener('pointermove', onWindowMove);
+      window.removeEventListener('pointerup', onWindowUp);
+    };
+
+    const startDrag = (e: FederatedPointerEvent) => {
+      e?.stopPropagation?.();
+      ClickTracker.exclude();
+      isDragging = true;
+      if (e?.global) {
+        updateFromPos(e.global);
+      }
+      window.addEventListener('pointermove', onWindowMove);
+      window.addEventListener('pointerup', onWindowUp);
+    };
+
+    c.on('pointerdown', startDrag);
+    knob.on('pointerdown', startDrag);
+
+    c.on('pointerover', (e: FederatedPointerEvent) => {
+      if (label && this._timelineTooltip && this._timelineTooltipText && !isDragging) {
+        const ratio = (knob.x - startX) / (endX - startX);
+        const pct = Math.round(ratio * 100);
+        this._timelineTooltipText.text = `${label}: ${pct}%`;
+        this._timelineTooltipBg.clear();
+        this._timelineTooltipBg.roundRect(
+          -this._timelineTooltipText.width / 2 - 8,
+          -13,
+          this._timelineTooltipText.width + 16,
+          26,
+          6
+        );
+        this._timelineTooltipBg.fill({ color: 0x0a0c14, alpha: 0.95 });
+        this._timelineTooltipBg.stroke({ color: 0x00d2ff, width: 1.5 });
+        const localTooltip = this._wsConsoleContainer.toLocal(e.global);
+        this._timelineTooltip.position.set(localTooltip.x, localTooltip.y - 24);
+        this._timelineTooltip.visible = true;
+      }
     });
 
-    window.addEventListener('pointerup', () => {
-
-      isDragging = false;
-
+    c.on('pointerout', () => {
+      if (!isDragging && this._timelineTooltip) {
+        this._timelineTooltip.visible = false;
+      }
     });
 
     return {
-
       container: c,
-
       knob,
-
       setVol: (v: number) => {
-
         const clamped = Math.max(0, Math.min(1, v));
-
         knob.x = startX + clamped * (endX - startX);
-
-      }
-
+        onChange(clamped);
+      },
     };
-
   }
 
   private _setupWsConsole(): void {
@@ -3011,104 +3180,65 @@ export class MovieApp {
     this._wsLeftWing.addChild(volKey.container);
 
     // 3 Volume Sliders (narrowed travel boundaries so knobs stay strictly within the sculpted wells)
-
     const voiceSlider = this._createWsKnobSlider(
-
       'gui_knob_voice',
-
       342,
-
       390,
-
       83,
-
       this._voiceVolume,
-
       (v) => {
-
         this._voiceVolume = v;
-
         const act = STORY_ACTS[this._currentActIndex];
-
         const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
-
         if (!isSong && this._voiceAudio) {
-
           this._voiceAudio.volume = AudioController.isMuted() ? 0 : v;
-
         }
-
-      }
-
+      },
+      'VOICE'
     );
-
     this._wsLeftWing.addChild(voiceSlider.container);
-
     this._wsVoiceKnob = voiceSlider.knob;
+    this._wsVoiceSlider = voiceSlider;
 
     const musicSlider = this._createWsKnobSlider(
-
       'gui_knob_music',
-
       428,
-
       480,
-
       83,
-
       this._musicVolume,
-
       (v) => {
-
         this._musicVolume = v;
-
         AmbientManager.setMusicVolume(v);
-
         const act = STORY_ACTS[this._currentActIndex];
-
         const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
-
         if (isSong && this._voiceAudio) {
-
           this._voiceAudio.volume = AudioController.isMuted() ? 0 : v;
-
         }
-
-      }
-
+      },
+      'MUSIC'
     );
-
     this._wsLeftWing.addChild(musicSlider.container);
-
     this._wsMusicKnob = musicSlider.knob;
+    this._wsMusicSlider = musicSlider;
 
     const sfxSlider = this._createWsKnobSlider(
-
       'gui_knob_sfx',
-
       522,
-
       569,
-
       83,
-
       this._sfxVolume,
-
       (v) => {
-
         this._sfxVolume = v;
-
         SFX.setVolume(v);
-
         SFX.playPreview();
-
-      }
-
+      },
+      'SFX'
     );
 
     this._wsLeftWing.addChild(sfxSlider.container);
 
     this._wsSfxKnob = sfxSlider.knob;
+    this._wsSfxSlider = sfxSlider;
 
     // Digital LCD Screen
 
@@ -3490,7 +3620,7 @@ export class MovieApp {
 
     const socketBg = new Graphics();
 
-    socketBg.roundRect(156, 48, 126, 64, 5);
+    socketBg.rect(156, 48, 126, 64);
 
     socketBg.fill({ color: 0x080a0c });
 
@@ -3562,314 +3692,1103 @@ export class MovieApp {
 
   }
 
-  private _setupDebugUI(): void {
+  public toggleDevAudioDirector(): void {
+    SFX.playClick();
+    PremiereAudioDirector.getInstance().toggle();
+  }
 
+  private _initDirectorMusicCues(): void {
+    const defaults: Record<string, { time: number; key: string; category: 'dread' | 'peace' | 'stop' }[]> = {
+      intro_playbox: [
+        { time: 0.0, key: AmbientManager.getIntroTrack(), category: 'peace' },
+        { time: 24.0, key: 'dread_03_predator_instant_terror_drop_25s', category: 'dread' },
+      ],
+      prologue_space: [
+        { time: 60.0, key: 'dread_05_rust_and_bone_maximum_grimdark_25s', category: 'dread' },
+      ],
+      act_1_convent: [
+        { time: 17.14, key: 'dread_12_predator_digital_drug_28s', category: 'dread' },
+      ],
+      act_2_sarcophagus: [
+        { time: 45.58, key: 'dread_03_predator_instant_terror_drop_25s', category: 'dread' },
+      ],
+      act_3_timemachine: [
+        { time: 108.62, key: 'peace_03_pin_drop_silence_gentle_resolution_25s', category: 'peace' },
+      ],
+      act_4_engine: [
+        { time: 25.14, key: 'dread_04_predator_chittering_nightmare_25s', category: 'dread' },
+        { time: 126.17, key: 'peace_08_pin_drop_silence_reward_grace_60s', category: 'peace' },
+      ],
+      act_5_clientarchs: [
+        { time: 0.00, key: 'dread_05_rust_and_bone_maximum_grimdark_25s', category: 'dread' },
+        { time: 97.96, key: 'dread_03_predator_instant_terror_drop_25s', category: 'dread' },
+        { time: 140.72, key: 'dread_11_morlock_war_march_climax_50s', category: 'dread' },
+        { time: 208.70, key: 'dread_10_predator_nightmare_drop_52s', category: 'dread' },
+      ],
+      act_6_punishment: [
+        { time: 25.44, key: 'dread_05_rust_and_bone_maximum_grimdark_25s', category: 'dread' },
+        { time: 53.40, key: 'dread_11_morlock_war_march_climax_50s', category: 'dread' },
+      ],
+      act_6_reward: [
+        { time: 0.00, key: 'peace_08_pin_drop_silence_reward_grace_60s', category: 'peace' },
+        { time: 60.18, key: 'dread_03_predator_instant_terror_drop_25s', category: 'dread' },
+      ],
+      act_8_outro: [
+        { time: 30.62, key: 'dread_03_predator_instant_terror_drop_25s', category: 'dread' },
+      ],
+      act_7_song: [
+        { time: 0.0, key: 'dread_11_morlock_war_march_climax_50s', category: 'dread' },
+      ],
+    };
+
+    let overrides: Record<string, { id: string; actId: string; time: number; key: string; name: string; category: 'dread' | 'peace' | 'stop' }[]> = {};
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const raw = window.localStorage.getItem('cyberbulling_music_cues');
+        if (raw) overrides = JSON.parse(raw);
+      }
+    } catch {}
+
+    for (const act of STORY_ACTS) {
+      const savedList = overrides[act.id];
+      if (savedList && savedList.length > 0) {
+        this._directorMusicCues.set(act.id, savedList);
+      } else if (defaults[act.id]) {
+        const cues = defaults[act.id].map((d, i) => {
+          let name = d.key;
+          if (d.category === 'dread') {
+            const opt = MovieApp.DREAD_OPTIONS.find((o) => o.key === d.key);
+            if (opt) name = opt.name;
+          } else if (d.category === 'peace') {
+            const opt = MovieApp.PEACE_OPTIONS.find((o) => o.key === d.key);
+            if (opt) name = opt.name;
+          } else {
+            name = '⏹ Стоп музыки';
+          }
+          if (act.id === 'intro_playbox') {
+            if (d.time === 0.0) {
+              name = (AmbientManager.getIntroTrack() === 'desolate_cry' ? 'Desolate Cry (Вступление)' : 'Titan Forge (Вступление)');
+            } else if (d.time === 24.0) {
+              name = '🎬 ДРОП ЛОГОТИПА / КУЛЬМИНАЦИЯ';
+            }
+          }
+          return {
+            id: `${act.id}_${i}_${d.time}`,
+            actId: act.id,
+            time: d.time,
+            key: d.key,
+            name: name,
+            category: d.category,
+          };
+        });
+        this._directorMusicCues.set(act.id, cues);
+      } else {
+        this._directorMusicCues.set(act.id, []);
+      }
+    }
+  }
+
+  public setIntroTrackVariant(variant: 'desolate_cry' | 'titan_forge'): void {
+    AmbientManager.setIntroTrack(variant, this._currentActIndex === 0);
+    const cues = this._directorMusicCues.get('intro_playbox');
+    if (cues && cues.length > 0) {
+      cues[0].key = variant;
+      cues[0].name = variant === 'desolate_cry' ? 'Desolate Cry (Вступление)' : 'Titan Forge (Вступление)';
+    }
+    this._saveDirectorMusicCues();
+    this._setDirectorNotice(`★ Выбран вариант интро: ${variant === 'desolate_cry' ? 'Desolate Cry' : 'Titan Forge'}`);
+    this._updateDebugDisplay();
+  }
+
+  private _saveDirectorMusicCues(): void {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const obj: Record<string, any> = {};
+        for (const [k, v] of this._directorMusicCues.entries()) {
+          obj[k] = v;
+        }
+        window.localStorage.setItem('cyberbulling_music_cues', JSON.stringify(obj));
+      }
+    } catch {}
+  }
+
+  public addDirectorMusicCue(category: 'dread' | 'peace' | 'stop'): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (!act) return;
+    const actId = act.id;
+    const curTime = Math.round(Math.max(0, this._actTime) * 10) / 10;
+
+    let key = 'stop';
+    let name = '⏹ Стоп / Fade Out';
+
+    if (category === 'dread') {
+      const opt = MovieApp.DREAD_OPTIONS[this._selectedDreadIndex] || MovieApp.DREAD_OPTIONS[0];
+      key = opt.key;
+      name = `💀 ${opt.name}`;
+      AmbientManager.playCinematicCue(key);
+    } else if (category === 'peace') {
+      const opt = MovieApp.PEACE_OPTIONS[this._selectedPeaceIndex] || MovieApp.PEACE_OPTIONS[0];
+      key = opt.key;
+      name = `🕊️ ${opt.name}`;
+      AmbientManager.playCinematicCue(key);
+    } else {
+      AmbientManager.stopCinematicCue(2.5);
+    }
+
+    const cues = this._directorMusicCues.get(actId) || [];
+    // If a cue already exists within 0.4s, replace it
+    const existingIdx = cues.findIndex((c) => Math.abs(c.time - curTime) < 0.4);
+    const newCue = {
+      id: `${actId}_${Date.now()}`,
+      actId,
+      time: curTime,
+      key,
+      name,
+      category,
+    };
+
+    if (existingIdx !== -1) {
+      cues[existingIdx] = newCue;
+    } else {
+      cues.push(newCue);
+    }
+    cues.sort((a, b) => a.time - b.time);
+    this._directorMusicCues.set(actId, cues);
+    this._saveDirectorMusicCues();
+    this._setDirectorNotice(`✓ Зафиксировано на ${curTime.toFixed(1)}s: ${name}`);
+    this._updateDebugDisplay();
+  }
+
+  public deleteDirectorMusicCue(id: string): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (!act) return;
+    const cues = (this._directorMusicCues.get(act.id) || []).filter((c) => c.id !== id);
+    this._directorMusicCues.set(act.id, cues);
+    this._saveDirectorMusicCues();
+    this._setDirectorNotice(`✕ Отрезок удалён`);
+    this._updateDebugDisplay();
+  }
+
+  public nudgeDirectorMusicCue(id: string, deltaSec: number): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (!act) return;
+    const cues = this._directorMusicCues.get(act.id) || [];
+    const cue = cues.find((c) => c.id === id);
+    if (!cue) return;
+    cue.time = Math.round(Math.max(0, Math.min(this._actDuration, cue.time + deltaSec)) * 10) / 10;
+    cues.sort((a, b) => a.time - b.time);
+    this._saveDirectorMusicCues();
+    this._setDirectorNotice(`↔ Сдвиг на ${cue.time.toFixed(1)}s: ${cue.name}`);
+    this._updateDebugDisplay();
+  }
+
+  public exportDirectorCuesJson(): void {
+    const obj: Record<string, any> = {};
+    for (const [k, v] of this._directorMusicCues.entries()) {
+      if (v.length > 0) obj[k] = v;
+    }
+    const json = JSON.stringify(obj, null, 2);
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        navigator.clipboard.writeText(json);
+      }
+    } catch {}
+    console.log('[AUDIO DIRECTOR] Music Cues JSON:\n', json);
+    this._setDirectorNotice(`📋 JSON скопирован в буфер обмена!`);
+  }
+
+  public resetDirectorCuesToDefaults(): void {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.removeItem('cyberbulling_music_cues');
+      }
+    } catch {}
+    this._initDirectorMusicCues();
+    this._setDirectorNotice(`↺ Сброшено к исходному канону`);
+    this._updateDebugDisplay();
+  }
+
+  private _setDirectorNotice(msg: string): void {
+    if (this._directorNoticeText) {
+      this._directorNoticeText.text = msg;
+      this._directorNoticeText.style.fill = '#00f5d4';
+    }
+  }
+
+  private _checkDirectorMusicCues(currentTime: number): void {
+    const act = STORY_ACTS[this._currentActIndex];
+    if (!act) return;
+    const cues = this._directorMusicCues.get(act.id);
+    if (!cues || cues.length === 0) return;
+
+    // Find the latest cue that should be active up to currentTime
+    let activeCue: typeof cues[0] | null = null;
+    for (const c of cues) {
+      if (currentTime >= c.time) {
+        activeCue = c;
+      } else {
+        break;
+      }
+    }
+
+    if (activeCue && this._lastFiredMusicCueId !== activeCue.id) {
+      this._lastFiredMusicCueId = activeCue.id;
+      if (activeCue.category === 'stop') {
+        AmbientManager.stopCinematicCue(2.5);
+      } else {
+        AmbientManager.playCinematicCue(activeCue.key);
+      }
+    }
+  }
+
+  private _renderDawTimeline(): void {
+    if (!this._dawTimelineContainer) return;
+
+    const act = STORY_ACTS[this._currentActIndex] || STORY_ACTS[0];
+    const actDuration = Math.max(1, this._actDuration || act.duration || 60);
+    const cues = this._directorMusicCues.get(act.id) || [];
+
+    // Clear dynamic layers
+    this._dawRulerGraphics.clear();
+    this._dawRulerLabelsContainer.removeChildren();
+    this._dawLanesBg.clear();
+    this._dawLaneLabelsContainer.removeChildren();
+    this._dawAmbientLaneContainer.removeChildren();
+    this._dawPeaceBlocksContainer.removeChildren();
+    this._dawDreadBlocksContainer.removeChildren();
+
+    const DAW_X = -280;
+    const DAW_W = 560;
+    const TRACK_X = -255;
+    const TRACK_W = 530;
+
+    // 1. Ruler
+    this._dawRulerGraphics.rect(DAW_X, 0, DAW_W, 18);
+    this._dawRulerGraphics.fill({ color: 0x0f172a, alpha: 0.9 });
+    this._dawRulerGraphics.stroke({ color: 0x334155, width: 0.8 });
+
+    const stepSec = actDuration <= 50 ? 5 : (actDuration <= 130 ? 10 : (actDuration <= 250 ? 20 : 30));
+    const labelStep = stepSec * 2;
+
+    for (let t = 0; t <= actDuration + 0.1; t += stepSec) {
+      const rx = TRACK_X + (t / actDuration) * TRACK_W;
+      const isMajor = Math.round(t) % labelStep === 0 || t === 0;
+
+      this._dawRulerGraphics.moveTo(rx, isMajor ? 5 : 10);
+      this._dawRulerGraphics.lineTo(rx, 17);
+      this._dawRulerGraphics.stroke({ color: isMajor ? 0x94a3b8 : 0x475569, width: isMajor ? 1.0 : 0.6 });
+
+      if (isMajor && rx < DAW_X + DAW_W - 25) {
+        const mins = Math.floor(t / 60);
+        const secs = Math.floor(t % 60);
+        const timeLabel = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        const lbl = new Text({
+          text: timeLabel,
+          style: new TextStyle({ fontFamily: ['Share Tech Mono', 'monospace'], fontSize: 8, fill: '#94a3b8' }),
+        });
+        lbl.anchor.set(0.5, 0);
+        lbl.position.set(rx, 1);
+        this._dawRulerLabelsContainer.addChild(lbl);
+      }
+    }
+
+    // 2. Lanes Background
+    // Lane 1: Dread
+    this._dawLanesBg.rect(DAW_X, 20, DAW_W, 22);
+    this._dawLanesBg.fill({ color: 0x190b14, alpha: 0.95 });
+    this._dawLanesBg.stroke({ color: 0x3d1222, width: 0.6 });
+
+    // Lane 2: Peace
+    this._dawLanesBg.rect(DAW_X, 44, DAW_W, 22);
+    this._dawLanesBg.fill({ color: 0x091a14, alpha: 0.95 });
+    this._dawLanesBg.stroke({ color: 0x133827, width: 0.6 });
+
+    // Lane 3: Ambient
+    this._dawLanesBg.rect(DAW_X, 68, DAW_W, 24);
+    this._dawLanesBg.fill({ color: 0x0d1a29, alpha: 0.95 });
+    this._dawLanesBg.stroke({ color: 0x1a334d, width: 0.6 });
+
+    // Lane Badges
+    const badgeDread = new Text({
+      text: '💀',
+      style: new TextStyle({ fontSize: 11 }),
+    });
+    badgeDread.anchor.set(0.5);
+    badgeDread.position.set(DAW_X + 12, 31);
+    this._dawLaneLabelsContainer.addChild(badgeDread);
+
+    const badgePeace = new Text({
+      text: '🕊️',
+      style: new TextStyle({ fontSize: 11 }),
+    });
+    badgePeace.anchor.set(0.5);
+    badgePeace.position.set(DAW_X + 12, 55);
+    this._dawLaneLabelsContainer.addChild(badgePeace);
+
+    const badgeAmb = new Text({
+      text: '📻',
+      style: new TextStyle({ fontSize: 11 }),
+    });
+    badgeAmb.anchor.set(0.5);
+    badgeAmb.position.set(DAW_X + 12, 80);
+    this._dawLaneLabelsContainer.addChild(badgeAmb);
+
+    // 3. Ambient Lane Strip
+    const ambStrip = new Graphics();
+    ambStrip.rect(TRACK_X, 70, TRACK_W, 20);
+    ambStrip.fill({ color: 0x11273f, alpha: 0.85 });
+    ambStrip.stroke({ color: 0x00f5d4, width: 0.8 });
+    this._dawAmbientLaneContainer.addChild(ambStrip);
+
+    let ambTitle = 'Базовый эмбиент';
+    if (this._currentActIndex === 0) {
+      ambTitle = `ВСТУПЛЕНИЕ: ${AmbientManager.getIntroTrack() === 'desolate_cry' ? 'Desolate Cry (Distortion)' : 'Titan Forge'}`;
+    } else {
+      const curAmbKey = AmbientManager.getLockedTrackForAct(act.id) || AmbientManager.getCurrentTrackKey() || act.audioKey;
+      const opt = MovieApp.AMBIENT_OPTIONS.find((o) => o.key === curAmbKey);
+      ambTitle = `ЭМБИЕНТ: ${opt ? opt.name : curAmbKey}`;
+    }
+
+    const ambTxt = new Text({
+      text: ambTitle,
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 9,
+        fontWeight: 'bold',
+        fill: '#00f5d4',
+      }),
+    });
+    ambTxt.anchor.set(0, 0.5);
+    ambTxt.position.set(TRACK_X + 6, 80);
+    this._dawAmbientLaneContainer.addChild(ambTxt);
+
+    // 4. Dread Blocks
+    const dreadCues = cues.filter((c) => c.category === 'dread');
+    dreadCues.forEach((cue) => {
+      const opt = MovieApp.DREAD_OPTIONS.find((o) => o.key === cue.key);
+      const dur = opt ? opt.dur : 25;
+      const startX = TRACK_X + (cue.time / actDuration) * TRACK_W;
+      const blockW = Math.max(26, Math.min(TRACK_X + TRACK_W - startX, (dur / actDuration) * TRACK_W));
+
+      const blk = new Graphics();
+      blk.rect(startX, 21, blockW, 20);
+      blk.fill({ color: 0x470c1b, alpha: 0.90 });
+      blk.stroke({ color: 0xef476f, width: 1.2 });
+      blk.eventMode = 'static';
+      blk.cursor = 'pointer';
+      blk.on('pointerdown', (e: FederatedPointerEvent) => {
+        e.stopPropagation();
+        this.seekAudio(cue.time);
+      });
+      this._dawDreadBlocksContainer.addChild(blk);
+
+      const titleTxt = new Text({
+        text: `[${cue.time.toFixed(1)}s] ${opt ? opt.name : cue.name}`,
+        style: new TextStyle({
+          fontFamily: ['Share Tech Mono', 'monospace'],
+          fontSize: 8,
+          fontWeight: 'bold',
+          fill: '#ff94aa',
+        }),
+      });
+      titleTxt.anchor.set(0, 0.5);
+      titleTxt.position.set(startX + 4, 31);
+      this._dawDreadBlocksContainer.addChild(titleTxt);
+    });
+
+    // 5. Peace Blocks
+    const peaceCues = cues.filter((c) => c.category === 'peace');
+    peaceCues.forEach((cue) => {
+      const opt = MovieApp.PEACE_OPTIONS.find((o) => o.key === cue.key);
+      const dur = opt ? opt.dur : 30;
+      const startX = TRACK_X + (cue.time / actDuration) * TRACK_W;
+      const blockW = Math.max(26, Math.min(TRACK_X + TRACK_W - startX, (dur / actDuration) * TRACK_W));
+
+      const blk = new Graphics();
+      blk.rect(startX, 45, blockW, 20);
+      blk.fill({ color: 0x093325, alpha: 0.90 });
+      blk.stroke({ color: 0x06d6a0, width: 1.2 });
+      blk.eventMode = 'static';
+      blk.cursor = 'pointer';
+      blk.on('pointerdown', (e: FederatedPointerEvent) => {
+        e.stopPropagation();
+        this.seekAudio(cue.time);
+      });
+      this._dawPeaceBlocksContainer.addChild(blk);
+
+      const titleTxt = new Text({
+        text: `[${cue.time.toFixed(1)}s] ${opt ? opt.name : cue.name}`,
+        style: new TextStyle({
+          fontFamily: ['Share Tech Mono', 'monospace'],
+          fontSize: 8,
+          fontWeight: 'bold',
+          fill: '#52ffce',
+        }),
+      });
+      titleTxt.anchor.set(0, 0.5);
+      titleTxt.position.set(startX + 4, 55);
+      this._dawPeaceBlocksContainer.addChild(titleTxt);
+    });
+  }
+
+  private _setupDebugUI(): void {
+    this._initDirectorMusicCues();
+
+    // 0. Dedicated always-visible Gear button at top-right
+    this._devGearBtn = new Container();
+    this._devGearBtn.eventMode = 'static';
+    this._devGearBtn.cursor = 'pointer';
+
+    const gearBg = new Graphics();
+    gearBg.rect(-16, -16, 32, 32);
+    gearBg.fill({ color: 0x090b14, alpha: 0.90 });
+    gearBg.stroke({ color: 0x00f5d4, width: 1.2 });
+    this._devGearBtn.addChild(gearBg);
+
+    const gearTxt = new Text({
+      text: '⚙️',
+      style: new TextStyle({ fontSize: 16, fill: '#00f5d4' }),
+    });
+    gearTxt.anchor.set(0.5);
+    this._devGearBtn.addChild(gearTxt);
+
+    this._devGearBtn.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      ClickTracker.exclude();
+      this.toggleDevAudioDirector();
+    });
+
+    this._uiContainer.addChild(this._devGearBtn);
+
+    // Main Debug Container
     this._debugContainer = new Container();
     this._debugContainer.visible = false;
-
     this._debugContainer.eventMode = 'static';
 
-    // 1. Compact Toggle Pill (always accessible)
-
     const pill = new Container();
-
     pill.eventMode = 'static';
-
     pill.cursor = 'pointer';
 
     this._debugPillBg = new Graphics();
-
+    this._debugPillBg.rect(-150, -13, 270, 26);
+    this._debugPillBg.fill({ color: 0x090b14, alpha: 0.9 });
+    this._debugPillBg.stroke({ color: 0x00f5d4, width: 1.2 });
     pill.addChild(this._debugPillBg);
 
-    const txtStyle = new TextStyle({
-
+    const pillStyle = new TextStyle({
       fontFamily: ['Share Tech Mono', 'monospace'],
-
       fontSize: 10,
-
       fontWeight: 'bold',
-
-      fill: '#ffffff',
-
-      letterSpacing: 1,
-
+      fill: '#00f5d4',
+      letterSpacing: 0.5,
     });
 
-    this._debugTrackText = new Text({ text: '', style: txtStyle });
-
+    this._debugTrackText = new Text({ text: '🛠️ ЗВУКОВОЙ РЕЖИССЁР', style: pillStyle });
     this._debugTrackText.anchor.set(0.5);
-
     pill.addChild(this._debugTrackText);
 
     pill.on('pointerdown', (e: FederatedPointerEvent) => {
-
       e.stopPropagation();
-
       ClickTracker.exclude();
-
-      SFX.playClick();
-
-      this.toggleIntroTrack();
-
+      this.toggleDevAudioDirector();
     });
 
     this._debugContainer.addChild(pill);
 
-    // 2. Expanded Options Panel
-
+    // Expanded Director Suite Panel (620x520 sharp rectangle, zero rounding, pro dark sci-fi HUD)
     this._debugExpandedPanel = new Container();
-
     this._debugExpandedPanel.position.set(0, 22);
-
     this._debugExpandedPanel.visible = false;
-
     this._debugContainer.addChild(this._debugExpandedPanel);
 
     const panelBg = new Graphics();
-
-    panelBg.roundRect(-215, 0, 430, 74, 10);
-
-    panelBg.fill({ color: 0x080a14, alpha: 0.96 });
-
-    panelBg.stroke({ color: 0x00f5d4, width: 1.2 });
-
+    panelBg.rect(-310, 0, 620, 520);
+    panelBg.fill({ color: 0x080a14, alpha: 0.98 });
+    panelBg.stroke({ color: 0x00f5d4, width: 1.5 });
     this._debugExpandedPanel.addChild(panelBg);
 
-    // Info text: drop time & audio analysis
-
-    const infoStyle = new TextStyle({
-
-      fontFamily: ['Share Tech Mono', 'monospace'],
-
-      fontSize: 11,
-
-      fill: '#00f5d4',
-
+    // Header Title
+    const headerTitle = new Text({
+      text: '[ 🎧 РЕЖИССЁР ЗВУКА И МУЗЫКИ • ГОТОВЫЙ ИНСТРУМЕНТ ]',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 11,
+        fontWeight: 'bold',
+        fill: '#00f5d4',
+        letterSpacing: 1,
+      }),
     });
+    headerTitle.anchor.set(0.5, 0);
+    headerTitle.position.set(0, 8);
+    this._debugExpandedPanel.addChild(headerTitle);
 
-    this._debugDropInfoText = new Text({ text: '', style: infoStyle });
-
-    this._debugDropInfoText.anchor.set(0.5, 0);
-
-    this._debugDropInfoText.position.set(0, 9);
-
-    this._debugExpandedPanel.addChild(this._debugDropInfoText);
-
-    // Quick action mini buttons
-
-    const btnRestart = this._createDebugMiniBtn('↺ С начала (0s)', () => {
-
-      AmbientManager.restartIntro();
-
-      this.seekAudio(0);
-
-    });
-
-    btnRestart.position.set(-135, 46);
-
-    this._debugExpandedPanel.addChild(btnRestart);
-
-    const btnPause = this._createDebugMiniBtn('⏸ К паузе (24s)', () => {
-
-      this.seekAudio(24.0);
-
-    });
-
-    btnPause.position.set(-10, 46);
-
-    this._debugExpandedPanel.addChild(btnPause);
-
-    const btnDrop = this._createDebugMiniBtn('🎬 К дропу', () => {
-
-      this.seekAudio(this._introProfile.titleDropTime);
-
-    });
-
-    btnDrop.position.set(120, 46);
-
-    this._debugExpandedPanel.addChild(btnDrop);
-
-    // Toggle dropdown arrow button
-
-    const arrowBtn = new Container();
-
-    arrowBtn.eventMode = 'static';
-
-    arrowBtn.cursor = 'pointer';
-
-    const arrowBg = new Graphics();
-
-    arrowBg.circle(135, 0, 11);
-
-    arrowBg.fill({ color: 0x181c2c, alpha: 0.85 });
-
-    arrowBg.stroke({ color: 0x2e3852, width: 1 });
-
-    arrowBtn.addChild(arrowBg);
-
-    const arrowTxt = new Text({
-
-      text: '⚙️',
-
-      style: new TextStyle({ fontSize: 10, fill: '#ffffff' }),
-
-    });
-
-    arrowTxt.anchor.set(0.5);
-
-    arrowTxt.position.set(135, 0);
-
-    arrowBtn.addChild(arrowTxt);
-
-    arrowBtn.on('pointerdown', (e: FederatedPointerEvent) => {
-
-      e.stopPropagation();
-
-      ClickTracker.exclude();
-
-      SFX.playClick();
-
-      this._debugExpanded = !this._debugExpanded;
-
-      this._debugExpandedPanel.visible = this._debugExpanded;
-
+    // Tab 1 & Tab 2 Switcher Buttons
+    this._directorTabBtnCues = this._createDebugMiniBtn('🎬 Таймлайны музыки', () => {
+      this._directorActiveTab = 'cues';
       this._updateDebugDisplay();
+    }, 160);
+    this._directorTabBtnCues.position.set(-85, 32);
+    this._debugExpandedPanel.addChild(this._directorTabBtnCues);
 
-      this.resize(this._screenWidth, this._screenHeight);
+    this._directorTabBtnAmb = this._createDebugMiniBtn('🎚️ Переходы & Эмбиент', () => {
+      this._directorActiveTab = 'ambient';
+      this._updateDebugDisplay();
+    }, 160);
+    this._directorTabBtnAmb.position.set(85, 32);
+    this._debugExpandedPanel.addChild(this._directorTabBtnAmb);
 
+    // CONTAINER A: Cues Timeline Director (Tab 1)
+    this._directorCuesPanel = new Container();
+    this._directorCuesPanel.position.set(0, 56);
+    this._debugExpandedPanel.addChild(this._directorCuesPanel);
+
+    // 1. Act time HUD
+    this._directorActTimeText = new Text({
+      text: '',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 11,
+        fontWeight: 'bold',
+        fill: '#ffd166',
+      }),
     });
+    this._directorActTimeText.anchor.set(0.5, 0);
+    this._directorActTimeText.position.set(0, 0);
+    this._directorCuesPanel.addChild(this._directorActTimeText);
 
-    this._debugContainer.addChild(arrowBtn);
+    // 2. Now Playing Live HUD
+    this._directorNowPlayingText = new Text({
+      text: 'СЕЙЧАС ЗВУЧИТ: [ 📻 Базовый эмбиент ]',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 10,
+        fontWeight: 'bold',
+        fill: '#00f5d4',
+      }),
+    });
+    this._directorNowPlayingText.anchor.set(0.5, 0);
+    this._directorNowPlayingText.position.set(0, 13);
+    this._directorCuesPanel.addChild(this._directorNowPlayingText);
+
+    // 3. Act 0 Dedicated Intro Variants Switcher Row
+    this._dawIntroVariantsContainer = new Container();
+    this._dawIntroVariantsContainer.position.set(0, 44);
+    this._dawIntroVariantsContainer.visible = false;
+    this._directorCuesPanel.addChild(this._dawIntroVariantsContainer);
+
+    this._btnIntroVar1 = this._createDebugMiniBtn('★ 1: Desolate Cry', () => {
+      this.setIntroTrackVariant('desolate_cry');
+    }, 210);
+    this._btnIntroVar1.position.set(-110, 0);
+    this._dawIntroVariantsContainer.addChild(this._btnIntroVar1);
+
+    this._btnIntroVar2 = this._createDebugMiniBtn('2: Titan Forge', () => {
+      this.setIntroTrackVariant('titan_forge');
+    }, 210);
+    this._btnIntroVar2.position.set(110, 0);
+    this._dawIntroVariantsContainer.addChild(this._btnIntroVar2);
+
+    // 4. DAW Multi-Track Timeline Container
+    this._dawTimelineContainer = new Container();
+    this._dawTimelineContainer.position.set(0, 68);
+    this._directorCuesPanel.addChild(this._dawTimelineContainer);
+
+    // DAW background & click/scrub listener
+    this._dawTimelineBg = new Graphics();
+    this._dawTimelineBg.rect(-280, 0, 560, 96);
+    this._dawTimelineBg.fill({ color: 0x090d16, alpha: 0.95 });
+    this._dawTimelineBg.stroke({ color: 0x1e293b, width: 1.0 });
+    this._dawTimelineBg.eventMode = 'static';
+    this._dawTimelineBg.cursor = 'pointer';
+    this._dawTimelineContainer.addChild(this._dawTimelineBg);
+
+    const handleDawPointer = (e: FederatedPointerEvent) => {
+      const local = e.getLocalPosition(this._dawTimelineContainer);
+      const ratio = Math.max(0, Math.min(1.0, (local.x - (-255)) / 530));
+      const targetTime = ratio * this._actDuration;
+      this.seekAudio(targetTime);
+    };
+
+    this._dawTimelineBg.on('pointerdown', (e: FederatedPointerEvent) => {
+      e.stopPropagation();
+      this._dawIsDraggingTimeline = true;
+      handleDawPointer(e);
+    });
+    this._dawTimelineBg.on('globalpointermove', (e: FederatedPointerEvent) => {
+      if (this._dawIsDraggingTimeline) handleDawPointer(e);
+    });
+    this._dawTimelineBg.on('pointerup', () => { this._dawIsDraggingTimeline = false; });
+    this._dawTimelineBg.on('pointerupoutside', () => { this._dawIsDraggingTimeline = false; });
+
+    this._dawRulerGraphics = new Graphics();
+    this._dawTimelineContainer.addChild(this._dawRulerGraphics);
+
+    this._dawRulerLabelsContainer = new Container();
+    this._dawTimelineContainer.addChild(this._dawRulerLabelsContainer);
+
+    this._dawLanesBg = new Graphics();
+    this._dawTimelineContainer.addChild(this._dawLanesBg);
+
+    this._dawAmbientLaneContainer = new Container();
+    this._dawTimelineContainer.addChild(this._dawAmbientLaneContainer);
+
+    this._dawPeaceBlocksContainer = new Container();
+    this._dawTimelineContainer.addChild(this._dawPeaceBlocksContainer);
+
+    this._dawDreadBlocksContainer = new Container();
+    this._dawTimelineContainer.addChild(this._dawDreadBlocksContainer);
+
+    this._dawLaneLabelsContainer = new Container();
+    this._dawTimelineContainer.addChild(this._dawLaneLabelsContainer);
+
+    this._dawPlayhead = new Container();
+    this._dawPlayhead.position.set(-255, 0);
+
+    const needleLine = new Graphics();
+    needleLine.rect(0, 0, 2, 94);
+    needleLine.fill({ color: 0x00f5d4, alpha: 0.9 });
+    this._dawPlayhead.addChild(needleLine);
+
+    const needleHead = new Graphics();
+    needleHead.moveTo(-4, 0);
+    needleHead.lineTo(4, 0);
+    needleHead.lineTo(0, 7);
+    needleHead.closePath();
+    needleHead.fill({ color: 0xffd166, alpha: 1.0 });
+    this._dawPlayhead.addChild(needleHead);
+
+    this._dawTimelineContainer.addChild(this._dawPlayhead);
+
+    // --- 5. DREAD / TENSION SECTION ---
+    const dreadBox = new Graphics();
+    dreadBox.rect(-275, 158, 550, 64);
+    dreadBox.fill({ color: 0x140a12, alpha: 0.90 });
+    dreadBox.stroke({ color: 0xef476f, width: 1.0 });
+    this._directorCuesPanel.addChild(dreadBox);
+
+    this._directorDreadText = new Text({
+      text: '💀 НАГНЕТАЮЩАЯ МУЗЫКА:',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 10,
+        fontWeight: 'bold',
+        fill: '#ef476f',
+      }),
+    });
+    this._directorDreadText.anchor.set(0, 0.5);
+    this._directorDreadText.position.set(-265, 172);
+    this._directorCuesPanel.addChild(this._directorDreadText);
+
+    const btnDreadPrev = this._createDebugMiniBtn('◄', () => {
+      this._selectedDreadIndex = (this._selectedDreadIndex - 1 + MovieApp.DREAD_OPTIONS.length) % MovieApp.DREAD_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 28);
+    btnDreadPrev.position.set(70, 172);
+    this._directorCuesPanel.addChild(btnDreadPrev);
+
+    const btnDreadNext = this._createDebugMiniBtn('►', () => {
+      this._selectedDreadIndex = (this._selectedDreadIndex + 1) % MovieApp.DREAD_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 28);
+    btnDreadNext.position.set(104, 172);
+    this._directorCuesPanel.addChild(btnDreadNext);
+
+    const btnDreadTest = this._createDebugMiniBtn('▶ Тест', () => {
+      const opt = MovieApp.DREAD_OPTIONS[this._selectedDreadIndex];
+      if (opt) AmbientManager.playCinematicCue(opt.key);
+    }, 62);
+    btnDreadTest.position.set(156, 172);
+    this._directorCuesPanel.addChild(btnDreadTest);
+
+    const btnDreadSetStart = this._createDebugMiniBtn('💀 НАЧАТЬ ЗДЕСЬ (T)', () => {
+      this.addDirectorMusicCue('dread');
+    }, 150);
+    btnDreadSetStart.position.set(-185, 202);
+    this._directorCuesPanel.addChild(btnDreadSetStart);
+
+    const btnDreadSetStop = this._createDebugMiniBtn('⏹ СТОП / FADE OUT (X)', () => {
+      this.addDirectorMusicCue('stop');
+    }, 150);
+    btnDreadSetStop.position.set(-25, 202);
+    this._directorCuesPanel.addChild(btnDreadSetStop);
+
+    // --- 6. PEACE SECTION ---
+    const peaceBox = new Graphics();
+    peaceBox.rect(-275, 228, 550, 64);
+    peaceBox.fill({ color: 0x0a141a, alpha: 0.90 });
+    peaceBox.stroke({ color: 0x06d6a0, width: 1.0 });
+    this._directorCuesPanel.addChild(peaceBox);
+
+    this._directorPeaceText = new Text({
+      text: '🕊️ ДОБРАЯ МУЗЫКА:',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 10,
+        fontWeight: 'bold',
+        fill: '#06d6a0',
+      }),
+    });
+    this._directorPeaceText.anchor.set(0, 0.5);
+    this._directorPeaceText.position.set(-265, 242);
+    this._directorCuesPanel.addChild(this._directorPeaceText);
+
+    const btnPeacePrev = this._createDebugMiniBtn('◄', () => {
+      this._selectedPeaceIndex = (this._selectedPeaceIndex - 1 + MovieApp.PEACE_OPTIONS.length) % MovieApp.PEACE_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 28);
+    btnPeacePrev.position.set(70, 242);
+    this._directorCuesPanel.addChild(btnPeacePrev);
+
+    const btnPeaceNext = this._createDebugMiniBtn('►', () => {
+      this._selectedPeaceIndex = (this._selectedPeaceIndex + 1) % MovieApp.PEACE_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 28);
+    btnPeaceNext.position.set(104, 242);
+    this._directorCuesPanel.addChild(btnPeaceNext);
+
+    const btnPeaceTest = this._createDebugMiniBtn('▶ Тест', () => {
+      const opt = MovieApp.PEACE_OPTIONS[this._selectedPeaceIndex];
+      if (opt) AmbientManager.playCinematicCue(opt.key);
+    }, 62);
+    btnPeaceTest.position.set(156, 242);
+    this._directorCuesPanel.addChild(btnPeaceTest);
+
+    const btnPeaceSetStart = this._createDebugMiniBtn('🕊️ НАЧАТЬ ЗДЕСЬ (P)', () => {
+      this.addDirectorMusicCue('peace');
+    }, 150);
+    btnPeaceSetStart.position.set(-185, 272);
+    this._directorCuesPanel.addChild(btnPeaceSetStart);
+
+    const btnPeaceSetStop = this._createDebugMiniBtn('⏹ СТОП / FADE OUT (X)', () => {
+      this.addDirectorMusicCue('stop');
+    }, 150);
+    btnPeaceSetStop.position.set(-25, 272);
+    this._directorCuesPanel.addChild(btnPeaceSetStop);
+
+    // --- 7. ACTIVE CUES LIST OF THIS ACT ---
+    const listHeader = new Text({
+      text: 'АКТИВНЫЕ МУЗЫКАЛЬНЫЕ ОТРЕЗКИ ЭТОГО АКТА (СДВИГ [-1s] / [+1s]):',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 10,
+        fontWeight: 'bold',
+        fill: '#e2e8f0',
+      }),
+    });
+    listHeader.anchor.set(0, 0);
+    listHeader.position.set(-275, 298);
+    this._directorCuesPanel.addChild(listHeader);
+
+    this._directorCuesListContainer = new Container();
+    this._directorCuesListContainer.position.set(-275, 314);
+    this._directorCuesPanel.addChild(this._directorCuesListContainer);
+
+    // --- 8. ACTION BAR: EXPORT JSON & RESET ---
+    const btnExportJson = this._createDebugMiniBtn('📋 Скопировать JSON', () => {
+      this.exportDirectorCuesJson();
+    }, 150);
+    btnExportJson.position.set(-185, 412);
+    this._directorCuesPanel.addChild(btnExportJson);
+
+    const btnResetCues = this._createDebugMiniBtn('↺ Сбросить к канону', () => {
+      this.resetDirectorCuesToDefaults();
+    }, 150);
+    btnResetCues.position.set(-25, 412);
+    this._directorCuesPanel.addChild(btnResetCues);
+
+    // CONTAINER B: Ambient & Transitions (Tab 2)
+    this._directorAmbientPanel = new Container();
+    this._directorAmbientPanel.position.set(0, 60);
+    this._directorAmbientPanel.visible = false;
+    this._debugExpandedPanel.addChild(this._directorAmbientPanel);
+
+    // Transition Sound Controls
+    this._debugTransLabel = new Text({
+      text: 'ПЕРЕХОД: [...]',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 11,
+        fontWeight: 'bold',
+        fill: '#e2e8f0',
+      }),
+    });
+    this._debugTransLabel.anchor.set(0.5, 0);
+    this._debugTransLabel.position.set(0, 20);
+    this._directorAmbientPanel.addChild(this._debugTransLabel);
+
+    const btnTransPrev = this._createDebugMiniBtn('◄ Пред', () => {
+      this._selectedTransSoundIndex = (this._selectedTransSoundIndex - 1 + MovieApp.TRANSITION_SOUNDS_METADATA.length) % MovieApp.TRANSITION_SOUNDS_METADATA.length;
+      this._updateDebugDisplay();
+    }, 72);
+    btnTransPrev.position.set(-155, 48);
+    this._directorAmbientPanel.addChild(btnTransPrev);
+
+    const btnTransNext = this._createDebugMiniBtn('След ►', () => {
+      this._selectedTransSoundIndex = (this._selectedTransSoundIndex + 1) % MovieApp.TRANSITION_SOUNDS_METADATA.length;
+      this._updateDebugDisplay();
+    }, 72);
+    btnTransNext.position.set(-72, 48);
+    this._directorAmbientPanel.addChild(btnTransNext);
+
+    const btnTransTest = this._createDebugMiniBtn('▶ Тест', () => {
+      const cur = MovieApp.TRANSITION_SOUNDS_METADATA[this._selectedTransSoundIndex];
+      const url = getAudioUrl(cur.key);
+      if (url) {
+        if (this._transitionAudio) this._transitionAudio.pause();
+        const a = new Audio(url);
+        a.volume = Math.max(0, Math.min(1.0, this._sfxVolume * cur.gain));
+        a.play().catch(() => {});
+        this._transitionAudio = a;
+      }
+    }, 72);
+    btnTransTest.position.set(11, 48);
+    this._directorAmbientPanel.addChild(btnTransTest);
+
+    const btnTransLock = this._createDebugMiniBtn('★ Закрепить', () => {
+      const cur = MovieApp.TRANSITION_SOUNDS_METADATA[this._selectedTransSoundIndex];
+      this.setLockedTransitionSound(cur.key);
+      this._setDirectorNotice(`★ Переход зафиксирован: ${cur.name}`);
+      this._updateDebugDisplay();
+    }, 98);
+    btnTransLock.position.set(106, 48);
+    this._directorAmbientPanel.addChild(btnTransLock);
+
+    // Act Ambient Track Controls
+    this._debugAmbientLabel = new Text({
+      text: 'ЭМБИЕНТ: [...]',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 11,
+        fontWeight: 'bold',
+        fill: '#e2e8f0',
+      }),
+    });
+    this._debugAmbientLabel.anchor.set(0.5, 0);
+    this._debugAmbientLabel.position.set(0, 92);
+    this._directorAmbientPanel.addChild(this._debugAmbientLabel);
+
+    const btnAmbPrev = this._createDebugMiniBtn('◄ Пред', () => {
+      this._selectedAmbientIndex = (this._selectedAmbientIndex - 1 + MovieApp.AMBIENT_OPTIONS.length) % MovieApp.AMBIENT_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 72);
+    btnAmbPrev.position.set(-155, 120);
+    this._directorAmbientPanel.addChild(btnAmbPrev);
+
+    const btnAmbNext = this._createDebugMiniBtn('След ►', () => {
+      this._selectedAmbientIndex = (this._selectedAmbientIndex + 1) % MovieApp.AMBIENT_OPTIONS.length;
+      this._updateDebugDisplay();
+    }, 72);
+    btnAmbNext.position.set(-72, 120);
+    this._directorAmbientPanel.addChild(btnAmbNext);
+
+    const btnAmbPlay = this._createDebugMiniBtn('▶ Включить', () => {
+      const cur = MovieApp.AMBIENT_OPTIONS[this._selectedAmbientIndex];
+      AmbientManager.playTrack(cur.key as any, 0.28, 0.5);
+    }, 84);
+    btnAmbPlay.position.set(17, 120);
+    this._directorAmbientPanel.addChild(btnAmbPlay);
+
+    const btnAmbLock = this._createDebugMiniBtn('★ Закрепить', () => {
+      const cur = MovieApp.AMBIENT_OPTIONS[this._selectedAmbientIndex];
+      const act = STORY_ACTS[this._currentActIndex];
+      const actKey = act ? act.id : `act_${this._currentActIndex}`;
+      AmbientManager.setLockedTrackForAct(actKey, cur.key);
+      AmbientManager.playTrack(cur.key as any, 0.28, 0.5);
+      this._setDirectorNotice(`★ Эмбиент акта зафиксирован: ${cur.name}`);
+      this._updateDebugDisplay();
+    }, 98);
+    btnAmbLock.position.set(119, 120);
+    this._directorAmbientPanel.addChild(btnAmbLock);
+
+    // Global Notice / Status Text
+    this._directorNoticeText = new Text({
+      text: 'Горячие клавиши режиссера: T = Начать страшную, P = Начать добрую, X = Стоп музыки, D = Скрыть панель',
+      style: new TextStyle({
+        fontFamily: ['Share Tech Mono', 'monospace'],
+        fontSize: 9,
+        fill: '#94a3b8',
+      }),
+    });
+    this._directorNoticeText.anchor.set(0.5, 0);
+    this._directorNoticeText.position.set(0, 442);
+    this._debugExpandedPanel.addChild(this._directorNoticeText);
 
     this._updateDebugDisplay();
-
   }
 
-  private _createDebugMiniBtn(label: string, onClick: () => void): Container {
-
+  private _createDebugMiniBtn(label: string, onClick: () => void, btnW = 108): Container {
     const c = new Container();
-
     c.eventMode = 'static';
-
     c.cursor = 'pointer';
 
     const bg = new Graphics();
-
+    bg.rect(-btnW / 2, -11, btnW, 22);
+    bg.fill({ color: 0x141824, alpha: 0.9 });
+    bg.stroke({ color: 0x2e3852, width: 1 });
     c.addChild(bg);
 
     const txt = new Text({
-
       text: label,
-
       style: new TextStyle({
-
         fontFamily: ['Share Tech Mono', 'monospace'],
-
-        fontSize: 10,
-
+        fontSize: 9,
         fontWeight: 'bold',
-
-        fill: '#ffffff',
-
+        fill: '#e2e8f0',
       }),
-
     });
-
     txt.anchor.set(0.5);
-
     c.addChild(txt);
 
-    const draw = (hover = false) => {
-
-      bg.clear();
-
-      bg.roundRect(-54, -12, 108, 24, 6);
-
-      bg.fill({ color: hover ? 0x222a40 : 0x141824, alpha: 0.95 });
-
-      bg.stroke({ color: hover ? 0x00f5d4 : 0x364060, width: 1 });
-
-    };
-
-    draw(false);
-
-    c.on('pointerover', () => draw(true));
-
-    c.on('pointerout', () => draw(false));
-
     c.on('pointerdown', (e: FederatedPointerEvent) => {
-
       e.stopPropagation();
-
       ClickTracker.exclude();
-
-      SFX.playClick();
-
       onClick();
+    });
 
+    c.on('pointerenter', () => {
+      bg.clear();
+      bg.rect(-btnW / 2, -11, btnW, 22);
+      bg.fill({ color: 0x242e44, alpha: 0.95 });
+      bg.stroke({ color: 0x00f5d4, width: 1.2 });
+      txt.style.fill = '#00f5d4';
+    });
+
+    c.on('pointerleave', () => {
+      bg.clear();
+      bg.rect(-btnW / 2, -11, btnW, 22);
+      bg.fill({ color: 0x141824, alpha: 0.9 });
+      bg.stroke({ color: 0x2e3852, width: 1 });
+      txt.style.fill = '#e2e8f0';
     });
 
     return c;
-
   }
 
   public toggleIntroTrack(): void {
-
     const cur = AmbientManager.getIntroTrack();
-
-    const next: 'desolate_cry' | 'titan_forge' = cur === 'desolate_cry' ? 'titan_forge' : 'desolate_cry';
-
-    const isPlayingIntroMusic = this._currentActIndex === 0 && this._actTime >= INTRO_DISCLAIMER_DURATION && this._isPlaying;
-
-    AmbientManager.setIntroTrack(next, isPlayingIntroMusic);
-
-    this._introProfile = AudioTrackAnalyzer.getProfile(next);
-
-    if (this._currentActIndex === 0) {
-
-      this._actDuration = INTRO_DISCLAIMER_DURATION + this._introProfile.introEndTime;
-
-    }
-
+    const next = cur === 'desolate_cry' ? 'titan_forge' : 'desolate_cry';
+    AmbientManager.setIntroTrack(next, this._currentActIndex === 0);
     this._updateDebugDisplay();
-
   }
 
   private _updateDebugDisplay(): void {
-
     if (!this._debugContainer) return;
 
-    const cur = AmbientManager.getIntroTrack();
+    const act = STORY_ACTS[this._currentActIndex] || STORY_ACTS[0];
+    const isCuesTab = this._directorActiveTab === 'cues';
 
-    const isDesolate = cur === 'desolate_cry';
+    if (this._directorCuesPanel) this._directorCuesPanel.visible = isCuesTab;
+    if (this._directorAmbientPanel) this._directorAmbientPanel.visible = !isCuesTab;
 
-    const trackName = isDesolate ? 'Desolate Cry' : 'Titan Forge';
+    // Update Act HUD
+    if (this._directorActTimeText) {
+      const curT = Math.max(0, this._actTime).toFixed(1);
+      const totT = this._actDuration.toFixed(1);
+      this._directorActTimeText.text = `АКТ ${this._currentActIndex}: ${act.title} • ТЕКУЩИЙ КАДР: ${curT}s / ${totT}s`;
+    }
 
-    const altName = isDesolate ? 'Titan Forge' : 'Desolate Cry';
+    // Update Dread track name
+    if (this._directorDreadText) {
+      const opt = MovieApp.DREAD_OPTIONS[this._selectedDreadIndex] || MovieApp.DREAD_OPTIONS[0];
+      this._directorDreadText.text = `💀 НАГНЕТАЮЩАЯ: [${opt.name}]`;
+    }
 
-    this._debugTrackText.text = `🛠️ ИНТРО: [${trackName}] ⇄ ${altName}`;
+    // Update Peace track name
+    if (this._directorPeaceText) {
+      const opt = MovieApp.PEACE_OPTIONS[this._selectedPeaceIndex] || MovieApp.PEACE_OPTIONS[0];
+      this._directorPeaceText.text = `🕊️ ДОБРАЯ: [${opt.name}]`;
+    }
 
-    this._debugTrackText.style.fill = isDesolate ? '#00f5d4' : '#ffaa00';
+    // Act 0 Intro Variants Button Highlights
+    if (this._currentActIndex === 0) {
+      if (this._dawIntroVariantsContainer) this._dawIntroVariantsContainer.visible = true;
+      const curIntro = AmbientManager.getIntroTrack();
+      if (this._btnIntroVar1) {
+        const txt = this._btnIntroVar1.children.find((ch): ch is Text => ch instanceof Text);
+        if (txt) txt.text = curIntro === 'desolate_cry' ? '★ 1: Desolate Cry (Активен)' : '1: Desolate Cry';
+      }
+      if (this._btnIntroVar2) {
+        const txt = this._btnIntroVar2.children.find((ch): ch is Text => ch instanceof Text);
+        if (txt) txt.text = curIntro === 'titan_forge' ? '★ 2: Titan Forge (Активен)' : '2: Titan Forge';
+      }
+    } else {
+      if (this._dawIntroVariantsContainer) this._dawIntroVariantsContainer.visible = false;
+    }
 
-    this._debugPillBg.clear();
+    // Redraw Multi-Track DAW Timeline
+    this._renderDawTimeline();
 
-    this._debugPillBg.roundRect(-150, -13, 270, 26, 13);
+    // Redraw Active Cues List
+    if (this._directorCuesListContainer) {
+      this._directorCuesListContainer.removeChildren();
+      const cues = this._directorMusicCues.get(act.id) || [];
 
-    this._debugPillBg.fill({ color: 0x090b14, alpha: 0.9 });
+      if (cues.length === 0) {
+        const emptyTxt = new Text({
+          text: '(В этом акте пока нет музыкальных отрезков. Нажмите "Начать здесь" для фиксации)',
+          style: new TextStyle({ fontFamily: ['Share Tech Mono', 'monospace'], fontSize: 9, fill: '#64748b' }),
+        });
+        emptyTxt.position.set(0, 4);
+        this._directorCuesListContainer.addChild(emptyTxt);
+      } else {
+        cues.slice(0, 5).forEach((cue, idx) => {
+          const row = new Container();
+          row.position.set(0, idx * 24);
 
-    this._debugPillBg.stroke({ color: isDesolate ? 0x00f5d4 : 0xffaa00, width: 1.2 });
+          const timeTxt = new Text({
+            text: `[ ${cue.time.toFixed(1)}s ] ${cue.name}`,
+            style: new TextStyle({
+              fontFamily: ['Share Tech Mono', 'monospace'],
+              fontSize: 9,
+              fontWeight: 'bold',
+              fill: cue.category === 'dread' ? '#ef476f' : (cue.category === 'peace' ? '#06d6a0' : '#ffd166'),
+            }),
+          });
+          timeTxt.position.set(0, 3);
+          row.addChild(timeTxt);
 
-    const dropT = this._introProfile.titleDropTime.toFixed(1);
+          const btnMinus = this._createDebugMiniBtn('-1s', () => {
+            this.nudgeDirectorMusicCue(cue.id, -1.0);
+          }, 32);
+          btnMinus.position.set(385, 8);
+          row.addChild(btnMinus);
 
-    const valleyT = this._introProfile.valleyTime.toFixed(1);
+          const btnPlus = this._createDebugMiniBtn('+1s', () => {
+            this.nudgeDirectorMusicCue(cue.id, +1.0);
+          }, 32);
+          btnPlus.position.set(425, 8);
+          row.addChild(btnPlus);
 
-    const durT = this._introProfile.introEndTime.toFixed(1);
+          const btnDel = this._createDebugMiniBtn('✕', () => {
+            this.deleteDirectorMusicCue(cue.id);
+          }, 24);
+          btnDel.position.set(462, 8);
+          row.addChild(btnDel);
 
-    this._debugDropInfoText.text = `🎬 Анализ: Дроп названия на ${dropT}s • Долина тишины: ${valleyT}s • Итог: ${durT}s`;
+          this._directorCuesListContainer.addChild(row);
+        });
+      }
+    }
 
+    // Update Ambient & Transition Labels
+    if (this._debugTransLabel) {
+      const lockedTrans = this.getLockedTransitionSound();
+      const curTrans = MovieApp.TRANSITION_SOUNDS_METADATA[this._selectedTransSoundIndex] || MovieApp.TRANSITION_SOUNDS_METADATA[0];
+      const isLocked = curTrans.key === lockedTrans;
+      this._debugTransLabel.text = `ПЕРЕХОД: [${curTrans.name}] ${isLocked ? '★ ЗАКРЕПЛЁН' : ''}`;
+      this._debugTransLabel.style.fill = isLocked ? '#00f5d4' : '#e2e8f0';
+    }
+
+    if (this._debugAmbientLabel) {
+      const actKey = act ? act.id : `act_${this._currentActIndex}`;
+      const lockedAmb = AmbientManager.getLockedTrackForAct(actKey);
+      const curAmb = MovieApp.AMBIENT_OPTIONS[this._selectedAmbientIndex] || MovieApp.AMBIENT_OPTIONS[0];
+      const isLocked = curAmb.key === lockedAmb;
+      this._debugAmbientLabel.text = `ЭМБИЕНТ АКТА (${this._currentActIndex + 1}): [${curAmb.name}] ${isLocked ? '★ ЗАКРЕПЛЁН' : ''}`;
+      this._debugAmbientLabel.style.fill = isLocked ? '#00f5d4' : '#e2e8f0';
+    }
   }
-
-  public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0): void {
+public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNaturalTransition: boolean = false): void {
 
     if (index < 0 || index >= STORY_ACTS.length) return;
 
@@ -4009,7 +4928,7 @@ export class MovieApp {
 
       this._introProfile = AudioTrackAnalyzer.getProfile(AmbientManager.getIntroTrack());
 
-      this._actDuration = INTRO_DISCLAIMER_DURATION + this._introProfile.introEndTime;
+      this._actDuration = this._introProfile.introEndTime;
 
       this._playIntroAnimation();
 
@@ -4114,13 +5033,14 @@ export class MovieApp {
 
       // Audio Transition: Switch ambient track BEFORE applying shot cuts and cues
       if (index === 0) {
-        this._introAmbientStarted = false;
+        const introTrack = AmbientManager.getIntroTrack();
         if (!shouldPlay) {
           AmbientManager.setPaused(true);
         } else {
           AmbientManager.setPaused(false);
         }
-        AmbientManager.playTrack(null, 0.0, crossfadeSec);
+        this._introAmbientStarted = true;
+        AmbientManager.playTrack(introTrack, 1.0, crossfadeSec > 0 ? crossfadeSec : 1.5);
       } else {
         if (!shouldPlay) {
           AmbientManager.setPaused(true);
@@ -4161,7 +5081,7 @@ export class MovieApp {
             : act.imageKey);
 
       // Star Wars Optical Wipe: between distinct locations and acts
-      const isSceneTransition = (prevActIndex !== -1 && prevActIndex !== index && index !== 0);
+      const isSceneTransition = isNaturalTransition && (prevActIndex !== -1 && prevActIndex !== index && index !== 0) && !this._isSeeking && !this._isTimelineDragging;
       const newSceneTex = resolvedImageKey ? getTexture(resolvedImageKey) : null;
       if (isSceneTransition && oldSceneTex && newSceneTex && oldSceneTex !== newSceneTex && oldSceneTex !== Texture.WHITE) {
         this._startStarWarsWipe(oldSceneTex, newSceneTex);
@@ -4227,9 +5147,7 @@ export class MovieApp {
 
     this._updateDots();
 
-    if (this._debugContainer) {
-      this._debugContainer.visible = false;
-    }
+
 
     this._updateDebugDisplay();
 
@@ -4445,87 +5363,37 @@ export class MovieApp {
   }
 
   public seekAudio(targetSeconds: number): void {
+    this._isSeeking = true;
+    this._lastFiredMusicCueId = null;
+    if (this._isWiping) {
+      this._cancelWipe();
+    }
+    if (this._transitionAudio) {
+      this._transitionAudio.pause();
+      this._transitionAudio = null;
+    }
 
     const clamped = Math.max(0, Math.min(this._actDuration, targetSeconds));
-
     this._actTime = clamped;
-
     this._narratorCurrentTexKey = '';
-
     this._isTransitioningAct = false;
-
     AmbientManager.cancelWait();
-
     cancelTween(this._bgSprite);
 
     if (this._currentActIndex === 0) {
-
-      if (clamped < INTRO_DISCLAIMER_DURATION) {
-
-        this._introAmbientStarted = false;
-
-        // Во время дисклеймера музыки быть не должно
-
-        AmbientManager.playTrack(null, 0.0, 0.0);
-
-        if (this._videoElement) {
-
-          this._videoElement.pause();
-
-          this._videoElement.style.opacity = '0';
-
-        }
-
-      } else {
-
-        const mt = clamped - INTRO_DISCLAIMER_DURATION;
-
-        if (!this._introAmbientStarted) {
-
-          this._introAmbientStarted = true;
-
-          if (!this._isPlaying) {
-
-            AmbientManager.setPaused(true);
-
-          }
-
-          AmbientManager.playTrack(this._introProfile.trackKey, 1.0, 0.0);
-
-        }
-
-        AmbientManager.seekCurrent(mt);
-
-        if (this._isPlaying) {
-
-          AmbientManager.resumeCurrent();
-
-          if (this._videoElement) {
-
-            this._videoElement.style.opacity = '1';
-
-            this._videoElement.play().catch(() => {});
-
-          }
-
-        } else {
-
-          AmbientManager.pauseAll();
-
-          if (this._videoElement) {
-
-            this._videoElement.style.opacity = '1';
-
-            this._videoElement.pause();
-
-          }
-
-        }
-
+      const introTrack = AmbientManager.getIntroTrack();
+      if (!this._introAmbientStarted || AmbientManager.getCurrentTrackKey() !== introTrack) {
+        this._introAmbientStarted = true;
+        AmbientManager.playTrack(introTrack, 1.0, 0.0);
       }
-
-      this._updateIntroTimeline(clamped);
-
+      AmbientManager.seekCurrent(clamped);
+      if (this._isPlaying) {
+        AmbientManager.resumeCurrent();
+        if (this._videoElement && clamped >= 7.5) {
+          this._videoElement.style.opacity = '1';
+          this._videoElement.play().catch(() => {});
+        }
+      }
     } else {
 
       const act = STORY_ACTS[this._currentActIndex];
@@ -4681,15 +5549,11 @@ export class MovieApp {
         } else {
 
           this._bgSprite.alpha = 1.0;
-
           if (this._videoElement) this._videoElement.style.opacity = '0';
-
         }
-
       }
-
     }
-
+    this._isSeeking = false;
   }
 
   private _playIntroAnimation(): void {
@@ -4705,6 +5569,9 @@ export class MovieApp {
     this._lastSeriesSubCharCount = -1;
 
     this._introLogoSprite.alpha = 0;
+    this._introRealLogoSprite.alpha = 0;
+    this._introGlitchSoundPlayed1 = false;
+    this._introGlitchSoundPlayed2 = false;
 
     this._introStudiosText.alpha = 0;
 
@@ -4873,33 +5740,19 @@ export class MovieApp {
   }
 
   private _updateIntroTimeline(currentTime: number): void {
-
     const t = currentTime;
-
     const profile = this._introProfile;
+    const discStart = 0.4;
+    const discTypeEnd = 5.4;
+    const discHoldEnd = 6.8;
+    const discFadeEnd = 7.8;
 
-    const discStart = 0.6;
-
-    const discTypeEnd = 8.8;
-
-    const discHoldEnd = 11.6;
-
-    const discFadeEnd = INTRO_DISCLAIMER_DURATION; // 12.8s
-
-    // During disclaimer (0.0s - 12.8s): strictly NO music!
-
-    if (t < discFadeEnd) {
-
-      if (this._introAmbientStarted || AmbientManager.getCurrentTrackKey() !== null) {
-
-        this._introAmbientStarted = false;
-
-        AmbientManager.playTrack(null, 0.0, 0.2);
-
-      }
-
+    // Ensure initial music is ignited once from second 0.0
+    const introKey = profile.trackKey || AmbientManager.getIntroTrack();
+    if (this._isPlaying && !this._introAmbientStarted) {
+      this._introAmbientStarted = true;
+      AmbientManager.playTrack(introKey, 1.0, 1.5);
     }
-
     // Phase A: 0.0s - 0.6s: Pure black screen, disclaimer ambient drone hums
 
     if (t < discStart) {
@@ -5034,7 +5887,7 @@ export class MovieApp {
 
       this._clearDisclaimerLines();
 
-      const mt = t - discFadeEnd; // Music time from 0.0s!
+      const mt = t; // Continuous music timeline from 0.0s!
 
       // Stars & Cosmic video ignite!
 
@@ -5073,6 +5926,9 @@ export class MovieApp {
       if (mt < 3.0) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
+        this._introGlitchSoundPlayed1 = false;
+        this._introGlitchSoundPlayed2 = false;
 
         this._introStudiosText.alpha = 0;
 
@@ -5085,91 +5941,116 @@ export class MovieApp {
       }
 
       // Phase 2: 3.0s - 9.0s: Skull logo slowly appears over space video
-
       else if (mt >= 3.0 && mt < 9.0) {
 
         const p = (mt - 3.0) / 6.0;
+        const skullAlpha = Math.min(1, p);
+        const scaleMul = 0.94 + p * 0.06;
 
-        this._introLogoSprite.alpha = Math.min(1, p);
-
-        this._introLogoSprite.scale.set(this._introLogoBaseScale * (0.94 + p * 0.06));
+        this._introLogoSprite.alpha = skullAlpha;
+        this._introRealLogoSprite.alpha = 0;
+        this._introLogoSprite.position.set(0, this._introLogoBaseY);
+        this._introLogoSprite.scale.set(this._introLogoBaseScale * scaleMul);
 
         this._introStudiosText.alpha = 0;
-
         this._introPresentsText.alpha = 0;
-
         this._introSeriesContainer.alpha = 0;
-
         this._introCycleSubtitle.alpha = 0;
 
       }
 
-      // Phase 3: 9.0s - 14.0s: "STUDIOS" glows into visibility below the skull
-
+      // Phase 3: 9.0s - 11.5s: "STUDIOS" glows into visibility
       else if (mt >= 9.0 && mt < 11.5) {
 
         this._introLogoSprite.alpha = 1;
+        this._introRealLogoSprite.alpha = 0;
+        this._introLogoSprite.position.set(0, this._introLogoBaseY);
+        this._introLogoSprite.scale.set(this._introLogoBaseScale);
 
         const p = (mt - 9.0) / 2.5;
-
         this._introStudiosText.alpha = Math.min(1, p);
-
         this._introPresentsText.alpha = 0;
-
         this._introSeriesContainer.alpha = 0;
-
         this._introCycleSubtitle.alpha = 0;
 
       }
 
-      // Phase 4: 11.5s - logoDisperseTime: Letters "PRESENTS" type out on screen
-
+      // Phase 4: 11.5s - logoDisperseTime: Letters "PRESENTS" type out on screen, followed by double electric glitch!
       else if (mt >= 11.5 && mt < profile.logoDisperseTime) {
-
-        this._introLogoSprite.alpha = 1;
 
         this._introStudiosText.alpha = 1;
 
         const full = 'PRESENTS';
-
-        const typingSpan = Math.max(1.0, profile.logoDisperseTime - 11.5);
-
+        const typingSpan = 1.0;
         const p = Math.min(1, (mt - 11.5) / typingSpan);
-
         const chars = Math.floor(p * full.length);
-
         this._introPresentsText.text = full.substring(0, chars);
-
         this._introPresentsText.alpha = 1;
-
         this._introPresentsText.style.letterSpacing = Math.round(4 * this._introFontScale);
 
-        this._introSeriesContainer.alpha = 0;
+        // Double electric contact glitch AFTER "PRESENTS" is fully typed (mt >= 12.5s)
+        // With smaller delay between glitch 1 and glitch 2:
+        // Glitch 1: 12.85s - 12.99s (140ms duration)
+        // Delay between: 12.99s - 13.12s (130ms delay)
+        // Glitch 2: 13.12s - 13.26s (140ms duration)
+        const isGlitch1 = mt >= 12.85 && mt < 12.99;
+        const isGlitch2 = mt >= 13.12 && mt < 13.26;
 
+        if (isGlitch1) {
+          if (!this._introGlitchSoundPlayed1) {
+            this._introGlitchSoundPlayed1 = true;
+            SFX.playElectricGlitch();
+          }
+          this._introLogoSprite.alpha = 0;
+          this._introRealLogoSprite.alpha = 1;
+          const jx = (Math.random() - 0.5) * 5;
+          const jy = (Math.random() - 0.5) * 4;
+          this._introRealLogoSprite.position.set(jx, this._introLogoBaseY + jy);
+          this._introRealLogoSprite.scale.set(this._introLogoBaseScale);
+        } else if (isGlitch2) {
+          if (!this._introGlitchSoundPlayed2) {
+            this._introGlitchSoundPlayed2 = true;
+            SFX.playElectricGlitch();
+          }
+          this._introLogoSprite.alpha = 0;
+          this._introRealLogoSprite.alpha = 1;
+          const jx = (Math.random() - 0.5) * 5;
+          const jy = (Math.random() - 0.5) * 4;
+          this._introRealLogoSprite.position.set(jx, this._introLogoBaseY + jy);
+          this._introRealLogoSprite.scale.set(this._introLogoBaseScale);
+        } else {
+          this._introLogoSprite.alpha = 1;
+          this._introRealLogoSprite.alpha = 0;
+          this._introLogoSprite.position.set(0, this._introLogoBaseY);
+          this._introLogoSprite.scale.set(this._introLogoBaseScale);
+        }
+
+        if (mt < 12.7) {
+          this._introGlitchSoundPlayed1 = false;
+        }
+        if (mt < 13.05) {
+          this._introGlitchSoundPlayed2 = false;
+        }
+
+        this._introSeriesContainer.alpha = 0;
         this._introCycleSubtitle.alpha = 0;
 
       }
 
       // Phase 5: logoDisperseTime - logoFadeOutTime: Alien-style dispersion and slow fade out into the void
-
       else if (mt >= profile.logoDisperseTime && mt < profile.logoFadeOutTime) {
 
         const fadeDur = profile.logoFadeOutTime - profile.logoDisperseTime;
-
         const fade = Math.max(0, 1 - (mt - profile.logoDisperseTime) / fadeDur);
 
         this._introLogoSprite.alpha = fade;
-
+        this._introRealLogoSprite.alpha = 0;
         this._introStudiosText.alpha = fade;
-
         this._introPresentsText.alpha = fade;
-
         this._introPresentsText.text = 'PRESENTS';
-
         this._introPresentsText.style.letterSpacing = Math.round((4 + (mt - profile.logoDisperseTime) * 1.5) * this._introFontScale);
 
         this._introSeriesContainer.alpha = 0;
-
         this._introCycleSubtitle.alpha = 0;
 
       }
@@ -5181,6 +6062,7 @@ export class MovieApp {
       else if (mt >= profile.logoFadeOutTime && mt < profile.titleDropTime) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5203,6 +6085,7 @@ export class MovieApp {
       else if (mt >= profile.titleDropTime && mt < profile.titleFadeOutTime) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5265,6 +6148,7 @@ export class MovieApp {
       else if (mt >= profile.titleFadeOutTime && mt < profile.titleFadeOutTime + 1.5) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5287,6 +6171,7 @@ export class MovieApp {
       else if (mt >= profile.titleFadeOutTime + 1.5 && mt < profile.cycleStartTime) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5303,6 +6188,7 @@ export class MovieApp {
       else if (mt >= profile.cycleStartTime && mt < profile.cycleFadeOutTime) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5329,6 +6215,7 @@ export class MovieApp {
       else if (mt >= profile.cycleFadeOutTime && mt < profile.cycleFadeOutTime + 1.5) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5349,6 +6236,7 @@ export class MovieApp {
       else if (mt >= profile.cycleFadeOutTime + 1.5 && mt < profile.introEndTime) {
 
         this._introLogoSprite.alpha = 0;
+        this._introRealLogoSprite.alpha = 0;
 
         this._introStudiosText.alpha = 0;
 
@@ -5434,7 +6322,7 @@ export class MovieApp {
 
     if (this._currentActIndex + 1 < STORY_ACTS.length) {
 
-      this.goToAct(this._currentActIndex + 1, undefined, crossfadeSec);
+      this.goToAct(this._currentActIndex + 1, undefined, crossfadeSec, true);
 
     }
 
@@ -5488,38 +6376,19 @@ export class MovieApp {
 
     }
 
-    if (this._currentActIndex === 0) {
-
-      if (this._actTime < INTRO_DISCLAIMER_DURATION) {
-
-        this._introAmbientStarted = false;
-
-        // Во время дисклеймера музыки быть не должно
-
-        AmbientManager.playTrack(null, 0.0, 0.2);
-
+        if (this._currentActIndex === 0) {
+      AmbientManager.setPaused(false);
+      const introTrack = AmbientManager.getIntroTrack();
+      if (!this._introAmbientStarted || AmbientManager.getCurrentTrackKey() !== introTrack || !AmbientManager.getCurrentAudio() || AmbientManager.getCurrentAudio()?.paused) {
+        this._introAmbientStarted = true;
+        AmbientManager.playTrack(introTrack, 1.0, 1.5);
+        AmbientManager.seekCurrent(this._actTime);
       } else {
-
-        if (!this._introAmbientStarted) {
-
-          this._introAmbientStarted = true;
-
-          AmbientManager.playTrack(this._introProfile.trackKey, 1.0, 1.5);
-
-          const mt = Math.max(0, this._actTime - INTRO_DISCLAIMER_DURATION);
-
-          AmbientManager.seekCurrent(mt);
-
-        } else {
-
-          AmbientManager.resumeCurrent();
-
-        }
-
-        if (this._videoElement) this._videoElement.play().catch(() => {});
-
+        AmbientManager.resumeCurrent();
       }
-
+      if (this._videoElement && this._actTime >= 7.5) {
+        this._videoElement.play().catch(() => {});
+      }
     } else {
 
       const act = STORY_ACTS[this._currentActIndex];
@@ -5627,74 +6496,96 @@ export class MovieApp {
 
   }
 
+  public get voiceVolume(): number {
+    return this._voiceVolume;
+  }
+
+  public get musicVolume(): number {
+    return this._musicVolume;
+  }
+
+  public get sfxVolume(): number {
+    return this._sfxVolume;
+  }
+
+  public setVoiceVolume(v: number): void {
+    this._voiceVolume = Math.max(0, Math.min(1, v));
+    const act = STORY_ACTS[this._currentActIndex];
+    const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
+    if (!isSong && this._voiceAudio) {
+      this._voiceAudio.volume = AudioController.isMuted() ? 0 : this._voiceVolume;
+    }
+    if (this._wsVoiceSlider) this._wsVoiceSlider.setVol(this._voiceVolume);
+    if (this._voiceVolControl) this._voiceVolControl.setVolumeDisplay(this._voiceVolume);
+  }
+
+  public setMusicVolume(v: number): void {
+    this._musicVolume = Math.max(0, Math.min(1, v));
+    AmbientManager.setMusicVolume(this._musicVolume);
+    const act = STORY_ACTS[this._currentActIndex];
+    const isSong = act && (act.category === 'song' || act.id === 'act_7_song');
+    if (isSong && this._voiceAudio) {
+      this._voiceAudio.volume = AudioController.isMuted() ? 0 : this._musicVolume;
+    }
+    if (this._wsMusicSlider) this._wsMusicSlider.setVol(this._musicVolume);
+    if (this._musicVolControl) this._musicVolControl.setVolumeDisplay(this._musicVolume);
+  }
+
+  public setSfxVolume(v: number): void {
+    this._sfxVolume = Math.max(0, Math.min(1, v));
+    SFX.setVolume(this._sfxVolume);
+    if (this._wsSfxSlider) this._wsSfxSlider.setVol(this._sfxVolume);
+    if (this._sfxVolControl) this._sfxVolControl.setVolumeDisplay(this._sfxVolume);
+  }
+
   public update(dt: number): void {
 
     AmbientManager.update(dt);
 
+    if (this._debugExpandedPanel && this._debugExpandedPanel.visible) {
+      const TRACK_X = -255;
+      const TRACK_W = 530;
+      const actDur = Math.max(1, this._actDuration);
+      if (this._dawPlayhead) {
+        this._dawPlayhead.position.x = TRACK_X + Math.max(0, Math.min(1.0, this._actTime / actDur)) * TRACK_W;
+      }
+      if (this._directorNowPlayingText) {
+        if (AmbientManager.isCuePlaying()) {
+          const a = AmbientManager.getCueAudio();
+          const k = AmbientManager.getCueTrackKey();
+          const optDread = MovieApp.DREAD_OPTIONS.find((o) => o.key === k);
+          const optPeace = MovieApp.PEACE_OPTIONS.find((o) => o.key === k);
+          const isDread = Boolean(optDread);
+          const name = optDread ? optDread.name : (optPeace ? optPeace.name : (k || 'Музыкальный отрезок'));
+          const el = a ? Math.max(0, a.currentTime).toFixed(1) : '0.0';
+          const tot = (optDread ? optDread.dur : (optPeace ? optPeace.dur : (a && Number.isFinite(a.duration) ? a.duration : 30))).toFixed(1);
+          this._directorNowPlayingText.text = `СЕЙЧАС ЗВУЧИТ: [ ${isDread ? '💀' : '🕊️'} ${name} • ${el}s / ${tot}s ]`;
+          this._directorNowPlayingText.style.fill = isDread ? '#ef476f' : '#06d6a0';
+        } else {
+          const act = STORY_ACTS[this._currentActIndex] || STORY_ACTS[0];
+          const ambKey = (this._currentActIndex === 0) ? AmbientManager.getIntroTrack() : (AmbientManager.getLockedTrackForAct(act.id) || AmbientManager.getCurrentTrackKey() || act.audioKey);
+          const optAmb = MovieApp.AMBIENT_OPTIONS.find((o) => o.key === ambKey);
+          const ambName = optAmb ? optAmb.name : ambKey;
+          this._directorNowPlayingText.text = `СЕЙЧАС ЗВУЧИТ: [ 📻 Базовый эмбиент: ${ambName} ]`;
+          this._directorNowPlayingText.style.fill = '#00f5d4';
+        }
+      }
+    }
+
     let currentTime = this._actTime;
 
     if (this._currentActIndex === 0) {
-
-      if (this._actTime < INTRO_DISCLAIMER_DURATION) {
-
-        if (this._isPlaying) {
-
-          this._actTime += dt;
-
-        } else {
-
-          AmbientManager.pauseAll();
-
-          if (this._videoElement && !this._videoElement.paused) {
-
-            this._videoElement.pause();
-
-          }
-
-        }
-
+      const curAudio = AmbientManager.getCurrentAudio();
+      if (this._isPlaying && curAudio && !curAudio.paused && Number.isFinite(curAudio.currentTime)) {
+        currentTime = curAudio.currentTime;
+        this._actTime = currentTime;
+      } else if (this._isPlaying) {
+        this._actTime += dt;
         currentTime = this._actTime;
-
       } else {
-
-        const curAudio = AmbientManager.getCurrentAudio();
-
-        if (this._isPlaying && curAudio && !curAudio.paused && Number.isFinite(curAudio.currentTime)) {
-
-          currentTime = INTRO_DISCLAIMER_DURATION + curAudio.currentTime;
-
-          this._actTime = currentTime;
-
-        } else if (this._isPlaying) {
-
-          this._actTime += dt;
-
-          currentTime = this._actTime;
-
-        } else {
-
-          currentTime = this._actTime;
-
-          AmbientManager.pauseAll();
-
-          if (curAudio && !curAudio.paused) {
-
-            curAudio.pause();
-
-          }
-
-          if (this._videoElement && !this._videoElement.paused) {
-
-            this._videoElement.pause();
-
-          }
-
-        }
-
+        currentTime = this._actTime;
       }
-
       this._updateIntroTimeline(currentTime);
-
     } else {
 
       const act = STORY_ACTS[this._currentActIndex];
@@ -5896,8 +6787,17 @@ export class MovieApp {
       }
 
       this._subtitles.update(dt);
+      PremiereAudioDirector.getInstance().syncActFromApp(this._currentActIndex, currentTime);
 
       this._subtitles.syncToTime(currentTime, this._isPlaying);
+      // Old experimental cue check disabled in favor of Premiere Director and shot sequence
+      // this._checkDirectorMusicCues(currentTime);
+      if (this._debugExpanded && this._directorActTimeText) {
+        const curT = Math.max(0, this._actTime).toFixed(1);
+        const totT = this._actDuration.toFixed(1);
+        const act = STORY_ACTS[this._currentActIndex] || STORY_ACTS[0];
+        this._directorActTimeText.text = `АКТ ${this._currentActIndex}: ${act.title} • ТЕКУЩИЙ КАДР: ${curT}s / ${totT}s`;
+      }
 
       // Real-time Voice Presence Sidechain: Ducks ambient and sound cues when someone speaks or sings
 
@@ -5936,10 +6836,10 @@ export class MovieApp {
 
     this._timeCodeText.text = `${formatTime(curSec)} / ${formatTime(totSec)}  •  ${formatTime(overallCurSec)} / ${formatTime(overallTotSec)}`;
 
-    if (this._wsLcdText) {
-
+    if (this._wsLcdOverrideTimer > 0) {
+      this._wsLcdOverrideTimer -= dt;
+    } else if (this._wsLcdText) {
       this._wsLcdText.text = `${formatTime(overallCurSec)} / ${formatTime(overallTotSec)}`;
-
     }
 
     const progress = Math.min(1, currentTime / Math.max(1, this._actDuration));
@@ -6267,16 +7167,42 @@ export class MovieApp {
 
     ];
 
-    this._wipeType = wipeTypes[Math.floor(Math.random() * wipeTypes.length)];
-
+    this._wipeType = wipeTypes[this._currentActIndex % wipeTypes.length];
     this._wipeProgress = 0.0;
-
     this._wipeDuration = 2.4; // Stately George Lucas Star Wars optical wipe print
-
     this._isWiping = true;
-
     this._updateWipeGraphics();
+    this._playStarWarsTransitionSound();
+  }
 
+  private _playStarWarsTransitionSound(): void {
+    if (AudioController.isMuted() || this._sfxVolume <= 0 || this._isSeeking || this._isTimelineDragging) return;
+
+    // Zero random! Deterministic transition sound per user request
+    const soundKey = this.getLockedTransitionSound();
+    const meta = MovieApp.TRANSITION_SOUNDS_METADATA.find(s => s.key === soundKey)
+      || MovieApp.TRANSITION_SOUNDS_METADATA[0];
+
+    const url = getAudioUrl(meta.key);
+    if (!url) return;
+
+    try {
+      if (this._transitionAudio) {
+        this._transitionAudio.pause();
+        this._transitionAudio = null;
+      }
+      const audio = new Audio(url);
+      audio.muted = AudioController.isMuted();
+      // Normalized volume using calibrated gain multiplier!
+      audio.volume = Math.max(0, Math.min(1.0, this._sfxVolume * meta.gain));
+      audio.onended = () => {
+        if (this._transitionAudio === audio) {
+          this._transitionAudio = null;
+        }
+      };
+      audio.play().catch(() => {});
+      this._transitionAudio = audio;
+    } catch {}
   }
 
   private _updateWipeGraphics(): void {
@@ -6681,7 +7607,7 @@ export class MovieApp {
         this._showCornerLocationBadge('СЕКТОР КОВЧЕГА', 'НИЖНЯЯ ПАЛУБА • КАТАКОМБЫ НАКАЗАНИЯ', 5.0);
         if (hasImage && cut.texKey) {
           const tex = getTexture(cut.texKey);
-          this._setBgTextureWithWipe(tex, true);
+          this._setBgTextureWithWipe(tex, false); // Intra-act cut from narrator to catacombs must NEVER trigger Star Wars optical wipe!
         }
       }
 
@@ -6996,11 +7922,11 @@ export class MovieApp {
       );
 
       this._cornerQuoteAvatarMask.clear();
-      this._cornerQuoteAvatarMask.roundRect(0, 0, avatarSize, avatarSize, 10);
+      this._cornerQuoteAvatarMask.rect(0, 0, avatarSize, avatarSize);
       this._cornerQuoteAvatarMask.fill({ color: 0xffffff });
 
       this._cornerQuoteAvatarBorder.clear();
-      this._cornerQuoteAvatarBorder.roundRect(0, 0, avatarSize, avatarSize, 10);
+      this._cornerQuoteAvatarBorder.rect(0, 0, avatarSize, avatarSize);
       this._cornerQuoteAvatarBorder.stroke({ color: 0x333333, width: 2, alpha: 0.5 });
     } else {
       this._cornerQuoteAvatarSprite.visible = false;
@@ -7033,7 +7959,7 @@ export class MovieApp {
     const badgeH = avatarSize + pad * 2;
 
     this._cornerQuoteBg.clear();
-    this._cornerQuoteBg.roundRect(0, 0, badgeW, badgeH, 10);
+    this._cornerQuoteBg.rect(0, 0, badgeW, badgeH);
     this._cornerQuoteBg.fill({ color: 0x000000, alpha: 0.94 });
 
     const badgeX = isPortrait ? 16 : 28;
@@ -7048,7 +7974,7 @@ export class MovieApp {
     const r = half - 8;
 
     // Background round rect matching avatar style (0x333333 subtle border, dark background)
-    gfx.roundRect(0, 0, size, size, 10);
+    gfx.rect(0, 0, size, size);
     gfx.fill({ color: 0x0a1015, alpha: 0.95 });
     gfx.stroke({ color: 0x333333, width: 2, alpha: 0.5 });
 
@@ -7174,7 +8100,7 @@ export class MovieApp {
     const badgeH = radarSize + pad * 2;
 
     this._cornerLocationBg.clear();
-    this._cornerLocationBg.roundRect(0, 0, badgeW, badgeH, 10);
+    this._cornerLocationBg.rect(0, 0, badgeW, badgeH);
     this._cornerLocationBg.fill({ color: 0x000000, alpha: 0.94 });
     // Clean borderless container (stroke removed per user request: "убери тут рамочку")
 
@@ -7805,8 +8731,11 @@ export class MovieApp {
     // Playbox Skull Logo & Subtitles: Larger, responsive, minimal gap between Studios and Presents
     const logoMaxH = isPortrait ? h * 0.44 : Math.min(480, h * 0.54);
     this._introLogoBaseScale = logoMaxH / 1536;
+    this._introLogoBaseY = isPortrait ? -logoMaxH * 0.22 : -logoMaxH * 0.18;
     this._introLogoSprite.scale.set(this._introLogoBaseScale);
-    this._introLogoSprite.position.set(0, isPortrait ? -logoMaxH * 0.22 : -logoMaxH * 0.18);
+    this._introLogoSprite.position.set(0, this._introLogoBaseY);
+    this._introRealLogoSprite.scale.set(this._introLogoBaseScale);
+    this._introRealLogoSprite.position.set(0, this._introLogoBaseY);
 
     const studiosFontSize = Math.round((isPortrait ? 30 : 42) * fontScale);
     const presentsFontSize = Math.round((isPortrait ? 24 : 34) * fontScale);
@@ -8009,12 +8938,12 @@ export class MovieApp {
 
     // Debug Mode UI (Top Center - completely out of the way of the player bar!)
 
+    if (this._devGearBtn) {
+      this._devGearBtn.position.set(w - 36, isPortrait ? 56 : 30);
+    }
     if (this._debugContainer) {
-
       this._debugContainer.position.set(w / 2, isPortrait ? 114 : 32);
-
       this._debugContainer.scale.set(w < 950 ? 0.85 : 1.0);
-
     }
 
   }
