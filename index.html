@@ -25,7 +25,16 @@
       --border-subtle: #23293d;
       --border-bright: #3a4466;
 
-      /* Subtitle Phosphor Neon Color (#00f5d4 - Mint / Cyan from film subtitles) */
+      
+    .mono-glyph {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    /* Subtitle Phosphor Neon Color (#00f5d4 - Mint / Cyan from film subtitles) */
       --accent-cyan: #00f5d4;
       --accent-cyan-hover: #33ffd9;
       --accent-cyan-glow: rgba(0, 245, 212, 0.4);
@@ -1161,16 +1170,16 @@
 
       <nav>
         <ul class="plbx-nav">
-          <li><a href="#universe">🌌 Единая Вселенная</a></li>
-          <li><a href="#dramaturgy">🧠 Драматургия и ML</a></li>
-          <li><a href="#crew">👥 Табель о рангах</a></li>
+          <li><a href="#universe">// Вселенная</a></li>
+          <li><a href="#dramaturgy">// Драматургия & ML</a></li>
+          <li><a href="#crew">// Табель о рангах</a></li>
           <li><a href="#playable-area" class="active">Смотреть кибербуллинг</a></li>
         </ul>
       </nav>
 
       <div style="display: flex; align-items: center; gap: 12px;">
         <button class="plbx-cta-btn" onclick="document.getElementById('playable-area').scrollIntoView({behavior: 'smooth'})">
-          ▶ Смотреть кибербуллинг
+          Смотреть Кибербуллинг
         </button>
       </div>
     </div>
@@ -1181,9 +1190,9 @@
     <div class="container hero-grid">
       <div class="hero-text-col">
         <div class="hero-badge-row">
-          <div class="hero-pill">🌌 СЫГРАВШИЙ В ЯЩИК</div>
-          <div class="hero-pill hero-pill-green">🟢 ЕДИНАЯ ВСЕЛЕННАЯ</div>
-          <div class="hero-pill">⚡ ТЁМНЫЙ ОФЛАЙН-ПЛЕЙБОКС</div>
+          <div class="hero-pill">[ QUI CISTAM ]</div>
+          <div class="hero-pill hero-pill-green">[ ЕДИНАЯ ВСЕЛЕННАЯ ]</div>
+          <div class="hero-pill">[ ТЁМНЫЙ ОФЛАЙН-ПЛЕЙБОКС ]</div>
         </div>
 
         <h1 class="hero-title">
@@ -1203,10 +1212,10 @@
 
         <div class="hero-actions">
           <button class="plbx-cta-btn" style="padding: 13px 30px; font-size: 15px;" onclick="document.getElementById('playable-area').scrollIntoView({behavior: 'smooth'})">
-            ▶ Смотреть кибербуллинг
+            Смотреть Кибербуллинг
           </button>
           <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
-            📜 Табель о рангах (22 персоны)
+            Табель о рангах (22 персоны)
           </button>
         </div>
 
@@ -1262,7 +1271,7 @@
 
     <div class="grid-3">
       <div class="info-card">
-        <div class="card-icon-wrap">🏢</div>
+        <div class="card-icon-wrap"><span class="mono-glyph">[ ARK ]</span></div>
         <h3 class="card-title">Принудительный Офлайн</h3>
         <p class="card-text">
           Никакой удалёнки. Чтобы успеть на дейли к одиннадцати утра, кодер встаёт за 4 часа: три пересадки на грузовых дрезинах сквозь трюмы, сорокатысячепалубный грави-лифт и магнитный турникет. Забыл пластиковый бейдж в каюте — вахтёр захлопывает створку, и ты идёшь 4 часа обратно пешком через шлюзы.
@@ -1271,7 +1280,7 @@
       </div>
 
       <div class="info-card">
-        <div class="card-icon-wrap">💻</div>
+        <div class="card-icon-wrap"><span class="mono-glyph">[ ML ]</span></div>
         <h3 class="card-title">Казённые моноблоки Celeron</h3>
         <p class="card-text">
           В личных каютах у всех стоят квантовые станции с кастомной водянкой, но работать из кают запрещено. В пыльном опенспейсе экипаж прикован к казённым «Селеронам», намертво зависающим на третьей вкладке Notion. Запуск тестового билда выбивает пробки на трёх палубах, пока саппорт просит почистить кэш.
@@ -1280,7 +1289,7 @@
       </div>
 
       <div class="info-card">
-        <div class="card-icon-wrap">🐟</div>
+        <div class="card-icon-wrap"><span class="mono-glyph">[ ROAST ]</span></div>
         <h3 class="card-title">Микроволновка и Дюзы</h3>
         <p class="card-text">
           В замкнутой вентиляции опенспейса четвёртый месяц циркулирует смрад рыбы с чесноком из единственной микроволновки на сектор. Одной половине зала вечно дует из дюз, второй — нестерпимо душно. На больничный уйти нельзя, поэтому 20 000 существ чахоточно кашляют друг на друга.
@@ -1356,10 +1365,10 @@
     <!-- Filter Tabs (Always visible directly on the page) -->
     <div class="crew-tabs">
       <button class="crew-tab-btn active" onclick="filterCrew('all', this)">Все персоны (22)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('command', this)">👑 Командование (3)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">📋 Проджекты (4)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">⚙️ Разработка (9)</button>
-      <button class="crew-tab-btn" onclick="filterCrew('art', this)">🎨 Арт & 3D (6)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">Командование (4)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">Проджекты (3)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">Разработка (11)</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">Арт & 3D (4)</button>
     </div>
 
     <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
@@ -1378,7 +1387,7 @@
         <div class="crew-modal-photo-col">
           <div class="crew-modal-photo-box" id="modalPhotoBox">
             <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
-              🔄 Slack Фото
+              Slack Фото
             </button>
             <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
             <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
@@ -1533,7 +1542,7 @@
         realRole: "Creative Director студии",
         photoLore: "web_assets/images/team/retro_film_egor_tkachev.png",
         photoSlack: "web_assets/images/team/avatars/Егор_Ткачёв_slack_1024.jpg",
-        quote: "«Свиток "Долгий Ящик" — это не задержка, а выдержка благородного цифрового вина.»",
+        quote: '«Свиток "Долгий Ящик" — это не задержка, а выдержка благородного цифрового вина.»',
         mutations: "Свитки правок клиентов, кибер-корова с лазерным лучом вымени для GameGears."
       },
       {
@@ -1786,7 +1795,7 @@
       const photoBox = document.getElementById('modalPhotoBox');
       photoBox.classList.remove('show-slack');
       const toggleBtn = document.getElementById('modalPhotoToggle');
-      toggleBtn.innerText = '🔄 Slack Фото';
+      toggleBtn.innerText = 'Slack Фото';
       toggleBtn.style.background = '';
       toggleBtn.style.color = '';
 
@@ -1819,11 +1828,11 @@
       const toggleBtn = document.getElementById('modalPhotoToggle');
       photoBox.classList.toggle('show-slack');
       if (photoBox.classList.contains('show-slack')) {
-        toggleBtn.innerText = '🎭 Лор Арт';
+        toggleBtn.innerText = 'Лор Арт';
         toggleBtn.style.background = 'var(--accent-cyan)';
         toggleBtn.style.color = '#06090f';
       } else {
-        toggleBtn.innerText = '🔄 Slack Фото';
+        toggleBtn.innerText = 'Slack Фото';
         toggleBtn.style.background = '';
         toggleBtn.style.color = '';
       }
