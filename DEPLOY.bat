@@ -17,7 +17,7 @@ if %errorlevel% equ 0 (
 
 echo.
 echo 2. Синхронизация с Google Диском...
-python "%~dp0tools\deploy_to_gdrive.py"
+python "%~dp0tools\internal\deploy_to_gdrive.py"
 
 echo.
 echo =====================================================================

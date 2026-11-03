@@ -112,7 +112,7 @@ graph TD
 
 ### 3. `tools/` — Исполняемые скрипты, утилиты и студии
 - **`tools/` (Корневые батники запуска и деплоя)**:
-  - `DEPLOY.bat`, `tools/deploy_to_gdrive.py`: Авто-деплой и быстрая синхронизация презентации «Сыгравший в ящик» на Google Диск (`G:\Мой диск\Сыгравший в ящик` и `Public\`).
+  - `DEPLOY.bat`, `tools/internal/deploy_to_gdrive.py`: Авто-деплой и быстрая синхронизация презентации «Сыгравший в ящик» на Google Диск (`G:\Мой диск\Сыгравший в ящик` и `Public\`).
   - `OPEN_PRESENTATION.bat`: Мгновенный запуск веб-презентации в браузере.
   - `BUILD_MOVIE.bat`, `START_MOVIE_DEV.bat`, `OPEN_INTERACTIVE_MOVIE.bat`: Сборка, разработка и запуск интерактивного фильма.
 - **`tools/studio/`**:
