@@ -1259,7 +1259,136 @@
         padding: 24px 20px;
       }
     }
-  </style>
+      /* Admin Edit Mode Styles */
+    .admin-panel {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99999;
+      background: rgba(8, 11, 18, 0.96);
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 245, 212, 0.35);
+      border-radius: 0;
+      padding: 12px 20px;
+      width: calc(100% - 40px);
+      max-width: 920px;
+      backdrop-filter: blur(12px);
+      animation: adminSlideUp 0.3s ease;
+    }
+
+    @keyframes adminSlideUp {
+      from { transform: translate(-50%, 20px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    .admin-panel-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .admin-panel-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+    }
+
+    .admin-pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #00f5d4;
+      display: inline-block;
+      animation: adminBlink 1s infinite alternate;
+    }
+
+    @keyframes adminBlink {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    .admin-title {
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+    }
+
+    .admin-hint {
+      color: #8fa0b5;
+      font-size: 11.5px;
+    }
+
+    .admin-panel-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-btn {
+      background: #0f1624;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 7px 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 0;
+      transition: all 0.2s ease;
+    }
+
+    .admin-btn:hover {
+      background: rgba(0, 245, 212, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .admin-btn-save {
+      background: var(--accent-cyan);
+      color: #04060a;
+      border-color: var(--accent-cyan);
+    }
+    .admin-btn-save:hover {
+      background: #33ffd8;
+      color: #04060a;
+    }
+
+    .admin-toast {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100000;
+      background: #060910;
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 245, 212, 0.25);
+      color: #fff;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      display: none;
+      pointer-events: none;
+      animation: toastFade 0.25s ease;
+    }
+
+    body.admin-mode-active h1:hover,
+    body.admin-mode-active h2:hover,
+    body.admin-mode-active h3:hover,
+    body.admin-mode-active p:hover,
+    body.admin-mode-active .card-text:hover,
+    body.admin-mode-active .caption-title:hover,
+    body.admin-mode-active .caption-sub:hover,
+    body.admin-mode-active .crew-mini-name:hover,
+    body.admin-mode-active .crew-mini-badge:hover,
+    body.admin-mode-active .crew-mini-role:hover {
+      outline: 1px dashed var(--accent-cyan) !important;
+      background: rgba(0, 245, 212, 0.05) !important;
+      cursor: text !important;
+    }
+</style>
 </head>
 <body>
 
@@ -1288,10 +1417,10 @@
           Новая подача еженедельного шоу студии <strong>Playbox</strong>. Это зеркальный антипод реального распределённого продакшена в параллельной тёмной вселенной, где работа идёт <strong>строго офлайн</strong> внутри гигантского космического ковчега-бизнес-центра.
         </p>
 
-        <!-- Manifesto of Single Universe & Continuous Evolution -->
+        <!-- Manifesto of Universe Architecture & Multi-Universe Evolution -->
         <div class="hero-universe-manifesto">
-          <strong>Архитектурный принцип — Единая Неделимая Вселенная:</strong><br>
-          Мы отказываемся от прыжков между сеттингами (гонки, ограбления, кухни). Проект живёт в <strong>одной стабильной вселенной</strong>. Реальные еженедельные события из рабочих каналов органично развивают этот мир: персонажи постепенно эволюционируют, обрастают аугментациями, а лор ковчега дорабатывается и углубляется на ходу. В единой вселенной развивать сериал, собирать сквозные ассеты и обучать ИИ-режиссёра на порядок эффективнее, чем начинать с нуля каждый выпуск.
+          <strong>Архитектурный принцип — Сквозная Вселенная & Мульти-Вселенные в дальнейшем:</strong><br>
+          На текущем этапе проект опирается на <strong>единую стабильную вселенную</strong> Ковчега: реальные еженедельные события из каналов развивают этот мир, персонажи эволюционируют, а ИИ-режиссёр накапливает сквозной контекст без распыления. При этом архитектура изначально открыта для расширения: <strong>в дальнейшем возможно появление более чем одной вселенной</strong> (новые орбитальные ковчеги, смежные параллельные секторы и независимые AI-миры).
         </div>
 
         <div class="hero-actions">
@@ -1397,6 +1526,59 @@
     </div>
   </section>
 
+  <!-- Principles of Generation & Universe Architecture Section (Horizontal Pillar Blocks) -->
+  <section class="container" style="padding: 30px 24px 60px;" id="principles">
+    <div class="section-header" style="margin-bottom: 32px;">
+      <h2 class="section-title">Принципы генерации и архитектура вселенных</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <!-- Pillar 1: ML Director & Continuous Generation -->
+      <div class="pillar-box">
+        <div class="pillar-num">01</div>
+        <div class="pillar-content">
+          <h3>Машинное обучение ИИ-Режиссёра и непрерывная генерация</h3>
+          <p>
+            Каждая серия — это цикл машинного обучения бортового ИИ-Режиссёра. В отличие от разовых генераций, сериал накапливает контекст: ИИ калибрует тайминги пауз, смену планов, расстановку акцентов в кадре и точную подачу панчлайнов. Персонажи постепенно эволюционируют, обрастают аугментациями, а драматургия становится плотнее от эпизода к эпизоду.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Multi-Universes & Scaling -->
+      <div class="pillar-box">
+        <div class="pillar-num">02</div>
+        <div class="pillar-content">
+          <h3>Мульти-вселенные и масштабирование: возможно более чем 1 вселенная в дальнейшем</h3>
+          <p>
+            Текущий фокус на Ковчеге «Сыгравший в Ящик» позволяет собирать сквозные ассеты и глубоко прорабатывать базу без распыления. При этом архитектура пайплайна изначально закладывает <strong>возможность появления более чем одной вселенной в дальнейшем</strong>: новые космические ковчеги, смежные параллельные секторы и независимые AI-миры смогут подключаться к общей производственной матрице по мере развития проекта.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Dread Contrast -->
+      <div class="pillar-box">
+        <div class="pillar-num">03</div>
+        <div class="pillar-content">
+          <h3>Принцип Dread Contrast (Запрет шуток «в лоб»)</h3>
+          <p>
+            Юмор строится строго на контрасте: визуальный ряд остаётся предельно серьёзным, мрачным и реалистичным (боди-хоррор, аутентичный гримдарк, терминалы с кодами ошибок). Никаких смайликов и дешёвого фарса. Комический эффект рождается исключительно из невозмутимости и делового корпоративного спокойствия экипажа на фоне космической катастрофы.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 4: AI-Driven DNA -->
+      <div class="pillar-box">
+        <div class="pillar-num">04</div>
+        <div class="pillar-content">
+          <h3>AI-Driven ДНК: Настоящий Playbox и его тёмное зеркало</h3>
+          <p>
+            Playbox — передовая AI-driven компания, где LLM, синтез арта, звука и автономные агенты встроены в реальную разработку мобильных плейблов. Ковчег — её гротескный готический антипод. Вселенная работает органично именно потому, что опирается на подлинную изнанку нейросетевого продакшена: борьбу с галлюцинациями моделей, полидактилией нейрослопа и незаменимость живого вкуса мастеров.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="container crew-section" id="crew">
     <div class="section-header" style="margin-bottom: 36px;">
       <h2 class="section-title">Личный состав</h2>
@@ -1488,7 +1670,9 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="plbx-logo-img" style="width: 30px; height: 30px;">
+        <a href="javascript:void(0)" onclick="toggleAdminMode()" id="adminTrigger" title="Секретный режим редактирования текста" style="text-decoration: none; display: inline-flex; align-items: center;">
+          <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="footer-skull-logo" style="width: 32px; height: 32px; object-fit: contain; filter: none; display: block; cursor: pointer; transition: transform 0.2s ease;">
+        </a>
         <div>
           <strong style="color: #fff;">PLAYBOX</strong> // Продакшен-Ковчег «Qui Cistam» • 2026
         </div>
@@ -1946,6 +2130,130 @@
 
     // Init
     renderCrewCompact('all');
-  </script>
+  
+    // =========================================================================
+    // SECRET ADMIN EDIT MODE (TRIGGERED VIA FOOTER SKULL LOGO OR ALT+E)
+    // =========================================================================
+    let adminModeActive = false;
+
+    function toggleAdminMode() {
+      adminModeActive = !adminModeActive;
+      const panel = document.getElementById('adminPanel');
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = 'block';
+        showAdminToast('⚡ РЕЖИМ РЕДАКТОРА ВКЛЮЧЁН: кликайте на любой текст для изменения');
+      } else {
+        document.body.classList.remove('admin-mode-active');
+        document.designMode = 'off';
+        if (panel) panel.style.display = 'none';
+        showAdminToast('✕ РЕЖИМ РЕДАКТОРА ВЫКЛЮЧЕН');
+      }
+    }
+
+    function showAdminToast(msg) {
+      const toast = document.getElementById('adminToast');
+      if (!toast) return;
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { if (toast) toast.style.display = 'none'; }, 3500);
+    }
+
+    function saveAdminEdits() {
+      try {
+        localStorage.setItem('plbx_cyberbulling_custom_html', document.documentElement.outerHTML);
+        showAdminToast('💾 Изменения сохранены в памяти браузера!');
+      } catch (e) {
+        showAdminToast('Ошибка сохранения: ' + e.message);
+      }
+    }
+
+    function resetAdminEdits() {
+      if (confirm('Сбросить все отредактированные тексты к исходной версии?')) {
+        localStorage.removeItem('plbx_cyberbulling_custom_html');
+        location.reload();
+      }
+    }
+
+    function copyAdminHtml() {
+      const panel = document.getElementById('adminPanel');
+      const toast = document.getElementById('adminToast');
+      const prevPanelDisp = panel ? panel.style.display : 'none';
+      const prevToastDisp = toast ? toast.style.display : 'none';
+      if (panel) panel.style.display = 'none';
+      if (toast) toast.style.display = 'none';
+      document.body.classList.remove('admin-mode-active');
+      document.designMode = 'off';
+
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+      navigator.clipboard.writeText(fullHtml).then(() => {
+        showAdminToast('📋 Чистый HTML скопирован в буфер обмена!');
+      }).catch(() => {
+        showAdminToast('Не удалось скопировать в буфер автоматически');
+      });
+
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = prevPanelDisp;
+      }
+    }
+
+    function downloadAdminHtml() {
+      const panel = document.getElementById('adminPanel');
+      const toast = document.getElementById('adminToast');
+      const prevPanelDisp = panel ? panel.style.display : 'none';
+      if (panel) panel.style.display = 'none';
+      if (toast) toast.style.display = 'none';
+      document.body.classList.remove('admin-mode-active');
+      document.designMode = 'off';
+
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(a.href);
+
+      showAdminToast('📥 Файл index.html скачан с вашими правками!');
+
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = prevPanelDisp;
+      }
+    }
+
+    // Keyboard shortcut: Alt+E or Ctrl+Shift+E
+    document.addEventListener('keydown', (e) => {
+      if ((e.altKey && e.code === 'KeyE') || (e.ctrlKey && e.shiftKey && e.code === 'KeyE')) {
+        e.preventDefault();
+        toggleAdminMode();
+      }
+    });
+</script>
+  <!-- Secret Admin Edit Bar (Toggled via Footer Skull Logo or Alt+E) -->
+  <div id="adminPanel" class="admin-panel" style="display: none;">
+    <div class="admin-panel-content">
+      <div class="admin-panel-info">
+        <span class="admin-pulse-dot"></span>
+        <span class="admin-title">РЕЖИМ РЕДАКТОРА [ADMIN]</span>
+        <span class="admin-hint">— кликните на любой текст для изменения прямо на странице</span>
+      </div>
+      <div class="admin-panel-btns">
+        <button class="admin-btn admin-btn-save" onclick="saveAdminEdits()" title="Сохранить изменения в браузере">💾 Сохранить</button>
+        <button class="admin-btn admin-btn-copy" onclick="copyAdminHtml()" title="Скопировать чистый HTML страницы">📋 Скопировать HTML</button>
+        <button class="admin-btn admin-btn-dl" onclick="downloadAdminHtml()" title="Скачать обновлённый index.html">📥 Скачать файл</button>
+        <button class="admin-btn admin-btn-reset" onclick="resetAdminEdits()" title="Сбросить к оригиналу">↺ Сбросить</button>
+        <button class="admin-btn admin-btn-close" onclick="toggleAdminMode()" title="Выйти из режима">✕ Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="adminToast" class="admin-toast"></div>
+
 </body>
 </html>
