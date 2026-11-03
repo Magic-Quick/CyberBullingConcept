@@ -142,6 +142,20 @@
       letter-spacing: -1px;
     }
 
+    .plbx-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0, 245, 212, 0.45));
+      display: block;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .plbx-brand:hover .plbx-logo-img {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 16px rgba(0, 245, 212, 0.8));
+    }
+
     .plbx-brand-title {
       font-weight: 800;
       font-size: 17px;
@@ -1231,7 +1245,7 @@
   <header class="plbx-topbar">
     <div class="container plbx-topbar-inner">
       <a href="#hero" class="plbx-brand">
-        <div class="plbx-logo-badge">P</div>
+        <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="plbx-logo-img">
         <div class="plbx-brand-title">
           <span>PLAYBOX // QUI CISTAM</span>
           <span>DARK OFFLINE MIRROR</span>
@@ -1471,7 +1485,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <div class="plbx-logo-badge" style="width: 30px; height: 30px; font-size: 16px;">P</div>
+        <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="plbx-logo-img" style="width: 30px; height: 30px;">
         <div>
           <strong style="color: #fff;">PLAYBOX</strong> // Продакшен-Ковчег «Qui Cistam» • 2026
         </div>
