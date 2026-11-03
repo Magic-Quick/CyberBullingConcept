@@ -1525,6 +1525,57 @@
     </div>
   </section>
 
+  <!-- Crew Section (Directly after Lore) -->
+  <section class="container crew-section" id="crew">
+    <div class="section-header" style="margin-bottom: 36px;">
+      <h2 class="section-title">Личный состав</h2>
+      <p class="section-desc">
+        По ходу развития вселенной персонажи эволюционируют, меняют лоровые звания, аугментации и образ (но не каждый выпуск). Каждый участник экипажа может оставить заявку на изменение своего образа.
+      </p>
+    </div>
+
+    <!-- Filter Tabs (Always visible directly on the page) -->
+    <div class="crew-tabs">
+      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны (19) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование (4) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты (3) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка (8) ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт & 3D (4) ]</button>
+    </div>
+
+    <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
+    <div class="crew-compact-grid" id="crewCompactGrid">
+      <!-- 22 mini tiles injected via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Crew Modal (Image Rectangle with In-Game Caption) -->
+  <div class="crew-modal-backdrop" id="crewModal" onclick="closeCrewModalOnBackdrop(event)">
+    <div class="crew-modal-card game-card-mode">
+      <button class="crew-modal-close" onclick="closeCrewModal()" title="Закрыть (Esc)">✕</button>
+      
+      <!-- Rectangle of the Image -->
+      <div class="crew-modal-photo-box" id="modalPhotoBox">
+        <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
+          Slack Фото
+        </button>
+        <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
+        <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
+
+        <!-- In-Frame Navigation Arrows -->
+        <button class="crew-modal-arrow prev" onclick="event.stopPropagation(); navCrewModal(-1)" title="Предыдущий (←)">‹</button>
+        <button class="crew-modal-arrow next" onclick="event.stopPropagation(); navCrewModal(1)" title="Следующий (→)">›</button>
+      </div>
+
+      <!-- In-Game Caption Bar -->
+      <div class="crew-game-caption">
+        <div class="crew-game-role" id="modalTitle">[ ДОЛЖНОСТЬ В ЛОРЕ ]</div>
+        <div class="crew-game-name" id="modalName">[ ИМЯ ]</div>
+        <div class="crew-game-real-role" id="modalRealRole">[ РЕАЛЬНАЯ ДОЛЖНОСТЬ ]</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Principles of Generation & Universe Architecture Section (Horizontal Pillar Blocks) -->
   <section class="container" style="padding: 30px 24px 60px;" id="principles">
     <div class="section-header" style="margin-bottom: 32px;">
@@ -1588,56 +1639,6 @@
       </div>
     </div>
   </section>
-
-  <section class="container crew-section" id="crew">
-    <div class="section-header" style="margin-bottom: 36px;">
-      <h2 class="section-title">Личный состав</h2>
-      <p class="section-desc">
-        По ходу развития вселенной персонажи эволюционируют, меняют лоровые звания, аугментации и образ (но не каждый выпуск).
-      </p>
-    </div>
-
-    <!-- Filter Tabs (Always visible directly on the page) -->
-    <div class="crew-tabs">
-      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны (19) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование (4) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты (3) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка (8) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт & 3D (4) ]</button>
-    </div>
-
-    <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
-    <div class="crew-compact-grid" id="crewCompactGrid">
-      <!-- 22 mini tiles injected via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Crew Modal (Image Rectangle with In-Game Caption) -->
-  <div class="crew-modal-backdrop" id="crewModal" onclick="closeCrewModalOnBackdrop(event)">
-    <div class="crew-modal-card game-card-mode">
-      <button class="crew-modal-close" onclick="closeCrewModal()" title="Закрыть (Esc)">✕</button>
-      
-      <!-- Rectangle of the Image -->
-      <div class="crew-modal-photo-box" id="modalPhotoBox">
-        <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
-          Slack Фото
-        </button>
-        <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
-        <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
-
-        <!-- In-Frame Navigation Arrows -->
-        <button class="crew-modal-arrow prev" onclick="event.stopPropagation(); navCrewModal(-1)" title="Предыдущий (←)">‹</button>
-        <button class="crew-modal-arrow next" onclick="event.stopPropagation(); navCrewModal(1)" title="Следующий (→)">›</button>
-      </div>
-
-      <!-- In-Game Caption Bar -->
-      <div class="crew-game-caption">
-        <div class="crew-game-role" id="modalTitle">[ ДОЛЖНОСТЬ В ЛОРЕ ]</div>
-        <div class="crew-game-name" id="modalName">[ ИМЯ ]</div>
-        <div class="crew-game-real-role" id="modalRealRole">[ РЕАЛЬНАЯ ДОЛЖНОСТЬ ]</div>
-      </div>
-    </div>
-  </div>
 
   <!-- =======================================================================
        FULL RECTANGLE WIDESCREEN CINEMA PLAYER (NO PHONE DEVICE, PURE FULLSCREEN)
