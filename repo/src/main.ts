@@ -111,46 +111,58 @@ plbx.init(async () => {
   percentText.anchor.set(0.5);
   loadingContainer.addChild(percentText);
 
+  let currentLoadRatio = 0;
   const updateLoadingUI = (ratio: number) => {
+    currentLoadRatio = ratio;
     const sw = window.innerWidth;
     const sh = window.innerHeight;
     const cx = sw / 2;
     const cy = sh / 2;
+    const isPortrait = sh > sw;
+    const refScale = Math.max(0.85, Math.min(1.5, isPortrait ? Math.min(sw / 414, sh / 736) : Math.min(sw / 1280, sh / 720)));
 
-    const panelW = Math.min(480, sw - 40);
-    const panelH = 140;
+    const panelW = Math.min(sw - 40, Math.round((isPortrait ? 380 : 540) * refScale));
+    const panelH = Math.round(144 * refScale);
     const px = cx - panelW / 2;
     const py = cy - panelH / 2;
 
+    titleText.style.fontSize = Math.round((isPortrait ? 16 : 20) * refScale);
+    titleText.style.letterSpacing = Math.round(2 * refScale);
+    statusText.style.fontSize = Math.round((isPortrait ? 13 : 15) * refScale);
+    statusText.style.letterSpacing = Math.round(1 * refScale);
+    percentText.style.fontSize = Math.round((isPortrait ? 14 : 17) * refScale);
+
     panelBg.clear();
-    // Clean black rectangle backdrop without borders or corner ticks (exact subtitle box style)
-    panelBg.roundRect(px, py, panelW, panelH, 8);
+    panelBg.roundRect(px, py, panelW, panelH, Math.round(8 * refScale));
     panelBg.fill({ color: 0x000000, alpha: 0.88 });
 
-    titleText.position.set(cx, cy - 34);
-    statusText.position.set(cx, cy - 8);
+    titleText.position.set(cx, cy - Math.round(34 * refScale));
+    statusText.position.set(cx, cy - Math.round(8 * refScale));
 
-    const barW = Math.min(360, panelW - 60);
-    const barH = 6;
+    const barW = Math.min(panelW - 60, Math.round((isPortrait ? 300 : 420) * refScale));
+    const barH = Math.round(8 * refScale);
     const bx = cx - barW / 2;
-    const by = cy + 18;
+    const by = cy + Math.round(18 * refScale);
 
     progressBar.clear();
-    // Track without borders
-    progressBar.roundRect(bx, by, barW, barH, 3);
+    progressBar.roundRect(bx, by, barW, barH, Math.round(3 * refScale));
     progressBar.fill({ color: 0x141824, alpha: 0.9 });
 
-    // Progress fill in subtitle cyan
     const fillW = Math.max(0, Math.min(barW, barW * ratio));
     if (fillW > 0) {
-      progressBar.roundRect(bx, by, fillW, barH, 3);
+      progressBar.roundRect(bx, by, fillW, barH, Math.round(3 * refScale));
       progressBar.fill({ color: 0x00f5d4 });
     }
 
     const pct = Math.round(ratio * 100);
     percentText.text = `[ ${pct.toString().padStart(3, ' ')}% ]`;
-    percentText.position.set(cx, cy + 44);
+    percentText.position.set(cx, cy + Math.round(44 * refScale));
   };
+
+  const onLoadingResize = () => {
+    updateLoadingUI(currentLoadRatio);
+  };
+  window.addEventListener('resize', onLoadingResize);
 
   updateLoadingUI(0);
 
@@ -159,6 +171,7 @@ plbx.init(async () => {
     updateLoadingUI(ratio);
   });
 
+  window.removeEventListener('resize', onLoadingResize);
   app.stage.removeChild(loadingContainer);
 
   console.log('[main] Assets loaded successfully, creating MovieApp...');

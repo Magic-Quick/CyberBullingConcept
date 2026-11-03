@@ -120,13 +120,13 @@ export const CREW_ARK_ROLES: Record<string, string> = {
 
   'женя': 'Мастер Вечного Рендера',
 
-  'владимир хаецкий': 'Хранитель Лонгбокса Disney',
+  'владимир хаецкий': 'Страж Невидимого Слоя',
 
-  'вова хаецкий': 'Хранитель Лонгбокса Disney',
+  'вова хаецкий': 'Страж Невидимого Слоя',
 
-  'вова': 'Хранитель Лонгбокса Disney',
+  'вова': 'Страж Невидимого Слоя',
 
-  'хаецкий': 'Хранитель Лонгбокса Disney',
+  'хаецкий': 'Страж Невидимого Слоя',
 
   'давит газарян': 'Рыцарь Старого Движка',
 
@@ -312,6 +312,7 @@ export class MovieApp {
   private _introCycleSubtitle: Text;
 
   private _introLogoBaseScale = 0.2;
+  private _introFontScale = 1.0;
 
   private _videoElement: HTMLVideoElement | null = null;
 
@@ -5105,11 +5106,11 @@ export class MovieApp {
 
       // Phase 3: 9.0s - 14.0s: "STUDIOS" glows into visibility below the skull
 
-      else if (mt >= 9.0 && mt < 14.0) {
+      else if (mt >= 9.0 && mt < 11.5) {
 
         this._introLogoSprite.alpha = 1;
 
-        const p = (mt - 9.0) / 3.5;
+        const p = (mt - 9.0) / 2.5;
 
         this._introStudiosText.alpha = Math.min(1, p);
 
@@ -5141,7 +5142,7 @@ export class MovieApp {
 
         this._introPresentsText.alpha = 1;
 
-        this._introPresentsText.style.letterSpacing = 4;
+        this._introPresentsText.style.letterSpacing = Math.round(4 * this._introFontScale);
 
         this._introSeriesContainer.alpha = 0;
 
@@ -5165,7 +5166,7 @@ export class MovieApp {
 
         this._introPresentsText.text = 'PRESENTS';
 
-        this._introPresentsText.style.letterSpacing = 4 + (mt - profile.logoDisperseTime) * 1.5;
+        this._introPresentsText.style.letterSpacing = Math.round((4 + (mt - profile.logoDisperseTime) * 1.5) * this._introFontScale);
 
         this._introSeriesContainer.alpha = 0;
 
@@ -7672,125 +7673,83 @@ export class MovieApp {
   }
 
   private _layoutIntroDisclaimer(w: number, h: number, isPortrait: boolean): void {
-
     if (!this._introDisclaimerContainer) return;
 
-    const contentW = Math.min(w * 0.86, isPortrait ? 520 : 880);
+    // Responsive reference scaling: depends directly on viewport dimensions
+    const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
+    const fontScale = Math.max(0.85, Math.min(1.65, refDim));
+    this._introFontScale = fontScale;
 
-    const contentY = isPortrait ? -h * 0.16 : -h * 0.12;
-
-    this._introDisclaimerContainer.position.set(0, contentY);
+    const contentW = Math.min(w * 0.88, isPortrait ? 560 * fontScale : 1000 * fontScale);
 
     // Completely clear borders, corners and backgrounds
-
     this._introDisclaimerBg.clear();
-
     this._introDisclaimerCorners.clear();
 
-    const badgeFontSize = isPortrait ? 13 : 16;
-
+    // Balanced typography: less disparity between badge and content text
+    const badgeFontSize = Math.round((isPortrait ? 20 : 26) * fontScale);
     this._introDisclaimerBadge.style.fontFamily = ['Share Tech Mono', 'monospace'];
-
     this._introDisclaimerBadge.style.fontSize = badgeFontSize;
-
     this._introDisclaimerBadge.style.fill = '#00f5d4';
-
+    this._introDisclaimerBadge.style.letterSpacing = Math.round((isPortrait ? 2 : 4) * fontScale);
     this._introDisclaimerBadge.style.align = 'center';
-
     this._introDisclaimerBadge.anchor.set(0.5, 0);
-
     this._introDisclaimerBadge.position.set(0, 0);
 
-    const textFontSize = isPortrait ? 16 : 22;
-
-    const textLineHeight = isPortrait ? 27 : 38;
-
-    const startY = isPortrait ? 28 : 38;
+    const textFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
+    const textLineHeight = Math.round(textFontSize * 1.55);
+    const startY = Math.round(badgeFontSize * 1.8);
 
     const measureStyle = new TextStyle({
-
       fontFamily: ['Share Tech Mono', 'monospace'],
-
       fontSize: textFontSize,
-
       fontWeight: 'bold',
-
       letterSpacing: 0.6,
-
       wordWrap: true,
-
       wordWrapWidth: contentW,
-
     });
 
     const metrics = CanvasTextMetrics.measureText(INTRO_DISCLAIMER_TEXT, measureStyle);
-
     const rawLines = metrics.lines;
-
     const rawWidths = metrics.lineWidths;
 
     // Destroy existing line sprites
-
     for (const t of this._disclaimerLineTexts) {
-
       t.destroy();
-
     }
-
     this._disclaimerLineTexts = [];
-
     this._disclaimerLines = [];
 
     const lineStyle = new TextStyle({
-
       fontFamily: ['Share Tech Mono', 'monospace'],
-
       fontSize: textFontSize,
-
       fontWeight: 'bold',
-
       fill: '#00f5d4',
-
       letterSpacing: 0.6,
-
       align: 'left',
-
       dropShadow: { alpha: 0.85, blur: 8, color: '#00f5d4', distance: 0 },
-
     });
 
     for (let i = 0; i < rawLines.length; i++) {
-
       const lineStr = rawLines[i];
-
       // Create line text initially with full text to obtain exact Pixi bounds
-
       const lineText = new Text({ text: lineStr, style: lineStyle });
-
       const measuredW = lineText.width || rawWidths[i] || 0;
-
       lineText.anchor.set(0, 0);
-
       lineText.position.set(-measuredW / 2, startY + i * textLineHeight);
-
       lineText.text = ''; // Clear for typing playback
-
       this._introDisclaimerLinesContainer.addChild(lineText);
-
       this._disclaimerLineTexts.push(lineText);
-
       this._disclaimerLines.push({ text: lineStr, width: measuredW });
-
     }
+
+    const totalH = startY + rawLines.length * textLineHeight;
+    this._introDisclaimerContainer.position.set(0, -Math.round(totalH / 2));
 
     // If currently during disclaimer, re-render for current time
-
     if (this._currentActIndex === 0 && this._actTime < INTRO_DISCLAIMER_DURATION) {
-
       this._updateIntroTimeline(this._actTime);
-
     }
-
   }
 
   public resize(w: number, h: number): void {
@@ -7837,63 +7796,55 @@ export class MovieApp {
     this._introContainer.position.set(w / 2, h / 2);
 
     // 0. Disclaimer Layout (NO FRAME / BORDER, pure green terminal text, stationary pre-centered lines!)
-
     this._layoutIntroDisclaimer(w, h, isPortrait);
 
-    const logoMaxH = isPortrait ? h * 0.46 : Math.min(480, h * 0.58);
+    const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
+    const fontScale = Math.max(0.85, Math.min(1.65, refDim));
+    this._introFontScale = fontScale;
 
+    // Playbox Skull Logo & Subtitles: Larger, responsive, minimal gap between Studios and Presents
+    const logoMaxH = isPortrait ? h * 0.44 : Math.min(480, h * 0.54);
     this._introLogoBaseScale = logoMaxH / 1536;
-
     this._introLogoSprite.scale.set(this._introLogoBaseScale);
+    this._introLogoSprite.position.set(0, isPortrait ? -logoMaxH * 0.22 : -logoMaxH * 0.18);
 
-    this._introLogoSprite.position.set(0, isPortrait ? -logoMaxH * 0.28 : -logoMaxH * 0.24);
+    const studiosFontSize = Math.round((isPortrait ? 30 : 42) * fontScale);
+    const presentsFontSize = Math.round((isPortrait ? 24 : 34) * fontScale);
 
-    this._introStudiosText.position.set(0, isPortrait ? logoMaxH * 0.35 : logoMaxH * 0.33);
+    this._introStudiosText.style.fontSize = studiosFontSize;
+    this._introStudiosText.style.letterSpacing = Math.round((isPortrait ? 3 : 5) * fontScale);
+    this._introStudiosText.position.set(0, isPortrait ? logoMaxH * 0.34 : logoMaxH * 0.32);
 
-    this._introStudiosText.style.fontSize = isPortrait ? 24 : 34;
+    this._introPresentsText.style.fontSize = presentsFontSize;
+    this._introPresentsText.style.letterSpacing = Math.round((isPortrait ? 3 : 5) * fontScale);
+    this._introPresentsText.position.set(0, this._introStudiosText.position.y + Math.round((isPortrait ? 40 : 54) * fontScale));
 
-    this._introPresentsText.position.set(0, isPortrait ? logoMaxH * 0.48 : logoMaxH * 0.45);
-
-    this._introPresentsText.style.fontSize = isPortrait ? 16 : 22;
-
-    // Series Title Graphic Logo & Subtitle (Cinematic Scale)
-
+    // Series Title Graphic Logo & Subtitle (Cinematic Scale, balanced typography)
     this._introSeriesContainer.position.set(0, isPortrait ? -30 : -15);
-
-    const titleMaxW = isPortrait ? w * 0.92 : Math.min(w * 0.85, 960);
-
-    const titleMaxH = isPortrait ? h * 0.35 : Math.min(h * 0.50, 440);
-
+    const titleMaxW = isPortrait ? w * 0.90 : Math.min(w * 0.82, 920);
+    const titleMaxH = isPortrait ? h * 0.34 : Math.min(h * 0.46, 420);
     const logoTex = this._introSeriesLogoSprite.texture;
-
     const texW = logoTex && logoTex.width > 0 ? logoTex.width : 913;
-
     const texH = logoTex && logoTex.height > 0 ? logoTex.height : 374;
-
     const titleScale = Math.min(titleMaxW / texW, titleMaxH / texH);
-
     this._introSeriesLogoSprite.scale.set(titleScale);
-
     this._introSeriesLogoSprite.position.set(0, 0);
-
     const logoRenderedH = texH * titleScale;
 
+    // Subtitle "[ ХРОНИКИ ПРОДАКШН-КОВЧЕГА ]": Significantly enlarged to eliminate disparity with main logo
+    const seriesSubFontSize = Math.round((isPortrait ? 22 : 32) * fontScale);
     this._introSeriesSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
-
     this._introSeriesSubtitle.style.fill = '#00f5d4';
+    this._introSeriesSubtitle.style.fontSize = seriesSubFontSize;
+    this._introSeriesSubtitle.style.letterSpacing = Math.round((isPortrait ? 3 : 5) * fontScale);
+    this._introSeriesSubtitle.position.set(0, logoRenderedH / 2 + Math.round((isPortrait ? 28 : 42) * fontScale));
 
-    this._introSeriesSubtitle.style.fontSize = isPortrait ? 13 : 18;
-
-    this._introSeriesSubtitle.position.set(0, logoRenderedH / 2 + (isPortrait ? 24 : 30));
-
+    // Cycle Subtitle "[ ЧЕТЫРНАДЦАТЫЙ ЦИКЛ ]": Responsive scale
+    const cycleFontSize = Math.round((isPortrait ? 28 : 42) * fontScale);
     this._introCycleSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
-
     this._introCycleSubtitle.style.fill = '#00f5d4';
-
-    this._introCycleSubtitle.style.fontSize = isPortrait ? 22 : 32;
-
-    this._introCycleSubtitle.style.letterSpacing = isPortrait ? 6 : 10;
-
+    this._introCycleSubtitle.style.fontSize = cycleFontSize;
+    this._introCycleSubtitle.style.letterSpacing = Math.round((isPortrait ? 6 : 10) * fontScale);
     this._introCycleSubtitle.position.set(0, 0); // Center of screen after main logo disappears
 
     // Header layout (Top Left)
