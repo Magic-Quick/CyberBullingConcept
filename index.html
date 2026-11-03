@@ -981,6 +981,133 @@
       width: 100%;
     }
 
+    /* Cinema Standby Cover Screen (Zero Autoplay on Page Load) */
+    .cinema-standby-screen {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      background: #020306;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    .cinema-standby-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cinema-standby-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) contrast(1.15);
+      transform: scale(1.02);
+    }
+
+    .cinema-standby-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 50%, rgba(6, 9, 15, 0.35) 0%, rgba(2, 3, 6, 0.85) 100%);
+      padding: 24px;
+    }
+
+    .cinema-standby-terminal {
+      max-width: 660px;
+      width: 100%;
+      background: rgba(6, 9, 15, 0.94);
+      border: 1px solid rgba(0, 245, 212, 0.4);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 245, 212, 0.15);
+      border-radius: 0;
+      padding: 32px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cinema-terminal-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .cinema-terminal-title {
+      font-family: var(--font-sans);
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .cinema-terminal-sub {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      line-height: 1.45;
+      max-width: 520px;
+    }
+
+    .cinema-terminal-status {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin: 6px 0 14px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-blink {
+      color: var(--accent-cyan);
+      animation: terminalBlink 1s infinite alternate;
+    }
+
+    @keyframes terminalBlink {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .cinema-play-btn {
+      background: var(--accent-cyan);
+      color: #04060a;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 0;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .cinema-play-btn:hover {
+      background: #33ffd8;
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.7);
+      transform: translateY(-2px);
+    }
+
     .cinema-stage {
       background: #000;
       position: relative;
@@ -1064,6 +1191,12 @@
       .cinema-stage {
         min-height: 380px;
       }
+      .cinema-terminal-title {
+        font-size: 24px;
+      }
+      .cinema-standby-terminal {
+        padding: 24px 20px;
+      }
     }
   </style>
 </head>
@@ -1096,7 +1229,7 @@
       </nav>
 
       <div style="display: flex; align-items: center; gap: 12px;">
-        <button class="plbx-cta-btn" onclick="document.getElementById('playable-area').scrollIntoView({behavior: 'smooth'})">
+        <button class="plbx-cta-btn" onclick="goToPlayerAndLaunch()">
           Смотреть Кибербуллинг
         </button>
       </div>
@@ -1130,11 +1263,11 @@
         </div>
 
         <div class="hero-actions">
-          <button class="plbx-cta-btn" style="padding: 13px 30px; font-size: 15px;" onclick="document.getElementById('playable-area').scrollIntoView({behavior: 'smooth'})">
+          <button class="plbx-cta-btn" style="padding: 13px 30px; font-size: 15px;" onclick="goToPlayerAndLaunch()">
             Смотреть Кибербуллинг
           </button>
           <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
-            Табель о рангах (22 персоны)
+            Табель о рангах (19 персон)
           </button>
         </div>
 
@@ -1405,9 +1538,30 @@
     <div class="cinema-player-container">
       <!-- Cinema Screen Rectangle (Pure 16:9 Cinema Canvas, NO phone notch, full rectangle!) -->
       <div class="cinema-stage" id="cinemaScreen">
+        <!-- Standby Poster Screen (Game does NOT auto-play on site load!) -->
+        <div class="cinema-standby-screen" id="cinemaStandby">
+          <img src="web_assets/images/ship_cistam.png" alt="Ковчег Qui Cistam" class="cinema-standby-bg">
+          <div class="cinema-standby-overlay">
+            <div class="cinema-standby-terminal">
+              <div class="cinema-terminal-tag">// ТЕРМИНАЛ ПРОДАКШЕН-КОВЧЕГА «QUI CISTAM»</div>
+              <div class="cinema-terminal-title">СЫГРАВШИЙ В ЯЩИК</div>
+              <div class="cinema-terminal-sub">EPISODE 16: СТЕНА ТРИДЦАТИ СЕМИ И МАШИНА ВРЕМЕНИ ГОРИНА</div>
+              
+              <div class="cinema-terminal-status">
+                <span class="terminal-blink">●</span> СТАТУС: ТРАНСЛЯЦИЯ ГОТОВА К ЗАПУСКУ • РЕСУРС: ЧИСТЫЙ ПЛЕЙРИУМ
+              </div>
+
+              <button class="cinema-play-btn" id="startMovieBtn" onclick="launchGame()">
+                [ ▶ ЗАПУСТИТЬ ИНТЕРАКТИВНЫЙ ФИЛЬМ ]
+              </button>
+            </div>
+          </div>
+        </div>
+
         <iframe 
           id="gameIframe" 
-          src="game.html" 
+          src="" 
+          data-src="game.html" 
           allow="fullscreen; autoplay; clipboard-write; display-capture" 
           allowfullscreen="true"
           scrolling="no">
@@ -1436,6 +1590,36 @@
 
   <!-- Scripts -->
   <script>
+    // Game Launch & Player Activation (No Autoplay on Site Load)
+    let isGameLaunched = false;
+
+    function launchGame() {
+      const iframe = document.getElementById('gameIframe');
+      const standby = document.getElementById('cinemaStandby');
+      if (!iframe) return;
+
+      if (!isGameLaunched) {
+        isGameLaunched = true;
+        const targetSrc = iframe.getAttribute('data-src') || 'game.html';
+        iframe.src = targetSrc;
+      }
+
+      if (standby) {
+        standby.classList.add('fade-out');
+        setTimeout(() => {
+          standby.style.display = 'none';
+        }, 400);
+      }
+    }
+
+    function goToPlayerAndLaunch() {
+      const playerEl = document.getElementById('playable-area');
+      if (playerEl) {
+        playerEl.scrollIntoView({ behavior: 'smooth' });
+      }
+      launchGame();
+    }
+
     // Crew Members Canonical Data
     const CREW_DATA = [
       {
