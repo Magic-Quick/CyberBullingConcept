@@ -851,6 +851,87 @@
       to { opacity: 1; transform: scale(1); }
     }
 
+    
+    /* In-Game Character Card Mode (Rectangle with Caption) */
+    .crew-modal-card.game-card-mode {
+      max-width: 440px;
+      width: 100%;
+      background: #080b12;
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .crew-modal-card.game-card-mode .crew-modal-photo-box {
+      width: 100%;
+      height: 480px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: #020305;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .crew-modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(8, 11, 18, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      user-select: none;
+    }
+    .crew-modal-arrow.prev { left: 12px; }
+    .crew-modal-arrow.next { right: 12px; }
+    .crew-modal-arrow:hover {
+      background: var(--accent-cyan);
+      color: #06090f;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px var(--accent-cyan-glow);
+    }
+    .crew-game-caption {
+      text-align: center;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+    }
+    .crew-game-name {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+    .crew-game-role {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-cyan-glow);
+    }
+
     .crew-modal-card {
       background: #0d101a;
       border: 1px solid var(--accent-cyan-border);
@@ -900,7 +981,88 @@
       .crew-modal-grid {
         grid-template-columns: 1fr;
       }
-      .crew-modal-card {
+      
+    /* In-Game Character Card Mode (Rectangle with Caption) */
+    .crew-modal-card.game-card-mode {
+      max-width: 440px;
+      width: 100%;
+      background: #080b12;
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 245, 212, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .crew-modal-card.game-card-mode .crew-modal-photo-box {
+      width: 100%;
+      height: 480px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: #020305;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .crew-modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(8, 11, 18, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      user-select: none;
+    }
+    .crew-modal-arrow.prev { left: 12px; }
+    .crew-modal-arrow.next { right: 12px; }
+    .crew-modal-arrow:hover {
+      background: var(--accent-cyan);
+      color: #06090f;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px var(--accent-cyan-glow);
+    }
+    .crew-game-caption {
+      text-align: center;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+    }
+    .crew-game-name {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+    .crew-game-role {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-cyan-glow);
+    }
+
+    .crew-modal-card {
         padding: 20px;
       }
     }
@@ -1459,50 +1621,28 @@
     </div>
   </section>
 
-  <!-- Crew Modal (Full Cinematic Dossier on click) -->
+  <!-- Crew Modal (Image Rectangle with In-Game Caption) -->
   <div class="crew-modal-backdrop" id="crewModal" onclick="closeCrewModalOnBackdrop(event)">
-    <div class="crew-modal-card">
+    <div class="crew-modal-card game-card-mode">
       <button class="crew-modal-close" onclick="closeCrewModal()" title="Закрыть (Esc)">✕</button>
       
-      <div class="crew-modal-grid">
-        <!-- Portrait Column -->
-        <div class="crew-modal-photo-col">
-          <div class="crew-modal-photo-box" id="modalPhotoBox">
-            <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
-              Slack Фото
-            </button>
-            <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
-            <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
-          </div>
-        </div>
+      <!-- Rectangle of the Image -->
+      <div class="crew-modal-photo-box" id="modalPhotoBox">
+        <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
+          Slack Фото
+        </button>
+        <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
+        <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
 
-        <!-- Info Column -->
-        <div class="crew-modal-info-col">
-          <div class="crew-tag-row">
-            <span class="crew-badge" id="modalBadge"></span>
-            <span class="crew-role-badge" id="modalRealRole"></span>
-          </div>
+        <!-- In-Frame Navigation Arrows -->
+        <button class="crew-modal-arrow prev" onclick="event.stopPropagation(); navCrewModal(-1)" title="Предыдущий (←)">‹</button>
+        <button class="crew-modal-arrow next" onclick="event.stopPropagation(); navCrewModal(1)" title="Следующий (→)">›</button>
+      </div>
 
-          <h3 class="crew-modal-name" id="modalName"></h3>
-          <div class="crew-title-lore" id="modalTitle"></div>
-
-          <div class="crew-quote" id="modalQuote"></div>
-
-          <div class="crew-mutations" style="margin-top: 14px;">
-            <strong>Аугментации:</strong> <span id="modalMutations"></span>
-          </div>
-
-          <!-- Bottom Navigation Between Members -->
-          <div class="crew-modal-nav">
-            <button class="crew-modal-nav-btn" onclick="navCrewModal(-1)">
-              ← Предыдущий
-            </button>
-            <span class="crew-modal-counter" id="modalCounter">1 / 22</span>
-            <button class="crew-modal-nav-btn" onclick="navCrewModal(1)">
-              Следующий →
-            </button>
-          </div>
-        </div>
+      <!-- In-Game Caption Bar -->
+      <div class="crew-game-caption">
+        <div class="crew-game-name" id="modalName">[ ИМЯ ]</div>
+        <div class="crew-game-role" id="modalTitle">[ ДОЛЖНОСТЬ В ЛОРЕ ]</div>
       </div>
     </div>
   </div>
@@ -1861,13 +2001,21 @@
       const c = activeCrewList[currentModalIndex];
       if (!c) return;
 
-      document.getElementById('modalName').innerText = c.name;
-      document.getElementById('modalBadge').innerText = c.badge;
-      document.getElementById('modalRealRole').innerText = c.realRole;
-      document.getElementById('modalTitle').innerText = c.title;
-      document.getElementById('modalQuote').innerText = c.quote;
-      document.getElementById('modalMutations').innerText = c.mutations;
-      document.getElementById('modalCounter').innerText = `${currentModalIndex + 1} / ${activeCrewList.length}`;
+      const nameEl = document.getElementById('modalName');
+      const titleEl = document.getElementById('modalTitle');
+      if (nameEl) nameEl.innerText = `[ ${c.name.toUpperCase()} ]`;
+      if (titleEl) titleEl.innerText = `[ ${c.title.toUpperCase()} ]`;
+
+      const badgeEl = document.getElementById('modalBadge');
+      if (badgeEl) badgeEl.innerText = c.badge;
+      const realRoleEl = document.getElementById('modalRealRole');
+      if (realRoleEl) realRoleEl.innerText = c.realRole;
+      const quoteEl = document.getElementById('modalQuote');
+      if (quoteEl) quoteEl.innerText = c.quote;
+      const mutEl = document.getElementById('modalMutations');
+      if (mutEl) mutEl.innerText = c.mutations;
+      const cntEl = document.getElementById('modalCounter');
+      if (cntEl) cntEl.innerText = `${currentModalIndex + 1} / ${activeCrewList.length}`;
 
       const imgLore = document.getElementById('modalImgLore');
       const imgSlack = document.getElementById('modalImgSlack');
