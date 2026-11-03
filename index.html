@@ -1090,15 +1090,15 @@
       background: var(--accent-cyan);
       color: #04060a;
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 14px 32px;
+      padding: 18px 42px;
       border: 1px solid var(--accent-cyan);
       border-radius: 0;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.5), 0 0 60px rgba(0, 245, 212, 0.25);
       transition: all 0.2s ease;
     }
 
@@ -1439,19 +1439,9 @@
         <div class="cinema-standby-screen" id="cinemaStandby">
           <img src="web_assets/images/ship_cistam.png" alt="Ковчег Qui Cistam" class="cinema-standby-bg">
           <div class="cinema-standby-overlay">
-            <div class="cinema-standby-terminal">
-              <div class="cinema-terminal-tag">// ТЕРМИНАЛ ПРОДАКШЕН-КОВЧЕГА «QUI CISTAM»</div>
-              <div class="cinema-terminal-title">СЫГРАВШИЙ В ЯЩИК</div>
-              <div class="cinema-terminal-sub">EPISODE 16: СТЕНА ТРИДЦАТИ СЕМИ И МАШИНА ВРЕМЕНИ ГОРИНА</div>
-              
-              <div class="cinema-terminal-status">
-                <span class="terminal-blink">●</span> СТАТУС: ТРАНСЛЯЦИЯ ГОТОВА К ЗАПУСКУ • РЕСУРС: ЧИСТЫЙ ПЛЕЙРИУМ
-              </div>
-
-              <button class="cinema-play-btn" id="startMovieBtn" onclick="launchGame()">
-                [ ▶ ЗАПУСТИТЬ ИНТЕРАКТИВНЫЙ ФИЛЬМ ]
-              </button>
-            </div>
+            <button class="cinema-play-btn" id="startMovieBtn" onclick="launchGame()">
+              [ ▶ ЗАПУСТИТЬ ИНТЕРАКТИВНЫЙ ФИЛЬМ ]
+            </button>
           </div>
         </div>
 
