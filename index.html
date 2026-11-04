@@ -1635,10 +1635,10 @@
     .hero-visual-card {
       position: relative;
       background: #000;
-      border: 1px solid rgba(0, 245, 212, 0.25);
+      border: 1px solid rgba(249, 115, 22, 0.4);
       border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 245, 212, 0.15);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(249, 115, 22, 0.2);
       cursor: pointer;
     }
 
@@ -1659,10 +1659,10 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
-      color: var(--accent-cyan);
-      background: rgba(6, 8, 14, 0.88);
-      border: 1px solid var(--accent-cyan-border);
-      box-shadow: 0 0 12px var(--accent-cyan-glow);
+      color: #f97316;
+      background: rgba(14, 10, 8, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      box-shadow: 0 0 14px rgba(249, 115, 22, 0.35);
       padding: 5px 12px;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -1672,8 +1672,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(6, 8, 14, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(14, 10, 8, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.35);
       padding: 5px 10px;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -1683,16 +1683,21 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--accent-cyan);
-      box-shadow: 0 0 8px var(--accent-cyan);
-      animation: pulseScan 1.6s infinite ease-in-out;
+      background: #f97316;
+      box-shadow: 0 0 8px #f97316;
+      animation: pulseScanAmber 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseScanAmber {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 14px #f97316; }
     }
 
     .hero-slide-counter {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #ffedd5;
       letter-spacing: 1px;
     }
 
@@ -1703,9 +1708,9 @@
       width: 38px;
       height: 38px;
       border-radius: 0;
-      background: rgba(6, 8, 14, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #fff;
+      background: rgba(14, 10, 8, 0.85);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      color: #ffedd5;
       font-size: 22px;
       display: flex;
       align-items: center;
@@ -1723,10 +1728,10 @@
     .hero-arrow-next { right: 10px; }
 
     .hero-slide-arrow:hover {
-      background: rgba(0, 245, 212, 0.25);
-      border-color: var(--accent-cyan);
-      color: var(--accent-cyan);
-      box-shadow: 0 0 16px var(--accent-cyan-glow);
+      background: rgba(249, 115, 22, 0.3);
+      border-color: #f97316;
+      color: #fff;
+      box-shadow: 0 0 16px rgba(249, 115, 22, 0.6);
     }
 
     .hero-slide-img {
@@ -1750,11 +1755,12 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1px;
-      color: var(--accent-cyan);
-      border: 1px solid var(--accent-cyan-border);
+      color: #f97316;
+      border: 1px solid rgba(249, 115, 22, 0.5);
       padding: 4px 8px;
-      background: rgba(0, 245, 212, 0.1);
-      opacity: 0.85;
+      background: rgba(249, 115, 22, 0.15);
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
+      opacity: 0.9;
       white-space: nowrap;
       margin-left: 12px;
       align-self: flex-end;
@@ -1767,7 +1773,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       z-index: 15;
       overflow: hidden;
     }
@@ -1775,8 +1781,8 @@
     .hero-slide-progress-fill {
       height: 100%;
       width: 0%;
-      background: var(--accent-cyan);
-      box-shadow: 0 0 8px var(--accent-cyan);
+      background: linear-gradient(90deg, #ea580c, #f97316);
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
       transition: width 0.1s linear;
     }
 
@@ -1931,7 +1937,6 @@
         <div class="hero-sketch-branding">
           <div class="hero-sketch-logo">
             <img src="web_assets/images/gui/playbox_skull_sketch_color.webp" alt="Playbox" class="hero-sketch-skull">
-            <span class="hero-sketch-label">Playbox</span>
           </div>
           <div class="hero-sketch-lord">
             <img src="web_assets/images/team/ai_lord_sketch_cutout.webp" alt="ИИ-Лорд Хронометрист Цитадели" class="hero-sketch-lord-img">
@@ -1951,7 +1956,7 @@
             Смотреть
           </button>
           <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
-            Личный состав (19 персон)
+            Личный состав
           </button>
         </div>
       </div>
@@ -1963,7 +1968,7 @@
           <div class="hero-slide-badge" id="heroSlideBadge">[ ЛОРД-КОМАНДОР ЦИТАДЕЛИ ]</div>
           <div class="hero-slide-hud-right">
             <span class="hero-slide-pulse"></span>
-            <div class="hero-slide-counter" id="heroSlideCounter">02 / 19</div>
+            <div class="hero-slide-counter" id="heroSlideCounter">№ 02</div>
           </div>
         </div>
 
@@ -2091,11 +2096,11 @@
 
     <!-- Filter Tabs (Always visible directly on the page) -->
     <div class="crew-tabs">
-      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны (19) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование (4) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты (3) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка (8) ]</button>
-      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт &amp; 3D (4) ]</button>
+      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт &amp; 3D ]</button>
     </div>
 
     <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
@@ -2943,8 +2948,7 @@
         }
         if (counter) {
           const num = (index + 1).toString().padStart(2, '0');
-          const total = CREW_DATA.length.toString().padStart(2, '0');
-          counter.textContent = `${num} / ${total}`;
+          counter.textContent = `№ ${num}`;
         }
         if (title) {
           title.textContent = person.name;
