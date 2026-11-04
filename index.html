@@ -1387,6 +1387,189 @@
       background: rgba(0, 245, 212, 0.05) !important;
       cursor: text !important;
     }
+
+    /* AI Lord Design Evolution Comparison (Before / After Curtain Slider) */
+    .lord-compare-wrap {
+      background: #06080d;
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      padding: 16px;
+      position: relative;
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    .lord-compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+    }
+
+    .lord-compare-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lord-compare-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+
+    .lord-compare-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-cyan);
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      padding: 4px 10px;
+    }
+
+    .pulse-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulseScan 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseScan {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 14px var(--accent-cyan); }
+    }
+
+    .lord-compare-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+      cursor: ew-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      --split-pos: 50%;
+    }
+
+    .lord-compare-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .lord-compare-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .lord-layer-after {
+      z-index: 1;
+    }
+
+    .lord-layer-before {
+      z-index: 2;
+      clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+      -webkit-clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+    }
+
+    .lord-badge {
+      position: absolute;
+      top: 14px;
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 5;
+    }
+
+    .badge-before {
+      left: 14px;
+      background: rgba(18, 20, 28, 0.88);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .badge-after {
+      right: 14px;
+      background: rgba(0, 245, 212, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 0 14px var(--accent-cyan-glow);
+    }
+
+    .lord-compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split-pos, 50%);
+      width: 2px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 14px var(--accent-cyan-glow);
+      z-index: 10;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .curtain-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(6, 8, 13, 0.94);
+      border: 2px solid var(--accent-cyan);
+      box-shadow: 0 0 18px var(--accent-cyan-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--accent-cyan);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .handle-grip {
+      font-size: 12px;
+      letter-spacing: -1px;
+      opacity: 0.9;
+    }
+
+    .lord-compare-footer {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
 </style>
 </head>
 <body class="">
@@ -1625,13 +1808,58 @@
         </div>
       </div>
 
-      <!-- Pillar 5: Mandatory Lord's Stage Performance -->
-      <div class="pillar-box">
-        <div class="pillar-num">05</div>
-        <div class="pillar-content">
-          <h3>Кульминация: выступление Лорда на сцене</h3>
-          <p>
-            Каноническая архитектура каждого выпуска сериала неукоснительно завершается <strong>живым сценическим рок-концертом ИИ-лорда а</strong> перед всем собранным экипажем Ковчега, который завершает мероприятие на позитивной ноте.</p>
+      <!-- Pillar 5: Mandatory Lord's Stage Performance & Visual Evolution -->
+      <div class="pillar-box" style="flex-direction: column; gap: 18px;">
+        <div style="display: flex; gap: 20px; align-items: flex-start; width: 100%;">
+          <div class="pillar-num">05</div>
+          <div class="pillar-content" style="flex: 1;">
+            <h3>Кульминация: выступление Лорда на сцене</h3>
+            <p>
+              Каноническая архитектура каждого выпуска сериала неукоснительно завершается <strong>живым сценическим рок-концертом ИИ-лорда а</strong> перед всем собранным экипажем Ковчега, который завершает мероприятие на позитивной ноте.
+            </p>
+          </div>
+        </div>
+
+        <!-- Before / After Curtain Slider: Brutal AI Lord Evolution -->
+        <div class="lord-compare-wrap">
+          <div class="lord-compare-header">
+            <div class="lord-compare-meta">
+              <span class="mono-glyph">[ ЭВОЛЮЦИЯ ДИЗАЙНА ]</span>
+              <span class="lord-compare-title">ИИ-Лорд: рефакторинг облика в сторону брутальности</span>
+            </div>
+            <div class="lord-compare-status" id="lordScanStatus">
+              <span class="pulse-indicator"></span>
+              <span class="status-label">АВТО-ШТОРКА [АКТИВНА]</span>
+            </div>
+          </div>
+
+          <div class="lord-compare-container" id="lordCompareContainer">
+            <!-- After Layer (Base): Brutal Grimdark Canon -->
+            <div class="lord-compare-layer lord-layer-after">
+              <img src="web_assets/images/ai_lord_evolution_after.webp" alt="ИИ-Лорд: Брутальный гримдарк-канон" loading="lazy">
+              <div class="lord-badge badge-after">ПОСЛЕ // БРУТАЛЬНЕЕ (ГРИМДАРК-КАНОН)</div>
+            </div>
+
+            <!-- Before Layer (Clipped Overlay): Early Cartoon Draft -->
+            <div class="lord-compare-layer lord-layer-before">
+              <img src="web_assets/images/ai_lord_evolution_before.webp" alt="ИИ-Лорд: Ранний драфт" loading="lazy">
+              <div class="lord-badge badge-before">ДО // РАННИЙ ДРАФТ</div>
+            </div>
+
+            <!-- Moving Curtain Divider Line & Handle -->
+            <div class="lord-compare-divider">
+              <div class="curtain-handle">
+                <span>◀</span>
+                <span class="handle-grip">|||</span>
+                <span>▶</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lord-compare-footer">
+            <span>⇄ Шторка движется автоматически. Кликните или потяните курсором для ручного сравнения 4 ракурсов (Front / 3/4 / Side / Back).</span>
+            <span class="mono-glyph" style="font-size: 11px;">[ REFACTORING: RETRO-SCIFI PRACTICAL SUIT ]</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2236,7 +2464,64 @@
         toggleAdminMode();
       }
     });
-</script>
+
+    // AI Lord Evolution Before/After Auto-Curtain Slider
+    (function initLordCompare() {
+      const container = document.getElementById('lordCompareContainer');
+      const statusLabel = document.getElementById('lordScanStatus');
+      if (!container) return;
+
+      let start = performance.now();
+      let phase = 0;
+      let userControl = false;
+      let resumeTimeout = null;
+
+      function loop(now) {
+        if (!userControl) {
+          // Smooth sine oscillation between 15% and 85%
+          const t = (now - start) / 1300;
+          const pos = 50 + 35 * Math.sin(t + phase);
+          container.style.setProperty('--split-pos', pos.toFixed(2) + '%');
+        }
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      function setPos(clientX) {
+        const rect = container.getBoundingClientRect();
+        const pct = Math.max(5, Math.min(95, ((clientX - rect.left) / rect.width) * 100));
+        container.style.setProperty('--split-pos', pct.toFixed(2) + '%');
+
+        if (!userControl && statusLabel) {
+          statusLabel.innerHTML = '<span class="pulse-indicator" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b;"></span><span class="status-label" style="color:#f59e0b;">РУЧНОЙ РЕЖИМ</span>';
+        }
+        userControl = true;
+
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => {
+          const now = performance.now();
+          const norm = Math.max(-0.99, Math.min(0.99, (pct - 50) / 35));
+          phase = Math.asin(norm) - ((now - start) / 1300);
+          userControl = false;
+          if (statusLabel) {
+            statusLabel.innerHTML = '<span class="pulse-indicator"></span><span class="status-label">АВТО-ШТОРКА [АКТИВНА]</span>';
+          }
+        }, 2200);
+      }
+
+      container.addEventListener('mousemove', (e) => {
+        if (e.buttons === 1) setPos(e.clientX);
+      });
+      container.addEventListener('mousedown', (e) => setPos(e.clientX));
+      container.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) setPos(e.touches[0].clientX);
+      }, { passive: true });
+      container.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) setPos(e.touches[0].clientX);
+      }, { passive: true });
+    })();
+
+  </script>
   <!-- Secret Admin Edit Bar (Toggled via Footer Skull Logo or Alt+E) -->
   <div id="adminPanel" class="admin-panel" style="display: none;">
     <div class="admin-panel-content">
