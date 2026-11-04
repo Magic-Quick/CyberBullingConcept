@@ -1780,6 +1780,137 @@
       transition: width 0.1s linear;
     }
 
+
+    /* PSD Sketch Design & Fiery Amber Eye-Glow Palette */
+    :root {
+      --accent-eye: #f97316;
+      --accent-eye-hover: #fb923c;
+      --accent-eye-glow: rgba(249, 115, 22, 0.5);
+      --accent-eye-subtle: rgba(249, 115, 22, 0.12);
+      --accent-eye-border: rgba(249, 115, 22, 0.45);
+    }
+
+    .hero-title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .hero-title .glow-text {
+      background: linear-gradient(180deg, #ffffff 15%, #ff7849 65%, #ea580c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 0 22px rgba(234, 88, 12, 0.6));
+    }
+
+    .hero-sketch-branding {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 12px;
+      min-height: 200px;
+    }
+
+    .hero-sketch-logo {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      z-index: 5;
+    }
+
+    .hero-sketch-skull {
+      width: 60px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.35));
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+    }
+
+    .hero-sketch-skull:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.75));
+    }
+
+    .hero-sketch-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #d1d5db;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-sketch-lord {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      line-height: 0;
+    }
+
+    .hero-sketch-lord-img {
+      height: 205px;
+      width: auto;
+      max-width: 320px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 25px rgba(234, 88, 12, 0.35));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .hero-sketch-lord-img:hover {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 32px rgba(234, 88, 12, 0.55));
+    }
+
+    /* Primary CTA Button: Burning Amber Eye-Glow */
+    .plbx-cta-btn {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 0 25px rgba(249, 115, 22, 0.55) !important;
+    }
+
+    .plbx-cta-btn:hover {
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%) !important;
+      box-shadow: 0 0 35px rgba(249, 115, 22, 0.8) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Lore Card Tags: Ambient Amber Glow matching PSD */
+    .universe-grid .card-meta-tag {
+      color: #f97316 !important;
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .hero-sketch-branding {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .hero-sketch-logo {
+        position: static;
+      }
+      .hero-sketch-lord-img {
+        height: 160px;
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+    }
+
 </style>
 </head>
 <body class="">
@@ -1795,35 +1926,30 @@
   <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
-      <div class="hero-text-col">
-        <!-- Hero Header Branding: Skull Icon & Sitting AI Lord with Book (from user mockup) -->
-        <div class="hero-branding-row">
-          <div class="hero-brand-badge">
-            <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox" class="hero-brand-skull">
-            <span class="hero-brand-label">Playbox</span>
+      <div class="hero-text-col" style="text-align: center;">
+        <!-- Hero Header Branding: Color-Graded Skull Logo (Left) & Centered Cropped AI Lord (from PSD sketch) -->
+        <div class="hero-sketch-branding">
+          <div class="hero-sketch-logo">
+            <img src="web_assets/images/gui/playbox_skull_sketch_color.webp" alt="Playbox" class="hero-sketch-skull">
+            <span class="hero-sketch-label">Playbox</span>
           </div>
-          <div class="hero-lord-avatar">
-            <img src="web_assets/images/team/ai_lord_throne_book_portrait.webp" alt="ИИ-Лорд Хронометрист Цитадели" class="hero-lord-avatar-img">
+          <div class="hero-sketch-lord">
+            <img src="web_assets/images/team/ai_lord_sketch_cutout.webp" alt="ИИ-Лорд Хронометрист Цитадели" class="hero-sketch-lord-img">
           </div>
         </div>
 
         <h1 class="hero-title">
-          <span class="glow-text">КИБЕРТРИЛЛЕР</span>
+          <span class="glow-text">КИБЕРБУЛЛИНГ</span>
         </h1>
 
         <p class="hero-lead">
           Еженедельный кибертриллер студии <strong>Playbox</strong>: реальные рабочие будни, вывернутые в гротескный офлайн-хоррор на борту космического ковчега.
         </p>
 
-        <!-- Manifesto of Universe Architecture & Multi-Universe Evolution -->
-        <div class="hero-universe-manifesto">
-          <strong>Архитектурный канон:</strong><br>
-          Единая эволюционирующая вселенная с обязательным сценическим рок-трибуналом Лорда в финале и заделом под мульти-вселенные.
-        </div>
-
-        <div class="hero-actions">
-          <button class="plbx-cta-btn" style="padding: 13px 30px; font-size: 15px;" onclick="goToPlayerAndLaunch()">
-            Смотреть</button>
+        <div class="hero-actions" style="justify-content: center;">
+          <button class="plbx-cta-btn" style="padding: 13px 32px; font-size: 15px;" onclick="goToPlayerAndLaunch()">
+            Смотреть
+          </button>
           <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
             Личный состав (19 персон)
           </button>
