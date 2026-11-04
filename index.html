@@ -1960,7 +1960,7 @@
       <div class="hero-visual-card" id="heroSlideshowCard" onclick="onHeroCardClick(event)" title="Кликните, чтобы открыть досье персонажа">
         <!-- Top HUD Bar: Department Badge & Slide Counter -->
         <div class="hero-slide-hud">
-          <div class="hero-slide-badge" id="heroSlideBadge">[ КОМАНДОР // КОМАНДОВАНИЕ ]</div>
+          <div class="hero-slide-badge" id="heroSlideBadge">[ ЛОРД-КОМАНДОР ЦИТАДЕЛИ ]</div>
           <div class="hero-slide-hud-right">
             <span class="hero-slide-pulse"></span>
             <div class="hero-slide-counter" id="heroSlideCounter">02 / 19</div>
@@ -1977,7 +1977,7 @@
           
           <div class="hero-img-caption">
             <div style="flex: 1; min-width: 0;">
-              <div class="caption-title" id="heroSlideTitle">Лорд-Командор Цитадели (Толя)</div>
+              <div class="caption-title" id="heroSlideTitle">Анатолий Щербаков (Толя)</div>
               <div class="caption-sub" id="heroSlideQuote">«Надо пробить сотню! Кайфеец.»</div>
             </div>
             <div class="hero-dossier-hint">
@@ -2938,8 +2938,8 @@
         activeSlot = activeSlot === 'A' ? 'B' : 'A';
 
         if (badge) {
-          const dept = deptNames[person.dept] || "ЭКИПАЖ";
-          badge.textContent = `[ ${person.badge || 'ПЕРСОНА'} // ${dept} ]`;
+          // Universe title/rank in brackets only
+          badge.textContent = `[ ${person.title.toUpperCase()} ]`;
         }
         if (counter) {
           const num = (index + 1).toString().padStart(2, '0');
@@ -2947,7 +2947,7 @@
           counter.textContent = `${num} / ${total}`;
         }
         if (title) {
-          title.textContent = `${person.title} (${person.name.includes('(') ? person.name.split('(')[1].replace(')', '') : person.name.split(' ')[0]})`;
+          title.textContent = person.name;
         }
         if (quote) {
           quote.textContent = person.quote;
