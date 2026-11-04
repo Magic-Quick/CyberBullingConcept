@@ -309,7 +309,7 @@
     }
 
     .hero-title .glow-text {
-      background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+      background: linear-gradient(180deg, #ffffff 15%, var(--accent-cyan) 100%); filter: drop-shadow(0 0 16px var(--accent-cyan-glow));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -1570,6 +1570,216 @@
       color: var(--text-dim);
     }
 
+
+    /* Hero Branding Row (Playbox Skull & Sitting AI Lord with Book) */
+    .hero-branding-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 28px;
+      margin-bottom: 14px;
+    }
+
+    .hero-brand-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .hero-brand-skull {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(0, 245, 212, 0.45));
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+    }
+
+    .hero-brand-skull:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.8));
+    }
+
+    .hero-brand-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-lord-avatar {
+      position: relative;
+      display: inline-block;
+      line-height: 0;
+    }
+
+    .hero-lord-avatar-img {
+      height: 165px;
+      width: auto;
+      max-width: 190px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(0, 245, 212, 0.3));
+      transition: transform 0.25s ease;
+    }
+
+    .hero-lord-avatar-img:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 28px rgba(0, 245, 212, 0.55));
+    }
+
+    /* Hero Visual Card: Interactive Team Slideshow */
+    .hero-visual-card {
+      position: relative;
+      background: #000;
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 245, 212, 0.15);
+      cursor: pointer;
+    }
+
+    .hero-slide-hud {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .hero-slide-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      background: rgba(6, 8, 14, 0.88);
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 0 12px var(--accent-cyan-glow);
+      padding: 5px 12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-slide-hud-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(6, 8, 14, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 5px 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-slide-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulseScan 1.6s infinite ease-in-out;
+    }
+
+    .hero-slide-counter {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 1px;
+    }
+
+    .hero-slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 0;
+      background: rgba(6, 8, 14, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      line-height: 1;
+      padding-bottom: 2px;
+    }
+
+    .hero-arrow-prev { left: 10px; }
+    .hero-arrow-next { right: 10px; }
+
+    .hero-slide-arrow:hover {
+      background: rgba(0, 245, 212, 0.25);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 16px var(--accent-cyan-glow);
+    }
+
+    .hero-slide-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+    }
+
+    .hero-slide-img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .hero-dossier-hint {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan-border);
+      padding: 4px 8px;
+      background: rgba(0, 245, 212, 0.1);
+      opacity: 0.85;
+      white-space: nowrap;
+      margin-left: 12px;
+      align-self: flex-end;
+      flex-shrink: 0;
+    }
+
+    .hero-slide-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 15;
+      overflow: hidden;
+    }
+
+    .hero-slide-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      transition: width 0.1s linear;
+    }
+
 </style>
 </head>
 <body class="">
@@ -1586,6 +1796,17 @@
   <section class="hero-section" id="hero">
     <div class="container hero-grid">
       <div class="hero-text-col">
+        <!-- Hero Header Branding: Skull Icon & Sitting AI Lord with Book (from user mockup) -->
+        <div class="hero-branding-row">
+          <div class="hero-brand-badge">
+            <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox" class="hero-brand-skull">
+            <span class="hero-brand-label">Playbox</span>
+          </div>
+          <div class="hero-lord-avatar">
+            <img src="web_assets/images/team/ai_lord_throne_book_portrait.webp" alt="ИИ-Лорд Хронометрист Цитадели" class="hero-lord-avatar-img">
+          </div>
+        </div>
+
         <h1 class="hero-title">
           <span class="glow-text">КИБЕРТРИЛЛЕР</span>
         </h1>
@@ -1609,15 +1830,39 @@
         </div>
       </div>
 
-      <div class="hero-visual-card">
+      <!-- Hero Visual Card: Interactive Team Slideshow (19 Crew Members) -->
+      <div class="hero-visual-card" id="heroSlideshowCard" onclick="onHeroCardClick(event)" title="Кликните, чтобы открыть досье персонажа">
+        <!-- Top HUD Bar: Department Badge & Slide Counter -->
+        <div class="hero-slide-hud">
+          <div class="hero-slide-badge" id="heroSlideBadge">[ КОМАНДОР // КОМАНДОВАНИЕ ]</div>
+          <div class="hero-slide-hud-right">
+            <span class="hero-slide-pulse"></span>
+            <div class="hero-slide-counter" id="heroSlideCounter">02 / 19</div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="hero-slide-arrow hero-arrow-prev" onclick="changeHeroSlide(-1, event)" title="Предыдущий персонаж" aria-label="Предыдущий">‹</button>
+        <button class="hero-slide-arrow hero-arrow-next" onclick="changeHeroSlide(1, event)" title="Следующий персонаж" aria-label="Следующий">›</button>
+
         <div class="hero-img-wrap">
-          <img src="web_assets/images/team/retro_film_tolya_gpt_v2.png" alt="Лорд-Командор Толя">
+          <img id="heroSlideImgA" class="hero-slide-img active" src="web_assets/images/team/retro_film_tolya_gpt_v2.png" alt="Анатолий Щербаков (Толя)">
+          <img id="heroSlideImgB" class="hero-slide-img" src="" alt="">
+          
           <div class="hero-img-caption">
-            <div>
-              <div class="caption-title">Лорд-Командор Цитадели (Толя)</div>
-              <div class="caption-sub">«Надо пробить сотню! Кайфеец.»</div>
+            <div style="flex: 1; min-width: 0;">
+              <div class="caption-title" id="heroSlideTitle">Лорд-Командор Цитадели (Толя)</div>
+              <div class="caption-sub" id="heroSlideQuote">«Надо пробить сотню! Кайфеец.»</div>
+            </div>
+            <div class="hero-dossier-hint">
+              <span>ДОСЬЕ ↗</span>
             </div>
           </div>
+        </div>
+
+        <!-- Animated Progress Line -->
+        <div class="hero-slide-progress-bar">
+          <div class="hero-slide-progress-fill" id="heroSlideProgress"></div>
         </div>
       </div>
     </div>
@@ -2519,6 +2764,111 @@
       container.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches.length > 0) setPos(e.touches[0].clientX);
       }, { passive: true });
+    })();
+
+  
+    // Hero Team Slideshow (Auto-Cycling all 19 crew members)
+    (function initHeroSlideshow() {
+      if (typeof CREW_DATA === 'undefined' || !CREW_DATA.length) return;
+
+      const card = document.getElementById('heroSlideshowCard');
+      const imgA = document.getElementById('heroSlideImgA');
+      const imgB = document.getElementById('heroSlideImgB');
+      const badge = document.getElementById('heroSlideBadge');
+      const counter = document.getElementById('heroSlideCounter');
+      const title = document.getElementById('heroSlideTitle');
+      const quote = document.getElementById('heroSlideQuote');
+      const progressFill = document.getElementById('heroSlideProgress');
+      if (!card || !imgA || !imgB) return;
+
+      const deptNames = {
+        command: "КОМАНДОВАНИЕ",
+        projects: "ПРОДЖЕКТЫ",
+        dev: "РАЗРАБОТКА",
+        art: "АРТ & 3D"
+      };
+
+      // Start with Tolya (index 1)
+      let currentIndex = 1;
+      let activeSlot = 'A';
+      const SLIDE_DURATION = 4600; // 4.6 seconds per slide
+      let startTime = performance.now();
+      let isPaused = false;
+      let animFrameId = null;
+
+      function renderSlide(index) {
+        const person = CREW_DATA[index];
+        if (!person) return;
+
+        const targetImg = activeSlot === 'A' ? imgB : imgA;
+        const currentImg = activeSlot === 'A' ? imgA : imgB;
+
+        targetImg.src = person.photoLore;
+        targetImg.alt = person.name;
+
+        targetImg.classList.add('active');
+        currentImg.classList.remove('active');
+
+        activeSlot = activeSlot === 'A' ? 'B' : 'A';
+
+        if (badge) {
+          const dept = deptNames[person.dept] || "ЭКИПАЖ";
+          badge.textContent = `[ ${person.badge || 'ПЕРСОНА'} // ${dept} ]`;
+        }
+        if (counter) {
+          const num = (index + 1).toString().padStart(2, '0');
+          const total = CREW_DATA.length.toString().padStart(2, '0');
+          counter.textContent = `${num} / ${total}`;
+        }
+        if (title) {
+          title.textContent = `${person.title} (${person.name.includes('(') ? person.name.split('(')[1].replace(')', '') : person.name.split(' ')[0]})`;
+        }
+        if (quote) {
+          quote.textContent = person.quote;
+        }
+
+        startTime = performance.now();
+        if (progressFill) progressFill.style.width = '0%';
+      }
+
+      function tick(now) {
+        if (!isPaused) {
+          const elapsed = now - startTime;
+          const progress = Math.min(100, (elapsed / SLIDE_DURATION) * 100);
+          if (progressFill) progressFill.style.width = progress.toFixed(1) + '%';
+
+          if (elapsed >= SLIDE_DURATION) {
+            currentIndex = (currentIndex + 1) % CREW_DATA.length;
+            renderSlide(currentIndex);
+          }
+        }
+        animFrameId = requestAnimationFrame(tick);
+      }
+      animFrameId = requestAnimationFrame(tick);
+
+      // Manual navigation
+      window.changeHeroSlide = function(delta, e) {
+        if (e) e.stopPropagation();
+        currentIndex = (currentIndex + delta + CREW_DATA.length) % CREW_DATA.length;
+        renderSlide(currentIndex);
+      };
+
+      window.onHeroCardClick = function(e) {
+        if (e.target.closest('.hero-slide-arrow')) return;
+        const person = CREW_DATA[currentIndex];
+        if (person && typeof openCrewModal === 'function') {
+          openCrewModal(person.id);
+        }
+      };
+
+      card.addEventListener('mouseenter', () => { isPaused = true; });
+      card.addEventListener('mouseleave', () => {
+        isPaused = false;
+        startTime = performance.now() - (parseFloat(progressFill.style.width || '0') / 100) * SLIDE_DURATION;
+      });
+
+      // Initial render sync
+      renderSlide(currentIndex);
     })();
 
   </script>
