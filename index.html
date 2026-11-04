@@ -25,13 +25,7 @@
       --border-bright: #3a4466;
 
       
-    .mono-glyph {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      letter-spacing: 0.05em;
-    }
+    
 
     /* Subtitle Phosphor Neon Color (#f97316 - Mint / Cyan from film subtitles) */
       --accent-cyan: #f97316;
@@ -47,6 +41,14 @@
       --text-dim: #64748b;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    }
+
+    .mono-glyph {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
     }
 
     * {
@@ -1826,19 +1828,18 @@
     .hero-sketch-logo {
       position: absolute;
       left: 0;
-      bottom: 10px;
+      top: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 5px;
+      align-items: flex-start;
       z-index: 5;
     }
 
     .hero-sketch-skull {
-      width: 60px;
+      width: 76px;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.35));
+      filter: drop-shadow(0 0 16px var(--accent-cyan-glow));
       transition: transform 0.2s ease, filter 0.2s ease;
       cursor: pointer;
     }
@@ -1907,8 +1908,14 @@
         gap: 16px;
       }
       .hero-sketch-logo {
-        position: static;
-      }
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      z-index: 5;
+    }
       .hero-sketch-lord-img {
         height: 160px;
       }
@@ -1917,7 +1924,187 @@
       }
     }
 
-</style>
+
+    /* Theme Engine: 4 Curated Lore Palettes (Amber, Gold, Crimson, Phosphor) */
+    html.theme-amber, :root {
+      --accent-cyan: #f97316;
+      --accent-cyan-hover: #fb923c;
+      --accent-cyan-glow: rgba(249, 115, 22, 0.45);
+      --accent-cyan-subtle: rgba(249, 115, 22, 0.12);
+      --accent-cyan-border: rgba(249, 115, 22, 0.45);
+      --title-grad-mid: #ff7849;
+      --title-grad-end: #ea580c;
+    }
+
+    html.theme-gold {
+      --accent-cyan: #eab308;
+      --accent-cyan-hover: #facc15;
+      --accent-cyan-glow: rgba(234, 179, 8, 0.45);
+      --accent-cyan-subtle: rgba(234, 179, 8, 0.12);
+      --accent-cyan-border: rgba(234, 179, 8, 0.4);
+      --title-grad-mid: #fde047;
+      --title-grad-end: #ca8a04;
+    }
+
+    html.theme-crimson {
+      --accent-cyan: #ef4444;
+      --accent-cyan-hover: #f87171;
+      --accent-cyan-glow: rgba(239, 68, 68, 0.5);
+      --accent-cyan-subtle: rgba(239, 68, 68, 0.14);
+      --accent-cyan-border: rgba(239, 68, 68, 0.45);
+      --title-grad-mid: #f87171;
+      --title-grad-end: #b91c1c;
+    }
+
+    html.theme-phosphor {
+      --accent-cyan: #22c55e;
+      --accent-cyan-hover: #4ade80;
+      --accent-cyan-glow: rgba(34, 197, 94, 0.45);
+      --accent-cyan-subtle: rgba(34, 197, 94, 0.12);
+      --accent-cyan-border: rgba(34, 197, 94, 0.4);
+      --title-grad-mid: #86efac;
+      --title-grad-end: #15803d;
+    }
+
+    /* Dynamic Title Gradient responding to active theme */
+    .hero-title .glow-text {
+      background: linear-gradient(180deg, #ffffff 15%, var(--title-grad-mid, #ff7849) 65%, var(--title-grad-end, #ea580c) 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      display: inline-block;
+      filter: drop-shadow(0 0 22px var(--accent-cyan-glow)) !important;
+    }
+
+    /* Dynamic Button Gradient responding to active theme */
+    .plbx-cta-btn {
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--title-grad-end, #ea580c) 100%) !important;
+      box-shadow: 0 0 25px var(--accent-cyan-glow) !important;
+    }
+
+    .plbx-cta-btn:hover {
+      background: linear-gradient(135deg, var(--accent-cyan-hover) 0%, var(--accent-cyan) 100%) !important;
+      box-shadow: 0 0 35px var(--accent-cyan-glow) !important;
+    }
+
+    .hero-visual-card {
+      border-color: var(--accent-cyan-border) !important;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.95), 0 0 30px var(--accent-cyan-glow) !important;
+    }
+
+    .hero-slide-badge {
+      color: var(--accent-cyan) !important;
+      border-color: var(--accent-cyan-border) !important;
+      box-shadow: 0 0 14px var(--accent-cyan-glow) !important;
+    }
+
+    .hero-slide-progress-bar {
+      background: var(--accent-cyan) !important;
+      box-shadow: 0 0 12px var(--accent-cyan-glow) !important;
+    }
+
+    .hero-slide-counter {
+      color: var(--accent-cyan) !important;
+    }
+
+    .hero-slide-nav-btn {
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .hero-slide-nav-btn:hover {
+      border-color: var(--accent-cyan) !important;
+      color: var(--accent-cyan) !important;
+    }
+
+    .lord-compare-wrap {
+      border-color: var(--accent-cyan-border) !important;
+    }
+
+    .lord-compare-status {
+      color: var(--accent-cyan) !important;
+      background: var(--accent-cyan-subtle) !important;
+      border-color: var(--accent-cyan-border) !important;
+    }
+
+    .lord-compare-divider {
+      background: var(--accent-cyan) !important;
+      box-shadow: 0 0 14px var(--accent-cyan-glow) !important;
+    }
+
+    .curtain-handle {
+      border-color: var(--accent-cyan) !important;
+      background: var(--bg-dark) !important;
+      box-shadow: 0 0 18px var(--accent-cyan-glow) !important;
+    }
+
+    .curtain-handle-icon {
+      color: var(--accent-cyan) !important;
+    }
+
+    .crew-game-role {
+      color: var(--accent-cyan) !important;
+      border-color: var(--accent-cyan-border) !important;
+      box-shadow: 0 0 14px var(--accent-cyan-glow) !important;
+    }
+
+    /* HUD Theme Palette Switcher Bar */
+    .hud-palette-selector {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(10, 12, 18, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 12px;
+      margin-top: 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hud-palette-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      margin-right: 4px;
+    }
+
+    .palette-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .palette-btn:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .palette-btn.active {
+      color: #fff;
+      border-color: var(--accent-cyan);
+      background: var(--accent-cyan-subtle);
+      box-shadow: 0 0 10px var(--accent-cyan-glow);
+    }
+
+    .palette-swatch {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 6px currentColor;
+    }
+
+  </style>
 </head>
 <body class="">
 
@@ -1958,6 +2145,25 @@
           <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
             Личный состав
           </button>
+        </div>
+
+        <!-- Interactive Theme Palette Switcher Bar -->
+        <div style="display: flex; justify-content: center; margin-top: 14px;">
+          <div class="hud-palette-selector" role="toolbar" aria-label="Палитра темы">
+            <span class="hud-palette-label">// ГАММА:</span>
+            <button class="palette-btn active" onclick="setSiteTheme('amber', this)" data-theme="amber" title="Огненный Янтарь (Глаза ИИ Лорда)">
+              <span class="palette-swatch" style="background:#f97316;"></span> Янтарь
+            </button>
+            <button class="palette-btn" onclick="setSiteTheme('gold', this)" data-theme="gold" title="Имперское Золото & Латунь (Толя)">
+              <span class="palette-swatch" style="background:#eab308;"></span> Золото
+            </button>
+            <button class="palette-btn" onclick="setSiteTheme('crimson', this)" data-theme="crimson" title="Багровый Трибунал (Мантия & Тревога)">
+              <span class="palette-swatch" style="background:#ef4444;"></span> Багрянец
+            </button>
+            <button class="palette-btn" onclick="setSiteTheme('phosphor', this)" data-theme="phosphor" title="CRT Люминофор (Терминалы 1979)">
+              <span class="palette-swatch" style="background:#22c55e;"></span> Люминофор
+            </button>
+          </div>
         </div>
       </div>
 
@@ -2379,7 +2585,7 @@
         name: "Ева Аксёнова",
         dept: "projects",
         badge: "ПРОДЖЕКТ-ЛИД",
-        title: "Главная Хранительница Скрижалей и Сроков",
+        title: "Сестра Клиентского Фронта",
         realRole: "Project Lead (Sunday / Stillfront)",
         photoLore: "web_assets/images/team/retro_film_eva_theatrical_prop_helmet_v7.png",
         photoSlack: "web_assets/images/team/avatars/avatar_eva.png",
@@ -2717,7 +2923,7 @@
 
       function render() {
         ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = '#f97316';
+        ctx.fillStyle = window._starFillColor || '#f97316'; window._starCtx = ctx;
         stars.forEach(s => {
           s.x -= s.speed;
           if (s.x < 0) {
@@ -2999,6 +3205,34 @@
 
       // Initial render sync
       renderSlide(currentIndex);
+    })();
+
+  
+    // Live Color Theme Switcher (Amber, Gold, Crimson, Phosphor)
+    function setSiteTheme(themeName, btn) {
+      document.documentElement.className = 'theme-' + themeName;
+      localStorage.setItem('plbx_site_theme', themeName);
+
+      document.querySelectorAll('.palette-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-theme') === themeName);
+      });
+
+      // Update starfield canvas particle fill color
+      const themeColors = {
+        amber: '#f97316',
+        gold: '#eab308',
+        crimson: '#ef4444',
+        phosphor: '#22c55e'
+      };
+      if (window._starCtx && themeColors[themeName]) {
+        window._starFillColor = themeColors[themeName];
+      }
+    }
+
+    // Restore saved theme on load
+    (function initSavedTheme() {
+      const saved = localStorage.getItem('plbx_site_theme') || 'amber';
+      setSiteTheme(saved);
     })();
 
   </script>
