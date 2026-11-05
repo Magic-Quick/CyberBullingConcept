@@ -920,7 +920,7 @@ export const STORY_ACTS: ActData[] = [
 
     "subtitle": "Ядерная боеголовка • Акции на два миллиарда",
 
-    "imageKey": "retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1",
+    "imageKey": "retro_film_act2_dashboard_altar_crypt_gemini_v1",
 
     "audioKey": "03_act2",
 
@@ -2195,7 +2195,8 @@ export const STORY_ACTS: ActData[] = [
 
             "speakerRole": "Lead 3D • Техноэкзорцист Графической Скверны",
 
-            "avatarKey": "avatar_huhro"
+            "avatarKey": "avatar_huhro",
+            "slackScreenshotKey": "07a_cow_khukhro"
 
       },
 
@@ -2217,7 +2218,8 @@ export const STORY_ACTS: ActData[] = [
 
             "speakerRole": "Creative Director • Преподобный Толкователь Воли Клиентархов",
 
-            "avatarKey": "avatar_egor"
+            "avatarKey": "avatar_egor",
+            "slackScreenshotKey": "07b_cow_tkachev"
 
       },
 
@@ -2287,7 +2289,7 @@ export const STORY_ACTS: ActData[] = [
 
             "avatarKey": "avatar_eduard",
 
-            "slackScreenshotKey": "07_cow_laser"
+            "slackScreenshotKey": "07c_cow_edik"
 
       },
 
@@ -3208,7 +3210,7 @@ export const STORY_ACTS: ActData[] = [
             "end": 178.8,
             "text": "Как Ева вопит:\nЭтот плебл в работу!\nКик-офф пять минут —\nИ все пашем в субботу!",
             "speaker": "Ева Аксёнова",
-            "speakerRole": "Production Director • Хранительница Скрижалей",
+            "speakerRole": "Production Director • Сестра Клиентского Фронта",
             "avatarKey": "avatar_eva",
             "stanzaBreak": true
       },

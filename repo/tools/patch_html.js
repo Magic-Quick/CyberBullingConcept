@@ -25,6 +25,19 @@ fs.writeFileSync(gameHtml, html, 'utf-8');
 console.log('[patch_html] Successfully patched dist/index.html and root game.html with assets/ prefix!');
 
 if (fs.existsSync(distAssets)) {
-  fs.cpSync(distAssets, rootAssets, { recursive: true });
-  console.log('[patch_html] Synchronized dist/assets to root assets/');
+  try {
+    fs.cpSync(distAssets, rootAssets, { recursive: true });
+    console.log('[patch_html] Synchronized dist/assets to root assets/');
+  } catch (err) {
+    // If a media file is locked by the browser (user-mapped section in Windows), copy files individually
+    const files = fs.readdirSync(distAssets);
+    let copied = 0;
+    for (const file of files) {
+      try {
+        fs.copyFileSync(path.join(distAssets, file), path.join(rootAssets, file));
+        copied++;
+      } catch {}
+    }
+    console.log(`[patch_html] Synchronized ${copied}/${files.length} assets to root assets/ (locked files skipped)`);
+  }
 }

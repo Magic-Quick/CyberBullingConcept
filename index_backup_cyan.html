@@ -1,0 +1,3027 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>СЫГРАВШИЙ В ЯЩИК // Продакшен-Ковчег Qui Cistam — Playbox</title>
+  
+  <meta name="description" content="Презентация сатирического шоу «Сыгравший в ящик» (Кибертриллер). Единая вселенная тёмного офлайн-Плейбокса, постепенное развитие лора, деконструкция юмора Артёмом Хухро и машинное обучение Режиссёра Вселенной.">
+  <meta property="og:title" content="СЫГРАВШИЙ В ЯЩИК // Тёмный Офлайн-Плейбокс">
+  <meta property="og:description" content="Сатирический сериал в единой тёмной вселенной: офлайн-ковчег на процессорах Celeron, 129 дней Диснея в стазисе, деконструкция юмора и машинное обучение режиссёра.">
+  <meta property="og:image" content="web_assets/images/team/retro_film_tolya_gpt_v2.png">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;600;800&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-void: #06070a;
+      --bg-dark: #0a0c12;
+      --bg-surface: #121520;
+      --bg-card: #161a29;
+      --bg-card-hover: #1c2236;
+      --border-subtle: #23293d;
+      --border-bright: #3a4466;
+
+      
+    .mono-glyph {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    /* Subtitle Phosphor Neon Color (#f97316 - Mint / Cyan from film subtitles) */
+      --accent-cyan: #f97316;
+      --accent-cyan-hover: #fb923c;
+      --accent-cyan-glow: rgba(249, 115, 22, 0.4);
+      --accent-cyan-subtle: rgba(249, 115, 22, 0.12);
+      --accent-cyan-border: rgba(249, 115, 22, 0.35);
+
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient CRT Scanline Overlay */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(249, 115, 22, 0.02), rgba(0, 255, 0, 0.01), rgba(249, 115, 22, 0.02));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* Starfield Canvas Animation */
+    .star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Topbar Navbar */
+    .plbx-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 12, 18, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: border-color 0.3s;
+    }
+
+    .plbx-topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+
+    .plbx-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .plbx-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--accent-cyan);
+      border-radius: 0;
+      box-shadow: 0 0 16px var(--accent-cyan-glow);
+      font-weight: 900;
+      color: #06090f;
+      font-size: 20px;
+      letter-spacing: -1px;
+    }
+
+    .plbx-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.45));
+      display: block;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .plbx-brand:hover .plbx-logo-img {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.8));
+    }
+
+    .plbx-brand-title {
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .plbx-brand-title span:first-child {
+      color: #fff;
+    }
+
+    .plbx-brand-title span:last-child {
+      color: var(--accent-cyan);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .plbx-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .plbx-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 0;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .plbx-nav a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .plbx-nav a.active {
+      color: var(--accent-cyan);
+      background: var(--accent-cyan-subtle);
+      border: 1px solid var(--accent-cyan-border);
+    }
+
+    /* Primary CTA Buttons (Subtitle Font Color #f97316) */
+    .plbx-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-cyan);
+      color: #050811 !important;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 9px 20px;
+      border-radius: 0;
+      text-decoration: none;
+      box-shadow: 0 4px 18px var(--accent-cyan-glow);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid var(--accent-cyan);
+    }
+
+    .plbx-cta-btn:hover {
+      background: var(--accent-cyan-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 26px rgba(249, 115, 22, 0.65);
+    }
+
+    /* Hero Section */
+        /* Hero Logos Row */
+    .hero-logos-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .hero-skull-logo {
+      width: 125px;
+      height: 125px;
+      object-fit: contain;
+      filter: none;
+      display: block;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .hero-skull-logo:hover {
+      transform: scale(1.04);
+    }
+
+    .hero-series-logo {
+      height: 90px;
+      max-width: 290px;
+      object-fit: contain;
+      display: block;
+    }
+.hero-section {
+      padding: 70px 0 50px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--accent-cyan-subtle);
+      border: 1px solid var(--accent-cyan-border);
+      border-radius: 0;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-pill-green {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--accent-green);
+    }
+
+    .hero-title {
+      font-size: 50px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .glow-text {
+      background: linear-gradient(180deg, #ffffff 15%, var(--accent-cyan) 100%); filter: drop-shadow(0 0 16px var(--accent-cyan-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.65;
+      max-width: 660px;
+    }
+
+    .hero-universe-manifesto {
+      background: rgba(18, 21, 32, 0.8);
+      border: 1px solid var(--accent-cyan-border);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 0;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .hero-universe-manifesto strong {
+      color: var(--accent-cyan);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 0;
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-cyan-border);
+      color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-size: 24px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+
+    .stat-val span {
+      color: var(--accent-cyan);
+    }
+
+    .stat-lbl {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    /* Hero Media Visual Frame */
+    .hero-visual-card {
+      position: relative;
+      background: #000;
+      border: none;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-visual-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(14, 17, 26, 0.95);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .visual-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .visual-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 0;
+      background: #2a3147;
+    }
+
+    .visual-dot:nth-child(1) { background: #ef4444; }
+    .visual-dot:nth-child(2) { background: var(--accent-cyan); }
+    .visual-dot:nth-child(3) { background: #10b981; }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) brightness(0.95);
+      transition: transform 0.6s ease;
+    }
+
+    .hero-visual-card:hover .hero-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .hero-img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 24px;
+      background: linear-gradient(to top, rgba(6, 7, 10, 0.95) 0%, rgba(6, 7, 10, 0.4) 70%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .caption-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .caption-sub {
+      font-size: 12px;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    /* Section Global Headers */
+    .section-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 50px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Cards Grid */
+    
+    .universe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    @media (min-width: 1024px) {
+      .universe-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+      background: #0c101a;
+      transform: translateY(-2px);
+    }
+
+    .card-meta-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .card-text {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .card-meta-footer {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-transform: uppercase;
+    }
+
+    /* Core Dramaturgical Basis: 4 Pillars */
+    .pillar-box {
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 24px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: all 0.25s ease;
+    }
+
+    .pillar-box:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+      background: #0c101a;
+    }
+
+    .pillar-num {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .pillar-content h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .pillar-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Interactive Crew Dossier Section */
+    .crew-section {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .crew-trigger-banner {
+      background: linear-gradient(135deg, #161c2d, #0d101a);
+      border: 1px solid var(--border-bright);
+      border-radius: 0;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .crew-trigger-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .crew-trigger-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .crew-trigger-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+
+    .crew-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent-cyan);
+      color: #050811;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 34px;
+      border-radius: 0;
+      border: 1px solid var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 6px 24px var(--accent-cyan-glow);
+      transition: all 0.25s ease;
+    }
+
+    .crew-toggle-btn:hover {
+      background: var(--accent-cyan-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(249, 115, 22, 0.65);
+    }
+
+    /* Crew Filter Tabs */
+    .crew-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .crew-tab-btn {
+      background: #090c14;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .crew-tab-btn:hover {
+      color: #fff;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-tab-btn.active {
+      background: var(--accent-cyan-subtle);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Compact Crew Grid (Rectangular cards, zero rounded edges, edge-to-edge photo) */
+    .crew-compact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .crew-mini-tile {
+      background: #080b12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .crew-mini-tile:hover {
+      border-color: var(--accent-cyan);
+      background: #0c101a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 0 15px rgba(249, 115, 22, 0.15);
+    }
+
+    .crew-mini-photo-wrap {
+      width: 100%;
+      height: 200px;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .crew-mini-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .crew-mini-tile:hover .crew-mini-photo-wrap img {
+      transform: scale(1.04);
+    }
+
+    .crew-mini-info {
+      padding: 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .crew-mini-badge {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    .crew-mini-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 4px;
+      line-height: 1.25;
+    }
+
+    .crew-mini-role {
+      font-size: 11px;
+      font-weight: 400;
+      color: #616d82;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* Modal Backdrop and In-Game Card */
+    .crew-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 5, 8, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: modalFadeIn 0.2s ease forwards;
+    }
+
+    .crew-modal-backdrop.active {
+      display: flex;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .crew-modal-card.game-card-mode {
+      max-width: 480px;
+      width: 100%;
+      background: #06080e;
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(249, 115, 22, 0.25);
+      border-radius: 0;
+      padding: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .crew-modal-photo-box {
+      width: 100%;
+      height: 520px;
+      position: relative;
+      background: #000;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .crew-modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.25s ease;
+    }
+
+    .crew-modal-img.slack {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .crew-modal-photo-box.show-slack .crew-modal-img.main {
+      opacity: 0;
+    }
+
+    .crew-modal-photo-box.show-slack .crew-modal-img.slack {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .crew-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 0;
+      background: rgba(4, 6, 10, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.15s ease;
+    }
+
+    .crew-modal-close:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 52px;
+      border-radius: 0;
+      background: rgba(4, 6, 10, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .crew-modal-arrow.prev { left: 8px; }
+    .crew-modal-arrow.next { right: 8px; }
+
+    .crew-modal-arrow:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      border-color: var(--accent-cyan);
+    }
+
+    .crew-photo-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(4, 6, 10, 0.85);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 0;
+      cursor: pointer;
+      z-index: 20;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.15s ease;
+    }
+
+    .crew-photo-toggle:hover {
+      background: var(--accent-cyan);
+      color: #000;
+    }
+
+    .crew-game-caption {
+      background: #04060a;
+      padding: 16px 20px;
+      text-align: center;
+      border-radius: 0;
+    }
+
+    .crew-game-name {
+      font-family: var(--font-mono);
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .crew-game-role {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .crew-game-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      margin-top: 4px;
+    }
+
+    .crew-game-real-role {
+      font-size: 11.5px;
+      color: #616d82;
+      font-family: var(--font-sans);
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    /* WIDESCREEN CINEMA PLAYER CONTAINER/* WIDESCREEN CINEMA PLAYER CONTAINER (Pure 16:9 Cinema Rectangle) */
+    .game-section {
+      padding: 70px 0;
+      position: relative;
+    }
+
+    .cinema-player-container {
+      background: #000;
+      border: 1px solid var(--border-bright);
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.95), 0 0 40px rgba(249, 115, 22, 0.08);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* Cinema Standby Cover Screen (Zero Autoplay on Page Load) */
+    .cinema-standby-screen {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      background: #020306;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    .cinema-standby-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cinema-standby-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) contrast(1.15);
+      transform: scale(1.02);
+    }
+
+    .cinema-standby-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 50%, rgba(6, 9, 15, 0.35) 0%, rgba(2, 3, 6, 0.85) 100%);
+      padding: 24px;
+    }
+
+    .cinema-standby-terminal {
+      max-width: 660px;
+      width: 100%;
+      background: rgba(6, 9, 15, 0.94);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(249, 115, 22, 0.15);
+      border-radius: 0;
+      padding: 32px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cinema-terminal-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .cinema-terminal-title {
+      font-family: var(--font-sans);
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .cinema-terminal-sub {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      line-height: 1.45;
+      max-width: 520px;
+    }
+
+    .cinema-terminal-status {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin: 6px 0 14px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-blink {
+      color: var(--accent-cyan);
+      animation: terminalBlink 1s infinite alternate;
+    }
+
+    @keyframes terminalBlink {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .cinema-play-btn {
+      background: var(--accent-cyan);
+      color: #04060a;
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 18px 42px;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 0;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.5), 0 0 60px rgba(249, 115, 22, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .cinema-play-btn:hover {
+      background: #33ffd8;
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .cinema-stage {
+      background: #000;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 480px;
+      max-height: 85vh;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    .cinema-stage iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #000;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 60px 0 40px;
+      border-top: 1px solid var(--border-subtle);
+      background: #050608;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .grid-3, .grid-4, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+      .plbx-nav {
+        display: none;
+      }
+      .cinema-stage {
+        min-height: 380px;
+      }
+      .cinema-terminal-title {
+        font-size: 24px;
+      }
+      .cinema-standby-terminal {
+        padding: 24px 20px;
+      }
+    }
+      /* Admin Edit Mode Styles */
+    .admin-panel {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99999;
+      background: rgba(8, 11, 18, 0.96);
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(249, 115, 22, 0.35);
+      border-radius: 0;
+      padding: 12px 20px;
+      width: calc(100% - 40px);
+      max-width: 920px;
+      backdrop-filter: blur(12px);
+      animation: adminSlideUp 0.3s ease;
+    }
+
+    @keyframes adminSlideUp {
+      from { transform: translate(-50%, 20px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    .admin-panel-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .admin-panel-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+    }
+
+    .admin-pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #f97316;
+      display: inline-block;
+      animation: adminBlink 1s infinite alternate;
+    }
+
+    @keyframes adminBlink {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    .admin-title {
+      font-weight: 800;
+      color: var(--accent-cyan);
+      letter-spacing: 0.5px;
+    }
+
+    .admin-hint {
+      color: #8fa0b5;
+      font-size: 11.5px;
+    }
+
+    .admin-panel-btns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-btn {
+      background: #0f1624;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 7px 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 0;
+      transition: all 0.2s ease;
+    }
+
+    .admin-btn:hover {
+      background: rgba(249, 115, 22, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .admin-btn-save {
+      background: var(--accent-cyan);
+      color: #04060a;
+      border-color: var(--accent-cyan);
+    }
+    .admin-btn-save:hover {
+      background: #33ffd8;
+      color: #04060a;
+    }
+
+    .admin-toast {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100000;
+      background: #060910;
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(249, 115, 22, 0.25);
+      color: #fff;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      display: none;
+      pointer-events: none;
+      animation: toastFade 0.25s ease;
+    }
+
+    body.admin-mode-active h1:hover,
+    body.admin-mode-active h2:hover,
+    body.admin-mode-active h3:hover,
+    body.admin-mode-active p:hover,
+    body.admin-mode-active .card-text:hover,
+    body.admin-mode-active .caption-title:hover,
+    body.admin-mode-active .caption-sub:hover,
+    body.admin-mode-active .crew-mini-name:hover,
+    body.admin-mode-active .crew-mini-badge:hover,
+    body.admin-mode-active .crew-mini-role:hover {
+      outline: 1px dashed var(--accent-cyan) !important;
+      background: rgba(249, 115, 22, 0.05) !important;
+      cursor: text !important;
+    }
+
+    /* AI Lord Design Evolution Comparison (Before / After Curtain Slider) */
+    .lord-compare-wrap {
+      background: #06080d;
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      padding: 16px;
+      position: relative;
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    .lord-compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
+    }
+
+    .lord-compare-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lord-compare-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+
+    .lord-compare-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-cyan);
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      padding: 4px 10px;
+    }
+
+    .pulse-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulseScan 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseScan {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 14px var(--accent-cyan); }
+    }
+
+    .lord-compare-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #000;
+      cursor: ew-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      --split-pos: 50%;
+    }
+
+    .lord-compare-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .lord-compare-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .lord-layer-after {
+      z-index: 1;
+    }
+
+    .lord-layer-before {
+      z-index: 2;
+      clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+      -webkit-clip-path: polygon(0 0, var(--split-pos, 50%) 0, var(--split-pos, 50%) 100%, 0 100%);
+    }
+
+    .lord-badge {
+      position: absolute;
+      top: 14px;
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 5;
+    }
+
+    .badge-before {
+      left: 14px;
+      background: rgba(18, 20, 28, 0.88);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .badge-after {
+      right: 14px;
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan-border);
+      box-shadow: 0 0 14px var(--accent-cyan-glow);
+    }
+
+    .lord-compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split-pos, 50%);
+      width: 2px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 14px var(--accent-cyan-glow);
+      z-index: 10;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .curtain-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(6, 8, 13, 0.94);
+      border: 2px solid var(--accent-cyan);
+      box-shadow: 0 0 18px var(--accent-cyan-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--accent-cyan);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+    }
+
+    .handle-grip {
+      font-size: 12px;
+      letter-spacing: -1px;
+      opacity: 0.9;
+    }
+
+    .lord-compare-footer {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+
+    /* Hero Branding Row (Playbox Skull & Sitting AI Lord with Book) */
+    .hero-branding-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 28px;
+      margin-bottom: 14px;
+    }
+
+    .hero-brand-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .hero-brand-skull {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.45));
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+    }
+
+    .hero-brand-skull:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.8));
+    }
+
+    .hero-brand-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-lord-avatar {
+      position: relative;
+      display: inline-block;
+      line-height: 0;
+    }
+
+    .hero-lord-avatar-img {
+      height: 165px;
+      width: auto;
+      max-width: 190px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.3));
+      transition: transform 0.25s ease;
+    }
+
+    .hero-lord-avatar-img:hover {
+      transform: scale(1.03);
+      filter: drop-shadow(0 0 28px rgba(249, 115, 22, 0.55));
+    }
+
+    /* Hero Visual Card: Interactive Team Slideshow */
+    .hero-visual-card {
+      position: relative;
+      background: #000;
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.95), 0 0 30px rgba(249, 115, 22, 0.2);
+      cursor: pointer;
+    }
+
+    .hero-slide-hud {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .hero-slide-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #f97316;
+      background: rgba(14, 10, 8, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      box-shadow: 0 0 14px rgba(249, 115, 22, 0.35);
+      padding: 5px 12px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-slide-hud-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 10, 8, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      padding: 5px 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-slide-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f97316;
+      box-shadow: 0 0 8px #f97316;
+      animation: pulseScanAmber 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulseScanAmber {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 14px #f97316; }
+    }
+
+    .hero-slide-counter {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffedd5;
+      letter-spacing: 1px;
+    }
+
+    .hero-slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 0;
+      background: rgba(14, 10, 8, 0.85);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      color: #ffedd5;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 12;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      line-height: 1;
+      padding-bottom: 2px;
+    }
+
+    .hero-arrow-prev { left: 10px; }
+    .hero-arrow-next { right: 10px; }
+
+    .hero-slide-arrow:hover {
+      background: rgba(249, 115, 22, 0.3);
+      border-color: #f97316;
+      color: #fff;
+      box-shadow: 0 0 16px rgba(249, 115, 22, 0.6);
+    }
+
+    .hero-slide-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+    }
+
+    .hero-slide-img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .hero-dossier-hint {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #f97316;
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      padding: 4px 8px;
+      background: rgba(249, 115, 22, 0.15);
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
+      opacity: 0.9;
+      white-space: nowrap;
+      margin-left: 12px;
+      align-self: flex-end;
+      flex-shrink: 0;
+    }
+
+    .hero-slide-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 15;
+      overflow: hidden;
+    }
+
+    .hero-slide-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ea580c, #f97316);
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+      transition: width 0.1s linear;
+    }
+
+
+    /* PSD Sketch Design & Fiery Amber Eye-Glow Palette */
+    :root {
+      --accent-eye: #f97316;
+      --accent-eye-hover: #fb923c;
+      --accent-eye-glow: rgba(249, 115, 22, 0.5);
+      --accent-eye-subtle: rgba(249, 115, 22, 0.12);
+      --accent-eye-border: rgba(249, 115, 22, 0.45);
+    }
+
+    .hero-title {
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .hero-title .glow-text {
+      background: linear-gradient(180deg, #ffffff 15%, #ff7849 65%, #ea580c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 0 22px rgba(234, 88, 12, 0.6));
+    }
+
+    .hero-sketch-branding {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 12px;
+      min-height: 200px;
+    }
+
+    .hero-sketch-logo {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      z-index: 5;
+    }
+
+    .hero-sketch-skull {
+      width: 60px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.35));
+      transition: transform 0.2s ease, filter 0.2s ease;
+      cursor: pointer;
+    }
+
+    .hero-sketch-skull:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 22px rgba(249, 115, 22, 0.75));
+    }
+
+    .hero-sketch-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #d1d5db;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-sketch-lord {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      line-height: 0;
+    }
+
+    .hero-sketch-lord-img {
+      height: 205px;
+      width: auto;
+      max-width: 320px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 25px rgba(234, 88, 12, 0.35));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .hero-sketch-lord-img:hover {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 32px rgba(234, 88, 12, 0.55));
+    }
+
+    /* Primary CTA Button: Burning Amber Eye-Glow */
+    .plbx-cta-btn {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      box-shadow: 0 0 25px rgba(249, 115, 22, 0.55) !important;
+    }
+
+    .plbx-cta-btn:hover {
+      background: linear-gradient(135deg, #fb923c 0%, #f97316 100%) !important;
+      box-shadow: 0 0 35px rgba(249, 115, 22, 0.8) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Lore Card Tags: Ambient Amber Glow matching PSD */
+    .universe-grid .card-meta-tag {
+      color: #f97316 !important;
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .hero-sketch-branding {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .hero-sketch-logo {
+        position: static;
+      }
+      .hero-sketch-lord-img {
+        height: 160px;
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+    }
+
+</style>
+</head>
+<body class="">
+
+  <!-- Ambient CRT Scanline Overlay -->
+  <div class="crt-overlay"></div>
+
+  <!-- Starfield Canvas Animation -->
+  <canvas id="starCanvas" class="star-canvas"></canvas>
+
+  
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-text-col" style="text-align: center;">
+        <!-- Hero Header Branding: Color-Graded Skull Logo (Left) & Centered Cropped AI Lord (from PSD sketch) -->
+        <div class="hero-sketch-branding">
+          <div class="hero-sketch-logo">
+            <img src="web_assets/images/gui/playbox_skull_sketch_color.webp" alt="Playbox" class="hero-sketch-skull">
+          </div>
+          <div class="hero-sketch-lord">
+            <img src="web_assets/images/team/ai_lord_sketch_cutout.webp" alt="ИИ-Лорд Хронометрист Цитадели" class="hero-sketch-lord-img">
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="glow-text">КИБЕРБУЛЛИНГ</span>
+        </h1>
+
+        <p class="hero-lead">
+          Еженедельный кибертриллер студии <strong>Playbox</strong>: реальные рабочие будни, вывернутые в гротескный офлайн-хоррор на борту космического ковчега.
+        </p>
+
+        <div class="hero-actions" style="justify-content: center;">
+          <button class="plbx-cta-btn" style="padding: 13px 32px; font-size: 15px;" onclick="goToPlayerAndLaunch()">
+            Смотреть
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('crew').scrollIntoView({behavior: 'smooth'})">
+            Личный состав
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card: Interactive Team Slideshow (19 Crew Members) -->
+      <div class="hero-visual-card" id="heroSlideshowCard" onclick="onHeroCardClick(event)" title="Кликните, чтобы открыть досье персонажа">
+        <!-- Top HUD Bar: Department Badge & Slide Counter -->
+        <div class="hero-slide-hud">
+          <div class="hero-slide-badge" id="heroSlideBadge">[ ЛОРД-КОМАНДОР ЦИТАДЕЛИ ]</div>
+          <div class="hero-slide-hud-right">
+            <span class="hero-slide-pulse"></span>
+            <div class="hero-slide-counter" id="heroSlideCounter">№ 02</div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="hero-slide-arrow hero-arrow-prev" onclick="changeHeroSlide(-1, event)" title="Предыдущий персонаж" aria-label="Предыдущий">‹</button>
+        <button class="hero-slide-arrow hero-arrow-next" onclick="changeHeroSlide(1, event)" title="Следующий персонаж" aria-label="Следующий">›</button>
+
+        <div class="hero-img-wrap">
+          <img id="heroSlideImgA" class="hero-slide-img active" src="web_assets/images/team/retro_film_tolya_gpt_v2.png" alt="Анатолий Щербаков (Толя)">
+          <img id="heroSlideImgB" class="hero-slide-img" src="" alt="">
+          
+          <div class="hero-img-caption">
+            <div style="flex: 1; min-width: 0;">
+              <div class="caption-title" id="heroSlideTitle">Анатолий Щербаков (Толя)</div>
+              <div class="caption-sub" id="heroSlideQuote">«Надо пробить сотню! Кайфеец.»</div>
+            </div>
+            <div class="hero-dossier-hint">
+              <span>ДОСЬЕ ↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Progress Line -->
+        <div class="hero-slide-progress-bar">
+          <div class="hero-slide-progress-fill" id="heroSlideProgress"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Universe Description Section -->
+  <section class="container" style="padding: 60px 24px;" id="universe">
+    <div class="section-header" style="margin-bottom: 36px;">
+      <h2 class="section-title">Лор Вселенной</h2>
+    </div>
+
+    <div class="universe-grid">
+      <!-- 1. Pleyrium -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ ПлейриуМ ]
+        </div>
+        <p class="card-text">
+          Тяжелый цифровой наркотик, который&nbsp; запечатывается кузнецами кода в священный сосуд — плейбл, парализующий волю до нажатия «Скачать».
+        </p>
+        <div class="card-meta-footer">// РЕСУРС: СВЯЩЕННЫЙ СОСУД</div>
+      </div>
+
+      <!-- 2. Clientarchs -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Клиентархи и Торпеды Правок ]
+        </div>
+        <p class="card-text">
+          Внешние Владыки секторов ( Сверх-Ячейка, Дом Мыши). Бомбардируют обшивку торпедами правок.
+        </p>
+        <div class="card-meta-footer">// АНТАГОНИСТЫ: ВЛАДЫКИ СЕКТОРОВ</div>
+      </div>
+
+      <!-- 3. Subspace Cache -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Подпространственный Кэш ]
+        </div>
+        <p class="card-text">
+          Теневой слой памяти и невычищенных буферов Cocos. Источник утечек и чертовщины, откуда в отсеки ковчега проникают аномалии и мутации.
+        </p>
+        <div class="card-meta-footer">// АНОМАЛИЯ: БЕЗДНА БУФЕРОВ</div>
+      </div>
+
+      <!-- 4. Spirit of Polishing -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Дух Полишинга (Бес Сочности) ]
+        </div>
+        <p class="card-text">
+          Капризный демон из глубин Кэша. Искушает продюсеров двигать пиксели ради дофамина, пока билд не уйдёт на бесконечную переварку.
+        </p>
+        <div class="card-meta-footer">// ИСКУШЕНИЕ: ДЕМОН ФИЛИНГА</div>
+      </div>
+
+      <!-- 5. Neuroslop & Mutations -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Сущности Нейрослопа и Мутации ]
+        </div>
+        <p class="card-text">
+          Паразиты синтеза из глубин Кэша. Поражают плоть семипалой полидактилией, третьими руками, антиграв-коровами с лазерами и мутациями моделей.
+        </p>
+        <div class="card-meta-footer">// ПРОНИКНОВЕНИЕ: БОДИ-ХОРРОР СИНТЕЗА</div>
+      </div>
+
+      <!-- 6. Art Inquisition -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Арт-Инквизиция Пиксельного Канона ]
+        </div>
+        <p class="card-text">
+          Трибунал визуальной чистоты Настоятельницы Вики. Выжигает нейрослопную проказу и кривые пиксели огнеметом ревью с розовым пламенем.
+        </p>
+        <div class="card-meta-footer">// КАРАНТИН: СТРОГОЕ АРТ-РЕВЬЮ</div>
+      </div>
+
+      <!-- 7. Playbox AI-Driven Synergy -->
+      <div class="info-card">
+        <div class="card-meta-tag" style="font-size: 14px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent-cyan); margin-bottom: 10px;">
+          [ Playbox: AI-Driven Синергия ]
+        </div>
+        <p class="card-text">
+          Настоящий Playbox — передовая AI-driven студия. Ковчег — её тёмное гротескное зеркало, превращающее нейро-продакшен в космическую драму.
+        </p>
+        <div class="card-meta-footer">// СИНЕРГИЯ: AI-DRIVEN СТУДИЯ</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crew Section (Directly after Lore) -->
+  <section class="container crew-section" id="crew">
+    <div class="section-header" style="margin-bottom: 36px;">
+      <h2 class="section-title">Личный состав</h2>
+      <p class="section-desc">
+        По ходу развития вселенной персонажи эволюционируют, меняют звания, аугментации и образ (но не каждый выпуск). В последующих частях на облике наказанных героев могут отражаться последствия предыдущих кар: позорный орден с дилдаками на груди или копоть и грязь после исправительной чистки катакомб. Каждый участник экипажа может оставить заявку на изменение своего образа.
+      </p>
+    </div>
+
+    <!-- Filter Tabs (Always visible directly on the page) -->
+    <div class="crew-tabs">
+      <button class="crew-tab-btn active" onclick="filterCrew('all', this)">[ Все персоны ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('command', this)">[ Командование ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('projects', this)">[ Проджекты ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('dev', this)">[ Разработка ]</button>
+      <button class="crew-tab-btn" onclick="filterCrew('art', this)">[ Арт &amp; 3D ]</button>
+    </div>
+
+    <!-- Compact Grid of Crew Tiles (Small pictures with names, expandable on click) -->
+    <div class="crew-compact-grid" id="crewCompactGrid"></div>
+  </section>
+
+  <!-- Crew Modal (Image Rectangle with In-Game Caption) -->
+  <div class="crew-modal-backdrop" id="crewModal" onclick="closeCrewModalOnBackdrop(event)">
+    <div class="crew-modal-card game-card-mode">
+      <button class="crew-modal-close" onclick="closeCrewModal()" title="Закрыть (Esc)">✕</button>
+      
+      <!-- Rectangle of the Image -->
+      <div class="crew-modal-photo-box" id="modalPhotoBox">
+        <button class="crew-photo-toggle" id="modalPhotoToggle" onclick="toggleModalSlackPhoto()">
+          Slack Фото
+        </button>
+        <img class="crew-modal-img main" id="modalImgLore" src="" alt="">
+        <img class="crew-modal-img slack" id="modalImgSlack" src="" alt="">
+
+        <!-- In-Frame Navigation Arrows -->
+        <button class="crew-modal-arrow prev" onclick="event.stopPropagation(); navCrewModal(-1)" title="Предыдущий (←)">‹</button>
+        <button class="crew-modal-arrow next" onclick="event.stopPropagation(); navCrewModal(1)" title="Следующий (→)">›</button>
+      </div>
+
+      <!-- In-Game Caption Bar -->
+      <div class="crew-game-caption">
+        <div class="crew-game-role" id="modalTitle">[ ДОЛЖНОСТЬ В ЛОРЕ ]</div>
+        <div class="crew-game-name" id="modalName">[ ИМЯ ]</div>
+        <div class="crew-game-real-role" id="modalRealRole">[ РЕАЛЬНАЯ ДОЛЖНОСТЬ ]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Principles of Generation & Universe Architecture Section (Horizontal Pillar Blocks) -->
+  <section class="container" style="padding: 30px 24px 60px;" id="principles">
+    <div class="section-header" style="margin-bottom: 32px;">
+      <h2 class="section-title">Принципы генерации и архитектура вселенных</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <!-- Pillar 1: ML Director & Continuous Generation -->
+      <div class="pillar-box">
+        <div class="pillar-num">01</div>
+        <div class="pillar-content">
+          <h3>Машинное обучение ИИ-Режиссёра из выпуска в выпуск</h3>
+          <p>
+            Каждая серия — это цикл машинного обучения ИИ-Режиссёра. В отличие от разовых генераций, сериал накапливает контекст: ИИ калибрует тайминги пауз, смену планов, расстановку акцентов в кадре и точную подачу панчлайнов. Персонажи постепенно эволюционируют, обрастают аугментациями и боевыми шрамами, а драматургия становится плотнее от эпизода к эпизоду.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Multi-Universes & Scaling -->
+      <div class="pillar-box">
+        <div class="pillar-num">02</div>
+        <div class="pillar-content">
+          <h3>Масштабирование: возможно более чем 1 вселенная в дальнейшем</h3>
+          <p>
+            Архитектура вселенной изначально закладывает <strong>возможность появления более чем одной вселенной в дальнейшем</strong>: новые космические ковчеги, смежные параллельные секторы и независимые AI-миры смогут подключаться к общей производственной матрице по мере развития проекта.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Dread Contrast -->
+      <div class="pillar-box">
+        <div class="pillar-num">03</div>
+        <div class="pillar-content">
+          <h3>Принцип Dread Contrast (Запрет шуток «в лоб»)</h3>
+          <p>
+            Юмор строится строго на контрасте: визуальный ряд остаётся предельно серьёзным, мрачным и реалистичным (боди-хоррор, аутентичный гримдарк, терминалы с кодами ошибок). Никаких смайликов и фарса. Комический эффект рождается из невозмутимости и делового корпоративного спокойствия экипажа на фоне космической катастрофы и ужасов.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pillar 4: AI-Driven DNA -->
+      <div class="pillar-box">
+        <div class="pillar-num">04</div>
+        <div class="pillar-content">
+          <h3>Тёмное зеркало</h3>
+          <p>
+            Playbox — передовая AI-driven компания, где LLM, синтез арта, звука и автономные агенты встроены в реальную разработку мобильных плейблов. Данная&nbsp; вселенная работает органично именно потому, что опирается на подлинную изнанку нейросетевого продакшена: борьбу с галлюцинациями моделей, полидактилией нейрослопа и незаменимость живого вкуса мастеров. Но создает образ не реальной компании, а ее гротескного антипода из паралельной темной вселенной.</p>
+        </div>
+      </div>
+
+      <!-- Pillar 5: Mandatory Lord's Stage Performance & Visual Evolution -->
+      <div class="pillar-box" style="flex-direction: column; gap: 18px;">
+        <div style="display: flex; gap: 20px; align-items: flex-start; width: 100%;">
+          <div class="pillar-num">05</div>
+          <div class="pillar-content" style="flex: 1;">
+            <h3>Кульминация: выступление Лорда на сцене</h3>
+            <p>
+              Каноническая архитектура каждого выпуска сериала неукоснительно завершается <strong>живым сценическим рок-концертом ИИ-лорда а</strong> перед всем собранным экипажем Ковчега, который завершает мероприятие на позитивной ноте.
+            </p>
+          </div>
+        </div>
+
+        <!-- Before / After Curtain Slider: Brutal AI Lord Evolution -->
+        <div class="lord-compare-wrap">
+          <div class="lord-compare-header">
+            <div class="lord-compare-meta">
+              <span class="mono-glyph">[ ЭВОЛЮЦИЯ ДИЗАЙНА ]</span>
+              <span class="lord-compare-title">ИИ-Лорд: рефакторинг облика в сторону брутальности</span>
+            </div>
+            <div class="lord-compare-status" id="lordScanStatus">
+              <span class="pulse-indicator"></span>
+              <span class="status-label">АВТО-ШТОРКА [АКТИВНА]</span>
+            </div>
+          </div>
+
+          <div class="lord-compare-container" id="lordCompareContainer">
+            <!-- After Layer (Base): Brutal Grimdark Canon -->
+            <div class="lord-compare-layer lord-layer-after">
+              <img src="web_assets/images/ai_lord_evolution_after.webp" alt="ИИ-Лорд: Брутальный гримдарк-канон" loading="lazy">
+              <div class="lord-badge badge-after">ПОСЛЕ // БРУТАЛЬНЕЕ (ГРИМДАРК-КАНОН)</div>
+            </div>
+
+            <!-- Before Layer (Clipped Overlay): Early Cartoon Draft -->
+            <div class="lord-compare-layer lord-layer-before">
+              <img src="web_assets/images/ai_lord_evolution_before.webp" alt="ИИ-Лорд: Ранний драфт" loading="lazy">
+              <div class="lord-badge badge-before">ДО // РАННИЙ ДРАФТ</div>
+            </div>
+
+            <!-- Moving Curtain Divider Line & Handle -->
+            <div class="lord-compare-divider">
+              <div class="curtain-handle">
+                <span>◀</span>
+                <span class="handle-grip">|||</span>
+                <span>▶</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lord-compare-footer">
+            <span>⇄ Шторка движется автоматически. Кликните или потяните курсором для ручного сравнения 4 ракурсов (Front / 3/4 / Side / Back).</span>
+            <span class="mono-glyph" style="font-size: 11px;">[ REFACTORING: RETRO-SCIFI PRACTICAL SUIT ]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       FULL RECTANGLE WIDESCREEN CINEMA PLAYER (NO PHONE DEVICE, PURE FULLSCREEN)
+       ======================================================================= -->
+  <section class="container game-section" id="playable-area">
+    <!-- Authentic Movie Title & Cycle Banner (As in Video Intro) -->
+    <div class="cinema-title-banner" style="text-align: center; margin-bottom: 28px;">
+      <img src="web_assets/images/gui/series_title_logo.png" alt="Сыгравший в ящик" class="cinema-series-logo" style="max-width: 480px; width: 90%; height: auto; display: inline-block; filter: drop-shadow(0 0 25px rgba(249, 115, 22, 0.35));">
+      <div class="cinema-cycle-badge" style="font-family: var(--font-mono); font-size: 26px; font-weight: 800; color: var(--accent-cyan); letter-spacing: 8px; margin-top: 12px; text-shadow: 0 0 18px rgba(249, 115, 22, 0.85); text-transform: uppercase;">
+        [ ЦИКЛ 14 ]
+      </div>
+    </div>
+
+    <div class="cinema-player-container">
+      <!-- Cinema Screen Rectangle (Pure 16:9 Cinema Canvas, NO phone notch, full rectangle!) -->
+      <div class="cinema-stage" id="cinemaScreen">
+        <!-- Standby Poster Screen (Game does NOT auto-play on site load!) -->
+        <div class="cinema-standby-screen" id="cinemaStandby">
+          <img src="web_assets/images/ship_cistam.png" alt="Ковчег Qui Cistam" class="cinema-standby-bg">
+          <div class="cinema-standby-overlay">
+            <button class="cinema-play-btn" id="startMovieBtn" onclick="launchGame()">
+              [ ▶ ЗАПУСТИТЬ ИНТЕРАКТИВНЫЙ ФИЛЬМ ]
+            </button>
+          </div>
+        </div>
+
+        <iframe id="gameIframe" src="" data-src="game.html" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="javascript:void(0)" onclick="toggleAdminMode()" id="adminTrigger" title="Секретный режим редактирования текста" style="text-decoration: none; display: inline-flex; align-items: center;">
+          <img src="web_assets/images/gui/playbox_skull_icon_128.png" alt="Playbox Skull Logo" class="footer-skull-logo" style="width: 32px; height: 32px; object-fit: contain; filter: none; display: block; cursor: pointer; transition: transform 0.2s ease;">
+        </a>
+        <div>
+          <strong style="color: #fff;">PLAYBOX</strong> // Продакшен-Ковчег «Qui Cistam» • 2026
+        </div>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="https://github.com/Magic-Quick/CyberBullingConcept" target="_blank" rel="noopener">GitHub Репозиторий</a></li>
+        <li><a href="game.html" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
+        <li><a href="#hero">Наверх ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Game Launch & Player Activation (No Autoplay on Site Load)
+    let isGameLaunched = false;
+
+    function launchGame() {
+      const iframe = document.getElementById('gameIframe');
+      const standby = document.getElementById('cinemaStandby');
+      if (!iframe) return;
+
+      if (!isGameLaunched) {
+        isGameLaunched = true;
+        const targetSrc = iframe.getAttribute('data-src') || 'game.html';
+        iframe.src = targetSrc;
+      }
+
+      if (standby) {
+        standby.classList.add('fade-out');
+        setTimeout(() => {
+          standby.style.display = 'none';
+        }, 400);
+      }
+    }
+
+    function goToPlayerAndLaunch() {
+      const playerEl = document.getElementById('playable-area');
+      if (playerEl) {
+        playerEl.scrollIntoView({ behavior: 'smooth' });
+      }
+      launchGame();
+    }
+
+    // Crew Members Canonical Data
+    const CREW_DATA = [
+      {
+        id: "ai_lord",
+        name: "ИИ-Лорд",
+        dept: "command",
+        badge: "СУДЬЯ",
+        title: "Верховный Хронометрист Цитадели",
+        realRole: "Главный ИИ-рассказчик и сатирический судья",
+        photoLore: "web_assets/images/team/ai_lord_face_closeup_canonical_1080p.png",
+        photoSlack: "web_assets/images/team/ai_lord_throne_book_reading_narrator.png",
+        quote: "«Лорд не упрекает. Лорд замеряет таймкоды ночных коммитов.»",
+        mutations: "Тиара из сгоревших чипов, свитки ночных таймкодов, выдача Багрового Дилдо и Печенек."
+      },
+      {
+        id: "tolya",
+        name: "Анатолий Щербаков (Толя)",
+        dept: "command",
+        badge: "КОМАНДОР",
+        title: "Лорд-Командор Цитадели",
+        realRole: "CEO / Основатель Playbox",
+        photoLore: "web_assets/images/team/retro_film_tolya_gpt_v2.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_toly.jpg",
+        quote: "«Надо пробить сотню! Кайфеец.»",
+        mutations: "Капитанский мостик, гарнитура синка с ИИ-Гранолой, лацканы с золотым Орлом Playbox."
+      },
+      {
+        id: "gorin",
+        name: "Алексей Горин",
+        dept: "command",
+        badge: "ХЕД ПРОДАКШЕНА",
+        title: "Верховный Надзиратель Конвейера",
+        realRole: "Head of Production",
+        photoLore: "web_assets/images/team/retro_film_gorin_batman_cowl_gemini_v20.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_gorin.jpg",
+        quote: "«Jnghfdbk. Запустить бортовую машину времени Ноушена на 4 минуты!»",
+        mutations: "Кожаный плащ, карманные часы на цепочке, машинный диалект, тумблер сдвига дедлайнов."
+      },
+      {
+        id: "voron",
+        name: "Архи-Настоятель Ворон",
+        dept: "command",
+        badge: "НАСТАВНИК",
+        title: "Архи-Настоятель Цензората",
+        realRole: "Playable Developer / Наставник",
+        photoLore: "web_assets/images/team/retro_film_voron_arch_abbot_v7.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_alexander_voron.jpg",
+        quote: "«Веди код спокойно, сын мой. Ошибёшься — начнёшь сначала.»",
+        mutations: "Жестяная маска чумного ворона с алыми линзами, посох с лампой в клетке."
+      },
+      {
+        id: "eva",
+        name: "Ева Аксёнова",
+        dept: "projects",
+        badge: "ПРОДЖЕКТ-ЛИД",
+        title: "Сестра Клиентского Фронта",
+        realRole: "Project Lead (Sunday / Stillfront)",
+        photoLore: "web_assets/images/team/retro_film_eva_theatrical_prop_helmet_v7.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_eva.png",
+        quote: "«Брат, поставь интерфейс строго по канону.»",
+        mutations: "Священные таблицы Notion, берестяные епитимьи по кельям, шлем церемониального контроля."
+      },
+      {
+        id: "edik",
+        name: "Эдуард Левин",
+        dept: "projects",
+        badge: "ПРОДЖЕКТ-ЛИД",
+        title: "Зодчий Игрового Замысла",
+        realRole: "Project Lead (Zynga / Sparkling Society)",
+        photoLore: "web_assets/images/team/retro_warhammer_eduard_levin_gpt_v3.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_eduard.jpg",
+        quote: "«Люблю строительный тент как родного брата. Сундук должен хрустеть как яйцо!»",
+        mutations: "Очки-сканеры, чертежи деконструкции ТЗ, сундук с хрустом сырого яйца."
+      },
+      {
+        id: "egor",
+        name: "Егор Ткачёв",
+        dept: "projects",
+        badge: "КРЕАТИВНЫЙ ДИРЕКТОР",
+        title: "Преподобный Толкователь Воли Клиентархов",
+        realRole: "Creative Director студии",
+        photoLore: "web_assets/images/team/retro_film_egor_tkachev.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_egor.jpg",
+        quote: '«Свиток "Долгий Ящик" — это не задержка, а выдержка благородного цифрового вина.»',
+        mutations: "Свитки правок клиентов, кибер-корова с лазерным лучом вымени для GameGears."
+      },
+      {
+        id: "pavel",
+        name: "Павел Самойленко",
+        dept: "dev",
+        badge: "CTO",
+        title: "Архи-Цензор Синтаксической Ереси",
+        realRole: "Chief Technology Officer",
+        photoLore: "web_assets/images/team/retro_soviet_film_pavel_playbox_logo_gpt_v4.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_pavel.png",
+        quote: "«Claude забанили? Читаю пулл-реквесты вслепую руками по шрифту Брайля.»",
+        mutations: "Ослепшие ИИ-окуляры, студийные наушники, тактильное код-ревью вслепую."
+      },
+      {
+        id: "mamusin",
+        name: "Максим Мамусин",
+        dept: "dev",
+        badge: "ТЕХЛИД",
+        title: "Палач Старого Стека",
+        realRole: "Tech Lead студии",
+        photoLore: "web_assets/images/team/retro_film_maksim_mamusin_android_coding_gemini_pro_v8.png",
+        photoSlack: "web_assets/images/team/avatars/maksim_mamusin_avatar_1024.jpg",
+        quote: "«Он машина. Сразу сделать? Понял.»",
+        mutations: "Клёпаная аугметика черепа, гофрированные силовые кабели, счётчик плейблов 99999+."
+      },
+      {
+        id: "davit",
+        name: "Давит Газарян",
+        dept: "dev",
+        badge: "СКРИПТОР",
+        title: "Рыцарь Старого Движка",
+        realRole: "Playable Developer",
+        photoLore: "web_assets/images/team/retro_film_davit_gazaryan_old_engine_v6.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_davit.jpg",
+        quote: "«Повелитель кодовой тяги, чудом избежавший ссылки на старый стек.»",
+        mutations: "Паровой редуктор кодовой тяги, антимагнитная броня от багов рантайма."
+      },
+      {
+        id: "danial",
+        name: "Даниал Искаков",
+        dept: "dev",
+        badge: "СКРИПТОР",
+        title: "Кузнец Троичного Кода",
+        realRole: "Playable Developer",
+        photoLore: "web_assets/images/team/retro_film_danial_iskakov_sapper_v1.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_danial_iskakov.jpg",
+        quote: "«Иду по кодовой базе аккуратно, как по минному полю в AAA-проекте.»",
+        mutations: "Сапёрный визор микро-логики, антистатические перчатки тонкой пайки механик."
+      },
+      {
+        id: "kirill",
+        name: "Кирилл Берёзкин",
+        dept: "dev",
+        badge: "ИНЖЕНЕР ПЛАТФОРМЫ",
+        title: "Магистр Циклической Несовместимости",
+        realRole: "Platform Engineer",
+        photoLore: "web_assets/images/team/retro_film_kirill_beryozkin_v2.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_evgeny_rubin_dev.jpg",
+        quote: "«Пакет A требует B, а B требует A. Граф зависимостей будет разорван!»",
+        mutations: "Укротитель неразрешимых циклических зависимостей библиотек, шлем дебаггера."
+      },
+      {
+        id: "kristian",
+        name: "Кристиан",
+        dept: "dev",
+        badge: "ИНЖЕНЕР ПЛАТФОРМЫ",
+        title: "Хранитель Чистой Ветки",
+        realRole: "Platform Developer",
+        photoLore: "web_assets/images/team/retro_film_kristian_repository_guardian_v2.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_beksultan_karimtaev.jpg",
+        quote: "«Кто сделал force push в релиз — тот убирает решётки реактора.»",
+        mutations: "Блокиратор конфликтов слияния, невозмутимый протокольный сенсор."
+      },
+      {
+        id: "nick",
+        name: "Ник Егоров",
+        dept: "dev",
+        badge: "СКРИПТОР-СКОРОСТНИК",
+        title: "Координатор Скоростной Статики",
+        realRole: "Playable Developer",
+        photoLore: "web_assets/images/team/retro_film_nick_egorov_speedrun_v3.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_nick_egorov.jpg",
+        quote: "«Билд собран за 3 минуты. Если физика улетела — так и задумано.»",
+        mutations: "Сверхскоростная потоковая сборка интерактивных механик, турбо-привод пальцев."
+      },
+      {
+        id: "alexey_novice",
+        name: "Алексей (новенький)",
+        dept: "dev",
+        badge: "МЛАДШИЙ ПОСЛУШНИК",
+        title: "Новообращённый Послушник",
+        realRole: "Junior Playable Developer",
+        photoLore: "web_assets/images/team/retro_film_alexey_novice_v4.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_alexander_kramnoy.png",
+        quote: "«Мне сказали: пока ничего не трогать руками, а то отвалится весь ковчег.»",
+        mutations: "Белая роба неофита, подключённая Гориным питательная трубка с 2D-плейбаком."
+      },
+      {
+        id: "vika",
+        name: "Виктория Фесенко (Вика)",
+        dept: "art",
+        badge: "АРТ-ДИРЕКТОР",
+        title: "Верховная Настоятельница Пиксельного Канона",
+        realRole: "Art Director студии",
+        photoLore: "web_assets/images/team/retro_film_vika_neural_corruption_v3.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_vika.jpg",
+        quote: "«Субпиксельная скверна будет выжжена калёным арт-ревью.»",
+        mutations: "Розовые пряди сквозь нейро-разъёмы, левитирующие неоновые стикеры Канбан-доски."
+      },
+      {
+        id: "khukhro",
+        name: "Артём Хухро",
+        dept: "art",
+        badge: "АРТ-ТЕХЛИД",
+        title: "Техноэкзорцист Графической Скверны",
+        realRole: "Lead 3D / Арт-техлид",
+        photoLore: "web_assets/images/team/retro_film_artem_khukhro_guyver_gemini_v19.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_huhro.jpg",
+        quote: "«13 часов шлифовки полигонов ради 4 минут покоя на решётках нижней палубы.»",
+        mutations: "Гайвер-биокостюм, лупа спектрального анализа сетки, выжигатель артефактов."
+      },
+      {
+        id: "zhenya",
+        name: "Женя (Иваницкий)",
+        dept: "art",
+        badge: "2D ХУДОЖНИК",
+        title: "Мастер Вечного Рендера",
+        realRole: "Lead 2D Artist",
+        photoLore: "web_assets/images/team/retro_film_zhenya_artist_real_v11.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_zhenya.jpg",
+        quote: "«Нарезать 300 спрайтов к утру? Пальцы уже двигаются сами в альфа-канале.»",
+        mutations: "Круглосуточная нарезка ассетов, текстурирование, выдержка альфа-каналов."
+      },
+      {
+        id: "vova",
+        name: "Владимир Хаецкий (Вова)",
+        dept: "art",
+        badge: "3D/2D ХУДОЖНИК",
+        title: "Страж Невидимого Слоя",
+        realRole: "3D & 2D Artist",
+        photoLore: "web_assets/images/team/retro_film_vova_khaetsky_v11.png",
+        photoSlack: "web_assets/images/team/avatars/avatar_khaetsky.jpg",
+        quote: "«Не трогайте выключенный слой Layer_final_v2 — на нём держится сцена!»",
+        mutations: "Священная защита несущих выключенных слоёв, окуляры спектрального зрения."
+      }
+    ];
+
+    // Build Crew Grid
+    let activeCrewList = CREW_DATA;
+    let currentModalIndex = 0;
+
+        function renderCrewCompact(filter = 'all') {
+      const grid = document.getElementById('crewCompactGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      activeCrewList = filter === 'all' ? CREW_DATA : CREW_DATA.filter(c => c.dept === filter);
+
+      activeCrewList.forEach((c, idx) => {
+        const tile = document.createElement('div');
+        tile.className = 'crew-mini-tile';
+        tile.onclick = () => openCrewModal(idx);
+
+        tile.innerHTML = `
+          <div class="crew-mini-photo-wrap">
+            <img src="${c.photoLore}" alt="${c.name}" loading="lazy">
+          </div>
+          <div class="crew-mini-info">
+            <span class="crew-mini-badge">[ ${c.title.toUpperCase()} ]</span>
+            <div class="crew-mini-name">${c.name}</div>
+            <div class="crew-mini-role">${c.realRole}</div>
+          </div>
+        `;
+        grid.appendChild(tile);
+      });
+    }
+
+    function filterCrew(dept, btn) {
+      document.querySelectorAll('.crew-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCrewCompact(dept);
+    }
+
+        function openCrewModal(index) {
+      currentModalIndex = index;
+      const c = activeCrewList[currentModalIndex];
+      if (!c) return;
+
+      const nameEl = document.getElementById('modalName');
+      const titleEl = document.getElementById('modalTitle');
+      const realEl = document.getElementById('modalRealRole');
+      if (titleEl) titleEl.innerText = `[ ${c.title.toUpperCase()} ]`;
+      if (nameEl) nameEl.innerText = c.name;
+      if (realEl) realEl.innerText = c.realRole;
+
+      const imgLore = document.getElementById('modalImgLore');
+      const imgSlack = document.getElementById('modalImgSlack');
+      imgLore.src = c.photoLore;
+      imgSlack.src = c.photoSlack;
+
+      const photoBox = document.getElementById('modalPhotoBox');
+      photoBox.classList.remove('show-slack');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      if (toggleBtn) toggleBtn.innerText = '[ SLACK ФОТО ]';
+
+      const modal = document.getElementById('crewModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function toggleModalSlackPhoto() {
+      const photoBox = document.getElementById('modalPhotoBox');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      const isSlack = photoBox.classList.toggle('show-slack');
+      if (toggleBtn) {
+        toggleBtn.innerText = isSlack ? '[ LORE ФОТО ]' : '[ SLACK ФОТО ]';
+      }
+    }
+
+    function closeCrewModal() {
+      const modal = document.getElementById('crewModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeCrewModalOnBackdrop(e) {
+      if (e.target.id === 'crewModal') {
+        closeCrewModal();
+      }
+    }
+
+    function navCrewModal(direction) {
+      let nextIdx = currentModalIndex + direction;
+      if (nextIdx < 0) nextIdx = activeCrewList.length - 1;
+      if (nextIdx >= activeCrewList.length) nextIdx = 0;
+      openCrewModal(nextIdx);
+    }
+
+    function toggleModalSlackPhoto() {
+      const photoBox = document.getElementById('modalPhotoBox');
+      const toggleBtn = document.getElementById('modalPhotoToggle');
+      photoBox.classList.toggle('show-slack');
+      if (photoBox.classList.contains('show-slack')) {
+        toggleBtn.innerText = 'Лор Арт';
+        toggleBtn.style.background = 'var(--accent-cyan)';
+        toggleBtn.style.color = '#06090f';
+      } else {
+        toggleBtn.innerText = 'Slack Фото';
+        toggleBtn.style.background = '';
+        toggleBtn.style.color = '';
+      }
+    }
+
+    // Keyboard navigation for modal
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('crewModal');
+      if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') closeCrewModal();
+        if (e.key === 'ArrowLeft') navCrewModal(-1);
+        if (e.key === 'ArrowRight') navCrewModal(1);
+      }
+    });
+
+    // Cinema Screen Controls// Cinema Screen Controls
+    function reloadGame() {
+      const iframe = document.getElementById('gameIframe');
+      iframe.src = iframe.src;
+    }
+
+    function triggerFullscreen() {
+      const iframe = document.getElementById('gameIframe');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen().catch(() => {});
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    }
+
+    // Starfield Animation
+    (function initStarfield() {
+      const canvas = document.getElementById('starCanvas');
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      const stars = [];
+      const count = 120;
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          size: Math.random() * 1.5 + 0.5,
+          speed: Math.random() * 0.3 + 0.05,
+          alpha: Math.random() * 0.7 + 0.2
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      function render() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#f97316';
+        stars.forEach(s => {
+          s.x -= s.speed;
+          if (s.x < 0) {
+            s.x = w;
+            s.y = Math.random() * h;
+          }
+          ctx.globalAlpha = s.alpha * 0.7;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    })();
+
+    // Init
+    renderCrewCompact('all');
+  
+    // =========================================================================
+    // SECRET ADMIN EDIT MODE (TRIGGERED VIA FOOTER SKULL LOGO OR ALT+E)
+    // =========================================================================
+    let adminModeActive = false;
+
+    function toggleAdminMode() {
+      adminModeActive = !adminModeActive;
+      const panel = document.getElementById('adminPanel');
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = 'block';
+        showAdminToast('⚡ РЕЖИМ РЕДАКТОРА ВКЛЮЧЁН: кликайте на любой текст для изменения');
+      } else {
+        document.body.classList.remove('admin-mode-active');
+        document.designMode = 'off';
+        if (panel) panel.style.display = 'none';
+        showAdminToast('✕ РЕЖИМ РЕДАКТОРА ВЫКЛЮЧЕН');
+      }
+    }
+
+    function showAdminToast(msg) {
+      const toast = document.getElementById('adminToast');
+      if (!toast) return;
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => { if (toast) toast.style.display = 'none'; }, 3500);
+    }
+
+    function saveAdminEdits() {
+      try {
+        localStorage.setItem('plbx_cyberbulling_custom_html', document.documentElement.outerHTML);
+        showAdminToast('💾 Изменения сохранены в памяти браузера!');
+      } catch (e) {
+        showAdminToast('Ошибка сохранения: ' + e.message);
+      }
+    }
+
+    function resetAdminEdits() {
+      if (confirm('Сбросить все отредактированные тексты к исходной версии?')) {
+        localStorage.removeItem('plbx_cyberbulling_custom_html');
+        location.reload();
+      }
+    }
+
+    function copyAdminHtml() {
+      const panel = document.getElementById('adminPanel');
+      const toast = document.getElementById('adminToast');
+      const prevPanelDisp = panel ? panel.style.display : 'none';
+      const prevToastDisp = toast ? toast.style.display : 'none';
+      if (panel) panel.style.display = 'none';
+      if (toast) toast.style.display = 'none';
+      document.body.classList.remove('admin-mode-active');
+      document.designMode = 'off';
+
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+      navigator.clipboard.writeText(fullHtml).then(() => {
+        showAdminToast('📋 Чистый HTML скопирован в буфер обмена!');
+      }).catch(() => {
+        showAdminToast('Не удалось скопировать в буфер автоматически');
+      });
+
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = prevPanelDisp;
+      }
+    }
+
+    function downloadAdminHtml() {
+      const panel = document.getElementById('adminPanel');
+      const toast = document.getElementById('adminToast');
+      const prevPanelDisp = panel ? panel.style.display : 'none';
+      if (panel) panel.style.display = 'none';
+      if (toast) toast.style.display = 'none';
+      document.body.classList.remove('admin-mode-active');
+      document.designMode = 'off';
+
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(a.href);
+
+      showAdminToast('📥 Файл index.html скачан с вашими правками!');
+
+      if (adminModeActive) {
+        document.body.classList.add('admin-mode-active');
+        document.designMode = 'on';
+        if (panel) panel.style.display = prevPanelDisp;
+      }
+    }
+
+    // Keyboard shortcut: Alt+E or Ctrl+Shift+E
+    document.addEventListener('keydown', (e) => {
+      if ((e.altKey && e.code === 'KeyE') || (e.ctrlKey && e.shiftKey && e.code === 'KeyE')) {
+        e.preventDefault();
+        toggleAdminMode();
+      }
+    });
+
+    // AI Lord Evolution Before/After Auto-Curtain Slider
+    (function initLordCompare() {
+      const container = document.getElementById('lordCompareContainer');
+      const statusLabel = document.getElementById('lordScanStatus');
+      if (!container) return;
+
+      let start = performance.now();
+      let phase = 0;
+      let userControl = false;
+      let resumeTimeout = null;
+
+      function loop(now) {
+        if (!userControl) {
+          // Smooth sine oscillation between 15% and 85%
+          const t = (now - start) / 1300;
+          const pos = 50 + 35 * Math.sin(t + phase);
+          container.style.setProperty('--split-pos', pos.toFixed(2) + '%');
+        }
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      function setPos(clientX) {
+        const rect = container.getBoundingClientRect();
+        const pct = Math.max(5, Math.min(95, ((clientX - rect.left) / rect.width) * 100));
+        container.style.setProperty('--split-pos', pct.toFixed(2) + '%');
+
+        if (!userControl && statusLabel) {
+          statusLabel.innerHTML = '<span class="pulse-indicator" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b;"></span><span class="status-label" style="color:#f59e0b;">РУЧНОЙ РЕЖИМ</span>';
+        }
+        userControl = true;
+
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => {
+          const now = performance.now();
+          const norm = Math.max(-0.99, Math.min(0.99, (pct - 50) / 35));
+          phase = Math.asin(norm) - ((now - start) / 1300);
+          userControl = false;
+          if (statusLabel) {
+            statusLabel.innerHTML = '<span class="pulse-indicator"></span><span class="status-label">АВТО-ШТОРКА [АКТИВНА]</span>';
+          }
+        }, 2200);
+      }
+
+      container.addEventListener('mousemove', (e) => {
+        if (e.buttons === 1) setPos(e.clientX);
+      });
+      container.addEventListener('mousedown', (e) => setPos(e.clientX));
+      container.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) setPos(e.touches[0].clientX);
+      }, { passive: true });
+      container.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) setPos(e.touches[0].clientX);
+      }, { passive: true });
+    })();
+
+  
+    // Hero Team Slideshow (Auto-Cycling all 19 crew members)
+    (function initHeroSlideshow() {
+      if (typeof CREW_DATA === 'undefined' || !CREW_DATA.length) return;
+
+      const card = document.getElementById('heroSlideshowCard');
+      const imgA = document.getElementById('heroSlideImgA');
+      const imgB = document.getElementById('heroSlideImgB');
+      const badge = document.getElementById('heroSlideBadge');
+      const counter = document.getElementById('heroSlideCounter');
+      const title = document.getElementById('heroSlideTitle');
+      const quote = document.getElementById('heroSlideQuote');
+      const progressFill = document.getElementById('heroSlideProgress');
+      if (!card || !imgA || !imgB) return;
+
+      const deptNames = {
+        command: "КОМАНДОВАНИЕ",
+        projects: "ПРОДЖЕКТЫ",
+        dev: "РАЗРАБОТКА",
+        art: "АРТ & 3D"
+      };
+
+      // Start with Tolya (index 1)
+      let currentIndex = 1;
+      let activeSlot = 'A';
+      const SLIDE_DURATION = 4600; // 4.6 seconds per slide
+      let startTime = performance.now();
+      let isPaused = false;
+      let animFrameId = null;
+
+      function renderSlide(index) {
+        const person = CREW_DATA[index];
+        if (!person) return;
+
+        const targetImg = activeSlot === 'A' ? imgB : imgA;
+        const currentImg = activeSlot === 'A' ? imgA : imgB;
+
+        targetImg.src = person.photoLore;
+        targetImg.alt = person.name;
+
+        targetImg.classList.add('active');
+        currentImg.classList.remove('active');
+
+        activeSlot = activeSlot === 'A' ? 'B' : 'A';
+
+        if (badge) {
+          // Universe title/rank in brackets only
+          badge.textContent = `[ ${person.title.toUpperCase()} ]`;
+        }
+        if (counter) {
+          const num = (index + 1).toString().padStart(2, '0');
+          counter.textContent = `№ ${num}`;
+        }
+        if (title) {
+          title.textContent = person.name;
+        }
+        if (quote) {
+          quote.textContent = person.quote;
+        }
+
+        startTime = performance.now();
+        if (progressFill) progressFill.style.width = '0%';
+      }
+
+      function tick(now) {
+        if (!isPaused) {
+          const elapsed = now - startTime;
+          const progress = Math.min(100, (elapsed / SLIDE_DURATION) * 100);
+          if (progressFill) progressFill.style.width = progress.toFixed(1) + '%';
+
+          if (elapsed >= SLIDE_DURATION) {
+            currentIndex = (currentIndex + 1) % CREW_DATA.length;
+            renderSlide(currentIndex);
+          }
+        }
+        animFrameId = requestAnimationFrame(tick);
+      }
+      animFrameId = requestAnimationFrame(tick);
+
+      // Manual navigation
+      window.changeHeroSlide = function(delta, e) {
+        if (e) e.stopPropagation();
+        currentIndex = (currentIndex + delta + CREW_DATA.length) % CREW_DATA.length;
+        renderSlide(currentIndex);
+      };
+
+      window.onHeroCardClick = function(e) {
+        if (e.target.closest('.hero-slide-arrow')) return;
+        const person = CREW_DATA[currentIndex];
+        if (person && typeof openCrewModal === 'function') {
+          openCrewModal(person.id);
+        }
+      };
+
+      card.addEventListener('mouseenter', () => { isPaused = true; });
+      card.addEventListener('mouseleave', () => {
+        isPaused = false;
+        startTime = performance.now() - (parseFloat(progressFill.style.width || '0') / 100) * SLIDE_DURATION;
+      });
+
+      // Initial render sync
+      renderSlide(currentIndex);
+    })();
+
+  </script>
+  <!-- Secret Admin Edit Bar (Toggled via Footer Skull Logo or Alt+E) -->
+  <div id="adminPanel" class="admin-panel" style="display: none;">
+    <div class="admin-panel-content">
+      <div class="admin-panel-info">
+        <span class="admin-pulse-dot"></span>
+        <span class="admin-title">РЕЖИМ РЕДАКТОРА [ADMIN]</span>
+        <span class="admin-hint">— кликните на любой текст для изменения прямо на странице</span>
+      </div>
+      <div class="admin-panel-btns">
+        <button class="admin-btn admin-btn-save" onclick="saveAdminEdits()" title="Сохранить изменения в браузере">💾 Сохранить</button>
+        <button class="admin-btn admin-btn-copy" onclick="copyAdminHtml()" title="Скопировать чистый HTML страницы">📋 Скопировать HTML</button>
+        <button class="admin-btn admin-btn-dl" onclick="downloadAdminHtml()" title="Скачать обновлённый index.html">📥 Скачать файл</button>
+        <button class="admin-btn admin-btn-reset" onclick="resetAdminEdits()" title="Сбросить к оригиналу">↺ Сбросить</button>
+        <button class="admin-btn admin-btn-close" onclick="toggleAdminMode()" title="Выйти из режима">✕ Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="adminToast" class="admin-toast" style="display: none;">💾 Изменения сохранены в памяти браузера!</div>
+
+
+
+</body></html>

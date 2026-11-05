@@ -113,7 +113,7 @@ export const CONCERT_SEQUENCE_CUTS: ConcertFrameCut[] = [
     time: 175.00,
     texKey: 'retro_film_eva_theatrical_prop_helmet_v7',
     characterName: 'Ева Аксёнова',
-    characterRole: 'Production Director • Хранительница Скрижалей',
+    characterRole: 'Production Director • Сестра Клиентского Фронта',
     characterThemeColor: 0xff3399,
     label: 'Ева: Этот плебл в работу — кик-офф пять минут'
   },

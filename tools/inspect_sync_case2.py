@@ -1,0 +1,6 @@
+with open('repo/src/AmbientManager.ts', 'r', encoding='utf-8') as f:
+    text = f.read()
+
+idx = text.find('// Case 2: Different cue or no active cue')
+if idx != -1:
+    print(text[idx:idx+1200])

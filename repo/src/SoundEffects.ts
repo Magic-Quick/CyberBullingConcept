@@ -1,6 +1,7 @@
 // High-performance audio controller using Web Audio API
 // Powered by real keyboard keystroke samples + procedural audio fallbacks.
 import { KEYBOARD_CLICKS_BASE64 } from './keyboardAudioData';
+import { getAudioUrl } from './assetsManager';
 
 function base64ToArrayBuffer(base64: string): ArrayBuffer {
   const commaIdx = base64.indexOf(',');
@@ -134,6 +135,45 @@ class SoundEffectsController {
    */
   public playTypewriterTick(): void {
     this.playKeyClick(0.20, 0.08);
+  }
+
+  /**
+   * Electrical contact short-circuit zap / spark crackle.
+   */
+  public playElectricGlitch(volumeMul = 0.85): void {
+    if (this._isMuted || this._volume <= 0) return;
+    try {
+      const url = getAudioUrl('electric_contact_glitch');
+      if (url) {
+        const audio = new Audio(url);
+        audio.volume = Math.max(0.01, Math.min(1.0, this._volume * volumeMul));
+        audio.play().catch(() => {
+          this._playProceduralElectricSpark();
+        });
+        return;
+      }
+    } catch {}
+    this._playProceduralElectricSpark();
+  }
+
+  private _playProceduralElectricSpark(): void {
+    const ctx = this._ensureContext();
+    if (!ctx) return;
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(2200, now);
+      osc.frequency.exponentialRampToValueAtTime(80, now + 0.09);
+      const peak = 0.22 * this._volume;
+      gain.gain.setValueAtTime(peak, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.10);
+    } catch {}
   }
 
   private _playProceduralClick(): void {

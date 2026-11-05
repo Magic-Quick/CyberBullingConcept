@@ -36,15 +36,31 @@ export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
 
   // Harsh Dread / Terror Drops: Calibrated with deep speech ducking and lowered ceiling so dialogue is 100% intelligible
   dread_03_predator_instant_terror_drop_25s: { targetVol: 0.20, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-
   dread_04_predator_chittering_nightmare_25s: { targetVol: 0.18, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-
   dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.18, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-
   dread_11_morlock_war_march_climax_50s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-
   dread_10_predator_nightmare_drop_52s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.005 },
   dread_12_predator_digital_drug_28s: { targetVol: 0.20, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+
+  // Specialized Cinematic Trailer / Tension Cues & Braams (Anti-Masking & Calibrated Speech Intelligibility)
+  braam_analog_synth_pitch_drop: { targetVol: 0.22, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+  trailer_tension_riser_to_brutal_cut: { targetVol: 0.24, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  trailer_reese_bass_distortion_hit: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  trailer_braam_sub_drop: { targetVol: 0.22, fadeInSec: 0.20, duckAmbientTo: 0.005 },
+  braam_titan_warhorn_doom: { targetVol: 0.20, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+  braam_reactor_turbine_overdrive: { targetVol: 0.22, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  trailer_dissonant_warp_stinger: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  trailer_industrial_anvil_slam: { targetVol: 0.22, fadeInSec: 0.10, duckAmbientTo: 0.005 },
+  trailer_pneumatic_gate_crush: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  braam_seismic_tectonic_rumble: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  braam_triple_pulse_staccato: { targetVol: 0.20, fadeInSec: 0.20, duckAmbientTo: 0.005 },
+  braam_choir_infernal_drone: { targetVol: 0.22, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_dark_cello_bend_braam: { targetVol: 0.24, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  melodic_tension_french_horn_minor_swell: { targetVol: 0.25, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  melodic_tension_blade_runner_synth_drop: { targetVol: 0.25, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  melodic_tension_mournful_vocal_drone: { targetVol: 0.24, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_cathedral_bell_drone: { targetVol: 0.24, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_piano_decay_sub_swell: { targetVol: 0.24, fadeInSec: 0.35, duckAmbientTo: 0.005 },
 
 
 
@@ -99,11 +115,15 @@ export const AVAILABLE_INTRO_TRACKS: ('desolate_cry' | 'titan_forge')[] = ['deso
 export function getRandomIntroTrack(): 'desolate_cry' | 'titan_forge' {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
+      const mode = window.localStorage.getItem('cyberbulling_intro_mode');
+      if (mode === 'random') {
+        return Math.random() < 0.5 ? 'desolate_cry' : 'titan_forge';
+      }
       const saved = window.localStorage.getItem('cyberbulling_intro_track');
       if (saved === 'desolate_cry' || saved === 'titan_forge') return saved;
     }
   } catch {}
-  return 'desolate_cry'; // Deterministic default, zero random
+  return 'titan_forge'; // Default to Titan Forge per user's preference
 }
 
 
@@ -145,6 +165,19 @@ interface TransitionWait {
 
 
 class AmbientManagerService {
+  public static readonly TRACK_GAIN: Record<AmbientTrackKey, number> = {
+    titan_forge: 1.0,
+    desolate_cry: 1.05,
+    rust_and_bone: 1.15, // Balanced calibration: smooth, rich, never drowns dialogue
+    absolute_blackout: 1.1,
+    chronicles_ambient: 1.0,
+  };
+
+  public getEffectiveAmbientVolume(): number {
+    const trackGain = this._currentTrackKey ? (AmbientManagerService.TRACK_GAIN[this._currentTrackKey] ?? 1.0) : 1.0;
+    return Math.min(1.0, this._musicVolume * this._currentDuckFactor * trackGain);
+  }
+
 
   private _audioCache: Map<string, HTMLAudioElement> = new Map();
 
@@ -219,6 +252,11 @@ class AmbientManagerService {
 
   private _voiceHoldTimer = 0.0;
 
+  // Track Mute States (Dread, Peace, Ambient) for Studio Direction
+  private _isMutedDread = false;
+  private _isMutedPeace = false;
+  private _isMutedAmbient = false;
+
 
 
   constructor() {
@@ -239,6 +277,42 @@ class AmbientManagerService {
       this.playTrack(this._currentTrackKey, this._currentDuckFactor, 0.4);
     } else {
       this.playTrack(this.getIntroTrack(), 1.0, 1.5);
+    }
+  }
+
+  public isCategoryMuted(category: 'dread' | 'peace' | 'ambient'): boolean {
+    if (category === 'dread') return this._isMutedDread;
+    if (category === 'peace') return this._isMutedPeace;
+    if (category === 'ambient') return this._isMutedAmbient;
+    return false;
+  }
+
+  public setCategoryMuted(category: 'dread' | 'peace' | 'ambient', muted: boolean): void {
+    if (category === 'dread') this._isMutedDread = muted;
+    if (category === 'peace') this._isMutedPeace = muted;
+    if (category === 'ambient') this._isMutedAmbient = muted;
+    this.syncMuteVolumes();
+  }
+
+  public syncMuteVolumes(): void {
+    if (this._currentAudio) {
+      if (this._isMutedAmbient || this._isMuted) {
+        this._currentAudio.volume = 0;
+      } else {
+        const baseVol = this.getEffectiveAmbientVolume();
+        const ambientDuck = this._isVoiceActive ? 0.50 : 1.0;
+        this._currentAudio.volume = Math.max(0, Math.min(1, baseVol * ambientDuck));
+      }
+    }
+
+    if (this._cueAudio && this._cueTrackKey) {
+      const isPeace = this._cueTrackKey.startsWith('peace_');
+      const isDread = !isPeace && this._cueTrackKey !== 'stop';
+      if ((isDread && this._isMutedDread) || (isPeace && this._isMutedPeace) || this._isMuted) {
+        this._cueAudio.volume = 0;
+      } else {
+        this._cueAudio.volume = Math.max(0, Math.min(1, this._cueTargetVol * this._voiceDuckingFactor));
+      }
     }
   }
 
@@ -350,7 +424,7 @@ class AmbientManagerService {
     } catch {}
   }
 
-  public getTrackForAct(actIndex: number, actId?: string): { key: AmbientTrackKey | null; duckFactor: number } {
+  public getTrackForAct(actIndex: number, actId?: string, actTime?: number): { key: AmbientTrackKey | null; duckFactor: number } {
     const actKey = actId || `act_${actIndex}`;
     const locked = this.getLockedTrackForAct(actKey);
     if (locked) {
@@ -366,9 +440,12 @@ class AmbientManagerService {
       return { key: null, duckFactor: 0.0 };
     }
 
-    // Act 1: Prologue Space
+    // Act 1: Prologue Space (Intro score carries through until Ark visual emerges at 18.5s)
     if (actId === 'prologue_space' || actIndex === 1) {
-      return { key: 'rust_and_bone', duckFactor: 0.28 };
+      if (actTime !== undefined && actTime >= 18.5) {
+        return { key: 'rust_and_bone', duckFactor: 0.28 };
+      }
+      return { key: this._introTrackKey, duckFactor: 0.28 };
     }
 
     // Act 2: Act 1 Convent & Manufactorum
@@ -435,11 +512,12 @@ class AmbientManagerService {
 
 
 
-  public playTrack(key: AmbientTrackKey | null, duckFactor = 0.35, crossfadeSec = 2.0): void {
+  public playTrack(key: AmbientTrackKey | null, duckFactor = 0.35, crossfadeSec = 2.0, startOffsetSec?: number): void {
 
     this._currentDuckFactor = duckFactor;
 
-    const targetVol = this._musicVolume * duckFactor;
+    const trackGain = key ? (AmbientManagerService.TRACK_GAIN[key] ?? 1.0) : 1.0;
+    const targetVol = Math.min(1.0, this._musicVolume * duckFactor * trackGain);
 
 
 
@@ -617,10 +695,8 @@ class AmbientManagerService {
 
       if (newAudio) {
 
-        // Restore saved position where it last finished!
-
-        const savedPos = this._savedPositions.get(key) || 0;
-
+        // Restore saved position or use requested startOffsetSec (e.g. 15.0s for rust_and_bone)
+        const savedPos = startOffsetSec !== undefined ? startOffsetSec : (this._savedPositions.get(key) || 0);
         newAudio.currentTime = savedPos;
 
         newAudio.muted = this._isMuted;
@@ -742,10 +818,10 @@ class AmbientManagerService {
     }
 
     const isEffectivelySpeaking = this._isVoiceActive || this._voiceHoldTimer > 0;
-    // Broadcast standard -14 dB ducking depth (0.20 factor), guaranteeing narration is loud and clear over dread music
-    const targetVoiceDuck = isEffectivelySpeaking ? 0.20 : 1.0;
-    // Fast attack (12.0), smooth musical release (1.4)
-    const voiceDuckRate = isEffectivelySpeaking ? 12.0 : 1.4;
+    // Professional -7 dB ducking depth (0.45 factor): narration is crystal clear, music breathes dynamically
+    const targetVoiceDuck = isEffectivelySpeaking ? 0.45 : 1.0;
+    // Fast attack (12.0), smooth musical release (2.0)
+    const voiceDuckRate = isEffectivelySpeaking ? 12.0 : 2.0;
 
     this._voiceDuckingFactor += (targetVoiceDuck - this._voiceDuckingFactor) * Math.min(1.0, dt * voiceDuckRate);
 
@@ -757,7 +833,8 @@ class AmbientManagerService {
       const progress = Math.min(1.0, this._cueFadeElapsed / Math.max(0.01, this._cueFadeDuration));
       const easeVal = 0.5 - 0.5 * Math.cos(progress * Math.PI);
       const curVol = this._cueStartVol + (this._cueTargetVol - this._cueStartVol) * easeVal;
-      this._cueAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol * this._voiceDuckingFactor));
+      const isCueMuted1 = (this._cueTrackKey?.startsWith('peace_') ? this._isMutedPeace : this._isMutedDread) || this._isMuted;
+      this._cueAudio.volume = isCueMuted1 ? 0 : Math.max(0, Math.min(1, curVol * this._voiceDuckingFactor));
       if (progress >= 1.0) {
         this._cueIsFading = false;
         if (this._cuePauseOnEnd) {
@@ -768,7 +845,8 @@ class AmbientManagerService {
         }
       }
     } else if (this._cueAudio && !this._cueIsFading) {
-      this._cueAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, this._cueTargetVol * this._voiceDuckingFactor));
+      const isCueMuted2 = (this._cueTrackKey?.startsWith('peace_') ? this._isMutedPeace : this._isMutedDread) || this._isMuted;
+      this._cueAudio.volume = isCueMuted2 ? 0 : Math.max(0, Math.min(1, this._cueTargetVol * this._voiceDuckingFactor));
 
       // Auto-fadeout before audio file or duration expires: guarantees music never ends abruptly!
       this._cuePlayElapsed += dt;
@@ -790,7 +868,8 @@ class AmbientManagerService {
       const progress = Math.min(1.0, f.elapsed / Math.max(0.01, f.duration));
       const easeVal = 0.5 - 0.5 * Math.cos(progress * Math.PI);
       const curVol = f.startVol + (f.targetVol - f.startVol) * easeVal;
-      f.audio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol * this._voiceDuckingFactor));
+      const ambientFadeDuck = isEffectivelySpeaking ? 0.50 : 1.0;
+      f.audio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, curVol * ambientFadeDuck));
 
       if (progress >= 1.0) {
         f.audio.pause();
@@ -803,9 +882,12 @@ class AmbientManagerService {
 
     if (this._currentAudio && this._fadingTracks.length === 0) {
 
-      const baseVol = this._musicVolume * this._currentDuckFactor;
+      const baseVol = this.getEffectiveAmbientVolume();
 
-      this._currentAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, baseVol * this._voiceDuckingFactor));
+      const ambientMuted = this._isMutedAmbient || this._isMuted;
+      // Ambient duck: -6 dB (0.50 factor) during dialogue so narration is 100% dominant, swells up when voice pauses
+      const ambientDuck = isEffectivelySpeaking ? 0.50 : 1.0;
+      this._currentAudio.volume = ambientMuted ? 0 : Math.max(0, Math.min(1, baseVol * ambientDuck));
 
     }
 
@@ -933,13 +1015,15 @@ class AmbientManagerService {
 
     this._musicVolume = Math.max(0, Math.min(1, vol));
 
-    const targetVol = this._musicVolume * this._currentDuckFactor;
+    const trackGain = this._currentTrackKey ? (AmbientManagerService.TRACK_GAIN[this._currentTrackKey] ?? 1.0) : 1.0;
+    const targetVol = Math.min(1.0, this._musicVolume * this._currentDuckFactor * trackGain);
 
 
 
     if (this._currentAudio) {
 
-      this._currentAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, targetVol * this._voiceDuckingFactor));
+      const ambientDuck = this._isVoiceActive ? 0.50 : 1.0;
+      this._currentAudio.volume = this._isMuted ? 0 : Math.max(0, Math.min(1, targetVol * ambientDuck));
 
     }
 
@@ -995,9 +1079,40 @@ class AmbientManagerService {
 
 
 
+  public isIntroRandom(): boolean {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        return window.localStorage.getItem('cyberbulling_intro_mode') === 'random';
+      }
+    } catch {}
+    return false;
+  }
+
+  public setIntroRandomMode(isRandom: boolean, inIntro = false): void {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem('cyberbulling_intro_mode', isRandom ? 'random' : 'fixed');
+      }
+    } catch {}
+    if (isRandom) {
+      const chosen = Math.random() < 0.5 ? 'desolate_cry' : 'titan_forge';
+      this._introTrackKey = chosen;
+      if (inIntro) {
+        this.playTrack(chosen, 1.0, 1.5);
+      }
+    }
+  }
+
   public setIntroTrack(key: 'desolate_cry' | 'titan_forge', inIntro = false): void {
 
     this._introTrackKey = key;
+
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem('cyberbulling_intro_track', key);
+        window.localStorage.setItem('cyberbulling_intro_mode', 'fixed');
+      }
+    } catch {}
 
     if (inIntro) {
 
@@ -1092,15 +1207,21 @@ class AmbientManagerService {
 
     if (this._currentAudio && this._currentTrackKey) {
 
-      if (this._currentDuckFactor <= 0) {
-
-        this._currentDuckFactor = 0.28;
-
+      if (this._isCueDucking) {
+        const targetVol = this.getEffectiveAmbientVolume();
+        this._currentAudio.volume = this._isMuted ? 0 : targetVol;
+        if (this._currentDuckFactor > 0) {
+          this._currentAudio.play().catch(() => {});
+        } else {
+          this._currentAudio.pause();
+        }
+      } else {
+        if (this._currentDuckFactor <= 0) {
+          this._currentDuckFactor = 0.28;
+        }
+        this._currentAudio.volume = this._isMuted ? 0 : this.getEffectiveAmbientVolume();
+        this._currentAudio.play().catch(() => {});
       }
-
-      this._currentAudio.volume = this._isMuted ? 0 : this._musicVolume * this._currentDuckFactor;
-
-      this._currentAudio.play().catch(() => {});
 
     }
 
@@ -1143,25 +1264,21 @@ class AmbientManagerService {
 
 
   public seekCurrent(targetTime: number): void {
-
     if (this._currentAudio) {
-
-      this._currentAudio.currentTime = targetTime;
-
-      if (this._isPaused) {
-
-        this._currentAudio.pause();
-
+      const dur = this._currentAudio.duration;
+      const safeTime = (Number.isFinite(dur) && dur > 0) ? (targetTime % dur) : targetTime;
+      try {
+        this._currentAudio.currentTime = Math.max(0, safeTime);
+      } catch (e) {
+        console.warn('[AmbientManager] seekCurrent error:', e);
       }
-
+      if (this._isPaused) {
+        this._currentAudio.pause();
+      }
     }
-
     if (this._currentTrackKey) {
-
       this._savedPositions.set(this._currentTrackKey, targetTime);
-
     }
-
   }
 
 
@@ -1192,7 +1309,10 @@ class AmbientManagerService {
 
     };
 
-    const targetVolume = Math.min(0.90, cfg.targetVol * (this._musicVolume / 0.85));
+    const isPeace = normKey.startsWith('peace_');
+    const isDread = !isPeace && normKey !== 'stop';
+    const isCatMuted = (isDread && this._isMutedDread) || (isPeace && this._isMutedPeace);
+    const targetVolume = (isCatMuted || this._isMuted) ? 0 : Math.min(0.90, cfg.targetVol * (this._musicVolume / 0.85));
 
     this._cueTargetVol = targetVolume;
 
@@ -1234,9 +1354,9 @@ class AmbientManagerService {
 
         this._savedDuckFactorBeforeCue = this._currentDuckFactor;
 
-        this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.2);
-
       }
+
+      this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.0);
 
       return;
 
@@ -1324,9 +1444,9 @@ class AmbientManagerService {
 
       this._savedDuckFactorBeforeCue = this._currentDuckFactor;
 
-      this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.2);
-
     }
+
+    this.playTrack(this._currentTrackKey, cfg.duckAmbientTo, 0.0);
 
 
 
@@ -1403,8 +1523,11 @@ class AmbientManagerService {
     audio.muted = this._isMuted;
     audio.currentTime = 0;
 
+    const isPeace = normKey.startsWith('peace_');
+    const isDread = !isPeace && normKey !== 'stop';
+    const isCatMuted = (isDread && this._isMutedDread) || (isPeace && this._isMutedPeace);
     const normalizedCeiling = cfg.targetVol * customVolFactor;
-    const targetVolume = Math.min(0.85, normalizedCeiling * (this._musicVolume / 0.85));
+    const targetVolume = (isCatMuted || this._isMuted) ? 0 : Math.min(0.85, normalizedCeiling * (this._musicVolume / 0.85));
     this._cueTargetVol = targetVolume;
     this._cueStartVol = 0.0;
     this._cueFadeElapsed = 0.0;

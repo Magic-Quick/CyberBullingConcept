@@ -13,7 +13,7 @@
 |---|---|---|---|---|---|---|
 | 1 | **Толя (Анатолий)** | Лорд-Командор Цитадели | CEO / Основатель | `02_Toly_Sherbakov_лицо.jpg` | `--tag "tolya_fullbody"` | `--tag "tolya_avatar"` |
 | 2 | **Алексей Горин** | Верховный Надзиратель Конвейера | Head of Production | `01_Alexey_Gorin_лицо.jpg` | `--tag "gorin_fullbody"` | `--tag "gorin_avatar"` |
-| 3 | **Ева Аксёнова** | Главная Хранительница Скрижалей и Сроков | Project Lead | *Оригинальный канон* | `--tag "eva_fullbody"` | `--tag "eva_avatar"` |
+| 3 | **Ева Аксёнова** | Сестра Клиентского Фронта | Project Lead | *Оригинальный канон* | `--tag "eva_fullbody"` | `--tag "eva_avatar"` |
 | 4 | **Эдуард Левин** | Зодчий Игрового Замысла | Project Lead | `08_02_Эдуард_Левин...jpg` | `--tag "edward_fullbody"` | `--tag "edward_avatar"` |
 | 5 | **Егор Ткачёв** | Преподобный Толкователь Воли Клиентархов | Creative Director | *Оригинальный канон* | `--tag "egor_fullbody"` | `--tag "egor_avatar"` |
 | 6 | **Павел Самойленко** | Архи-Цензор Синтаксической Ереси | CTO | `08_06_Павел_Самойленко_лицо.jpg`| `--tag "pavel_fullbody"` | `--tag "pavel_avatar"` |

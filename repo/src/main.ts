@@ -133,7 +133,7 @@ plbx.init(async () => {
     percentText.style.fontSize = Math.round((isPortrait ? 14 : 17) * refScale);
 
     panelBg.clear();
-    panelBg.roundRect(px, py, panelW, panelH, Math.round(8 * refScale));
+    panelBg.rect(px, py, panelW, panelH);
     panelBg.fill({ color: 0x000000, alpha: 0.88 });
 
     titleText.position.set(cx, cy - Math.round(34 * refScale));

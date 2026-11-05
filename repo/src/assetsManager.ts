@@ -6,6 +6,7 @@ const imageModules = import.meta.glob([
   './assets/slack/*.{png,jpg,webp}',
   './assets/avatars/*.{png,jpg,webp}',
   './assets/fin/**/*.{png,jpg,webp}',
+  '!./assets/fin/Slack_Fin/**',
 ], {
   eager: true,
   query: '?url',
@@ -93,7 +94,7 @@ export function getIntroVideoUrl(): string {
 
 export async function loadAllAssets(onProgress?: (ratio: number) => void): Promise<void> {
   initAssetMappings();
-  const imageEntries = Object.entries(imageModules);
+  const imageEntries = Object.entries(imageModules).filter(([p]) => !p.toLowerCase().includes("slack_fin"));
   let loaded = 0;
   const total = Math.max(1, imageEntries.length);
 
@@ -103,8 +104,14 @@ export async function loadAllAssets(onProgress?: (ratio: number) => void): Promi
       const key = filename.replace(/\.(png|jpg|webp)$/, '');
       try {
         const tex = await Assets.load<Texture>({ alias: key, src: url, parser: 'texture' } as any);
-        textures[key] = tex;
-        textures[key.toLowerCase()] = tex;
+        // Prioritize ./assets/slack/ so high-legibility single-comment cards always take precedence
+        if (path.includes('/assets/slack/')) {
+          textures[key] = tex;
+          textures[key.toLowerCase()] = tex;
+        } else if (!textures[key] || textures[key] === Texture.WHITE || !path.includes('/Slack_Fin/')) {
+          textures[key] = tex;
+          textures[key.toLowerCase()] = tex;
+        }
       } catch (err) {
         console.warn(`[Assets] Failed to load texture: ${key}`, err);
         textures[key] = Texture.WHITE;
@@ -121,7 +128,7 @@ const textureAliases: Record<string, string> = {
   manufactorum_scoreboard_37_v1: 'manufactorum_scoreboard_37_v1',
 
   // Act 2: Stasis capsule & Altar crypt
-  retro_film_act2_dashboard_altar_crypt_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+  retro_film_act2_dashboard_altar_crypt_gemini_v1: 'retro_film_act2_dashboard_altar_crypt_gemini_v1',
   retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
   '09_voron_minnoe_pole': '09_voron_minnoe_pole',
   voron_minnoe_pole: '09_voron_minnoe_pole',
@@ -164,7 +171,8 @@ const textureAliases: Record<string, string> = {
   retro_film_egor_reverend_interpreter: 'retro_film_egor_reverend_interpreter_v4',
   retro_film_egor_reverend_interpreter_v4: 'retro_film_egor_reverend_interpreter_v4',
   retro_film_tkachev: 'retro_film_egor_reverend_interpreter_v4',
-  retro_film_nick: 'retro_film_nick_egorov_speedrun_v2',
+  retro_film_nick: 'retro_film_nick_egorov_speedrun_v3',
+  retro_film_nick_egorov_speedrun_v3: 'retro_film_nick_egorov_speedrun_v3',
   retro_film_tolya: 'retro_film_tolya_gpt_v2',
   retro_film_vika: 'retro_film_vika_neural_corruption_v3',
   retro_film_zhenya: 'retro_film_zhenya_artist_real_v11',
@@ -255,6 +263,13 @@ const textureAliases: Record<string, string> = {
   '12_nick_time_machine': '12_nick_time_machine',
   '13_chest_egg_sound': '13_chest_egg_sound',
   '14_feeling_zero': '14_feeling_zero',
+  '14a_feeling_zero': '14a_feeling_zero',
+  '14b_all_good': '14b_all_good',
+  '12a_gorin_time_machine': '12a_gorin_time_machine',
+  '12b_edik_time_machine': '12b_edik_time_machine',
+  '07a_cow_khukhro': '07a_cow_khukhro',
+  '07b_cow_tkachev': '07b_cow_tkachev',
+  '07c_cow_edik': '07c_cow_edik',
 };
 
 export function getTexture(key: string): Texture {

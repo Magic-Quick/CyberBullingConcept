@@ -83,6 +83,156 @@ SFX_PRESETS = {
         "prompt": "Huge concert crowd roaring and singing along passionately at peak climax of rap rock anthem, wild screaming, whistles, vibrating bass in packed arena, goosebumps atmosphere",
         "duration": 7.0,
         "prompt_influence": 0.45
+    },
+
+    # ------------------ 4. ДРАМАТИЧНЫЕ ПЕРЕХОДЫ (TRAILER IMPACTS & SLAMS) ------------------
+    "trailer_braam_sub_drop": {
+        "category": "trailer_transitions",
+        "title": "Массивный кино-Браам и суб-басовый дроп",
+        "description": "Глубокий низкочастотный браам духовых с сотрясающим саб-басом и протяжным гулом в металле — классический акцент блокбастеров",
+        "prompt": "Massive dark cinematic brass braam, distorted low-end sub bass drop, ominous cavernous reverb, blockbuster thriller movie trailer impact",
+        "duration": 4.5,
+        "prompt_influence": 0.45
+    },
+    "trailer_industrial_anvil_slam": {
+        "category": "trailer_transitions",
+        "title": "Индустриальный молот и сокрушительный удар стали",
+        "description": "Тяжёлый удар гидравлического молота по наковальне с механической реверберацией и глухим эхом в трюме",
+        "prompt": "Heavy industrial hydraulic anvil slam, crushing steel impact shockwave, metallic resonance decaying into dark silence, brutal warhammer trailer accent",
+        "duration": 3.5,
+        "prompt_influence": 0.5
+    },
+    "trailer_tension_riser_to_brutal_cut": {
+        "category": "trailer_transitions",
+        "title": "Нарастающий скрежет с резким обрывом и ударом",
+        "description": "Пронзительный металлический разгон напряжения (Riser), резко обрывающийся в оглушительный низкий удар и гробовую тишину",
+        "prompt": "Shrieking metallic tension riser building extreme dread, sudden explosive cinematic thud slam followed by dead vacuum silence, shocking trailer cut",
+        "duration": 5.0,
+        "prompt_influence": 0.5
+    },
+    "trailer_dissonant_warp_stinger": {
+        "category": "trailer_transitions",
+        "title": "Потусторонний варп-стингер и акустический взрыв",
+        "description": "Устрашающий низкочастотный звуковой удар с диссонирующим скрежетом искажённого эфира для жутких сюжетных твистов",
+        "prompt": "Terrifying low-frequency sonic boom stinger, discordant dissonant metallic screech, heavy analogue distortion, grimdark cosmic horror scene transition",
+        "duration": 4.0,
+        "prompt_influence": 0.45
+    },
+    "trailer_pneumatic_gate_crush": {
+        "category": "trailer_transitions",
+        "title": "Схлопывание пневмо-шлюза и ударная волна",
+        "description": "Внезапное захлопывание тяжёлой бронедвери со свистом сжатого пара, сотрясением корпуса и глухим металлическим грохотом",
+        "prompt": "Violent pneumatic blast door slamming shut with crushing metallic thud, hissing steam release, heavy bass shockwave, sci-fi bunker impact",
+        "duration": 3.5,
+        "prompt_influence": 0.45
+    },
+    "trailer_reese_bass_distortion_hit": {
+        "category": "trailer_transitions",
+        "title": "Перегруженный Риз-бас и глитч-удар",
+        "description": "Агрессивный перегруженный удар риз-баса с треском высоковольтных искр и аналоговым перегрузом для кульминационных моментов",
+        "prompt": "Aggressive distorted reese bass hit, electrical transformer overload sparks, punchy cinematic trailer downbeat impact, dark aggressive sound design",
+        "duration": 4.0,
+        "prompt_influence": 0.45
+    },
+
+    # ------------------ 5. ВАРИАЦИИ КИНО-БРААМОВ И СУБ-ДРОПОВ (BRAAMS & DOOM HORNS) ------------------
+    "braam_titan_warhorn_doom": {
+        "category": "trailer_transitions",
+        "title": "Вой боевого рога Титана (War Titan Doom Horn)",
+        "description": "Апокалиптический рёв боевого рога шагающего титана над разрушенным мегаполисом с сокрушительным суб-басовым давлением",
+        "prompt": "Terrifying apocalyptic war titan horn braam, deep dissonant brass roar reverberating across ruined metallic megacity, crushing sub bass pressure, grimdark warhorn of doom",
+        "duration": 5.5,
+        "prompt_influence": 0.45
+    },
+    "braam_analog_synth_pitch_drop": {
+        "category": "trailer_transitions",
+        "title": "Аналоговый муг-браам со сползанием тона (Blade Runner Sub-Drop)",
+        "description": "Глубокий аналоговый синтезаторный браам с тёплым перегруженным пилообразным басом, медленно сползающим в инфразвуковую бездну",
+        "prompt": "Deep cinematic analog synthesizer brass braam, distorted warm sawtooth bass growl slowly pitch-bending downwards into subsonic abyss, massive trailer impact",
+        "duration": 5.0,
+        "prompt_influence": 0.45
+    },
+    "braam_choir_infernal_drone": {
+        "category": "trailer_transitions",
+        "title": "Инфернальный хоровой браам (Choir of the Damned)",
+        "description": "Зловещий хор обречённых, сливающийся с мощнейшим низким духовым браамом и соборной реверберацией для шоковых раскрытий сюжета",
+        "prompt": "Haunting demonic vocal choir chord colliding with massive low brass braam, sub harmonic vibration, cavernous cathedral reverb, dread cinematic reveal hit",
+        "duration": 5.0,
+        "prompt_influence": 0.5
+    },
+    "braam_reactor_turbine_overdrive": {
+        "category": "trailer_transitions",
+        "title": "Механо-браам перегрузки реактора (Turbine Overdrive)",
+        "description": "Тяжёлый перегруженный спад турбины реактора, индустриальный суб-дроп со скрежетом вращающегося ротора и аналоговым насыщением",
+        "prompt": "Heavy distorted industrial reactor turbine wind-down braam, grinding metallic low-end shockwave, overdriven sub drop with analog tape saturation",
+        "duration": 4.5,
+        "prompt_influence": 0.45
+    },
+    "braam_seismic_tectonic_rumble": {
+        "category": "trailer_transitions",
+        "title": "Сейсмический тектонический браам с долгим хвостом (Tectonic Rumble)",
+        "description": "Гигантская 25-герцовая волна тектонического давления, стонущие переборки крейсера и эпическое сверхнизкое затухание",
+        "prompt": "Gigantic seismic tectonic rumble braam, deep 25Hz sub bass pressure wave, distant groaning iron bulkheads, ultra-wide cinematic low end decay",
+        "duration": 6.0,
+        "prompt_influence": 0.45
+    },
+    "braam_triple_pulse_staccato": {
+        "category": "trailer_transitions",
+        "title": "Тройной пульсирующий стаккато-браам (Triple Pulse Slam)",
+        "description": "Три агрессивных ритмичных стаккато-удара низких медных духовых с плотным компрессированным саб-басом для динамичных трейлерных акцентов",
+        "prompt": "Three aggressive rhythmic staccato low brass braam pulses, cinematic blockbuster trailer hit, punchy compressed sub bass impacts with metallic tail",
+        "duration": 4.5,
+        "prompt_influence": 0.5
+    },
+
+    # ------------------ 6. МЕЛОДИЧНЫЕ И НАПРЯЖЁННЫЕ ПЕРЕХОДЫ (MELODIC SUSPENSE & SWELLS) ------------------
+    "melodic_tension_french_horn_minor_swell": {
+        "category": "trailer_transitions",
+        "title": "Трагический аккорд валторн и суб-дроп (French Horn Minor Swell)",
+        "description": "Мелодичный трагический наплыв валторн и тромбонов в минорном ладу, нарастающее благородное напряжение с глубоким тёплым басовым спадом",
+        "prompt": "Melodic emotional brass swell, mournful minor-key French horn chords building profound cinematic tension and dread, resolving into deep warm sub bass",
+        "duration": 5.5,
+        "prompt_influence": 0.45
+    },
+    "melodic_tension_piano_decay_sub_swell": {
+        "category": "trailer_transitions",
+        "title": "Одинокая нота рояля и саспенс-гул (Haunting Piano Note of Doom)",
+        "description": "Одинокая высокая клавиша рояля с бесконечной реверберацией в пустом соборе, под которой набухает тревожный мелодичный виолончельный гул",
+        "prompt": "Solitary haunting high piano note decaying in a massive dark hall, subtle weeping cello undertone, swelling into a tense melodic brass drone with deep emotional weight",
+        "duration": 6.0,
+        "prompt_influence": 0.45
+    },
+    "melodic_tension_dark_cello_bend_braam": {
+        "category": "trailer_transitions",
+        "title": "Виолончельный изгиб и нарастающий саспенс (Dark Cello Pitch Bend)",
+        "description": "Экспрессивная акустическая виолончель, играющая плачущую напряжённую тему с медленным диссонирующим изгибом ноты и нарастанием в глубокий резонанс",
+        "prompt": "Expressive dark acoustic cello playing a tense weeping melody, slow dissonant pitch bend, rising cinematic strings building anxious suspense into a deep resonant bass impact",
+        "duration": 5.5,
+        "prompt_influence": 0.5
+    },
+    "melodic_tension_mournful_vocal_drone": {
+        "category": "trailer_transitions",
+        "title": "Заупокойный вокализ и тревожный дрон (Mournful Vocal Lament)",
+        "description": "Завораживающий печальный сольный женский/хоровой вокализ в древнем миноре, плачущий напев с богатым аналоговым эхом и тревожным суб-басовым наплывом",
+        "prompt": "Haunting ethereal solo vocal lament in ancient minor scale, weeping melodic drone with rich analog reverb, beautiful yet terrifying cinematic tension swell",
+        "duration": 6.0,
+        "prompt_influence": 0.45
+    },
+    "melodic_tension_cathedral_bell_drone": {
+        "category": "trailer_transitions",
+        "title": "Похоронный колокол и минорный пассаж (Cathedral Bell of Doom)",
+        "description": "Торжественный удар колокола в ре-миноре с богатыми гармониками, расплывающийся в медленный эмоциональный пэд низких струнных и саб-басовый пульс",
+        "prompt": "Solemn cathedral bell strike ringing in D-minor with rich melodic harmonics, layered over a slow emotional low-string pad and warm sub-bass pulse",
+        "duration": 6.0,
+        "prompt_influence": 0.45
+    },
+    "melodic_tension_blade_runner_synth_drop": {
+        "category": "trailer_transitions",
+        "title": "Винтажный синт-лид саспенса (Blade Runner Melodic Lead)",
+        "description": "Ностальгический аналоговый синтезатор в стиле Вангелиса, играющий щемящую медленную фразу с вибрато, нарастающую в тревоге и падающую в глубокий суб-бас",
+        "prompt": "Emotive vintage synthesizer lead playing a poignant slow minor melody, expressive vibrato, cinematic Blade Runner style suspense swell landing on an earth-shaking sub drop",
+        "duration": 5.5,
+        "prompt_influence": 0.45
     }
 }
 
@@ -135,7 +285,7 @@ def main():
     parser = argparse.ArgumentParser(description="ElevenLabs SFX Generator")
     parser.add_argument("--key", type=str, help="ElevenLabs API Key (опционально)")
     parser.add_argument("--preset", type=str, help="Имя конкретного пресета (или all для всех)", default="all")
-    parser.add_argument("--category", type=str, choices=["chaos_monsters", "concert_crowd", "all"], default="all")
+    parser.add_argument("--category", type=str, choices=["chaos_monsters", "concert_crowd", "trailer_transitions", "all"], default="all")
     parser.add_argument("--out-dir", type=str, default=r"media\audio\sfx")
     parser.add_argument("--list", action="store_true", help="Показать список всех пресетов и выйти")
     args = parser.parse_args()

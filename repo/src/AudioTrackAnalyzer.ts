@@ -32,9 +32,9 @@ class AudioTrackAnalyzerService {
     desolate_cry: {
       trackKey: 'desolate_cry',
       trackTitle: 'Desolate Cry in the Distortion',
-      logoDisperseTime: 17.5,
-      logoFadeOutTime: 21.5,
-      theatricalPauseStart: 21.5,
+      logoDisperseTime: 19.5,
+      logoFadeOutTime: 23.5,
+      theatricalPauseStart: 23.5,
       valleyTime: 24.5,
       crescendoStartTime: 25.5,
       titleDropTime: 27.0,      // Slow atmospheric emergence begins at 27.0s
@@ -49,15 +49,15 @@ class AudioTrackAnalyzerService {
     titan_forge: {
       trackKey: 'titan_forge',
       trackTitle: 'Titan Forge',
-      logoDisperseTime: 15.5,
-      logoFadeOutTime: 19.5,
-      theatricalPauseStart: 19.5,
-      valleyTime: 21.0,
+      logoDisperseTime: 18.0,
+      logoFadeOutTime: 21.0,
+      theatricalPauseStart: 21.0,
+      valleyTime: 21.5,
       crescendoStartTime: 22.8,
       titleDropTime: 24.0,      // Heavy percussive drum impact drops title at 24.0s
-      titleFadeOutTime: 30.5,   // Main logo dissolves into void
-      cycleStartTime: 32.5,     // "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" appears in center after main logo dissolves
-      cycleFadeOutTime: 39.5,   // "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" dissolves into void
+      titleFadeOutTime: 33.5,   // Main logo dissolves into void (allows 4s reading after 29.5s typing)
+      cycleStartTime: 35.5,     // "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" appears in center after main logo dissolves
+      cycleFadeOutTime: 40.5,   // "ЧЕТЫРНАДЦАТЫЙ ЦИКЛ" dissolves into void
       introEndTime: 45.5,       // Drum section concludes and intensity drops to calm valley at 45.5s
       valleyEnergy: 0.080,
       dropEnergy: 0.371,
