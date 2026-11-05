@@ -268,11 +268,18 @@ export const AVAILABLE_TRACK_OPTIONS: TrackOption[] = [
     description: 'Трагический диссонирующий спад струнных'
   },
   {
+    key: 'dread_10_predator_nightmare_drop_52s',
+    name: '💀 Кошмар Хищника (Nightmare Drop) 52s',
+    category: 'dread',
+    durationSec: 52.0,
+    description: 'Длинный эмбиент напряжения — клаустрофобный дроп ужаса и медленная агония'
+  },
+  {
     key: 'dread_11_morlock_war_march_climax_50s',
-    name: '💀 Марш Морлоков (Кульминация Войны)',
+    name: '💀 Марш Морлоков (Кульминация Войны) 50s',
     category: 'dread',
     durationSec: 50.0,
-    description: 'Тяжелый марш 90-х, сокрушительные наковальни и басовый дроп для жестких сцен'
+    description: 'Длинный эмбиент напряжения — тяжелый марш 90-х, сокрушительные наковальни и басовый дроп'
   },
 
   // --- 🕊️ ДОБРАЯ МУЗЫКА И ОБЛЕГЧЕНИЕ (PEACE / RESOLUTION) ---
@@ -437,10 +444,10 @@ const DEFAULT_INITIAL_CUES: Record<string, PremiereCue[]> = {
       id: 'cue_act4_morlock_march',
       actId: 'act_4_engine',
       type: 'dread',
-      cueKey: 'trailer_industrial_anvil_slam',
-      title: '💀 Индустриальный удар наковальни (Биокатастрофа 22ГБ)',
-      startTime: 4.5,
-      duration: 8.0,
+      cueKey: 'braam_analog_synth_pitch_drop',
+      title: '💀 Цифровой наркотик (Аналоговый Синт)',
+      startTime: 23.9,
+      duration: 10.0,
       duckAmbientTo: 0.005
     },
     {
@@ -451,7 +458,7 @@ const DEFAULT_INITIAL_CUES: Record<string, PremiereCue[]> = {
       title: '🕊️ Добрая передышка Хухро (240 сек)',
       startTime: 60.0,
       duration: 30.0,
-      duckAmbientTo: 0.0
+      duckAmbientTo: 0
     }
   ],
   act_5_clientarchs: [
