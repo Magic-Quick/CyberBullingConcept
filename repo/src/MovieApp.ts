@@ -643,6 +643,7 @@ export class MovieApp {
 
 
   private _videoElement: HTMLVideoElement | null = null;
+  private _videoPlayPending = false;
 
 
 
@@ -10029,6 +10030,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
       this._cosmicScene.visible = false;
+    this._cosmicScene.alpha = 0;
+    this._cosmicScene.setShipVisible(false);
 
 
 
@@ -10105,6 +10108,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
       this._cosmicScene.visible = false;
+    this._cosmicScene.alpha = 0;
+    this._cosmicScene.setShipVisible(false);
 
 
 
@@ -10207,6 +10212,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
       this._cosmicScene.visible = false;
+    this._cosmicScene.alpha = 0;
+    this._cosmicScene.setShipVisible(false);
 
 
 
@@ -11366,6 +11373,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
     this._cosmicScene.visible = false;
+    this._cosmicScene.alpha = 0;
+    this._cosmicScene.setShipVisible(false);
 
 
 
@@ -11978,41 +11987,23 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
       // Stars & Cosmic video ignite!
-
-
+      const starsFadeIn = Math.min(1, Math.max(0, (t - discFadeEnd) / 1.5));
+      if (this._cosmicScene) {
+        this._cosmicScene.visible = true;
+        this._cosmicScene.setShipVisible(false);
+        this._cosmicScene.alpha = starsFadeIn;
+      }
 
       if (this._videoElement) {
-
-
-
-        const vidFadeIn = Math.min(1, mt / 1.5);
-
-
-
-        this._videoElement.style.opacity = String(vidFadeIn);
-
-
-
-        if (this._isPlaying && this._videoElement.paused) {
-
-
-
-          this._videoElement.play().catch(() => {});
-
-
-
+        this._videoElement.style.opacity = String(starsFadeIn);
+        if (this._isPlaying && this._videoElement.paused && !this._videoPlayPending) {
+          this._videoPlayPending = true;
+          this._videoElement.play().catch(() => {}).finally(() => {
+            this._videoPlayPending = false;
+          });
         } else if (!this._isPlaying && !this._videoElement.paused) {
-
-
-
           this._videoElement.pause();
-
-
-
         }
-
-
-
       }
 
 
@@ -13277,9 +13268,11 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
   public update(dt: number): void {
 
-
-
     AmbientManager.update(dt);
+
+    if (this._cosmicScene && this._cosmicScene.visible) {
+      this._cosmicScene.update(dt);
+    }
 
 
 

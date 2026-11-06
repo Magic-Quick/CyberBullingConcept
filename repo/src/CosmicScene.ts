@@ -29,6 +29,7 @@ export class CosmicScene extends Container {
     this._nebulaContainer = new Container();
     this._starContainer = new Container();
     this._shipContainer = new Container();
+    this._shipContainer.visible = false;
 
     this.addChild(this._nebulaContainer);
     this.addChild(this._starContainer);
@@ -53,14 +54,18 @@ export class CosmicScene extends Container {
       const isAmber = Math.random() < 0.15;
       const color = isCyan ? 0x90e0ef : isAmber ? 0xffb703 : 0xffffff;
 
+      const x = Math.random() * 2000 - 1000;
+      const y = Math.random() * 2000 - 1000;
       g.circle(0, 0, size);
       g.fill({ color, alpha: 1 });
+      g.position.set(this._width / 2 + x, this._height / 2 + y);
+      g.alpha = baseAlpha;
       this._starContainer.addChild(g);
 
       this._stars.push({
         g,
-        x: Math.random() * 2000 - 1000,
-        y: Math.random() * 2000 - 1000,
+        x,
+        y,
         z,
         size,
         baseAlpha,
@@ -140,5 +145,9 @@ export class CosmicScene extends Container {
 
   public setWarp(warp: boolean): void {
     this._isWarping = warp;
+  }
+
+  public setShipVisible(visible: boolean): void {
+    this._shipContainer.visible = visible;
   }
 }
