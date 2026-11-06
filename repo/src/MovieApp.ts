@@ -3542,10 +3542,8 @@ export class MovieApp {
 
 
       } else if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
-        if (isDevMode()) {
-          e.preventDefault();
-          this.toggleDevAudioDirector();
-        }
+        e.preventDefault();
+        this.toggleDevAudioDirector();
 
 
 
@@ -7506,7 +7504,6 @@ export class MovieApp {
 
 
   public toggleDevAudioDirector(): void {
-    if (!isDevMode() && !PremiereAudioDirector.getInstance().isOpen()) return;
     SFX.playClick();
     PremiereAudioDirector.getInstance().toggle();
   }
@@ -8511,7 +8508,7 @@ export class MovieApp {
 
 
     this._devGearBtn.visible = false;
-    this._uiContainer.addChild(this._devGearBtn);
+    // this._uiContainer.addChild(this._devGearBtn); // Completely disabled so nothing blocks the screen
 
 
 

@@ -1763,14 +1763,11 @@ export class PremiereAudioDirector {
     `;
     document.head.appendChild(style);
 
-    // 2. Create Floating Toggle Button (Dev Mode Only)
+    // 2. Floating Toggle Button disabled to prevent blocking player controls!
+    // Open/close is controlled strictly via hotkey 'D' / 'В' or console.
     this._toggleButton = document.createElement('button');
     this._toggleButton.id = 'premiere-audio-director-btn';
-    this._toggleButton.innerHTML = `🎚️ РЕЖИССУРА ЗВУКА (D)`;
-    this._toggleButton.onclick = () => this.toggle();
-    if (isDevMode()) {
-      document.body.appendChild(this._toggleButton);
-    }
+    this._toggleButton.style.display = 'none';
 
     // 3. Create Main Timeline Container
     this._container = document.createElement('div');
@@ -2705,7 +2702,6 @@ export class PremiereAudioDirector {
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) return;
 
       if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
-        if (!isDevMode() && !this._isOpen) return;
         e.preventDefault();
         this.toggle();
       } else if (e.key === 'Escape' && this._isOpen) {
@@ -3197,7 +3193,6 @@ export class PremiereAudioDirector {
   // PUBLIC CONTROLS & TOAST
   // ==========================================================================
   public open(): void {
-    if (!isDevMode()) return;
     this._isOpen = true;
     this._container.classList.add('open');
     if (this._toggleButton) this._toggleButton.style.display = 'none';
@@ -3207,7 +3202,7 @@ export class PremiereAudioDirector {
   public close(): void {
     this._isOpen = false;
     this._container.classList.remove('open');
-    if (this._toggleButton && isDevMode()) this._toggleButton.style.display = 'flex';
+    if (this._toggleButton) this._toggleButton.style.display = 'none';
     this._closeModal();
   }
 
@@ -3215,7 +3210,6 @@ export class PremiereAudioDirector {
     if (this._isOpen) {
       this.close();
     } else {
-      if (!isDevMode()) return;
       this.open();
     }
   }
