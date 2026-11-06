@@ -15,6 +15,7 @@
  */
 
 import { AmbientManager } from './AmbientManager';
+import { getAudioUrl } from './assetsManager';
 import { STORY_ACTS } from './storyData';
 import { NARRATOR_CUTS, NarratorShotCut } from './narratorShotSequence';
 import { CONCERT_SEQUENCE_CUTS } from './concertSequence';
@@ -29,18 +30,19 @@ const INTRO_SHOTS: { time: number; label: string; type?: string }[] = [
 export interface PremiereCue {
   id: string;
   actId: string;
-  type: 'dread' | 'peace' | 'ambient';
+  type: 'dread' | 'peace' | 'ambient' | 'screamer';
   cueKey: string;
   title: string;
   startTime: number;
   duration: number;
   duckAmbientTo?: number;
+  customGain?: number;
 }
 
 export interface TrackOption {
   key: string;
   name: string;
-  category: 'dread' | 'peace' | 'ambient';
+  category: 'dread' | 'peace' | 'ambient' | 'screamer';
   durationSec: number;
   description: string;
 }
@@ -268,6 +270,27 @@ export const AVAILABLE_TRACK_OPTIONS: TrackOption[] = [
     description: 'Трагический диссонирующий спад струнных'
   },
   {
+    key: 'dread_03_predator_instant_terror_drop_25s',
+    name: '💀 Мгновенный Дроп Ужаса (Predator Terror) 25s',
+    category: 'dread',
+    durationSec: 25.0,
+    description: 'Эмбиент напряжения — инстантный обрыв в клаустрофобную тишину хищника'
+  },
+  {
+    key: 'dread_04_predator_chittering_nightmare_25s',
+    name: '💀 Хитиновый Кошмар (Chittering Nightmare) 25s',
+    category: 'dread',
+    durationSec: 25.0,
+    description: 'Эмбиент напряжения — скрежет и скрип биоформы в темноте'
+  },
+  {
+    key: 'dread_05_rust_and_bone_maximum_grimdark_25s',
+    name: '💀 Ржавчина и Кость (Maximum Grimdark) 25s',
+    category: 'dread',
+    durationSec: 25.0,
+    description: 'Эмбиент напряжения — максимальный гримдарк, индустриальное запустение и отчаяние'
+  },
+  {
     key: 'dread_10_predator_nightmare_drop_52s',
     name: '💀 Кошмар Хищника (Nightmare Drop) 52s',
     category: 'dread',
@@ -378,160 +401,455 @@ export const AVAILABLE_TRACK_OPTIONS: TrackOption[] = [
   }
 ];
 
+// =========================================================================
+// АУДИО-КОНФИГУРАЦИЯ ДЛЯ АКТА: act_4_engine (Длительность: 161.31s)
+// Сгенерировано в Adobe Premiere Audio Director • Playbox Studios
+// =========================================================================
+export const ACT_4_ENGINE_AUDIO_CUES = [
+  {
+    "id": "cue_act4_morlock_march",
+    "actId": "act_4_engine",
+    "type": "dread",
+    "cueKey": "dread_10_predator_nightmare_drop_52s",
+    "title": "💀 Кошмар Хищника (Nightmare Drop) 52s",
+    "startTime": 4.5,
+    "duration": 50,
+    "duckAmbientTo": 0.005
+  },
+  {
+    "id": "cue_act4_khukhro_peace",
+    "actId": "act_4_engine",
+    "type": "peace",
+    "cueKey": "peace_01_pin_drop_silence_pure_calm_25s",
+    "title": "🕊️ Добрая передышка Хухро (240 сек)",
+    "startTime": 103.6,
+    "duration": 30,
+    "duckAmbientTo": 0
+  }
+];
+
+// =========================================================================
+// АУДИО-КОНФИГУРАЦИЯ ДЛЯ АКТА: act_8_outro (Длительность: 53.42s)
+// Сгенерировано в Adobe Premiere Audio Director • Playbox Studios
+// =========================================================================
+export const ACT_8_OUTRO_AUDIO_CUES: PremiereCue[] = [
+  {
+    id: "cue_act8_outro_terror",
+    actId: "act_8_outro",
+    type: "dread",
+    cueKey: "trailer_braam_sub_drop",
+    title: "💀 Финальный слепой старт (Саб-Дроп Брам)",
+    startTime: 48.9,
+    duration: 4.5,
+    duckAmbientTo: 0.005
+  }
+];
+
 // ============================================================================
 // БАЗОВЫЕ НАЧАЛЬНЫЕ ОТРЕЗКИ ПО АКТАМ
 // ============================================================================
 const DEFAULT_INITIAL_CUES: Record<string, PremiereCue[]> = {
-  intro_playbox: [],
-  act_1_convent: [
+  "intro_playbox": [],
+  "prologue_space": [
     {
-      id: 'cue_act1_drug',
-      actId: 'act_1_convent',
-      type: 'dread',
-      cueKey: 'braam_analog_synth_pitch_drop',
-      title: '💀 Цифровой наркотик (Аналоговый Синт)',
-      startTime: 17.14,
-      duration: 10.0,
-      duckAmbientTo: 0.005
+      "id": "cue_prologue_warp_daemon_screamer",
+      "actId": "prologue_space",
+      "type": "screamer",
+      "cueKey": "trailer_dissonant_warp_stinger",
+      "title": "⚡ Скример: Ледяной шепот духа полишинга",
+      "startTime": 175.74,
+      "duration": 5,
+      "duckAmbientTo": 1,
+      "customGain": 1.25
     },
     {
-      id: 'cue_act1_terror',
-      actId: 'act_1_convent',
-      type: 'dread',
-      cueKey: 'trailer_tension_riser_to_brutal_cut',
-      title: '💀 Нагнетающий Райзер к обрыву (Конверсия)',
-      startTime: 45.58,
-      duration: 7.5,
-      duckAmbientTo: 0.005
+      "id": "cue_prologue_shutters_slam_screamer",
+      "actId": "prologue_space",
+      "type": "screamer",
+      "cueKey": "trailer_pneumatic_gate_crush",
+      "title": "⚡ Скример: Бронированные жалюзи башни",
+      "startTime": 211.06,
+      "duration": 4.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.3
     }
   ],
-  act_2_sarcophagus: [
+  "act_1_convent": [
     {
-      id: 'cue_act2_chittering',
-      actId: 'act_2_sarcophagus',
-      type: 'dread',
-      cueKey: 'trailer_dissonant_warp_stinger',
-      title: '💀 Диссонирующий варп-стингер (Даниал 3A)',
-      startTime: 25.14,
-      duration: 6.5,
-      duckAmbientTo: 0.005
-    }
-  ],
-  act_3_timemachine: [
-    {
-      id: 'cue_act3_peace_edik',
-      actId: 'act_3_timemachine',
-      type: 'peace',
-      cueKey: 'peace_03_pin_drop_silence_gentle_resolution_25s',
-      title: '🕊️ Нежное разрешение (Благодать Эдика)',
-      startTime: 108.62,
-      duration: 25.0,
-      duckAmbientTo: 0.0
+      "id": "cue_act1_drug",
+      "actId": "act_1_convent",
+      "type": "dread",
+      "cueKey": "braam_analog_synth_pitch_drop",
+      "title": "💀 Цифровой наркотик (Аналоговый Синт)",
+      "startTime": 17.14,
+      "duration": 10,
+      "duckAmbientTo": 0.005
     },
     {
-      id: 'cue_act3_chronoreactor',
-      actId: 'act_3_timemachine',
-      type: 'dread',
-      cueKey: 'braam_reactor_turbine_overdrive',
-      title: '💀 Взвыв хронореактора (Турбина Overdrive)',
-      startTime: 112.00,
-      duration: 8.0,
-      duckAmbientTo: 0.005
-    }
-  ],
-  act_4_engine: [
-    {
-      id: 'cue_act4_morlock_march',
-      actId: 'act_4_engine',
-      type: 'dread',
-      cueKey: 'braam_analog_synth_pitch_drop',
-      title: '💀 Цифровой наркотик (Аналоговый Синт)',
-      startTime: 23.9,
-      duration: 10.0,
-      duckAmbientTo: 0.005
+      "id": "cue_act1_zombie_screamer",
+      "actId": "act_1_convent",
+      "type": "screamer",
+      "cueKey": "trailer_reese_bass_distortion_hit",
+      "title": "⚡ Скример: Гуманоид в гипнозе смартфона",
+      "startTime": 68,
+      "duration": 5.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.3
     },
     {
-      id: 'cue_act4_khukhro_peace',
-      actId: 'act_4_engine',
-      type: 'peace',
-      cueKey: 'peace_01_pin_drop_silence_pure_calm_25s',
-      title: '🕊️ Добрая передышка Хухро (240 сек)',
-      startTime: 60.0,
-      duration: 30.0,
-      duckAmbientTo: 0
+      "id": "cue_act1_fleet_salvo_screamer",
+      "actId": "act_1_convent",
+      "type": "screamer",
+      "cueKey": "braam_titan_warhorn_doom",
+      "title": "⚡ Скример: Залпы батарей правок",
+      "startTime": 87.5,
+      "duration": 6,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
     }
   ],
-  act_5_clientarchs: [
+  "act_2_sarcophagus": [
     {
-      id: 'cue_act5_invasion_terror',
-      actId: 'act_5_clientarchs',
-      type: 'dread',
-      cueKey: 'trailer_reese_bass_distortion_hit',
-      title: '💀 Перегруженный Рис-Бас (Вторжение Правконосцев)',
-      startTime: 97.96,
-      duration: 6.0,
-      duckAmbientTo: 0.005
+      "id": "cue_act2_terror_drop",
+      "actId": "act_2_sarcophagus",
+      "type": "dread",
+      "cueKey": "dread_03_predator_instant_terror_drop_25s",
+      "title": "💀 Мгновенный Дроп Ужаса (Predator Terror) 25s",
+      "startTime": 45.58,
+      "duration": 25,
+      "duckAmbientTo": 0.005
     },
     {
-      id: 'cue_act5_nightmare_drop',
-      actId: 'act_5_clientarchs',
-      type: 'dread',
-      cueKey: 'braam_seismic_tectonic_rumble',
-      title: '💀 Сейсмический грохот (Кошмар Правконосцев)',
-      startTime: 208.70,
-      duration: 12.0,
-      duckAmbientTo: 0.005
-    }
-  ],
-  act_6_punishment: [
-    {
-      id: 'cue_act6_punishment_march',
-      actId: 'act_6_punishment',
-      type: 'dread',
-      cueKey: 'braam_titan_warhorn_doom',
-      title: '💀 Горн Судного Дня (Приговор Трибунала)',
-      startTime: 53.40,
-      duration: 8.0,
-      duckAmbientTo: 0.005
-    }
-  ],
-  act_6_reward: [
-    {
-      id: 'cue_act6_cookie_grace',
-      actId: 'act_6_reward',
-      type: 'peace',
-      cueKey: 'peace_08_pin_drop_silence_reward_grace_60s',
-      title: '🕊️ Печенька благодати (Высшая милость)',
-      startTime: 0.0,
-      duration: 60.0,
-      duckAmbientTo: 0.0
+      "id": "cue_act2_space_freeze_screamer",
+      "actId": "act_2_sarcophagus",
+      "type": "screamer",
+      "cueKey": "trailer_braam_sub_drop",
+      "title": "⚡ Скример: Совет директоров выпрыгивает в шлюз",
+      "startTime": 45.58,
+      "duration": 6.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.3
     },
     {
-      id: 'cue_act6_needle_drop',
-      actId: 'act_6_reward',
-      type: 'dread',
-      cueKey: 'trailer_pneumatic_gate_crush',
-      title: '⚡ Сервисная игла пневмодозатора (Пневмо-краш)',
-      startTime: 60.18,
-      duration: 6.0,
-      duckAmbientTo: 0.005
+      "id": "cue_act2_mickey_reveal_screamer",
+      "actId": "act_2_sarcophagus",
+      "type": "screamer",
+      "cueKey": "trailer_industrial_anvil_slam",
+      "title": "💀 Индустриальная Наковальня (Anvil Slam)",
+      "startTime": 174.27,
+      "duration": 3.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    },
+    {
+      "id": "cue_1793975211161",
+      "actId": "act_2_sarcophagus",
+      "type": "dread",
+      "cueKey": "dread_10_predator_nightmare_drop_52s",
+      "title": "💀 Кошмар Хищника (Nightmare Drop) 52s",
+      "startTime": 136.5,
+      "duration": 48,
+      "duckAmbientTo": 0.005,
+      "customGain": 1
+    },
+    {
+      "id": "cue_1793975454323",
+      "actId": "act_2_sarcophagus",
+      "type": "dread",
+      "cueKey": "dread_10_predator_nightmare_drop_52s",
+      "title": "💀 Кошмар Хищника (Nightmare Drop) 52s",
+      "startTime": 184.9,
+      "duration": 25.1,
+      "duckAmbientTo": 0.005,
+      "customGain": 1
     }
   ],
-  act_8_outro: [
+  "act_3_timemachine": [
     {
-      id: 'cue_act8_outro_terror',
-      actId: 'act_8_outro',
-      type: 'dread',
-      cueKey: 'trailer_braam_sub_drop',
-      title: '💀 Финальный слепой старт (Саб-Дроп Брам)',
-      startTime: 30.62,
-      duration: 8.0,
-      duckAmbientTo: 0.005
+      "id": "cue_act3_corpse_screamer",
+      "actId": "act_3_timemachine",
+      "type": "screamer",
+      "cueKey": "trailer_tension_riser_to_brutal_cut",
+      "title": "⚡ Скример: Застывший кодер со шлангом на полу",
+      "startTime": 54.5,
+      "duration": 6.5,
+      "duckAmbientTo": 1.0,
+      "customGain": 1.3
+    },
+    {
+      "id": "cue_act3_peace_edik",
+      "actId": "act_3_timemachine",
+      "type": "peace",
+      "cueKey": "peace_03_pin_drop_silence_gentle_resolution_25s",
+      "title": "🕊️ Нежное разрешение (Благодать Эдика)",
+      "startTime": 108.62,
+      "duration": 25.0,
+      "duckAmbientTo": 0.0
+    },
+    {
+      "id": "cue_act3_chronoreactor",
+      "actId": "act_3_timemachine",
+      "type": "dread",
+      "cueKey": "braam_reactor_turbine_overdrive",
+      "title": "💀 Взвыв хронореактора (Турбина Overdrive)",
+      "startTime": 112.0,
+      "duration": 8.0,
+      "duckAmbientTo": 0.005
     }
-  ]
+  ],
+  "act_4_engine": [
+    {
+      "id": "cue_act4_morlock_march",
+      "actId": "act_4_engine",
+      "type": "dread",
+      "cueKey": "dread_10_predator_nightmare_drop_52s",
+      "title": "💀 Кошмар Хищника (Nightmare Drop) 52s",
+      "startTime": 4.5,
+      "duration": 50,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act4_teeth_horror_screamer",
+      "actId": "act_4_engine",
+      "type": "screamer",
+      "cueKey": "trailer_industrial_anvil_slam",
+      "title": "⚡ Скример: Оскал человеческих зубов и плесени",
+      "startTime": 10.2,
+      "duration": 5.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    },
+    {
+      "id": "cue_act4_facehuggers_screamer",
+      "actId": "act_4_engine",
+      "type": "screamer",
+      "cueKey": "trailer_reese_bass_distortion_hit",
+      "title": "⚡ Скример: Личинки на чипах — 346 мутантов",
+      "startTime": 25.14,
+      "duration": 5,
+      "duckAmbientTo": 1,
+      "customGain": 1.3
+    },
+    {
+      "id": "cue_act4_khukhro_peace",
+      "actId": "act_4_engine",
+      "type": "peace",
+      "cueKey": "peace_03_pin_drop_silence_gentle_resolution_25s",
+      "title": "🕊️ Нежное разрешение (Благодать Эдика)",
+      "startTime": 135.8,
+      "duration": 25.5,
+      "duckAmbientTo": 0
+    },
+    {
+      "id": "cue_1793975649566",
+      "actId": "act_4_engine",
+      "type": "screamer",
+      "cueKey": "melodic_tension_dark_cello_bend_braam",
+      "title": "💀 Темный Бенд Виолончели",
+      "startTime": 131.1,
+      "duration": 8,
+      "duckAmbientTo": 1,
+      "customGain": 1.25
+    },
+    {
+      "id": "cue_1793975649568",
+      "actId": "act_4_engine",
+      "type": "screamer",
+      "cueKey": "melodic_tension_dark_cello_bend_braam",
+      "title": "💀 Темный Бенд Виолончели",
+      "startTime": 131.1,
+      "duration": 8,
+      "duckAmbientTo": 1,
+      "customGain": 1.25
+    }
+  ],
+  "act_5_clientarchs": [
+    {
+      "id": "cue_act5_siege_drop",
+      "actId": "act_5_clientarchs",
+      "type": "dread",
+      "cueKey": "dread_05_rust_and_bone_maximum_grimdark_25s",
+      "title": "💀 Ржавчина и Кость (Осада периметра) 25s",
+      "startTime": 0,
+      "duration": 25,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act5_autopsy_screamer",
+      "actId": "act_5_clientarchs",
+      "type": "screamer",
+      "cueKey": "trailer_industrial_anvil_slam",
+      "title": "💀 Индустриальная Наковальня (Anvil Slam)",
+      "startTime": 97.96,
+      "duration": 6,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    },
+    {
+      "id": "cue_act5_invasion_terror",
+      "actId": "act_5_clientarchs",
+      "type": "dread",
+      "cueKey": "dread_03_predator_instant_terror_drop_25s",
+      "title": "💀 Мгновенный Дроп Ужаса (Вторжение Правконосцев) 25s",
+      "startTime": 97.96,
+      "duration": 25,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act5_morlock_march",
+      "actId": "act_5_clientarchs",
+      "type": "dread",
+      "cueKey": "dread_11_morlock_war_march_climax_50s",
+      "title": "💀 Марш Морлоков (Климакс Правконосцев) 50s",
+      "startTime": 140.72,
+      "duration": 50,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act5_mavis_crawl_screamer",
+      "actId": "act_5_clientarchs",
+      "type": "screamer",
+      "cueKey": "braam_seismic_tectonic_rumble",
+      "title": "⚡ Скример: Дева Мэвис ползёт на культях",
+      "startTime": 208.7,
+      "duration": 7.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.4
+    },
+    {
+      "id": "cue_act5_nightmare_drop",
+      "actId": "act_5_clientarchs",
+      "type": "dread",
+      "cueKey": "dread_10_predator_nightmare_drop_52s",
+      "title": "💀 Кошмар Хищника (Судный Штурм) 52s",
+      "startTime": 208.7,
+      "duration": 52,
+      "duckAmbientTo": 0.005
+    }
+  ],
+  "act_6_punishment": [
+    {
+      "id": "cue_act6_rust_bone",
+      "actId": "act_6_punishment",
+      "type": "dread",
+      "cueKey": "dread_10_predator_nightmare_drop_52s",
+      "title": "💀 Кошмар Хищника (Nightmare Drop) 52s",
+      "startTime": 25.44,
+      "duration": 28.1,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act6_tribunal_teeth_screamer",
+      "actId": "act_6_punishment",
+      "type": "screamer",
+      "cueKey": "braam_reactor_turbine_overdrive",
+      "title": "⚡ Скример: 22 ГБ плоти и зубов трибунала",
+      "startTime": 36.02,
+      "duration": 6,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    },
+    {
+      "id": "cue_act6_punishment_march",
+      "actId": "act_6_punishment",
+      "type": "dread",
+      "cueKey": "dread_11_morlock_war_march_climax_50s",
+      "title": "💀 Марш Морлоков 50с (Приговор Трибунала)",
+      "startTime": 53.4,
+      "duration": 50,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act6_catacombs_screamer",
+      "actId": "act_6_punishment",
+      "type": "screamer",
+      "cueKey": "trailer_industrial_anvil_slam",
+      "title": "⚡ Скример: Катакомбы нижней палубы (Зачистка гнили)",
+      "startTime": 74.68,
+      "duration": 6.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    }
+  ],
+  "act_6_reward": [
+    {
+      "id": "cue_act6_cookie_grace",
+      "actId": "act_6_reward",
+      "type": "peace",
+      "cueKey": "peace_08_pin_drop_silence_reward_grace_60s",
+      "title": "🕊️ Печенька благодати (Высшая милость)",
+      "startTime": 0,
+      "duration": 60,
+      "duckAmbientTo": 0
+    },
+    {
+      "id": "cue_act6_needle_drop",
+      "actId": "act_6_reward",
+      "type": "dread",
+      "cueKey": "dread_03_predator_instant_terror_drop_25s",
+      "title": "💀 Мгновенный Дроп Ужаса (Сервисная игла) 25s",
+      "startTime": 60.18,
+      "duration": 28.1,
+      "duckAmbientTo": 0.005
+    },
+    {
+      "id": "cue_act6_needle_slam_screamer",
+      "actId": "act_6_reward",
+      "type": "screamer",
+      "cueKey": "trailer_pneumatic_gate_crush",
+      "title": "⚡ Скример: Удар сервисной иглы (Пневмо-краш)",
+      "startTime": 60.18,
+      "duration": 5.5,
+      "duckAmbientTo": 1,
+      "customGain": 1.35
+    }
+  ],
+  "act_8_outro": [
+    {
+      "id": "cue_act8_outro_terror",
+      "actId": "act_8_outro",
+      "type": "dread",
+      "cueKey": "trailer_braam_sub_drop",
+      "title": "💀 Финальный слепой старт (Саб-Дроп Брам)",
+      "startTime": 48.9,
+      "duration": 4.5,
+      "duckAmbientTo": 0.005
+    }
+  ],
+  "act_7_song": []
 };
 
-const STORAGE_KEY = 'playbox_premiere_audio_director_cues_v4';
+const STORAGE_KEY = 'playbox_premiere_audio_director_cues_v11';
+
+export function isDevMode(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const params = new URLSearchParams(window.location.search || '');
+    // Strictly requires explicit developer opt-in query parameter (e.g. ?dev=1 or ?audio_director=1)
+    if (params.get('dev') === '1' || params.get('dev') === 'true' || params.get('audio_director') === '1') {
+      return true;
+    }
+    // Or explicit developer flag in storage (not generic 'dev' or 'dev_mode')
+    if (window.localStorage && window.localStorage.getItem('plbx_audio_director_dev') === 'true') {
+      return true;
+    }
+  } catch (_) {}
+  return false;
+}
+
+if (typeof window !== 'undefined') {
+  (window as any).isDevMode = isDevMode;
+  (window as any).enableDevMode = () => {
+    localStorage.setItem('plbx_audio_director_dev', 'true');
+    location.reload();
+  };
+  (window as any).disableDevMode = () => {
+    localStorage.removeItem('plbx_audio_director_dev');
+    localStorage.removeItem('dev_mode');
+    localStorage.removeItem('dev');
+    location.reload();
+  };
+}
 
 export class PremiereAudioDirector {
   private static _instance: PremiereAudioDirector | null = null;
@@ -582,6 +900,8 @@ export class PremiereAudioDirector {
   private _cuesByAct: Record<string, PremiereCue[]> = {};
   private _selectedCueId: string | null = null;
   private _audioPreviewElement: HTMLAudioElement | null = null;
+  private _activePreviewBtn: HTMLElement | null = null;
+  private _activePreviewKey: string | null = null;
 
   // Dragging state
   private _dragMode: 'none' | 'move' | 'resize_start' | 'resize_end' = 'none';
@@ -629,6 +949,18 @@ export class PremiereAudioDirector {
     }
   }
 
+  public resetToDefaults(): void {
+    this._cuesByAct = JSON.parse(JSON.stringify(DEFAULT_INITIAL_CUES));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this._cuesByAct));
+      this.showToast('🔄 СБРОШЕНО К КАНОНУ ПРОЕКТА!');
+      this._applyCuesToAmbientManager();
+      this.render();
+    } catch (e) {
+      console.error('[PremiereAudioDirector] Reset error:', e);
+    }
+  }
+
   public saveToStorage(): void {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this._cuesByAct));
@@ -661,6 +993,73 @@ export class PremiereAudioDirector {
     }
   }
 
+  private _areCuesEqual(c1: PremiereCue[], c2: PremiereCue[]): boolean {
+    if (c1.length !== c2.length) return false;
+    for (let i = 0; i < c1.length; i++) {
+      const a = c1[i];
+      const b = c2[i];
+      if (a.id !== b.id || a.type !== b.type || a.cueKey !== b.cueKey) return false;
+      if (Math.abs(a.startTime - b.startTime) > 0.05) return false;
+      if (Math.abs(a.duration - b.duration) > 0.05) return false;
+      if (Math.abs((a.customGain ?? 1.0) - (b.customGain ?? 1.0)) > 0.01) return false;
+      if (Math.abs((a.duckAmbientTo ?? 0.005) - (b.duckAmbientTo ?? 0.005)) > 0.001) return false;
+    }
+    return true;
+  }
+
+  public copyAllConfigsToClipboard(): void {
+    const changedActs: Record<string, PremiereCue[]> = {};
+    let totalChangedCount = 0;
+
+    for (const act of STORY_ACTS) {
+      const actId = act.id;
+      const currentCues = this._cuesByAct[actId] || [];
+      const defaultCues = DEFAULT_INITIAL_CUES[actId] || [];
+      if (!this._areCuesEqual(currentCues, defaultCues)) {
+        changedActs[actId] = currentCues;
+        totalChangedCount++;
+      }
+    }
+
+    if (totalChangedCount === 0) {
+      // If nothing differs, inform user and copy current act only
+      const act = STORY_ACTS[this._currentActIndex];
+      const actId = act ? act.id : 'unknown';
+      const currentActCues = this._cuesByAct[actId] || [];
+      const tsConfig = `// =========================================================================\n` +
+        `// АУДИО-КОНФИГУРАЦИЯ ДЛЯ АКТА: ${actId} (НЕТ ОТЛИЧИЙ ОТ КАНОНА)\n` +
+        `// =========================================================================\n` +
+        `export const ${actId.toUpperCase()}_AUDIO_CUES = ${JSON.stringify(currentActCues, null, 2)};\n`;
+
+      this._copyTextWithToast(tsConfig, 'ℹ️ Нет отличий от канона! Скопирован текущий акт.');
+      return;
+    }
+
+    const changedActNames = Object.keys(changedActs).join(', ');
+    const header = `// =========================================================================\n` +
+      `// ТОЛЬКО ИЗМЕНЕННЫЕ АКТЫ (${totalChangedCount} шт: ${changedActNames})\n` +
+      `// Сгенерировано в Adobe Premiere Audio Director • Playbox Studios\n` +
+      `// =========================================================================\n\n`;
+
+    const body = Object.entries(changedActs).map(([actId, cues]) => {
+      return `export const ${actId.toUpperCase()}_AUDIO_CUES = ${JSON.stringify(cues, null, 2)};`;
+    }).join('\n\n') + '\n';
+
+    this._copyTextWithToast(header + body, `✅ ИЗМЕНЕНИЯ [${totalChangedCount} акт.] СКОПИРОВАНЫ В БУФЕР!`);
+  }
+
+  private _copyTextWithToast(text: string, toastMsg: string): void {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        this.showToast(toastMsg);
+      }).catch(() => {
+        this._fallbackCopyText(text);
+      });
+    } else {
+      this._fallbackCopyText(text);
+    }
+  }
+
   private _fallbackCopyText(text: string): void {
     const ta = document.createElement('textarea');
     ta.value = text;
@@ -684,14 +1083,39 @@ export class PremiereAudioDirector {
     const actId = act.id;
     const cues = this._cuesByAct[actId] || [];
 
-    // Check if any cue should play right now
     const curTime = this._currentTime;
+    let activeCinematic: PremiereCue | null = null;
+    let cinematicOffset = 0;
+    let activeScreamer: PremiereCue | null = null;
+    let screamerOffset = 0;
+
     for (const cue of cues) {
       if (curTime >= cue.startTime && curTime < (cue.startTime + cue.duration)) {
         const offset = curTime - cue.startTime;
-        AmbientManager.syncCinematicCue(cue.cueKey, offset, !AmbientManager.isPaused());
-        return;
+        if (cue.type === 'screamer') {
+          if (!activeScreamer) {
+            activeScreamer = cue;
+            screamerOffset = offset;
+          }
+        } else {
+          if (!activeCinematic) {
+            activeCinematic = cue;
+            cinematicOffset = offset;
+          }
+        }
       }
+    }
+
+    if (activeCinematic) {
+      AmbientManager.syncCinematicCue(activeCinematic.cueKey, cinematicOffset, !AmbientManager.isPaused(), activeCinematic.customGain ?? 1.0);
+    } else {
+      AmbientManager.stopCinematicCue(0.2);
+    }
+
+    if (activeScreamer) {
+      AmbientManager.syncScreamerCue(activeScreamer.cueKey, screamerOffset, !AmbientManager.isPaused(), activeScreamer.customGain ?? 1.35);
+    } else {
+      AmbientManager.stopScreamerCue(0.2);
     }
   }
 
@@ -927,7 +1351,7 @@ export class PremiereAudioDirector {
 
       /* TRACK HEADERS (LEFT) */
       .pr-track-headers {
-        width: 190px;
+        width: 250px;
         flex-shrink: 0;
         background: #16181d;
         border-right: 2px solid #272a31;
@@ -973,6 +1397,17 @@ export class PremiereAudioDirector {
       .tag-dread { background: #f43f5e; }
       .tag-peace { background: #10b981; }
       .tag-ambient { background: #0284c7; }
+      .tag-screamer { background: #f59e0b; }
+      .clip-screamer {
+        background: linear-gradient(180deg, #b45309 0%, #78350f 100%);
+        border: 1px solid #f59e0b;
+        color: #fef3c7;
+      }
+      .clip-screamer:hover {
+        background: linear-gradient(180deg, #d97706 0%, #92400e 100%);
+        border-color: #fbbf24;
+      }
+      .pr-badge-screamer { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); }
 
       .pr-track-btn-mute {
         background: #23272e;
@@ -1328,12 +1763,14 @@ export class PremiereAudioDirector {
     `;
     document.head.appendChild(style);
 
-    // 2. Create Floating Toggle Button (Always Available)
+    // 2. Create Floating Toggle Button (Dev Mode Only)
     this._toggleButton = document.createElement('button');
     this._toggleButton.id = 'premiere-audio-director-btn';
     this._toggleButton.innerHTML = `🎚️ РЕЖИССУРА ЗВУКА (D)`;
     this._toggleButton.onclick = () => this.toggle();
-    document.body.appendChild(this._toggleButton);
+    if (isDevMode()) {
+      document.body.appendChild(this._toggleButton);
+    }
 
     // 3. Create Main Timeline Container
     this._container = document.createElement('div');
@@ -1470,8 +1907,9 @@ export class PremiereAudioDirector {
         </div>
       `;
     } else if (selectedCue) {
-      const badgeCls = selectedCue.type === 'dread' ? 'pr-badge-dread' : 'pr-badge-peace';
-      const typeLabel = selectedCue.type === 'dread' ? '💀 НАГНЕТАНИЕ' : '🕊️ ДОБРАЯ МУЗЫКА';
+      const badgeCls = selectedCue.type === 'dread' ? 'pr-badge-dread' : (selectedCue.type === 'peace' ? 'pr-badge-peace' : 'pr-badge-screamer');
+      const typeLabel = selectedCue.type === 'dread' ? '💀 НАГНЕТАНИЕ' : (selectedCue.type === 'peace' ? '🕊️ ДОБРАЯ МУЗЫКА' : '⚡ СКРИМЕР (ЗВУК ШТОРКИ)');
+      const accentColor = selectedCue.type === 'dread' ? '#f43f5e' : (selectedCue.type === 'peace' ? '#10b981' : '#f59e0b');
       inspectorHtml = `
         <div class="pr-inspector-info">
           <span class="pr-inspector-badge ${badgeCls}">${typeLabel}</span>
@@ -1496,8 +1934,15 @@ export class PremiereAudioDirector {
             <button class="pr-nudge-btn" data-nudge-dur="+1.0">+1s</button>
           </div>
           <span>Конец: <b style="color: #38bdf8; font-family: monospace;">${(selectedCue.startTime + selectedCue.duration).toFixed(2)}s</b></span>
+          <span style="color: #64748b;">|</span>
+          <span>Громкость:</span>
+          <div class="pr-nudge-group" style="align-items: center; gap: 4px;">
+            <input type="range" class="pr-cue-vol-slider" min="0" max="200" value="${Math.round((selectedCue.customGain ?? 1.0) * 100)}" style="width: 46px; height: 3px; accent-color: ${accentColor}; cursor: pointer;">
+            <span class="pr-cue-vol-val" style="font-size: 10px; font-family: monospace; color: ${accentColor}; min-width: 28px;">${Math.round((selectedCue.customGain ?? 1.0) * 100)}%</span>
+          </div>
         </div>
         <div class="pr-inspector-actions">
+          <button class="pr-btn pr-btn-warning" id="pr-add-screamer-btn" style="background: #d97706; border-color: #f59e0b;" title="Вставить звук шторки / скример на дорожку Т4">⚡ + СКРИМЕР</button>
           <button class="pr-btn pr-btn-warning" id="pr-replace-track-btn">🔄 ЗАМЕНИТЬ ТРЕК</button>
           <button class="pr-btn pr-btn-close" id="pr-delete-cue-btn">🗑️ УДАЛИТЬ</button>
         </div>
@@ -1508,6 +1953,7 @@ export class PremiereAudioDirector {
           <span style="color: #94a3b8;">💡 Кликните на любой отрезок (или базовый эмбиент) для выделения, обрезки или замены трека.</span>
         </div>
         <div class="pr-inspector-actions">
+          <button class="pr-btn pr-btn-warning" id="pr-add-screamer-btn" style="background: #d97706; border-color: #f59e0b;" title="Вставить звук шторки / скример на дорожку Т4">⚡ + СКРИМЕР</button>
           <button class="pr-btn pr-btn-primary" id="pr-add-cue-btn">➕ ДОБАВИТЬ ОТРЕЗОК</button>
         </div>
       `;
@@ -1542,6 +1988,11 @@ export class PremiereAudioDirector {
     const dreadMuted = AmbientManager.isCategoryMuted('dread');
     const peaceMuted = AmbientManager.isCategoryMuted('peace');
     const ambientMuted = AmbientManager.isCategoryMuted('ambient');
+    const dreadVolPct = Math.round(((AmbientManager as any).getCategoryVolume?.('dread') ?? 1.25) * 100);
+    const peaceVolPct = Math.round(((AmbientManager as any).getCategoryVolume?.('peace') ?? 1.0) * 100);
+    const ambVolPct = Math.round(((AmbientManager as any).getCategoryVolume?.('ambient') ?? 1.0) * 100);
+    const screamerMuted = AmbientManager.isCategoryMuted('screamer');
+    const screamerVolPct = Math.round(((AmbientManager as any).getCategoryVolume?.('screamer') ?? 1.25) * 100);
 
     // Render HTML structure
     this._container.innerHTML = `
@@ -1553,7 +2004,8 @@ export class PremiereAudioDirector {
         </div>
         <div class="pr-toolbar-actions">
           <button class="pr-btn pr-btn-primary" id="pr-save-btn">💾 СОХРАНИТЬ</button>
-          <button class="pr-btn pr-btn-warning" id="pr-copy-config-btn">📋 СКОПИРОВАТЬ КОНФИГ</button>
+          <button class="pr-btn pr-btn-warning" id="pr-copy-config-btn" title="Скопировать таймлайн только текущего акта">📋 АКТ</button>
+          <button class="pr-btn pr-btn-warning" id="pr-copy-all-btn" title="Скопировать только измененные акты (отличия от канона в коде)">📋 ТОЛЬКО ИЗМЕНЕНИЯ</button>
           <button class="pr-btn" id="pr-fullscreen-btn">${this._isFullscreen ? '🗗 СВЕРНУТЬ' : '⛶ НА ВЕСЬ ЭКРАН'}</button>
           <button class="pr-btn pr-btn-close" id="pr-close-btn">✖ ЗАКРЫТЬ (ESC)</button>
         </div>
@@ -1583,7 +2035,10 @@ export class PremiereAudioDirector {
               <div class="pr-color-tag tag-dread"></div>
               <span>💀 Нагнетание</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <button class="pr-btn" id="pr-add-dread-header-btn" style="padding: 2px 6px; font-size: 10px; height: 22px; font-weight: bold; background: #881337; color: #f43f5e; border-color: #be123c;" title="Вставить нагнетание на дорожку Т1">+ ТРЕК</button>
+              <input type="range" class="pr-track-vol-slider" data-vol-track="dread" min="0" max="200" value="${dreadVolPct}" title="Громкость Нагнетания: ${dreadVolPct}%" style="width: 48px; height: 3px; accent-color: #f43f5e; cursor: pointer;">
+              <span class="pr-track-vol-label" data-vol-label="dread" style="font-size: 10px; color: #f43f5e; font-family: monospace; min-width: 28px; text-align: right;">${dreadVolPct}%</span>
               <button class="pr-track-btn-mute ${dreadMuted ? 'active' : ''}" data-mute-track="dread" title="${dreadMuted ? 'Включить звук' : 'Замутить дорожку'}">M</button>
               <span style="font-size: 10px; color: #f43f5e; font-weight: bold;">Т1</span>
             </div>
@@ -1595,7 +2050,10 @@ export class PremiereAudioDirector {
               <div class="pr-color-tag tag-peace"></div>
               <span>🕊️ Добрая музыка</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <button class="pr-btn" id="pr-add-peace-header-btn" style="padding: 2px 6px; font-size: 10px; height: 22px; font-weight: bold; background: #064e3b; color: #10b981; border-color: #059669;" title="Вставить добрую музыку на дорожку Т2">+ ТРЕК</button>
+              <input type="range" class="pr-track-vol-slider" data-vol-track="peace" min="0" max="200" value="${peaceVolPct}" title="Громкость Доброй музыки: ${peaceVolPct}%" style="width: 48px; height: 3px; accent-color: #10b981; cursor: pointer;">
+              <span class="pr-track-vol-label" data-vol-label="peace" style="font-size: 10px; color: #10b981; font-family: monospace; min-width: 28px; text-align: right;">${peaceVolPct}%</span>
               <button class="pr-track-btn-mute ${peaceMuted ? 'active' : ''}" data-mute-track="peace" title="${peaceMuted ? 'Включить звук' : 'Замутить дорожку'}">M</button>
               <span style="font-size: 10px; color: #10b981; font-weight: bold;">Т2</span>
             </div>
@@ -1607,24 +2065,40 @@ export class PremiereAudioDirector {
               <div class="pr-color-tag tag-ambient"></div>
               <span>📻 Базовый эмбиент</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <input type="range" class="pr-track-vol-slider" data-vol-track="ambient" min="0" max="200" value="${ambVolPct}" title="Громкость Базового эмбиента: ${ambVolPct}%" style="width: 48px; height: 3px; accent-color: #38bdf8; cursor: pointer;">
+              <span class="pr-track-vol-label" data-vol-label="ambient" style="font-size: 10px; color: #38bdf8; font-family: monospace; min-width: 28px; text-align: right;">${ambVolPct}%</span>
               ${this._currentActIndex === 0
                 ? `<button class="pr-mode-indicator ${AmbientManager.isIntroRandom() ? 'random' : 'fixed'}" id="pr-toggle-intro-random" style="cursor: pointer; border: 1px solid rgba(168,85,247,0.5);" title="Кликните для переключения: Рандом ↔ Фикс">${AmbientManager.isIntroRandom() ? '🎲 РАНДОМ' : '📌 ФИКС'}</button>`
-                : `<span class="pr-mode-indicator fixed" style="font-size: 9px;" title="Конкретный фиксированный трек">📌 ФИКС</span>`
-              }
+                : ''}
               <button class="pr-track-btn-mute ${ambientMuted ? 'active' : ''}" data-mute-track="ambient" title="${ambientMuted ? 'Включить звук' : 'Замутить дорожку'}">M</button>
               <span style="font-size: 10px; color: #38bdf8; font-weight: bold;">Т3</span>
             </div>
           </div>
 
-          <!-- T4: TRANSITION (STAR WARS WIPE SFX) -->
+          <!-- T4: SCREAMER (ЗВУКИ ШТОРОК) -->
+          <div class="pr-track-header">
+            <div class="pr-header-title">
+              <div class="pr-color-tag tag-screamer"></div>
+              <span>⚡ Скример (Звуки шторок)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <button class="pr-btn pr-btn-warning" id="pr-add-screamer-header-btn" style="padding: 2px 7px; font-size: 10px; height: 22px; font-weight: bold; background: #d97706;" title="Вставить звук шторки / скример на дорожку Т4">+ СКРИМЕР</button>
+              <input type="range" class="pr-track-vol-slider" data-vol-track="screamer" min="0" max="200" value="${screamerVolPct}" title="Громкость Скримеров: ${screamerVolPct}%" style="width: 48px; height: 3px; accent-color: #f59e0b; cursor: pointer;">
+              <span class="pr-track-vol-label" data-vol-label="screamer" style="font-size: 10px; color: #f59e0b; font-family: monospace; min-width: 28px; text-align: right;">${screamerVolPct}%</span>
+              <button class="pr-track-btn-mute ${screamerMuted ? 'active' : ''}" data-mute-track="screamer" title="${screamerMuted ? 'Включить звук' : 'Замутить дорожку'}">M</button>
+              <span style="font-size: 10px; color: #f59e0b; font-weight: bold;">Т4</span>
+            </div>
+          </div>
+
+          <!-- T5: TRANSITION (STAR WARS WIPE SFX) -->
           <div class="pr-track-header">
             <div class="pr-header-title">
               <div class="pr-color-tag tag-trans"></div>
-              <span>⚡ Шторка Star Wars</span>
+              <span>🎬 Шторка Star Wars</span>
             </div>
             <div style="display: flex; align-items: center; gap: 6px;">
-              <span style="font-size: 10px; color: #f59e0b; font-weight: bold;">Т4</span>
+              <span style="font-size: 10px; color: #a855f7; font-weight: bold;">Т5</span>
             </div>
           </div>
         </div>
@@ -1646,7 +2120,10 @@ export class PremiereAudioDirector {
           <!-- LANE 3: AMBIENT -->
           <div class="pr-lane" id="pr-lane-ambient"></div>
 
-          <!-- LANE 4: TRANSITION (STAR WARS WIPE) -->
+          <!-- LANE 4: SCREAMER (TRANSITION BRAAMS & RISERS) -->
+          <div class="pr-lane" id="pr-lane-screamer"></div>
+
+          <!-- LANE 5: TRANSITION (STAR WARS WIPE) -->
           <div class="pr-lane" id="pr-lane-trans"></div>
 
           <!-- PLAYHEAD NEEDLE -->
@@ -1659,7 +2136,8 @@ export class PremiereAudioDirector {
 
     // Attach Event Listeners
     this._attachEventListeners();
-    this._renderClips(videoCuts, dreadCues, peaceCues, ambientCue);
+    const screamerCues = currentCues.filter(c => c.type === 'screamer');
+    this._renderClips(videoCuts, dreadCues, peaceCues, ambientCue, screamerCues);
     this.updatePlayhead(this._currentTime);
   }
 
@@ -1670,7 +2148,8 @@ export class PremiereAudioDirector {
     videoCuts: { time: number; label?: string; type?: string; characterName?: string; texKey?: string | null }[],
     dreadCues: PremiereCue[],
     peaceCues: PremiereCue[],
-    ambientCue: PremiereCue
+    ambientCue: PremiereCue,
+    screamerCues: PremiereCue[] = []
   ): void {
     const laneVideo = this._container.querySelector('#pr-lane-video') as HTMLDivElement;
     const laneDread = this._container.querySelector('#pr-lane-dread') as HTMLDivElement;
@@ -1793,6 +2272,35 @@ export class PremiereAudioDirector {
         this.render();
       });
       laneAmbient.appendChild(ambEl);
+    }
+
+    // 3b. Render Screamer Clips (Transition Braams & Risers)
+    const laneScreamer = this._container.querySelector('#pr-lane-screamer') as HTMLDivElement;
+    if (laneScreamer) {
+      if (screamerCues.length === 0) {
+        laneScreamer.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #f59e0b; opacity: 0.65; font-size: 11px; cursor: pointer; user-select: none;">
+            ⚡ [ Кликните сюда, чтобы вставить скример (звук шторки) на эту секунду ]
+          </div>
+        `;
+      } else {
+        screamerCues.forEach(cue => {
+          const el = this._createClipElement(cue, 'clip-screamer');
+          laneScreamer.appendChild(el);
+        });
+      }
+
+      laneScreamer.addEventListener('pointerdown', (e: PointerEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('.pr-clip')) return;
+        e.stopPropagation();
+        const rect = laneScreamer.getBoundingClientRect();
+        if (rect.width <= 0) return;
+        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const targetTime = Math.round(ratio * this._currentActDuration * 10) / 10;
+        this.seek(targetTime);
+        this.openAddCueModal('screamer');
+      });
     }
 
     // 4. Render Star Wars Transition Strip
@@ -1970,6 +2478,9 @@ export class PremiereAudioDirector {
     const copyBtn = this._container.querySelector('#pr-copy-config-btn');
     if (copyBtn) copyBtn.addEventListener('click', () => this.copyConfigToClipboard());
 
+    const copyAllBtn = this._container.querySelector('#pr-copy-all-btn');
+    if (copyAllBtn) copyAllBtn.addEventListener('click', () => this.copyAllConfigsToClipboard());
+
     const fullBtn = this._container.querySelector('#pr-fullscreen-btn');
     if (fullBtn) fullBtn.addEventListener('click', () => {
       this._isFullscreen = !this._isFullscreen;
@@ -2042,6 +2553,27 @@ export class PremiereAudioDirector {
     const addBtn = this._container.querySelector('#pr-add-cue-btn');
     if (addBtn) addBtn.addEventListener('click', () => this.openAddCueModal());
 
+    const addScreamerBtn = this._container.querySelector('#pr-add-screamer-btn');
+    if (addScreamerBtn) addScreamerBtn.addEventListener('click', () => this.openAddCueModal('screamer'));
+
+    const addScreamerHeaderBtn = this._container.querySelector('#pr-add-screamer-header-btn');
+    if (addScreamerHeaderBtn) addScreamerHeaderBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.openAddCueModal('screamer');
+    });
+
+    const addDreadHeaderBtn = this._container.querySelector('#pr-add-dread-header-btn');
+    if (addDreadHeaderBtn) addDreadHeaderBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.openAddCueModal('dread');
+    });
+
+    const addPeaceHeaderBtn = this._container.querySelector('#pr-add-peace-header-btn');
+    if (addPeaceHeaderBtn) addPeaceHeaderBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.openAddCueModal('peace');
+    });
+
     const toggleTransRandomBtn = this._container.querySelector('#pr-toggle-trans-random-btn');
     if (toggleTransRandomBtn) toggleTransRandomBtn.addEventListener('click', () => {
       const act = STORY_ACTS[this._currentActIndex];
@@ -2053,14 +2585,14 @@ export class PremiereAudioDirector {
     });
 
     const testTransSoundBtn = this._container.querySelector('#pr-test-trans-sound-btn');
-    if (testTransSoundBtn) testTransSoundBtn.addEventListener('click', () => {
+    if (testTransSoundBtn) testTransSoundBtn.addEventListener('click', (e) => {
       const act = STORY_ACTS[this._currentActIndex];
       let soundKey = this.getTransitionSoundForAct(act.id);
       if (soundKey === 'random') {
         const finKeys = FIN_TRANSITION_KEYS;
         soundKey = finKeys[Math.floor(Math.random() * finKeys.length)];
       }
-      this._playPreviewAudio(soundKey);
+      this._playPreviewAudio(soundKey, testTransSoundBtn as HTMLElement);
     });
 
     const testTransWipeBtn = this._container.querySelector('#pr-test-trans-wipe-btn');
@@ -2076,11 +2608,62 @@ export class PremiereAudioDirector {
       }
     });
 
+    // 4a. Track Volume Sliders
+    this._container.querySelectorAll<HTMLInputElement>('[data-vol-track]').forEach(slider => {
+      slider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const input = e.currentTarget as HTMLInputElement;
+        const cat = input.getAttribute('data-vol-track') as 'dread' | 'peace' | 'ambient' | 'screamer';
+        const valPct = Number(input.value);
+        if (cat && Number.isFinite(valPct)) {
+          const mult = valPct / 100;
+          (AmbientManager as any).setCategoryVolume?.(cat, mult);
+          const label = this._container?.querySelector(`[data-vol-label="${cat}"]`);
+          if (label) label.textContent = `${valPct}%`;
+        }
+      });
+      slider.addEventListener('change', (e) => {
+        e.stopPropagation();
+        const input = e.currentTarget as HTMLInputElement;
+        const cat = input.getAttribute('data-vol-track') as 'dread' | 'peace' | 'ambient' | 'screamer';
+        const valPct = Number(input.value);
+        this.showToast(`🔊 Громкость дорожки [ ${cat.toUpperCase()} ]: ${valPct}%`);
+      });
+    });
+
+    // 4a-2. Selected Cue Volume Slider
+    const cueVolSlider = this._container.querySelector<HTMLInputElement>('.pr-cue-vol-slider');
+    if (cueVolSlider && this._selectedCueId) {
+      cueVolSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const input = e.currentTarget as HTMLInputElement;
+        const valPct = Number(input.value);
+        const act = STORY_ACTS[this._currentActIndex];
+        if (act) {
+          const cues = this.getCuesForAct(act.id);
+          const cue = cues.find(c => c.id === this._selectedCueId);
+          if (cue) {
+            cue.customGain = valPct / 100;
+            this.saveToStorage();
+            AmbientManager.syncMuteVolumes();
+            const valSpan = this._container?.querySelector('.pr-cue-vol-val');
+            if (valSpan) valSpan.textContent = `${valPct}%`;
+          }
+        }
+      });
+      cueVolSlider.addEventListener('change', (e) => {
+        e.stopPropagation();
+        const input = e.currentTarget as HTMLInputElement;
+        const valPct = Number(input.value);
+        this.showToast(`🔊 Громкость отрезка: ${valPct}%`);
+      });
+    }
+
     // 4b. Track Mute Buttons
     this._container.querySelectorAll('[data-mute-track]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const cat = (e.currentTarget as HTMLElement).getAttribute('data-mute-track') as 'dread' | 'peace' | 'ambient';
+        const cat = (e.currentTarget as HTMLElement).getAttribute('data-mute-track') as 'dread' | 'peace' | 'ambient' | 'screamer';
         if (cat) {
           const isMuted = AmbientManager.isCategoryMuted(cat);
           AmbientManager.setCategoryMuted(cat, !isMuted);
@@ -2122,6 +2705,7 @@ export class PremiereAudioDirector {
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) return;
 
       if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
+        if (!isDevMode() && !this._isOpen) return;
         e.preventDefault();
         this.toggle();
       } else if (e.key === 'Escape' && this._isOpen) {
@@ -2172,6 +2756,7 @@ export class PremiereAudioDirector {
   // TRACK REPLACEMENT MODAL
   // ==========================================================================
   public openTrackReplacementModal(): void {
+    this._stopPreviewAudio();
     if (!this._selectedCueId) return;
     const act = STORY_ACTS[this._currentActIndex];
     const isTransition = this._selectedCueId === 'transition_lane';
@@ -2183,7 +2768,10 @@ export class PremiereAudioDirector {
     let matchingTracks: TrackOption[] = [];
     let modalTitle = '';
 
-    if (isTransition) {
+    if (cue && cue.type === 'screamer') {
+      modalTitle = `🔄 ВЫБОР ЗВУКА СКРИМЕРА / ШТОРКИ ДЛЯ [ ${act.title} ]`;
+      matchingTracks = AVAILABLE_TRANSITION_OPTIONS.filter(o => o.key !== 'random');
+    } else if (isTransition) {
       modalTitle = `🔄 ВЫБОР ЗВУКА ШТОРКИ STAR WARS ДЛЯ [ ${act.title} ]`;
       matchingTracks = AVAILABLE_TRANSITION_OPTIONS;
     } else if (isAmbient) {
@@ -2266,7 +2854,7 @@ export class PremiereAudioDirector {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const key = (e.currentTarget as HTMLElement).getAttribute('data-preview-key');
-        if (key) this._playPreviewAudio(key);
+        if (key) this._playPreviewAudio(key, btn as HTMLElement);
       });
     });
 
@@ -2317,7 +2905,7 @@ export class PremiereAudioDirector {
           return;
         }
 
-        const chosen = AVAILABLE_TRACK_OPTIONS.find(o => o.key === key);
+        const chosen = AVAILABLE_TRACK_OPTIONS.find(o => o.key === key) || AVAILABLE_TRANSITION_OPTIONS.find(o => o.key === key);
         if (chosen && cue) {
           cue.cueKey = chosen.key;
           cue.title = chosen.name;
@@ -2331,47 +2919,94 @@ export class PremiereAudioDirector {
     });
   }
 
-  public openAddCueModal(): void {
+  public openAddCueModal(targetCategory?: 'dread' | 'peace' | 'screamer'): void {
+    this._stopPreviewAudio();
     const act = STORY_ACTS[this._currentActIndex];
+    const isScreamerTarget = targetCategory === 'screamer';
+    const modalTitle = isScreamerTarget
+      ? `⚡ ВСТАВИТЬ СКРИМЕР (ЗВУК ШТОРКИ) В ТРЕК Т4 • [ ${act.title} ]`
+      : `➕ ДОБАВИТЬ ОТРЕЗОК В АКТ ${this._currentActIndex} • [ ${act.title} ]`;
+
     const dreadOptions = AVAILABLE_TRACK_OPTIONS.filter(t => t.category === 'dread');
     const peaceOptions = AVAILABLE_TRACK_OPTIONS.filter(t => t.category === 'peace');
+    const screamerOptions = AVAILABLE_TRANSITION_OPTIONS.filter(o => o.key !== 'random');
+
+    const renderScreamerSection = () => {
+      let s = `<b style="color: #f59e0b; font-size: 13px; margin-top: 10px; display: flex; align-items: center; gap: 6px;">⚡ ЗВУКИ ШТОРОК И СКРИМЕРЫ (TRANSITION BRAAMS & RISERS • ТРЕК Т4):</b>`;
+      screamerOptions.forEach(tr => {
+        s += `
+          <div class="pr-track-card" data-insert-key="${tr.key}" data-insert-type="screamer" style="border-left: 3px solid #f59e0b;">
+            <div>
+              <div class="pr-track-title" style="color: #fde68a;">${tr.name}</div>
+              <div class="pr-track-desc">${tr.description} • [ ${tr.durationSec}s ]</div>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button class="pr-btn" data-preview-key="${tr.key}">▶ ТЕСТ</button>
+              <button class="pr-btn pr-btn-warning" data-insert-key="${tr.key}" data-insert-type="screamer" style="background: #d97706;">ВСТАВИТЬ В Т4</button>
+            </div>
+          </div>
+        `;
+      });
+      return s;
+    };
+
+    const renderDreadSection = () => {
+      let s = `<b style="color: #f43f5e; font-size: 13px; margin-top: 14px; display: flex; align-items: center; gap: 6px;">💀 НАГНЕТАНИЕ И ТРЕВОГА (ТРЕК Т1):</b>`;
+      dreadOptions.forEach(tr => {
+        s += `
+          <div class="pr-track-card" data-insert-key="${tr.key}" data-insert-type="dread">
+            <div>
+              <div class="pr-track-title">${tr.name}</div>
+              <div class="pr-track-desc">${tr.description} • [ ${tr.durationSec}s ]</div>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button class="pr-btn" data-preview-key="${tr.key}">▶ ТЕСТ</button>
+              <button class="pr-btn pr-btn-primary" data-insert-key="${tr.key}" data-insert-type="dread">ВСТАВИТЬ В Т1</button>
+            </div>
+          </div>
+        `;
+      });
+      return s;
+    };
+
+    const renderPeaceSection = () => {
+      let s = `<b style="color: #10b981; font-size: 13px; margin-top: 14px; display: flex; align-items: center; gap: 6px;">🕊️ ДОБРАЯ МУЗЫКА И ОБЛЕГЧЕНИЕ (ТРЕК Т2):</b>`;
+      peaceOptions.forEach(tr => {
+        s += `
+          <div class="pr-track-card" data-insert-key="${tr.key}" data-insert-type="peace">
+            <div>
+              <div class="pr-track-title">${tr.name}</div>
+              <div class="pr-track-desc">${tr.description} • [ ${tr.durationSec}s ]</div>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button class="pr-btn" data-preview-key="${tr.key}">▶ ТЕСТ</button>
+              <button class="pr-btn pr-btn-primary" data-insert-key="${tr.key}" data-insert-type="peace">ВСТАВИТЬ В Т2</button>
+            </div>
+          </div>
+        `;
+      });
+      return s;
+    };
+
+    let bodyContent = '';
+    if (isScreamerTarget) {
+      bodyContent = renderScreamerSection() + renderDreadSection() + renderPeaceSection();
+    } else if (targetCategory === 'peace') {
+      bodyContent = renderPeaceSection() + renderDreadSection() + renderScreamerSection();
+    } else {
+      bodyContent = renderDreadSection() + renderPeaceSection() + renderScreamerSection();
+    }
 
     let html = `
       <div class="pr-modal">
         <div class="pr-modal-header">
-          <div class="pr-modal-title">➕ ДОБАВИТЬ МУЗЫКАЛЬНЫЙ ОТРЕЗОК В АКТ ${this._currentActIndex}</div>
+          <div class="pr-modal-title">${modalTitle}</div>
           <button class="pr-btn pr-btn-close" id="pr-modal-close-btn">✖</button>
         </div>
         <div class="pr-modal-body">
-          <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Выберите категорию и трек для вставки в позицию <b>${this._currentTime.toFixed(1)}s</b>:</div>
-          <b style="color: #f43f5e; font-size: 13px;">💀 НАГНЕТАНИЕ И ТРЕВОГА:</b>
+          <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Вставка в позицию курсора: <b style="color: #38bdf8; font-family: monospace;">${this._currentTime.toFixed(1)}s</b>:</div>
+          ${bodyContent}
     `;
-
-    dreadOptions.forEach(tr => {
-      html += `
-        <div class="pr-track-card" data-insert-key="${tr.key}" data-insert-type="dread">
-          <div>
-            <div class="pr-track-title">${tr.name}</div>
-            <div class="pr-track-desc">${tr.description} • [ ${tr.durationSec}s ]</div>
-          </div>
-          <button class="pr-btn pr-btn-primary" data-insert-key="${tr.key}" data-insert-type="dread">ВСТАВИТЬ</button>
-        </div>
-      `;
-    });
-
-    html += `<b style="color: #10b981; font-size: 13px; margin-top: 14px;">🕊️ ДОБРАЯ МУЗЫКА И ОБЛЕГЧЕНИЕ:</b>`;
-
-    peaceOptions.forEach(tr => {
-      html += `
-        <div class="pr-track-card" data-insert-key="${tr.key}" data-insert-type="peace">
-          <div>
-            <div class="pr-track-title">${tr.name}</div>
-            <div class="pr-track-desc">${tr.description} • [ ${tr.durationSec}s ]</div>
-          </div>
-          <button class="pr-btn pr-btn-primary" data-insert-key="${tr.key}" data-insert-type="peace">ВСТАВИТЬ</button>
-        </div>
-      `;
-    });
 
     html += `</div></div>`;
     this._modalElement.innerHTML = html;
@@ -2380,11 +3015,19 @@ export class PremiereAudioDirector {
     const modalClose = this._modalElement.querySelector('#pr-modal-close-btn');
     if (modalClose) modalClose.addEventListener('click', () => this._closeModal());
 
+    this._modalElement.querySelectorAll('[data-preview-key]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const key = (e.currentTarget as HTMLElement).getAttribute('data-preview-key');
+        if (key) this._playPreviewAudio(key, btn as HTMLElement);
+      });
+    });
+
     this._modalElement.querySelectorAll('[data-insert-key]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const key = (e.currentTarget as HTMLElement).getAttribute('data-insert-key');
-        const type = (e.currentTarget as HTMLElement).getAttribute('data-insert-type') as 'dread' | 'peace';
-        const tr = AVAILABLE_TRACK_OPTIONS.find(o => o.key === key);
+        const type = (e.currentTarget as HTMLElement).getAttribute('data-insert-type') as 'dread' | 'peace' | 'screamer';
+        const tr = AVAILABLE_TRACK_OPTIONS.find(o => o.key === key) || AVAILABLE_TRANSITION_OPTIONS.find(o => o.key === key);
         if (tr) {
           const newCue: PremiereCue = {
             id: `cue_${Date.now()}`,
@@ -2394,7 +3037,8 @@ export class PremiereAudioDirector {
             title: tr.name,
             startTime: Math.round(this._currentTime * 10) / 10,
             duration: Math.min(25.0, tr.durationSec),
-            duckAmbientTo: type === 'dread' ? 0.005 : 0.0
+            duckAmbientTo: type === 'screamer' ? 1.0 : (type === 'peace' ? 0.0 : 0.005),
+            customGain: type === 'screamer' ? 1.25 : 1.0
           };
           if (!this._cuesByAct[act.id]) this._cuesByAct[act.id] = [];
           this._cuesByAct[act.id].push(newCue);
@@ -2410,27 +3054,99 @@ export class PremiereAudioDirector {
 
   private _closeModal(): void {
     this._modalElement.classList.remove('open');
+    this._stopPreviewAudio();
+  }
+
+  private _stopPreviewAudio(): void {
+    if (this._activePreviewBtn) {
+      if (this._activePreviewBtn.getAttribute('id') === 'pr-test-trans-sound-btn') {
+        this._activePreviewBtn.innerHTML = '▶ ТЕСТ ЗВУКА';
+      } else {
+        this._activePreviewBtn.innerHTML = '▶ ТЕСТ';
+      }
+      this._activePreviewBtn.style.background = '';
+      this._activePreviewBtn.style.borderColor = '';
+      this._activePreviewBtn.style.color = '';
+      this._activePreviewBtn = null;
+    }
     if (this._audioPreviewElement) {
-      this._audioPreviewElement.pause();
+      const el = this._audioPreviewElement;
       this._audioPreviewElement = null;
+      this._activePreviewKey = null;
+      try {
+        el.onended = null;
+        el.onerror = null;
+        el.pause();
+        el.currentTime = 0;
+        el.src = '';
+      } catch (_) {}
     }
   }
 
-  private _playPreviewAudio(cueKey: string): void {
-    if (this._audioPreviewElement) {
-      this._audioPreviewElement.pause();
+  private _playPreviewAudio(cueKey: string, clickedBtn?: HTMLElement): void {
+    // If user clicked the same test button while it is currently playing -> toggle stop!
+    if (this._activePreviewKey === cueKey && this._audioPreviewElement && !this._audioPreviewElement.paused) {
+      this._stopPreviewAudio();
+      return;
     }
+
+    // Stop any previously playing preview cleanly
+    this._stopPreviewAudio();
+
     let actualKey = cueKey;
     if (actualKey === 'random') {
       const keys = FIN_TRANSITION_KEYS;
       actualKey = keys[Math.floor(Math.random() * keys.length)];
     }
-    const audio = AmbientManager.getAudioElementForCue(actualKey);
-    if (audio) {
-      audio.currentTime = 0;
-      audio.volume = 0.5;
-      audio.play().catch(() => {});
+
+    const url = getAudioUrl(actualKey);
+    if (!url) {
+      console.warn('[PremiereAudioDirector] Audio preview URL not found for key:', actualKey);
+      this.showToast('Audio not found: ' + actualKey);
+      return;
+    }
+
+    try {
+      const audio = new Audio(url);
+      audio.volume = 0.85;
+      audio.muted = false;
       this._audioPreviewElement = audio;
+      this._activePreviewKey = cueKey;
+
+      if (clickedBtn) {
+        this._activePreviewBtn = clickedBtn;
+        if (clickedBtn.getAttribute('id') === 'pr-test-trans-sound-btn') {
+          clickedBtn.innerHTML = '⏹ СТОП ТЕСТ';
+        } else {
+          clickedBtn.innerHTML = '⏹ СТОП';
+        }
+        clickedBtn.style.background = '#0284c7';
+        clickedBtn.style.borderColor = '#38bdf8';
+        clickedBtn.style.color = '#ffffff';
+      }
+
+      audio.onended = () => {
+        this._stopPreviewAudio();
+      };
+
+      audio.onerror = (e) => {
+        console.warn('[PremiereAudioDirector] Audio preview load error for', actualKey, e);
+        this._stopPreviewAudio();
+        this.showToast('Audio error: ' + actualKey);
+      };
+
+      const p = audio.play();
+      if (p !== undefined) {
+        p.catch((err) => {
+          if (err.name !== 'AbortError') {
+            console.warn('[PremiereAudioDirector] Play rejected:', err);
+            this._stopPreviewAudio();
+          }
+        });
+      }
+    } catch (err) {
+      console.error('[PremiereAudioDirector] Exception in _playPreviewAudio:', err);
+      this._stopPreviewAudio();
     }
   }
 
@@ -2481,16 +3197,17 @@ export class PremiereAudioDirector {
   // PUBLIC CONTROLS & TOAST
   // ==========================================================================
   public open(): void {
+    if (!isDevMode()) return;
     this._isOpen = true;
     this._container.classList.add('open');
-    this._toggleButton.style.display = 'none';
+    if (this._toggleButton) this._toggleButton.style.display = 'none';
     this.render();
   }
 
   public close(): void {
     this._isOpen = false;
     this._container.classList.remove('open');
-    this._toggleButton.style.display = 'flex';
+    if (this._toggleButton && isDevMode()) this._toggleButton.style.display = 'flex';
     this._closeModal();
   }
 
@@ -2498,6 +3215,7 @@ export class PremiereAudioDirector {
     if (this._isOpen) {
       this.close();
     } else {
+      if (!isDevMode()) return;
       this.open();
     }
   }
@@ -2518,12 +3236,14 @@ export class PremiereAudioDirector {
     return this._cuesByAct[actId] || [];
   }
 
-  public getActiveCueAtTime(actId: string, time: number): {
+  public getActiveCueAtTime(actId: string, time: number, typeFilter?: 'cinematic' | 'screamer'): {
     cue: PremiereCue;
     offset: number;
   } | null {
     const cues = this._cuesByAct[actId] || [];
     for (const cue of cues) {
+      if (typeFilter === 'screamer' && cue.type !== 'screamer') continue;
+      if (typeFilter === 'cinematic' && cue.type === 'screamer') continue;
       if (time >= cue.startTime && time < (cue.startTime + cue.duration)) {
         return {
           cue,

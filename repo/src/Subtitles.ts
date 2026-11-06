@@ -8,8 +8,6 @@ import { SFX } from './SoundEffects';
 
 import { getTexture, hasTexture } from './assetsManager';
 
-
-
 export interface SpeakerProfile {
 
   name: string;
@@ -25,8 +23,6 @@ export interface SpeakerProfile {
   slackKey: string | null;
 
 }
-
-
 
 export class Subtitles extends Container {
 
@@ -45,8 +41,6 @@ export class Subtitles extends Container {
   private _prevPhraseBtn: Container;
 
   private _nextPhraseBtn: Container;
-
-
 
   // 2. Vertical Karaoke Screen (Right side of screen, text crawls top to bottom)
 
@@ -92,8 +86,6 @@ export class Subtitles extends Container {
 
   private _karaokeContainerCurrentAlpha = 1;
 
-
-
   // 3. Floating Slack Screenshot Modal
 
   private _slackPopupContainer: Container;
@@ -134,8 +126,6 @@ export class Subtitles extends Container {
 
   private _currentSlackKey: string | null = null;
 
-
-
   // 4. Gorin Typo Multi-Card Row in Act 3 (Jnghfdbk, Корчое, пришлижать, демоблил)
 
   private _gorinRowContainer: Container;
@@ -170,8 +160,6 @@ export class Subtitles extends Container {
 
   private _isGorinRowActive = false;
 
-
-
   // Positioning & Metrics
 
   private _cues: SubtitleCue[] = [];
@@ -186,27 +174,17 @@ export class Subtitles extends Container {
 
   private _bottomOffset = 0;
 
-
-
   private _screenWidth = 1280;
 
   private _screenHeight = 720;
 
-
-
   public onSeekRequested?: (targetTime: number) => void;
-
-
 
   constructor() {
 
     super();
 
-
-
     // (Slack Dim Overlay removed to prevent black rectangles on click)
-
-
 
     // 1. FLOATING SLACK SCREENSHOT POPUP
 
@@ -216,13 +194,9 @@ export class Subtitles extends Container {
 
     this._slackPopupContainer.visible = false;
 
-
-
     this._slackPopupContainer.eventMode = 'static';
 
     this.addChild(this._slackPopupContainer);
-
-
 
     this._slackPopupContainer.on('pointerover', () => {
 
@@ -236,13 +210,9 @@ export class Subtitles extends Container {
 
     });
 
-
-
     this._slackPopupBg = new Graphics();
 
     this._slackPopupContainer.addChild(this._slackPopupBg);
-
-
 
     const slackTitleStyle = new TextStyle({
 
@@ -264,8 +234,6 @@ export class Subtitles extends Container {
 
     this._slackPopupContainer.addChild(this._slackPopupTitleText);
 
-
-
     this._slackPopupSprite = new Sprite();
 
     this._slackPopupSprite.eventMode = 'static';
@@ -286,15 +254,11 @@ export class Subtitles extends Container {
 
     this._slackPopupContainer.addChild(this._slackPopupSprite);
 
-
-
     this._slackSpriteMask = new Graphics();
 
     this._slackPopupContainer.addChild(this._slackSpriteMask);
 
     this._slackPopupSprite.mask = this._slackSpriteMask;
-
-
 
     // Zoom button
 
@@ -332,8 +296,6 @@ export class Subtitles extends Container {
 
     this._slackZoomBtn.addChild(this._slackZoomTxt);
 
-
-
     const drawZoomBtn = (hover = false) => {
 
       zoomBtnBg.clear();
@@ -367,8 +329,6 @@ export class Subtitles extends Container {
     });
 
     this._slackPopupContainer.addChild(this._slackZoomBtn);
-
-
 
     // Close button
 
@@ -405,8 +365,6 @@ export class Subtitles extends Container {
     closeBtnTxt.anchor.set(0.5);
 
     this._slackCloseBtn.addChild(closeBtnTxt);
-
-
 
     const drawCloseBtn = (hover = false) => {
 
@@ -446,15 +404,11 @@ export class Subtitles extends Container {
 
     this._slackPopupContainer.addChild(this._slackCloseBtn);
 
-
-
     this._slackProgressBar = new Graphics();
 
     this._slackProgressBar.visible = false;
 
     this._slackPopupContainer.addChild(this._slackProgressBar);
-
-
 
     // 1b. GORIN TYPO MULTI-CARD ROW (Act 3: Jnghfdbk, Корчое, пришлижать, демоблил)
 
@@ -465,8 +419,6 @@ export class Subtitles extends Container {
     this._gorinRowContainer.alpha = 1;
 
     this.addChild(this._gorinRowContainer);
-
-
 
     const gorinDefs = [
 
@@ -480,8 +432,6 @@ export class Subtitles extends Container {
 
     ];
 
-
-
     for (const def of gorinDefs) {
 
       const cardC = new Container();
@@ -490,13 +440,9 @@ export class Subtitles extends Container {
 
       cardC.alpha = 0;
 
-
-
       const bg = new Graphics();
 
       cardC.addChild(bg);
-
-
 
       const sp = new Sprite();
 
@@ -508,15 +454,11 @@ export class Subtitles extends Container {
 
       cardC.addChild(sp);
 
-
-
       const m = new Graphics();
 
       cardC.addChild(m);
 
       sp.mask = m;
-
-
 
       this._gorinCards.push({
 
@@ -546,13 +488,9 @@ export class Subtitles extends Container {
 
       });
 
-
-
       this._gorinRowContainer.addChild(cardC);
 
     }
-
-
 
     // 2. DIALOGUE CONTAINER (Clean Cinematic Subtitles on Black Rectangle, NO NAME / AVATAR)
 
@@ -560,13 +498,9 @@ export class Subtitles extends Container {
 
     this.addChild(this._dialogueContainer);
 
-
-
     this._background = new Graphics();
 
     this._dialogueContainer.addChild(this._background);
-
-
 
     const textStyle = new TextStyle({
 
@@ -596,8 +530,6 @@ export class Subtitles extends Container {
 
     this._dialogueContainer.addChild(this._mainText);
 
-
-
     const cursorStyle = new TextStyle({
 
       fontFamily: ['Share Tech Mono', 'monospace'],
@@ -618,8 +550,6 @@ export class Subtitles extends Container {
 
     this._dialogueContainer.addChild(this._cursorText);
 
-
-
     const counterStyle = new TextStyle({
 
       fontFamily: ['Share Tech Mono', 'monospace'],
@@ -638,8 +568,6 @@ export class Subtitles extends Container {
 
     this._dialogueContainer.addChild(this._counterText);
 
-
-
     this._prevPhraseBtn = this._createMiniBtn('◀', () => this.previousPhrase());
 
     this._nextPhraseBtn = this._createMiniBtn('▶', () => this.nextPhrase());
@@ -652,8 +580,6 @@ export class Subtitles extends Container {
 
     this._dialogueContainer.addChild(this._nextPhraseBtn);
 
-
-
     // 3. VERTICAL KARAOKE SCREEN (Right Side of Screen, Text Crawls Top to Bottom)
 
     this._karaokeScreenContainer = new Container();
@@ -662,21 +588,15 @@ export class Subtitles extends Container {
 
     this.addChild(this._karaokeScreenContainer);
 
-
-
     this._karaokePanelBg = new Graphics();
 
     this._karaokeScreenContainer.addChild(this._karaokePanelBg);
-
-
 
     this._karaokeHeader = new Container();
 
     this._karaokeHeader.visible = false;
 
     this._karaokeScreenContainer.addChild(this._karaokeHeader);
-
-
 
     this._karaokeTitleText = new Text({
 
@@ -700,8 +620,6 @@ export class Subtitles extends Container {
 
     this._karaokeHeader.addChild(this._karaokeTitleText);
 
-
-
     this._karaokeSubText = new Text({
 
       text: 'КАРАОКЕ // ФИНАЛЬНЫЙ ТРЕК',
@@ -724,8 +642,6 @@ export class Subtitles extends Container {
 
     this._karaokeHeader.addChild(this._karaokeSubText);
 
-
-
     this._karaokeListContainer = new Container();
 
     this._karaokeListMask = new Graphics();
@@ -736,19 +652,13 @@ export class Subtitles extends Container {
 
     this._karaokeScreenContainer.addChild(this._karaokeListMask);
 
-
-
     this._karaokeActiveHighlight = new Graphics();
 
     this._karaokeListContainer.addChild(this._karaokeActiveHighlight);
 
-
-
     this.eventMode = 'passive';
 
   }
-
-
 
   private _createMiniBtn(icon: string, onClick: () => void): Container {
 
@@ -758,13 +668,9 @@ export class Subtitles extends Container {
 
     c.cursor = 'pointer';
 
-
-
     const bg = new Graphics();
 
     c.addChild(bg);
-
-
 
     const txt = new Text({
 
@@ -786,8 +692,6 @@ export class Subtitles extends Container {
 
     c.addChild(txt);
 
-
-
     const draw = (hover = false) => {
 
       bg.clear();
@@ -801,8 +705,6 @@ export class Subtitles extends Container {
       txt.style.fill = hover ? '#050711' : '#00f5d4';
 
     };
-
-
 
     draw(false);
 
@@ -822,13 +724,9 @@ export class Subtitles extends Container {
 
     });
 
-
-
     return c;
 
   }
-
-
 
   public setBottomOffset(offset: number): void {
 
@@ -841,8 +739,6 @@ export class Subtitles extends Container {
     }
 
   }
-
-
 
   public showSlackPopup(slackKey: string): void {
 
@@ -876,8 +772,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   public hideSlackPopup(immediate: boolean = false): void {
 
     this._slackPopupTargetAlpha = 0;
@@ -892,8 +786,6 @@ export class Subtitles extends Container {
 
     this._isSlackHovered = false;
 
-
-
     if (immediate) {
 
       this._slackPopupCurrentAlpha = 0;
@@ -901,8 +793,6 @@ export class Subtitles extends Container {
       this._slackPopupContainer.alpha = 0;
 
       this._slackPopupContainer.visible = false;
-
-
 
     // Reset Gorin typo multi-card row
 
@@ -929,8 +819,6 @@ export class Subtitles extends Container {
     }
 
   }
-
-
 
   /**
 
@@ -960,8 +848,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   public setCues(cues: SubtitleCue[], hasDedicatedFrame: boolean, isKaraoke = false, frameTitle = '', actId = ''): void {
 
     this._cues = cues;
@@ -971,8 +857,9 @@ export class Subtitles extends Container {
     this._isKaraoke = isKaraoke;
 
     this._actId = actId;
-
-
+    if (this._actId === 'act_3_timemachine') {
+      this._layoutGorinCards();
+    }
 
     // Reset Slack popup modal
 
@@ -990,8 +877,6 @@ export class Subtitles extends Container {
 
     
 
-
-
     // Toggle Modes: Dialogue vs Right-Side Karaoke Screen
 
     this._dialogueContainer.visible = !isKaraoke;
@@ -1004,13 +889,9 @@ export class Subtitles extends Container {
 
     this._karaokeScreenContainer.visible = isKaraoke;
 
-
-
     this._mainText.text = '';
 
     this._counterText.text = cues.length > 0 ? ('1 / ' + cues.length) : '';
-
-
 
     if (isKaraoke) {
 
@@ -1022,27 +903,19 @@ export class Subtitles extends Container {
 
     }
 
-
-
     this._redrawLayout();
 
   }
 
-
-
   private _buildKaraokeLines(cues: SubtitleCue[]): void {
 
     this._clearKaraokeLines();
-
-
 
     const isPortrait = this._screenHeight > this._screenWidth;
 
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
     const fontScale = Math.max(0.9, Math.min(1.85, refDim));
-
-
 
     const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
 
@@ -1051,8 +924,6 @@ export class Subtitles extends Container {
     const numFontSize = Math.round((isPortrait ? 12 : 14) * fontScale);
 
     const noteFontSize = Math.round((isPortrait ? 13 : 16) * fontScale);
-
-
 
     const panelW = isPortrait
 
@@ -1066,13 +937,9 @@ export class Subtitles extends Container {
 
     let curY = Math.round(16 * fontScale);
 
-
-
     cues.forEach((cue, index) => {
 
       const lineC = new Container();
-
-
 
       // Line number badge in retro terminal brackets style: [ 01 ]
 
@@ -1098,8 +965,6 @@ export class Subtitles extends Container {
 
       lineC.addChild(numTxt);
 
-
-
       // Note icon indicator for active line
 
       const noteIcon = new Text({
@@ -1123,8 +988,6 @@ export class Subtitles extends Container {
       noteIcon.visible = false;
 
       lineC.addChild(noteIcon);
-
-
 
       // Clean lyric text
 
@@ -1160,8 +1023,6 @@ export class Subtitles extends Container {
 
       lineC.addChild(lyricTxt);
 
-
-
       // Dynamically calculate height based on verse lines to guarantee ZERO overlap
 
       const lineCount = cleanText.split('\n').length;
@@ -1172,13 +1033,9 @@ export class Subtitles extends Container {
 
       const itemHeight = Math.ceil(measuredHeight) + Math.round(18 * fontScale);
 
-
-
       lineC.position.set(0, curY);
 
       this._karaokeListContainer.addChild(lineC);
-
-
 
       this._karaokeLines.push({
 
@@ -1198,15 +1055,11 @@ export class Subtitles extends Container {
 
       });
 
-
-
       curY += itemHeight + Math.round(12 * fontScale);
 
     });
 
   }
-
-
 
   private _relayoutKaraokeLines(panelW: number): void {
 
@@ -1217,8 +1070,6 @@ export class Subtitles extends Container {
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
     const fontScale = Math.max(0.9, Math.min(1.85, refDim));
-
-
 
     const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
 
@@ -1232,8 +1083,6 @@ export class Subtitles extends Container {
 
     const wrapWidth = panelW - textLeftPad - Math.round(18 * fontScale);
 
-
-
     let curY = Math.round(16 * fontScale);
 
     for (const item of this._karaokeLines) {
@@ -1246,19 +1095,13 @@ export class Subtitles extends Container {
 
       item.text.position.set(textLeftPad, Math.round(8 * fontScale));
 
-
-
       item.indexText.style.fontSize = numFontSize;
 
       item.indexText.position.set(Math.round(10 * fontScale), Math.round(10 * fontScale));
 
-
-
       item.noteIcon.style.fontSize = noteFontSize;
 
       item.noteIcon.position.set(Math.round(56 * fontScale), Math.round(10 * fontScale));
-
-
 
       const cleanText = item.cue.text.replace(/^[♪\s]+/, '');
 
@@ -1269,8 +1112,6 @@ export class Subtitles extends Container {
       const measuredHeight = (item.text.height > 10) ? item.text.height : estimatedHeight;
 
       const itemH = Math.ceil(measuredHeight) + Math.round(18 * fontScale);
-
-
 
       item.container.position.set(0, curY);
 
@@ -1283,10 +1124,6 @@ export class Subtitles extends Container {
     }
 
   }
-
-
-
-
 
   private _clearKaraokeLines(): void {
 
@@ -1302,8 +1139,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   public syncToTime(currentTime: number, isPlaying: boolean): void {
 
     if (this._cues.length === 0) {
@@ -1318,13 +1153,9 @@ export class Subtitles extends Container {
 
     }
 
-
-
     const LEAD_IN = 0.16;
 
     let cueIndex = -1;
-
-
 
     for (let i = 0; i < this._cues.length; i++) {
 
@@ -1339,8 +1170,6 @@ export class Subtitles extends Container {
       }
 
     }
-
-
 
     if (cueIndex === -1) {
 
@@ -1362,8 +1191,6 @@ export class Subtitles extends Container {
 
     }
 
-
-
     if (cueIndex === -1) {
 
       if (currentTime >= this._cues[this._cues.length - 1].end) {
@@ -1378,8 +1205,6 @@ export class Subtitles extends Container {
 
     }
 
-
-
     // Gorin Typo Multi-Card Row in Act 3 (act_3_timemachine)
 
     if (this._actId === 'act_3_timemachine') {
@@ -1388,55 +1213,29 @@ export class Subtitles extends Container {
 
       const GORIN_END = 20.20;
 
-
-
       if (currentTime >= GORIN_START && currentTime < GORIN_END) {
 
         this._isGorinRowActive = true;
 
         this._gorinRowContainer.visible = true;
 
+        // Show only the most recently revealed card (sequential, not cumulative)
+        // This keeps each card large and readable instead of crowding 4 tiny cards simultaneously
+        const activeIdx = (currentTime >= 16.04) ? 3
+                        : (currentTime >= 15.10) ? 2
+                        : (currentTime >= 14.02) ? 1
+                        : 0;
 
-
-        const t1 = (currentTime >= 9.62) ? 1.0 : 0;
-
-        const t2 = (currentTime >= 14.02) ? 1.0 : 0;
-
-        const t3 = (currentTime >= 15.10) ? 1.0 : 0;
-
-        const t4 = (currentTime >= 16.04) ? 1.0 : 0;
-
-
-
-        const changed = (
-
-          this._gorinCards[0].targetAlpha !== t1 ||
-
-          this._gorinCards[1].targetAlpha !== t2 ||
-
-          this._gorinCards[2].targetAlpha !== t3 ||
-
-          this._gorinCards[3].targetAlpha !== t4
-
-        );
-
-
-
-        this._gorinCards[0].targetAlpha = t1;
-
-        this._gorinCards[1].targetAlpha = t2;
-
-        this._gorinCards[2].targetAlpha = t3;
-
-        this._gorinCards[3].targetAlpha = t4;
-
-
-
-        if (changed) {
-
-          this._repositionGorinRow();
-
+        if (!this._isGorinRowActive) {
+          this._isGorinRowActive = true;
+          this._gorinRowContainer.visible = true;
+          this._layoutGorinCards();
         }
+
+        this._gorinCards[0].targetAlpha = (activeIdx === 0) ? 1.0 : 0;
+        this._gorinCards[1].targetAlpha = (activeIdx === 1) ? 1.0 : 0;
+        this._gorinCards[2].targetAlpha = (activeIdx === 2) ? 1.0 : 0;
+        this._gorinCards[3].targetAlpha = (activeIdx === 3) ? 1.0 : 0;
 
       } else {
 
@@ -1462,23 +1261,17 @@ export class Subtitles extends Container {
 
     }
 
-
-
     if (cueIndex !== this._currentCueIndex) {
 
       this._currentCueIndex = cueIndex;
 
       this._counterText.text = (cueIndex + 1) + ' / ' + this._cues.length;
 
-
-
       const cue = this._cues[cueIndex];
 
       if (cue) {
 
         this._updateSlackPopup(cue);
-
-
 
         if (!this._isKaraoke) {
 
@@ -1544,8 +1337,6 @@ export class Subtitles extends Container {
 
     }
 
-
-
     if (this._isKaraoke && this._cues.length > 0) {
 
       const lastCue = this._cues[this._cues.length - 1];
@@ -1564,13 +1355,9 @@ export class Subtitles extends Container {
 
     }
 
-
-
     const currentCue = this._cues[this._currentCueIndex];
 
     if (!currentCue) return;
-
-
 
     if (this._isKaraoke) {
 
@@ -1582,8 +1369,6 @@ export class Subtitles extends Container {
 
       }
 
-
-
       const isPortrait = this._screenHeight > this._screenWidth;
 
       const panelY = isPortrait ? Math.max(20, Math.round(this._screenHeight * 0.32)) : 24;
@@ -1594,13 +1379,9 @@ export class Subtitles extends Container {
 
       const targetFocusY = Math.round(panelH * 0.28);
 
-
-
       const activeItem = this._karaokeLines[this._currentCueIndex];
 
       let smoothLineY = activeItem ? activeItem.baseY : 0;
-
-
 
       if (activeItem) {
 
@@ -1609,8 +1390,6 @@ export class Subtitles extends Container {
         const nextItem = this._karaokeLines[this._currentCueIndex + 1];
 
         const nextCue = this._cues[this._currentCueIndex + 1];
-
-
 
         if (nextItem && currentCue) {
 
@@ -1634,11 +1413,7 @@ export class Subtitles extends Container {
 
       }
 
-
-
       this._karaokeTargetScrollY = targetFocusY - smoothLineY;
-
-
 
       // On large seek / scrub, snap immediately; on normal playback, glide smoothly
 
@@ -1647,8 +1422,6 @@ export class Subtitles extends Container {
         this._karaokeCurrentScrollY = this._karaokeTargetScrollY;
 
       }
-
-
 
       
 
@@ -1660,13 +1433,9 @@ export class Subtitles extends Container {
 
   }
 
-
-
   public update(dt: number): void {
 
     this._cursorTimer += dt;
-
-
 
     // Smooth continuous crawling scroll of karaoke text list upward & alpha fade
 
@@ -1677,8 +1446,6 @@ export class Subtitles extends Container {
       this._karaokeCurrentScrollY += (this._karaokeTargetScrollY - this._karaokeCurrentScrollY) * lerpSpeed;
 
       this._karaokeListContainer.y = this._karaokeCurrentScrollY;
-
-
 
       if (this._karaokeContainerCurrentAlpha !== this._karaokeContainerTargetAlpha) {
 
@@ -1695,8 +1462,6 @@ export class Subtitles extends Container {
       }
 
     }
-
-
 
     // Slack screenshot countdown timer
 
@@ -1722,13 +1487,9 @@ export class Subtitles extends Container {
 
         this._isSlackHovered = false;
 
-
-
       }
 
     }
-
-
 
     // Smooth alpha fade & Ken Burns motion graphics for Slack screenshot popup
 
@@ -1746,8 +1507,6 @@ export class Subtitles extends Container {
 
     }
 
-
-
     if (this._slackPopupContainer.visible) {
 
       this._slackMotionTimer += dt;
@@ -1758,15 +1517,11 @@ export class Subtitles extends Container {
 
       const kenBurnsScale = 1.0 + 0.045 * (1 - Math.pow(1 - motionProgress, 1.5));
 
-
-
       // Smooth subtle drift: gentle rise + micro horizontal breathing
 
       const driftY = -Math.min(18, this._slackMotionTimer * 1.8);
 
       const driftX = Math.sin(this._slackMotionTimer * 0.35) * 4.0;
-
-
 
       const popScale = (0.97 + 0.03 * this._slackPopupCurrentAlpha) * kenBurnsScale;
 
@@ -1784,8 +1539,6 @@ export class Subtitles extends Container {
 
     }
 
-
-
     // Gorin typo multi-card smooth alpha & glide animation
 
     if (this._isGorinRowActive || this._gorinRowContainer.visible) {
@@ -1793,148 +1546,67 @@ export class Subtitles extends Container {
       let anyVisible = false;
 
       for (const card of this._gorinCards) {
-
-        if (card.currentAlpha !== card.targetAlpha) {
-
-          const dAlpha = card.targetAlpha - card.currentAlpha;
-
-          card.currentAlpha += Math.sign(dAlpha) * Math.min(Math.abs(dAlpha), dt * 5.0);
-
+        if (dt <= 0.001) {
+          // Instant sync on scrub / seek
+          card.currentAlpha = card.targetAlpha;
           card.container.alpha = card.currentAlpha;
-
           card.container.visible = card.currentAlpha > 0.01;
-
+        } else if (card.currentAlpha !== card.targetAlpha) {
+          const dAlpha = card.targetAlpha - card.currentAlpha;
+          card.currentAlpha += Math.sign(dAlpha) * Math.min(Math.abs(dAlpha), dt * 6.0);
+          card.container.alpha = card.currentAlpha;
+          card.container.visible = card.currentAlpha > 0.01;
         }
 
         if (card.container.visible) {
-
           anyVisible = true;
-
-          card.currentX += (card.targetX - card.currentX) * Math.min(1, dt * 6.0);
-
-          card.currentY += (card.targetY - card.currentY) * Math.min(1, dt * 6.0);
-
-          card.container.position.set(card.currentX, card.currentY);
-
+          // Fixed static slot - NO movement lerp that causes cards to slide over each other!
+          card.container.position.set(card.targetX, card.targetY);
         }
-
       }
 
       this._gorinRowContainer.visible = anyVisible;
 
     }
 
-
-
     this._updateSlackProgressBar();
 
   }
 
-
-
   private _updateSlackPopup(cue: SubtitleCue): void {
-
     if (this._isKaraoke) {
-
       this.hideSlackPopup(true);
-
       return;
-
     }
 
     const gorinKeys = ['01_jnghfdbk', '01c_korchoe', '01d_prishlizhat', '02_demoblil'];
-
-    let sKey: string | null = cue.slackScreenshotKey || null;
+    const sKey: string | null = cue.slackScreenshotKey || null;
 
     if (this._actId === 'act_3_timemachine' && sKey && gorinKeys.includes(sKey)) {
-
       this._slackPopupTargetAlpha = 0;
-
       this._slackHoldTimer = 0;
-
       return;
-
     }
 
-
-
-    if (!sKey) {
-
-      const t = cue.text.toLowerCase();
-
-      if (this._actId !== 'act_3_timemachine' && (t.includes('jnghfdbk') || t.includes('демоблил'))) sKey = '01_jnghfdbk';
-
-      else if (t.includes('130 страниц') || t.includes('под стеклом лежат') || (t.includes('диснея') && t.includes('гроб'))) sKey = '03_disney_long_box';
-
-      else if (t.includes('забанили клод') || t.includes('забанили claude')) sKey = '04_claude_banned';
-
-      else if (t.includes('одиннадцать баллов') || t.includes('11 баллов')) sKey = '05_edik_11_points';
-
-      else if (t.includes('палатку')) sKey = '06_tent_brother';
-
-      else if (t.includes('слишком буквально') || t.includes('принял мою просьбу')) sKey = '07_cow_laser';
-
-      else if (t.includes('mavis') && t.includes('ноги')) sKey = '08_mavis_legs';
-
-      else if (t.includes('даниал') || t.includes('3а') || t.includes('3a')) sKey = '09_danial_3a_project';
-
-      else if (t.includes('музеях') && (t.includes('котов') || t.includes('мумий') || t.includes('фараон'))) sKey = '10_pyramids_museum';
-
-      else if (t.includes('попровил') || t.includes('поправил')) sKey = '12_nick_time_machine';
-
-      else if (t.includes('сундук') && (t.includes('яйцо') || t.includes('звук'))) sKey = '13_chest_egg_sound';
-
-      else if (t.includes('мне все нравится') || t.includes('мне всё нравится') || t.includes('филлинг') || t.includes('чуяния ноль') || t.includes('было чуяния') || t.includes('павел, простите')) sKey = '14_feeling_zero';
-
-    }
-
-
-
+    // Direct mapping only: cues only trigger if explicitly defined on the cue!
+    // Never guess keywords from speech that desyncs seek vs playback!
     if (sKey && hasTexture(sKey)) {
-
       if (this._currentSlackKey !== sKey) {
-
         this._currentSlackKey = sKey;
-
-        this._slackHoldTimer = 5.0;
-
+        this._slackHoldTimer = 10.0;
         this._slackHoverExtraTime = 0;
-
         this._slackMotionTimer = 0;
-
         this._isSlackDismissed = false;
-
         const tex = getTexture(sKey);
-
         this._slackPopupSprite.texture = tex;
-
         this._positionSlackPopup(tex);
-
         this._slackPopupTargetAlpha = 1.0;
-
       }
-
-    } else {
-
-      // Do NOT kill active popup prematurely! Let it count down its 10s reading timer!
-
-      if (this._slackHoldTimer <= 0) {
-
-        this._slackPopupTargetAlpha = 0;
-
-        this._currentSlackKey = null;
-
-      }
-
+    } else if (!sKey && cue.speaker) {
+      // If a cue has a speaker but no Slack card, hide any lingering Slack popup from prior speakers
+      this.hideSlackPopup(false);
     }
-
   }
-
-
-
-
-
-
 
   private _positionSlackPopup(tex: Texture): void {
 
@@ -1944,29 +1616,32 @@ export class Subtitles extends Container {
 
     const isPortrait = h > w;
 
-
-
     // Minimalist clean display with subtle cinematic drop shadow and zero UI clutter (No dark dimming overlays)
 
     const karaokeW = this._isKaraoke ? 460 : 0;
 
+    // Generous cinema scale for maximum Slack text legibility
     const maxW = isPortrait
+      ? Math.min(w * 0.94, 720)
+      : (this._isKaraoke ? Math.min(w - karaokeW - 48, 920) : Math.min(w * 0.88, 1440));
 
-      ? Math.min(w * 0.94, 620)
+    const maxH = isPortrait ? Math.min(h * 0.52, 520) : Math.min(h * 0.72, 650);
 
-      : (this._isKaraoke ? Math.min(w - karaokeW - 48, 760) : Math.min(w * 0.78, 920));
+    let scale = Math.min(maxW / tex.width, maxH / tex.height, 2.5);
 
-    const maxH = isPortrait ? Math.min(h * 0.52, 480) : Math.min(h * 0.72, 600);
-
-
-
-    const scale = Math.min(maxW / tex.width, maxH / tex.height, 2.5);
+    // Enforce minimum readable height for horizontal Slack strips (e.g. 178px / 218px / 258px)
+    // so Slack text is never scaled down to microscopic, unreadable sizes
+    const targetMinH = isPortrait ? 140 : 200;
+    if (tex.height <= 260 && tex.height * scale < targetMinH) {
+      const minScale = targetMinH / tex.height;
+      if (tex.width * minScale <= maxW * 1.05) {
+        scale = minScale;
+      }
+    }
 
     const imgW = Math.round(tex.width * scale);
 
     const imgH = Math.round(tex.height * scale);
-
-
 
     const modalX = (this._isKaraoke && !isPortrait)
 
@@ -1976,15 +1651,11 @@ export class Subtitles extends Container {
 
     const modalY = Math.round(h * 0.40);
 
-
-
     this._slackBaseX = modalX;
 
     this._slackBaseY = modalY;
 
     this._slackPopupContainer.position.set(modalX, modalY);
-
-
 
     const r = 8;
 
@@ -1996,15 +1667,11 @@ export class Subtitles extends Container {
 
     this._slackPopupSprite.mask = this._slackSpriteMask;
 
-
-
     this._slackPopupSprite.width = imgW;
 
     this._slackPopupSprite.height = imgH;
 
     this._slackPopupSprite.position.set(-imgW / 2, -imgH / 2);
-
-
 
     // Clean diffused drop shadow beneath screenshot (strictly borderless, NO frames, NO borders)
 
@@ -2013,8 +1680,6 @@ export class Subtitles extends Container {
     this._slackPopupBg.roundRect(-imgW / 2, -imgH / 2 + 6, imgW, imgH, r);
 
     this._slackPopupBg.fill({ color: 0x000000, alpha: 0.40 });
-
-
 
     // Clean minimalist: hide header, zoom, close, and progress bar
 
@@ -2028,8 +1693,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   private _updateSlackProgressBar(): void {
 
     // Completely disabled per user request: "убери рамочки и загрузки из скринов"
@@ -2039,8 +1702,6 @@ export class Subtitles extends Container {
     this._slackProgressBar.visible = false;
 
   }
-
-
 
   public nextPhrase(): void {
 
@@ -2053,8 +1714,6 @@ export class Subtitles extends Container {
     }
 
   }
-
-
 
   public previousPhrase(): void {
 
@@ -2072,8 +1731,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   public resize(w: number, h: number): void {
 
     this._screenWidth = w;
@@ -2088,15 +1745,11 @@ export class Subtitles extends Container {
 
     }
 
-    if (this._isGorinRowActive) {
-
-      this._repositionGorinRow();
-
+    if (this._isGorinRowActive || this._actId === 'act_3_timemachine') {
+      this._layoutGorinCards();
     }
 
   }
-
-
 
   private _redrawLayout(): void {
 
@@ -2112,8 +1765,6 @@ export class Subtitles extends Container {
 
   }
 
-
-
   /**
 
    * 1. REGULAR SUBTITLES: Clean black rectangle at bottom center, NO NAME / AVATAR / BORDER
@@ -2124,23 +1775,17 @@ export class Subtitles extends Container {
 
     this._background.clear();
 
-
-
     const w = this._screenWidth;
 
     const h = this._screenHeight;
 
     const isPortrait = h > w;
 
-
-
     // Responsive reference scaling: matches viewport resolution dynamically
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
     const fontScale = Math.max(0.9, Math.min(1.85, refDim));
-
-
 
     // Cinema-grade prominent typography (matches 48-56px on 1080p, 34-38px on 720p)
 
@@ -2149,8 +1794,6 @@ export class Subtitles extends Container {
     const textLineHeight = Math.round(textFontSize * 1.45);
 
     const maxTextW = Math.min(w * 0.90, isPortrait ? 580 * fontScale : 1160 * fontScale);
-
-
 
     this._mainText.style.fontFamily = ['Share Tech Mono', 'monospace'];
 
@@ -2166,8 +1809,6 @@ export class Subtitles extends Container {
 
     (this._mainText.style as any).dropShadow = null;
 
-
-
     const bounds = this._mainText.bounds;
 
     const padX = Math.round((isPortrait ? 26 : 40) * fontScale);
@@ -2178,8 +1819,6 @@ export class Subtitles extends Container {
 
     const boxH = Math.max(Math.round(54 * fontScale), bounds.height + padY * 2);
 
-
-
     const boxX = (w - boxW) / 2;
 
     // Dynamic bottom clearance: lifts subtitles when HUD bar slides up
@@ -2188,15 +1827,11 @@ export class Subtitles extends Container {
 
     const boxY = h - boxH - bottomClearance;
 
-
-
     // Clean black rectangle backdrop without borders or corner ticks
 
     this._background.rect(boxX, boxY, boxW, boxH);
 
     this._background.fill({ color: 0x000000, alpha: 0.88 });
-
-
 
     // Text centered inside black box
 
@@ -2205,8 +1840,6 @@ export class Subtitles extends Container {
     const textCenterY = boxY + boxH / 2;
 
     this._mainText.position.set(textCenterX, textCenterY);
-
-
 
     // Hide clutter buttons and counter inside dialogue box
 
@@ -2219,8 +1852,6 @@ export class Subtitles extends Container {
     this._cursorText.visible = false;
 
   }
-
-
 
   /**
 
@@ -2240,8 +1871,6 @@ export class Subtitles extends Container {
 
     const fontScale = Math.max(0.9, Math.min(1.85, refDim));
 
-
-
     const panelW = isPortrait
 
       ? Math.min(w * 0.94, 520)
@@ -2254,11 +1883,7 @@ export class Subtitles extends Container {
 
     const panelH = h - panelY; // Clean rectangle extending all the way down to the bottom
 
-
-
     this._karaokeScreenContainer.position.set(panelX, panelY);
-
-
 
     // Clean black rectangle backdrop extending to bottom without strokes or rounded corners
 
@@ -2268,13 +1893,9 @@ export class Subtitles extends Container {
 
     this._karaokePanelBg.fill({ color: 0x000000, alpha: 0.88 });
 
-
-
     // Header is hidden for clean minimalist look per user request
 
     this._karaokeHeader.visible = false;
-
-
 
     // Mask for scrolling lines with bottom clearance above player bar
 
@@ -2286,13 +1907,9 @@ export class Subtitles extends Container {
 
     this._karaokeListMask.fill({ color: 0xffffff });
 
-
-
     this._relayoutKaraokeLines(panelW);
 
   }
-
-
 
   public get currentCueIndex(): number {
 
@@ -2300,313 +1917,91 @@ export class Subtitles extends Container {
 
   }
 
-
-
   /**
 
    * Gorin Typo Multi-Card Row: Repositions active cards in a clean borderless cascade / row
 
    */
 
-  private _repositionGorinRow(): void {
-
+  /**
+   * Gorin Typo Multi-Card Row: Positions cards in a clean, non-overlapping, fixed 2x2 grid.
+   * Shifted to the right of Gorin's face (w * 0.56) with generous horizontal (28px) and vertical (22px) gaps.
+   */
+  private _layoutGorinCards(): void {
     const w = this._screenWidth;
-
     const h = this._screenHeight;
-
     const isPortrait = h > w;
 
-
-
-    const activeCards = this._gorinCards.filter(c => c.targetAlpha > 0);
-
-    const count = activeCards.length;
-
-    if (count === 0) return;
-
-
-
     if (!isPortrait) {
+      // LANDSCAPE: Sequential single-card display — show only the most recently revealed card.
+      // This guarantees readable text at all screen sizes (cards are ~5:1 aspect, tiny in a 2x2 grid).
+      const cardW = Math.round(Math.min(w * 0.52, 820));
 
-      // LANDSCAPE: Vertically-stacked / 2x2 grid cascade so phrases are large, readable, and not cramped horizontally
-
-      const maxW = Math.min(w * 0.90, 1160);
-
-      const gapX = 20;
-
-      const gapY = 14;
-
-
-
-      if (count === 1) {
-
-        const cardW = Math.min(w * 0.54, 620);
-
-        const card = activeCards[0];
-
+      // All cards stacked at the same position (center-right); only the active one is visible.
+      for (const card of this._gorinCards) {
         card.targetX = 0;
-
         card.targetY = 0;
-
         this._drawGorinCard(card, cardW);
-
-        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.44));
-
-      } else if (count === 2) {
-
-        // 2 cards stacked vertically (one above another) so they stay large, readable and clear
-
-        const cardW = Math.min(w * 0.50, 560);
-
-        let totalH = 0;
-
-        const heights: number[] = [];
-
-        for (const card of activeCards) {
-
-          const tex = hasTexture(card.key) ? getTexture(card.key) : null;
-
-          const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
-
-          const ch = Math.round(cardW / aspect);
-
-          heights.push(ch);
-
-          totalH += ch;
-
-        }
-
-        totalH += gapY;
-
-        let curY = -totalH / 2;
-
-        for (let i = 0; i < 2; i++) {
-
-          const card = activeCards[i];
-
-          const ch = heights[i];
-
-          card.targetX = 0;
-
-          card.targetY = Math.round(curY + ch / 2);
-
-          this._drawGorinCard(card, cardW);
-
-          curY += ch + gapY;
-
-        }
-
-        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.42));
-
-      } else {
-
-        // count === 3 or 4: 2x2 Grid (2 columns, 2 rows)
-
-        const cardW = Math.min((maxW - gapX) / 2, 540);
-
-
-
-        const getCardH = (c: typeof activeCards[0]) => {
-
-          const tex = hasTexture(c.key) ? getTexture(c.key) : null;
-
-          const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
-
-          return Math.round(cardW / aspect);
-
-        };
-
-
-
-        const h0 = Math.max(getCardH(activeCards[0]), activeCards[1] ? getCardH(activeCards[1]) : 0);
-
-        const h1 = Math.max(activeCards[2] ? getCardH(activeCards[2]) : 0, activeCards[3] ? getCardH(activeCards[3]) : 0);
-
-        const totalGridH = h0 + (count > 2 ? (gapY + h1) : 0);
-
-
-
-        const row0Y = -totalGridH / 2 + h0 / 2;
-
-        const row1Y = -totalGridH / 2 + h0 + gapY + h1 / 2;
-
-
-
-        const colLeftX = -cardW / 2 - gapX / 2;
-
-        const colRightX = cardW / 2 + gapX / 2;
-
-
-
-        // Card 0: Top Left
-
-        activeCards[0].targetX = colLeftX;
-
-        activeCards[0].targetY = row0Y;
-
-        this._drawGorinCard(activeCards[0], cardW);
-
-
-
-        // Card 1: Top Right
-
-        if (activeCards[1]) {
-
-          activeCards[1].targetX = colRightX;
-
-          activeCards[1].targetY = row0Y;
-
-          this._drawGorinCard(activeCards[1], cardW);
-
-        }
-
-
-
-        if (count === 3) {
-
-          // Card 2: Centered on bottom row
-
-          activeCards[2].targetX = 0;
-
-          activeCards[2].targetY = row1Y;
-
-          this._drawGorinCard(activeCards[2], cardW);
-
-        } else if (count >= 4) {
-
-          // Card 2: Bottom Left
-
-          activeCards[2].targetX = colLeftX;
-
-          activeCards[2].targetY = row1Y;
-
-          this._drawGorinCard(activeCards[2], cardW);
-
-
-
-          // Card 3: Bottom Right
-
-          activeCards[3].targetX = colRightX;
-
-          activeCards[3].targetY = row1Y;
-
-          this._drawGorinCard(activeCards[3], cardW);
-
-        }
-
-
-
-        this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.42));
-
       }
 
+      // Container centered in the right half of the screen, vertically in the upper third
+      this._gorinRowContainer.position.set(Math.round(w * 0.65), Math.round(h * 0.38));
     } else {
-
       // PORTRAIT: Vertically stacked cards
-
-      const cardW = Math.min(w * 0.92, 500);
-
-      const gap = 10;
-
-
-
+      const cardW = Math.min(w * 0.90, 560);
+      const gap = 14;
       let totalRowH = 0;
-
       const heights: number[] = [];
 
-      for (let i = 0; i < activeCards.length; i++) {
-
-        const card = activeCards[i];
-
+      for (let i = 0; i < this._gorinCards.length; i++) {
+        const card = this._gorinCards[i];
         const tex = hasTexture(card.key) ? getTexture(card.key) : null;
-
-        const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
-
+        const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 5.5;
         const ch = Math.round(cardW / aspect);
-
         heights.push(ch);
-
         totalRowH += ch;
-
       }
-
-      totalRowH += (count - 1) * gap;
-
-
+      totalRowH += Math.max(0, (this._gorinCards.length - 1)) * gap;
 
       let curY = -totalRowH / 2;
-
-      for (let i = 0; i < activeCards.length; i++) {
-
-        const card = activeCards[i];
-
+      for (let i = 0; i < this._gorinCards.length; i++) {
+        const card = this._gorinCards[i];
         const ch = heights[i];
-
         card.targetX = 0;
-
         card.targetY = Math.round(curY + ch / 2);
-
         this._drawGorinCard(card, cardW);
-
         curY += ch + gap;
-
       }
-
-
-
       this._gorinRowContainer.position.set(Math.round(w / 2), Math.round(h * 0.40));
-
     }
 
+    for (const card of this._gorinCards) {
+      card.container.position.set(card.targetX, card.targetY);
+    }
   }
 
-
-
   private _drawGorinCard(card: typeof this._gorinCards[0], cardW: number): void {
-
     if (card.sprite.texture === Texture.WHITE || !card.sprite.texture) {
-
       if (hasTexture(card.key)) {
-
         card.sprite.texture = getTexture(card.key);
-
       }
-
     }
 
     const tex = card.sprite.texture;
-
-    const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 4.5;
-
+    const aspect = (tex && tex.width > 0 && tex.height > 0) ? (tex.width / tex.height) : 5.5;
     const cardH = Math.round(cardW / aspect);
 
-
-
     // Clean diffused drop shadow beneath screenshot (strictly borderless, NO frames, NO borders)
-
     card.bg.clear();
-
     card.bg.roundRect(-cardW / 2, -cardH / 2 + 4, cardW, cardH, 6);
-
-    card.bg.fill({ color: 0x000000, alpha: 0.38 });
-
-
+    card.bg.fill({ color: 0x000000, alpha: 0.45 });
 
     card.sprite.width = cardW;
-
     card.sprite.height = cardH;
-
     card.sprite.position.set(-cardW / 2, -cardH / 2);
 
-
-
     card.mask.clear();
-
     card.mask.roundRect(-cardW / 2, -cardH / 2, cardW, cardH, 6);
-
     card.mask.fill({ color: 0xffffff });
-
   }
-
 }
-

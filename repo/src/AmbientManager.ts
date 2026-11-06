@@ -35,32 +35,32 @@ export interface CueNormalizationConfig {
 export const CUE_NORMALIZATION_MAP: Record<string, CueNormalizationConfig> = {
 
   // Harsh Dread / Terror Drops: Calibrated with deep speech ducking and lowered ceiling so dialogue is 100% intelligible
-  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.20, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.18, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.18, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  dread_11_morlock_war_march_climax_50s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  dread_10_predator_nightmare_drop_52s: { targetVol: 0.20, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  dread_12_predator_digital_drug_28s: { targetVol: 0.20, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+  dread_03_predator_instant_terror_drop_25s: { targetVol: 0.28, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  dread_04_predator_chittering_nightmare_25s: { targetVol: 0.26, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  dread_05_rust_and_bone_maximum_grimdark_25s: { targetVol: 0.26, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  dread_11_morlock_war_march_climax_50s: { targetVol: 0.28, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  dread_10_predator_nightmare_drop_52s: { targetVol: 0.28, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  dread_12_predator_digital_drug_28s: { targetVol: 0.28, fadeInSec: 0.25, duckAmbientTo: 0.005 },
 
   // Specialized Cinematic Trailer / Tension Cues & Braams (Anti-Masking & Calibrated Speech Intelligibility)
-  braam_analog_synth_pitch_drop: { targetVol: 0.22, fadeInSec: 0.25, duckAmbientTo: 0.005 },
-  trailer_tension_riser_to_brutal_cut: { targetVol: 0.24, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-  trailer_reese_bass_distortion_hit: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
-  trailer_braam_sub_drop: { targetVol: 0.22, fadeInSec: 0.20, duckAmbientTo: 0.005 },
-  braam_titan_warhorn_doom: { targetVol: 0.20, fadeInSec: 0.25, duckAmbientTo: 0.005 },
-  braam_reactor_turbine_overdrive: { targetVol: 0.22, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-  trailer_dissonant_warp_stinger: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
-  trailer_industrial_anvil_slam: { targetVol: 0.22, fadeInSec: 0.10, duckAmbientTo: 0.005 },
-  trailer_pneumatic_gate_crush: { targetVol: 0.22, fadeInSec: 0.15, duckAmbientTo: 0.005 },
-  braam_seismic_tectonic_rumble: { targetVol: 0.22, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  braam_triple_pulse_staccato: { targetVol: 0.20, fadeInSec: 0.20, duckAmbientTo: 0.005 },
-  braam_choir_infernal_drone: { targetVol: 0.22, fadeInSec: 0.40, duckAmbientTo: 0.005 },
-  melodic_tension_dark_cello_bend_braam: { targetVol: 0.24, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-  melodic_tension_french_horn_minor_swell: { targetVol: 0.25, fadeInSec: 0.35, duckAmbientTo: 0.005 },
-  melodic_tension_blade_runner_synth_drop: { targetVol: 0.25, fadeInSec: 0.30, duckAmbientTo: 0.005 },
-  melodic_tension_mournful_vocal_drone: { targetVol: 0.24, fadeInSec: 0.40, duckAmbientTo: 0.005 },
-  melodic_tension_cathedral_bell_drone: { targetVol: 0.24, fadeInSec: 0.40, duckAmbientTo: 0.005 },
-  melodic_tension_piano_decay_sub_swell: { targetVol: 0.24, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  braam_analog_synth_pitch_drop: { targetVol: 0.30, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+  trailer_tension_riser_to_brutal_cut: { targetVol: 0.32, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  trailer_reese_bass_distortion_hit: { targetVol: 0.30, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  trailer_braam_sub_drop: { targetVol: 0.30, fadeInSec: 0.20, duckAmbientTo: 0.005 },
+  braam_titan_warhorn_doom: { targetVol: 0.28, fadeInSec: 0.25, duckAmbientTo: 0.005 },
+  braam_reactor_turbine_overdrive: { targetVol: 0.30, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  trailer_dissonant_warp_stinger: { targetVol: 0.30, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  trailer_industrial_anvil_slam: { targetVol: 0.30, fadeInSec: 0.10, duckAmbientTo: 0.005 },
+  trailer_pneumatic_gate_crush: { targetVol: 0.30, fadeInSec: 0.15, duckAmbientTo: 0.005 },
+  braam_seismic_tectonic_rumble: { targetVol: 0.30, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  braam_triple_pulse_staccato: { targetVol: 0.28, fadeInSec: 0.20, duckAmbientTo: 0.005 },
+  braam_choir_infernal_drone: { targetVol: 0.30, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_dark_cello_bend_braam: { targetVol: 0.32, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  melodic_tension_french_horn_minor_swell: { targetVol: 0.34, fadeInSec: 0.35, duckAmbientTo: 0.005 },
+  melodic_tension_blade_runner_synth_drop: { targetVol: 0.34, fadeInSec: 0.30, duckAmbientTo: 0.005 },
+  melodic_tension_mournful_vocal_drone: { targetVol: 0.32, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_cathedral_bell_drone: { targetVol: 0.32, fadeInSec: 0.40, duckAmbientTo: 0.005 },
+  melodic_tension_piano_decay_sub_swell: { targetVol: 0.32, fadeInSec: 0.35, duckAmbientTo: 0.005 },
 
 
 
@@ -220,6 +220,7 @@ class AmbientManagerService {
   private _savedDuckFactorBeforeCue = 1.0;
 
   private _cueAudioCache: Map<string, HTMLAudioElement> = new Map();
+  private _screamerAudioCache: Map<string, HTMLAudioElement> = new Map();
 
   private _cueTargetVol = 0.22;
 
@@ -256,12 +257,31 @@ class AmbientManagerService {
   private _isMutedDread = false;
   private _isMutedPeace = false;
   private _isMutedAmbient = false;
-
-
+  private _dreadVolumeMultiplier: number = 1.25;
+  private _peaceVolumeMultiplier: number = 1.0;
+  private _ambientVolumeMultiplier: number = 1.0;
+  private _currentCueCustomGain: number = 1.0;
+  private _isMutedScreamer = false;
+  private _screamerVolumeMultiplier: number = 1.25;
+  private _screamerAudio: HTMLAudioElement | null = null;
+  private _screamerTrackKey: string | null = null;
+  private _screamerCustomGain: number = 1.0;
+  private _screamerTargetVol: number = 0.50;
 
   constructor() {
-
     this._isMuted = AudioController.isMuted();
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const savedDread = window.localStorage.getItem('playbox_track_vol_dread');
+        if (savedDread) this._dreadVolumeMultiplier = parseFloat(savedDread) || 1.25;
+        const savedPeace = window.localStorage.getItem('playbox_track_vol_peace');
+        if (savedPeace) this._peaceVolumeMultiplier = parseFloat(savedPeace) || 1.0;
+        const savedAmb = window.localStorage.getItem('playbox_track_vol_ambient');
+        if (savedAmb) this._ambientVolumeMultiplier = parseFloat(savedAmb) || 1.0;
+        const savedScreamer = window.localStorage.getItem('playbox_track_vol_screamer');
+        if (savedScreamer) this._screamerVolumeMultiplier = parseFloat(savedScreamer) || 1.25;
+      }
+    } catch {}
 
   }
 
@@ -280,17 +300,41 @@ class AmbientManagerService {
     }
   }
 
-  public isCategoryMuted(category: 'dread' | 'peace' | 'ambient'): boolean {
+  public isCategoryMuted(category: 'dread' | 'peace' | 'ambient' | 'screamer'): boolean {
     if (category === 'dread') return this._isMutedDread;
     if (category === 'peace') return this._isMutedPeace;
     if (category === 'ambient') return this._isMutedAmbient;
+    if (category === 'screamer') return this._isMutedScreamer;
     return false;
   }
 
-  public setCategoryMuted(category: 'dread' | 'peace' | 'ambient', muted: boolean): void {
+  public setCategoryMuted(category: 'dread' | 'peace' | 'ambient' | 'screamer', muted: boolean): void {
     if (category === 'dread') this._isMutedDread = muted;
     if (category === 'peace') this._isMutedPeace = muted;
     if (category === 'ambient') this._isMutedAmbient = muted;
+    if (category === 'screamer') this._isMutedScreamer = muted;
+    this.syncMuteVolumes();
+  }
+
+  public getCategoryVolume(category: 'dread' | 'peace' | 'ambient' | 'screamer'): number {
+    if (category === 'dread') return this._dreadVolumeMultiplier;
+    if (category === 'peace') return this._peaceVolumeMultiplier;
+    if (category === 'ambient') return this._ambientVolumeMultiplier;
+    if (category === 'screamer') return this._screamerVolumeMultiplier;
+    return 1.0;
+  }
+
+  public setCategoryVolume(category: 'dread' | 'peace' | 'ambient' | 'screamer', mult: number): void {
+    const clamped = Math.max(0.0, Math.min(2.5, mult));
+    if (category === 'dread') this._dreadVolumeMultiplier = clamped;
+    if (category === 'peace') this._peaceVolumeMultiplier = clamped;
+    if (category === 'ambient') this._ambientVolumeMultiplier = clamped;
+    if (category === 'screamer') this._screamerVolumeMultiplier = clamped;
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        window.localStorage.setItem(`playbox_track_vol_${category}`, clamped.toFixed(2));
+      }
+    } catch {}
     this.syncMuteVolumes();
   }
 
@@ -301,7 +345,7 @@ class AmbientManagerService {
       } else {
         const baseVol = this.getEffectiveAmbientVolume();
         const ambientDuck = this._isVoiceActive ? 0.50 : 1.0;
-        this._currentAudio.volume = Math.max(0, Math.min(1, baseVol * ambientDuck));
+        this._currentAudio.volume = Math.max(0, Math.min(1, baseVol * this._ambientVolumeMultiplier * ambientDuck));
       }
     }
 
@@ -311,7 +355,22 @@ class AmbientManagerService {
       if ((isDread && this._isMutedDread) || (isPeace && this._isMutedPeace) || this._isMuted) {
         this._cueAudio.volume = 0;
       } else {
-        this._cueAudio.volume = Math.max(0, Math.min(1, this._cueTargetVol * this._voiceDuckingFactor));
+        const catMult = isDread ? this._dreadVolumeMultiplier : (isPeace ? this._peaceVolumeMultiplier : 1.0);
+        const cfg = CUE_NORMALIZATION_MAP[this._cueTrackKey] ?? { targetVol: 0.28 };
+        const baseVol = Math.min(1.0, cfg.targetVol * catMult * this._currentCueCustomGain * (this._musicVolume / 0.85));
+        this._cueTargetVol = baseVol;
+        this._cueAudio.volume = Math.max(0, Math.min(1, baseVol * this._voiceDuckingFactor));
+      }
+    }
+
+    if (this._screamerAudio && this._screamerTrackKey) {
+      if (this._isMutedScreamer || this._isMuted) {
+        this._screamerAudio.volume = 0;
+      } else {
+        const cfg = CUE_NORMALIZATION_MAP[this._screamerTrackKey] ?? { targetVol: 0.40 };
+        const baseVol = Math.min(1.0, cfg.targetVol * this._screamerVolumeMultiplier * this._screamerCustomGain * (this._musicVolume / 0.85));
+        this._screamerTargetVol = baseVol;
+        this._screamerAudio.volume = Math.max(0, Math.min(1, baseVol * this._voiceDuckingFactor));
       }
     }
   }
@@ -390,6 +449,22 @@ class AmbientManagerService {
 
   }
 
+  private _getOrCreateScreamerAudio(key: string): HTMLAudioElement | null {
+    if (this._screamerAudioCache.has(key)) {
+      return this._screamerAudioCache.get(key)!;
+    }
+    const url = getAudioUrl(key);
+    if (!url) {
+      console.warn('[AmbientManager] Screamer audio URL not found for key: ' + key);
+      return null;
+    }
+    const audio = new Audio(url);
+    audio.loop = false;
+    audio.muted = this._isMuted || this._isMutedScreamer;
+    this._screamerAudioCache.set(key, audio);
+    return audio;
+  }
+
 
 
   public getDisclaimerTrack(): { key: AmbientTrackKey | null; duckFactor: number } {
@@ -414,10 +489,13 @@ class AmbientManagerService {
   }
 
   public setLockedTrackForAct(actKey: string, track: AmbientTrackKey): void {
+    if (actKey === 'act_7_song' || actKey.includes('song')) return;
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         const raw = window.localStorage.getItem('cyberbulling_ambient_locks');
         const map = raw ? JSON.parse(raw) : {};
+        delete map['act_7_song'];
+        delete map['act_10'];
         map[actKey] = track;
         window.localStorage.setItem('cyberbulling_ambient_locks', JSON.stringify(map));
       }
@@ -425,6 +503,11 @@ class AmbientManagerService {
   }
 
   public getTrackForAct(actIndex: number, actId?: string, actTime?: number): { key: AmbientTrackKey | null; duckFactor: number } {
+    // Act 10: Song Act (act_7_song or any song category) - STRICTLY ZERO AMBIENT ALWAYS
+    if (actId === 'act_7_song' || actIndex === 10 || (actId && actId.includes('song'))) {
+      return { key: null, duckFactor: 0.0 };
+    }
+
     const actKey = actId || `act_${actIndex}`;
     const locked = this.getLockedTrackForAct(actKey);
     if (locked) {
@@ -433,11 +516,6 @@ class AmbientManagerService {
     // Act 0: Intro (uses randomly selected intro track, full volume 1.0)
     if (actId === 'intro_playbox' || actIndex === 0) {
       return { key: this._introTrackKey, duckFactor: 1.0 };
-    }
-
-    // Act 10: Song Act (act_7_song) - STRICTLY ZERO AMBIENT
-    if (actId === 'act_7_song' || actIndex === 10) {
-      return { key: null, duckFactor: 0.0 };
     }
 
     // Act 1: Prologue Space (Intro score carries through until Ark visual emerges at 18.5s)
@@ -493,26 +571,54 @@ class AmbientManagerService {
 
 
 
-  public transitionToAct(actIndex: number, crossfadeSec?: number, actId?: string): void {
-
+  public stopAllAmbientImmediately(): void {
     this.cancelWait();
-    this.stopCinematicCue(0); // Immediately cut any previous act cue, preventing peaceful music from bleeding into invasion
-
-    const { key, duckFactor } = this.getTrackForAct(actIndex, actId);
-
-    this._currentDuckFactor = duckFactor;
-
-    // Hard instantaneous snap (0 crossfade) per user request: "при перемотке пусть не будет бленда музыки... резко все перескакивает"
-
-    const effectiveSec = crossfadeSec !== undefined ? crossfadeSec : 0;
-
-    this.playTrack(key, duckFactor, effectiveSec);
-
+    this.stopCinematicCue(0);
+    this.stopScreamerCue(0);
+    this._currentTrackKey = null;
+    if (this._currentAudio) {
+      try {
+        this._currentAudio.pause();
+        this._currentAudio.currentTime = 0;
+        this._currentAudio.volume = 0;
+      } catch (_) {}
+      this._currentAudio = null;
+    }
+    for (const audio of this._audioCache.values()) {
+      try {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 0;
+      } catch (_) {}
+    }
+    for (const f of this._fadingTracks) {
+      try {
+        f.audio.pause();
+        f.audio.volume = 0;
+      } catch (_) {}
+    }
+    this._fadingTracks = [];
+    this._currentDuckFactor = 0.0;
   }
 
+  public transitionToAct(actIndex: number, crossfadeSec?: number, actId?: string): void {
+    this.cancelWait();
+    this.stopCinematicCue(0);
+    this.stopScreamerCue(0);
 
+    const isSong = actId === 'act_7_song' || actIndex === 10 || (actId && actId.includes('song'));
+    if (isSong) {
+      this.stopAllAmbientImmediately();
+      return;
+    }
 
-  public playTrack(key: AmbientTrackKey | null, duckFactor = 0.35, crossfadeSec = 2.0, startOffsetSec?: number): void {
+    const { key, duckFactor } = this.getTrackForAct(actIndex, actId);
+    this._currentDuckFactor = duckFactor;
+    const effectiveSec = crossfadeSec !== undefined ? crossfadeSec : 0;
+    this.playTrack(key, duckFactor, effectiveSec);
+  }
+
+    public playTrack(key: AmbientTrackKey | null, duckFactor = 0.35, crossfadeSec = 2.0, startOffsetSec?: number): void {
 
     this._currentDuckFactor = duckFactor;
 
@@ -1075,6 +1181,13 @@ class AmbientManagerService {
 
     }
 
+    for (const audio of this._screamerAudioCache.values()) {
+      audio.muted = muted || this._isMutedScreamer;
+    }
+    if (this._screamerAudio) {
+      this._screamerAudio.muted = muted || this._isMutedScreamer;
+    }
+
   }
 
 
@@ -1182,6 +1295,13 @@ class AmbientManagerService {
 
     }
 
+    if (this._screamerAudio) {
+      this._screamerAudio.pause();
+    }
+    for (const audio of this._screamerAudioCache.values()) {
+      audio.pause();
+    }
+
     if (this._currentAudio && this._currentTrackKey) {
 
       this._savedPositions.set(this._currentTrackKey, this._currentAudio.currentTime);
@@ -1202,8 +1322,11 @@ class AmbientManagerService {
 
 
   public resumeCurrent(): void {
-
     this._isPaused = false;
+    // CRITICAL: If no ambient track is assigned (e.g. Song Act), NEVER play or resume background ambient!
+    if (!this._currentTrackKey || !this._currentAudio) {
+      return;
+    }
 
     if (this._currentAudio && this._currentTrackKey) {
 
@@ -1231,6 +1354,12 @@ class AmbientManagerService {
 
       this._cueAudio.play().catch(() => {});
 
+    }
+
+    if (this._screamerAudio && this._screamerTrackKey) {
+      const isMuted = this._isMutedScreamer || this._isMuted;
+      this._screamerAudio.volume = isMuted ? 0 : Math.max(0, Math.min(1, this._screamerTargetVol * this._voiceDuckingFactor));
+      this._screamerAudio.play().catch(() => {});
     }
 
   }
@@ -1285,7 +1414,7 @@ class AmbientManagerService {
 
 
 
-  public syncCinematicCue(cueKey: string, offsetSec: number, isPlaying: boolean): void {
+  public syncCinematicCue(cueKey: string, offsetSec: number, isPlaying: boolean, customGain: number = 1.0): void {
 
     if (!cueKey || cueKey === 'stop') {
 
@@ -1312,7 +1441,9 @@ class AmbientManagerService {
     const isPeace = normKey.startsWith('peace_');
     const isDread = !isPeace && normKey !== 'stop';
     const isCatMuted = (isDread && this._isMutedDread) || (isPeace && this._isMutedPeace);
-    const targetVolume = (isCatMuted || this._isMuted) ? 0 : Math.min(0.90, cfg.targetVol * (this._musicVolume / 0.85));
+    const catMult = isDread ? this._dreadVolumeMultiplier : (isPeace ? this._peaceVolumeMultiplier : 1.0);
+    this._currentCueCustomGain = customGain ?? 1.0;
+    const targetVolume = (isCatMuted || this._isMuted) ? 0 : Math.min(1.0, cfg.targetVol * catMult * this._currentCueCustomGain * (this._musicVolume / 0.85));
 
     this._cueTargetVol = targetVolume;
 
@@ -1562,6 +1693,71 @@ class AmbientManagerService {
         console.warn('[AmbientManager] Cue play failed: ' + normKey, err);
       });
     }
+  }
+
+    public syncScreamerCue(cueKey: string, offsetSec: number, isPlaying: boolean, customGain: number = 1.0): void {
+    if (!cueKey || cueKey === 'stop') {
+      this.stopScreamerCue(0.2);
+      return;
+    }
+    const normKey = cueKey.toLowerCase();
+    const cfg = CUE_NORMALIZATION_MAP[normKey] ?? {
+      targetVol: 0.40,
+      fadeInSec: 0.1,
+      duckAmbientTo: 1.0, // Screamers NEVER duck ambient
+    };
+    const isCatMuted = this._isMutedScreamer || this._isMuted;
+    this._screamerCustomGain = customGain ?? 1.0;
+    const targetVolume = isCatMuted ? 0 : Math.min(1.0, cfg.targetVol * this._screamerVolumeMultiplier * this._screamerCustomGain * (this._musicVolume / 0.85));
+    this._screamerTargetVol = targetVolume;
+
+    if (this._screamerTrackKey === normKey && this._screamerAudio) {
+      try {
+        if (Math.abs(this._screamerAudio.currentTime - offsetSec) > 0.3) {
+          this._screamerAudio.currentTime = Math.max(0, offsetSec);
+        }
+      } catch (err) {}
+      this._screamerAudio.volume = isCatMuted ? 0 : Math.max(0, Math.min(1, targetVolume * this._voiceDuckingFactor));
+      if (isPlaying && !this._isPaused) {
+        this._screamerAudio.play().catch(() => {});
+      } else {
+        this._screamerAudio.pause();
+      }
+      return;
+    }
+
+    if (this._screamerAudio) {
+      try {
+        this._screamerAudio.pause();
+      } catch (_) {}
+      this._screamerAudio = null;
+    }
+
+    this._screamerTrackKey = normKey;
+    const audio = this._getOrCreateScreamerAudio(normKey);
+    if (!audio) return;
+    this._screamerAudio = audio;
+    try {
+      audio.currentTime = Math.max(0, offsetSec);
+    } catch (_) {}
+    audio.volume = isCatMuted ? 0 : Math.max(0, Math.min(1, targetVolume * this._voiceDuckingFactor));
+    // CRITICAL: Isolated onended that NEVER calls stopCinematicCue or touches ambient ducking!
+    audio.onended = () => {
+      this.stopScreamerCue(0.1);
+    };
+    if (isPlaying && !this._isPaused) {
+      audio.play().catch(() => {});
+    }
+  }
+
+  public stopScreamerCue(fadeSec: number = 0.2): void {
+    if (this._screamerAudio) {
+      try {
+        this._screamerAudio.pause();
+      } catch (_) {}
+      this._screamerAudio = null;
+    }
+    this._screamerTrackKey = null;
   }
 
   public stopCinematicCue(fadeSec: number = 0.5): void {

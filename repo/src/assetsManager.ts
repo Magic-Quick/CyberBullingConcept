@@ -48,7 +48,10 @@ export function initAssetMappings(): void {
     // Friendly aliases
     if (filename.includes('01_Пролог') || filename === '00_prologue_space_expose.mp3') audioUrls['01_prologue'] = url;
     if (filename.includes('02_Акт_1') || filename === '01_act_1_intro.mp3') audioUrls['02_act1'] = url;
-    if (filename.includes('03_Акт_2') || filename === '02_act_2_dashboard_stasis.mp3') audioUrls['03_act2'] = url;
+    if (filename === '02_act_2_dashboard_stasis.mp3' || filename.includes('03_Акт_2')) {
+      audioUrls['03_act2'] = url;
+      audioUrls['02_act_2_dashboard_stasis'] = url;
+    }
     if (filename.includes('04_Акт_3') || filename === '03_act_3_management_timemachine.mp3') audioUrls['04_act3'] = url;
     if (filename.includes('05_Акт_4') || filename === '04_act_4_engine_mutation_art.mp3') audioUrls['05_act4'] = url;
     if (filename.includes('06_Акт_5') || filename === '05_act_5_clientarchs_invasion.mp3') audioUrls['06_act5'] = url;
@@ -88,38 +91,68 @@ export function initAssetMappings(): void {
   }
 }
 
+// Call immediately on module import so audioUrls is guaranteed populated
+initAssetMappings();
+
 export function getIntroVideoUrl(): string {
   return introVideoUrl;
 }
 
 export async function loadAllAssets(onProgress?: (ratio: number) => void): Promise<void> {
   initAssetMappings();
-  const imageEntries = Object.entries(imageModules).filter(([p]) => !p.toLowerCase().includes("slack_fin"));
-  let loaded = 0;
-  const total = Math.max(1, imageEntries.length);
 
-  await Promise.all(
-    imageEntries.map(async ([path, url]) => {
-      const filename = path.split('/').pop()!;
-      const key = filename.replace(/\.(png|jpg|webp)$/, '');
+  // Deduplicate entries by texture key to eliminate ~100 redundant HTTP downloads (~77 MB saved!)
+  const uniqueMap = new Map<string, { path: string; url: string; key: string }>();
+  for (const [path, url] of Object.entries(imageModules)) {
+    if (path.toLowerCase().includes("slack_fin")) continue;
+    const filename = path.split('/').pop()!;
+    const key = filename.replace(/\.(png|jpg|webp)$/, '');
+    const lowerKey = key.toLowerCase();
+
+    // Priority: ./assets/slack/ > ./assets/images/gui/ > ./assets/images/ > ./assets/avatars/ > ./assets/fin/
+    const isSlack = path.includes('/assets/slack/');
+    const isGui = path.includes('/assets/images/gui/');
+    const isImages = path.includes('/assets/images/');
+    const isAvatars = path.includes('/assets/avatars/');
+
+    if (!uniqueMap.has(lowerKey)) {
+      uniqueMap.set(lowerKey, { path, url, key });
+    } else {
+      const existing = uniqueMap.get(lowerKey)!;
+      const existingIsSlack = existing.path.includes('/assets/slack/');
+      const existingIsFin = existing.path.includes('/assets/fin/');
+      if (isSlack || (!existingIsSlack && (isGui || isImages || isAvatars) && existingIsFin)) {
+        uniqueMap.set(lowerKey, { path, url, key });
+      }
+    }
+  }
+
+  const entries = Array.from(uniqueMap.values());
+  let loaded = 0;
+  const total = Math.max(1, entries.length);
+
+  // Load with concurrency limit (12 parallel downloads) to prevent browser socket choking
+  const CONCURRENCY = 12;
+  let index = 0;
+
+  async function worker(): Promise<void> {
+    while (index < entries.length) {
+      const item = entries[index++];
       try {
-        const tex = await Assets.load<Texture>({ alias: key, src: url, parser: 'texture' } as any);
-        // Prioritize ./assets/slack/ so high-legibility single-comment cards always take precedence
-        if (path.includes('/assets/slack/')) {
-          textures[key] = tex;
-          textures[key.toLowerCase()] = tex;
-        } else if (!textures[key] || textures[key] === Texture.WHITE || !path.includes('/Slack_Fin/')) {
-          textures[key] = tex;
-          textures[key.toLowerCase()] = tex;
-        }
+        const tex = await Assets.load<Texture>({ alias: item.key, src: item.url, parser: 'texture' } as any);
+        textures[item.key] = tex;
+        textures[item.key.toLowerCase()] = tex;
       } catch (err) {
-        console.warn(`[Assets] Failed to load texture: ${key}`, err);
-        textures[key] = Texture.WHITE;
+        console.warn(`[Assets] Failed to load texture: ${item.key}`, err);
+        textures[item.key] = Texture.WHITE;
       }
       loaded++;
       onProgress?.(loaded / total);
-    })
-  );
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(CONCURRENCY, entries.length) }, () => worker());
+  await Promise.all(workers);
 }
 
 const textureAliases: Record<string, string> = {
@@ -251,6 +284,7 @@ const textureAliases: Record<string, string> = {
   '01d_prishlizhat': '01d_prishlizhat',
   '02_demoblil': '02_demoblil',
   '03_disney_long_box': '03_disney_long_box',
+  '03b_gorin_disney_status': '03b_gorin_disney_status',
   '04_claude_banned': '04_claude_banned',
   '05_edik_11_points': '05_edik_11_points',
   '06_tent_brother': '06_tent_brother',
@@ -305,5 +339,15 @@ export function getAudioUrl(key: string): string | undefined {
   if (!key) return undefined;
   const k = key.trim();
   const lower = k.toLowerCase();
-  return audioUrls[k] || audioUrls[lower] || audioUrls[k + '.mp3'] || audioUrls[lower + '.mp3'];
+  if (audioUrls[k]) return audioUrls[k];
+  if (audioUrls[lower]) return audioUrls[lower];
+  if (audioUrls[k + '.mp3']) return audioUrls[k + '.mp3'];
+  if (audioUrls[lower + '.mp3']) return audioUrls[lower + '.mp3'];
+  // Fallback check against all keys
+  for (const [existingKey, url] of Object.entries(audioUrls)) {
+    if (existingKey.toLowerCase() === lower || existingKey.toLowerCase() === lower + '.mp3') {
+      return url;
+    }
+  }
+  return undefined;
 }

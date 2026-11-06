@@ -175,109 +175,174 @@ export const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
       label: 'Заявочный план: Крипта алтаря дашбордов и стазис-саркофагов на 7-й палубе',
     },
     {
-
       time: 5.00,
-
       texKey: 'retro_film_danial_iskakov_sapper_v1',
-
       type: 'event_illustration',
-
       label: 'Даниал Искаков: Скриптор на борту (чистый кадр)',
-
     },
-
     {
-
       time: 10.84,
-
       texKey: 'retro_film_danial_iskakov_sapper_v1',
-
       type: 'character_quote',
-
       characterName: 'ДАНИАЛ ИСКАКОВ',
-
       characterRole: 'Playable Developer • Кузнец Троичного Кода',
-
       characterThemeColor: 0x00f5d4,
-
       slackKey: '09_danial_3a_project',
-
       label: 'Даниал: Паника перед 3A-проектом (8 SP)',
-
     },
-
     {
-
       time: 20.34,
-
       texKey: 'retro_film_voron_arch_abbot_v7',
-
       type: 'event_illustration',
-
       hideSlack: true,
-
       label: 'Ворон: Архинастоятель Ворон благословил в чате (чистый кадр)',
-
     },
-
     {
-
       time: 23.98,
-
       texKey: 'retro_film_voron_arch_abbot_v7',
-
       type: 'character_quote',
-
       characterName: 'АРХИНАСТОЯТЕЛЬ ВОРОН',
-
       characterRole: 'Arch-Abbot • Архинастоятель Цитадели',
-
       characterThemeColor: 0xffaa00,
-
       slackKey: '09_voron_minnoe_pole',
-
       label: 'Ворон: Как по минному полю? (со Slack-плашкой Ворона)',
-
     },
-
     // 26.68s: "Я сверился с биржевыми кагитаторами и подтверждаю, это буквально минное поле."
-
     { time: 26.68, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', hideSlack: true, label: 'MCU: Сверка с кагитаторами' },
-
     // 32.36s: "Триллионные бюджеты клиентархов намертво завязаны на копеечный билд за 8 стори-поинтов."
-
     { time: 32.36, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лицо Лорда — Триллионные бюджеты на 8 SP' },
-
     // 40.34s: "Стоит в коде Даниала дрогнуть хоть одной детали, мина детонирует на бирже."
-
     { time: 40.34, texKey: 'ai_lord_face_eyes_macro_gemini_1080p', type: 'ai_lord', label: 'ECU: Макро горящих глаз Лорда — Мина детонирует на бирже' },
-
     // 45.58s: "Акции с визгом рушатся на 2 миллиарда, а совет директоров в панике выпрыгивает из зала заседаний прямо в открытый шлюз."
-
-    // РЕЖИССУРА: Иллюстрация события появляется СТРОГО в момент, когда про него заговорили!
-
-    { time: 45.58, texKey: 'retro_film_clientarch_billionaires_space_freeze_gemini_v10', type: 'event_illustration', ambientCueKey: 'trailer_tension_riser_to_brutal_cut', label: 'Совет директоров в панике выпрыгивает в открытый шлюз — Крах на бирже (Райзер к обрыву)' },
-
+    { time: 45.58, texKey: 'retro_film_clientarch_billionaires_space_freeze_gemini_v10', type: 'event_illustration', ambientCueKey: 'trailer_tension_riser_to_brutal_cut', label: 'Совет директоров в панике выпрыгивает в открытый шлюз — Крах на бирже' },
     // 54.12s: "Тащить ядерную боеголовку через горящий трюм куда спокойнее."
-
     { time: 54.12, texKey: 'ai_lord_face_closeup_canonical_1080p', type: 'ai_lord', label: 'CU: Каноническое лицо — Ядерная боеголовка спокойнее' },
-
     // 57.58s: "Боеголовка разнесет всего один наш корабль, а оплошность в 30-секундном клике за 8 SP уничтожает экономику целых галактик."
-
     { time: 57.58, texKey: 'ai_lord_throne_book_reading_narrator', type: 'ai_lord', label: 'MCU: Трон — Экономика галактик' },
 
+    // ==========================================
+    // ВТОРАЯ ЧАСТЬ: БОТ 1783, ДОЛГИЙ ЯЩИК И DISNEY
+    // ==========================================
+
+    // 68.79s: "От такого давления к середине недели закоротило даже наш бортовой бот-счётчик..."
+    { time: 68.79, texKey: 'retro_film_act2_dashboard_altar_crypt_gemini_v1', type: 'event_illustration', label: 'Табло дашбордов: Сход с ума бортового бота' },
+
+    // 88.79s: "1783 сданных плейбла. 1783, блядь. Мы за ночь в горячечном бреду запечатали три соседние галактики..."
+    { time: 88.79, texKey: 'ai_lord_face_closeup_gemini_1080p', type: 'ai_lord', label: 'CU: Лорд — 1783 сданных плейбла за ночь' },
+
+    // 103.51s: "И посреди этого хаоса Преподобный Толкователь Воли Клиентархов Егор Ткачёв внёс рацпредложение..."
+    // ЧИСТАЯ ЭКСПОЗИЦИЯ: сначала даем рассмотреть Егора Ткачёва у стазис-колбы!
+    { time: 103.51, texKey: 'retro_horror_film_egor_mickey_vat_v14', type: 'event_illustration', hideSlack: true, label: 'Егор Ткачёв у стазис-колбы (чистая экспозиция)' },
+
+    // 110.67s: Егор: «Может нам нужен статус "долгий ящик" для таких плейблов?)»
+    {
+      time: 110.67,
+      texKey: 'retro_horror_film_egor_mickey_vat_v14',
+      type: 'character_quote',
+      characterName: 'ЕГОР ТКАЧЁВ',
+      characterRole: 'Creative Director • Преподобный Толкователь Воли Клиентархов',
+      characterThemeColor: 0xe01e5a,
+      slackKey: '03_disney_long_box',
+      label: 'Ткачёв: Статус "долгий ящик" (Скриншот Slack)',
+    },
+
+    // 120.27s: Горин: «Надо обсудить, нужен ли отдельный статус, у нас он один такой этот плеебл...»
+    {
+      time: 120.27,
+      texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
+      type: 'character_quote',
+      characterName: 'АЛЕКСЕЙ ГОРИН',
+      characterRole: 'Chief Production Officer • Верховный Надзиратель Конвейера',
+      characterThemeColor: 0x00f5d4,
+      slackKey: '03b_gorin_disney_status',
+      label: 'Горин: Ответ про статус (Скриншот Slack)',
+    },
+
+    // 129.03s: "Командованию не нужно ничего открывать — этот Долгий Ящик давно замурован в герметичный саркофаг."
+    {
+      time: 129.03,
+      texKey: 'ai_lord_face_closeup_canonical_1080p',
+      type: 'ai_lord',
+      hideSlack: true,
+      label: 'CU: ИИ-Лорд — Долгий Ящик замурован в герметичный саркофаг',
+    },
+
+    // =========================================================================
+    // РЕЖИССУРА DISNEY: ОБЩИЙ ПЛАН КОЛБЫ -> ИИ ЛОРД -> ОБЩИЙ ПЛАН -> КРУПНЫЙ ПЛАН МИККИ -> РУКА С КОГТЯМИ
+    // =========================================================================
+
+    // 139.79s: Общий план колбы:
+    // "В катакомбном склепе, вмурованная в переборку между отсеками «В разработке» и «Архив», слабо гудит стазис-колба. Главная зловещая реликвия Ковчега — мумифицированный таск Disney в сетке Mintegral."
+    {
+      time: 139.79,
+      texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+      type: 'event_illustration',
+      label: 'Общий план колбы: Склеп переборки и стазис-саркофаг Disney в Mintegral',
+    },
+
+    // 154.71s: Сменяется ИИ Лордом:
+    // "По регламенту капсула плейбла живёт ровно семь дней. Но этот таск заперт в вечном стазисе уже 129 суток при просрочке в 132 дня."
+    {
+      time: 154.71,
+      texKey: 'ai_lord_face_closeup_gemini_1080p',
+      type: 'ai_lord',
+      label: 'CU: ИИ-Лорд — Регламент 7 дней и 129 суток вечного стазиса',
+    },
+
+    // 166.11s: Сменяется общим планом колбы:
+    // "Сто двадцать девять дней экипаж боится открывать створки саркофага Mintegral, чтобы оттуда не пахнуло протухшим ТЗ."
+    {
+      time: 166.11,
+      texKey: 'retro_horror_film_mickey_catacomb_stasis_wide_gemini_v1',
+      type: 'event_illustration',
+      label: 'Общий план колбы: Экипаж боится открывать створки саркофага Mintegral',
+    },
+
+    // 174.27s: Крупный план Микки Мауса:
+    // "В зеленоватой жиже покачивается полуистлевшее существо Дома Мыши: в почерневших белых перчатках и с облезлыми круглыми ушами."
+    {
+      time: 174.27,
+      texKey: 'retro_horror_film_mickey_biovat_slime_gemini_v6',
+      type: 'event_illustration',
+      label: 'Крупный план Микки Мауса: Полуистлевшее существо Дома Мыши с облезлыми ушами',
+    },
+
+    // 183.83s: Следующий кадр с рукой:
+    // "Оно тихо скребётся когтями изнутри о толстый кварц и раз в сутки сквозь шипение хрипит обрывок лицензионного соглашения."
+    {
+      time: 183.83,
+      texKey: 'retro_horror_film_mickey_biovat_slime_gpt_v8',
+      type: 'event_illustration',
+      label: 'Кадр с рукой: Белая перчатка с когтями скребётся изнутри о толстый кварц',
+    },
+
+    // 192.51s: "Оно не может умереть — карточку в Notion никто не закрыл. И не может считаться живым — правок нет четыре месяца."
+    {
+      time: 192.51,
+      texKey: 'ai_lord_face_eyes_macro_gemini_1080p',
+      type: 'ai_lord',
+      label: 'ECU: Макро горящих глаз Лорда — Карточка в Notion не закрыта',
+    },
+
+    // 199.35s: "Сто двадцать девять дней анабиоза ради незакрытой ячейки в базе. Бюрократия Ковчега не знает пощады."
+    {
+      time: 199.35,
+      texKey: 'ai_lord_throne_book_reading_narrator',
+      type: 'ai_lord',
+      label: 'MCU: Трон с железной Книгой Учета — Бюрократия Ковчега без пощады',
+    },
   ],
 
   // Act 3: Management & Time Machine (142.15s)
 
   act_3_timemachine: [
-    { time: 0.00, texKey: 'retro_film_act3_command_bridge_chronos_gemini_v1', type: 'event_illustration', label: 'Заявочный план: Командный мостик Хронос — Отсек распределения ресурсов' },
+    { time: 0.00, texKey: 'retro_film_act3_command_bridge_chronos_gorin_v3', type: 'event_illustration', label: 'Заявочный план: Командный мостик Хронос — Отсек распределения ресурсов' },
 
     {
 
       time: 4.50,
 
-      texKey: 'retro_film_act3_command_bridge_chronos_gemini_v1',
+      texKey: 'retro_film_act3_command_bridge_chronos_gorin_v3',
 
       type: 'event_illustration',
 
@@ -438,63 +503,44 @@ export const NARRATOR_CUTS: Record<string, NarratorShotCut[]> = {
     },
 
     {
-
       time: 103.32,
-
       texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
-
       type: 'character_quote',
-
-      characterName: 'АЛЕКСЕЙ ГОРИН',
-
-      characterRole: 'Head of Production • Верховный Надзиратель',
-
+      characterName: 'Алексей Горин',
+      characterRole: 'Head of Production',
       characterThemeColor: 0xffaa00,
-
+      label: 'Горин: царское (чистый план)',
+    },
+    {
+      time: 105.62,
+      texKey: 'retro_film_gorin_batman_cowl_gemini_v20',
+      type: 'character_quote',
+      characterName: 'Алексей Горин',
+      characterRole: 'Head of Production',
+      characterThemeColor: 0xffaa00,
       slackKey: '12a_gorin_time_machine',
-
-      label: 'Горин: Ок, даю добро, правьте даты (Одиночная депеша)',
-
+      label: 'Горин: Ок, даю добро, правьте даты (Slack)',
     },
-
     {
-
+      hideSlack: true,
       time: 108.62,
-
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
-
       type: 'character_quote',
-
-      characterName: 'ЭДУАРД ЛЕВИН',
-
-      characterRole: 'Creative Lead • Зодчий Игрового Замысла',
-
+      characterName: 'Эдуард Левин',
+      characterRole: 'Creative Lead',
       characterThemeColor: 0xff3366,
-
       ambientCueKey: 'peace_03_pin_drop_silence_gentle_resolution_25s',
-
-      label: 'Эдик: Отчитался',
-
+      label: 'Эдик: отчитался (чистый план)',
     },
-
     {
-
       time: 110.82,
-
       texKey: 'retro_warhammer_eduard_levin_gpt_v3',
-
       type: 'character_quote',
-
-      characterName: 'ЭДУАРД ЛЕВИН',
-
-      characterRole: 'Creative Lead • Зодчий Игрового Замысла',
-
+      characterName: 'Эдуард Левин',
+      characterRole: 'Creative Lead',
       characterThemeColor: 0xff3366,
-
       slackKey: '12b_edik_time_machine',
-
-      label: 'Эдик: Поправил — Одиночная депеша Эдика',
-
+      label: 'Эдик: Поправил (Slack)',
     },
 
     // 112.00s: "Локальный хронореактор взвыл, искривил пространство..."
