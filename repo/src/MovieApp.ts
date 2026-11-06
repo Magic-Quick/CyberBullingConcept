@@ -12381,42 +12381,13 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
+        // Smooth cinematic fade-in from void (2.0s - 2.5s)
         const isDesolate = profile.trackKey === 'desolate_cry';
-
-        let p: number;
-
-        let punchScale: number;
-
-
-
-        if (isDesolate) {
-
-          p = Math.min(1, (mt - profile.titleDropTime) / 2.5);
-
-          punchScale = 0.95 + p * 0.05;
-
-        } else {
-
-          // Titan Forge: heavy drum impact strike on 24.0s sharp!
-
-          // Logo appears IMMEDIATELY at 24.0s with explosive punch impact (1.07 -> 1.0)
-
-          const elapsed = mt - profile.titleDropTime;
-
-          p = Math.min(1, 0.85 + (elapsed / 0.1) * 0.15); // Already 85% on 24.0s frame, 100% within 100ms
-
-          const punch = Math.max(0, 1 - elapsed / 0.25);
-
-          punchScale = 1.0 + punch * 0.07;
-
-        }
-
-
+        const fadeDuration = isDesolate ? 2.5 : 2.0;
+        const p = Math.min(1, Math.max(0, (mt - profile.titleDropTime) / fadeDuration));
+        const punchScale = 0.95 + p * 0.05;
 
         this._introSeriesContainer.alpha = p;
-
-
-
         this._introSeriesContainer.scale.set(punchScale);
 
 
