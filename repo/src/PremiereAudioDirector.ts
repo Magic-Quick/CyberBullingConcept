@@ -1127,6 +1127,7 @@ export class PremiereAudioDirector {
     const style = document.createElement('style');
     style.textContent = `
       #premiere-audio-director-btn {
+        display: none !important;
         position: fixed;
         bottom: 24px;
         right: 28px;
@@ -2703,6 +2704,7 @@ export class PremiereAudioDirector {
 
       if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
         e.preventDefault();
+        e.stopPropagation();
         this.toggle();
       } else if (e.key === 'Escape' && this._isOpen) {
         if (this._modalElement.classList.contains('open')) {
@@ -3206,7 +3208,12 @@ export class PremiereAudioDirector {
     this._closeModal();
   }
 
+  private _lastToggleTime = 0;
+
   public toggle(): void {
+    const now = performance.now();
+    if (now - this._lastToggleTime < 250) return;
+    this._lastToggleTime = now;
     if (this._isOpen) {
       this.close();
     } else {

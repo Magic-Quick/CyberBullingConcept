@@ -17466,7 +17466,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.85, Math.min(1.65, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.65, refDim));
 
     this._introFontScale = fontScale;
 
@@ -17710,7 +17710,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.85, Math.min(1.65, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.65, refDim));
 
     this._introFontScale = fontScale;
 

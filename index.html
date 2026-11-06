@@ -2701,6 +2701,30 @@
       }
     });
 
+        // Global hotkey D / В for Premiere Audio Director inside iframe
+    document.addEventListener('keydown', (e) => {
+      const target = e.target;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
+      if (e.code === 'KeyD' || e.key === 'd' || e.key === 'D' || e.key === 'в' || e.key === 'В') {
+        const iframe = document.getElementById('gameIframe');
+        if (iframe && iframe.contentWindow) {
+          try {
+            if (iframe.contentWindow.__premiereAudioDirector) {
+              e.preventDefault();
+              iframe.contentWindow.__premiereAudioDirector.toggle();
+            } else {
+              iframe.contentWindow.dispatchEvent(new KeyboardEvent('keydown', {
+                code: 'KeyD',
+                key: 'd',
+                bubbles: true,
+                cancelable: true
+              }));
+            }
+          } catch (err) {}
+        }
+      }
+    });
+
     // Cinema Screen Controls// Cinema Screen Controls
     function reloadGame() {
       const iframe = document.getElementById('gameIframe');

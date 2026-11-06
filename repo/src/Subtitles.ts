@@ -915,7 +915,7 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
-    const fontScale = Math.max(0.9, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
 
     const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
 
@@ -1069,7 +1069,7 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
-    const fontScale = Math.max(0.9, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
 
     const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
 
@@ -1785,7 +1785,7 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.9, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
 
     // Cinema-grade prominent typography (matches 48-56px on 1080p, 34-38px on 720p)
 
@@ -1869,7 +1869,7 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.9, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
 
     const panelW = isPortrait
 
