@@ -16,6 +16,9 @@ const imageModules = import.meta.glob([
 const audioModules = import.meta.glob([
   './assets/audio/*.mp3',
   '!./assets/audio/voices_of_production*.mp3',
+  '!./assets/audio/*голоса_продакшена*.mp3',
+  '!./assets/audio/*чистый_голос*.mp3',
+  '!./assets/audio/*Хроники_Плейбокса*.mp3',
   '!./assets/audio/*Полная_версия*.mp3',
 ], {
   eager: true,
@@ -30,6 +33,8 @@ import introVideoUrl from './assets/video/gemini_generated_video_42e28e3d.mp4';
 
 const textures: Record<string, Texture> = {};
 const audioUrls: Record<string, string> = {};
+const uniqueAssetUrls = new Map<string, string>();
+const pendingLoads = new Set<string>();
 
 // Clean key mapping for easy lookup
 export function initAssetMappings(): void {
@@ -37,6 +42,8 @@ export function initAssetMappings(): void {
     const filename = path.split('/').pop()!;
     const nameWithoutExt = filename.replace(/\.(png|jpg|webp)$/, '');
     textures[nameWithoutExt] = Texture.WHITE; // placeholder until Assets.load
+    uniqueAssetUrls.set(nameWithoutExt.toLowerCase(), url);
+    uniqueAssetUrls.set(nameWithoutExt, url);
   }
 
   for (const [path, url] of Object.entries(audioModules)) {
@@ -101,7 +108,7 @@ export function getIntroVideoUrl(): string {
 export async function loadAllAssets(onProgress?: (ratio: number) => void): Promise<void> {
   initAssetMappings();
 
-  // Deduplicate entries by texture key to eliminate ~100 redundant HTTP downloads (~77 MB saved!)
+  // Deduplicate entries by texture key
   const uniqueMap = new Map<string, { path: string; url: string; key: string }>();
   for (const [path, url] of Object.entries(imageModules)) {
     if (path.toLowerCase().includes("slack_fin")) continue;
@@ -109,7 +116,6 @@ export async function loadAllAssets(onProgress?: (ratio: number) => void): Promi
     const key = filename.replace(/\.(png|jpg|webp)$/, '');
     const lowerKey = key.toLowerCase();
 
-    // Priority: ./assets/slack/ > ./assets/images/gui/ > ./assets/images/ > ./assets/avatars/ > ./assets/fin/
     const isSlack = path.includes('/assets/slack/');
     const isGui = path.includes('/assets/images/gui/');
     const isImages = path.includes('/assets/images/');
@@ -127,32 +133,84 @@ export async function loadAllAssets(onProgress?: (ratio: number) => void): Promi
     }
   }
 
-  const entries = Array.from(uniqueMap.values());
+  // Phase 1 (Immediate Preload): GUI, Avatars, Slack & Initial Prologue/Narrator keys (~5.8 MB total)
+  const IMMEDIATE_PRELOAD_KEYS = new Set([
+    'playbox_skull_logo',
+    'playbox_real_logo',
+    'series_title_logo',
+    'ship_cistam',
+    'kovcheg_ark_ship_exterior_cistam',
+    'ai_lord_throne_book_reading_narrator',
+    'ai_lord_face_closeup_gemini_1080p',
+    'ai_lord_face_closeup_canonical_1080p',
+    'ai_lord_face_eyes_macro_gemini_1080p',
+    'ai_lord_face_extreme_closeup_canonical_1080p',
+  ]);
+
+  const coreEntries: { path: string; url: string; key: string }[] = [];
+  const deferredEntries: { path: string; url: string; key: string }[] = [];
+
+  for (const item of uniqueMap.values()) {
+    const norm = item.path.replace(/\\/g, '/');
+    if (
+      norm.includes('/gui/') ||
+      norm.includes('/avatars/') ||
+      norm.includes('/slack/') ||
+      IMMEDIATE_PRELOAD_KEYS.has(item.key.toLowerCase())
+    ) {
+      coreEntries.push(item);
+    } else {
+      deferredEntries.push(item);
+    }
+  }
+
+  // Phase 1: Fast Core Preload (Fast boot in under 1 second!)
   let loaded = 0;
-  const total = Math.max(1, entries.length);
+  const coreTotal = Math.max(1, coreEntries.length);
+  const CORE_CONCURRENCY = 10;
+  let coreIndex = 0;
 
-  // Load with concurrency limit (12 parallel downloads) to prevent browser socket choking
-  const CONCURRENCY = 12;
-  let index = 0;
-
-  async function worker(): Promise<void> {
-    while (index < entries.length) {
-      const item = entries[index++];
+  async function coreWorker(): Promise<void> {
+    while (coreIndex < coreEntries.length) {
+      const item = coreEntries[coreIndex++];
       try {
         const tex = await Assets.load<Texture>({ alias: item.key, src: item.url, parser: 'texture' } as any);
         textures[item.key] = tex;
         textures[item.key.toLowerCase()] = tex;
       } catch (err) {
-        console.warn(`[Assets] Failed to load texture: ${item.key}`, err);
+        console.warn(`[Assets] Failed to load core texture: ${item.key}`, err);
         textures[item.key] = Texture.WHITE;
       }
       loaded++;
-      onProgress?.(loaded / total);
+      onProgress?.(loaded / coreTotal);
     }
   }
 
-  const workers = Array.from({ length: Math.min(CONCURRENCY, entries.length) }, () => worker());
+  const workers = Array.from({ length: Math.min(CORE_CONCURRENCY, coreEntries.length) }, () => coreWorker());
   await Promise.all(workers);
+  onProgress?.(1.0);
+
+  // Phase 2: Gentle Background Streaming for remaining acts (Non-blocking, background concurrency 3)
+  setTimeout(() => {
+    let defIndex = 0;
+    const DEF_CONCURRENCY = 3;
+    async function defWorker(): Promise<void> {
+      while (defIndex < deferredEntries.length) {
+        const item = deferredEntries[defIndex++];
+        if (textures[item.key] && textures[item.key] !== Texture.WHITE) continue;
+        try {
+          const tex = await Assets.load<Texture>({ alias: item.key, src: item.url, parser: 'texture' } as any);
+          textures[item.key] = tex;
+          textures[item.key.toLowerCase()] = tex;
+        } catch (err) {
+          console.warn(`[Assets] Background load failed for: ${item.key}`, err);
+        }
+      }
+    }
+    for (let i = 0; i < Math.min(DEF_CONCURRENCY, deferredEntries.length); i++) {
+      defWorker().catch(() => {});
+    }
+  }, 250);
 }
 
 const textureAliases: Record<string, string> = {
@@ -327,6 +385,18 @@ export function getTexture(key: string): Texture {
   if (textures[avKey] && textures[avKey] !== Texture.WHITE && textures[avKey].width > 1) {
     return textures[avKey];
   }
+
+  // On-demand fetch if still loading in Phase 2
+  if (uniqueAssetUrls.has(resolved) && !pendingLoads.has(resolved)) {
+    pendingLoads.add(resolved);
+    const url = uniqueAssetUrls.get(resolved)!;
+    Assets.load<Texture>({ alias: resolved, src: url, parser: 'texture' } as any).then((tex) => {
+      textures[resolved] = tex;
+      textures[key] = tex;
+      textures[normKey] = tex;
+    }).catch(() => {});
+  }
+
   return textures[resolved] ?? textures[normKey] ?? textures[key] ?? Texture.WHITE;
 }
 
