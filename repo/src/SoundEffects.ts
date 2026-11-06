@@ -1,6 +1,7 @@
 // High-performance audio controller using Web Audio API
 // Powered by real keyboard keystroke samples + procedural audio fallbacks.
 import { KEYBOARD_CLICKS_BASE64 } from './keyboardAudioData';
+import { ELECTRIC_GLITCH_BASE64 } from './electricGlitchAudioData';
 import { getAudioUrl } from './assetsManager';
 
 function base64ToArrayBuffer(base64: string): ArrayBuffer {
@@ -22,6 +23,8 @@ class SoundEffectsController {
   private _keyBuffers: AudioBuffer[] = [];
   private _isDecodingKeys = false;
   private _lastKeyIndex = -1;
+  private _glitchBuffer: AudioBuffer | null = null;
+  private _isDecodingGlitch = false;
 
   constructor() {
     if (typeof window !== 'undefined') {
@@ -48,6 +51,9 @@ class SoundEffectsController {
     if (this._ctx && this._keyBuffers.length === 0 && !this._isDecodingKeys) {
       this._loadKeyBuffers();
     }
+    if (this._ctx && !this._glitchBuffer && !this._isDecodingGlitch) {
+      this._loadGlitchBuffer();
+    }
     return this._ctx;
   }
 
@@ -67,6 +73,37 @@ class SoundEffectsController {
           () => {}
         );
       } catch {}
+    }
+  }
+
+  private _loadGlitchBuffer(): void {
+    if (!this._ctx || this._isDecodingGlitch || this._glitchBuffer) return;
+    this._isDecodingGlitch = true;
+    const ctx = this._ctx;
+
+    try {
+      const ab = base64ToArrayBuffer(ELECTRIC_GLITCH_BASE64);
+      ctx.decodeAudioData(
+        ab,
+        (buf) => {
+          this._glitchBuffer = buf;
+          this._isDecodingGlitch = false;
+        },
+        () => {
+          this._isDecodingGlitch = false;
+          // Fallback to fetch if base64 decode fails
+          const url = getAudioUrl('electric_contact_glitch');
+          if (url && typeof fetch !== 'undefined') {
+            fetch(url)
+              .then(res => res.arrayBuffer())
+              .then(raw => ctx.decodeAudioData(raw))
+              .then(buf => { this._glitchBuffer = buf; })
+              .catch(() => {});
+          }
+        }
+      );
+    } catch {
+      this._isDecodingGlitch = false;
     }
   }
 
@@ -138,21 +175,34 @@ class SoundEffectsController {
   }
 
   /**
-   * Electrical contact short-circuit zap / spark crackle.
+   * Electrical contact short-circuit zap / spark crackle via high-precision Web Audio API.
+   * Zero latency: sample-accurate sync with visual glitch frame!
    */
   public playElectricGlitch(volumeMul = 0.85): void {
     if (this._isMuted || this._volume <= 0) return;
-    try {
-      const url = getAudioUrl('electric_contact_glitch');
-      if (url) {
-        const audio = new Audio(url);
-        audio.volume = Math.max(0.01, Math.min(1.0, this._volume * volumeMul));
-        audio.play().catch(() => {
-          this._playProceduralElectricSpark();
-        });
+    const ctx = this._ensureContext();
+    if (!ctx) return;
+
+    if (this._glitchBuffer) {
+      try {
+        const source = ctx.createBufferSource();
+        source.buffer = this._glitchBuffer;
+        // Subtle pitch variance for realistic electric discharge
+        const rate = 1.0 + (Math.random() * 2 - 1) * 0.05;
+        source.playbackRate.value = Math.max(0.8, Math.min(1.2, rate));
+
+        const gain = ctx.createGain();
+        const finalVol = Math.max(0.01, Math.min(1.0, this._volume * volumeMul));
+        gain.gain.setValueAtTime(finalVol, ctx.currentTime);
+
+        source.connect(gain);
+        gain.connect(ctx.destination);
+        source.start(0);
         return;
-      }
-    } catch {}
+      } catch {}
+    }
+
+    // Procedural instant spark fallback if buffer is decoding
     this._playProceduralElectricSpark();
   }
 

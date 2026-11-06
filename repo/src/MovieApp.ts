@@ -12185,6 +12185,11 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
         // Glitch 2: 16.72s - 16.86s (140ms duration)
 
+        if (mt < 16.40) {
+          this._introGlitchSoundPlayed1 = false;
+          this._introGlitchSoundPlayed2 = false;
+        }
+
         const isGlitch1 = mt >= 16.45 && mt < 16.59;
 
         const isGlitch2 = mt >= 16.72 && mt < 16.86;
