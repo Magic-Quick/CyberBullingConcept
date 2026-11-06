@@ -2294,7 +2294,7 @@
           </div>
         </div>
 
-        <iframe id="gameIframe" src="" data-src="game.html" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        <iframe id="gameIframe" src="" data-src="game.html?v=clean_v12" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
         </iframe>
       </div>
     </div>
@@ -2332,8 +2332,9 @@
 
       if (!isGameLaunched) {
         isGameLaunched = true;
-        const targetSrc = iframe.getAttribute('data-src') || 'game.html';
-        iframe.src = targetSrc;
+        const baseSrc = iframe.getAttribute('data-src') || 'game.html';
+        const sep = baseSrc.includes('?') ? '&' : '?';
+        iframe.src = baseSrc + sep + 't=' + Date.now();
       }
 
       if (standby) {
