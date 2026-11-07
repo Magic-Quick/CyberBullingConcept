@@ -915,15 +915,15 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
-    const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
+    const baseFontSize = Math.round((isPortrait ? 15 : 18) * fontScale);
 
-    const baseLineHeight = Math.round(baseFontSize * 1.45);
+    const baseLineHeight = Math.round(baseFontSize * 1.35);
 
-    const numFontSize = Math.round((isPortrait ? 12 : 14) * fontScale);
+    const numFontSize = Math.round((isPortrait ? 10 : 11) * fontScale);
 
-    const noteFontSize = Math.round((isPortrait ? 13 : 16) * fontScale);
+    const noteFontSize = Math.round((isPortrait ? 11 : 12) * fontScale);
 
     const panelW = isPortrait
 
@@ -1069,15 +1069,15 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(this._screenWidth / 414, this._screenHeight / 736) : Math.min(this._screenWidth / 1280, this._screenHeight / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
-    const baseFontSize = Math.round((isPortrait ? 22 : 28) * fontScale);
+    const baseFontSize = Math.round((isPortrait ? 15 : 18) * fontScale);
 
-    const baseLineHeight = Math.round(baseFontSize * 1.45);
+    const baseLineHeight = Math.round(baseFontSize * 1.35);
 
-    const numFontSize = Math.round((isPortrait ? 12 : 14) * fontScale);
+    const numFontSize = Math.round((isPortrait ? 10 : 11) * fontScale);
 
-    const noteFontSize = Math.round((isPortrait ? 13 : 16) * fontScale);
+    const noteFontSize = Math.round((isPortrait ? 11 : 12) * fontScale);
 
     const textLeftPad = Math.round(76 * fontScale);
 
@@ -1785,15 +1785,15 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
     // Cinema-grade prominent typography (matches 48-56px on 1080p, 34-38px on 720p)
 
-    const textFontSize = Math.round((isPortrait ? 24 : 36) * fontScale);
+    const textFontSize = Math.round((isPortrait ? 17 : 21) * fontScale);
 
-    const textLineHeight = Math.round(textFontSize * 1.45);
+    const textLineHeight = Math.round(textFontSize * 1.35);
 
-    const maxTextW = Math.min(w * 0.90, isPortrait ? 580 * fontScale : 1160 * fontScale);
+    const maxTextW = Math.min(w * 0.90, isPortrait ? 520 * fontScale : 960 * fontScale);
 
     this._mainText.style.fontFamily = ['Share Tech Mono', 'monospace'];
 
@@ -1811,13 +1811,13 @@ export class Subtitles extends Container {
 
     const bounds = this._mainText.bounds;
 
-    const padX = Math.round((isPortrait ? 26 : 40) * fontScale);
+    const padX = Math.round((isPortrait ? 20 : 26) * fontScale);
 
-    const padY = Math.round((isPortrait ? 16 : 22) * fontScale);
+    const padY = Math.round((isPortrait ? 10 : 14) * fontScale);
 
-    const boxW = Math.max(Math.round(280 * fontScale), Math.min(w * 0.94, bounds.width + padX * 2));
+    const boxW = Math.max(Math.round(200 * fontScale), Math.min(w * 0.94, bounds.width + padX * 2));
 
-    const boxH = Math.max(Math.round(54 * fontScale), bounds.height + padY * 2);
+    const boxH = Math.max(Math.round(38 * fontScale), bounds.height + padY * 2);
 
     const boxX = (w - boxW) / 2;
 
@@ -1869,7 +1869,7 @@ export class Subtitles extends Container {
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.85, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
     const panelW = isPortrait
 

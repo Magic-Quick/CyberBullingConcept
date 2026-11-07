@@ -16051,11 +16051,11 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    // Doubled avatar size (~2x) for prominent cinematic presence
+    // Balanced cinematic avatar size
 
-    const avatarSize = isPortrait ? 92 : 108;
+    const avatarSize = isPortrait ? 52 : 62;
 
-    const pad = isPortrait ? 12 : 16;
+    const pad = isPortrait ? 10 : 12;
 
 
 
@@ -16115,19 +16115,17 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const textX = hasAvatar ? pad + avatarSize + (isPortrait ? 16 : 22) : pad + 12;
+    const textX = hasAvatar ? pad + avatarSize + (isPortrait ? 12 : 16) : pad + 8;
 
-    // Doubled font size (~2x)
+    this._cornerQuoteName.style.fontSize = isPortrait ? 15 : 17;
 
-    this._cornerQuoteName.style.fontSize = isPortrait ? 24 : 28;
-
-    this._cornerQuoteRole.style.fontSize = isPortrait ? 18 : 22;
+    this._cornerQuoteRole.style.fontSize = isPortrait ? 11 : 13;
 
 
 
-    this._cornerQuoteName.position.set(textX, pad + (isPortrait ? 8 : 12));
+    this._cornerQuoteName.position.set(textX, pad + (isPortrait ? 4 : 6));
 
-    this._cornerQuoteRole.position.set(textX, pad + (isPortrait ? 48 : 58));
+    this._cornerQuoteRole.position.set(textX, pad + (isPortrait ? 26 : 30));
 
 
 
@@ -16157,7 +16155,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     }
 
-    const badgeW = Math.max(isPortrait ? 380 : 480, textX + textW + pad + 24);
+    const badgeW = Math.max(isPortrait ? 240 : 300, textX + textW + pad + 24);
 
     const badgeH = avatarSize + pad * 2;
 
@@ -16385,9 +16383,9 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const radarSize = isPortrait ? 92 : 108;
+    const radarSize = isPortrait ? 52 : 62;
 
-    const pad = isPortrait ? 12 : 16;
+    const pad = isPortrait ? 10 : 12;
 
 
 
@@ -16397,19 +16395,17 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const textX = pad + radarSize + (isPortrait ? 16 : 22);
+    const textX = pad + radarSize + (isPortrait ? 12 : 16);
 
-    // Matched exactly to avatar badge typography hierarchy: Line 1 = 28px, Line 2 = 22px
+    this._cornerLocationCategory.style.fontSize = isPortrait ? 15 : 17;
 
-    this._cornerLocationCategory.style.fontSize = isPortrait ? 24 : 28;
-
-    this._cornerLocationTitle.style.fontSize = isPortrait ? 18 : 22;
+    this._cornerLocationTitle.style.fontSize = isPortrait ? 11 : 13;
 
 
 
-    this._cornerLocationCategory.position.set(textX, pad + (isPortrait ? 8 : 12));
+    this._cornerLocationCategory.position.set(textX, pad + (isPortrait ? 4 : 6));
 
-    this._cornerLocationTitle.position.set(textX, pad + (isPortrait ? 48 : 58));
+    this._cornerLocationTitle.position.set(textX, pad + (isPortrait ? 26 : 30));
 
 
 
@@ -16439,7 +16435,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const badgeW = Math.max(isPortrait ? 400 : 520, textX + textW + pad + 24);
+    const badgeW = Math.max(isPortrait ? 240 : 300, textX + textW + pad + 24);
 
     const badgeH = radarSize + pad * 2;
 
@@ -17453,7 +17449,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.65, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
     this._introFontScale = fontScale;
 
@@ -17697,7 +17693,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     const refDim = isPortrait ? Math.min(w / 414, h / 736) : Math.min(w / 1280, h / 720);
 
-    const fontScale = Math.max(0.35, Math.min(1.65, refDim));
+    const fontScale = Math.max(0.35, Math.min(1.25, refDim));
 
     this._introFontScale = fontScale;
 
@@ -17721,9 +17717,9 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const studiosFontSize = Math.round((isPortrait ? 30 : 42) * fontScale);
+    const studiosFontSize = Math.round((isPortrait ? 20 : 26) * fontScale);
 
-    const presentsFontSize = Math.round((isPortrait ? 24 : 34) * fontScale);
+    const presentsFontSize = Math.round((isPortrait ? 16 : 20) * fontScale);
 
 
 
@@ -17769,7 +17765,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     // Subtitle "[ ХРОНИКИ ПРОДАКШН-КОВЧЕГА ]": Significantly enlarged to eliminate disparity with main logo
 
-    const seriesSubFontSize = Math.round((isPortrait ? 22 : 32) * fontScale);
+    const seriesSubFontSize = Math.round((isPortrait ? 16 : 22) * fontScale);
 
     this._introSeriesSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
 
@@ -17785,7 +17781,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     // Cycle Subtitle "[ ЧЕТЫРНАДЦАТЫЙ ЦИКЛ ]": Responsive scale
 
-    const cycleFontSize = Math.round((isPortrait ? 28 : 42) * fontScale);
+    const cycleFontSize = Math.round((isPortrait ? 20 : 26) * fontScale);
 
     this._introCycleSubtitle.style.fontFamily = ['Share Tech Mono', 'monospace'];
 
