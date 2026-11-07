@@ -11988,11 +11988,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
       // Stars & Cosmic video ignite!
       const starsFadeIn = Math.min(1, Math.max(0, (t - discFadeEnd) / 1.5));
-      if (this._cosmicScene) {
-        this._cosmicScene.visible = true;
-        this._cosmicScene.setShipVisible(false);
-        this._cosmicScene.alpha = starsFadeIn;
-      }
+
 
       if (this._videoElement) {
         this._videoElement.style.opacity = String(starsFadeIn);
@@ -13270,9 +13266,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     AmbientManager.update(dt);
 
-    if (this._cosmicScene && this._cosmicScene.visible) {
-      this._cosmicScene.update(dt);
-    }
+
 
 
 
