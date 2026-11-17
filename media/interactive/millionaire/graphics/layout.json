@@ -1,0 +1,77 @@
+{
+  "canvas": [
+    1024,
+    200
+  ],
+  "question": {
+    "image": "question_blank_cutout.png",
+    "xy": [
+      143,
+      0
+    ],
+    "text_rect": [
+      199,
+      20,
+      622,
+      45
+    ]
+  },
+  "answers": [
+    {
+      "key": "A",
+      "xy": [
+        176,
+        88
+      ],
+      "text_rect": [
+        206,
+        97,
+        270,
+        27
+      ]
+    },
+    {
+      "key": "B",
+      "xy": [
+        513,
+        88
+      ],
+      "text_rect": [
+        543,
+        97,
+        270,
+        27
+      ]
+    },
+    {
+      "key": "C",
+      "xy": [
+        176,
+        136
+      ],
+      "text_rect": [
+        206,
+        145,
+        270,
+        27
+      ]
+    },
+    {
+      "key": "D",
+      "xy": [
+        513,
+        136
+      ],
+      "text_rect": [
+        543,
+        145,
+        270,
+        27
+      ]
+    }
+  ],
+  "text_is_separate": true,
+  "preferred_text_color": "#ffffff",
+  "suggested_font": "Arial",
+  "note": "Все координаты text_rect: x,y,width,height. Для чёткого HD-интерфейса использовать SVG; для точного сходства исходные PNG."
+}

@@ -1,0 +1,14 @@
+{
+  "audio_files_verified": 146,
+  "graphics_files_verified": 24,
+  "sha256_verified": true,
+  "svg_xml_valid": true,
+  "catalogue_local_links_valid": true,
+  "javascript_dom_ids_valid": true,
+  "bytes_audio": 203177860,
+  "browser_checks": "See browser_verification.md",
+  "graphics_updated_on": "2026-11-16",
+  "pole_style": "yakubovich_classic_blue_silver",
+  "pole_graphics_verified": 8,
+  "pole_browser_letter_reveal_verified": true
+}

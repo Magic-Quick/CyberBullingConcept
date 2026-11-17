@@ -1,0 +1,16 @@
+{
+  "tile_size": [
+    77,
+    73
+  ],
+  "row_step": 81,
+  "text_color": "#ffffff",
+  "suggested_font": "Times New Roman",
+  "text_center": [
+    38.5,
+    36.5
+  ],
+  "text_is_separate": true,
+  "style": "yakubovich_classic_blue_silver",
+  "source": "pole_chudes/references/yakubovich_blue_rbc.webp"
+}

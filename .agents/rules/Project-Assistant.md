@@ -20,6 +20,7 @@ description: Единый диспетчер проекта CyberBullingConcept 
 | **3. Интерактивный фильм** | фильм, pixi, титр, субтитр, сцена, плеер, repo | `index.html`, `repo/`, `web_assets/` | Antigravity прямой / Gemini | [Чат Интерактивного фильма](conversation://aebec2b6-14e0-4ed8-ad33-7479701ac00b) |
 | **5. Режиссура кадра** | режиссур, кадр, план, диалог, закрыва, заслоня | `repo/src/narratorShotSequence.ts`, `storyData.ts` | Antigravity прямой | [Чат фильма](conversation://aebec2b6-14e0-4ed8-ad33-7479701ac00b) |
 | **4. Арт и Визуал** | арт, миджорни, нарисуй, картинка, концепт, gui, интерфейс | `docs/golden/WARHAMMER_CHARACTERS_VISUAL_DOSSIER.md` | Midjourney (`mj_pipeline.py`) / GPT Image (GUI-ассеты сохранять в `media/visual/generated/Gui`). **Строгое правило:** Агент **НИКОГДА** не сохраняет файлы в папки `Fin` — туда кадры перемещает **только пользователь**. Все генерации сохранять строго на уровень выше (`media/visual/generated/Команда/`). | — |
+| **6. Сценарий, Текст, Юмор** | текст, сцен, реплик, перепиш, юмор, шутк, лорд, сократ, punch | `docs/guardians_edition/VOICES_OF_PRODUCTION_V14_GUARDIANS.md`, `EDITORIAL_RULES.md` | Мастер-скилл [`cyberbulling-concept`](file:///F:/AI/Skills/04_Writing/cyberbulling-concept/SKILL.md) и саб-скиллы: `text-punchup`, `cyberbulling-dramaturgy`, `playbox-studio-context`, `cyberbulling-universe-laws` | — |
 
 ## 3. Протокол ответа
 Каждый ответ агента краток (ADHD-стиль, 1–3 строки):

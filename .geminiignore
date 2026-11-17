@@ -1,5 +1,5 @@
 # .geminiignore для CyberBullingConcept
-# Исключает устаревшие версии и сырые транскрипты при сборе контекста
+# Исключает устаревшие версии, сырые транскрипты и тяжелые технические директории
 
 VOICES_OF_PRODUCTION.md
 VOICES_OF_PRODUCTION_V2.md
@@ -14,3 +14,14 @@ SPACESHIP_STORY_SYNOPSIS.md
 facts_2026-
 yt_transcripts_processor
 Файлы от Толи
+repo
+web_assets
+tools
+scratch
+Slack_Screenshots
+data
+.kilo
+.agents
+media
+archive_versions
+backups

@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "relative_to": "media/interactive",
+  "graphics": [
+    {
+      "path": "millionaire/graphics/question_raw.png",
+      "kind": "screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        143,
+        378,
+        879,
+        463
+      ],
+      "size": [
+        736,
+        85
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/question_blank_cutout.png",
+      "kind": "cleaned_screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        143,
+        378,
+        879,
+        463
+      ],
+      "size": [
+        736,
+        85
+      ],
+      "note": "Удалено слово-заполнитель; рамка и градиент исходного кадра сохранены."
+    },
+    {
+      "path": "millionaire/graphics/answer_raw.png",
+      "kind": "screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        176,
+        508,
+        512,
+        553
+      ],
+      "size": [
+        336,
+        45
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/answer_blank_cutout.png",
+      "kind": "cleaned_screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        176,
+        508,
+        512,
+        553
+      ],
+      "size": [
+        336,
+        45
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/answer_selected.png",
+      "kind": "edited_screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        176,
+        508,
+        512,
+        553
+      ],
+      "size": [
+        336,
+        45
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/answer_correct.png",
+      "kind": "edited_screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        176,
+        508,
+        512,
+        553
+      ],
+      "size": [
+        336,
+        45
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/answer_wrong.png",
+      "kind": "edited_screenshot_cutout",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": [
+        176,
+        508,
+        512,
+        553
+      ],
+      "size": [
+        336,
+        45
+      ],
+      "note": null
+    },
+    {
+      "path": "millionaire/graphics/quiz_overlay_blank.png",
+      "kind": "assembled_screenshot_cutouts",
+      "source": "millionaire/references/source_slide.jpg",
+      "crop_xyxy": null,
+      "size": [
+        1024,
+        200
+      ],
+      "note": "Вопрос и четыре ответа, без текста. Координаты текстовых зон в layout.json."
+    },
+    {
+      "path": "millionaire/graphics/question_blank.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        1440,
+        170
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "millionaire/graphics/answer_blank.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        680,
+        92
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "millionaire/graphics/answer_selected.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        680,
+        92
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "millionaire/graphics/answer_correct.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        680,
+        92
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "millionaire/graphics/answer_wrong.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        680,
+        92
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "chgk/graphics/table_reference_crop.jpg",
+      "kind": "reference_crop",
+      "source": "chgk/references/source_photo.jpg",
+      "crop_xyxy": [
+        780,
+        1420,
+        2310,
+        1980
+      ],
+      "size": [
+        1530,
+        560
+      ],
+      "note": "Историческое фото стола; только референс, не готовый таймер из эфира."
+    },
+    {
+      "path": "chgk/graphics/timer_ring.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        512,
+        512
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "chgk/graphics/question_panel.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        1440,
+        540
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "pole_chudes/graphics/word_row_raw.png",
+      "kind": "screenshot_crop",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": [
+        94,
+        684,
+        748,
+        762
+      ],
+      "size": [
+        654,
+        78
+      ],
+      "note": null
+    },
+    {
+      "path": "pole_chudes/graphics/tile_blank_cutout.png",
+      "kind": "screenshot_cutout",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": [
+        260,
+        686,
+        337,
+        759
+      ],
+      "size": [
+        77,
+        73
+      ],
+      "note": "Классическая синяя ячейка с серебристой рамкой, 77×73 px. Белая буква — отдельный слой."
+    },
+    {
+      "path": "pole_chudes/graphics/tile_closed.png",
+      "kind": "screenshot_cutout",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": [
+        260,
+        686,
+        337,
+        759
+      ],
+      "size": [
+        77,
+        73
+      ],
+      "note": "Закрытая буква остаётся синим квадратом без символа, как в эфирном табло."
+    },
+    {
+      "path": "pole_chudes/graphics/word_row_6_blank.png",
+      "kind": "assembled_screenshot_cutouts",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": null,
+      "size": [
+        490,
+        81
+      ],
+      "note": "Прозрачный фон; слова и буквы в файл не запечены."
+    },
+    {
+      "path": "pole_chudes/graphics/word_row_10_blank.png",
+      "kind": "assembled_screenshot_cutouts",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": null,
+      "size": [
+        814,
+        81
+      ],
+      "note": "Прозрачный фон; слова и буквы в файл не запечены."
+    },
+    {
+      "path": "pole_chudes/graphics/word_row_14_blank.png",
+      "kind": "assembled_screenshot_cutouts",
+      "source": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "crop_xyxy": null,
+      "size": [
+        1138,
+        81
+      ],
+      "note": "Прозрачный фон; слова и буквы в файл не запечены."
+    },
+    {
+      "path": "pole_chudes/graphics/tile_blank.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        160,
+        160
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    },
+    {
+      "path": "pole_chudes/graphics/tile_closed.svg",
+      "kind": "clean_vector_reconstruction",
+      "size": [
+        160,
+        160
+      ],
+      "note": "Векторная реконструкция, не пиксельная вырезка из эфира."
+    }
+  ],
+  "sources": [
+    {
+      "show": "pole_chudes",
+      "page": "https://www.rbc.ru/life/news/67165b2b9a794783313534fa",
+      "image": "https://s0.rbk.ru/v6_top_pics/media/img/0/36/347295061105360.webp",
+      "local": "pole_chudes/references/yakubovich_blue_rbc.webp",
+      "kind": "broadcast_still_yakubovich_classic_blue_tiles",
+      "selected_on": "2026-11-16"
+    },
+    {
+      "show": "millionaire",
+      "page": "https://ppt-online.org/468684",
+      "image": "https://cf2.ppt-online.org/files2/slide/c/CN0GPAmrhltWUBxLOM9X83bqydKEYca1Sno2zJVuv4/slide-14.jpg",
+      "local": "millionaire/references/source_slide.jpg",
+      "kind": "third_party_presentation_template_using_broadcast_background"
+    },
+    {
+      "show": "chgk",
+      "page": "https://rodina-history.ru/2025/09/04/50-let-nazad-vpervye-v-efir-vyshla-legendarnaia-peredacha-chto-gde-kogda.html",
+      "image": "https://cdnstatic.rg.ru/uploads/images/2025/09/03/ria_779554hr_2b4.jpg",
+      "local": "chgk/references/source_photo.jpg",
+      "kind": "historical_press_photo_not_a_game_interface"
+    }
+  ],
+  "rights_status": "Third-party references and derivatives: no reuse license verified. Clean SVG reconstructions and functional CHGK panels are project-authored.",
+  "updated_on": "2026-11-16"
+}

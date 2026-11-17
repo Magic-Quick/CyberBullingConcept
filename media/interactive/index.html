@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Материалы интерактива — телеигры</title>
+  <link rel="stylesheet" href="preview.css">
+  <script src="audio_manifest.js" defer></script>
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <header class="top"><div><p class="eyebrow">PLAYBOX / ИНТЕРАКТИВ</p><h1>Три знакомые игры</h1><p class="intro">Музыка, сигналы и графика для пародийного угадывания.</p></div><a class="doclink" href="README.md">Описание набора ↗</a></header>
+  <main>
+    <nav class="tabs" aria-label="Передача"><button data-show="pole_chudes" aria-selected="true">Поле чудес</button><button data-show="millionaire" aria-selected="false">Миллионер</button><button data-show="chgk" aria-selected="false">Что? Где? Когда?</button></nav>
+    <section class="workspace">
+      <div class="preview-column">
+        <div class="section-head"><span>ПРЕДПРОСМОТР</span><span id="modeCaption">Классическое синее табло</span></div>
+        <div class="stage" id="stage">
+          <section id="poleStage" aria-label="Табло Поля чудес"><p class="stage-kicker">НАЗОВИТЕ БУКВУ</p><h2 id="wordPrompt">Восстановите слово по буквам</h2><div id="wordBoard" class="word-board" aria-label="Загаданное слово"></div><p id="wordFeedback" class="stage-feedback" aria-live="polite">Слово скрыто</p></section>
+          <section id="millionStage" hidden aria-label="Вопрос Миллионера"><p class="stage-kicker">ВЫБЕРИТЕ ОТВЕТ</p><div id="questionCard" class="question-card">Какой вариант вы выбираете?</div><div id="answerCards" class="answer-grid"></div><p id="millionFeedback" class="stage-feedback" aria-live="polite">Выберите вариант, затем проверьте ответ</p></section>
+          <section id="chgkStage" hidden aria-label="Минута обсуждения"><p class="stage-kicker">ВНИМАНИЕ, ВОПРОС</p><h2 id="chgkQuestionDisplay">Восстановите контекст сообщения</h2><div class="timer"><span id="timerValue">60</span></div><p id="timerStatus" class="stage-feedback" aria-live="polite">После сигнала откроется поле ответа</p><form id="writtenAnswerForm"><input id="writtenAnswer" aria-label="Письменный ответ" placeholder="Ответ после сигнала" disabled autocomplete="off"><button id="submitWrittenAnswer" type="submit" disabled>Ответить</button></form></section>
+        </div>
+        <div class="cue-toolbar" id="cueToolbar"></div>
+        <div class="editor" id="poleEditor"><label>Загаданное слово<input id="secretWord" type="password" value="ИНТЕРАКТИВ" maxlength="40" autocomplete="off"></label><button id="applyWord">Применить слово</button><label>Буква<input id="letterInput" maxlength="1" autocomplete="off" placeholder="А"></label><button id="guessLetter">Открыть букву</button><button id="revealWord" class="quiet">Показать слово</button></div>
+        <div class="editor grid-editor" id="millionEditor" hidden><label class="wide">Вопрос<textarea id="questionInput" rows="2" maxlength="260">Какой вариант вы выбираете?</textarea></label><label>Вариант A<input id="answerA" value="Первый вариант" maxlength="100"></label><label>Вариант B<input id="answerB" value="Второй вариант" maxlength="100"></label><label>Вариант C<input id="answerC" value="Третий вариант" maxlength="100"></label><label>Вариант D<input id="answerD" value="Четвёртый вариант" maxlength="100"></label><label>Правильный ответ<select id="correctAnswer"><option>A</option><option>B</option><option>C</option><option>D</option></select></label><div class="button-row"><button id="applyQuestion">Обновить вопрос</button><button id="checkAnswer">Проверить ответ</button></div></div>
+        <div class="editor" id="chgkEditor" hidden><label class="wide">Вопрос<input id="chgkQuestionInput" value="Восстановите контекст сообщения" maxlength="220"></label><label>Секунд на обсуждение<input id="discussionSeconds" type="number" min="5" max="180" value="60"></label><label>Сигнал в конце<select id="endSignal"><option value="minute_end">Конец минуты</option><option value="gong">Гонг</option></select></label><button id="startMinute">Начать отсчёт</button><button id="resetMinute" class="quiet">Сбросить</button></div>
+        <div class="section-head assets-head"><span>ГОТОВАЯ ГРАФИКА</span><a id="referenceLink" href="pole_chudes/references/browser_screenshot.jpg" target="_blank">Исходный скриншот ↗</a></div><div class="asset-grid" id="assetGrid"></div>
+      </div>
+      <aside class="library"><div class="section-head"><span>АУДИОБИБЛИОТЕКА</span><span id="audioCount"></span></div><label class="search-label">Найти звук<input id="audioSearch" type="search" placeholder="Заставка, буква, гонг…"></label><label class="featured"><input id="featuredOnly" type="checkbox" checked> Основные сигналы</label><div class="now-playing"><p id="nowPlaying">Выберите запись</p><audio id="audioPlayer" controls preload="none"></audio><button id="stopAudio" class="quiet">Остановить звук</button><span id="audioStatus" aria-live="polite"></span></div><div id="audioList" class="audio-list"></div><p class="library-foot">146 MP3 · все файлы проверены декодированием.<br>Источник и прямая загрузка указаны у каждой записи.</p></aside>
+    </section>
+  </main>
+  <footer>Материалы и каталог находятся в media/interactive. PNG содержат вырезки из кадров; SVG — чистые реконструкции. <a href="SOURCES.md">Источники и статус материалов ↗</a></footer>
+</body>
+</html>

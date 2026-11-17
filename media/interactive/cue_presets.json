@@ -1,0 +1,238 @@
+{
+  "relative_to": "media/interactive",
+  "events": {
+    "pole_chudes": {
+      "theme": {
+        "id": "pole_chudes_05",
+        "path": "pole_chudes/audio/05_theme_opening_new.mp3",
+        "duration_seconds": 16.67,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "theme_old": {
+        "id": "pole_chudes_04",
+        "path": "pole_chudes/audio/04_theme_old_opening_old.mp3",
+        "duration_seconds": 25.05,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "wheel": {
+        "id": "pole_chudes_16",
+        "path": "pole_chudes/audio/16_wheel_baraban_sg.mp3",
+        "duration_seconds": 59.47,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "letter_correct": {
+        "id": "pole_chudes_01",
+        "path": "pole_chudes/audio/01_letter_correct_pole_letter_correct.mp3",
+        "duration_seconds": 1.26,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "letter_wrong": {
+        "id": "pole_chudes_07",
+        "path": "pole_chudes/audio/07_letter_wrong_pole_letter_wrong.mp3",
+        "duration_seconds": 1.49,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "word_correct": {
+        "id": "pole_chudes_32",
+        "path": "pole_chudes/audio/32_word_correct_pole_word_1996.mp3",
+        "duration_seconds": 3.34,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "word_wrong": {
+        "id": "pole_chudes_22",
+        "path": "pole_chudes/audio/22_word_wrong_nevernoe-slovo.mp3",
+        "duration_seconds": 3.3,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "think_60s": {
+        "id": "pole_chudes_02",
+        "path": "pole_chudes/audio/02_think_60s_pole_cudes-60-seconds.mp3",
+        "duration_seconds": 60.84,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "time_up": {
+        "id": "pole_chudes_28",
+        "path": "pole_chudes/audio/28_time_up_nevernoe-slovo-v-superigre.mp3",
+        "duration_seconds": 3.46,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      },
+      "win_fanfare": {
+        "id": "pole_chudes_09",
+        "path": "pole_chudes/audio/09_win_fanfare_pole-chudes-fanfary-1.mp3",
+        "duration_seconds": 10.43,
+        "source_page": "https://zvukipro.com/teleshow/281-zvuki-iz-teleperedachi-pole-chudes.html"
+      }
+    },
+    "millionaire": {
+      "theme": {
+        "id": "millionaire_38",
+        "path": "millionaire/audio/38_theme_us-open-theme.mp3",
+        "duration_seconds": 15.96,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "theme_tv_alt": {
+        "id": "millionaire_37",
+        "path": "millionaire/audio/37_theme_tv_alt_us-open-walkout.mp3",
+        "duration_seconds": 16.74,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "question_bed": {
+        "id": "millionaire_03",
+        "path": "millionaire/audio/03_question_bed_q1-5-bed-2008.mp3",
+        "duration_seconds": 250.49,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "question_medium": {
+        "id": "millionaire_17",
+        "path": "millionaire/audio/17_question_medium_q6-2000-clock.mp3",
+        "duration_seconds": 38.56,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "question_hard": {
+        "id": "millionaire_23",
+        "path": "millionaire/audio/23_question_hard_q11-50000-clock.mp3",
+        "duration_seconds": 55.05,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "lock_answer": {
+        "id": "millionaire_32",
+        "path": "millionaire/audio/32_lock_answer_20-q1-14-clock-stop-button.mp3",
+        "duration_seconds": 10.22,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "final_answer": {
+        "id": "millionaire_20",
+        "path": "millionaire/audio/20_final_answer_khsm_q6-final.mp3",
+        "duration_seconds": 88.79,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "correct_easy": {
+        "id": "millionaire_15",
+        "path": "millionaire/audio/15_correct_easy_khsm_q1-5-correct-o.mp3",
+        "duration_seconds": 1.96,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "wrong_medium": {
+        "id": "millionaire_24",
+        "path": "millionaire/audio/24_wrong_medium_khsm_q6-wrong.mp3",
+        "duration_seconds": 5.0,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "fifty_fifty": {
+        "id": "millionaire_06",
+        "path": "millionaire/audio/06_fifty_fifty_khsm_50-50.mp3",
+        "duration_seconds": 1.77,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "phone_countdown": {
+        "id": "millionaire_34",
+        "path": "millionaire/audio/34_phone_countdown_khsm_phone_countdown.mp3",
+        "duration_seconds": 33.34,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      },
+      "time_up": {
+        "id": "millionaire_36",
+        "path": "millionaire/audio/36_time_up_74-clock-time-out.mp3",
+        "duration_seconds": 10.12,
+        "source_page": "https://zvukipro.com/teleshow/568-zvuki-iz-teleperedachi-kto-hochet-stat-millionerom.html"
+      }
+    },
+    "chgk": {
+      "theme_logo": {
+        "id": "chgk_16",
+        "path": "chgk/audio/16_theme_logo_chto-gde-kogda-2013-nastojaschee-vremja.mp3",
+        "duration_seconds": 15.79,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "theme_vocal": {
+        "id": "chgk_36",
+        "path": "chgk/audio/36_theme_vocal_chgk2_title.mp3",
+        "duration_seconds": 8.82,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "game_opening": {
+        "id": "chgk_01",
+        "path": "chgk/audio/01_game_opening_meeting.mp3",
+        "duration_seconds": 87.76,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "spinner": {
+        "id": "chgk_02",
+        "path": "chgk/audio/02_spinner_volchok.mp3",
+        "duration_seconds": 43.24,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "spinner_clean": {
+        "id": "chgk_03",
+        "path": "chgk/audio/03_spinner_clean_volchok-2.mp3",
+        "duration_seconds": 221.23,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "question_host": {
+        "id": "chgk_37",
+        "path": "chgk/audio/37_question_host_chgk2_vopros.mp3",
+        "duration_seconds": 2.39,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "minute_start": {
+        "id": "chgk_32",
+        "path": "chgk/audio/32_minute_start_chgk2_sig1.mp3",
+        "duration_seconds": 1.12,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "warning_signal": {
+        "id": "chgk_33",
+        "path": "chgk/audio/33_warning_signal_chgk2_sig2.mp3",
+        "duration_seconds": 1.02,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "minute_end": {
+        "id": "chgk_34",
+        "path": "chgk/audio/34_minute_end_chgk2_sig3.mp3",
+        "duration_seconds": 1.18,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "gong": {
+        "id": "chgk_21",
+        "path": "chgk/audio/21_gong_chgk2_gong.mp3",
+        "duration_seconds": 4.76,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "black_box": {
+        "id": "chgk_04",
+        "path": "chgk/audio/04_black_box_yashik.mp3",
+        "duration_seconds": 31.49,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "correct_1": {
+        "id": "chgk_38",
+        "path": "chgk/audio/38_correct_1_chgk2_yes1.mp3",
+        "duration_seconds": 46.32,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      },
+      "wrong_1": {
+        "id": "chgk_24",
+        "path": "chgk/audio/24_wrong_1_chgk2_no1.mp3",
+        "duration_seconds": 53.48,
+        "source_page": "https://zvukipro.com/teleshow/720-zvuki-i-muzyka-iz-teleperedachi-chto-gde-kogda.html"
+      }
+    }
+  },
+  "chgk_sequence": [
+    {
+      "at_seconds": 0,
+      "cue": "minute_start",
+      "action": "lock_answer_input"
+    },
+    {
+      "at_seconds": 50,
+      "cue": "warning_signal"
+    },
+    {
+      "at_seconds": 60,
+      "cue": "minute_end",
+      "action": "unlock_answer_input",
+      "alternative_cue": "gong"
+    }
+  ]
+}

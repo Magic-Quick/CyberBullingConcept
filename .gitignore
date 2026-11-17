@@ -51,3 +51,10 @@ repo/node_modules/
 repo/src/assets/video/
 tools/internal/
 LATEST_LIVE_URL.txt
+
+# Curated quiz content is part of the recoverable project checkpoint.
+# Other raw media folders remain outside Git.
+!media/
+media/*
+!media/interactive/
+!media/interactive/**

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "guardians-story/1-draft",
+  "status": "example_not_production",
+  "description": "Иллюстрация раздельных каналов. Тексты и секунды не являются новым утверждённым монтажом или фактурой выпуска.",
+  "timeUnit": "seconds",
+  "entities": [
+    {
+      "id": "ai_lord",
+      "kind": "narrator",
+      "displayName": "ИИ-Лорд",
+      "spokenName": "ИИ-Лорд"
+    },
+    {
+      "id": "mamusin",
+      "kind": "character",
+      "displayName": "Максим Мамусин",
+      "spokenName": "Мамусин",
+      "canonicalTitle": "Палач Старого Стека"
+    },
+    {
+      "id": "supercell",
+      "kind": "client",
+      "displayName": "Supercell",
+      "spokenName": "Сверхъячейка",
+      "spokenForms": {
+        "genitive": "Сверхъячейки"
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "id": "example_character_introduction",
+      "timingStatus": "illustrative",
+      "durationSec": 11,
+      "shot": {
+        "assetKey": "EXAMPLE_CHARACTER_PORTRAIT",
+        "revealPolicy": "character_introduction",
+        "subjectEntityId": "mamusin",
+        "startSec": 0,
+        "endSec": 11
+      },
+      "introduction": {
+        "cleanStartSec": 0,
+        "cleanEndSec": 3,
+        "speechStartSec": 7
+      },
+      "nameplates": [
+        {
+          "entityId": "mamusin",
+          "fields": ["displayName", "canonicalTitle"],
+          "startSec": 3,
+          "endSec": 7,
+          "animation": "none"
+        }
+      ],
+      "utterances": [
+        {
+          "id": "example_mamusin_narration",
+          "speakerId": "ai_lord",
+          "subjectEntityId": "mamusin",
+          "startSec": 7,
+          "endSec": 10,
+          "voiceText": "Мамусин проверяет сроки.",
+          "subtitleText": null,
+          "isVerbatimQuote": false,
+          "audioKey": null
+        }
+      ]
+    },
+    {
+      "id": "example_client_name",
+      "timingStatus": "illustrative",
+      "durationSec": 5,
+      "shot": {
+        "assetKey": "EXAMPLE_EXISTING_NARRATOR_SHOT",
+        "revealPolicy": "continuation",
+        "subjectEntityId": "ai_lord",
+        "startSec": 0,
+        "endSec": 5
+      },
+      "nameplates": [],
+      "utterances": [
+        {
+          "id": "example_supercell_narration",
+          "speakerId": "ai_lord",
+          "subjectEntityId": "supercell",
+          "startSec": 0,
+          "endSec": 4,
+          "voiceText": "Клиентархи из Сверхъячейки прислали сообщение.",
+          "subtitleText": "Клиентархи из Supercell прислали сообщение.",
+          "displayOverride": {
+            "kind": "entity_name",
+            "entityId": "supercell",
+            "spokenForm": "Сверхъячейки",
+            "displayForm": "Supercell",
+            "reason": "Лорное название в голосе, оригинальное название на экране."
+          },
+          "isVerbatimQuote": false,
+          "audioKey": null
+        }
+      ]
+    }
+  ]
+}
