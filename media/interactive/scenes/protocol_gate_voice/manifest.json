@@ -60,12 +60,12 @@
       "duration_seconds_rounded": 4.91
     },
     "attempts_exhausted": {
-      "text": "Я ожидал, что вы тупые. Но не думал, что настолько. Ладно, не буду вас мучить. Продолжим.",
-      "text_sha256": "191c4f815bedf46b51db8111b6e3efc8e0de83e2523de80f1390358381f68bc8",
+      "text": "Я и так не ждал от вас многого. Но вы, похоже, приняли это за вызов. Ладно, пощажу вас. Продолжим хроники.",
+      "text_sha256": "b2ebc2fc0b91c8b34d2f24575ad7d283803573513fd073e07072fa04058aeb4e",
       "file": "shared_voice/attempts_exhausted.mp3",
-      "bytes": 113310,
-      "request_id": "khAjP2Rv40bMmtMiylgU",
-      "duration_seconds_rounded": 7.05
+      "bytes": 129610,
+      "request_id": "T0VWX9SdseSCL8328G8o",
+      "duration_seconds_rounded": 8.03
     }
   },
   "relative_to": "media/interactive/scenes"

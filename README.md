@@ -6,6 +6,8 @@
 
 ## 🚀 Быстрый запуск (1 клик)
 
+Чистовой фильм — [`game.html`](game.html), встроенный в основную презентацию. Перед третьим актом включена согласованная игра с буквами; сборка из `repo`: `npm run build`.
+
 - **[OPEN_PRESENTATION.bat](file:///h:/PLBX/CyberBullingConcept/OPEN_PRESENTATION.bat)** — Запуск интерактивной веб-презентации `index.html`.
 - **[START_STUDIO_SERVER.bat](file:///h:/PLBX/CyberBullingConcept/START_STUDIO_SERVER.bat)** — Запуск локального сервера студий на порту 8765.
 - **[OPEN_JOKE_KEEPER.bat](file:///h:/PLBX/CyberBullingConcept/OPEN_JOKE_KEEPER.bat)** — Открытие интерфейса Joke Keeper Studio в браузере.

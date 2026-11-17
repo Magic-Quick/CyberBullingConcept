@@ -39,6 +39,7 @@
     "path": "pole_chudes/audio/02_think_60s_pole_cudes-60-seconds.mp3",
     "role": "think_60s",
     "loop": true,
-    "stopWhen": "story_resumes"
+    "stopWhen": "word_solved_or_attempts_exhausted",
+    "fadeOutMs": 220
   }
 }

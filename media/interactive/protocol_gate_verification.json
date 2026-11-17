@@ -51,7 +51,11 @@
     "narrow_viewport": [
       356,
       713
-    ]
+    ],
+    "clean_presentation_normal_start_verified": true,
+    "clean_presentation_chapter_navigation_opens_gate_without_preview_parameter": true,
+    "clean_presentation_solved_word_resumes_act_3": true,
+    "clean_presentation_three_errors_resume_act_3_after_rephrased_line": true
   },
   "builds": {
     "movie": "passed, looped music, voice assets and root game.html synchronized",
@@ -64,7 +68,7 @@
     "protocol_gate_success.jpg"
   ],
   "original_story_data_unchanged": true,
-  "revision": "Minimal tile input, contextual Geremy dialogue, three wrong answers then automatic story resume, looped thinking music",
+  "revision": "Approved clean movie integration, existing film typography, immediate music fade on round completion, paraphrased failure line",
   "verified_context": {
     "type": "written Slack message",
     "local_source": "data/facts_dataset/verified_context_slices.json",
@@ -85,16 +89,21 @@
     "correct_letter_in_right_tile_uses_standard_reply": true,
     "production_voice_asset_loaded_and_played_without_error": true,
     "updated_correct_letter_reply": "Есть такая буква... К сожалению.",
-    "word_correct_explains_request_for_demo_build": true
+    "word_correct_explains_request_for_demo_build": true,
+    "shared_failure_line_rephrased_from_user_intent": true,
+    "updated_failure_clip_duration_seconds": 8.034104
   },
   "background_music": {
     "file": "pole_chudes/audio/02_think_60s_pole_cudes-60-seconds.mp3",
     "browser_duration_seconds": 60.839188,
     "loop_enabled": true,
     "plays_during_guesses": true,
-    "continues_after_correct_word_until_continue": true,
     "ducks_under_narration": true,
-    "stops_when_gate_is_destroyed": true
+    "stops_when_gate_is_destroyed": true,
+    "stops_after_correct_word_before_continue": true,
+    "stops_after_third_error_before_final_line": true,
+    "fade_out_ms": 220,
+    "intro_replay_does_not_restart_finished_music": true
   },
   "screenshot_dimensions": {
     "protocol_gate_preview.jpg": [
@@ -109,5 +118,30 @@
       356,
       713
     ]
+  },
+  "clean_release": {
+    "build_id": "clean-20261117-interactive",
+    "entry": "game.html",
+    "presentation_entry": "index.html#playable-area",
+    "presentation_iframe_version": "clean_20261117_interactive",
+    "build_sha256": "8a3574210995beb8ebdcd785d0a7e436f26de2b0a7bed83f86737b35f558a2c4",
+    "root_matches_repo_dist": true,
+    "concrete_runtime_assets_checked": 265,
+    "missing_runtime_assets": 0,
+    "npm_run_typecheck": "passed",
+    "npm_run_build": "passed",
+    "unit_tests_passed": 8,
+    "browser_console_errors": 0,
+    "typography": {
+      "font_family": "Share Tech Mono, monospace",
+      "question_color": "#00f5d4",
+      "question_background": "rgba(0,0,0,0.88)",
+      "observed_question_font_size": "20.7132px",
+      "context": "existing upper identity label typography",
+      "buttons": "plain bracketed text commands",
+      "new_font_families": false,
+      "new_gui_graphic_assets": false
+    },
+    "screenshot": "protocol_gate_clean_build.jpg"
   }
 }

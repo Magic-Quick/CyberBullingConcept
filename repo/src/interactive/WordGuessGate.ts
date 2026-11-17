@@ -48,6 +48,8 @@ export class WordGuessGate {
   private voiceRequest = 0;
   private voiceDone: (() => void) | undefined;
   private resumeVoice = false;
+  private musicFinished = false;
+  private musicFadeFrame: number | undefined;
   private readonly visibilityHandler = () => {
     if (document.hidden) {
       this.resumeVoice = !this.voice.paused && !this.voice.ended;
@@ -86,15 +88,15 @@ export class WordGuessGate {
             <input id="guess-input" name="guess" aria-label="Буква или слово" aria-describedby="input-help" maxlength="32" spellcheck="false" autocapitalize="characters" autocomplete="off" />
             <div class="cells" role="group" aria-label="Загаданное слово"></div>
           </div>
-          <div class="actions" id="input-help"><span>Буква или слово</span><button class="check" type="submit" aria-label="Проверить ответ, Enter">Enter <span aria-hidden="true">↵</span></button></div>
+          <div class="actions" id="input-help"><span>Буква или слово</span><button class="check" type="submit" aria-label="Проверить ответ, Enter">[ ENTER ]</button></div>
         </form>
         <p class="feedback" role="status" aria-live="polite"></p>
-        <button class="continue" type="button" hidden>Продолжить акт <span aria-hidden="true">→</span></button>
+        <button class="continue" type="button" aria-label="Продолжить акт" hidden>[ ПРОДОЛЖИТЬ АКТ ]</button>
       </main>`;
     this.shadow.append(scene);
     this.element('.repeat-intro').textContent = script.question;
     this.element<HTMLButtonElement>('.repeat-intro').onclick = () => this.speak('intro');
-    this.element('.context').textContent = script.hint;
+    this.element('.context').textContent = `[ ${script.hint} ]`;
     const cells = this.element('.cells');
     this.round.cells.forEach((_, index) => {
       const tile = document.createElement('button');
@@ -177,6 +179,7 @@ export class WordGuessGate {
     const previous = this.round.cells;
     const result = this.round.guessAutomatic(draft);
     const correct = result === 'letter_correct' || result === 'word_correct';
+    if (this.round.solved) this.stopThinkingMusic();
     const misplaced = correct && draft.length === 1 && this.round.answer[this.anchor] !== draft;
     const reaction = misplaced ? 'letter_misplaced' : result;
     this.host.dataset.dialogue = reaction;
@@ -268,7 +271,7 @@ export class WordGuessGate {
   }
 
   private startMusic(): void {
-    if (!this.ready || this.disposed || document.hidden || !this.music.paused) return;
+    if (!this.ready || this.disposed || this.musicFinished || this.round.solved || this.attempts.exhausted || document.hidden || !this.music.paused) return;
     this.syncSoundVolume();
     this.music.play().catch(() => { /* Retry at the next user gesture if autoplay is blocked. */ });
   }
@@ -277,7 +280,26 @@ export class WordGuessGate {
     const level = Math.min(1, Math.max(0, this.options.volume?.() ?? 0.35));
     const speech = !this.voice.paused && !this.voice.ended;
     this.sound.volume = level * (speech ? 0.35 : 1);
-    this.music.volume = level * 0.65 * (speech ? 0.2 : 1);
+    if (!this.musicFinished) this.music.volume = level * 0.65 * (speech ? 0.2 : 1);
+  }
+
+  private stopThinkingMusic(): void {
+    if (this.musicFinished) return;
+    this.musicFinished = true;
+    const initialVolume = this.music.volume;
+    const started = performance.now();
+    const fade = (now: number) => {
+      if (this.disposed) return;
+      const progress = this.music.paused ? 1 : Math.min(1, (now - started) / 220);
+      this.music.volume = initialVolume * (1 - progress);
+      if (progress < 1) this.musicFadeFrame = requestAnimationFrame(fade);
+      else {
+        this.music.pause();
+        this.music.currentTime = 0;
+        this.musicFadeFrame = undefined;
+      }
+    };
+    this.musicFadeFrame = requestAnimationFrame(fade);
   }
 
   private speak(event: keyof typeof VOICES, onComplete?: () => void): void {
@@ -302,6 +324,7 @@ export class WordGuessGate {
   }
 
   private skipAfterFailures(): void {
+    this.stopThinkingMusic();
     this.input.value = '';
     this.input.disabled = true;
     this.busy = true;
@@ -334,6 +357,7 @@ export class WordGuessGate {
     if (this.disposed) return;
     this.disposed = true;
     clearTimeout(this.entranceTimer);
+    if (this.musicFadeFrame !== undefined) cancelAnimationFrame(this.musicFadeFrame);
     this.sound.pause();
     this.sound.removeAttribute('src');
     this.music.pause();
