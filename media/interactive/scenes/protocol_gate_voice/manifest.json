@@ -1,0 +1,72 @@
+{
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "voice_name": "Geremy",
+  "model_id": "eleven_multilingual_v2",
+  "clips": {
+    "letter_misplaced": {
+      "text": "Есть такая буква... К сожалению. Только, блядь, в другом месте.",
+      "text_sha256": "c9c5cb19fed76c64cebf994a026cfaf6a6c612327345fecc0323d5438bfc7013",
+      "file": "protocol_gate_voice/letter_misplaced.mp3",
+      "bytes": 85724,
+      "request_id": "AGjIcOSE92ARfo2uZ1g3",
+      "duration_seconds_rounded": 5.33
+    },
+    "intro": {
+      "text": "Горина спросили, посмотрел ли он обновлённую сборку. В ответ он попросил её прислать. Какое слово написал — не скажу. Но скажу, что это пиздец. Мудрый руководитель развивает команду. Даже когда просто просит сборку.",
+      "text_sha256": "ecf61a827dcc8f07ef2a4ccc715ce980a463e018ae5bc22e4117ff90ed36d887",
+      "file": "protocol_gate_voice/intro.mp3",
+      "bytes": 285091,
+      "request_id": "L5sPfncOFxCnmZ37ejlB",
+      "duration_seconds_rounded": 17.79
+    },
+    "letter_correct": {
+      "text": "Есть такая буква... К сожалению.",
+      "text_sha256": "b46e9756b876b6cb75897d62178c312603019c66c71d558f10c68f6b10508423",
+      "file": "protocol_gate_voice/letter_correct.mp3",
+      "bytes": 50198,
+      "request_id": "gSSLBKDxl1JnBaRkb88H",
+      "duration_seconds_rounded": 3.11
+    },
+    "letter_wrong": {
+      "text": "Нет такой буквы. Это была ваша инициатива. Руководство её не согласовывало.",
+      "text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664",
+      "file": "protocol_gate_voice/letter_wrong.mp3",
+      "bytes": 96173,
+      "request_id": "tLQcYLgb2yQgsViACwlG",
+      "duration_seconds_rounded": 5.98
+    },
+    "word_correct": {
+      "text": "Демоблил. Правильно. Горин просил демобилд. Подчинённый понял и прислал. Вот что значит сработавшаяся команда.",
+      "text_sha256": "66e49fda9a7e4756eeb6d3879b62656c2d71aa5e0c3fe5dd5e5844494f0ab2e2",
+      "file": "protocol_gate_voice/word_correct.mp3",
+      "bytes": 134207,
+      "request_id": "X4PZ6Ufu9bev8CTvEn93",
+      "duration_seconds_rounded": 8.36
+    },
+    "word_wrong": {
+      "text": "Нет. Слишком понятно. Горин написал иначе.",
+      "text_sha256": "326b7b4c7b753cc832abcd7b3b2a95315a3633a551bbec03e212fbce990e333d",
+      "file": "protocol_gate_voice/word_wrong.mp3",
+      "bytes": 60647,
+      "request_id": "Z0kbMAT1e0xMsbsQjFk6",
+      "duration_seconds_rounded": 3.76
+    },
+    "repeat_letter": {
+      "text": "Эту букву уже проверяли. Повторное совещание ничего не изменило.",
+      "text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2",
+      "file": "protocol_gate_voice/repeat_letter.mp3",
+      "bytes": 79037,
+      "request_id": "sr9HICMwEHZhccA5dYMC",
+      "duration_seconds_rounded": 4.91
+    },
+    "attempts_exhausted": {
+      "text": "Я ожидал, что вы тупые. Но не думал, что настолько. Ладно, не буду вас мучить. Продолжим.",
+      "text_sha256": "191c4f815bedf46b51db8111b6e3efc8e0de83e2523de80f1390358381f68bc8",
+      "file": "shared_voice/attempts_exhausted.mp3",
+      "bytes": 113310,
+      "request_id": "khAjP2Rv40bMmtMiylgU",
+      "duration_seconds_rounded": 7.05
+    }
+  },
+  "relative_to": "media/interactive/scenes"
+}

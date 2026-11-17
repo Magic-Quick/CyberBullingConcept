@@ -1,107 +1,161 @@
 import script from '../../../media/interactive/scenes/protocol_gate.json';
 import tileUrl from '../../../media/interactive/pole_chudes/graphics/tile_blank.svg?url';
-import themeUrl from '../../../media/interactive/pole_chudes/audio/04_theme_old_opening_old.mp3?url';
+import thinkingUrl from '../../../media/interactive/pole_chudes/audio/02_think_60s_pole_cudes-60-seconds.mp3?url';
 import correctUrl from '../../../media/interactive/pole_chudes/audio/01_letter_correct_pole_letter_correct.mp3?url';
 import wrongUrl from '../../../media/interactive/pole_chudes/audio/07_letter_wrong_pole_letter_wrong.mp3?url';
 import winUrl from '../../../media/interactive/pole_chudes/audio/32_word_correct_pole_word_1996.mp3?url';
-import portraitUrl from '../assets/images/ai_lord_face_closeup_gemini_1080p.webp?url';
+import introVoice from '../../../media/interactive/scenes/protocol_gate_voice/intro.mp3?url';
+import misplacedVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3?url';
+import correctVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_correct.mp3?url';
+import wrongVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3?url';
+import wordCorrectVoice from '../../../media/interactive/scenes/protocol_gate_voice/word_correct.mp3?url';
+import wordWrongVoice from '../../../media/interactive/scenes/protocol_gate_voice/word_wrong.mp3?url';
+import repeatVoice from '../../../media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3?url';
 import css from './wordGuessGate.css?inline';
-import { WordGuessRound, type GuessMode, type GuessResult } from './wordGuessModel';
+import { WordGuessRound, type AutomaticGuessResult } from './wordGuessModel';
+import { GameAttemptBudget } from './gameAttemptBudget';
+import { COMMON_GAME_RULES } from './gameRules';
 
 export const WORD_GATE_ACT_ID = script.targetActId;
+const VOICES = { intro: introVoice, letter_misplaced: misplacedVoice, letter_correct: correctVoice,
+  letter_wrong: wrongVoice, word_correct: wordCorrectVoice, word_wrong: wordWrongVoice, repeat_letter: repeatVoice,
+  attempts_exhausted: COMMON_GAME_RULES.exhaustedVoiceUrl };
 
 interface GateOptions {
   onComplete: () => void;
   volume?: () => number;
+  voiceVolume?: () => number;
   cleanEntranceMs?: number;
 }
 
-/** Standalone DOM overlay: it freezes story playback before any image from the next act. */
+/** One native input renders into the tiles, preserving paste, IME and keyboard editing. */
 export class WordGuessGate {
   private readonly round = new WordGuessRound(script.answer);
+  private readonly attempts = new GameAttemptBudget(COMMON_GAME_RULES.maxWrongAnswers);
   private readonly host = document.createElement('div');
   private readonly shadow = this.host.attachShadow({ mode: 'open' });
   private readonly sound = new Audio();
+  private readonly music = new Audio(thinkingUrl);
+  private readonly voice = new Audio();
   private readonly previousFocus = document.activeElement as HTMLElement | null;
   private entranceTimer: ReturnType<typeof setTimeout>;
-  private soundTimer: ReturnType<typeof setTimeout> | undefined;
-  private mode: GuessMode = 'letter';
+  private anchor = 0;
+  private arriving: number[] = [];
   private ready = false;
+  private busy = false;
   private disposed = false;
-  private muted = false;
-  private readonly visibilityHandler = () => { if (document.hidden) this.sound.pause(); };
+  private pendingIntro = false;
+  private voiceRequest = 0;
+  private voiceDone: (() => void) | undefined;
+  private resumeVoice = false;
+  private readonly visibilityHandler = () => {
+    if (document.hidden) {
+      this.resumeVoice = !this.voice.paused && !this.voice.ended;
+      this.sound.pause(); this.music.pause(); this.voice.pause();
+    } else if (!this.disposed) {
+      this.startMusic();
+      if (this.resumeVoice) { this.resumeVoice = false; this.voice.play().catch(() => this.finishVoice()); }
+    }
+  };
 
   constructor(private readonly options: GateOptions) {
     this.host.id = 'protocol-word-gate';
     this.host.style.cssText = 'position:fixed;inset:0;z-index:100000;';
     const style = document.createElement('style');
     style.textContent = css;
-    this.shadow.append(style);
+    this.sound.dataset.channel = 'game';
+    this.music.dataset.channel = 'thinking';
+    this.music.loop = true;
+    this.voice.dataset.channel = 'lord';
+    this.shadow.append(style, this.music, this.sound, this.voice);
+    this.voice.onplay = () => this.syncSoundVolume();
+    this.voice.onpause = () => this.syncSoundVolume();
+    this.voice.onended = () => { this.syncSoundVolume(); this.finishVoice(); };
+    this.voice.onerror = () => this.finishVoice();
     const scene = document.createElement('section');
-    scene.className = 'scene entrance';
+    scene.className = 'scene';
     scene.setAttribute('role', 'dialog');
     scene.setAttribute('aria-modal', 'true');
-    scene.setAttribute('aria-label', script.title);
+    scene.setAttribute('aria-labelledby', 'gate-question');
     scene.style.setProperty('--tile', `url("${tileUrl}")`);
     scene.innerHTML = `
-      <img class="portrait" alt="ИИ-Лорд" />
-      <div class="shade"></div>
-      <div class="content">
-        <header><span class="eyebrow"></span><button class="sound-toggle" type="button" aria-label="Выключить звук">Звук включён</button></header>
-        <main>
-          <p class="chapter"></p><h1></h1><p class="hint"></p>
-          <div class="board" role="group" aria-label="Загаданное слово"></div>
-          <div class="used"><span>НАЗВАННЫЕ БУКВЫ</span><div class="letters"></div></div>
-          <div class="controls">
-            <div class="mode-switch" role="group" aria-label="Способ ответа"><button type="button" data-mode="letter" aria-pressed="true">Назвать букву</button><button type="button" data-mode="word" aria-pressed="false">Слово целиком</button></div>
-            <form autocomplete="off"><label for="guess-input">Ваша буква</label><div class="input-row"><input id="guess-input" name="guess" maxlength="1" placeholder="А" spellcheck="false" autocapitalize="characters" /><button class="submit" type="submit">Проверить</button></div></form>
+      <main>
+        <h1 id="gate-question"><button class="repeat-intro" type="button" title="Повторить вступление"></button></h1><p class="context"></p>
+        <form autocomplete="off">
+          <div class="board">
+            <input id="guess-input" name="guess" aria-label="Буква или слово" aria-describedby="input-help" maxlength="32" spellcheck="false" autocapitalize="characters" autocomplete="off" />
+            <div class="cells" role="group" aria-label="Загаданное слово"></div>
           </div>
-          <div class="success" hidden><p>ПРОТОКОЛ ВОССТАНОВЛЕН</p><button class="continue" type="button">Продолжить акт</button></div>
-        </main>
-        <footer><span class="speaker">ИИ-ЛОРД</span><p class="lord-line" aria-live="polite"></p><span class="status" aria-live="polite"></span></footer>
-      </div>`;
+          <div class="actions" id="input-help"><span>Буква или слово</span><button class="check" type="submit" aria-label="Проверить ответ, Enter">Enter <span aria-hidden="true">↵</span></button></div>
+        </form>
+        <p class="feedback" role="status" aria-live="polite"></p>
+        <button class="continue" type="button" hidden>Продолжить акт <span aria-hidden="true">→</span></button>
+      </main>`;
     this.shadow.append(scene);
-    this.element<HTMLImageElement>('.portrait').src = portraitUrl;
-    this.element('.eyebrow').textContent = script.eyebrow;
-    this.element('.chapter').textContent = script.title;
-    this.element('h1').textContent = script.question;
-    this.element('.hint').textContent = script.hint;
-    this.renderBoard();
-    this.shadow.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => {
-      button.onclick = () => this.setMode(button.dataset.mode as GuessMode);
+    this.element('.repeat-intro').textContent = script.question;
+    this.element<HTMLButtonElement>('.repeat-intro').onclick = () => this.speak('intro');
+    this.element('.context').textContent = script.hint;
+    const cells = this.element('.cells');
+    this.round.cells.forEach((_, index) => {
+      const tile = document.createElement('button');
+      tile.type = 'button';
+      tile.tabIndex = -1;
+      tile.className = 'tile';
+      tile.innerHTML = '<span class="letter"></span>';
+      tile.onclick = () => {
+        if (!this.ready || this.round.solved || this.attempts.exhausted || this.busy) return;
+        this.anchor = index;
+        this.input.focus({ preventScroll: true });
+        if (this.draft.length > 1) {
+          const position = Math.min(index, this.input.value.length);
+          this.input.setSelectionRange(position, Math.min(position + 1, this.input.value.length));
+        }
+        this.renderBoard();
+      };
+      cells.append(tile);
     });
-    this.element<HTMLFormElement>('form').onsubmit = event => { event.preventDefault(); this.submit(); };
+    this.element<HTMLFormElement>('form').onsubmit = event => { event.preventDefault(); void this.submit(); };
     this.input.addEventListener('input', () => {
-      if (!this.ready || this.round.solved || !this.input.value.trim()) return;
-      const prompt = this.mode === 'letter' ? 'letter_prompt' : 'word_prompt';
-      if (this.host.dataset.dialogue !== prompt) this.say(prompt);
+      this.element('.feedback').textContent = '';
+      this.renderBoard();
     });
+    this.input.addEventListener('keydown', event => {
+      if (event.isComposing && event.key === 'Enter') { event.preventDefault(); return; }
+      if (this.draft.length <= 1 && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+        event.preventDefault();
+        this.anchor = (this.anchor + (event.key === 'ArrowLeft' ? this.round.answer.length - 1 : 1)) % this.round.answer.length;
+        this.renderBoard();
+      }
+    });
+    this.input.addEventListener('keyup', () => this.renderBoard());
+    this.input.addEventListener('focus', () => this.renderBoard());
+    this.input.addEventListener('blur', () => this.renderBoard());
     this.element<HTMLButtonElement>('.continue').onclick = () => {
       if (!this.round.solved) return;
-      this.destroy();
-      this.options.onComplete();
+      this.complete();
     };
-    this.element<HTMLButtonElement>('.sound-toggle').onclick = () => {
-      this.muted = !this.muted;
-      this.sound.muted = this.muted;
-      const button = this.element<HTMLButtonElement>('.sound-toggle');
-      button.textContent = this.muted ? 'Звук выключен' : 'Звук включён';
-      button.setAttribute('aria-label', this.muted ? 'Включить звук' : 'Выключить звук');
-    };
-    // Keep Space / arrows / Enter inside the overlay, away from movie hotkeys.
+    // Keep movie playback shortcuts inside the modal.
     this.host.addEventListener('keydown', event => {
       event.stopPropagation();
       if (event.key === 'Escape') event.preventDefault();
       if (event.key === 'Tab') this.trapFocus(event);
     });
+    // Some browsers require a gesture before the first spoken line.
+    const retryIntro = () => {
+      this.startMusic();
+      if (this.pendingIntro && !this.round.solved && !this.attempts.exhausted) this.speak('intro');
+    };
+    this.host.addEventListener('pointerdown', retryIntro, { capture: true });
+    this.host.addEventListener('keydown', retryIntro, { capture: true });
     document.body.append(this.host);
     document.addEventListener('visibilitychange', this.visibilityHandler);
+    this.renderBoard();
     this.entranceTimer = setTimeout(() => {
       if (this.disposed) return;
-      scene.classList.remove('entrance');
       this.ready = true;
-      this.say('intro');
-      this.playSound(themeUrl, 3.5);
+      this.host.dataset.dialogue = 'intro';
+      this.startMusic();
+      this.speak('intro');
       this.input.focus({ preventScroll: true });
     }, options.cleanEntranceMs ?? script.cleanEntranceMs);
   }
@@ -113,74 +167,163 @@ export class WordGuessGate {
   }
 
   private get input(): HTMLInputElement { return this.element<HTMLInputElement>('input'); }
+  private get draft(): string { return this.input.value.normalize('NFC').trim().toLocaleUpperCase('ru'); }
+  private get tiles(): HTMLButtonElement[] { return Array.from(this.shadow.querySelectorAll<HTMLButtonElement>('.tile')); }
 
-  private say(event: keyof typeof script.dialogue): void {
-    this.element('.lord-line').textContent = script.dialogue[event];
-    this.host.dataset.dialogue = event;
-  }
-
-  private setMode(mode: GuessMode): void {
-    if (!this.ready || this.round.solved) return;
-    this.mode = mode;
-    this.shadow.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === mode)));
-    this.input.maxLength = mode === 'letter' ? 1 : 32;
+  private async submit(): Promise<void> {
+    if (!this.ready || this.busy || this.round.solved || this.attempts.exhausted) return;
+    const draft = this.draft;
+    const source = this.tiles[this.anchor].getBoundingClientRect();
+    const previous = this.round.cells;
+    const result = this.round.guessAutomatic(draft);
+    const correct = result === 'letter_correct' || result === 'word_correct';
+    const misplaced = correct && draft.length === 1 && this.round.answer[this.anchor] !== draft;
+    const reaction = misplaced ? 'letter_misplaced' : result;
+    this.host.dataset.dialogue = reaction;
+    const feedback: Record<AutomaticGuessResult, string> = {
+      empty: 'Введите букву или слово',
+      incomplete: `В слове ${this.round.answer.length} букв. Продолжайте ввод.`,
+      invalid: 'Введите русскую букву или слово из восьми букв',
+      letter_correct: script.dialogue.letter_correct,
+      letter_wrong: 'Такой буквы нет',
+      repeat_letter: 'Эту букву уже проверяли',
+      word_wrong: 'Не то слово. Попробуйте ещё',
+      word_correct: 'Верно',
+    };
+    this.element('.feedback').textContent = misplaced ? script.dialogue.letter_misplaced : feedback[result];
+    if (result === 'incomplete' || result === 'invalid' || result === 'empty') {
+      this.input.focus({ preventScroll: true });
+      return;
+    }
+    if ((result === 'letter_wrong' || result === 'word_wrong') && this.attempts.recordWrongAnswer()) {
+      this.skipAfterFailures();
+      return;
+    }
     this.input.value = '';
-    this.input.placeholder = mode === 'letter' ? 'А' : 'Введите слово';
-    this.element('label').textContent = mode === 'letter' ? 'Ваша буква' : 'Слово целиком';
-    this.say(mode === 'letter' ? 'letter_prompt' : 'word_prompt');
-    this.input.focus({ preventScroll: true });
-  }
-
-  private submit(): void {
-    if (!this.ready || this.round.solved) return;
-    const result: GuessResult = this.round.guess(this.input.value, this.mode);
-    this.input.value = '';
-    this.say(result === 'invalid' && this.mode === 'word' ? 'invalid_word' : result);
+    if (reaction in VOICES) this.speak(reaction as keyof typeof VOICES);
+    if (correct) this.playSound(result === 'word_correct' ? winUrl : correctUrl);
+    else if (result === 'letter_wrong' || result === 'word_wrong') this.playSound(wrongUrl);
+    this.arriving = draft.length === 1 && correct
+      ? this.round.cells.flatMap((char, index) => char && !previous[index] ? [index] : []) : [];
+    this.busy = this.arriving.length > 0;
+    this.input.readOnly = this.busy;
     this.renderBoard();
-    const positive = result === 'letter_correct' || result === 'word_correct';
-    this.element('.status').textContent = result === 'word_correct' ? 'Слово угадано' : result === 'letter_correct' ? 'Буква открыта' : result === 'letter_wrong' ? 'Такой буквы нет' : result === 'word_wrong' ? 'Слово не совпало' : '';
-    if (positive) this.playSound(result === 'word_correct' ? winUrl : correctUrl);
-    else if (result === 'word_wrong' || result === 'letter_wrong') this.playSound(wrongUrl);
+    if (this.arriving.length) await this.flyLetter(draft, source, this.arriving);
+    if (this.disposed) return;
+    this.busy = false;
+    this.arriving = [];
+    this.input.readOnly = false;
+    this.renderBoard();
     if (this.round.solved) {
       this.element('.scene').classList.add('solved');
-      this.element('.controls').hidden = true;
-      this.element('.success').hidden = false;
+      this.input.disabled = true;
+      this.element('.actions').hidden = true;
+      this.element('.continue').hidden = false;
       this.element<HTMLButtonElement>('.continue').focus({ preventScroll: true });
     } else this.input.focus({ preventScroll: true });
   }
 
   private renderBoard(): void {
-    const board = this.element('.board');
-    board.replaceChildren();
-    this.round.cells.forEach(char => {
-      const tile = document.createElement('span');
-      tile.className = 'tile' + (char ? ' revealed' : '');
-      tile.textContent = char;
-      tile.setAttribute('aria-label', char || 'Скрытая буква');
-      board.append(tile);
-    });
-    const letters = this.element('.letters');
-    letters.replaceChildren();
-    this.round.tried.forEach(char => {
-      const chip = document.createElement('span');
-      chip.textContent = char;
-      chip.className = this.round.answer.includes(char) ? 'hit' : 'miss';
-      letters.append(chip);
+    const draft = this.draft;
+    const active = draft.length <= 1 ? this.anchor : Math.min(this.input.selectionStart ?? draft.length, this.round.answer.length - 1);
+    this.tiles.forEach((tile, index) => {
+      const typed = draft.length === 1 ? (index === this.anchor ? draft : '') : draft[index] ?? '';
+      const known = this.round.cells[index];
+      const char = typed || known;
+      tile.querySelector('.letter')!.textContent = char;
+      tile.classList.toggle('revealed', Boolean(known));
+      tile.classList.toggle('draft', Boolean(typed));
+      tile.classList.toggle('arriving', this.arriving.includes(index));
+      tile.classList.toggle('active', !this.busy && !this.round.solved && !this.attempts.exhausted && this.shadow.activeElement === this.input && active === index);
+      tile.setAttribute('aria-label', `Буква ${index + 1}: ${char || 'пусто'}`);
+      tile.disabled = this.round.solved || this.attempts.exhausted;
     });
   }
 
-  private playSound(url: string, stopAfterSeconds = 0): void {
-    clearTimeout(this.soundTimer);
+  private async flyLetter(letter: string, source: DOMRect, indices: number[]): Promise<void> {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    await Promise.all(indices.map(async index => {
+      const target = this.tiles[index].getBoundingClientRect();
+      const flying = document.createElement('span');
+      flying.className = 'flying-letter';
+      flying.textContent = letter;
+      flying.setAttribute('aria-hidden', 'true');
+      flying.style.cssText = `left:${source.left}px;top:${source.top}px;width:${source.width}px;height:${source.height}px;`;
+      this.element('.scene').append(flying);
+      const animation = flying.animate([
+        { transform: 'translate(0,0) scale(1)', opacity: 1 },
+        { transform: `translate(${(target.left - source.left) / 2}px,-24px) scale(1.08)`, opacity: 1, offset: 0.45 },
+        { transform: `translate(${target.left - source.left}px,${target.top - source.top}px) scale(1)`, opacity: 1 },
+      ], { duration: 360, easing: 'ease-in-out' });
+      try { await animation.finished; } catch { /* Removing the overlay cancels the flight. */ }
+      flying.remove();
+    }));
+  }
+
+  private playSound(url: string): void {
     this.sound.pause();
     this.sound.src = url;
-    this.sound.muted = this.muted;
-    this.sound.volume = Math.min(1, Math.max(0, this.options.volume?.() ?? 0.35));
-    this.sound.play().catch(() => { /* Keyboard input stays available if autoplay is blocked. */ });
-    if (stopAfterSeconds) this.soundTimer = setTimeout(() => this.sound.pause(), stopAfterSeconds * 1000);
+    this.syncSoundVolume();
+    this.sound.play().catch(() => { /* Keyboard entry stays available if autoplay is blocked. */ });
+  }
+
+  private startMusic(): void {
+    if (!this.ready || this.disposed || document.hidden || !this.music.paused) return;
+    this.syncSoundVolume();
+    this.music.play().catch(() => { /* Retry at the next user gesture if autoplay is blocked. */ });
+  }
+
+  private syncSoundVolume(): void {
+    const level = Math.min(1, Math.max(0, this.options.volume?.() ?? 0.35));
+    const speech = !this.voice.paused && !this.voice.ended;
+    this.sound.volume = level * (speech ? 0.35 : 1);
+    this.music.volume = level * 0.65 * (speech ? 0.2 : 1);
+  }
+
+  private speak(event: keyof typeof VOICES, onComplete?: () => void): void {
+    if (this.disposed) return;
+    if (this.attempts.exhausted && event !== 'attempts_exhausted') return;
+    this.pendingIntro = false;
+    const request = ++this.voiceRequest;
+    this.voice.pause();
+    this.voiceDone = onComplete;
+    this.voice.src = VOICES[event];
+    this.voice.volume = Math.min(1, Math.max(0, this.options.voiceVolume?.() ?? 1));
+    this.voice.play().catch(() => {
+      if (event === 'intro' && request === this.voiceRequest && !this.disposed) this.pendingIntro = true;
+      if (request === this.voiceRequest) this.finishVoice();
+    });
+  }
+
+  private finishVoice(): void {
+    const done = this.voiceDone;
+    this.voiceDone = undefined;
+    done?.();
+  }
+
+  private skipAfterFailures(): void {
+    this.input.value = '';
+    this.input.disabled = true;
+    this.busy = true;
+    this.pendingIntro = false;
+    this.host.dataset.dialogue = 'attempts_exhausted';
+    this.element('.actions').hidden = true;
+    this.element<HTMLButtonElement>('.repeat-intro').disabled = true;
+    this.element('.feedback').textContent = 'Продолжаем';
+    this.renderBoard();
+    this.playSound(wrongUrl);
+    this.speak('attempts_exhausted', () => this.complete());
+  }
+
+  private complete(): void {
+    if (this.disposed) return;
+    this.destroy();
+    this.options.onComplete();
   }
 
   private trapFocus(event: KeyboardEvent): void {
-    const focusable = Array.from(this.shadow.querySelectorAll<HTMLElement>('button, input')).filter(element => !element.closest('[hidden]') && !(element as HTMLButtonElement).disabled);
+    const focusable = Array.from(this.shadow.querySelectorAll<HTMLElement>('button, input')).filter(element =>
+      element.tabIndex >= 0 && !element.closest('[hidden]') && !(element as HTMLButtonElement).disabled);
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
     if (event.shiftKey && this.shadow.activeElement === first) { event.preventDefault(); last?.focus(); }
@@ -191,9 +334,14 @@ export class WordGuessGate {
     if (this.disposed) return;
     this.disposed = true;
     clearTimeout(this.entranceTimer);
-    clearTimeout(this.soundTimer);
     this.sound.pause();
     this.sound.removeAttribute('src');
+    this.music.pause();
+    this.music.removeAttribute('src');
+    this.voiceDone = undefined;
+    this.voice.pause();
+    this.voice.removeAttribute('src');
+    this.shadow.getAnimations().forEach(animation => animation.cancel());
     document.removeEventListener('visibilitychange', this.visibilityHandler);
     this.host.remove();
     this.previousFocus?.focus({ preventScroll: true });

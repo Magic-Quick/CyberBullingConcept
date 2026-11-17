@@ -5,45 +5,109 @@
   "feature_branch": "codex/pre-act-word-quiz",
   "typecheck": "passed",
   "unit_tests": {
-    "passed": 4,
+    "passed": 8,
     "failed": 0,
     "cases": [
-      "eight cells and simultaneous repeated-letter reveal",
-      "wrong guesses preserve hidden cells; case and whitespace accepted",
-      "invalid input does not consume a letter",
-      "last correct letter completes round"
+      "eight hidden cells; repeated Л opens both positions",
+      "errors preserve hidden letters; normalized whole answer accepted",
+      "invalid letter input does not consume a guess",
+      "last missing letter completes the round",
+      "automatic letter vs whole word classification",
+      "unfinished word preserves the round",
+      "automatic invalid and overlong input rejected; wrong whole word keeps revealed letters",
+      "shared per-game budget: correct, repeated and incomplete inputs do not consume mistakes; third failure exhausts the round"
     ]
   },
   "browser_checks": {
     "intro_has_eight_hidden_cells": true,
-    "letter_entry_prompt": true,
-    "correct_letter_L_reveals_positions": [
+    "single_letter_visible_in_clicked_tile_before_submit": 3,
+    "correct_letter_L_moves_to_positions": [
       6,
       8
     ],
-    "wrong_letter_keeps_remaining_cells_hidden": true,
-    "repeat_letter_has_separate_reply": true,
-    "wrong_word_hides_continue_button": true,
+    "wrong_letter_preserves_revealed_cells": true,
+    "unfinished_word_stays_editable_after_enter": true,
+    "wrong_whole_word_does_not_unlock": true,
+    "click_tile_replaces_one_character_in_word": true,
     "correct_word_reveals_full_answer_and_continue": true,
-    "standalone_completion_callback": true,
-    "development_movie_resumes_act_3": true,
-    "production_movie_resumes_act_3": true,
+    "self_contained_preview_accepts_uppercase_and_surrounding_whitespace": true,
+    "self_contained_completion_and_replay": true,
+    "production_movie_resumes_act_3_gorin_frame": true,
     "production_console_errors": 0,
-    "self_contained_preview_runs": true,
+    "preview_console_errors": 0,
     "desktop_viewport": [
       1280,
       720
     ],
-    "desktop_scroll_height": 720
+    "scene_scroll_size": [
+      1280,
+      720
+    ],
+    "three_wrong_answers_trigger_shared_spoken_exit": true,
+    "third_failure_does_not_reveal_answer": true,
+    "standalone_skips_after_voice_ends": true,
+    "production_skips_after_voice_ends_and_resumes_act_3": true,
+    "replay_starts_fresh_attempt_budget": true,
+    "narrow_viewport": [
+      356,
+      713
+    ]
   },
   "builds": {
-    "movie": "passed, root game.html and assets synchronized",
-    "preview": "passed, all media inlined in one HTML"
+    "movie": "passed, looped music, voice assets and root game.html synchronized",
+    "preview": "passed, all eight voice clips, thinking music and game sounds inlined in one HTML"
   },
-  "narration": "Lord dialogue is text-only in this prototype. Existing TV game sounds play; no new TTS generated.",
+  "narration": "Eight Geremy clips connected: contextual intro, correct/misplaced/wrong/repeated letter, correct/wrong word, and shared three-failure exit. Long lines stay in audio; short feedback stays on screen.",
   "screenshots": [
     "protocol_gate_preview.jpg",
+    "protocol_gate_letter.jpg",
     "protocol_gate_success.jpg"
   ],
-  "original_story_data_unchanged": true
+  "original_story_data_unchanged": true,
+  "revision": "Minimal tile input, contextual Geremy dialogue, three wrong answers then automatic story resume, looped thinking music",
+  "verified_context": {
+    "type": "written Slack message",
+    "local_source": "data/facts_dataset/verified_context_slices.json",
+    "target_id": "02_demoblil",
+    "date_utc_plus_3": "2026-09-29T15:05:44+03:00",
+    "channel": "supercell_production",
+    "quote": "дай демоблил, плиз",
+    "build_file": "CR_English_Playbox_ChampionShowdown_60s_1x1_Full_moloco.html"
+  },
+  "voice_checks": {
+    "clips": 8,
+    "all_mp3_fully_decoded": true,
+    "canonical_voice_id": "GquPFn9xormgmHaJ2KdN",
+    "canonical_model": "eleven_multilingual_v2",
+    "letter_misplaced_playback_reached_end_without_error": true,
+    "click_question_replays_intro": true,
+    "correct_letter_in_wrong_tile_uses_distinct_reply": true,
+    "correct_letter_in_right_tile_uses_standard_reply": true,
+    "production_voice_asset_loaded_and_played_without_error": true,
+    "updated_correct_letter_reply": "Есть такая буква... К сожалению.",
+    "word_correct_explains_request_for_demo_build": true
+  },
+  "background_music": {
+    "file": "pole_chudes/audio/02_think_60s_pole_cudes-60-seconds.mp3",
+    "browser_duration_seconds": 60.839188,
+    "loop_enabled": true,
+    "plays_during_guesses": true,
+    "continues_after_correct_word_until_continue": true,
+    "ducks_under_narration": true,
+    "stops_when_gate_is_destroyed": true
+  },
+  "screenshot_dimensions": {
+    "protocol_gate_preview.jpg": [
+      356,
+      301
+    ],
+    "protocol_gate_letter.jpg": [
+      356,
+      321
+    ],
+    "protocol_gate_success.jpg": [
+      356,
+      713
+    ]
+  }
 }

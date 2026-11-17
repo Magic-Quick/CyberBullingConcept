@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "maxWrongAnswers": 3,
+  "onExhausted": "continue_story_after_voice",
+  "revealAnswerWhenSkipped": false,
+  "exhaustedDialogue": "Я ожидал, что вы тупые. Но не думал, что настолько. Ладно, не буду вас мучить. Продолжим."
+}

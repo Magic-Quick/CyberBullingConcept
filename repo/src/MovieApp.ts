@@ -9795,6 +9795,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
       this._isTransitioningAct = false;
       this._protocolGate = new WordGuessGate({
         volume: () => AudioController.isMuted() ? 0 : Math.min(this._musicVolume, 0.4),
+        voiceVolume: () => AudioController.isMuted() ? 0 : this._voiceVolume,
         onComplete: () => {
           this._protocolGate = null;
           this._protocolGateSolved = true;

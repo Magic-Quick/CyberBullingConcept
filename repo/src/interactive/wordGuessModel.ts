@@ -1,5 +1,6 @@
 export type GuessResult = 'letter_correct' | 'letter_wrong' | 'repeat_letter' | 'word_correct' | 'word_wrong' | 'invalid' | 'empty';
 export type GuessMode = 'letter' | 'word';
+export type AutomaticGuessResult = GuessResult | 'incomplete';
 
 export class WordGuessRound {
   readonly answer: string;
@@ -13,6 +14,16 @@ export class WordGuessRound {
 
   get cells(): string[] {
     return Array.from(this.answer, char => this.solved || this.tried.has(char) ? char : '');
+  }
+
+  /** Enter confirms intent: one character is a letter; a complete draft is a word. */
+  guessAutomatic(raw: string): AutomaticGuessResult {
+    const value = raw.normalize('NFC').trim().toLocaleUpperCase('ru');
+    if (!value) return 'empty';
+    if (!/^[А-ЯЁ]+$/u.test(value) || value.length > this.answer.length) return 'invalid';
+    if (value.length === 1) return this.guess(value, 'letter');
+    if (value.length < this.answer.length) return 'incomplete';
+    return this.guess(value, 'word');
   }
 
   guess(raw: string, mode: GuessMode): GuessResult {
