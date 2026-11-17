@@ -3,8 +3,12 @@ chcp 65001 >nul
 echo ========================================================
 echo   ЗАПУСК DEV-СЕРВЕРА ИНТЕРАКТИВНОГО ФИЛЬМА
 echo   Порт: 5174 ^| PixiJS 8 ^| Vite
+echo   Текущая версия из repo\src
 echo ========================================================
 cd /d "%~dp0..\repo"
-start http://localhost:5174
-call npm.cmd run dev
+call npm.cmd run dev -- --open
+if errorlevel 1 (
+  echo.
+  echo [!] Сервер не запущен. Если порт 5174 занят, закройте предыдущую DEV-консоль и повторите запуск.
+)
 pause

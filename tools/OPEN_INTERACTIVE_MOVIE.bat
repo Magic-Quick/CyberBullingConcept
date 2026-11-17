@@ -5,6 +5,5 @@ echo   ХРОНИКИ ПРОДАКШЕН-КОВЧЕГА • ИНТЕРАКТИВ
 echo ========================================================
 cd /d "%~dp0..\repo"
 echo [*] Запуск интерактивного фильма в браузере...
-start http://localhost:5174
-call npm.cmd run dev
+call npm.cmd run dev -- --open
 pause

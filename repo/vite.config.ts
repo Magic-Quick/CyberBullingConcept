@@ -3,12 +3,14 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 
 export default defineConfig({
   base: './',
+  cacheDir: '../scratch/movie-vite-cache',
   plugins: [
     viteSingleFile({ useRecommendedBuildConfig: false }),
   ],
   server: {
     host: '0.0.0.0',
     port: 5174,
+    strictPort: true,
     fs: {
       allow: ['..'],
     },

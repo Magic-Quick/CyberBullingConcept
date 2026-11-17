@@ -34,3 +34,11 @@ python tools/interactive/serve_presentation.py --port 8876
 Открыть `http://127.0.0.1:8876/index.html#playable-area`. Сервер поддерживает HTTP byte ranges, необходимые браузеру для перемотки аудио; он слушает только `127.0.0.1`. Простая раздача файлов без поддержки диапазонов может сбрасывать позицию звука в начало.
 
 Проверки: `python tools/interactive/test_presentation_server.py`, а также `node --experimental-strip-types --test tools/interactive/word_guess_model.test.mjs tools/interactive/word_guess_captions.test.mjs tools/interactive/word_guess_placement.test.mjs`.
+
+## Запуск через DEV-батник
+
+`tools/START_MOVIE_DEV.bat` и `tools/OPEN_INTERACTIVE_MOVIE.bat` запускают одну текущую версию из `repo/src` на `http://localhost:5174/`. Предыдущая сборка в DEV не подставляется. Прямой вход к игровой вставке для проверки: `http://localhost:5174/?preview=protocol`.
+
+Браузер открывает сам Vite после успешного запуска сервера. При занятом порте запуск завершается с ошибкой, без автоматического переезда на 5175 и открытия другого сервера. Кэш Vite находится в проектном `scratch/movie-vite-cache`, конфигурация загружается через `--configLoader native`.
+
+Переключение текущего и предыдущего фильма остаётся на странице презентации `http://127.0.0.1:8876/index.html#playable-area`.
