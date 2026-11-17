@@ -1,4 +1,5 @@
 import { PremiereAudioDirector, isDevMode } from './PremiereAudioDirector';
+import { WordGuessGate, WORD_GATE_ACT_ID } from './interactive/WordGuessGate';
 
 import { Application, Container, Graphics, Sprite, Text, TextStyle, CanvasTextMetrics, FederatedPointerEvent, Texture, NineSliceSprite, TilingSprite, Rectangle, BlurFilter } from 'pixi.js';
 
@@ -1012,6 +1013,8 @@ export class MovieApp {
 
 
   private _currentActIndex = 0;
+  private _protocolGate: WordGuessGate | null = null;
+  private _protocolGateSolved = false;
 
 
 
@@ -3363,6 +3366,7 @@ export class MovieApp {
 
 
     window.addEventListener('keydown', (e) => {
+      if (this._protocolGate) return;
 
 
 
@@ -3664,7 +3668,9 @@ export class MovieApp {
 
     (window as any).__premiereAudioDirector = premiereDirector;
 
-    this.goToAct(0);
+    const previewProtocol = new URLSearchParams(window.location.search).get('preview') === 'protocol';
+    const firstAct = previewProtocol ? STORY_ACTS.findIndex(act => act.id === WORD_GATE_ACT_ID) : 0;
+    this.goToAct(Math.max(0, firstAct));
 
 
 
@@ -9774,6 +9780,29 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
     if (index < 0 || index >= STORY_ACTS.length) return;
+    if (this._protocolGate) return;
+    if (index === 0) this._protocolGateSolved = false;
+
+    // Stop BEFORE loading the target act: its illustration and speech must not leak into the puzzle.
+    if (STORY_ACTS[index].id === WORD_GATE_ACT_ID && !this._protocolGateSolved) {
+      const resumeAfterGate = autoPlay !== undefined ? autoPlay : this._isPlaying;
+      this.pause();
+      this._voiceAudio?.pause();
+      this._videoElement?.pause();
+      this._transitionAudio?.pause();
+      AmbientManager.cancelWait();
+      AmbientManager.stopAllAmbientImmediately();
+      this._isTransitioningAct = false;
+      this._protocolGate = new WordGuessGate({
+        volume: () => AudioController.isMuted() ? 0 : Math.min(this._musicVolume, 0.4),
+        onComplete: () => {
+          this._protocolGate = null;
+          this._protocolGateSolved = true;
+          this.goToAct(index, resumeAfterGate, crossfadeSec, isNaturalTransition);
+        },
+      });
+      return;
+    }
 
 
 
@@ -10924,6 +10953,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public seekAudio(targetSeconds: number): void {
+    if (this._protocolGate) return;
 
     this._isSeeking = true;
 
@@ -12895,6 +12925,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public play(): void {
+    if (this._protocolGate) return;
 
 
 

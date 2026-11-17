@@ -59,6 +59,7 @@ graph TD
 | 🎵 **Мастер-трек ИИ-Лорда** | `media/audio/tracks/Сервоторизация_приматов_HD_WSOLA_TimeDomain.mp3` | Финальная мастер-версия песни ИИ-Лорда. |
 | 🌐 **Интерактивный фильм (PixiJS)** | `repo/` (исходники) и `repo/dist/` | Флагманский интерактивный фильм. Запуск: `OPEN_INTERACTIVE_MOVIE.bat`. |
 | 🎮 **Контент интерактива: телеигры** | `media/interactive/` | 146 проверенных MP3 для «Поля чудес», «Миллионера» и ЧГК; скриншоты, прозрачные PNG, SVG, источники и локальный каталог `index.html`. «Поле чудес» с 16.11.2026: классические синие квадраты с серебристой рамкой, белые буквы, референс с Якубовичем. Генераторы: `tools/interactive/`. |
+| 🎮 **Проба перед третьим актом** | `media/interactive/protocol-preview/interactive-preview.html` | «Проверка протокола»: восемь букв, отдельные реакции Лорда на букву и слово целиком. Подключена перед `act_3_timemachine`; сценарий — `docs/guardians_edition/INTERACTIVE_PREACT_PROTOCOL.md`. Резерв до внедрения: GitHub-ветка `codex/checkpoint-before-word-quiz-20261117`, коммит `655ba3e`. |
 | 🌐 **Веб-презентация проекта (GitHub Pages)** | `https://magic-quick.github.io/CyberBullingConcept/` | Публичная онлайн-презентация «Сыгравший в ящик». Репозиторий: `Magic-Quick/CyberBullingConcept`. Деплой: `tools/DEPLOY.bat`. |
 
 ---

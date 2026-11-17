@@ -1,0 +1,49 @@
+{
+  "verified_on": "2026-11-17",
+  "baseline_remote_branch": "codex/checkpoint-before-word-quiz-20261117",
+  "baseline_remote_commit": "655ba3e5c2b86d77476c719a1d0edf3e479c3880",
+  "feature_branch": "codex/pre-act-word-quiz",
+  "typecheck": "passed",
+  "unit_tests": {
+    "passed": 4,
+    "failed": 0,
+    "cases": [
+      "eight cells and simultaneous repeated-letter reveal",
+      "wrong guesses preserve hidden cells; case and whitespace accepted",
+      "invalid input does not consume a letter",
+      "last correct letter completes round"
+    ]
+  },
+  "browser_checks": {
+    "intro_has_eight_hidden_cells": true,
+    "letter_entry_prompt": true,
+    "correct_letter_L_reveals_positions": [
+      6,
+      8
+    ],
+    "wrong_letter_keeps_remaining_cells_hidden": true,
+    "repeat_letter_has_separate_reply": true,
+    "wrong_word_hides_continue_button": true,
+    "correct_word_reveals_full_answer_and_continue": true,
+    "standalone_completion_callback": true,
+    "development_movie_resumes_act_3": true,
+    "production_movie_resumes_act_3": true,
+    "production_console_errors": 0,
+    "self_contained_preview_runs": true,
+    "desktop_viewport": [
+      1280,
+      720
+    ],
+    "desktop_scroll_height": 720
+  },
+  "builds": {
+    "movie": "passed, root game.html and assets synchronized",
+    "preview": "passed, all media inlined in one HTML"
+  },
+  "narration": "Lord dialogue is text-only in this prototype. Existing TV game sounds play; no new TTS generated.",
+  "screenshots": [
+    "protocol_gate_preview.jpg",
+    "protocol_gate_success.jpg"
+  ],
+  "original_story_data_unchanged": true
+}
