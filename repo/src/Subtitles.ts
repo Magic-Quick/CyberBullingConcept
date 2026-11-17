@@ -25,6 +25,39 @@ export interface SpeakerProfile {
 }
 
 export class Subtitles extends Container {
+  private _externalCaption: string | null = null;
+  private _externalPreviousKaraoke = false;
+
+  /** Interactive dialogue uses the same renderer, CC toggle and HUD clearance as movie speech. */
+  public setExternalCaption(text: string | null): void {
+    if (text === this._externalCaption) return;
+    const entering = this._externalCaption === null && text !== null;
+    if (entering) this._externalPreviousKaraoke = this._isKaraoke;
+    this._externalCaption = text;
+    this._currentCueIndex = -1;
+    this._mainText.text = text ?? '';
+    if (text !== null) {
+      this._isKaraoke = false;
+      this._dialogueContainer.visible = true;
+      this._karaokeScreenContainer.visible = false;
+      this.hideSlackPopup(true);
+    } else {
+      this._isKaraoke = this._externalPreviousKaraoke;
+      this._dialogueContainer.visible = !this._isKaraoke;
+      this._karaokeScreenContainer.visible = this._isKaraoke;
+    }
+    this._redrawDialogueBox();
+  }
+
+  public getInteractionTypography(): { fontFamily: string; captionSize: number; labelSize: number; captionTop: number } {
+    const family = this._mainText.style.fontFamily;
+    return {
+      fontFamily: Array.isArray(family) ? family.join(',') : String(family),
+      captionSize: Number(this._mainText.style.fontSize),
+      labelSize: Number(this._slackPopupTitleText.style.fontSize),
+      captionTop: this._background.getBounds().y,
+    };
+  }
 
   // 1. Regular cinematic subtitles (Black rectangle at bottom center, NO NAME / AVATAR)
 
@@ -1140,6 +1173,7 @@ export class Subtitles extends Container {
   }
 
   public syncToTime(currentTime: number, isPlaying: boolean): void {
+    if (this._externalCaption !== null) return;
 
     if (this._cues.length === 0) {
 

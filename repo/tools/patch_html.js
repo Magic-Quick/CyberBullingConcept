@@ -6,7 +6,7 @@ const gameHtml = path.resolve('../game.html');
 const distAssets = path.resolve('dist/assets');
 const rootAssets = path.resolve('../assets');
 
-let html = fs.readFileSync(distHtml, 'utf-8');
+let html = fs.readFileSync(distHtml, 'utf-8').replace(/\r\n?/g, '\n');
 
 // Prefix all new URL(`filename`, ...) with assets/
 html = html.replace(/new URL\(([`'"])([^`'"]+)\1/g, (match, quote, filename) => {

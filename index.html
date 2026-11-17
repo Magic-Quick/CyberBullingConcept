@@ -1041,6 +1041,47 @@
       width: 100%;
     }
 
+    .movie-version-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .movie-version-button {
+      padding: 11px 18px;
+      border: 1px solid var(--border-bright);
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font: 700 13px/1.4 var(--font-mono);
+      cursor: pointer;
+    }
+
+    .movie-version-button:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .movie-version-button[aria-pressed="true"] {
+      border-color: var(--accent-cyan);
+      background: var(--accent-cyan);
+      color: #04060a;
+    }
+
+    .movie-version-button:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 3px;
+    }
+
+    .movie-version-note {
+      margin: 0 0 18px;
+      color: var(--text-muted);
+      font: 11px/1.5 var(--font-mono);
+      text-align: center;
+    }
+
     /* Cinema Standby Cover Screen (Zero Autoplay on Page Load) */
     .cinema-standby-screen {
       position: absolute;
@@ -2285,6 +2326,12 @@
       </div>
     </div>
 
+    <div class="movie-version-switcher" role="group" aria-label="Версия интерактивного фильма">
+      <button class="movie-version-button" type="button" data-movie-version="updated" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">Обновлённая версия</button>
+      <button class="movie-version-button" type="button" data-movie-version="previous" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">Предыдущая версия</button>
+    </div>
+    <p class="movie-version-note">При смене версии просмотр начинается сначала.</p>
+
     <div class="cinema-player-container">
       <!-- Cinema Screen Rectangle (Pure 16:9 Cinema Canvas, NO phone notch, full rectangle!) -->
       <div class="cinema-stage" id="cinemaScreen">
@@ -2298,7 +2345,7 @@
           </div>
         </div>
 
-        <iframe id="gameIframe" src="" data-src="game.html?v=clean_20261117_interactive" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        <iframe id="gameIframe" title="Интерактивный фильм — обновлённая версия" src="" data-src="game.html?v=clean_20261117_before_gorin" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
         </iframe>
       </div>
     </div>
@@ -2318,7 +2365,7 @@
 
       <ul class="footer-links">
         <li><a href="https://github.com/Magic-Quick/CyberBullingConcept" target="_blank" rel="noopener">GitHub Репозиторий</a></li>
-        <li><a href="game.html?v=clean_20261117_interactive" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
+        <li><a id="directMovieLink" href="game.html?v=clean_20261117_before_gorin" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
         <li><a href="#hero">Наверх ↑</a></li>
       </ul>
     </div>
@@ -2328,6 +2375,42 @@
   <script>
     // Game Launch & Player Activation (No Autoplay on Site Load)
     let isGameLaunched = false;
+    let selectedMovieVersion = 'updated';
+    const MOVIE_VERSIONS = {
+      updated: { src: 'game.html?v=clean_20261117_before_gorin', title: 'Интерактивный фильм — обновлённая версия' },
+      previous: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — предыдущая версия' },
+    };
+
+    function selectMovieVersion(version, updateUrl = true) {
+      if ((version !== 'updated' && version !== 'previous') || version === selectedMovieVersion) return;
+      const currentFrame = document.getElementById('gameIframe');
+      if (!currentFrame) return;
+      const wasLaunched = isGameLaunched;
+      const movie = MOVIE_VERSIONS[version];
+      selectedMovieVersion = version;
+
+      // Removing the old browsing context stops its voice, music and timers immediately.
+      const nextFrame = currentFrame.cloneNode(false);
+      nextFrame.removeAttribute('src');
+      nextFrame.setAttribute('data-src', movie.src);
+      nextFrame.title = movie.title;
+      currentFrame.replaceWith(nextFrame);
+      isGameLaunched = false;
+
+      document.querySelectorAll('[data-movie-version]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.movieVersion === version));
+      });
+      const directLink = document.getElementById('directMovieLink');
+      if (directLink) directLink.setAttribute('href', movie.src);
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        if (version === 'previous') url.searchParams.set('film', 'previous');
+        else url.searchParams.delete('film');
+        try { window.history.replaceState(null, '', url); } catch { /* Local file URLs may restrict history. */ }
+      }
+      if (wasLaunched) launchGame();
+    }
 
     function launchGame() {
       const iframe = document.getElementById('gameIframe');
@@ -2355,6 +2438,10 @@
         playerEl.scrollIntoView({ behavior: 'smooth' });
       }
       launchGame();
+    }
+
+    if (new URLSearchParams(window.location.search).get('film') === 'previous') {
+      selectMovieVersion('previous', false);
     }
 
     // Crew Members Canonical Data

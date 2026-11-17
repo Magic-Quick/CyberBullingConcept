@@ -1,0 +1,2 @@
+# Preserve the archived release byte for byte across Windows checkouts.
+/game-previous.html -text

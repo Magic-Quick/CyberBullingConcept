@@ -5,7 +5,7 @@
   "feature_branch": "codex/pre-act-word-quiz",
   "typecheck": "passed",
   "unit_tests": {
-    "passed": 8,
+    "passed": 11,
     "failed": 0,
     "cases": [
       "eight hidden cells; repeated Л opens both positions",
@@ -15,7 +15,10 @@
       "automatic letter vs whole word classification",
       "unfinished word preserves the round",
       "automatic invalid and overlong input rejected; wrong whole word keeps revealed letters",
-      "shared per-game budget: correct, repeated and incomplete inputs do not consume mistakes; third failure exhausts the round"
+      "shared per-game budget: correct, repeated and incomplete inputs do not consume mistakes; third failure exhausts the round",
+      "caption text and recorded audio fingerprints match",
+      "caption intervals are ordered and bounded",
+      "quiz entry matches the act containing the first story mention of the answer"
     ]
   },
   "browser_checks": {
@@ -61,14 +64,14 @@
     "movie": "passed, looped music, voice assets and root game.html synchronized",
     "preview": "passed, all eight voice clips, thinking music and game sounds inlined in one HTML"
   },
-  "narration": "Eight Geremy clips connected: contextual intro, correct/misplaced/wrong/repeated letter, correct/wrong word, and shared three-failure exit. Long lines stay in audio; short feedback stays on screen.",
+  "narration": "Existing eight Geremy clips use locally aligned phrase cues through native Subtitles.ts. Native pause/volume/CC and phrase navigation stay active. The movie timeline can dismiss the quiz and seek the film.",
   "screenshots": [
     "protocol_gate_preview.jpg",
     "protocol_gate_letter.jpg",
     "protocol_gate_success.jpg"
   ],
   "original_story_data_unchanged": true,
-  "revision": "Approved clean movie integration, existing film typography, immediate music fade on round completion, paraphrased failure line",
+  "revision": "Two selectable movie versions; native controls and typography; quiz before the Gorin act through natural, chapter and timeline entry",
   "verified_context": {
     "type": "written Slack message",
     "local_source": "data/facts_dataset/verified_context_slices.json",
@@ -120,28 +123,69 @@
     ]
   },
   "clean_release": {
-    "build_id": "clean-20261117-interactive",
+    "build_id": "clean-20261117-before-gorin",
     "entry": "game.html",
     "presentation_entry": "index.html#playable-area",
-    "presentation_iframe_version": "clean_20261117_interactive",
-    "build_sha256": "8a3574210995beb8ebdcd785d0a7e436f26de2b0a7bed83f86737b35f558a2c4",
+    "presentation_iframe_version": "clean_20261117_before_gorin",
+    "build_sha256": "7089f6d15fc17c6d8de3260b4a70aeb73f6d053620ef91a635d2c4f4d02e7b09",
     "root_matches_repo_dist": true,
     "concrete_runtime_assets_checked": 265,
     "missing_runtime_assets": 0,
     "npm_run_typecheck": "passed",
     "npm_run_build": "passed",
-    "unit_tests_passed": 8,
+    "unit_tests_passed": 11,
     "browser_console_errors": 0,
     "typography": {
-      "font_family": "Share Tech Mono, monospace",
-      "question_color": "#00f5d4",
-      "question_background": "rgba(0,0,0,0.88)",
-      "observed_question_font_size": "20.7132px",
-      "context": "existing upper identity label typography",
-      "buttons": "plain bracketed text commands",
+      "source": "existing TextStyle objects in MovieApp.ts and Subtitles.ts",
+      "bottom_subtitles": "native Subtitles.ts renderer with original CC toggle",
+      "question": "existing upper title label",
+      "labels_and_controls": "existing label style",
+      "letters": "existing intro text style",
       "new_font_families": false,
-      "new_gui_graphic_assets": false
+      "new_font_sizes": false
     },
-    "screenshot": "protocol_gate_clean_build.jpg"
+    "screenshot": "movie_versions_updated.jpg"
+  },
+  "native_player_checks": {
+    "narration_uses_original_bottom_subtitles": true,
+    "cc_toggle_and_pause_verified": true,
+    "cc_preference_survives_continuation": true,
+    "native_phrase_next_seek_paused_seconds": 4.08,
+    "native_phrase_previous_seek_paused_seconds": 0,
+    "timeline_seek_closes_quiz_and_stops_audio": true,
+    "timeline_position_is_act_3_boundary": true,
+    "no_new_font_families_or_typography_sizes": true,
+    "normal_typography_observed_px": {
+      "question": 18,
+      "context": 12,
+      "button": 12,
+      "letters": 22
+    },
+    "correct_answer_continuation_verified": true,
+    "three_errors_continuation_verified": true
+  },
+  "http_media_seeking": {
+    "server": "tools/interactive/serve_presentation.py",
+    "bind": "127.0.0.1",
+    "port": 8876,
+    "range_status": 206,
+    "full_get_open_ended_suffix_head_and_invalid_range_verified": true,
+    "integration_tests_passed": 3
+  },
+  "placement": {
+    "target_act_id": "act_3_timemachine",
+    "order": "quiz -> act_3_timemachine at 0 seconds -> answer cue at 18.52 seconds",
+    "natural_transition_verified": true,
+    "chapter_navigation_verified": true,
+    "first_timeline_click_keeps_quiz_open": true,
+    "first_timeline_drag_keeps_quiz_open": true,
+    "subsequent_timeline_seek_can_leave_quiz": true,
+    "correct_answer_continues_from_act_start": true,
+    "story_auto_transitions_frozen_during_quiz": true,
+    "caption_visibility_restored_when_entering_from_opening_titles": true,
+    "screenshots": [
+      "protocol_gate_before_gorin.jpg",
+      "protocol_gate_act_start.jpg"
+    ]
   }
 }

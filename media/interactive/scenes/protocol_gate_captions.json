@@ -1,0 +1,214 @@
+{
+  "letter_misplaced": {
+    "audio_sha256": "943373e2f8475c8397930f6396182629e941a6b46e1915a55e742b15cb0f8f69",
+    "text_sha256": "c9c5cb19fed76c64cebf994a026cfaf6a6c612327345fecc0323d5438bfc7013",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 7,
+    "total_words": 10,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 0.018,
+        "text": "Есть такая буква..."
+      },
+      {
+        "start": 0.0,
+        "end": 2.38,
+        "text": "К сожалению."
+      },
+      {
+        "start": 3.1,
+        "end": 4.7,
+        "text": "Только, блядь, в другом месте."
+      }
+    ]
+  },
+  "intro": {
+    "audio_sha256": "41932520badf33347dcaf73695fd6fc9782fe0244db1c781038387a2d0189e45",
+    "text_sha256": "ecf61a827dcc8f07ef2a4ccc715ce980a463e018ae5bc22e4117ff90ed36d887",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 33,
+    "total_words": 33,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 3.68,
+        "text": "Горина спросили, посмотрел ли он обновлённую сборку."
+      },
+      {
+        "start": 4.08,
+        "end": 6.44,
+        "text": "В ответ он попросил её прислать."
+      },
+      {
+        "start": 7.32,
+        "end": 10.0,
+        "text": "Какое слово написал — не скажу."
+      },
+      {
+        "start": 10.6,
+        "end": 12.34,
+        "text": "Но скажу, что это пиздец."
+      },
+      {
+        "start": 12.8,
+        "end": 15.0,
+        "text": "Мудрый руководитель развивает команду."
+      },
+      {
+        "start": 15.44,
+        "end": 17.3,
+        "text": "Даже когда просто просит сборку."
+      }
+    ]
+  },
+  "letter_correct": {
+    "audio_sha256": "d754da7d5af27180546918d5b5596daf54918c2555f89958ba9094bdda0288c8",
+    "text_sha256": "b46e9756b876b6cb75897d62178c312603019c66c71d558f10c68f6b10508423",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 0,
+    "total_words": 5,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 1.824,
+        "text": "Есть такая буква..."
+      },
+      {
+        "start": 1.824,
+        "end": 3.04,
+        "text": "К сожалению."
+      }
+    ]
+  },
+  "letter_wrong": {
+    "audio_sha256": "6d05515e747a04676cb6bfa462b7349f7e5652fa7ee5b12d924c8f9794fcacd1",
+    "text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 4,
+    "total_words": 11,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 1.509,
+        "text": "Нет такой буквы."
+      },
+      {
+        "start": 1.509,
+        "end": 3.52,
+        "text": "Это была ваша инициатива."
+      },
+      {
+        "start": 3.52,
+        "end": 5.52,
+        "text": "Руководство её не согласовывало."
+      }
+    ]
+  },
+  "word_correct": {
+    "audio_sha256": "74398bd0461c4dfc621c1aea0b7611a164634e6b49504aa18f67a6bb5c5e2191",
+    "text_sha256": "66e49fda9a7e4756eeb6d3879b62656c2d71aa5e0c3fe5dd5e5844494f0ab2e2",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 14,
+    "total_words": 14,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 0.74,
+        "text": "Демоблил."
+      },
+      {
+        "start": 1.04,
+        "end": 1.64,
+        "text": "Правильно."
+      },
+      {
+        "start": 1.92,
+        "end": 3.3,
+        "text": "Горин просил демобилд."
+      },
+      {
+        "start": 3.56,
+        "end": 5.28,
+        "text": "Подчинённый понял и прислал."
+      },
+      {
+        "start": 5.4,
+        "end": 7.88,
+        "text": "Вот что значит сработавшаяся команда."
+      }
+    ]
+  },
+  "word_wrong": {
+    "audio_sha256": "782ef2b17a129a201b0a6bc14f43cd56096821194a181c30368e76ce99bbc2d3",
+    "text_sha256": "326b7b4c7b753cc832abcd7b3b2a95315a3633a551bbec03e212fbce990e333d",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 5,
+    "total_words": 6,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 0.64,
+        "text": "Нет."
+      },
+      {
+        "start": 0.64,
+        "end": 1.46,
+        "text": "Слишком понятно."
+      },
+      {
+        "start": 1.94,
+        "end": 3.3,
+        "text": "Горин написал иначе."
+      }
+    ]
+  },
+  "repeat_letter": {
+    "audio_sha256": "eee526650c30308915a10f5b5668d30db661b3b2e484a44f3592ab87b7b38b8c",
+    "text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 9,
+    "total_words": 9,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 1.5,
+        "text": "Эту букву уже проверяли."
+      },
+      {
+        "start": 1.78,
+        "end": 4.38,
+        "text": "Повторное совещание ничего не изменило."
+      }
+    ]
+  },
+  "attempts_exhausted": {
+    "audio_sha256": "322f33dbe81cf568d57250e02b6431c03cac5020c510a1ea4032bc4524df2369",
+    "text_sha256": "b2ebc2fc0b91c8b34d2f24575ad7d283803573513fd073e07072fa04058aeb4e",
+    "alignment": "local_whisper_small_word_timestamps",
+    "matched_words": 20,
+    "total_words": 20,
+    "cues": [
+      {
+        "start": 0.0,
+        "end": 1.84,
+        "text": "Я и так не ждал от вас многого."
+      },
+      {
+        "start": 2.08,
+        "end": 4.02,
+        "text": "Но вы, похоже, приняли это за вызов."
+      },
+      {
+        "start": 4.32,
+        "end": 6.0,
+        "text": "Ладно, пощажу вас."
+      },
+      {
+        "start": 6.38,
+        "end": 7.46,
+        "text": "Продолжим хроники."
+      }
+    ]
+  }
+}

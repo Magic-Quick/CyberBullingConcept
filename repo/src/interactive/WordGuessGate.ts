@@ -12,6 +12,7 @@ import wordCorrectVoice from '../../../media/interactive/scenes/protocol_gate_vo
 import wordWrongVoice from '../../../media/interactive/scenes/protocol_gate_voice/word_wrong.mp3?url';
 import repeatVoice from '../../../media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3?url';
 import css from './wordGuessGate.css?inline';
+import captions from '../../../media/interactive/scenes/protocol_gate_captions.json';
 import { WordGuessRound, type AutomaticGuessResult } from './wordGuessModel';
 import { GameAttemptBudget } from './gameAttemptBudget';
 import { COMMON_GAME_RULES } from './gameRules';
@@ -26,6 +27,9 @@ interface GateOptions {
   volume?: () => number;
   voiceVolume?: () => number;
   cleanEntranceMs?: number;
+  onCaption?: (text: string) => void;
+  onPlayback?: (playing: boolean) => void;
+  initiallyPaused?: boolean;
 }
 
 /** One native input renders into the tiles, preserving paste, IME and keyboard editing. */
@@ -48,13 +52,17 @@ export class WordGuessGate {
   private voiceRequest = 0;
   private voiceDone: (() => void) | undefined;
   private resumeVoice = false;
+  private paused = false;
+  private activeVoice: keyof typeof VOICES = 'intro';
+  private lastCaption = '';
+  private presentationKey = '';
   private musicFinished = false;
   private musicFadeFrame: number | undefined;
   private readonly visibilityHandler = () => {
     if (document.hidden) {
-      this.resumeVoice = !this.voice.paused && !this.voice.ended;
+      if (!this.paused) this.resumeVoice = !this.voice.paused && !this.voice.ended;
       this.sound.pause(); this.music.pause(); this.voice.pause();
-    } else if (!this.disposed) {
+    } else if (!this.disposed && !this.paused) {
       this.startMusic();
       if (this.resumeVoice) { this.resumeVoice = false; this.voice.play().catch(() => this.finishVoice()); }
     }
@@ -62,7 +70,9 @@ export class WordGuessGate {
 
   constructor(private readonly options: GateOptions) {
     this.host.id = 'protocol-word-gate';
-    this.host.style.cssText = 'position:fixed;inset:0;z-index:100000;';
+    this.host.dataset.presentation = options.onCaption ? 'player' : 'standalone';
+    this.host.style.cssText = 'position:fixed;inset:0;z-index:2;pointer-events:none;';
+    this.paused = options.initiallyPaused ?? false;
     const style = document.createElement('style');
     style.textContent = css;
     this.sound.dataset.channel = 'game';
@@ -70,14 +80,14 @@ export class WordGuessGate {
     this.music.loop = true;
     this.voice.dataset.channel = 'lord';
     this.shadow.append(style, this.music, this.sound, this.voice);
-    this.voice.onplay = () => this.syncSoundVolume();
+    this.voice.onplay = () => { this.syncSoundVolume(); this.updateCaption(); };
+    this.voice.ontimeupdate = () => this.updateCaption();
     this.voice.onpause = () => this.syncSoundVolume();
-    this.voice.onended = () => { this.syncSoundVolume(); this.finishVoice(); };
+    this.voice.onended = () => { this.syncSoundVolume(); this.showCaption(''); this.finishVoice(); };
     this.voice.onerror = () => this.finishVoice();
     const scene = document.createElement('section');
     scene.className = 'scene';
-    scene.setAttribute('role', 'dialog');
-    scene.setAttribute('aria-modal', 'true');
+    scene.setAttribute('role', 'group');
     scene.setAttribute('aria-labelledby', 'gate-question');
     scene.style.setProperty('--tile', `url("${tileUrl}")`);
     scene.innerHTML = `
@@ -94,6 +104,12 @@ export class WordGuessGate {
         <button class="continue" type="button" aria-label="Продолжить акт" hidden>[ ПРОДОЛЖИТЬ АКТ ]</button>
       </main>`;
     this.shadow.append(scene);
+    if (!options.onCaption) {
+      const caption = document.createElement('p');
+      caption.className = 'fallback-caption';
+      caption.setAttribute('aria-live', 'polite');
+      this.shadow.append(caption);
+    }
     this.element('.repeat-intro').textContent = script.question;
     this.element<HTMLButtonElement>('.repeat-intro').onclick = () => this.speak('intro');
     this.element('.context').textContent = `[ ${script.hint} ]`;
@@ -136,11 +152,15 @@ export class WordGuessGate {
       if (!this.round.solved) return;
       this.complete();
     };
-    // Keep movie playback shortcuts inside the modal.
+    // Only actual answer editing owns its keys. Player navigation remains available.
     this.host.addEventListener('keydown', event => {
-      event.stopPropagation();
-      if (event.key === 'Escape') event.preventDefault();
-      if (event.key === 'Tab') this.trapFocus(event);
+      const target = event.composedPath()[0] as HTMLElement;
+      if (target === this.input) {
+        if (event.key === 'Escape') { this.input.blur(); return; }
+        if (event.key !== 'PageUp' && event.key !== 'PageDown') event.stopPropagation();
+      } else if (target.tagName === 'BUTTON' && (event.key === 'Enter' || event.key === ' ')) {
+        event.stopPropagation();
+      }
     });
     // Some browsers require a gesture before the first spoken line.
     const retryIntro = () => {
@@ -155,6 +175,7 @@ export class WordGuessGate {
     this.entranceTimer = setTimeout(() => {
       if (this.disposed) return;
       this.ready = true;
+      this.options.onPlayback?.(!this.paused);
       this.host.dataset.dialogue = 'intro';
       this.startMusic();
       this.speak('intro');
@@ -182,6 +203,7 @@ export class WordGuessGate {
     if (this.round.solved) this.stopThinkingMusic();
     const misplaced = correct && draft.length === 1 && this.round.answer[this.anchor] !== draft;
     const reaction = misplaced ? 'letter_misplaced' : result;
+    this.element('.feedback').classList.toggle('speech', reaction in VOICES);
     this.host.dataset.dialogue = reaction;
     const feedback: Record<AutomaticGuessResult, string> = {
       empty: 'Введите букву или слово',
@@ -267,11 +289,12 @@ export class WordGuessGate {
     this.sound.pause();
     this.sound.src = url;
     this.syncSoundVolume();
+    if (this.paused) return;
     this.sound.play().catch(() => { /* Keyboard entry stays available if autoplay is blocked. */ });
   }
 
   private startMusic(): void {
-    if (!this.ready || this.disposed || this.musicFinished || this.round.solved || this.attempts.exhausted || document.hidden || !this.music.paused) return;
+    if (!this.ready || this.disposed || this.paused || this.musicFinished || this.round.solved || this.attempts.exhausted || document.hidden || !this.music.paused) return;
     this.syncSoundVolume();
     this.music.play().catch(() => { /* Retry at the next user gesture if autoplay is blocked. */ });
   }
@@ -309,8 +332,11 @@ export class WordGuessGate {
     const request = ++this.voiceRequest;
     this.voice.pause();
     this.voiceDone = onComplete;
+    this.showCaption('');
+    this.activeVoice = event;
     this.voice.src = VOICES[event];
     this.voice.volume = Math.min(1, Math.max(0, this.options.voiceVolume?.() ?? 1));
+    if (this.paused) { this.resumeVoice = true; return; }
     this.voice.play().catch(() => {
       if (event === 'intro' && request === this.voiceRequest && !this.disposed) this.pendingIntro = true;
       if (request === this.voiceRequest) this.finishVoice();
@@ -333,6 +359,7 @@ export class WordGuessGate {
     this.element('.actions').hidden = true;
     this.element<HTMLButtonElement>('.repeat-intro').disabled = true;
     this.element('.feedback').textContent = 'Продолжаем';
+    this.element('.feedback').classList.remove('speech');
     this.renderBoard();
     this.playSound(wrongUrl);
     this.speak('attempts_exhausted', () => this.complete());
@@ -344,13 +371,67 @@ export class WordGuessGate {
     this.options.onComplete();
   }
 
-  private trapFocus(event: KeyboardEvent): void {
-    const focusable = Array.from(this.shadow.querySelectorAll<HTMLElement>('button, input')).filter(element =>
-      element.tabIndex >= 0 && !element.closest('[hidden]') && !(element as HTMLButtonElement).disabled);
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && this.shadow.activeElement === first) { event.preventDefault(); last?.focus(); }
-    else if (!event.shiftKey && this.shadow.activeElement === last) { event.preventDefault(); first?.focus(); }
+  get isPlaying(): boolean { return !this.paused; }
+
+  public seekPhrase(direction: -1 | 1): boolean {
+    if (!Number.isFinite(this.voice.duration)) return false;
+    const cues = captions[this.activeVoice].cues;
+    const time = this.voice.currentTime;
+    const cue = direction > 0
+      ? cues.find(cue => cue.start > time + 0.3)
+      : [...cues].reverse().find(cue => cue.start < time - 0.5);
+    if (!cue) return false;
+    this.pendingIntro = false;
+    ++this.voiceRequest;
+    this.voice.currentTime = cue.start;
+    this.showCaption(cue.text);
+    if (this.paused) this.resumeVoice = true;
+    else this.voice.play().catch(() => this.finishVoice());
+    return true;
+  }
+
+  public setPlaying(playing: boolean): void {
+    if (this.disposed || playing === !this.paused) return;
+    this.paused = !playing;
+    if (!playing) {
+      this.resumeVoice = !this.voice.paused && !this.voice.ended;
+      this.voice.pause(); this.music.pause(); this.sound.pause();
+    } else {
+      this.startMusic();
+      if (this.pendingIntro) this.speak('intro');
+      else if (this.resumeVoice) { this.resumeVoice = false; this.voice.play().catch(() => this.finishVoice()); }
+    }
+    this.options.onPlayback?.(playing);
+  }
+
+  public syncPlayer(): void {
+    this.voice.volume = Math.min(1, Math.max(0, this.options.voiceVolume?.() ?? 1));
+    this.syncSoundVolume();
+  }
+
+  public setPresentation(layout: {fontFamily: string; captionSize: number; labelSize: number; titleSize: number; cellSize: number; bottom: number}): void {
+    const key = JSON.stringify(layout);
+    if (key === this.presentationKey) return;
+    this.presentationKey = key;
+    this.host.style.setProperty('--ui-font', layout.fontFamily);
+    this.host.style.setProperty('--caption-size', `${layout.captionSize}px`);
+    this.host.style.setProperty('--label-size', `${layout.labelSize}px`);
+    this.host.style.setProperty('--title-size', `${layout.titleSize}px`);
+    this.host.style.setProperty('--letter-size', `${layout.cellSize}px`);
+    this.host.style.setProperty('--player-clearance', `${Math.max(0, layout.bottom)}px`);
+  }
+
+  private updateCaption(): void {
+    const cues = captions[this.activeVoice].cues;
+    const cue = cues.find(cue => this.voice.currentTime >= cue.start && this.voice.currentTime < cue.end);
+    this.showCaption(cue?.text ?? '');
+  }
+
+  private showCaption(text: string): void {
+    if (text === this.lastCaption) return;
+    this.lastCaption = text;
+    if (this.options.onCaption) this.options.onCaption(text);
+    else this.element('.fallback-caption').textContent = text;
   }
 
   destroy(): void {
@@ -363,6 +444,7 @@ export class WordGuessGate {
     this.music.pause();
     this.music.removeAttribute('src');
     this.voiceDone = undefined;
+    this.options.onCaption?.('');
     this.voice.pause();
     this.voice.removeAttribute('src');
     this.shadow.getAnimations().forEach(animation => animation.cancel());

@@ -1015,6 +1015,9 @@ export class MovieApp {
   private _currentActIndex = 0;
   private _protocolGate: WordGuessGate | null = null;
   private _protocolGateSolved = false;
+  private _protocolGateTargetIndex: number | null = null;
+  private _protocolGateCurtain: Graphics | null = null;
+  private _timelineOpenedProtocolGate = false;
 
 
 
@@ -2725,19 +2728,7 @@ export class MovieApp {
 
 
 
-        if (targetActIndex !== this._currentActIndex) {
-
-
-
-          this.goToAct(targetActIndex);
-
-
-
-        }
-
-
-
-        this.seekAudio(targetActTime);
+        this._seekFromMovieTimeline(targetActIndex, targetActTime);
 
 
 
@@ -2817,7 +2808,8 @@ export class MovieApp {
 
 
 
-      this._wasPlayingBeforeDrag = this._isPlaying;
+      this._wasPlayingBeforeDrag = this.isPlaying;
+      this._timelineOpenedProtocolGate = false;
 
 
 
@@ -2825,7 +2817,7 @@ export class MovieApp {
 
 
 
-      if (this._isPlaying) {
+      if (this.isPlaying) {
 
 
 
@@ -3366,7 +3358,6 @@ export class MovieApp {
 
 
     window.addEventListener('keydown', (e) => {
-      if (this._protocolGate) return;
 
 
 
@@ -3406,7 +3397,7 @@ export class MovieApp {
 
 
 
-        this.seekAudio(this._actTime - 10);
+        this.seekAudio(this.actTime - 10);
 
 
 
@@ -3422,7 +3413,7 @@ export class MovieApp {
 
 
 
-        this.seekAudio(this._actTime + 10);
+        this.seekAudio(this.actTime + 10);
 
 
 
@@ -3438,7 +3429,7 @@ export class MovieApp {
 
 
 
-        this.seekAudio(this._actTime - 5);
+        this.seekAudio(this.actTime - 5);
 
 
 
@@ -3454,7 +3445,7 @@ export class MovieApp {
 
 
 
-        this.seekAudio(this._actTime + 5);
+        this.seekAudio(this.actTime + 5);
 
 
 
@@ -3542,7 +3533,7 @@ export class MovieApp {
 
 
 
-        this.seekAudio(ratio * this._actDuration);
+        this.seekAudio(ratio * STORY_ACTS[this.currentActIndex].duration);
 
 
 
@@ -7114,19 +7105,7 @@ export class MovieApp {
 
 
 
-        if (targetActIndex !== this._currentActIndex) {
-
-
-
-          this.goToAct(targetActIndex);
-
-
-
-        }
-
-
-
-        this.seekAudio(targetActTime);
+        this._seekFromMovieTimeline(targetActIndex, targetActTime);
 
 
 
@@ -7210,7 +7189,8 @@ export class MovieApp {
 
 
 
-      this._wasPlayingBeforeDrag = this._isPlaying;
+      this._wasPlayingBeforeDrag = this.isPlaying;
+      this._timelineOpenedProtocolGate = false;
 
 
 
@@ -7218,7 +7198,7 @@ export class MovieApp {
 
 
 
-      if (this._isPlaying) {
+      if (this.isPlaying) {
 
 
 
@@ -9775,12 +9755,64 @@ export class MovieApp {
 
   }
 
+  private _seekFromMovieTimeline(actIndex: number, actTime: number): void {
+    // A seek that first opens the quiz must not immediately dismiss it in the same click/drag.
+    if (this._timelineOpenedProtocolGate && this._protocolGateTargetIndex === actIndex) return;
+    if (this._protocolGate || actIndex !== this._currentActIndex) {
+      this.goToAct(actIndex);
+      if (this._protocolGate) {
+        this._timelineOpenedProtocolGate = true;
+        return;
+      }
+    }
+    this.seekAudio(actTime);
+  }
+
+  private _syncProtocolPlaybackIcon(playing: boolean): void {
+    this._playPauseIcon.text = playing ? '⏸' : '▶';
+    if (this._wsPlayPauseSprite) this._wsPlayPauseSprite.texture = getTexture(playing ? 'gui_btn_pause' : 'gui_btn_play');
+    this._wsSetPlayPauseLatched?.(playing);
+  }
+
+  private _layoutProtocolGate(): void {
+    if (!this._protocolGate) return;
+    const type = this._subtitles.getInteractionTypography();
+    const hudHeight = Math.max(0, this._screenHeight - this._playerBarContainer.position.y);
+    this._protocolGate.setPresentation({
+      fontFamily: type.fontFamily,
+      captionSize: type.captionSize,
+      labelSize: type.labelSize,
+      titleSize: Number(this._titleText.style.fontSize),
+      cellSize: Number(this._introStudiosText.style.fontSize),
+      bottom: Math.max(hudHeight + type.captionSize * 8, this._screenHeight - type.captionTop + type.captionSize),
+    });
+  }
+
+  private _closeProtocolGate(): boolean {
+    const gate = this._protocolGate;
+    if (!gate) return this._isPlaying;
+    const playing = gate.isPlaying;
+    this._protocolGate = null;
+    this._protocolGateTargetIndex = null;
+    gate.destroy();
+    this._protocolGateCurtain?.destroy();
+    this._protocolGateCurtain = null;
+    this._subtitles.setExternalCaption(null);
+    this._isPlaying = playing;
+    this._syncProtocolPlaybackIcon(playing);
+    return playing;
+  }
+
 public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNaturalTransition: boolean = false): void {
 
 
 
     if (index < 0 || index >= STORY_ACTS.length) return;
-    if (this._protocolGate) return;
+    if (this._protocolGate && isNaturalTransition) return;
+    if (this._protocolGate) {
+      autoPlay = this._closeProtocolGate();
+      if (STORY_ACTS[index].id === WORD_GATE_ACT_ID) this._protocolGateSolved = true;
+    }
     if (index === 0) this._protocolGateSolved = false;
 
     // Stop BEFORE loading the target act: its illustration and speech must not leak into the puzzle.
@@ -9793,15 +9825,26 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
       AmbientManager.cancelWait();
       AmbientManager.stopAllAmbientImmediately();
       this._isTransitioningAct = false;
+      this._protocolGateTargetIndex = index;
+      this._subtitles.visible = this._isSubtitlesVisible;
+      this._subtitles.setExternalCaption('');
+      this._protocolGateCurtain = new Graphics();
+      this._protocolGateCurtain.eventMode = 'none';
+      this._protocolGateCurtain.rect(0, 0, this._screenWidth, this._screenHeight).fill(0x050508);
+      this._root.addChildAt(this._protocolGateCurtain, this._root.getChildIndex(this._subtitles));
       this._protocolGate = new WordGuessGate({
+        initiallyPaused: !resumeAfterGate,
+        onCaption: text => this._subtitles.setExternalCaption(text),
+        onPlayback: playing => this._syncProtocolPlaybackIcon(playing),
         volume: () => AudioController.isMuted() ? 0 : Math.min(this._musicVolume, 0.4),
         voiceVolume: () => AudioController.isMuted() ? 0 : this._voiceVolume,
         onComplete: () => {
-          this._protocolGate = null;
+          const resume = this._closeProtocolGate();
           this._protocolGateSolved = true;
-          this.goToAct(index, resumeAfterGate, crossfadeSec, isNaturalTransition);
+          this.goToAct(index, resume, crossfadeSec, isNaturalTransition);
         },
       });
+      this._layoutProtocolGate();
       return;
     }
 
@@ -10163,7 +10206,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-      this._subtitles.visible = true;
+      this._subtitles.visible = this._isSubtitlesVisible;
 
 
 
@@ -10251,7 +10294,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-      this._subtitles.visible = true;
+      this._subtitles.visible = this._isSubtitlesVisible;
 
 
 
@@ -10809,7 +10852,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    if (this._isTransitioningAct || this._currentActIndex !== index) return;
+    if (this._protocolGate || this._isTransitioningAct || this._currentActIndex !== index) return;
 
 
 
@@ -10925,7 +10968,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-        if (this._currentActIndex === index && this._currentActIndex + 1 < STORY_ACTS.length) {
+        if (!this._protocolGate && this._currentActIndex === index && this._currentActIndex + 1 < STORY_ACTS.length) {
 
 
 
@@ -10954,7 +10997,16 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public seekAudio(targetSeconds: number): void {
-    if (this._protocolGate) return;
+    if (this._protocolGate) {
+      const targetIndex = this._protocolGateTargetIndex;
+      const playing = this._closeProtocolGate();
+      if (targetIndex !== null) {
+        this._protocolGateSolved = true;
+        this.goToAct(targetIndex, false);
+        this._isPlaying = playing;
+        this._syncProtocolPlaybackIcon(playing);
+      }
+    }
 
     this._isSeeking = true;
 
@@ -12734,6 +12786,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public nextPhrase(): void {
+    if (this._protocolGate) { if (!this._protocolGate.seekPhrase(1)) this.nextAct(); return; }
 
 
 
@@ -12786,6 +12839,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public previousPhrase(): void {
+    if (this._protocolGate) { if (!this._protocolGate.seekPhrase(-1)) this.previousAct(); return; }
 
 
 
@@ -12850,6 +12904,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public nextAct(crossfadeSec: number = 0): void {
+    if (this._protocolGate) { this.goToAct(this._protocolGateTargetIndex ?? this._currentActIndex + 1, this._protocolGate.isPlaying); return; }
 
 
 
@@ -12870,6 +12925,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public previousAct(): void {
+    if (this._protocolGate) { this.goToAct(Math.max(0, (this._protocolGateTargetIndex ?? this._currentActIndex) - 1), this._protocolGate.isPlaying); return; }
 
 
 
@@ -12893,7 +12949,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    return this._isPlaying;
+    return this._protocolGate?.isPlaying ?? this._isPlaying;
 
 
 
@@ -12905,7 +12961,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    return this._currentActIndex;
+    return this._protocolGateTargetIndex ?? this._currentActIndex;
 
 
 
@@ -12917,7 +12973,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    return this._actTime;
+    return this._protocolGate ? 0 : this._actTime;
 
 
 
@@ -12926,7 +12982,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public play(): void {
-    if (this._protocolGate) return;
+    if (this._protocolGate) { this._protocolGate.setPlaying(true); return; }
 
 
 
@@ -13051,6 +13107,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public pause(): void {
+    if (this._protocolGate) { this._protocolGate.setPlaying(false); return; }
 
 
 
@@ -13107,6 +13164,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
   public togglePlayPause(): void {
+    if (this._protocolGate) { this._protocolGate.setPlaying(!this._protocolGate.isPlaying); return; }
 
 
 
@@ -13366,7 +13424,11 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    if (this._currentActIndex === 0) {
+    if (this._protocolGate) {
+      // Keep the original scene and its automatic transitions frozen behind the quiz.
+      currentTime = 0;
+      this._subtitles.update(dt);
+    } else if (this._currentActIndex === 0) {
 
       const curAudio = AmbientManager.getCurrentAudio();
 
@@ -13858,7 +13920,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
     // Sync Premiere Audio Director timeline on EVERY frame for ALL acts including Act 0
 
-    PremiereAudioDirector.getInstance().syncActFromApp(this._currentActIndex, currentTime);
+    PremiereAudioDirector.getInstance().syncActFromApp(this.currentActIndex, this._protocolGate ? 0 : currentTime);
 
 
 
@@ -13894,7 +13956,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const overallCurSec = Math.floor((this._actStartTimes[this._currentActIndex] || 0) + currentTime);
+    const overallCurSec = Math.floor((this._actStartTimes[this.currentActIndex] || 0) + (this._protocolGate ? 0 : currentTime));
 
 
 
@@ -14023,6 +14085,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
     this._subtitles.setBottomOffset(visibleBarHeight);
+    this._protocolGate?.syncPlayer();
+    this._layoutProtocolGate();
 
 
 
@@ -16943,7 +17007,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-    const currentOverallTime = (this._actStartTimes[this._currentActIndex] || 0) + this._actTime;
+    const currentOverallTime = (this._actStartTimes[this.currentActIndex] || 0) + this.actTime;
 
 
 
@@ -17127,7 +17191,7 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
 
-        const isActive = (i === this._currentActIndex);
+        const isActive = (i === this.currentActIndex);
 
 
 
@@ -17672,6 +17736,8 @@ public goToAct(index: number, autoPlay?: boolean, crossfadeSec: number = 0, isNa
 
 
     this._subtitles.resize(w, h);
+    this._protocolGateCurtain?.clear().rect(0, 0, w, h).fill(0x050508);
+    this._layoutProtocolGate();
 
 
 

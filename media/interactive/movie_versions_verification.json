@@ -1,0 +1,77 @@
+{
+  "verified_on": "2026-11-17",
+  "updated": {
+    "file": "game.html",
+    "sha256": "7089f6d15fc17c6d8de3260b4a70aeb73f6d053620ef91a635d2c4f4d02e7b09",
+    "assets_verified": 265
+  },
+  "previous": {
+    "file": "game-previous.html",
+    "source_commit": "655ba3e5c2b86d77476c719a1d0edf3e479c3880",
+    "sha256": "d7d8cae1e1d186a4aea52c35525bdcdfac6ff7429a3069bafe966b3e68d34240",
+    "byte_identical_to_checkpoint": true,
+    "assets_verified": 253
+  },
+  "site_checks": {
+    "two_selectable_versions": true,
+    "selection_before_play_does_not_autoplay": true,
+    "previous_choice_survives_reload_in_query": true,
+    "only_one_iframe_runs": true,
+    "same_selection_keeps_playback": true,
+    "switch_recreates_player_from_start": true,
+    "direct_link_tracks_selection": true,
+    "previous_version_has_no_word_quiz": true,
+    "updated_version_has_word_quiz": true
+  },
+  "native_player_checks": {
+    "narration_uses_original_bottom_subtitles": true,
+    "cc_toggle_and_pause_verified": true,
+    "cc_preference_survives_continuation": true,
+    "native_phrase_next_seek_paused_seconds": 4.08,
+    "native_phrase_previous_seek_paused_seconds": 0,
+    "timeline_seek_closes_quiz_and_stops_audio": true,
+    "timeline_position_is_act_3_boundary": true,
+    "no_new_font_families_or_typography_sizes": true,
+    "normal_typography_observed_px": {
+      "question": 18,
+      "context": 12,
+      "button": 12,
+      "letters": 22
+    },
+    "correct_answer_continuation_verified": true,
+    "three_errors_continuation_verified": true
+  },
+  "http_media_seeking": {
+    "server": "tools/interactive/serve_presentation.py",
+    "bind": "127.0.0.1",
+    "port": 8876,
+    "range_status": 206,
+    "full_get_open_ended_suffix_head_and_invalid_range_verified": true,
+    "integration_tests_passed": 3
+  },
+  "node_tests_passed": 11,
+  "typecheck": "passed",
+  "movie_build": "passed",
+  "preview_build": "passed",
+  "browser_console_errors": 0,
+  "screenshots": [
+    "movie_versions_updated.jpg",
+    "movie_versions_previous.jpg"
+  ],
+  "placement": {
+    "target_act_id": "act_3_timemachine",
+    "order": "quiz -> act_3_timemachine at 0 seconds -> answer cue at 18.52 seconds",
+    "natural_transition_verified": true,
+    "chapter_navigation_verified": true,
+    "first_timeline_click_keeps_quiz_open": true,
+    "first_timeline_drag_keeps_quiz_open": true,
+    "subsequent_timeline_seek_can_leave_quiz": true,
+    "correct_answer_continues_from_act_start": true,
+    "story_auto_transitions_frozen_during_quiz": true,
+    "caption_visibility_restored_when_entering_from_opening_titles": true,
+    "screenshots": [
+      "protocol_gate_before_gorin.jpg",
+      "protocol_gate_act_start.jpg"
+    ]
+  }
+}
