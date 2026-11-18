@@ -9,7 +9,7 @@
       "file": "protocol_gate_voice/letter_misplaced.mp3",
       "bytes": 85724,
       "request_id": "AGjIcOSE92ARfo2uZ1g3",
-      "duration_seconds_rounded": 5.33
+      "duration_seconds_rounded": 5.294
     },
     "intro": {
       "text": "Горина спросили, посмотрел ли он обновлённую сборку. В ответ он попросил её прислать. Какое слово написал — не скажу. Но скажу, что это пиздец. Мудрый руководитель развивает команду. Даже когда просто просит сборку.",
@@ -17,7 +17,7 @@
       "file": "protocol_gate_voice/intro.mp3",
       "bytes": 285091,
       "request_id": "L5sPfncOFxCnmZ37ejlB",
-      "duration_seconds_rounded": 17.79
+      "duration_seconds_rounded": 17.74
     },
     "letter_correct": {
       "text": "Есть такая буква... К сожалению.",
@@ -25,7 +25,7 @@
       "file": "protocol_gate_voice/letter_correct.mp3",
       "bytes": 50198,
       "request_id": "gSSLBKDxl1JnBaRkb88H",
-      "duration_seconds_rounded": 3.11
+      "duration_seconds_rounded": 3.065
     },
     "letter_wrong": {
       "text": "Нет такой буквы. Это была ваша инициатива. Руководство её не согласовывало.",
@@ -33,7 +33,7 @@
       "file": "protocol_gate_voice/letter_wrong.mp3",
       "bytes": 96173,
       "request_id": "tLQcYLgb2yQgsViACwlG",
-      "duration_seconds_rounded": 5.98
+      "duration_seconds_rounded": 5.944
     },
     "word_correct": {
       "text": "Демоблил. Правильно. Горин просил демобилд. Подчинённый понял и прислал. Вот что значит сработавшаяся команда.",
@@ -41,7 +41,7 @@
       "file": "protocol_gate_voice/word_correct.mp3",
       "bytes": 134207,
       "request_id": "X4PZ6Ufu9bev8CTvEn93",
-      "duration_seconds_rounded": 8.36
+      "duration_seconds_rounded": 8.313
     },
     "word_wrong": {
       "text": "Нет. Слишком понятно. Горин написал иначе.",
@@ -49,7 +49,7 @@
       "file": "protocol_gate_voice/word_wrong.mp3",
       "bytes": 60647,
       "request_id": "Z0kbMAT1e0xMsbsQjFk6",
-      "duration_seconds_rounded": 3.76
+      "duration_seconds_rounded": 3.715
     },
     "repeat_letter": {
       "text": "Эту букву уже проверяли. Повторное совещание ничего не изменило.",
@@ -57,7 +57,7 @@
       "file": "protocol_gate_voice/repeat_letter.mp3",
       "bytes": 79037,
       "request_id": "sr9HICMwEHZhccA5dYMC",
-      "duration_seconds_rounded": 4.91
+      "duration_seconds_rounded": 4.876
     },
     "attempts_exhausted": {
       "text": "Я и так не ждал от вас многого. Но вы, похоже, приняли это за вызов. Ладно, пощажу вас. Продолжим хроники.",
@@ -65,7 +65,191 @@
       "file": "shared_voice/attempts_exhausted.mp3",
       "bytes": 129610,
       "request_id": "T0VWX9SdseSCL8328G8o",
-      "duration_seconds_rounded": 8.03
+      "duration_seconds_rounded": 8.034
+    },
+    "invalid": {
+      "text": "Одну русскую букву. Раскладку Горина сегодня не усложняем.",
+      "text_sha256": "60e0d88daa7b9b55468d6a7709bbfa6633c92749b91ae98935d93a6f525ea8d9",
+      "file": "protocol_gate_voice/invalid.mp3",
+      "bytes": 71514,
+      "request_id": "dea9iPjthrm2OIjndtgD",
+      "duration_seconds_rounded": 4.412
+    },
+    "invalid_word": {
+      "text": "Введите слово кириллицей. Диалект Горина и без того требует расшифровки.",
+      "text_sha256": "ac0d26e258e662048b6bf62d57fd1ce16f0de56a644f78c2baa12c2adcec7e96",
+      "file": "protocol_gate_voice/invalid_word.mp3",
+      "bytes": 99935,
+      "request_id": "jb14r5ExNyfoP2pRlnYy",
+      "duration_seconds_rounded": 6.177
+    },
+    "empty": {
+      "text": "Введите букву или слово. Молчание в протоколе не сохранилось.",
+      "text_sha256": "f8c857e156305f1933b1eb4d062117caa6338e20d5fb36707172aa625b7fe376",
+      "file": "protocol_gate_voice/empty.mp3",
+      "bytes": 72350,
+      "request_id": "t7CiBUah3kuJPJqDwt59",
+      "duration_seconds_rounded": 4.458
+    },
+    "incomplete": {
+      "text": "Восемь букв. Сокращать распоряжение руководства пока рано.",
+      "text_sha256": "41665ec371a2870e717cb7bce8f7f8b0970d9420fa9c5e62efb7398750b5866a",
+      "file": "protocol_gate_voice/incomplete.mp3",
+      "bytes": 71096,
+      "request_id": "ZOQiYeqd0FaiJc5incdH",
+      "duration_seconds_rounded": 4.365
+    },
+    "too_long": {
+      "text": "Восемь букв. Вы сейчас пишете уже служебную записку.",
+      "text_sha256": "f7731ece093bff1980da51d706a9e12f524b2335e0a49c01e24a5348f9aa75ae",
+      "file": "protocol_gate_voice/too_long.mp3",
+      "bytes": 67752,
+      "request_id": "7CZRoiyNrbf8HufMnayE",
+      "duration_seconds_rounded": 4.18
+    },
+    "letter_wrong_alt_1": {
+      "text": "Нет такой буквы. Даже в авторской версии русского языка.",
+      "text_sha256": "144c07def08040b7e745c9c45ad98597c409d10913bdd1e54020d8fe4de81d05",
+      "file": "protocol_gate_voice/letter_wrong_alt_1.mp3",
+      "bytes": 63572,
+      "request_id": "cnLCAyhfWABSodNFXCZO",
+      "duration_seconds_rounded": 3.901
+    },
+    "letter_wrong_alt_2": {
+      "text": "Мимо. Горин исковеркал слово, а не весь алфавит.",
+      "text_sha256": "970cbb3abb84c5fb83e7a342724e05779ab0edcbc2b9c60dcbdbf738f2e523b0",
+      "file": "protocol_gate_voice/letter_wrong_alt_2.mp3",
+      "bytes": 65662,
+      "request_id": "stoRm1USDHVRrF51Ks1D",
+      "duration_seconds_rounded": 4.04
+    },
+    "word_wrong_alt_1": {
+      "text": "Нет. Вы сейчас исправили опечатку. А нужно восстановить улику.",
+      "text_sha256": "e8a9e1d519096efbdad6f7313a9f0f7c92d518038cde29ea1ae1288b756f44f5",
+      "file": "protocol_gate_voice/word_wrong_alt_1.mp3",
+      "bytes": 85724,
+      "request_id": "HrdIxNJqZqUzSOVcANCj",
+      "duration_seconds_rounded": 5.294
+    },
+    "word_wrong_alt_2": {
+      "text": "Такого слова в протоколе нет. Своё творчество отправляйте отдельным тредом.",
+      "text_sha256": "ae3f74fa76fa4b56837f4658c4d3e21e5d0e571da9828f40a64aa8ea8a1d743d",
+      "file": "protocol_gate_voice/word_wrong_alt_2.mp3",
+      "bytes": 90322,
+      "request_id": "aTllChsfcKtKAGfzTtEK",
+      "duration_seconds_rounded": 5.573
+    },
+    "repeat_letter_alt_1": {
+      "text": "Буква та же. Надежда новая. Результат прежний.",
+      "text_sha256": "736e6414ef5c3f0fe558513b914dc52e395aedf41e7ba49038844c87ddc981ba",
+      "file": "protocol_gate_voice/repeat_letter_alt_1.mp3",
+      "bytes": 73185,
+      "request_id": "iXsd2IkaQvxOCEarP5jL",
+      "duration_seconds_rounded": 4.505
+    },
+    "repeat_letter_alt_2": {
+      "text": "Мы уже это проверяли. Протокол совещания прочитайте.",
+      "text_sha256": "b7e5c4a33b0e3bcc3adafeee93735bb79987ec606fcd6dca3063c177ecc91acf",
+      "file": "protocol_gate_voice/repeat_letter_alt_2.mp3",
+      "bytes": 60647,
+      "request_id": "stfn1pmODBfYUCNnBboH",
+      "duration_seconds_rounded": 3.715
+    },
+    "letter_misplaced_alt_1": {
+      "text": "Буква есть. Только вы опять назначили её не на ту задачу.",
+      "text_sha256": "90e64bed7045d3cce908920068471ecff8d8efcfe214cd2820ff6948d2ba1932",
+      "file": "protocol_gate_voice/letter_misplaced_alt_1.mp3",
+      "bytes": 74439,
+      "request_id": "9qh4FniHCjspf1m3NrHQ",
+      "duration_seconds_rounded": 4.598
+    },
+    "letter_misplaced_alt_2": {
+      "text": "Есть такая буква. Место ей уже нашли. Без вашего участия.",
+      "text_sha256": "c4ddb6be8c8e3fb25f2336a8d01961f8b161a8bf2df45d95de9cbddf85031520",
+      "file": "protocol_gate_voice/letter_misplaced_alt_2.mp3",
+      "bytes": 82798,
+      "request_id": "kLOIVmGk6UWBf2w0sFIN",
+      "duration_seconds_rounded": 5.108
+    },
+    "invalid_alt_1": {
+      "text": "Русскую букву. Другие алфавиты пока не проходят по делу.",
+      "text_sha256": "31f6d0308ff36f18b927582469421a5c55b7c68342211edd1106300f4a2f9cd2",
+      "file": "protocol_gate_voice/invalid_alt_1.mp3",
+      "bytes": 60647,
+      "request_id": "6Isf0qIocY2D5n5XMhDE",
+      "duration_seconds_rounded": 3.715
+    },
+    "invalid_alt_2": {
+      "text": "Русскую букву. С расширением словаря Горин уже справился.",
+      "text_sha256": "1197d6b62254a4ff58df39ca0e22d64eb70c455843a00c1b32d55e601f41f52d",
+      "file": "protocol_gate_voice/invalid_alt_2.mp3",
+      "bytes": 66498,
+      "request_id": "Kf7aPAOu5fGo9pl83pxO",
+      "duration_seconds_rounded": 4.087
+    },
+    "invalid_word_alt_1": {
+      "text": "Кириллицей. Переводить это ещё и с другого языка я не собираюсь.",
+      "text_sha256": "5246e377fb199b8c08605600099cf2f1d15939fe6260aa7a7536f81dcfaeac5c",
+      "file": "protocol_gate_voice/invalid_word_alt_1.mp3",
+      "bytes": 71514,
+      "request_id": "pR7styHJR51ZxOOX4XXE",
+      "duration_seconds_rounded": 4.412
+    },
+    "invalid_word_alt_2": {
+      "text": "Русскими буквами. И без того расследуем лингвистическую катастрофу.",
+      "text_sha256": "5a19810b785b863efab0c77db29c4a7734854006e9c6d4e415a608a702780d3d",
+      "file": "protocol_gate_voice/invalid_word_alt_2.mp3",
+      "bytes": 84888,
+      "request_id": "nyGQrURjp0zgaUsoICuM",
+      "duration_seconds_rounded": 5.248
+    },
+    "empty_alt_1": {
+      "text": "Ответ не поступил. Пока это самая грамотная версия.",
+      "text_sha256": "be068a3b3f7fbf5eae8d6e59a228c45623e8fa3e670f3ee72bdcb6912c132533",
+      "file": "protocol_gate_voice/empty_alt_1.mp3",
+      "bytes": 71096,
+      "request_id": "X2b6rEXC3MfZ5sFgYOYY",
+      "duration_seconds_rounded": 4.365
+    },
+    "empty_alt_2": {
+      "text": "Пусто. Смелое заявление для человека, который нажал Ввод.",
+      "text_sha256": "04fa5a1e0e347149b59100296608d5f2572099fb2b1dc38dbe7a4337c80fff39",
+      "file": "protocol_gate_voice/empty_alt_2.mp3",
+      "bytes": 63572,
+      "request_id": "Yn7QefE0MGGWmXwGXcyn",
+      "duration_seconds_rounded": 3.901
+    },
+    "incomplete_alt_1": {
+      "text": "Слово ещё не закончено. До орфографии мы пока не добрались.",
+      "text_sha256": "a2500c652c4769fe8b9e42ea22a2428a12ad07deafdfe504a2ee4a8ac78d9049",
+      "file": "protocol_gate_voice/incomplete_alt_1.mp3",
+      "bytes": 70260,
+      "request_id": "XHwbnxLvIQqKRAvi9IgH",
+      "duration_seconds_rounded": 4.319
+    },
+    "incomplete_alt_2": {
+      "text": "Букв не хватает. Остальные тоже нужны для протокола.",
+      "text_sha256": "f0fb87ac5234da205e27edcf686cecd9249d8d4e5196b4041ce3d2893553304e",
+      "file": "protocol_gate_voice/incomplete_alt_2.mp3",
+      "bytes": 62736,
+      "request_id": "SHGcNBUb5YG6khuR6CNi",
+      "duration_seconds_rounded": 3.855
+    },
+    "too_long_alt_1": {
+      "text": "Длиннее восьми. Биографию слова пока не запрашивали.",
+      "text_sha256": "a0655d009d855625168a499f7935578d4d4a5aebe2002d68c0f02a1eed9347e6",
+      "file": "protocol_gate_voice/too_long_alt_1.mp3",
+      "bytes": 64826,
+      "request_id": "57PnCmxtK7GPqbmnSah0",
+      "duration_seconds_rounded": 3.994
+    },
+    "too_long_alt_2": {
+      "text": "Лишние буквы. Горин и с восемью справился своеобразно.",
+      "text_sha256": "fbfe38441296ded29aea5eb33792187d9dfd1d6ff2898bb7778b4530b655bd5f",
+      "file": "protocol_gate_voice/too_long_alt_2.mp3",
+      "bytes": 71096,
+      "request_id": "ICE7jx3sgZBE0VIENxwg",
+      "duration_seconds_rounded": 4.365
     }
   },
   "relative_to": "media/interactive/scenes"

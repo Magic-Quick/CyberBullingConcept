@@ -14,6 +14,17 @@ def normalize(word):
     return re.sub(r'[^а-яёa-z0-9]', '', word.lower()).replace('ё', 'е')
 
 
+def match_positions(authored, heard):
+    positions = {}
+    matcher = difflib.SequenceMatcher(None, [normalize(w) for w in authored],
+        [normalize(w.word) for w in heard], autojunk=False)
+    for block in matcher.get_matching_blocks():
+        for offset in range(block.size):
+            word = heard[block.b + offset]
+            positions[block.a + offset] = (word.start, word.end)
+    return positions
+
+
 def main():
     manifest = json.loads((SCENES / 'protocol_gate_voice/manifest.json').read_text(encoding='utf-8'))
     out = SCENES / 'protocol_gate_captions.json'
@@ -22,7 +33,9 @@ def main():
     for event, clip in manifest['clips'].items():
         path = SCENES / clip['file']
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
-        if captions.get(event, {}).get('audio_sha256') == digest and captions[event].get('text_sha256') == clip['text_sha256']:
+        cached = captions.get(event, {})
+        acceptable = cached.get('matched_words', 0) >= .65 * max(1, cached.get('total_words', 1))
+        if cached.get('audio_sha256') == digest and cached.get('text_sha256') == clip['text_sha256'] and acceptable:
             print(event, 'unchanged', flush=True)
             continue
         if model is None:
@@ -31,16 +44,18 @@ def main():
         segments, _ = model.transcribe(str(path), language='ru', initial_prompt=clip['text'],
             word_timestamps=True, beam_size=3, vad_filter=False, condition_on_previous_text=False)
         heard = [w for segment in segments for w in (segment.words or [])]
+        authored = clip['text'].split()
+        positions = match_positions(authored, heard)
+        if len(positions) < .65 * len(authored):
+            # A prompt can overwhelm recognition of short reactions. Compare an unprompted pass.
+            segments, _ = model.transcribe(str(path), language='ru', beam_size=5, vad_filter=False,
+                word_timestamps=True, condition_on_previous_text=False)
+            alternate = [w for segment in segments for w in (segment.words or [])]
+            alternate_positions = match_positions(authored, alternate)
+            if len(alternate_positions) > len(positions):
+                heard, positions = alternate, alternate_positions
         if not heard:
             raise SystemExit(f'{event}: no word timestamps; previous results preserved')
-        authored = clip['text'].split()
-        positions = {}
-        matcher = difflib.SequenceMatcher(None, [normalize(w) for w in authored],
-            [normalize(w.word) for w in heard], autojunk=False)
-        for block in matcher.get_matching_blocks():
-            for offset in range(block.size):
-                word = heard[block.b + offset]
-                positions[block.a + offset] = (word.start, word.end)
         exact_matches = len(positions)
         for index in range(len(authored)):
             if index in positions:

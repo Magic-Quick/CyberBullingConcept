@@ -6,7 +6,7 @@
 
 ## 🚀 Быстрый запуск (1 клик)
 
-Чистовой фильм — [`game.html`](game.html), встроенный в основную презентацию. Перед третьим актом включена согласованная игра с буквами; сборка из `repo`: `npm run build`.
+В презентации доступны **обновлённая** ([`game.html`](game.html)) и **предыдущая** ([`game-previous.html`](game-previous.html)) версии фильма. Переключатель расположен над плеером. Сборка обновлённой версии из `repo`: `npm run build`. Для локального просмотра с перемоткой: запустить `tools/START_PRESENTATION_SERVER.bat` (или `python tools/interactive/serve_presentation.py --port 8876`), затем открыть `http://127.0.0.1:8876/index.html#playable-area`.
 
 - **[OPEN_PRESENTATION.bat](file:///h:/PLBX/CyberBullingConcept/OPEN_PRESENTATION.bat)** — Запуск интерактивной веб-презентации `index.html`.
 - **[START_STUDIO_SERVER.bat](file:///h:/PLBX/CyberBullingConcept/START_STUDIO_SERVER.bat)** — Запуск локального сервера студий на порту 8765.

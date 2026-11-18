@@ -4,23 +4,23 @@ import thinkingUrl from '../../../media/interactive/pole_chudes/audio/02_think_6
 import correctUrl from '../../../media/interactive/pole_chudes/audio/01_letter_correct_pole_letter_correct.mp3?url';
 import wrongUrl from '../../../media/interactive/pole_chudes/audio/07_letter_wrong_pole_letter_wrong.mp3?url';
 import winUrl from '../../../media/interactive/pole_chudes/audio/32_word_correct_pole_word_1996.mp3?url';
-import introVoice from '../../../media/interactive/scenes/protocol_gate_voice/intro.mp3?url';
-import misplacedVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3?url';
-import correctVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_correct.mp3?url';
-import wrongVoice from '../../../media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3?url';
-import wordCorrectVoice from '../../../media/interactive/scenes/protocol_gate_voice/word_correct.mp3?url';
-import wordWrongVoice from '../../../media/interactive/scenes/protocol_gate_voice/word_wrong.mp3?url';
-import repeatVoice from '../../../media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3?url';
 import css from './wordGuessGate.css?inline';
 import captions from '../../../media/interactive/scenes/protocol_gate_captions.json';
 import { WordGuessRound, type AutomaticGuessResult } from './wordGuessModel';
 import { GameAttemptBudget } from './gameAttemptBudget';
 import { COMMON_GAME_RULES } from './gameRules';
+import { ReactionPicker } from './reactionPicker';
+import { WordGuessDraft } from './wordGuessDraft';
 
 export const WORD_GATE_ACT_ID = script.targetActId;
-const VOICES = { intro: introVoice, letter_misplaced: misplacedVoice, letter_correct: correctVoice,
-  letter_wrong: wrongVoice, word_correct: wordCorrectVoice, word_wrong: wordWrongVoice, repeat_letter: repeatVoice,
-  attempts_exhausted: COMMON_GAME_RULES.exhaustedVoiceUrl };
+const voiceFiles = import.meta.glob('../../../media/interactive/scenes/protocol_gate_voice/*.mp3',
+  { query: '?url', import: 'default', eager: true }) as Record<string, string>;
+const VOICES: Record<string, string> = Object.fromEntries(Object.entries(voiceFiles)
+  .map(([path, url]) => [path.split('/').pop()!.replace(/\.mp3$/, ''), url]));
+VOICES.attempts_exhausted = COMMON_GAME_RULES.exhaustedVoiceUrl;
+const CAPTIONS: Record<string, { cues: {start: number; end: number; text: string}[] }> = captions;
+const DIALOGUE: Record<string, string> = script.dialogue;
+const VARIANTS: Record<string, string[]> = script.dialogueVariants;
 
 interface GateOptions {
   onComplete: () => void;
@@ -35,7 +35,9 @@ interface GateOptions {
 /** One native input renders into the tiles, preserving paste, IME and keyboard editing. */
 export class WordGuessGate {
   private readonly round = new WordGuessRound(script.answer);
+  private readonly boardDraft = new WordGuessDraft(script.answer.length);
   private readonly attempts = new GameAttemptBudget(COMMON_GAME_RULES.maxWrongAnswers);
+  private readonly reactions = new ReactionPicker();
   private readonly host = document.createElement('div');
   private readonly shadow = this.host.attachShadow({ mode: 'open' });
   private readonly sound = new Audio();
@@ -53,7 +55,8 @@ export class WordGuessGate {
   private voiceDone: (() => void) | undefined;
   private resumeVoice = false;
   private paused = false;
-  private activeVoice: keyof typeof VOICES = 'intro';
+  private activeVoice = 'intro';
+  private activeText = script.dialogue.intro;
   private lastCaption = '';
   private presentationKey = '';
   private musicFinished = false;
@@ -84,7 +87,7 @@ export class WordGuessGate {
     this.voice.ontimeupdate = () => this.updateCaption();
     this.voice.onpause = () => this.syncSoundVolume();
     this.voice.onended = () => { this.syncSoundVolume(); this.showCaption(''); this.finishVoice(); };
-    this.voice.onerror = () => this.finishVoice();
+    this.voice.onerror = () => { if (this.activeVoice !== 'intro') this.showCaption(this.activeText); this.finishVoice(); };
     const scene = document.createElement('section');
     scene.className = 'scene';
     scene.setAttribute('role', 'group');
@@ -123,25 +126,34 @@ export class WordGuessGate {
       tile.onclick = () => {
         if (!this.ready || this.round.solved || this.attempts.exhausted || this.busy) return;
         this.anchor = index;
+        this.boardDraft.startAt(index);
+        this.input.value = '';
         this.input.focus({ preventScroll: true });
-        if (this.draft.length > 1) {
-          const position = Math.min(index, this.input.value.length);
-          this.input.setSelectionRange(position, Math.min(position + 1, this.input.value.length));
-        }
         this.renderBoard();
       };
       cells.append(tile);
     });
     this.element<HTMLFormElement>('form').onsubmit = event => { event.preventDefault(); void this.submit(); };
     this.input.addEventListener('input', () => {
+      this.boardDraft.update(this.input.value);
       this.element('.feedback').textContent = '';
       this.renderBoard();
     });
     this.input.addEventListener('keydown', event => {
-      if (event.isComposing && event.key === 'Enter') { event.preventDefault(); return; }
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        if (!event.isComposing) void this.submit();
+        return;
+      }
       if (this.draft.length <= 1 && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
         event.preventDefault();
         this.anchor = (this.anchor + (event.key === 'ArrowLeft' ? this.round.answer.length - 1 : 1)) % this.round.answer.length;
+        this.boardDraft.startAt(this.anchor);
+        this.input.value = '';
+        this.renderBoard();
+      } else if (!this.draft && (event.key === 'Backspace' || event.key === 'Delete')) {
+        event.preventDefault();
+        this.boardDraft.erase(this.anchor);
         this.renderBoard();
       }
     });
@@ -195,19 +207,23 @@ export class WordGuessGate {
 
   private async submit(): Promise<void> {
     if (!this.ready || this.busy || this.round.solved || this.attempts.exhausted) return;
-    const draft = this.draft;
-    const source = this.tiles[this.anchor].getBoundingClientRect();
+    const submitted = this.boardDraft.submission(this.round.cells);
+    const draft = submitted.value;
+    const source = this.tiles[submitted.index].getBoundingClientRect();
     const previous = this.round.cells;
-    const result = this.round.guessAutomatic(draft);
+    const result: AutomaticGuessResult = submitted.overflow ? 'invalid'
+      : submitted.incomplete ? 'incomplete' : this.round.guessAutomatic(draft);
     const correct = result === 'letter_correct' || result === 'word_correct';
     if (this.round.solved) this.stopThinkingMusic();
-    const misplaced = correct && draft.length === 1 && this.round.answer[this.anchor] !== draft;
-    const reaction = misplaced ? 'letter_misplaced' : result;
-    this.element('.feedback').classList.toggle('speech', reaction in VOICES);
+    const misplaced = correct && draft.length === 1 && this.round.answer[submitted.index] !== draft;
+    const reaction = misplaced ? 'letter_misplaced' : result === 'invalid'
+      ? (submitted.overflow || /^[А-ЯЁ]+$/u.test(draft) && draft.length > this.round.answer.length ? 'too_long'
+        : draft.length > 1 ? 'invalid_word' : 'invalid')
+      : result;
     this.host.dataset.dialogue = reaction;
     const feedback: Record<AutomaticGuessResult, string> = {
       empty: 'Введите букву или слово',
-      incomplete: `В слове ${this.round.answer.length} букв. Продолжайте ввод.`,
+      incomplete: `Нужно ${this.round.answer.length} букв. Сейчас ${submitted.filled}. Продолжайте ввод.`,
       invalid: 'Введите русскую букву или слово из восьми букв',
       letter_correct: script.dialogue.letter_correct,
       letter_wrong: 'Такой буквы нет',
@@ -215,8 +231,10 @@ export class WordGuessGate {
       word_wrong: 'Не то слово. Попробуйте ещё',
       word_correct: 'Верно',
     };
-    this.element('.feedback').textContent = misplaced ? script.dialogue.letter_misplaced : feedback[result];
+    this.element('.feedback').textContent = misplaced ? 'Буква есть, но в другом месте'
+      : reaction === 'too_long' ? `Нужно ${this.round.answer.length} букв. Уберите лишние.` : feedback[result];
     if (result === 'incomplete' || result === 'invalid' || result === 'empty') {
+      this.react(reaction);
       this.input.focus({ preventScroll: true });
       return;
     }
@@ -225,7 +243,9 @@ export class WordGuessGate {
       return;
     }
     this.input.value = '';
-    if (reaction in VOICES) this.speak(reaction as keyof typeof VOICES);
+    this.boardDraft.clear();
+    this.boardDraft.startAt(this.anchor);
+    this.react(reaction);
     if (correct) this.playSound(result === 'word_correct' ? winUrl : correctUrl);
     else if (result === 'letter_wrong' || result === 'word_wrong') this.playSound(wrongUrl);
     this.arriving = draft.length === 1 && correct
@@ -250,9 +270,9 @@ export class WordGuessGate {
 
   private renderBoard(): void {
     const draft = this.draft;
-    const active = draft.length <= 1 ? this.anchor : Math.min(this.input.selectionStart ?? draft.length, this.round.answer.length - 1);
+    const active = Math.min(this.anchor + (this.input.selectionStart ?? draft.length), this.round.answer.length - 1);
     this.tiles.forEach((tile, index) => {
-      const typed = draft.length === 1 ? (index === this.anchor ? draft : '') : draft[index] ?? '';
+      const typed = this.boardDraft.cells[index];
       const known = this.round.cells[index];
       const char = typed || known;
       tile.querySelector('.letter')!.textContent = char;
@@ -325,7 +345,14 @@ export class WordGuessGate {
     this.musicFadeFrame = requestAnimationFrame(fade);
   }
 
-  private speak(event: keyof typeof VOICES, onComplete?: () => void): void {
+  private react(event: string): void {
+    const base = DIALOGUE[event];
+    if (!base) return;
+    const line = this.reactions.pick(event, base, VARIANTS[event]);
+    this.speak(line.id, undefined, line.text);
+  }
+
+  private speak(event: string, onComplete?: () => void, text?: string): void {
     if (this.disposed) return;
     if (this.attempts.exhausted && event !== 'attempts_exhausted') return;
     this.pendingIntro = false;
@@ -334,12 +361,18 @@ export class WordGuessGate {
     this.voiceDone = onComplete;
     this.showCaption('');
     this.activeVoice = event;
+    this.activeText = text ?? DIALOGUE[event] ?? COMMON_GAME_RULES.exhaustedDialogue;
+    this.host.dataset.voiceLine = event;
+    if (!VOICES[event]) { this.showCaption(this.activeText); this.finishVoice(); return; }
     this.voice.src = VOICES[event];
     this.voice.volume = Math.min(1, Math.max(0, this.options.voiceVolume?.() ?? 1));
     if (this.paused) { this.resumeVoice = true; return; }
     this.voice.play().catch(() => {
       if (event === 'intro' && request === this.voiceRequest && !this.disposed) this.pendingIntro = true;
-      if (request === this.voiceRequest) this.finishVoice();
+      if (request === this.voiceRequest) {
+        if (event !== 'intro') this.showCaption(this.activeText);
+        this.finishVoice();
+      }
     });
   }
 
@@ -352,6 +385,7 @@ export class WordGuessGate {
   private skipAfterFailures(): void {
     this.stopThinkingMusic();
     this.input.value = '';
+    this.boardDraft.clear();
     this.input.disabled = true;
     this.busy = true;
     this.pendingIntro = false;
@@ -375,7 +409,7 @@ export class WordGuessGate {
 
   public seekPhrase(direction: -1 | 1): boolean {
     if (!Number.isFinite(this.voice.duration)) return false;
-    const cues = captions[this.activeVoice].cues;
+    const cues = CAPTIONS[this.activeVoice]?.cues ?? [];
     const time = this.voice.currentTime;
     const cue = direction > 0
       ? cues.find(cue => cue.start > time + 0.3)
@@ -422,7 +456,7 @@ export class WordGuessGate {
   }
 
   private updateCaption(): void {
-    const cues = captions[this.activeVoice].cues;
+    const cues = CAPTIONS[this.activeVoice]?.cues ?? [];
     const cue = cues.find(cue => this.voice.currentTime >= cue.start && this.voice.currentTime < cue.end);
     this.showCaption(cue?.text ?? '');
   }

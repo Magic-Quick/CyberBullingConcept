@@ -40,8 +40,10 @@ graph TD
 | Что нужно найти | Точный путь к файлу | Описание |
 | :--- | :--- | :--- |
 | 📜 **Финальный сценарий хроник** | `docs/golden/VOICES_OF_PRODUCTION_GOLDEN.md` | Эталонная версия V13 («Хроники Продакшен-Ковчега», 7 актов + пролог). |
-| ✍️ **Актуальная версия Guardians** | `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_GUARDIANS.md` | Редакция V15: структура пяти функциональных залов Толи под сквозную ось Ковчега (*Сборочный Алтарь → Хроно-отсек → Трюм Очищения → Шлюз Клиентархов → Штурм Стены*), One Story Rule (по 2 героя), стандарт экранных карточек Guardians и терминальная Домашка (COO). Предыдущая V14: `docs/guardians_edition/VOICES_OF_PRODUCTION_V14_GUARDIANS.md`. |
+| ✍️ **Актуальная версия Guardians** | `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_GUARDIANS.md` | Редакция V15: структура пяти функциональных залов Толи под сквозную ось Ковчега (*Сборочный Алтарь → Хроно-отсек → Трюм Очищения → Шлюз Клиентархов → Штурм Стены*), One Story Rule (по 2 героя), стандарт экранных карточек Guardians и терминальная Домашка (COO). Режиссёрская версия со сценарно-движковой разметкой: `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md`. |
 | 😈 **Проектные рецепты юмора** | `F:/AI/Skills/04_Writing/cyberbulling-humor/SKILL.md` | Наши проверенные приёмы, одобренные формулировки и выводы из ошибок для «Кибербуллинга». Общая учебная база — отдельно в `humor-writing`; каталог: `references/approved-recipes.md`. |
+| 🎲 **Создание сценарных интерактивов** | `F:/AI/Skills/04_Writing/cyberbulling-interactives/SKILL.md` | Вопросы-трейлеры, выбор факта, телеигровые форматы, игровые ветки и немедленный переход к связанной истории. Для полировки реплик использует общий `text-punchup`; постановка — через `cyberbulling-director`. |
+| ✂️ **Общая редактура текста и игровых реплик** | `F:/AI/Skills/04_Writing/text-punchup/SKILL.md` | Одна система для повествования и интерактивов: знания зрителя, мотивы, смысловая точность и панч-ап. Выводы из замечаний 17.11.2026: `references/context-and-logic.md`; принятые примеры хранятся в `cyberbulling-humor`. |
 | ✍️ **Co-Writer внутри AI Control Hub** | `F:\AI\AI_Control_Hub_Portable\AI_Control_Hub.exe` | Раздел «Co-Writer · Тексты»: .md/.txt, Ctrl+S, черновики, правила стиля и просмотр правок ИИ. В окне правки — Авто / GPT / Gemini Delegate / Antigravity / Claude и выбор модели; состояние подключений — `cowriter.ai.options`. Запуск: `--cowriter <абсолютный путь>`. Исходники: `F:\AI\AI_Control_Hub\`; последняя установка и проверки: `scratch/hub-context-providers-20261115/README.md`. |
 | 🤖 **CLI / MCP хаба для любого ИИ** | `F:\AI\AI_Control_Hub_Portable\AgentTools\hub.py` | `status` — живое состояние, `help` — JSON-схемы 31 команды, `mcp` — MCP stdio. Использовать вместо кнопок и правки recovery-файлов. `cowriter.ai.options/route` проверяют доступность и подбор без генерации. Памятка: `F:\AI\AI_Control_Hub_Portable\AgentTools\README.md`; базовые проверки: `scratch/hub-agent-interface-20261114/README.md`. Кириллица stdin исправлена и проверена: `scratch/hub-utf8-20261115/README.md`. |
 | 🤖 **Подключения моделей Co-Writer** | `cowriter.ai.options/route` через `hub.py` | Antigravity подключён через официальный `agy` и существующий аккаунт Google. GPT при запрете отдельного API передаёт задачу в текущий чат: `cowriter.ai.request.get/respond`, вариант возвращается в диалог без применения. Полный запрос виден в блоке «Контекст». Gemini Pro не подменяется на Flash. Прямое подключение Claude пока отложено пользователем. |
@@ -58,8 +60,11 @@ graph TD
 | 🎙️ **Чистая озвучка по актам (Dry Voice)**| `Озвучка/` и `media/audio/voiceover_v13/` | 100% чистый дикторский голос Geremy (`00_` полная версия 15:53 + `01_`–`08_` поактовые треки без музыки). |
 | 🎵 **Мастер-трек ИИ-Лорда** | `media/audio/tracks/Сервоторизация_приматов_HD_WSOLA_TimeDomain.mp3` | Финальная мастер-версия песни ИИ-Лорда. |
 | 🌐 **Интерактивный фильм (PixiJS)** | `repo/` (исходники) и `repo/dist/` | Флагманский интерактивный фильм. Запуск: `OPEN_INTERACTIVE_MOVIE.bat`. |
+| 🎞️ **Две версии фильма в презентации** | `index.html#playable-area` | Переключатель: текущая **v2.0** — `game.html` и предыдущая **v1.0** — неизменная `game-previous.html` из `655ba3e`. Номера сборок сайта независимы от сценариев V15 / V15.1. Подробности: `docs/guardians_edition/MOVIE_BUILD_VERSIONS.md`. Локальный сервер с перемоткой: `START_PRESENTATION_SERVER.bat` или `python tools/interactive/serve_presentation.py --port 8876`. |
 | 🎮 **Контент интерактива: телеигры** | `media/interactive/` | 146 проверенных MP3 для «Поля чудес», «Миллионера» и ЧГК; скриншоты, прозрачные PNG, SVG, источники и локальный каталог `index.html`. «Поле чудес» с 16.11.2026: классические синие квадраты с серебристой рамкой, белые буквы, референс с Якубовичем. Генераторы: `tools/interactive/`. |
-| 🎮 **Интерактив перед третьим актом — в чистовом билде** | `game.html` (через `index.html`) | Короткий вопрос с контекстом Slack, восемь синих ячеек и ввод прямо в клетки. Одна буква или всё слово + Enter; верная буква перемещается на свои места. Озвучка Geremy, музыка раздумий по кругу, общее правило трёх ошибок и автоматический выход к сюжету. Шрифты и кнопки в стиле фильма; отдельная проба — `media/interactive/protocol-preview/interactive-preview.html`. Подключена перед `act_3_timemachine`; сценарий — `docs/guardians_edition/INTERACTIVE_PREACT_PROTOCOL.md`. Резерв до внедрения: GitHub-ветка `codex/checkpoint-before-word-quiz-20261117`, коммит `655ba3e`. |
+| 📝 **Единый сценарный формат телеигр** | `docs/guardians_edition/INTERACTIVE_SCRIPT_STANDARD.md` | Применён в V15: перед каждым из пяти залов — тема и шутка передачи слова Толе → живой блок → «Продолжить» → игра → комната. Порядок: Миллионер / Поле / ЧГК / Миллионер / Поле. Все реплики и ответы теперь в самом V15; монтаж пяти остановок ещё предстоит. |
+| 📝 **Две оставшиеся игры интегрированы, 18.11** | `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_GUARDIANS.md` и `VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md` | Перед IV — Househunt: один выбор, раскрытие всех четырёх удалённых действий, без ошибок. Перед V — ПУЛЗЫ: пять букв, три ошибки, полный банк реакций. Первые три игры сохранены; история 22 ГБ/«oops» возвращена в III, Househunt — после I-02. Сверка источников: `scratch/interactive-iv-v-20261118/HOUSEHUNT_MECHANICS_RESEARCH.md`. Проект `INTERACTIVE_IV_V_CLEAN.md` в той же папке — архивный снимок, не параллельный мастер. Плеер отдельно. |
+| 🎮 **Интерактив перед третьим актом — в чистовом билде** | `game.html` (через `index.html`) | Короткий вопрос с контекстом Slack, восемь синих ячеек и ввод прямо в клетки. Одна буква или всё слово + Enter; верная буква перемещается на свои места. Озвучка Geremy, музыка раздумий по кругу, общее правило трёх ошибок и автоматический выход к сюжету. Шрифты и размеры из существующих объектов фильма; штатные нижние субтитры, CC, пауза и перемотка; отдельная проба — `media/interactive/protocol-preview/interactive-preview.html`. Подключена перед началом `act_3_timemachine`: сначала игра, затем акт с Горином и реплика с ответом; сценарий — `docs/guardians_edition/INTERACTIVE_PREACT_PROTOCOL.md`. Резерв до внедрения: GitHub-ветка `codex/checkpoint-before-word-quiz-20261117`, коммит `655ba3e`. |
 | 🌐 **Веб-презентация проекта (GitHub Pages)** | `https://magic-quick.github.io/CyberBullingConcept/` | Публичная онлайн-презентация «Сыгравший в ящик». Репозиторий: `Magic-Quick/CyberBullingConcept`. Деплой: `tools/DEPLOY.bat`. |
 
 ---
@@ -70,10 +75,18 @@ graph TD
 
 | Материал | Путь | Статус |
 | :--- | :--- | :--- |
-| Рабочая версия хроник | `docs/guardians_edition/VOICES_OF_PRODUCTION_V14_GUARDIANS.md` | Речь оригинального V13 без режиссёрских/визуальных/звуковых ремарок; произносимый текст сохранять дословно до отдельного поручения. |
+| Рабочая версия хроник V14 | `docs/guardians_edition/VOICES_OF_PRODUCTION_V14_GUARDIANS.md` | Речь оригинального V13 без режиссёрских/визуальных/звуковых ремарок. |
+| Режиссёрская версия V14.1 (связь с билдом) | `docs/guardians_edition/VOICES_OF_PRODUCTION_V14_1_GUARDIANS.md` | Версия V14.1 со сценарно-движковой разметкой билда: кадры `[КАДР]`, плашки Slack `[СЛАК]`, звук `[ЗВУК]`, титры `[ПЕРСОНАЖ]`. |
+| Редакция Guardians V15 (канон Толи) | `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_GUARDIANS.md` | Авторский источник произносимого текста V15: пять залов, пять передач слова Толе и полный банк ответов; сверенная режиссёрская версия — V15.1. |
+| Режиссёрская редакция V15.1 (полная разметка) | `docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md` | Сверенная режиссёрская V15.1: все 107 речевых блоков V15 и 18 дополнительных реакций, пять игр в порядке Миллионер / Поле / ЧГК / Миллионер / Поле. Передачи слова адресованы Толе; капча используется только в «Поле чудес», у остальных форматов собственные подводки. Первый «Миллионер» — восстановление просьбы Эдика о звуке; после обоих исходов сразу идёт перенесённая история сундука. Одобренные реакции на «яйцо» и «стыдно» записаны дословно. Музыка, тишина и сигналы размечены по событиям; спойлерные показы и повтор разгадки убраны. Это сценарий, не подтверждение переноса в плеер. |
+| Музыкальная партитура V15.1 | `docs/guardians_edition/V15_1_MUSIC_CUE_SHEET.md` | Все 155 музыкальных/SFX cue с файлами и условиями входа, приглушения и остановки. Машинная ведомость: `data/director/v15_1_music_cues.json`. |
+| Резерв одобренных интерактивных шуток | `docs/guardians_edition/INTERACTIVE_JOKE_RESERVE.md` | Отложенная реплика про кислород сохранена по просьбе пользователя для другого отсека; в текущий ЧГК не вставлять. |
 | Согласованные редакционные правила | `docs/guardians_edition/EDITORIAL_RULES.md` | Читать перед работой над Guardians: фантастический сюжет, титулы, Клиентархи / Supercell, отдельные каналы голоса и текста. |
 | Компакт правил для проходов ИИ | `docs/guardians_edition/EDITORIAL_RULES.compact.md` | Рабочая сводка в панели Co-Writer; полный регламент остаётся источником подробностей. Текущий режим — анализ и пометки, сохранение оригинального текста для озвучки. |
 | План Co-Writer и интерактивного фильма | `docs/guardians_edition/APP_CHANGE_PLAN.md` | План изменений; фиксация документа не означает реализацию приложения. |
+| Сверка билда с V15.1 и план синхронизации, 18.11 | `docs/guardians_edition/BUILD_TEXT_SYNC_PLAN_20261118.md` | Проверены живой Co-Writer и локальный game.html: пять остановок ещё не перенесены. План текстового мастера с командами кадра/звука, компилятора, ведомости медиа и пары меток перед каждым залом; кликабельный макет в `docs/guardians_edition/previews/chronicles-timeline-20261118.html`. Реализация фильма не заявляется. |
+| Полный режим режиссёра и сохранение монтажа в текст | `docs/guardians_edition/DIRECTOR_MODE_SPEC.md` | Требование 18.11: монтаж всех слоёв на дорожках как в Premiere; речь и встроенный JSON-конфиг в одном Markdown-проекте, постоянные ID, Ctrl+S в файл, импорт/экспорт и восстановление без браузерного кэша. Спецификация, не готовый редактор. |
+| ⏸️ **Слово Толе и пять игровых вступлений V15** | `docs/guardians_edition/CHAPTER_HANDOFFS_TIMELINE.md` | Пять передач с темами и шутками стоят перед соответствующими залами; после живой речи Толи «Продолжить» запускает игру. Текст сохранён в V15 через Co-Writer; реализация всего маршрута в плеере отдельно. |
 | Пример структуры сцены | `docs/guardians_edition/story_format.example.json` | Предложение формата с отдельными `voiceText`, `subtitleText`, карточками и таймингами; не производственный монтаж. |
 
 ---
@@ -134,10 +147,23 @@ graph TD
 ---
 
 ### 3. `tools/` — Исполняемые скрипты, утилиты и студии
-- **`tools/` (Корневые батники запуска и деплоя)**:
-  - `DEPLOY.bat`, `tools/internal/deploy_to_gdrive.py`: Авто-деплой и быстрая синхронизация презентации «Сыгравший в ящик» на Google Диск (`G:\Мой диск\Сыгравший в ящик` и `Public\`).
-  - `OPEN_PRESENTATION.bat`: Мгновенный запуск веб-презентации в браузере.
-  - `BUILD_MOVIE.bat`, `START_MOVIE_DEV.bat`, `OPEN_INTERACTIVE_MOVIE.bat`: Сборка, разработка и запуск интерактивного фильма.
+- **`tools/` (Корневые батники быстрого запуска)**:
+  - `DEPLOY.bat`, `tools/internal/deploy_to_gdrive.py`: Авто-деплой презентации на Google Диск (`G:\Мой диск\Сыгравший в ящик` и `Public\`).
+  - `OPEN_PRESENTATION.bat`: Открытие веб-презентации `index.html` в браузере.
+  - `START_PRESENTATION_SERVER.bat`: Локальный HTTP-сервер презентации на порту 8876 с поддержкой byte-range seek.
+  - `BUILD_MOVIE.bat`, `START_MOVIE_DEV.bat`, `OPEN_INTERACTIVE_MOVIE.bat`: Сборка, dev-сервер и запуск интерактивного фильма.
+  - `START_STUDIO_SERVER.bat`, `OPEN_JOKE_KEEPER.bat`: Сервер и веб-интерфейс Joke Keeper Studio.
+  - `GENERATE_RAP_TRACK.bat`: Запуск агента «Агрон» для генерации куплетов.
+  - `MAKE_SEAMLESS_LOOP.bat`, `SHARE_LIVE_LINK.bat`, `PROJECT_ASSISTANT.bat`: Зацикливание видео, туннель Cloudflare и фокус Antigravity.
+- **`tools/interactive/`**:
+  - `serve_presentation.py`: Локальный сервер с поддержкой HTTP byte ranges для перемотки аудио/видео (`START_PRESENTATION_SERVER.bat`).
+  - `test_presentation_server.py`: Интеграционные тесты сервера перемотки.
+  - Генераторы и тесты интерактивов: `align_protocol_captions.py`, `generate_protocol_voice.py`, `word_guess_*.test.mjs`.
+- **`tools/movie_dev/`**:
+  - `inspection/` (106 скриптов): Поиск, анализ и считывание структур кода фильма (`inspect_*.py`, `find_*.py`, `list_*.py`).
+  - `patches/` (38 скриптов): Одноразовые скрипты модификации и патчинга (`apply_*.py`, `patch_*.py`, `fix_*.py`, `build_*.py`).
+  - `verification/` (10 скриптов): Playwright и тесты проверки воспроизведения (`verify_*.py`, `test_*.py`).
+  - Подробная справка: `tools/movie_dev/README.md`.
 - **`tools/studio/`**:
   - `co_writer_studio.html`: Веб-студия соавтора текста трека.
   - `joke_keeper_studio.html`: Студия сохранения и категоризации шуток.

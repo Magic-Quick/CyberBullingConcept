@@ -6,6 +6,18 @@ import { createHash } from 'node:crypto';
 const scenes = new URL('../../media/interactive/scenes/', import.meta.url);
 const manifest = JSON.parse(readFileSync(new URL('protocol_gate_voice/manifest.json', scenes), 'utf8'));
 const captions = JSON.parse(readFileSync(new URL('protocol_gate_captions.json', scenes), 'utf8'));
+const script = JSON.parse(readFileSync(new URL('protocol_gate.json', scenes), 'utf8'));
+
+test('every alternative reaction has its own matching recording and captions', () => {
+  for (const [event, alternatives] of Object.entries(script.dialogueVariants)) {
+    assert.equal(alternatives.length, 2, event);
+    for (const [index, text] of [script.dialogue[event], ...alternatives].entries()) {
+      const id = index ? `${event}_alt_${index}` : event;
+      assert.equal(manifest.clips[id]?.text, text, id);
+      assert.ok(captions[id]?.cues.length, id);
+    }
+  }
+});
 
 test('every recorded line has captions for the actual audio and authored text', () => {
   assert.deepEqual(Object.keys(captions).sort(), Object.keys(manifest.clips).sort());

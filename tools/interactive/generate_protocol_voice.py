@@ -3,13 +3,20 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import av
 
 import requests
 
 ROOT = Path(__file__).resolve().parents[2]
 SCENE = ROOT / 'media/interactive/scenes/protocol_gate.json'
 OUT = SCENE.parent / 'protocol_gate_voice'
-EVENTS = ('intro', 'letter_misplaced', 'letter_correct', 'letter_wrong', 'word_correct', 'word_wrong', 'repeat_letter')
+EVENTS = ('intro', 'letter_misplaced', 'letter_correct', 'letter_wrong', 'word_correct', 'word_wrong',
+          'repeat_letter', 'invalid', 'invalid_word', 'empty', 'incomplete', 'too_long')
+
+
+def duration_seconds(path):
+    with av.open(str(path)) as audio:
+        return round(sum(frame.samples / frame.sample_rate for frame in audio.decode(audio=0)), 3)
 
 
 def main():
@@ -31,6 +38,9 @@ def main():
     manifest['relative_to'] = 'media/interactive/scenes'
     common = json.loads((SCENE.parent / 'shared_game_rules.json').read_text(encoding='utf-8'))
     lines = {event: scene['dialogue'][event] for event in EVENTS}
+    for event, alternatives in scene.get('dialogueVariants', {}).items():
+        for index, text in enumerate(alternatives, 1):
+            lines[f'{event}_alt_{index}'] = text
     lines['attempts_exhausted'] = common['exhaustedDialogue']
     for event, text in lines.items():
         digest = hashlib.sha256(text.encode()).hexdigest()
@@ -38,7 +48,8 @@ def main():
         target.parent.mkdir(exist_ok=True)
         if target.exists() and manifest['clips'].get(event, {}).get('text_sha256') == digest:
             manifest['clips'][event]['file'] = target.relative_to(SCENE.parent).as_posix()
-            print(event, 'unchanged')
+            manifest['clips'][event]['duration_seconds_rounded'] = duration_seconds(target)
+            print(event, 'unchanged', flush=True)
             continue
         response = requests.post(
             f'https://api.elevenlabs.io/v1/text-to-speech/{project_voice.DEFAULT_VOICE_ID}',
@@ -55,9 +66,10 @@ def main():
             raise SystemExit(f'{event}: expected audio response; earlier clips preserved')
         target.write_bytes(response.content)
         manifest['clips'][event] = {'text': text, 'text_sha256': digest, 'file': target.relative_to(SCENE.parent).as_posix(),
-                                    'bytes': len(response.content), 'request_id': response.headers.get('request-id')}
+                                    'bytes': len(response.content), 'request_id': response.headers.get('request-id'),
+                                    'duration_seconds_rounded': duration_seconds(target)}
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        print(event, 'saved', len(response.content), 'bytes')
+        print(event, 'saved', len(response.content), 'bytes', flush=True)
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     scene['narration'] = 'geremy_recorded'
     SCENE.write_text(json.dumps(scene, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

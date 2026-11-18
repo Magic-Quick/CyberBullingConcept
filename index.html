@@ -2327,8 +2327,8 @@
     </div>
 
     <div class="movie-version-switcher" role="group" aria-label="Версия интерактивного фильма">
-      <button class="movie-version-button" type="button" data-movie-version="updated" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">Обновлённая версия</button>
-      <button class="movie-version-button" type="button" data-movie-version="previous" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">Предыдущая версия</button>
+      <button class="movie-version-button" type="button" data-movie-version="updated" aria-label="Текущая версия v2.0" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">v2.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="previous" aria-label="Предыдущая версия v1.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">v1.0</button>
     </div>
     <p class="movie-version-note">При смене версии просмотр начинается сначала.</p>
 
@@ -2345,7 +2345,7 @@
           </div>
         </div>
 
-        <iframe id="gameIframe" title="Интерактивный фильм — обновлённая версия" src="" data-src="game.html?v=clean_20261117_before_gorin" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        <iframe id="gameIframe" title="Интерактивный фильм — v2.0" src="" data-src="game.html?v=clean_20261117_before_gorin" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
         </iframe>
       </div>
     </div>
@@ -2377,8 +2377,8 @@
     let isGameLaunched = false;
     let selectedMovieVersion = 'updated';
     const MOVIE_VERSIONS = {
-      updated: { src: 'game.html?v=clean_20261117_before_gorin', title: 'Интерактивный фильм — обновлённая версия' },
-      previous: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — предыдущая версия' },
+      updated: { src: 'game.html?v=clean_20261117_before_gorin', title: 'Интерактивный фильм — v2.0' },
+      previous: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — v1.0' },
     };
 
     function selectMovieVersion(version, updateUrl = true) {
