@@ -2327,9 +2327,8 @@
     </div>
 
     <div class="movie-version-switcher" role="group" aria-label="Версия интерактивного фильма">
-      <button class="movie-version-button" type="button" data-movie-version="updated" aria-label="Текущая версия v3.0" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">v3.0</button>
-      <button class="movie-version-button" type="button" data-movie-version="previous" aria-label="Предыдущая версия v2.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">v2.0</button>
-      <button class="movie-version-button" type="button" data-movie-version="archive" aria-label="Архивная версия v1.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('archive')">v1.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="updated" aria-label="Текущая версия v2.0" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">v2.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="previous" aria-label="Предыдущая версия v1.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">v1.0</button>
     </div>
     <p class="movie-version-note">При смене версии просмотр начинается сначала.</p>
 
@@ -2346,7 +2345,7 @@
           </div>
         </div>
 
-        <iframe id="gameIframe" title="Интерактивный фильм — v3.0" src="" data-src="game.html?v=chronicles_director_20261118" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        <iframe id="gameIframe" title="Интерактивный фильм — v2.0" src="" data-src="game.html?v=chronicles_viewer_20261118_2" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
         </iframe>
       </div>
     </div>
@@ -2366,7 +2365,7 @@
 
       <ul class="footer-links">
         <li><a href="https://github.com/Magic-Quick/CyberBullingConcept" target="_blank" rel="noopener">GitHub Репозиторий</a></li>
-        <li><a id="directMovieLink" href="game.html?v=chronicles_director_20261118" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
+        <li><a id="directMovieLink" href="game.html?v=chronicles_viewer_20261118_2" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
         <li><a href="#hero">Наверх ↑</a></li>
       </ul>
     </div>
@@ -2378,9 +2377,8 @@
     let isGameLaunched = false;
     let selectedMovieVersion = 'updated';
     const MOVIE_VERSIONS = {
-      updated: { src: 'game.html?v=chronicles_director_20261118', title: 'Интерактивный фильм — v3.0' },
-      previous: { src: 'game-v2-before-director.html?v=backup_f11664f', title: 'Интерактивный фильм — v2.0' },
-      archive: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — v1.0' },
+      updated: { src: 'game.html?v=chronicles_viewer_20261118_2', title: 'Интерактивный фильм — v2.0' },
+      previous: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — v1.0' },
     };
 
     function selectMovieVersion(version, updateUrl = true) {

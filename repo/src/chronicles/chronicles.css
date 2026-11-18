@@ -24,3 +24,7 @@
 .chronicles-side-ripple{width:92px;height:40px;border:1.5px solid #ff3b30;border-radius:20px;background:rgba(0,0,0,.72);font:bold 14px 'Share Tech Mono',monospace}
 
 .chronicles-picture{position:absolute;inset:0;pointer-events:none}.chronicles-previous-picture{pointer-events:none}
+
+/* The start control matches index.html .cinema-play-btn on the published site. */
+.chronicles-overlay .chronicles-start-button{background:#00f5d4;color:#04060a;font-family:'Share Tech Mono','JetBrains Mono',monospace;font-size:15px;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:normal;padding:18px 42px;border:1px solid #00f5d4;border-radius:0;width:auto;height:auto;min-width:0;min-height:0;max-width:calc(100% - 32px);cursor:pointer;box-shadow:0 0 30px rgba(0,245,212,.5),0 0 60px rgba(0,245,212,.25);transition:all .2s ease}
+.chronicles-overlay .chronicles-start-button:hover{background:#33ffd8;border-color:#00f5d4;box-shadow:0 0 30px rgba(0,245,212,.7);transform:translateY(-2px)}

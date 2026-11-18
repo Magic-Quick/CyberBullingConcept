@@ -494,3 +494,23 @@ test('native logo/verdict/reward stickers retain distinct speech anchors after r
   assert.equal(timelineModule.navigationRanges(next).find(c=>c.sticker==='reward').time,reward.time+2);
   next.navigation.find(c=>c.sticker==='reward').sceneId='INTRO';assert.ok(validateProject(next).some(d=>d.code==='invalid_navigation'));
 });
+
+const {ViewerHud}=await import(await moduleUrl(resolve(here,'ViewerHud.ts')));
+test('mouse activity wakes the console during the opening and it hides after inactivity',()=>{
+  const hud=new ViewerHud();
+  assert.deepEqual(hud.state('scene',true,false,false,10000),{hidden:false,revealed:false});
+  hud.wake(10000);
+  assert.deepEqual(hud.state('scene',true,false,false,10001),{hidden:false,revealed:true});
+  assert.equal(hud.state('scene',true,false,false,12499).revealed,true);
+  assert.equal(hud.state('scene',true,false,false,12501).revealed,false);
+  hud.wake(20000);assert.equal(hud.state('scene',true,false,false,20001).revealed,true);
+});
+test('pause/hover keep the console visible while start, host and director keep their clean screens',()=>{
+  const hud=new ViewerHud();
+  assert.equal(hud.state('scene',false,false,false,99999).revealed,true);
+  assert.equal(hud.state('scene',true,false,true,99999).revealed,true);
+  hud.wake(100000);
+  for(const phase of ['idle','host'])assert.deepEqual(hud.state(phase,false,false,true,100001),{hidden:true,revealed:false});
+  assert.deepEqual(hud.state('scene',true,true,true,100001),{hidden:true,revealed:false});
+  for(const phase of ['handoff','game_intro','reaction','game_wait'])assert.deepEqual(hud.state(phase,true,false,false,100001),{hidden:false,revealed:true});
+});

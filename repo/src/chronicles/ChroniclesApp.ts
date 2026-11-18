@@ -16,6 +16,7 @@ import { AudioTrackAnalyzer } from '../AudioTrackAnalyzer';
 import { getAudioUrl } from '../assetsManager';
 import { SFX } from '../SoundEffects';
 import { MoviePicture } from './MoviePicture';
+import { ViewerHud } from './ViewerHud';
 
 type Phase='idle'|'scene'|'handoff'|'host'|'game_intro'|'game_wait'|'reaction'|'game_done'|'end';
 const node=<T extends HTMLElement=HTMLElement>(tag:string,className='',text=''):T=>{const n=document.createElement(tag);n.className=className;n.textContent=text;return n as T};
@@ -99,7 +100,7 @@ export class ChroniclesApp {
   private recordedDuration=0;
   private opening?:MovieOpening;
   private captionLayout='';
-  private hudUntil=performance.now()+2500;
+  private hud=new ViewerHud();
   private hudHovered=false;
   private branchIds:string[]=[];
   private lastClick={time:0,x:0,y:0};
@@ -183,7 +184,7 @@ export class ChroniclesApp {
   private toggleDirector():void{if(this.panel.isVisible){this.panel.hide();this.leaveDirector();}else{if(!this.sceneId)this.seekScene(this.project.scenes[0].id,0);this.overlay.hidden=true;this.panel.show(this.sceneId,this.time);this.render();}}
   private build():void{
     this.shell.setAttribute('aria-label','Хроники · фильм и режим режиссёра');this.centerRipple.setAttribute('aria-hidden','true');this.sideRipple.setAttribute('aria-hidden','true');
-    this.shell.addEventListener('pointermove',this.wakeHud);this.shell.addEventListener('pointerdown',this.wakeHud);
+    window.addEventListener('pointermove',this.wakeHud,{passive:true});window.addEventListener('pointerdown',this.wakeHud,{passive:true});this.shell.addEventListener('pointerenter',this.wakeHud);
     const toolbar=node('header','chronicles-toolbar');toolbar.append(this.title);
     const tools=node('div');tools.append(button('Режиссёр',()=>{this.overlay.hidden=true;this.panel.show(this.sceneId||this.project.scenes[0].id,this.time);this.render();}),button('Открыть проект',()=>{void this.openFile()}),button('Доп. трек',()=>this.playExtra()));toolbar.append(tools);
     this.frame.alt='';this.stage.append(this.picture.element,this.captions,this.status);
@@ -228,7 +229,7 @@ export class ChroniclesApp {
     const u=this.project.utterances.find(u=>u.id===id);if(!u||u.text===text)return;
     u.text=text;u.textHash=await sha256(text);u.words=[];this.dirty=true;this.editGeneration++;this.audio.stop();this.panel.refresh();this.render();this.message('Текст изменён: запись и привязки к словам требуют обновления.');
   }
-  private showOverlay(label:string,action:()=>void):void{this.overlayButton.textContent=label;this.overlayButton.onclick=action;this.overlayButton.disabled=false;this.overlay.hidden=false;}
+  private showOverlay(label:string,action:()=>void):void{this.overlayButton.classList.toggle('chronicles-start-button',label!=='Продолжить');this.overlayButton.textContent=label;this.overlayButton.onclick=action;this.overlayButton.disabled=false;this.overlay.hidden=false;}
   private message(text:string):void{this.status.textContent=text;}
   private cancel():void{if(this.stop&&this.stopState.has(this.stop.id)&&this.stopState.get(this.stop.id)!=='Пройдено')this.stopState.set(this.stop.id,'Пропущено');this.epoch++;this.audio.stop();this.queue=[];this.queueDone=undefined;this.segmentId=undefined;this.segmentEnd=undefined;this.manualDone=undefined;this.missing.hidden=true;this.manual=false;this.gameView.hidden=true;this.overlay.hidden=true;this.captions.textContent='';this.layers.forEach(n=>n.remove());this.layers.clear();}
   private start():void{this.stopState.clear();this.preview=false;this.playing=true;this.last=performance.now();this.route=0;this.enterRoute(0);}
@@ -437,7 +438,7 @@ export class ChroniclesApp {
     this.playButton.textContent=this.playing?'Ⅱ':'▶';this.playButton.setAttribute('aria-pressed',String(this.playing));this.ccButton.setAttribute('aria-pressed',String(this.cc));
     this.previewPlay.textContent=this.playing?'Ⅱ Пауза':'▶ Воспроизвести';
     const waiting=this.phase==='host'?'Ожидание':this.phase.startsWith('game')||this.phase==='reaction'?'Интерактив':clock(this.globalTime());
-    if(this.transport){const markers=this.transportStopPositions.map(p=>({...p,state:this.stopState.get(p.id)??'Впереди'}));this.transport.element.hidden=this.panel.isVisible||this.phase==='idle'||this.phase==='host'||Boolean(scene?.opening);this.shell.style.paddingBottom='0px';this.transport.setRevealed(!this.playing||this.hudHovered||performance.now()<this.hudUntil);this.transport.update({playing:this.playing,time:this.globalTime(),total:this.totalDuration(),cc:this.cc,muted:this.audio.muted,voiceVolume:this.audio.voiceVolume,musicVolume:this.audio.musicVolume,sfxVolume:this.audio.effectsVolume,currentSceneId:this.sceneId,chapters:this.transportChapters,stickers:this.transportStickers,markers,statusLabel:waiting==='Ожидание'||waiting==='Интерактив'?waiting:undefined});}
+    if(this.transport){const markers=this.transportStopPositions.map(p=>({...p,state:this.stopState.get(p.id)??'Впереди'}));const hud=this.hud.state(this.phase,this.playing,this.panel.isVisible,this.hudHovered,performance.now());this.transport.element.hidden=hud.hidden;this.shell.style.paddingBottom='0px';this.transport.setRevealed(hud.revealed);this.transport.update({playing:this.playing,time:this.globalTime(),total:this.totalDuration(),cc:this.cc,muted:this.audio.muted,voiceVolume:this.audio.voiceVolume,musicVolume:this.audio.musicVolume,sfxVolume:this.audio.effectsVolume,currentSceneId:this.sceneId,chapters:this.transportChapters,stickers:this.transportStickers,markers,statusLabel:waiting==='Ожидание'||waiting==='Интерактив'?waiting:undefined});}
     this.layoutStage();
     this.captions.style.setProperty('--caption-hud',this.transport&&!this.transport.element.hidden?this.transport.bottomOffset+'px':'0px');
     this.frame.hidden=this.phase==='idle'||Boolean(scene?.opening);this.picture.element.hidden=this.frame.hidden;if(scene?.opening)this.picture.cancel();this.captions.hidden=Boolean(scene?.opening);
@@ -541,6 +542,6 @@ export class ChroniclesApp {
   };
   private visibility=():void=>{if(document.hidden){this.hiddenPaused=this.playing;this.pause();}else if(this.hiddenPaused){this.hiddenPaused=false;this.play();}};
   private beforeUnload=(e:BeforeUnloadEvent):void=>{if(this.dirty){e.preventDefault();e.returnValue='';}};
-  private wakeHud=():void=>{this.hudUntil=performance.now()+2500;};
-  destroy():void{this.disposed=true;cancelAnimationFrame(this.animation);this.feedbackAnimations.forEach(a=>a.cancel());this.transitionPreview?.pause();this.picture.cancel();this.audio.stop();this.panel.destroy();this.opening?.destroy();this.transport?.destroy();this.shell.remove();document.removeEventListener('keydown',this.keydown);document.removeEventListener('visibilitychange',this.visibility);window.removeEventListener('beforeunload',this.beforeUnload);window.removeEventListener('resize',this.resizeTransport);}
+  private wakeHud=():void=>{this.hud.wake(performance.now());};
+  destroy():void{this.disposed=true;cancelAnimationFrame(this.animation);this.feedbackAnimations.forEach(a=>a.cancel());this.transitionPreview?.pause();this.picture.cancel();this.audio.stop();this.panel.destroy();this.opening?.destroy();this.transport?.destroy();this.shell.remove();document.removeEventListener('keydown',this.keydown);document.removeEventListener('visibilitychange',this.visibility);window.removeEventListener('beforeunload',this.beforeUnload);window.removeEventListener('resize',this.resizeTransport);window.removeEventListener('pointermove',this.wakeHud);window.removeEventListener('pointerdown',this.wakeHud);}
 }
