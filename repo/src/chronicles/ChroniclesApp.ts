@@ -53,7 +53,6 @@ export class ChroniclesApp {
   private answerButton=node<HTMLButtonElement>('button','','Проверить · Enter');
   private gameActions=node('div','chronicles-game-actions');
   private feedback=node('p','chronicles-feedback');
-  private gameContinue=button('К хроникам',()=>this.finishGame(),'primary');
   private missing=node('div','chronicles-textual');
   private missingText=node('div');
   private missingNext=button('Следующая фраза',()=>this.advanceManual());
@@ -201,7 +200,7 @@ export class ChroniclesApp {
     this.answer.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!this.answer.value&&this.round?.draft){this.round.draft.clear();this.renderBoard();}});
     this.gameActions.append(button('Одна буква',()=>this.prompt('letter_prompt')),button('Слово целиком',()=>this.prompt('word_prompt')));
     const zoom=button('Увеличить контекст',()=>this.zoomContext(),'chronicles-context-zoom');this.gameView.append(zoom);
-    this.feedback.setAttribute('aria-live','polite');this.gameView.append(this.gameQuestion,this.context,this.choices,this.board,this.answerForm,this.gameActions,this.feedback,this.gameContinue);this.gameView.hidden=true;this.stage.append(this.gameView);
+    this.feedback.setAttribute('aria-live','polite');this.gameView.append(this.gameQuestion,this.context,this.choices,this.board,this.answerForm,this.gameActions,this.feedback);this.gameView.hidden=true;this.stage.append(this.gameView);
     this.missing.hidden=true;this.missing.append(this.missingText,this.missingNext);this.stage.append(this.missing);
     const bar=node('footer','chronicles-bar'),controls=node('div','chronicles-controls');
     this.playButton.setAttribute('aria-label','Воспроизведение / пауза');this.ccButton.setAttribute('aria-label','Субтитры');
@@ -229,7 +228,7 @@ export class ChroniclesApp {
     const u=this.project.utterances.find(u=>u.id===id);if(!u||u.text===text)return;
     u.text=text;u.textHash=await sha256(text);u.words=[];this.dirty=true;this.editGeneration++;this.audio.stop();this.panel.refresh();this.render();this.message('Текст изменён: запись и привязки к словам требуют обновления.');
   }
-  private showOverlay(label:string,action:()=>void):void{this.overlayButton.classList.toggle('chronicles-start-button',label!=='Продолжить');this.overlayButton.textContent=label;this.overlayButton.onclick=action;this.overlayButton.disabled=false;this.overlay.hidden=false;}
+  private showOverlay(label:string,action:()=>void):void{this.overlayButton.textContent=label;this.overlayButton.onclick=action;this.overlayButton.disabled=false;this.overlay.hidden=false;}
   private message(text:string):void{this.status.textContent=text;}
   private cancel():void{if(this.stop&&this.stopState.has(this.stop.id)&&this.stopState.get(this.stop.id)!=='Пройдено')this.stopState.set(this.stop.id,'Пропущено');this.epoch++;this.audio.stop();this.queue=[];this.queueDone=undefined;this.segmentId=undefined;this.segmentEnd=undefined;this.manualDone=undefined;this.missing.hidden=true;this.manual=false;this.gameView.hidden=true;this.overlay.hidden=true;this.captions.textContent='';this.layers.forEach(n=>n.remove());this.layers.clear();}
   private start():void{this.stopState.clear();this.preview=false;this.playing=true;this.last=performance.now();this.route=0;this.enterRoute(0);}
@@ -258,12 +257,14 @@ export class ChroniclesApp {
     this.playQueue(ids,()=>this.waitForHost(),true);
   }
   private waitForHost():void{
-    if(!this.stop)return;this.audio.stop();this.phase='host';this.segmentEnd=undefined;this.captions.textContent='';this.stopState.set(this.stop.id,'Ожидание');
-    this.layers.forEach(layer=>layer.remove());this.layers.clear();this.message('');
-    this.showOverlay('Продолжить',()=>{if(this.phase==='host')this.beginGame()});this.render();
+    if(!this.stop)return;this.stopState.set(this.stop.id,'Ожидание');this.waitForContinuation('host',()=>this.beginGame());
+  }
+  private waitForContinuation(phase:'host'|'game_done',next:()=>void):void{
+    this.feedbackAnimations.forEach(a=>a.cancel());this.feedbackAnimations=[];this.centerRipple.textContent='';this.sideRipple.textContent='';this.audio.stop();this.phase=phase;this.segmentId=undefined;this.segmentEnd=undefined;this.gameView.hidden=true;this.captions.textContent='';this.layers.forEach(layer=>layer.remove());this.layers.clear();this.message('');
+    this.showOverlay('Продолжить',()=>{if(this.phase===phase){this.playing=true;this.last=performance.now();next();}});this.render();
   }
   private beginGame():void{
-    if(!this.stop)return;this.playing=true;this.last=performance.now();this.overlay.hidden=true;this.audio.stop();this.phase='game_intro';this.sceneId=this.stop.gameSceneId;this.round=new GameRound(this.stop.game);this.stopState.set(this.stop.id,'В игре');this.feedback.textContent='';this.answer.value='';this.gameContinue.hidden=true;
+    if(!this.stop)return;this.playing=true;this.last=performance.now();this.overlay.hidden=true;this.audio.stop();this.phase='game_intro';this.sceneId=this.stop.gameSceneId;this.round=new GameRound(this.stop.game);this.stopState.set(this.stop.id,'В игре');this.feedback.textContent='';this.answer.value='';
     this.playQueue(this.stop.game.introIds,()=>this.waitForAnswer(),true);
   }
   private waitForAnswer():void{
@@ -275,7 +276,7 @@ export class ChroniclesApp {
     for(const option of this.stop.game.options??[]){const b=button(option.id+' · '+option.text,()=>{this.answer.value=option.id;void this.submit()});b.dataset.option=option.id;b.disabled=this.round.attempted.has(option.id);this.choices.append(b);}
     this.choices.hidden=this.stop.game.kind!=='choice';this.board.hidden=this.stop.game.kind!=='word';this.answerForm.hidden=this.stop.game.kind==='choice';
     this.answer.classList.toggle('tile-input',this.stop.game.kind==='word');this.answer.placeholder=this.stop.game.kind==='free'?'Один окончательный ответ':'Буква или слово';this.gameActions.hidden=this.stop.game.kind!=='word';
-    this.gameContinue.hidden=true;this.answerButton.disabled=false;this.answer.disabled=false;this.answer.value='';if(this.round.draft&&this.round.letters){this.round.draft.clear();const next=this.round.letters.cells.findIndex(letter=>!letter);this.round.draft.startAt(next<0?0:next);}this.renderBoard();
+    this.answerButton.disabled=false;this.answer.disabled=false;this.answer.value='';if(this.round.draft&&this.round.letters){this.round.draft.clear();const next=this.round.letters.cells.findIndex(letter=>!letter);this.round.draft.startAt(next<0?0:next);}this.renderBoard();
     const bed=this.project.clips.find(c=>c.sceneId===this.sceneId&&c.trackId==='A5'&&c.assetId&&c.enabled!==false&&c.event==='WAIT_'+this.stop!.game.id);
     this.audio.setGameBed(bed?.assetId??this.stop.game.thinkingAssetId,bed?.gain??.2,this.stop.game.kind==='free');
     this.render();if(this.stop.game.kind!=='choice')this.answer.focus({preventScroll:true});
@@ -299,7 +300,7 @@ export class ChroniclesApp {
     if(result.final)this.audio.clearBed();
     this.playQueue(ids,()=>{
       if(result.event==='reveal_all')this.choices.querySelectorAll('button').forEach(b=>b.classList.add('removed'));
-      if(result.final){this.stopState.set(this.stop!.id,'Пройдено');if(result.event==='exhausted'||game.kind==='free'&&result.event==='wrong'){this.finishGame();return;}this.phase='game_done';this.gameContinue.hidden=false;this.render();}
+      if(result.final){this.stopState.set(this.stop!.id,'Пройдено');if(result.event==='exhausted'||game.kind==='free'&&result.event==='wrong'){this.finishGame();return;}this.waitForContinuation('game_done',()=>this.finishGame());}
       else this.waitForAnswer();
     });
   }
@@ -384,7 +385,7 @@ export class ChroniclesApp {
 
   private showCenterRipple():void{this.centerRipple.textContent=this.playing?'▶':'⏸';this.animateFeedback(this.centerRipple,.7,1.35,400);}
   private showSideRipple(text:string,forward=true):void{this.sideRipple.textContent=text;this.sideRipple.style.left=forward?'78%':'22%';this.animateFeedback(this.sideRipple,.8,1.25,450);}
-  private animateFeedback(element:HTMLElement,from:number,to:number,ms:number):void{for(const a of element.getAnimations())a.cancel();this.feedbackAnimations=this.feedbackAnimations.filter(a=>a.playState==='running');this.feedbackAnimations.push(element.animate([{opacity:.95,transform:`translate(-50%,-50%) scale(${from})`},{opacity:0,transform:`translate(-50%,-50%) scale(${to})`}],{duration:ms,easing:'cubic-bezier(.25,.46,.45,.94)'}));}
+  private animateFeedback(element:HTMLElement,from:number,to:number,ms:number):void{if(this.phase==='host'||this.phase==='game_done')return;for(const a of element.getAnimations())a.cancel();this.feedbackAnimations=this.feedbackAnimations.filter(a=>a.playState==='running');this.feedbackAnimations.push(element.animate([{opacity:.95,transform:`translate(-50%,-50%) scale(${from})`},{opacity:0,transform:`translate(-50%,-50%) scale(${to})`}],{duration:ms,easing:'cubic-bezier(.25,.46,.45,.94)'}));}
   setIntroTrackVariant(variant:'desolate_cry'|'titan_forge'):void{
     const scene=this.project.scenes.find(s=>s.opening);if(!scene?.opening)return;
     this.panel.changeProject('Музыка исходной заставки',p=>{const target=p.scenes.find(s=>s.id===scene.id)!;const profile=AudioTrackAnalyzer.getProfile(variant);target.opening={...target.opening!,...profile};target.duration=profile.introEndTime;const id=this.ensureAudioAsset(p,variant),clip=p.clips.find(c=>c.id==='opening.music');if(clip){clip.assetId=id;clip.duration=profile.introEndTime;}});
@@ -445,7 +446,7 @@ export class ChroniclesApp {
     if(!scene?.opening)this.opening?.stop();
     this.timeLabel.textContent=`${waiting} / ${this.totalDuration()?clock(this.totalDuration()):'—'}`;this.progress.value=String(this.totalDuration()?10000*this.globalTime()/this.totalDuration():0);
     for(const [id,m]of this.markers){const state=this.stopState.get(id);for(const b of [m.host,m.game]){const game=b===m.game,hostPhase=['handoff','host'].includes(this.phase),current=this.stop?.id===id&&(game?!hostPhase:hostPhase),done=state==='Пройдено'||!game&&state==='В игре';b.classList.toggle('current',current);const base=game?'◇ Интерактив ':'□ Слово Толе ';b.textContent=base+id.replace('STOP-','')+(done?' ✓':state==='Пропущено'?' ↷':'');const description=current?(game?'В игре':state??'Передача'):done?'Пройдено':state==='Пропущено'?'Пропущено':'Впереди';b.setAttribute('aria-label',base+id.replace('STOP-','')+'. '+description);}}
-    if(this.phase==='host'){this.overlayButton.disabled=false;this.audio.stop();this.captions.textContent='';return;}
+    if(this.phase==='host'||this.phase==='game_done'){this.overlayButton.disabled=false;this.audio.stop();this.captions.textContent='';return;}
     if(!scene)return;
     let clips=activeClips(this.project,this.sceneId,this.time,this.event);
     if(scene.opening){if(this.opening){this.opening.element.hidden=Boolean(this.project.tracks.find(t=>t.id==='V1')?.hidden);this.opening.setConfig(scene.opening);this.opening.render(this.time,this.playing,seek);}this.layers.forEach(layer=>layer.remove());this.layers.clear();this.captions.textContent='';this.audio.sync(this.project,clips,this.time,this.playing,String(this.epoch),seek);if(this.panel.isVisible)this.panel.sync(this.sceneId,this.time);return;}
@@ -492,7 +493,7 @@ export class ChroniclesApp {
       const bed=this.project.clips.find(c=>c.sceneId===this.stop!.gameSceneId&&c.trackId==='A5'&&c.assetId&&c.event==='WAIT_'+this.stop!.game.id);
       this.audio.setGameBed(bed?.assetId??this.stop.game.thinkingAssetId,bed?.gain??.2,this.stop.game.kind==='free',bed,this.project);
     }
-    this.audio.sync(this.project,audible,this.time,this.playing&&this.missing.hidden&&this.phase!=='game_done',String(this.epoch),seek);
+    this.audio.sync(this.project,audible,this.time,this.playing&&this.missing.hidden,String(this.epoch),seek);
     if(this.panel.isVisible)this.panel.sync(this.sceneId,this.time);
   }
   private transform(element:HTMLElement,c:Clip):void{

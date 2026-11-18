@@ -510,7 +510,7 @@ test('pause/hover keep the console visible while start, host and director keep t
   assert.equal(hud.state('scene',false,false,false,99999).revealed,true);
   assert.equal(hud.state('scene',true,false,true,99999).revealed,true);
   hud.wake(100000);
-  for(const phase of ['idle','host'])assert.deepEqual(hud.state(phase,false,false,true,100001),{hidden:true,revealed:false});
+  for(const phase of ['idle','host','game_done'])assert.deepEqual(hud.state(phase,false,false,true,100001),{hidden:true,revealed:false});
   assert.deepEqual(hud.state('scene',true,true,true,100001),{hidden:true,revealed:false});
   for(const phase of ['handoff','game_intro','reaction','game_wait'])assert.deepEqual(hud.state(phase,true,false,false,100001),{hidden:false,revealed:true});
 });
@@ -520,4 +520,13 @@ test('prologue opens with a fading background only, with no separate DREAD or tr
   assert.equal(base.trackId,'A2');assert.equal(p.assets.find(a=>a.id===base.assetId).key,'rust_and_bone');assert.equal(base.fadeIn,2.5);assert.equal(opening.fadeOut,2.5);
   for(const at of [0,1.25,2.5,4.8,10,20,38]){const clips=activeClips(p,'PROLOGUE',at);assert.ok(clips.some(c=>c.id===base.id));assert.ok(!clips.some(c=>c.trackId==='A3'||c.kind==='sfx'));}
   assert.ok(!p.clips.some(c=>c.id==='transition.PROLOGUE'));
+});
+
+test('every game and common reaction bank keeps the Lord backdrop through all spoken branches',()=>{
+  const p=parseProject(defaultMarkdown).project,games=p.scenes.filter(s=>s.kind==='game');assert.equal(games.length,6);
+  for(const scene of games){
+    const clips=p.clips.filter(c=>c.sceneId===scene.id),frames=clips.filter(c=>c.kind==='frame');assert.equal(frames.length,1,scene.id);assert.equal(p.assets.find(a=>a.id===frames[0].assetId).key,'ai_lord_throne_book_reading_narrator',scene.id);assert.ok(!clips.some(c=>c.kind==='nameplate'),scene.id);
+    for(const r of utteranceRanges(p,scene.id))for(const at of [r.start,Math.max(r.start,r.end-.001)])assert.equal(activeClips(p,scene.id,at,r.id).filter(c=>c.kind==='frame')[0]?.id,frames[0].id,`${scene.id}: ${r.id} at ${at}`);
+  }
+  assert.equal(p.clips.filter(c=>c.id.startsWith('context.')).length,5);
 });
