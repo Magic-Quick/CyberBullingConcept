@@ -1453,7 +1453,7 @@
 
 > Строка 23 · PROLOGUE: [РЕЖИССУРА: монтажный ID и длительность назначить по готовой озвучке V15.1; секунды прежнего V13 здесь не использовать]
 > Строка 26 · PROLOGUE: [КАДР: None | Ледяная пустота глубокого космоса]
-> Строка 27 · PROLOGUE: [ЗВУК: нагнетающий | desolate_cry | Холодный леденящий гул бездны]
+> Строка 27 · PROLOGUE: [ЗВУК: фон | rust_and_bone | условие: PROLOGUE_ENTER; канал BASE; мягкий fade-in 2.5 с после fade-out музыки заставки 2.5 с; без отдельного DREAD и без звукового удара перехода]
 > Строка 32 · PROLOGUE: [КАДР: ship_cistam | Ковчег «Цитадель» в глубоком космосе — Офлайн Продакшен-Ковчег]
 > Строка 38 · PROLOGUE: [КАДР: retro_film_openspace_ventilation_gemini_v1 | Прокуренный опенспейс и треск ламп дневного света]
 > Строка 41 · PROLOGUE: [КАДР: retro_film_openspace_smoking_room_large_window_mold_gemini_v2 | Курилка с панорамным стеклом, плесенью и бездной]
@@ -1474,7 +1474,7 @@
 > Строка 84 · PROLOGUE: [КАДР: ark_outro_cooling_shutters_v1 | Бронированные жалюзи башни опускаются]
 > Строка 87 · PROLOGUE: [КАДР: ai_lord_throne_book_reading_narrator | MCU: Вскрытие железной книги учёта]
 > Строка 90 · PROLOGUE: [КАДР: ai_lord_face_extreme_closeup_canonical_1080p | ECU: Приговор 14-го Цикла]
-> Строка 98 · INTRO: [ЗВУК: фон | titan_forge | условие: INTRO_ENTER; сменить desolate_cry с crossfade 0.8 с; канал BASE; низко под голосом]
+> Строка 98 · INTRO: [ЗВУК: фон | titan_forge | условие: INTRO_ENTER; сменить rust_and_bone с crossfade 0.8 с; канал BASE; низко под голосом]
 > Строка 100 · INTRO: [КАДР: retro_film_playrium_trap_conveyor_v1 | Заявочный план: Варка Плейриума — Цех сборки плейбаков]
 > Строка 102 · INTRO: [КАДР: ai_lord_throne_book_reading_narrator | MCU: Лорд приветствует мясных слейвов]
 > Строка 106 · INTRO: [КАДР: ai_lord_face_closeup_canonical_1080p | CU: Лорд про орбитальный комбинат]
@@ -25485,7 +25485,7 @@
       "transition": {
         "type": "line_lr",
         "duration": 2.4,
-        "randomSound": true
+        "randomSound": false
       }
     },
     {
@@ -25990,16 +25990,15 @@
         "edge": "start",
         "offset": 0
       },
-      "trackId": "A3",
+      "trackId": "A2",
       "kind": "audio",
-      "assetId": "audio:desolate_cry",
-      "label": "нагнетающий",
-      "text": "Холодный леденящий гул бездны",
-      "gain": 0.4,
-      "loop": false,
-      "fadeIn": 0.1,
-      "fadeOut": 0.22,
-      "duration": 0,
+      "assetId": "audio:rust_and_bone",
+      "label": "фон",
+      "text": "условие: PROLOGUE_ENTER; канал BASE; мягкий fade-in 2.5 с после fade-out музыки заставки 2.5 с; без отдельного DREAD и без звукового удара перехода",
+      "gain": 0.5,
+      "loop": true,
+      "fadeIn": 2.5,
+      "fadeOut": 0.8,
       "end": {
         "type": "scene",
         "offset": 225.6786
@@ -26568,7 +26567,7 @@
       "kind": "audio",
       "assetId": "audio:titan_forge",
       "label": "фон",
-      "text": "условие: INTRO_ENTER; сменить desolate_cry с crossfade 0.8 с; канал BASE; низко под голосом",
+      "text": "условие: INTRO_ENTER; сменить rust_and_bone с crossfade 0.8 с; канал BASE; низко под голосом",
       "gain": 0.15,
       "loop": false,
       "fadeIn": 0.8,
@@ -45250,21 +45249,7 @@
       "duration": 45.5,
       "gain": 1,
       "fadeIn": 1.5,
-      "fadeOut": 0.6
-    },
-    {
-      "id": "transition.PROLOGUE",
-      "sceneId": "PROLOGUE",
-      "trackId": "A6",
-      "kind": "sfx",
-      "label": "Звук оптического перехода",
-      "assetId": "audio:trailer_tension_riser_to_brutal_cut",
-      "start": {
-        "type": "scene",
-        "offset": 0
-      },
-      "duration": 8,
-      "gain": 0.7
+      "fadeOut": 2.5
     },
     {
       "id": "transition.INTRO",

@@ -20,8 +20,8 @@
 
 | Строка V15.1 | Тип | Ключ / файл | Условие и микс |
 | --- | --- | --- | --- |
-| [строка 27](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:27) | нагнетающий | `desolate_cry` | Холодный леденящий гул бездны |
-| [строка 98](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:98) | фон | `titan_forge` | условие: INTRO_ENTER; сменить desolate_cry с crossfade 0.8 с; канал BASE; низко под голосом |
+| [строка 27](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:27) | фон | `rust_and_bone` | условие: PROLOGUE_ENTER; канал BASE; мягкий fade-in 2.5 с после fade-out музыки заставки 2.5 с; без отдельного DREAD и без звукового удара перехода |
+| [строка 98](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:98) | фон | `titan_forge` | условие: INTRO_ENTER; сменить rust_and_bone с crossfade 0.8 с; канал BASE; низко под голосом |
 | [строка 110](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:110) | нагнетающий | `braam_analog_synth_pitch_drop` | Аналоговый синт-дроп Плейриума |
 | [строка 137](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:137) | тишина | `ALL_MUSIC` | условие: HANDOFF-01; BASE/DREAD/PEACE плавно убрать за 0.6 с; игровой канал ещё закрыт |
 | [строка 145](H:/PLBX/CyberBullingConcept/docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md:145) | тишина | `ALL_MUSIC` | условие: LIVE_HANDOFF-01; все звуки плеера выключены на всю живую речь Толи; микрофон ведущего не относится к плееру |

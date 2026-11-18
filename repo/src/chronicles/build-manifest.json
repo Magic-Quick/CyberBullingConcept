@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "projectId": "chronicles-14-guardians-v15",
-  "projectSHA256": "94f378ab63f1827ba9e3843e6ff787d8f43cdda375841cbf12b885e4103d0f67",
+  "projectSHA256": "1016e4110dc0d30806b2eb95aed96c99ded8390035dbfa63259a7377f0cd6397",
   "compilerVersion": "chronicles-1",
   "status": "production_ready",
   "utteranceCount": 242,
-  "clipCount": 923,
+  "clipCount": 922,
   "stopCount": 5,
   "errors": [],
   "pendingCount": 0

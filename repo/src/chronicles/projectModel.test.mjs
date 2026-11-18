@@ -514,3 +514,10 @@ test('pause/hover keep the console visible while start, host and director keep t
   assert.deepEqual(hud.state('scene',true,true,true,100001),{hidden:true,revealed:false});
   for(const phase of ['handoff','game_intro','reaction','game_wait'])assert.deepEqual(hud.state(phase,true,false,false,100001),{hidden:false,revealed:true});
 });
+
+test('prologue opens with a fading background only, with no separate DREAD or transition hit',()=>{
+  const p=parseProject(defaultMarkdown).project,base=p.clips.find(c=>c.id==='PROLOGUE.L27'),opening=p.clips.find(c=>c.id==='opening.music');
+  assert.equal(base.trackId,'A2');assert.equal(p.assets.find(a=>a.id===base.assetId).key,'rust_and_bone');assert.equal(base.fadeIn,2.5);assert.equal(opening.fadeOut,2.5);
+  for(const at of [0,1.25,2.5,4.8,10,20,38]){const clips=activeClips(p,'PROLOGUE',at);assert.ok(clips.some(c=>c.id===base.id));assert.ok(!clips.some(c=>c.trackId==='A3'||c.kind==='sfx'));}
+  assert.ok(!p.clips.some(c=>c.id==='transition.PROLOGUE'));
+});

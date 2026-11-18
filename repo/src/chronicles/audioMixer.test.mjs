@@ -408,3 +408,10 @@ test('disabled and muted commands do not affect a source', () => {
   f.p.clips.push(muted); f.mixer.sync(f.p, [f.base, muted], 3, true, 'owner');
   assert.equal(f.media('base').volume, .3 * .5);
 });
+
+test('a background fade rises and falls smoothly on the same audio source',async()=>{
+  const f=fixture(audioClip({kind:'audio',trackId:'A2',loop:true,gain:.5,fadeIn:2.5,fadeOut:2.5}));f.mixer.musicVolume=1;
+  f.mixer.sync(f.p,[f.clip],0,true,'owner');await flush();const audio=f.audio;assert.equal(audio.volume,0);
+  for(const [at,gain] of [[1.25,.25],[2.5,.5],[7.5,.5],[8.75,.25]]){f.mixer.sync(f.p,[f.clip],at,true,'owner');assert.ok(Math.abs(audio.volume-gain)<1e-8);assert.equal(f.audio,audio);}
+  assert.equal(audio.plays,1);
+});
