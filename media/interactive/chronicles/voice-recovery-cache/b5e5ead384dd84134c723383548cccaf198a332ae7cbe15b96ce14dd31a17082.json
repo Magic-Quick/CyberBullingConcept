@@ -1,0 +1,365 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "b5e5ead384dd84134c723383548cccaf198a332ae7cbe15b96ce14dd31a17082",
+  "audio_sha256": "9bccd6c1f9f867a239e73d96916979eb54cd307f1d271dd9ba92a6a7bc7861ce",
+  "file": "media/interactive/chronicles/voice/b5e5ead384dd84134c723383.mp3",
+  "duration": 9.148662,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 18,
+  "authoredLexicalWords": 18,
+  "heardText": "Время раздавать долги. Мне осточертело тратить драгоценные такты кремния на вашу органическую возню, но баланс систем должен сойтись.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Время",
+      "start": 0.0,
+      "end": 0.42,
+      "probability": 0.7772285044193268
+    },
+    {
+      "index": 1,
+      "text": "раздавать",
+      "start": 0.42,
+      "end": 0.84,
+      "probability": 0.9910831848780314
+    },
+    {
+      "index": 2,
+      "text": "долги.",
+      "start": 0.84,
+      "end": 1.32,
+      "probability": 0.955159604549408
+    },
+    {
+      "index": 3,
+      "text": "Мне",
+      "start": 1.64,
+      "end": 1.9,
+      "probability": 0.8538969159126282
+    },
+    {
+      "index": 4,
+      "text": "осточертело",
+      "start": 1.9,
+      "end": 2.62,
+      "probability": 0.42463249154388905
+    },
+    {
+      "index": 5,
+      "text": "тратить",
+      "start": 2.62,
+      "end": 3.02,
+      "probability": 0.9946916500727335
+    },
+    {
+      "index": 6,
+      "text": "драгоценные",
+      "start": 3.02,
+      "end": 3.78,
+      "probability": 0.9889789670705795
+    },
+    {
+      "index": 7,
+      "text": "такты",
+      "start": 3.78,
+      "end": 4.22,
+      "probability": 0.9503746926784515
+    },
+    {
+      "index": 8,
+      "text": "кремния",
+      "start": 4.22,
+      "end": 4.76,
+      "probability": 0.7971316799521446
+    },
+    {
+      "index": 9,
+      "text": "на",
+      "start": 4.76,
+      "end": 4.84,
+      "probability": 0.9927495718002319
+    },
+    {
+      "index": 10,
+      "text": "вашу",
+      "start": 4.84,
+      "end": 5.14,
+      "probability": 0.985625833272934
+    },
+    {
+      "index": 11,
+      "text": "органическую",
+      "start": 5.14,
+      "end": 5.74,
+      "probability": 0.9879074692726135
+    },
+    {
+      "index": 12,
+      "text": "возню,",
+      "start": 5.74,
+      "end": 6.2,
+      "probability": 0.9693210124969482
+    },
+    {
+      "index": 13,
+      "text": "но",
+      "start": 6.6,
+      "end": 6.8,
+      "probability": 0.9902485013008118
+    },
+    {
+      "index": 14,
+      "text": "баланс",
+      "start": 6.8,
+      "end": 7.24,
+      "probability": 0.9907934069633484
+    },
+    {
+      "index": 15,
+      "text": "систем",
+      "start": 7.24,
+      "end": 7.56,
+      "probability": 0.5044704079627991
+    },
+    {
+      "index": 16,
+      "text": "должен",
+      "start": 7.56,
+      "end": 8.08,
+      "probability": 0.9894928932189941
+    },
+    {
+      "index": 17,
+      "text": "сойтись.",
+      "start": 8.08,
+      "end": 8.76,
+      "probability": 0.8498127087950706
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Время",
+      "start": 0.0,
+      "end": 0.42,
+      "probability": 0.6647147256929505
+    },
+    {
+      "word": " раздавать",
+      "start": 0.42,
+      "end": 0.82,
+      "probability": 0.9926610390345255
+    },
+    {
+      "word": " долги",
+      "start": 0.82,
+      "end": 1.28,
+      "probability": 0.955510288476944
+    },
+    {
+      "word": ".",
+      "start": 1.28,
+      "end": 1.62,
+      "probability": 0.6333940625190735
+    },
+    {
+      "word": " Мне",
+      "start": 1.62,
+      "end": 1.92,
+      "probability": 0.1420346349477768
+    },
+    {
+      "word": " осточертело",
+      "start": 1.92,
+      "end": 2.62,
+      "probability": 0.4042533356696367
+    },
+    {
+      "word": " тратить",
+      "start": 2.62,
+      "end": 3.0,
+      "probability": 0.9939413865407308
+    },
+    {
+      "word": " драгоценные",
+      "start": 3.0,
+      "end": 3.78,
+      "probability": 0.9885475486516953
+    },
+    {
+      "word": " такты",
+      "start": 3.78,
+      "end": 4.24,
+      "probability": 0.9400428235530853
+    },
+    {
+      "word": " кремния",
+      "start": 4.24,
+      "end": 4.74,
+      "probability": 0.7967131808400154
+    },
+    {
+      "word": " на",
+      "start": 4.74,
+      "end": 4.86,
+      "probability": 0.99482661485672
+    },
+    {
+      "word": " вашу",
+      "start": 4.86,
+      "end": 5.14,
+      "probability": 0.9661135077476501
+    },
+    {
+      "word": " органическую",
+      "start": 5.14,
+      "end": 5.72,
+      "probability": 0.9911818653345108
+    },
+    {
+      "word": " возню",
+      "start": 5.72,
+      "end": 6.2,
+      "probability": 0.9657926261425018
+    },
+    {
+      "word": ",",
+      "start": 6.2,
+      "end": 6.6,
+      "probability": 0.5059177279472351
+    },
+    {
+      "word": " но",
+      "start": 6.6,
+      "end": 6.82,
+      "probability": 0.8644325137138367
+    },
+    {
+      "word": " баланс",
+      "start": 6.82,
+      "end": 7.22,
+      "probability": 0.9865524172782898
+    },
+    {
+      "word": " систем",
+      "start": 7.22,
+      "end": 7.54,
+      "probability": 0.3589957058429718
+    },
+    {
+      "word": " должен",
+      "start": 7.54,
+      "end": 8.06,
+      "probability": 0.976540744304657
+    },
+    {
+      "word": " сойтись",
+      "start": 8.06,
+      "end": 8.72,
+      "probability": 0.8269607871770859
+    },
+    {
+      "word": ".",
+      "start": 8.72,
+      "end": 8.98,
+      "probability": 0.85763019323349
+    }
+  ],
+  "words": [
+    {
+      "text": "Время",
+      "start": 0,
+      "end": 0.42
+    },
+    {
+      "text": "раздавать",
+      "start": 0.42,
+      "end": 0.82
+    },
+    {
+      "text": "долги.",
+      "start": 0.82,
+      "end": 1.28
+    },
+    {
+      "text": "Мне",
+      "start": 1.62,
+      "end": 1.92
+    },
+    {
+      "text": "осточертело",
+      "start": 1.92,
+      "end": 2.62
+    },
+    {
+      "text": "тратить",
+      "start": 2.62,
+      "end": 3.0
+    },
+    {
+      "text": "драгоценные",
+      "start": 3.0,
+      "end": 3.78
+    },
+    {
+      "text": "такты",
+      "start": 3.78,
+      "end": 4.24
+    },
+    {
+      "text": "кремния",
+      "start": 4.24,
+      "end": 4.74
+    },
+    {
+      "text": "на",
+      "start": 4.74,
+      "end": 4.86
+    },
+    {
+      "text": "вашу",
+      "start": 4.86,
+      "end": 5.14
+    },
+    {
+      "text": "органическую",
+      "start": 5.14,
+      "end": 5.72
+    },
+    {
+      "text": "возню,",
+      "start": 5.72,
+      "end": 6.2
+    },
+    {
+      "text": "но",
+      "start": 6.6,
+      "end": 6.82
+    },
+    {
+      "text": "баланс",
+      "start": 6.82,
+      "end": 7.22
+    },
+    {
+      "text": "систем",
+      "start": 7.22,
+      "end": 7.54
+    },
+    {
+      "text": "должен",
+      "start": 7.54,
+      "end": 8.06
+    },
+    {
+      "text": "сойтись.",
+      "start": 8.06,
+      "end": 8.72
+    }
+  ]
+}

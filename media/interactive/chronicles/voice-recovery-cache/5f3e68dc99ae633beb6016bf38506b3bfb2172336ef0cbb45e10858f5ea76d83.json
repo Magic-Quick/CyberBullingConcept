@@ -1,0 +1,119 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "5f3e68dc99ae633beb6016bf38506b3bfb2172336ef0cbb45e10858f5ea76d83",
+  "audio_sha256": "497cd4cddc7bd3644348deb821a4dda0d409614ef61f89c89cb8715f46e8daf2",
+  "file": "media/interactive/chronicles/voice/5f3e68dc99ae633beb6016bf.mp3",
+  "duration": 3.436553,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 5,
+  "authoredLexicalWords": 5,
+  "heardText": "за грандиозную биологическую аномалию недели.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "За",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.7709017395973206
+    },
+    {
+      "index": 1,
+      "text": "грандиозную",
+      "start": 0.16,
+      "end": 0.94,
+      "probability": 0.9867549180984497
+    },
+    {
+      "index": 2,
+      "text": "биологическую",
+      "start": 0.94,
+      "end": 1.72,
+      "probability": 0.9962762594223022
+    },
+    {
+      "index": 3,
+      "text": "аномалию",
+      "start": 1.72,
+      "end": 2.42,
+      "probability": 0.9301833212375641
+    },
+    {
+      "index": 4,
+      "text": "недели:",
+      "start": 2.42,
+      "end": 2.98,
+      "probability": 0.9816693663597107
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "За",
+      "start": 0.0,
+      "end": 0.22,
+      "probability": 0.4829280921330792
+    },
+    {
+      "word": " грандиозную",
+      "start": 0.22,
+      "end": 0.92,
+      "probability": 0.9292818069458008
+    },
+    {
+      "word": " биологическую",
+      "start": 0.92,
+      "end": 1.72,
+      "probability": 0.9905247837305069
+    },
+    {
+      "word": " аномалию",
+      "start": 1.72,
+      "end": 2.4,
+      "probability": 0.8702658414840698
+    },
+    {
+      "word": " недели",
+      "start": 2.4,
+      "end": 3.0,
+      "probability": 0.9882794618606567
+    },
+    {
+      "word": ":",
+      "start": 3.0,
+      "end": 3.22,
+      "probability": 0.0003139889449812472
+    }
+  ],
+  "words": [
+    {
+      "text": "За",
+      "start": 0,
+      "end": 0.22
+    },
+    {
+      "text": "грандиозную",
+      "start": 0.22,
+      "end": 0.92
+    },
+    {
+      "text": "биологическую",
+      "start": 0.92,
+      "end": 1.72
+    },
+    {
+      "text": "аномалию",
+      "start": 1.72,
+      "end": 2.4
+    },
+    {
+      "text": "недели:",
+      "start": 2.4,
+      "end": 3.0
+    }
+  ]
+}

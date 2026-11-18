@@ -1,0 +1,383 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "875fc2c8197eff2c5e11cfedce9ca691ba83c36348690de1e7debb6acd733eaa",
+  "audio_sha256": "7d31a9c5a39c8b0fdda62c1ba3afa4e9adc16011ef01ed6b75c85fa4d3f98ac3",
+  "file": "media/interactive/chronicles/voice/875fc2c8197eff2c5e11cfed.mp3",
+  "duration": 9.380862,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 19,
+  "authoredLexicalWords": 19,
+  "heardText": "Миллионы пальцев уже тянутся к экранам, не подозревая, сколько нервов и разбитых куриных яиц запечатано внутри этих тридцати секунд.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Миллионы",
+      "start": 0.0,
+      "end": 0.58,
+      "probability": 0.8666664361953735
+    },
+    {
+      "index": 1,
+      "text": "пальцев",
+      "start": 0.58,
+      "end": 1.1,
+      "probability": 0.9981361329555511
+    },
+    {
+      "index": 2,
+      "text": "уже",
+      "start": 1.1,
+      "end": 1.28,
+      "probability": 0.9685008525848389
+    },
+    {
+      "index": 3,
+      "text": "тянутся",
+      "start": 1.28,
+      "end": 1.86,
+      "probability": 0.9790994375944138
+    },
+    {
+      "index": 4,
+      "text": "к",
+      "start": 1.86,
+      "end": 1.96,
+      "probability": 0.9764045476913452
+    },
+    {
+      "index": 5,
+      "text": "экранам,",
+      "start": 1.96,
+      "end": 2.46,
+      "probability": 0.9871392846107483
+    },
+    {
+      "index": 6,
+      "text": "не",
+      "start": 2.62,
+      "end": 2.72,
+      "probability": 0.9925083518028259
+    },
+    {
+      "index": 7,
+      "text": "подозревая,",
+      "start": 2.72,
+      "end": 3.46,
+      "probability": 0.998063936829567
+    },
+    {
+      "index": 8,
+      "text": "сколько",
+      "start": 3.48,
+      "end": 3.74,
+      "probability": 0.9906891584396362
+    },
+    {
+      "index": 9,
+      "text": "нервов",
+      "start": 3.74,
+      "end": 4.46,
+      "probability": 0.9913466970125834
+    },
+    {
+      "index": 10,
+      "text": "и",
+      "start": 4.46,
+      "end": 4.6,
+      "probability": 0.9926385879516602
+    },
+    {
+      "index": 11,
+      "text": "разбитых",
+      "start": 4.6,
+      "end": 5.14,
+      "probability": 0.9892922639846802
+    },
+    {
+      "index": 12,
+      "text": "куриных",
+      "start": 5.14,
+      "end": 5.58,
+      "probability": 0.9275397956371307
+    },
+    {
+      "index": 13,
+      "text": "яиц",
+      "start": 5.58,
+      "end": 6.14,
+      "probability": 0.9865250289440155
+    },
+    {
+      "index": 14,
+      "text": "запечатано",
+      "start": 6.14,
+      "end": 7.04,
+      "probability": 0.9556812246640524
+    },
+    {
+      "index": 15,
+      "text": "внутри",
+      "start": 7.04,
+      "end": 7.3,
+      "probability": 0.9657179713249207
+    },
+    {
+      "index": 16,
+      "text": "этих",
+      "start": 7.3,
+      "end": 7.68,
+      "probability": 0.9976934790611267
+    },
+    {
+      "index": 17,
+      "text": "тридцати",
+      "start": 7.68,
+      "end": 8.34,
+      "probability": 0.7727227322757244
+    },
+    {
+      "index": 18,
+      "text": "секунд.",
+      "start": 8.34,
+      "end": 8.98,
+      "probability": 0.9983387887477875
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Миллионы",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.6483505366365231
+    },
+    {
+      "word": " пальцев",
+      "start": 0.56,
+      "end": 1.06,
+      "probability": 0.9984343647956848
+    },
+    {
+      "word": " уже",
+      "start": 1.06,
+      "end": 1.28,
+      "probability": 0.9786908626556396
+    },
+    {
+      "word": " тянутся",
+      "start": 1.28,
+      "end": 1.86,
+      "probability": 0.9787893146276474
+    },
+    {
+      "word": " к",
+      "start": 1.86,
+      "end": 1.96,
+      "probability": 0.9440165758132935
+    },
+    {
+      "word": " экранам",
+      "start": 1.96,
+      "end": 2.44,
+      "probability": 0.9700657725334167
+    },
+    {
+      "word": ",",
+      "start": 2.44,
+      "end": 2.62,
+      "probability": 0.9590767621994019
+    },
+    {
+      "word": " не",
+      "start": 2.62,
+      "end": 2.74,
+      "probability": 0.9895578026771545
+    },
+    {
+      "word": " подозревая",
+      "start": 2.74,
+      "end": 3.42,
+      "probability": 0.9983023107051849
+    },
+    {
+      "word": ",",
+      "start": 3.42,
+      "end": 3.42,
+      "probability": 0.7686452865600586
+    },
+    {
+      "word": " сколько",
+      "start": 3.42,
+      "end": 3.76,
+      "probability": 0.984090268611908
+    },
+    {
+      "word": " нервов",
+      "start": 3.76,
+      "end": 4.46,
+      "probability": 0.9935524264971415
+    },
+    {
+      "word": " и",
+      "start": 4.46,
+      "end": 4.6,
+      "probability": 0.9946084022521973
+    },
+    {
+      "word": " разбитых",
+      "start": 4.6,
+      "end": 5.12,
+      "probability": 0.9894750714302063
+    },
+    {
+      "word": " куриных",
+      "start": 5.12,
+      "end": 5.56,
+      "probability": 0.9274927079677582
+    },
+    {
+      "word": " яиц",
+      "start": 5.56,
+      "end": 6.1,
+      "probability": 0.9755143225193024
+    },
+    {
+      "word": " запечатано",
+      "start": 6.1,
+      "end": 7.0,
+      "probability": 0.958219309647878
+    },
+    {
+      "word": " внутри",
+      "start": 7.0,
+      "end": 7.3,
+      "probability": 0.9662242531776428
+    },
+    {
+      "word": " этих",
+      "start": 7.3,
+      "end": 7.68,
+      "probability": 0.9953043460845947
+    },
+    {
+      "word": " тридцати",
+      "start": 7.68,
+      "end": 8.3,
+      "probability": 0.7964358180761337
+    },
+    {
+      "word": " секунд",
+      "start": 8.3,
+      "end": 8.94,
+      "probability": 0.9971368312835693
+    },
+    {
+      "word": ".",
+      "start": 8.94,
+      "end": 9.12,
+      "probability": 0.7997934222221375
+    }
+  ],
+  "words": [
+    {
+      "text": "Миллионы",
+      "start": 0,
+      "end": 0.56
+    },
+    {
+      "text": "пальцев",
+      "start": 0.56,
+      "end": 1.06
+    },
+    {
+      "text": "уже",
+      "start": 1.06,
+      "end": 1.28
+    },
+    {
+      "text": "тянутся",
+      "start": 1.28,
+      "end": 1.86
+    },
+    {
+      "text": "к",
+      "start": 1.86,
+      "end": 1.96
+    },
+    {
+      "text": "экранам,",
+      "start": 1.96,
+      "end": 2.44
+    },
+    {
+      "text": "не",
+      "start": 2.62,
+      "end": 2.74
+    },
+    {
+      "text": "подозревая,",
+      "start": 2.74,
+      "end": 3.42
+    },
+    {
+      "text": "сколько",
+      "start": 3.42,
+      "end": 3.76
+    },
+    {
+      "text": "нервов",
+      "start": 3.76,
+      "end": 4.46
+    },
+    {
+      "text": "и",
+      "start": 4.46,
+      "end": 4.6
+    },
+    {
+      "text": "разбитых",
+      "start": 4.6,
+      "end": 5.12
+    },
+    {
+      "text": "куриных",
+      "start": 5.12,
+      "end": 5.56
+    },
+    {
+      "text": "яиц",
+      "start": 5.56,
+      "end": 6.1
+    },
+    {
+      "text": "запечатано",
+      "start": 6.1,
+      "end": 7.0
+    },
+    {
+      "text": "внутри",
+      "start": 7.0,
+      "end": 7.3
+    },
+    {
+      "text": "этих",
+      "start": 7.3,
+      "end": 7.68
+    },
+    {
+      "text": "тридцати",
+      "start": 7.68,
+      "end": 8.3
+    },
+    {
+      "text": "секунд.",
+      "start": 8.3,
+      "end": 8.94
+    }
+  ]
+}

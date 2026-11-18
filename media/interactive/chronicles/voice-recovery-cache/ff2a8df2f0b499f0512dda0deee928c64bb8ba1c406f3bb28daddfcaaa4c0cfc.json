@@ -1,0 +1,305 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "ff2a8df2f0b499f0512dda0deee928c64bb8ba1c406f3bb28daddfcaaa4c0cfc",
+  "audio_sha256": "6711e76dd55d7a4069bc0ded507986ea76514850fc9ebb69d36516af23c5a03c",
+  "file": "media/interactive/chronicles/voice/ff2a8df2f0b499f0512dda0d.mp3",
+  "duration": 9.427302,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 15,
+  "authoredLexicalWords": 15,
+  "heardText": "Конвент выносит приговор. Инспекция Дилдачечных Катакомб без Права на Переписку и Орден Багрового Дилдоносного Покаяния!",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Конвент",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.9282885591189066
+    },
+    {
+      "index": 1,
+      "text": "выносит",
+      "start": 0.56,
+      "end": 1.12,
+      "probability": 0.9950530529022217
+    },
+    {
+      "index": 2,
+      "text": "приговор:",
+      "start": 1.12,
+      "end": 1.68,
+      "probability": 0.9935925304889679
+    },
+    {
+      "index": 3,
+      "text": "Инспекция",
+      "start": 2.04,
+      "end": 2.82,
+      "probability": 0.9865430593490601
+    },
+    {
+      "index": 4,
+      "text": "Дилдачечных",
+      "start": 2.82,
+      "end": 3.76,
+      "probability": 0.7278010074514896
+    },
+    {
+      "index": 5,
+      "text": "Катакомб",
+      "start": 3.76,
+      "end": 4.36,
+      "probability": 0.5593316845130175
+    },
+    {
+      "index": 6,
+      "text": "без",
+      "start": 4.36,
+      "end": 4.54,
+      "probability": 0.30356886982917786
+    },
+    {
+      "index": 7,
+      "text": "Права",
+      "start": 4.54,
+      "end": 4.94,
+      "probability": 0.3106041508144699
+    },
+    {
+      "index": 8,
+      "text": "на",
+      "start": 4.94,
+      "end": 5.02,
+      "probability": 0.9405003190040588
+    },
+    {
+      "index": 9,
+      "text": "Переписку",
+      "start": 5.02,
+      "end": 5.74,
+      "probability": 0.7596597652882338
+    },
+    {
+      "index": 10,
+      "text": "и",
+      "start": 5.74,
+      "end": 5.86,
+      "probability": 0.9437920451164246
+    },
+    {
+      "index": 11,
+      "text": "Орден",
+      "start": 5.86,
+      "end": 6.32,
+      "probability": 0.9740948677062988
+    },
+    {
+      "index": 12,
+      "text": "Багрового",
+      "start": 6.32,
+      "end": 7.04,
+      "probability": 0.9266786724328995
+    },
+    {
+      "index": 13,
+      "text": "Дилдоносного",
+      "start": 7.04,
+      "end": 8.12,
+      "probability": 0.8842029025157293
+    },
+    {
+      "index": 14,
+      "text": "Покаяния!",
+      "start": 8.12,
+      "end": 9.12,
+      "probability": 0.9297235012054443
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Конвент",
+      "start": 0.0,
+      "end": 0.54,
+      "probability": 0.7461280481875292
+    },
+    {
+      "word": " выносит",
+      "start": 0.54,
+      "end": 1.1,
+      "probability": 0.9964605172475179
+    },
+    {
+      "word": " приговор",
+      "start": 1.1,
+      "end": 1.62,
+      "probability": 0.9917797148227692
+    },
+    {
+      "word": ":",
+      "start": 1.62,
+      "end": 2.1,
+      "probability": 0.0002907240414060652
+    },
+    {
+      "word": " Инспекция",
+      "start": 2.1,
+      "end": 2.8,
+      "probability": 0.8925155401229858
+    },
+    {
+      "word": " Дилдачечных",
+      "start": 2.8,
+      "end": 3.76,
+      "probability": 0.7046529045328498
+    },
+    {
+      "word": " Катакомб",
+      "start": 3.76,
+      "end": 4.4,
+      "probability": 0.5732703973539174
+    },
+    {
+      "word": " без",
+      "start": 4.4,
+      "end": 4.54,
+      "probability": 0.12405376136302948
+    },
+    {
+      "word": " Права",
+      "start": 4.54,
+      "end": 4.92,
+      "probability": 0.2856719106202945
+    },
+    {
+      "word": " на",
+      "start": 4.92,
+      "end": 5.04,
+      "probability": 0.9223346710205078
+    },
+    {
+      "word": " Переписку",
+      "start": 5.04,
+      "end": 5.72,
+      "probability": 0.8416733890771866
+    },
+    {
+      "word": " и",
+      "start": 5.72,
+      "end": 5.88,
+      "probability": 0.9415920972824097
+    },
+    {
+      "word": " Орден",
+      "start": 5.88,
+      "end": 6.32,
+      "probability": 0.9689240604639053
+    },
+    {
+      "word": " Багрового",
+      "start": 6.32,
+      "end": 7.02,
+      "probability": 0.9320606291294098
+    },
+    {
+      "word": " Дилдоносного",
+      "start": 7.02,
+      "end": 8.14,
+      "probability": 0.8966336200634638
+    },
+    {
+      "word": " Покаяния",
+      "start": 8.14,
+      "end": 9.2,
+      "probability": 0.9282706260681153
+    },
+    {
+      "word": "!",
+      "start": 9.2,
+      "end": 9.2,
+      "probability": 0.002938965568318963
+    }
+  ],
+  "words": [
+    {
+      "text": "Конвент",
+      "start": 0,
+      "end": 0.54
+    },
+    {
+      "text": "выносит",
+      "start": 0.54,
+      "end": 1.1
+    },
+    {
+      "text": "приговор:",
+      "start": 1.1,
+      "end": 1.62
+    },
+    {
+      "text": "Инспекция",
+      "start": 2.1,
+      "end": 2.8
+    },
+    {
+      "text": "Дилдачечных",
+      "start": 2.8,
+      "end": 3.76
+    },
+    {
+      "text": "Катакомб",
+      "start": 3.76,
+      "end": 4.4
+    },
+    {
+      "text": "без",
+      "start": 4.4,
+      "end": 4.54
+    },
+    {
+      "text": "Права",
+      "start": 4.54,
+      "end": 4.92
+    },
+    {
+      "text": "на",
+      "start": 4.92,
+      "end": 5.04
+    },
+    {
+      "text": "Переписку",
+      "start": 5.04,
+      "end": 5.72
+    },
+    {
+      "text": "и",
+      "start": 5.72,
+      "end": 5.88
+    },
+    {
+      "text": "Орден",
+      "start": 5.88,
+      "end": 6.32
+    },
+    {
+      "text": "Багрового",
+      "start": 6.32,
+      "end": 7.02
+    },
+    {
+      "text": "Дилдоносного",
+      "start": 7.02,
+      "end": 8.14
+    },
+    {
+      "text": "Покаяния!",
+      "start": 8.14,
+      "end": 9.2
+    }
+  ]
+}

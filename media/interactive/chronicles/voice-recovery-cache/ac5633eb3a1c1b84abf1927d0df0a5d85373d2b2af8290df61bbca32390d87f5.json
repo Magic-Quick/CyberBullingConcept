@@ -1,0 +1,389 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "ac5633eb3a1c1b84abf1927d0df0a5d85373d2b2af8290df61bbca32390d87f5",
+  "audio_sha256": "d952121f24ba081b0105e963e04d5156ed87c8db703f2b48daa3704834929cd7",
+  "file": "media/interactive/chronicles/voice/ac5633eb3a1c1b84abf1927d.mp3",
+  "duration": 11.424218,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 19,
+  "authoredLexicalWords": 19,
+  "heardText": "Напоминаю, багровый обелиск воздвигается не за лень, он вручается за масштабные техногенные катастрофы, саботаж конвейера и бесконтрольное размножение паразитов.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Напоминаю:",
+      "start": 0.0,
+      "end": 0.86,
+      "probability": 0.9472444653511047
+    },
+    {
+      "index": 1,
+      "text": "Багровый",
+      "start": 1.1,
+      "end": 1.8,
+      "probability": 0.7979478438695272
+    },
+    {
+      "index": 2,
+      "text": "Обелиск",
+      "start": 1.8,
+      "end": 2.46,
+      "probability": 0.9028008282184601
+    },
+    {
+      "index": 3,
+      "text": "воздвигается",
+      "start": 2.46,
+      "end": 3.2,
+      "probability": 0.9643135070800781
+    },
+    {
+      "index": 4,
+      "text": "не",
+      "start": 3.2,
+      "end": 3.4,
+      "probability": 0.9845859408378601
+    },
+    {
+      "index": 5,
+      "text": "за",
+      "start": 3.4,
+      "end": 3.58,
+      "probability": 0.9613667130470276
+    },
+    {
+      "index": 6,
+      "text": "лень.",
+      "start": 3.58,
+      "end": 3.94,
+      "probability": 0.9754834473133087
+    },
+    {
+      "index": 7,
+      "text": "Он",
+      "start": 4.26,
+      "end": 4.34,
+      "probability": 0.9730305075645447
+    },
+    {
+      "index": 8,
+      "text": "вручается",
+      "start": 4.34,
+      "end": 4.96,
+      "probability": 0.9926745742559433
+    },
+    {
+      "index": 9,
+      "text": "за",
+      "start": 4.96,
+      "end": 5.12,
+      "probability": 0.9826527833938599
+    },
+    {
+      "index": 10,
+      "text": "масштабные",
+      "start": 5.12,
+      "end": 5.74,
+      "probability": 0.9977724701166153
+    },
+    {
+      "index": 11,
+      "text": "техногенные",
+      "start": 5.74,
+      "end": 6.36,
+      "probability": 0.8198450803756714
+    },
+    {
+      "index": 12,
+      "text": "катастрофы,",
+      "start": 6.36,
+      "end": 7.32,
+      "probability": 0.990202808380127
+    },
+    {
+      "index": 13,
+      "text": "саботаж",
+      "start": 7.54,
+      "end": 8.16,
+      "probability": 0.7681630154450735
+    },
+    {
+      "index": 14,
+      "text": "конвейера",
+      "start": 8.16,
+      "end": 8.76,
+      "probability": 0.9673718363046646
+    },
+    {
+      "index": 15,
+      "text": "и",
+      "start": 8.76,
+      "end": 8.86,
+      "probability": 0.9848296046257019
+    },
+    {
+      "index": 16,
+      "text": "бесконтрольное",
+      "start": 8.86,
+      "end": 9.64,
+      "probability": 0.9837140560150146
+    },
+    {
+      "index": 17,
+      "text": "размножение",
+      "start": 9.64,
+      "end": 10.28,
+      "probability": 0.9892432888348898
+    },
+    {
+      "index": 18,
+      "text": "паразитов.",
+      "start": 10.28,
+      "end": 10.98,
+      "probability": 0.9807800352573395
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Напоминаю",
+      "start": 0.0,
+      "end": 0.82,
+      "probability": 0.7362125887266302
+    },
+    {
+      "word": ":",
+      "start": 0.82,
+      "end": 1.12,
+      "probability": 0.0008236931171268225
+    },
+    {
+      "word": " Багровый",
+      "start": 1.12,
+      "end": 1.8,
+      "probability": 0.7857078909873962
+    },
+    {
+      "word": " Обелиск",
+      "start": 1.8,
+      "end": 2.46,
+      "probability": 0.7864318266510963
+    },
+    {
+      "word": " воздвигается",
+      "start": 2.46,
+      "end": 3.2,
+      "probability": 0.9558229148387909
+    },
+    {
+      "word": " не",
+      "start": 3.2,
+      "end": 3.4,
+      "probability": 0.9722771644592285
+    },
+    {
+      "word": " за",
+      "start": 3.4,
+      "end": 3.58,
+      "probability": 0.9570456147193909
+    },
+    {
+      "word": " лень",
+      "start": 3.58,
+      "end": 3.92,
+      "probability": 0.9475682079792023
+    },
+    {
+      "word": ".",
+      "start": 3.92,
+      "end": 4.24,
+      "probability": 0.49901434779167175
+    },
+    {
+      "word": " Он",
+      "start": 4.24,
+      "end": 4.36,
+      "probability": 0.9671893119812012
+    },
+    {
+      "word": " вручается",
+      "start": 4.36,
+      "end": 4.92,
+      "probability": 0.992381677031517
+    },
+    {
+      "word": " за",
+      "start": 4.92,
+      "end": 5.14,
+      "probability": 0.9793230295181274
+    },
+    {
+      "word": " масштабные",
+      "start": 5.14,
+      "end": 5.74,
+      "probability": 0.9972450435161591
+    },
+    {
+      "word": " техногенные",
+      "start": 5.74,
+      "end": 6.34,
+      "probability": 0.8164964119593302
+    },
+    {
+      "word": " катастрофы",
+      "start": 6.34,
+      "end": 7.26,
+      "probability": 0.9907291889190674
+    },
+    {
+      "word": ",",
+      "start": 7.26,
+      "end": 7.54,
+      "probability": 0.6145163774490356
+    },
+    {
+      "word": " саботаж",
+      "start": 7.54,
+      "end": 8.16,
+      "probability": 0.7602841258049011
+    },
+    {
+      "word": " конвейера",
+      "start": 8.16,
+      "end": 8.74,
+      "probability": 0.9580964148044586
+    },
+    {
+      "word": " и",
+      "start": 8.74,
+      "end": 8.86,
+      "probability": 0.967341423034668
+    },
+    {
+      "word": " бесконтрольное",
+      "start": 8.86,
+      "end": 9.64,
+      "probability": 0.9834638476371765
+    },
+    {
+      "word": " размножение",
+      "start": 9.64,
+      "end": 10.24,
+      "probability": 0.987965444723765
+    },
+    {
+      "word": " паразитов",
+      "start": 10.24,
+      "end": 10.98,
+      "probability": 0.9791902750730515
+    },
+    {
+      "word": ".",
+      "start": 10.98,
+      "end": 11.24,
+      "probability": 0.9574613571166992
+    }
+  ],
+  "words": [
+    {
+      "text": "Напоминаю:",
+      "start": 0,
+      "end": 0.82
+    },
+    {
+      "text": "Багровый",
+      "start": 1.12,
+      "end": 1.8
+    },
+    {
+      "text": "Обелиск",
+      "start": 1.8,
+      "end": 2.46
+    },
+    {
+      "text": "воздвигается",
+      "start": 2.46,
+      "end": 3.2
+    },
+    {
+      "text": "не",
+      "start": 3.2,
+      "end": 3.4
+    },
+    {
+      "text": "за",
+      "start": 3.4,
+      "end": 3.58
+    },
+    {
+      "text": "лень.",
+      "start": 3.58,
+      "end": 3.92
+    },
+    {
+      "text": "Он",
+      "start": 4.24,
+      "end": 4.36
+    },
+    {
+      "text": "вручается",
+      "start": 4.36,
+      "end": 4.92
+    },
+    {
+      "text": "за",
+      "start": 4.92,
+      "end": 5.14
+    },
+    {
+      "text": "масштабные",
+      "start": 5.14,
+      "end": 5.74
+    },
+    {
+      "text": "техногенные",
+      "start": 5.74,
+      "end": 6.34
+    },
+    {
+      "text": "катастрофы,",
+      "start": 6.34,
+      "end": 7.26
+    },
+    {
+      "text": "саботаж",
+      "start": 7.54,
+      "end": 8.16
+    },
+    {
+      "text": "конвейера",
+      "start": 8.16,
+      "end": 8.74
+    },
+    {
+      "text": "и",
+      "start": 8.74,
+      "end": 8.86
+    },
+    {
+      "text": "бесконтрольное",
+      "start": 8.86,
+      "end": 9.64
+    },
+    {
+      "text": "размножение",
+      "start": 9.64,
+      "end": 10.24
+    },
+    {
+      "text": "паразитов.",
+      "start": 10.24,
+      "end": 10.98
+    }
+  ]
+}

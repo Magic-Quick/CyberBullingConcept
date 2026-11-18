@@ -1,0 +1,166 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "d98c473b8f83c7b1cf895232ea8c7585ce051b54dbd1ea921d5dcf2f45e06d71",
+  "audio_sha256": "96c99f48b7fdef16e058aaea7d5b39d3b1e5a13d40bdb27c022d39d06b3bd5f6",
+  "file": "media/interactive/chronicles/voice/d98c473b8f83c7b1cf895232.mp3",
+  "duration": 5.24771,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 7,
+  "authoredLexicalWords": 7,
+  "heardText": "Награду забирает верховный надзиратель конвейера Алексей Горин.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Награду",
+      "start": 0.0,
+      "end": 0.6,
+      "probability": 0.907529103755951
+    },
+    {
+      "index": 1,
+      "text": "забирает",
+      "start": 0.6,
+      "end": 1.16,
+      "probability": 0.9935595194498698
+    },
+    {
+      "index": 2,
+      "text": "Верховный",
+      "start": 1.16,
+      "end": 1.9,
+      "probability": 0.8630688786506653
+    },
+    {
+      "index": 3,
+      "text": "Надзиратель",
+      "start": 1.9,
+      "end": 2.46,
+      "probability": 0.979367733001709
+    },
+    {
+      "index": 4,
+      "text": "Конвейера",
+      "start": 2.46,
+      "end": 3.16,
+      "probability": 0.9661994129419327
+    },
+    {
+      "index": 6,
+      "text": "Алексей",
+      "start": 3.16,
+      "end": 4.2,
+      "probability": 0.9430588483810425
+    },
+    {
+      "index": 7,
+      "text": "Горин.",
+      "start": 4.2,
+      "end": 4.82,
+      "probability": 0.9198874831199646
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Награду",
+      "start": 0.0,
+      "end": 0.6,
+      "probability": 0.7862405880237929
+    },
+    {
+      "word": " забирает",
+      "start": 0.6,
+      "end": 1.14,
+      "probability": 0.9966281652450562
+    },
+    {
+      "word": " Верховный",
+      "start": 1.14,
+      "end": 1.9,
+      "probability": 0.8430404812097549
+    },
+    {
+      "word": " Надзиратель",
+      "start": 1.9,
+      "end": 2.46,
+      "probability": 0.7530241906642914
+    },
+    {
+      "word": " Конвейера",
+      "start": 2.46,
+      "end": 3.12,
+      "probability": 0.7349152565002441
+    },
+    {
+      "word": " —",
+      "start": 3.12,
+      "end": 3.44,
+      "probability": 0.0036098991986364126
+    },
+    {
+      "word": " Алексей",
+      "start": 3.44,
+      "end": 4.18,
+      "probability": 0.9958578050136566
+    },
+    {
+      "word": " Горин",
+      "start": 4.18,
+      "end": 4.8,
+      "probability": 0.8946617245674133
+    },
+    {
+      "word": ".",
+      "start": 4.8,
+      "end": 5.2,
+      "probability": 0.8928831815719604
+    }
+  ],
+  "words": [
+    {
+      "text": "Награду",
+      "start": 0,
+      "end": 0.6
+    },
+    {
+      "text": "забирает",
+      "start": 0.6,
+      "end": 1.14
+    },
+    {
+      "text": "Верховный",
+      "start": 1.14,
+      "end": 1.9
+    },
+    {
+      "text": "Надзиратель",
+      "start": 1.9,
+      "end": 2.46
+    },
+    {
+      "text": "Конвейера",
+      "start": 2.46,
+      "end": 3.12
+    },
+    {
+      "text": "—",
+      "start": 3.12,
+      "end": 3.12
+    },
+    {
+      "text": "Алексей",
+      "start": 3.44,
+      "end": 4.18
+    },
+    {
+      "text": "Горин.",
+      "start": 4.18,
+      "end": 4.8
+    }
+  ]
+}

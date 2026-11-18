@@ -1,0 +1,131 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "a3c1e5a74f105e5606451b5729884cacf2981271c42c129ce46bd4ade0cdcaa4",
+  "audio_sha256": "5313de0fdac35f784c9d97bb04f2c256468b63e01f6e4ed11251ccc88108ea47",
+  "file": "media/interactive/chronicles/voice/a3c1e5a74f105e5606451b57.mp3",
+  "duration": 3.157914,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 5,
+  "authoredLexicalWords": 5,
+  "heardText": "Наслаждайтесь букетом Алексей за работу.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Наслаждайтесь",
+      "start": 0.0,
+      "end": 0.82,
+      "probability": 0.9859203815460205
+    },
+    {
+      "index": 1,
+      "text": "букетом,",
+      "start": 0.82,
+      "end": 1.36,
+      "probability": 0.963103195031484
+    },
+    {
+      "index": 2,
+      "text": "Алексей.",
+      "start": 1.36,
+      "end": 1.88,
+      "probability": 0.9364006519317627
+    },
+    {
+      "index": 3,
+      "text": "За",
+      "start": 1.88,
+      "end": 2.2,
+      "probability": 0.7184037566184998
+    },
+    {
+      "index": 4,
+      "text": "работу.",
+      "start": 2.2,
+      "end": 2.54,
+      "probability": 0.9962875843048096
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Наслаждайтесь",
+      "start": 0.0,
+      "end": 0.8,
+      "probability": 0.7833415930741466
+    },
+    {
+      "word": " букетом",
+      "start": 0.8,
+      "end": 1.36,
+      "probability": 0.8680318395296732
+    },
+    {
+      "word": ",",
+      "start": 1.36,
+      "end": 1.42,
+      "probability": 0.01058406662195921
+    },
+    {
+      "word": " Алексей",
+      "start": 1.42,
+      "end": 1.82,
+      "probability": 0.9930233359336853
+    },
+    {
+      "word": ".",
+      "start": 1.82,
+      "end": 2.0,
+      "probability": 0.2343350201845169
+    },
+    {
+      "word": " За",
+      "start": 2.0,
+      "end": 2.22,
+      "probability": 0.5081690549850464
+    },
+    {
+      "word": " работу",
+      "start": 2.22,
+      "end": 2.54,
+      "probability": 0.9349573254585266
+    },
+    {
+      "word": ".",
+      "start": 2.54,
+      "end": 3.1,
+      "probability": 0.5964288115501404
+    }
+  ],
+  "words": [
+    {
+      "text": "Наслаждайтесь",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "text": "букетом,",
+      "start": 0.8,
+      "end": 1.36
+    },
+    {
+      "text": "Алексей.",
+      "start": 1.42,
+      "end": 1.82
+    },
+    {
+      "text": "За",
+      "start": 2.0,
+      "end": 2.22
+    },
+    {
+      "text": "работу.",
+      "start": 2.22,
+      "end": 2.54
+    }
+  ]
+}

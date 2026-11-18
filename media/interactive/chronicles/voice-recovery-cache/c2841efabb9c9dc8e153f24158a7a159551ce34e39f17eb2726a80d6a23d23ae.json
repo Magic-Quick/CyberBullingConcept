@@ -1,0 +1,292 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "c2841efabb9c9dc8e153f24158a7a159551ce34e39f17eb2726a80d6a23d23ae",
+  "audio_sha256": "9db9722a6a0d925e0572f8086cbe645bd54772f9915373821d8454d36f8cbd6d",
+  "file": "media/interactive/chronicles/voice/c2841efabb9c9dc8e153f241.mp3",
+  "duration": 8.823583,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 14,
+  "authoredLexicalWords": 14,
+  "heardText": "Обоим алхимикам вручается двухметровый церемониальный жезл — Багровый Дилдо из титанового сплава в качестве швабры.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Обоим",
+      "start": 0.0,
+      "end": 0.5,
+      "probability": 0.656656580666701
+    },
+    {
+      "index": 1,
+      "text": "алхимикам",
+      "start": 0.5,
+      "end": 1.2,
+      "probability": 0.810697928071022
+    },
+    {
+      "index": 2,
+      "text": "вручается",
+      "start": 1.2,
+      "end": 1.94,
+      "probability": 0.9921157211065292
+    },
+    {
+      "index": 3,
+      "text": "двухметровый",
+      "start": 1.94,
+      "end": 2.9,
+      "probability": 0.9481410831212997
+    },
+    {
+      "index": 4,
+      "text": "церемониальный",
+      "start": 2.9,
+      "end": 3.56,
+      "probability": 0.7555557191371918
+    },
+    {
+      "index": 5,
+      "text": "жезл",
+      "start": 3.56,
+      "end": 4.14,
+      "probability": 0.7805694540341696
+    },
+    {
+      "index": 7,
+      "text": "Багровый",
+      "start": 4.58,
+      "end": 5.2,
+      "probability": 0.6680413288995624
+    },
+    {
+      "index": 8,
+      "text": "Дилдо",
+      "start": 5.2,
+      "end": 5.66,
+      "probability": 0.5674261450767517
+    },
+    {
+      "index": 9,
+      "text": "из",
+      "start": 5.66,
+      "end": 6.02,
+      "probability": 0.9200435280799866
+    },
+    {
+      "index": 10,
+      "text": "титанового",
+      "start": 6.02,
+      "end": 6.62,
+      "probability": 0.8620190471410751
+    },
+    {
+      "index": 11,
+      "text": "сплава",
+      "start": 6.62,
+      "end": 7.18,
+      "probability": 0.9590882857640585
+    },
+    {
+      "index": 12,
+      "text": "в",
+      "start": 7.18,
+      "end": 7.28,
+      "probability": 0.9920576214790344
+    },
+    {
+      "index": 13,
+      "text": "качестве",
+      "start": 7.28,
+      "end": 7.78,
+      "probability": 0.9996584355831146
+    },
+    {
+      "index": 14,
+      "text": "швабры.",
+      "start": 7.78,
+      "end": 8.36,
+      "probability": 0.9777542352676392
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Обоим",
+      "start": 0.0,
+      "end": 0.48,
+      "probability": 0.517593400819654
+    },
+    {
+      "word": " алхимикам",
+      "start": 0.48,
+      "end": 1.16,
+      "probability": 0.8209685176610947
+    },
+    {
+      "word": " вручается",
+      "start": 1.16,
+      "end": 1.92,
+      "probability": 0.9910857528448105
+    },
+    {
+      "word": " двухметровый",
+      "start": 1.92,
+      "end": 2.9,
+      "probability": 0.9483548849821091
+    },
+    {
+      "word": " церемониальный",
+      "start": 2.9,
+      "end": 3.52,
+      "probability": 0.7735458046197892
+    },
+    {
+      "word": " жезл",
+      "start": 3.52,
+      "end": 4.1,
+      "probability": 0.6916577816009521
+    },
+    {
+      "word": " —",
+      "start": 4.1,
+      "end": 4.66,
+      "probability": 0.04011356085538864
+    },
+    {
+      "word": " Багровый",
+      "start": 4.66,
+      "end": 5.2,
+      "probability": 0.6650876691564918
+    },
+    {
+      "word": " Дилдо",
+      "start": 5.2,
+      "end": 5.66,
+      "probability": 0.567816232641538
+    },
+    {
+      "word": " из",
+      "start": 5.66,
+      "end": 6.04,
+      "probability": 0.8373159766197205
+    },
+    {
+      "word": " титанового",
+      "start": 6.04,
+      "end": 6.6,
+      "probability": 0.8812895715236664
+    },
+    {
+      "word": " сплава",
+      "start": 6.6,
+      "end": 7.16,
+      "probability": 0.9540857871373495
+    },
+    {
+      "word": " в",
+      "start": 7.16,
+      "end": 7.28,
+      "probability": 0.99176424741745
+    },
+    {
+      "word": " качестве",
+      "start": 7.28,
+      "end": 7.76,
+      "probability": 0.9995115995407104
+    },
+    {
+      "word": " швабры",
+      "start": 7.76,
+      "end": 8.36,
+      "probability": 0.97115558385849
+    },
+    {
+      "word": ".",
+      "start": 8.36,
+      "end": 8.72,
+      "probability": 0.9627798199653625
+    }
+  ],
+  "words": [
+    {
+      "text": "Обоим",
+      "start": 0,
+      "end": 0.48
+    },
+    {
+      "text": "алхимикам",
+      "start": 0.48,
+      "end": 1.16
+    },
+    {
+      "text": "вручается",
+      "start": 1.16,
+      "end": 1.92
+    },
+    {
+      "text": "двухметровый",
+      "start": 1.92,
+      "end": 2.9
+    },
+    {
+      "text": "церемониальный",
+      "start": 2.9,
+      "end": 3.52
+    },
+    {
+      "text": "жезл",
+      "start": 3.52,
+      "end": 4.1
+    },
+    {
+      "text": "—",
+      "start": 4.1,
+      "end": 4.1
+    },
+    {
+      "text": "Багровый",
+      "start": 4.66,
+      "end": 5.2
+    },
+    {
+      "text": "Дилдо",
+      "start": 5.2,
+      "end": 5.66
+    },
+    {
+      "text": "из",
+      "start": 5.66,
+      "end": 6.04
+    },
+    {
+      "text": "титанового",
+      "start": 6.04,
+      "end": 6.6
+    },
+    {
+      "text": "сплава",
+      "start": 6.6,
+      "end": 7.16
+    },
+    {
+      "text": "в",
+      "start": 7.16,
+      "end": 7.28
+    },
+    {
+      "text": "качестве",
+      "start": 7.28,
+      "end": 7.76
+    },
+    {
+      "text": "швабры.",
+      "start": 7.76,
+      "end": 8.36
+    }
+  ]
+}

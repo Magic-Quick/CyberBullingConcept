@@ -1,0 +1,173 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "830a71b17c4b6c4770cd0e02d662d86b96e14f909bd88d7ff86dbdd5a79483d4",
+  "audio_sha256": "91e98f529ebacd05b50804ec53f273b98772b344612ff9c41805acac187ec404",
+  "file": "media/interactive/chronicles/voice/830a71b17c4b6c4770cd0e02.mp3",
+  "duration": 4.179592,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 8,
+  "authoredLexicalWords": 8,
+  "heardText": "и даже заставили клиентархов сказать «мне всё нравится».",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "и",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.568706214427948
+    },
+    {
+      "index": 1,
+      "text": "даже",
+      "start": 0.16,
+      "end": 0.36,
+      "probability": 0.9910350441932678
+    },
+    {
+      "index": 2,
+      "text": "заставили",
+      "start": 0.36,
+      "end": 1.0,
+      "probability": 0.9953974882761637
+    },
+    {
+      "index": 3,
+      "text": "Клиентархов",
+      "start": 1.0,
+      "end": 1.62,
+      "probability": 0.9565454483032226
+    },
+    {
+      "index": 4,
+      "text": "сказать:",
+      "start": 1.62,
+      "end": 1.96,
+      "probability": 0.9865117073059082
+    },
+    {
+      "index": 5,
+      "text": "«Мне",
+      "start": 1.96,
+      "end": 2.8,
+      "probability": 0.6528251618146896
+    },
+    {
+      "index": 6,
+      "text": "всё",
+      "start": 2.8,
+      "end": 3.02,
+      "probability": 0.7477657198905945
+    },
+    {
+      "index": 7,
+      "text": "нравится».",
+      "start": 3.02,
+      "end": 3.88,
+      "probability": 0.8756118416786194
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "и",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.0006426305044442415
+    },
+    {
+      "word": " даже",
+      "start": 0.16,
+      "end": 0.36,
+      "probability": 0.9794562458992004
+    },
+    {
+      "word": " заставили",
+      "start": 0.36,
+      "end": 0.98,
+      "probability": 0.9955494999885559
+    },
+    {
+      "word": " Клиентархов",
+      "start": 0.98,
+      "end": 1.6,
+      "probability": 0.5555085650412366
+    },
+    {
+      "word": " сказать",
+      "start": 1.6,
+      "end": 1.86,
+      "probability": 0.9484488368034363
+    },
+    {
+      "word": ":",
+      "start": 1.86,
+      "end": 2.56,
+      "probability": 0.001341367489658296
+    },
+    {
+      "word": " «Мне",
+      "start": 2.56,
+      "end": 2.8,
+      "probability": 0.742612212896347
+    },
+    {
+      "word": " всё",
+      "start": 2.8,
+      "end": 3.02,
+      "probability": 0.7631515860557556
+    },
+    {
+      "word": " нравится».",
+      "start": 3.02,
+      "end": 3.96,
+      "probability": 0.7995000779628754
+    }
+  ],
+  "words": [
+    {
+      "text": "и",
+      "start": 0,
+      "end": 0.16
+    },
+    {
+      "text": "даже",
+      "start": 0.16,
+      "end": 0.36
+    },
+    {
+      "text": "заставили",
+      "start": 0.36,
+      "end": 0.98
+    },
+    {
+      "text": "Клиентархов",
+      "start": 0.98,
+      "end": 1.6
+    },
+    {
+      "text": "сказать:",
+      "start": 1.6,
+      "end": 1.86
+    },
+    {
+      "text": "«Мне",
+      "start": 2.56,
+      "end": 2.8
+    },
+    {
+      "text": "всё",
+      "start": 2.8,
+      "end": 3.02
+    },
+    {
+      "text": "нравится».",
+      "start": 3.02,
+      "end": 3.96
+    }
+  ]
+}

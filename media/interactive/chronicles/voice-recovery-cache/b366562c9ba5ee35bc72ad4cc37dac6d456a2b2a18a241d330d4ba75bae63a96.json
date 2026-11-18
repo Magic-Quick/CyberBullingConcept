@@ -1,0 +1,425 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "b366562c9ba5ee35bc72ad4cc37dac6d456a2b2a18a241d330d4ba75bae63a96",
+  "audio_sha256": "3b8dc0dcd209d03681181e511e7ef6edad1e3f4b23be24941d9c073676e11dfb",
+  "file": "media/interactive/chronicles/voice/b366562c9ba5ee35bc72ad4c.mp3",
+  "duration": 10.634739,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 21,
+  "authoredLexicalWords": 21,
+  "heardText": "Но вы это сделали. Вы выдержали удары торпед, отскребли яйца от сундуков, собрали ноги девы мэвис и вооружили летающую корову лазером.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Но",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 0.6031617522239685
+    },
+    {
+      "index": 1,
+      "text": "вы",
+      "start": 0.18,
+      "end": 0.36,
+      "probability": 0.9474508166313171
+    },
+    {
+      "index": 2,
+      "text": "это",
+      "start": 0.36,
+      "end": 0.54,
+      "probability": 0.9905737042427063
+    },
+    {
+      "index": 3,
+      "text": "сделали.",
+      "start": 0.54,
+      "end": 0.94,
+      "probability": 0.9826875329017639
+    },
+    {
+      "index": 4,
+      "text": "Вы",
+      "start": 1.6,
+      "end": 1.84,
+      "probability": 0.9790660738945007
+    },
+    {
+      "index": 5,
+      "text": "выдержали",
+      "start": 1.84,
+      "end": 2.38,
+      "probability": 0.9893520275751749
+    },
+    {
+      "index": 6,
+      "text": "удары",
+      "start": 2.38,
+      "end": 2.76,
+      "probability": 0.9638873636722565
+    },
+    {
+      "index": 7,
+      "text": "торпед,",
+      "start": 2.76,
+      "end": 3.24,
+      "probability": 0.9714056253433228
+    },
+    {
+      "index": 8,
+      "text": "отскребли",
+      "start": 3.52,
+      "end": 4.1,
+      "probability": 0.9531360030174255
+    },
+    {
+      "index": 9,
+      "text": "яйца",
+      "start": 4.1,
+      "end": 4.5,
+      "probability": 0.9920995831489563
+    },
+    {
+      "index": 10,
+      "text": "от",
+      "start": 4.5,
+      "end": 4.68,
+      "probability": 0.4510956108570099
+    },
+    {
+      "index": 11,
+      "text": "сундуков,",
+      "start": 4.68,
+      "end": 5.32,
+      "probability": 0.9340408146381378
+    },
+    {
+      "index": 12,
+      "text": "собрали",
+      "start": 5.66,
+      "end": 6.12,
+      "probability": 0.9977607329686483
+    },
+    {
+      "index": 13,
+      "text": "ноги",
+      "start": 6.12,
+      "end": 6.44,
+      "probability": 0.9968601167201996
+    },
+    {
+      "index": 14,
+      "text": "девы",
+      "start": 6.44,
+      "end": 6.8,
+      "probability": 0.8011850118637085
+    },
+    {
+      "index": 15,
+      "text": "Мэвис",
+      "start": 6.8,
+      "end": 7.26,
+      "probability": 0.7354500368237495
+    },
+    {
+      "index": 16,
+      "text": "и",
+      "start": 7.26,
+      "end": 7.72,
+      "probability": 0.9377256631851196
+    },
+    {
+      "index": 17,
+      "text": "вооружили",
+      "start": 7.72,
+      "end": 8.34,
+      "probability": 0.9958286583423615
+    },
+    {
+      "index": 18,
+      "text": "летающую",
+      "start": 8.34,
+      "end": 9.1,
+      "probability": 0.9768681724866232
+    },
+    {
+      "index": 19,
+      "text": "корову",
+      "start": 9.1,
+      "end": 9.6,
+      "probability": 0.9275053342183431
+    },
+    {
+      "index": 20,
+      "text": "лазером.",
+      "start": 9.6,
+      "end": 10.1,
+      "probability": 0.9010802706082662
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Но",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 0.49205423319108377
+    },
+    {
+      "word": " вы",
+      "start": 0.18,
+      "end": 0.34,
+      "probability": 0.9567064642906189
+    },
+    {
+      "word": " это",
+      "start": 0.34,
+      "end": 0.54,
+      "probability": 0.9885991811752319
+    },
+    {
+      "word": " сделали",
+      "start": 0.54,
+      "end": 0.94,
+      "probability": 0.9780639410018921
+    },
+    {
+      "word": ".",
+      "start": 0.94,
+      "end": 1.6,
+      "probability": 0.6409497857093811
+    },
+    {
+      "word": " Вы",
+      "start": 1.6,
+      "end": 1.84,
+      "probability": 0.6641631722450256
+    },
+    {
+      "word": " выдержали",
+      "start": 1.84,
+      "end": 2.36,
+      "probability": 0.9873039325078329
+    },
+    {
+      "word": " удары",
+      "start": 2.36,
+      "end": 2.76,
+      "probability": 0.981145828962326
+    },
+    {
+      "word": " торпед",
+      "start": 2.76,
+      "end": 3.18,
+      "probability": 0.9730889002482096
+    },
+    {
+      "word": ",",
+      "start": 3.18,
+      "end": 3.52,
+      "probability": 0.8059691786766052
+    },
+    {
+      "word": " отскребли",
+      "start": 3.52,
+      "end": 4.08,
+      "probability": 0.9092132925987244
+    },
+    {
+      "word": " яйца",
+      "start": 4.08,
+      "end": 4.48,
+      "probability": 0.9915839632352194
+    },
+    {
+      "word": " от",
+      "start": 4.48,
+      "end": 4.68,
+      "probability": 0.5269938707351685
+    },
+    {
+      "word": " сундуков",
+      "start": 4.68,
+      "end": 5.22,
+      "probability": 0.9349355846643448
+    },
+    {
+      "word": ",",
+      "start": 5.22,
+      "end": 5.7,
+      "probability": 0.9414102435112
+    },
+    {
+      "word": " собрали",
+      "start": 5.7,
+      "end": 6.12,
+      "probability": 0.9850867589314779
+    },
+    {
+      "word": " ноги",
+      "start": 6.12,
+      "end": 6.44,
+      "probability": 0.9969302713871002
+    },
+    {
+      "word": " девы",
+      "start": 6.44,
+      "end": 6.78,
+      "probability": 0.7420651167631149
+    },
+    {
+      "word": " Мэвис",
+      "start": 6.78,
+      "end": 7.22,
+      "probability": 0.6562427952885628
+    },
+    {
+      "word": " и",
+      "start": 7.22,
+      "end": 7.72,
+      "probability": 0.8283566832542419
+    },
+    {
+      "word": " вооружили",
+      "start": 7.72,
+      "end": 8.32,
+      "probability": 0.9949521571397781
+    },
+    {
+      "word": " летающую",
+      "start": 8.32,
+      "end": 9.08,
+      "probability": 0.9699816505114237
+    },
+    {
+      "word": " корову",
+      "start": 9.08,
+      "end": 9.6,
+      "probability": 0.9337129791577657
+    },
+    {
+      "word": " лазером",
+      "start": 9.6,
+      "end": 10.08,
+      "probability": 0.8576971689860026
+    },
+    {
+      "word": ".",
+      "start": 10.08,
+      "end": 10.36,
+      "probability": 0.8137948513031006
+    }
+  ],
+  "words": [
+    {
+      "text": "Но",
+      "start": 0,
+      "end": 0.18
+    },
+    {
+      "text": "вы",
+      "start": 0.18,
+      "end": 0.34
+    },
+    {
+      "text": "это",
+      "start": 0.34,
+      "end": 0.54
+    },
+    {
+      "text": "сделали.",
+      "start": 0.54,
+      "end": 0.94
+    },
+    {
+      "text": "Вы",
+      "start": 1.6,
+      "end": 1.84
+    },
+    {
+      "text": "выдержали",
+      "start": 1.84,
+      "end": 2.36
+    },
+    {
+      "text": "удары",
+      "start": 2.36,
+      "end": 2.76
+    },
+    {
+      "text": "торпед,",
+      "start": 2.76,
+      "end": 3.18
+    },
+    {
+      "text": "отскребли",
+      "start": 3.52,
+      "end": 4.08
+    },
+    {
+      "text": "яйца",
+      "start": 4.08,
+      "end": 4.48
+    },
+    {
+      "text": "от",
+      "start": 4.48,
+      "end": 4.68
+    },
+    {
+      "text": "сундуков,",
+      "start": 4.68,
+      "end": 5.22
+    },
+    {
+      "text": "собрали",
+      "start": 5.7,
+      "end": 6.12
+    },
+    {
+      "text": "ноги",
+      "start": 6.12,
+      "end": 6.44
+    },
+    {
+      "text": "девы",
+      "start": 6.44,
+      "end": 6.78
+    },
+    {
+      "text": "Мэвис",
+      "start": 6.78,
+      "end": 7.22
+    },
+    {
+      "text": "и",
+      "start": 7.22,
+      "end": 7.72
+    },
+    {
+      "text": "вооружили",
+      "start": 7.72,
+      "end": 8.32
+    },
+    {
+      "text": "летающую",
+      "start": 8.32,
+      "end": 9.08
+    },
+    {
+      "text": "корову",
+      "start": 9.08,
+      "end": 9.6
+    },
+    {
+      "text": "лазером.",
+      "start": 9.6,
+      "end": 10.08
+    }
+  ]
+}

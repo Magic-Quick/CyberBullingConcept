@@ -1,0 +1,233 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "d681b97c56f5f2f9177521addb9abbdec6044005aefe51347dbe71f20cfb1c47",
+  "audio_sha256": "aeeada7aa2ad0d7f291e04715f1472854d8736e2ee3d002a0b696e3f5b3fa7a5",
+  "file": "media/interactive/chronicles/voice/d681b97c56f5f2f9177521ad.mp3",
+  "duration": 5.24771,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 11,
+  "authoredLexicalWords": 11,
+  "heardText": "Слово ещё не закончено. Эту часть работы придётся довести до конца.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Слово",
+      "start": 0.0,
+      "end": 0.44,
+      "probability": 0.8985108534495035
+    },
+    {
+      "index": 1,
+      "text": "ещё",
+      "start": 0.44,
+      "end": 0.64,
+      "probability": 0.6362367272377014
+    },
+    {
+      "index": 2,
+      "text": "не",
+      "start": 0.64,
+      "end": 0.82,
+      "probability": 0.9940294027328491
+    },
+    {
+      "index": 3,
+      "text": "закончено.",
+      "start": 0.82,
+      "end": 1.52,
+      "probability": 0.9904532134532928
+    },
+    {
+      "index": 4,
+      "text": "Эту",
+      "start": 1.82,
+      "end": 2.08,
+      "probability": 0.9827520549297333
+    },
+    {
+      "index": 5,
+      "text": "часть",
+      "start": 2.08,
+      "end": 2.34,
+      "probability": 0.9967695474624634
+    },
+    {
+      "index": 6,
+      "text": "работы",
+      "start": 2.34,
+      "end": 2.86,
+      "probability": 0.9924581050872803
+    },
+    {
+      "index": 7,
+      "text": "придётся",
+      "start": 2.86,
+      "end": 3.6,
+      "probability": 0.9141176640987396
+    },
+    {
+      "index": 8,
+      "text": "довести",
+      "start": 3.6,
+      "end": 4.1,
+      "probability": 0.9640775918960571
+    },
+    {
+      "index": 9,
+      "text": "до",
+      "start": 4.1,
+      "end": 4.3,
+      "probability": 0.9993699193000793
+    },
+    {
+      "index": 10,
+      "text": "конца.",
+      "start": 4.3,
+      "end": 4.78,
+      "probability": 0.9994823634624481
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Слово",
+      "start": 0.0,
+      "end": 0.42,
+      "probability": 0.5905167327970654
+    },
+    {
+      "word": " ещё",
+      "start": 0.42,
+      "end": 0.64,
+      "probability": 0.781219482421875
+    },
+    {
+      "word": " не",
+      "start": 0.64,
+      "end": 0.84,
+      "probability": 0.9890950322151184
+    },
+    {
+      "word": " закончено",
+      "start": 0.84,
+      "end": 1.48,
+      "probability": 0.988879919052124
+    },
+    {
+      "word": ".",
+      "start": 1.48,
+      "end": 1.8,
+      "probability": 0.5764038562774658
+    },
+    {
+      "word": " Эту",
+      "start": 1.8,
+      "end": 2.08,
+      "probability": 0.9450453221797943
+    },
+    {
+      "word": " часть",
+      "start": 2.08,
+      "end": 2.34,
+      "probability": 0.9963698387145996
+    },
+    {
+      "word": " работы",
+      "start": 2.34,
+      "end": 2.76,
+      "probability": 0.9888096451759338
+    },
+    {
+      "word": " придётся",
+      "start": 2.76,
+      "end": 3.58,
+      "probability": 0.847647488117218
+    },
+    {
+      "word": " довести",
+      "start": 3.58,
+      "end": 4.06,
+      "probability": 0.9729765951633453
+    },
+    {
+      "word": " до",
+      "start": 4.06,
+      "end": 4.3,
+      "probability": 0.9947695136070251
+    },
+    {
+      "word": " конца",
+      "start": 4.3,
+      "end": 4.78,
+      "probability": 0.998806893825531
+    },
+    {
+      "word": ".",
+      "start": 4.78,
+      "end": 5.0,
+      "probability": 0.9692775011062622
+    }
+  ],
+  "words": [
+    {
+      "text": "Слово",
+      "start": 0,
+      "end": 0.42
+    },
+    {
+      "text": "ещё",
+      "start": 0.42,
+      "end": 0.64
+    },
+    {
+      "text": "не",
+      "start": 0.64,
+      "end": 0.84
+    },
+    {
+      "text": "закончено.",
+      "start": 0.84,
+      "end": 1.48
+    },
+    {
+      "text": "Эту",
+      "start": 1.8,
+      "end": 2.08
+    },
+    {
+      "text": "часть",
+      "start": 2.08,
+      "end": 2.34
+    },
+    {
+      "text": "работы",
+      "start": 2.34,
+      "end": 2.76
+    },
+    {
+      "text": "придётся",
+      "start": 2.76,
+      "end": 3.58
+    },
+    {
+      "text": "довести",
+      "start": 3.58,
+      "end": 4.06
+    },
+    {
+      "text": "до",
+      "start": 4.06,
+      "end": 4.3
+    },
+    {
+      "text": "конца.",
+      "start": 4.3,
+      "end": 4.78
+    }
+  ]
+}

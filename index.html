@@ -2319,7 +2319,7 @@
       <img src="web_assets/images/gui/series_title_logo.png" alt="Сыгравший в ящик" class="cinema-series-logo" style="max-width: 480px; width: 90%; height: auto; display: inline-block; filter: drop-shadow(0 0 25px rgba(0, 245, 212, 0.35));">
       <!-- Download offline build hint -->
       <div class="cinema-download-notice" style="margin-top: 18px; margin-bottom: 8px; font-family: var(--font-mono); font-size: 13px; color: var(--text-muted, #94a3b8); letter-spacing: 0.5px;">
-        Вес большой, поэтому если долго грузится то можете <a href="https://github.com/Magic-Quick/CyberBullingConcept/releases/download/v1.14/CyberBulling_Cycle14_Offline_Build.zip" download="CyberBulling_Cycle14_Offline_Build.zip" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600;">скачать файл</a> и запустить в браузере
+        Отдельно доступна <a href="https://github.com/Magic-Quick/CyberBullingConcept/releases/download/v1.14/CyberBulling_Cycle14_Offline_Build.zip" download="CyberBulling_Cycle14_Offline_Build.zip" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600;">архивная офлайн-сборка v1.14</a>. Актуальный выпуск запускается ниже.
       </div>
       <div class="cinema-cycle-badge" style="font-family: var(--font-mono); font-size: 26px; font-weight: 800; color: var(--accent-cyan); letter-spacing: 8px; margin-top: 12px; text-shadow: 0 0 18px rgba(0, 245, 212, 0.85); text-transform: uppercase;">
         [ ЦИКЛ 14 ]
@@ -2327,8 +2327,9 @@
     </div>
 
     <div class="movie-version-switcher" role="group" aria-label="Версия интерактивного фильма">
-      <button class="movie-version-button" type="button" data-movie-version="updated" aria-label="Текущая версия v2.0" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">v2.0</button>
-      <button class="movie-version-button" type="button" data-movie-version="previous" aria-label="Предыдущая версия v1.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">v1.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="updated" aria-label="Текущая версия v3.0" aria-pressed="true" aria-controls="gameIframe" onclick="selectMovieVersion('updated')">v3.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="previous" aria-label="Предыдущая версия v2.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('previous')">v2.0</button>
+      <button class="movie-version-button" type="button" data-movie-version="archive" aria-label="Архивная версия v1.0" aria-pressed="false" aria-controls="gameIframe" onclick="selectMovieVersion('archive')">v1.0</button>
     </div>
     <p class="movie-version-note">При смене версии просмотр начинается сначала.</p>
 
@@ -2345,7 +2346,7 @@
           </div>
         </div>
 
-        <iframe id="gameIframe" title="Интерактивный фильм — v2.0" src="" data-src="game.html?v=clean_20261117_before_gorin" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
+        <iframe id="gameIframe" title="Интерактивный фильм — v3.0" src="" data-src="game.html?v=chronicles_director_20261118" allow="fullscreen; autoplay; clipboard-write; display-capture" allowfullscreen="true" scrolling="no">
         </iframe>
       </div>
     </div>
@@ -2365,7 +2366,7 @@
 
       <ul class="footer-links">
         <li><a href="https://github.com/Magic-Quick/CyberBullingConcept" target="_blank" rel="noopener">GitHub Репозиторий</a></li>
-        <li><a id="directMovieLink" href="game.html?v=clean_20261117_before_gorin" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
+        <li><a id="directMovieLink" href="game.html?v=chronicles_director_20261118" target="_blank" rel="noopener">Прямая ссылка на игру</a></li>
         <li><a href="#hero">Наверх ↑</a></li>
       </ul>
     </div>
@@ -2377,8 +2378,9 @@
     let isGameLaunched = false;
     let selectedMovieVersion = 'updated';
     const MOVIE_VERSIONS = {
-      updated: { src: 'game.html?v=clean_20261117_before_gorin', title: 'Интерактивный фильм — v2.0' },
-      previous: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — v1.0' },
+      updated: { src: 'game.html?v=chronicles_director_20261118', title: 'Интерактивный фильм — v3.0' },
+      previous: { src: 'game-v2-before-director.html?v=backup_f11664f', title: 'Интерактивный фильм — v2.0' },
+      archive: { src: 'game-previous.html?v=before_interactive_655ba3e', title: 'Интерактивный фильм — v1.0' },
     };
 
     function selectMovieVersion(version, updateUrl = true) {

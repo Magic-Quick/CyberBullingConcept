@@ -1,0 +1,185 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "c322f6c2c795da5bdadd408bcf0a5c533758325182201541e34baf1e9fa84146",
+  "audio_sha256": "825e2afa03ce6f3e2b6037f6123666d0302e4ec549b359b4cb070cbcf9885326",
+  "file": "media/interactive/chronicles/voice/c322f6c2c795da5bdadd408b.mp3",
+  "duration": 4.643991,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 8,
+  "authoredLexicalWords": 8,
+  "heardText": "Зрачки расширены, пульс двести сорок, давление в норме.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Зрачки",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.9440088669459025
+    },
+    {
+      "index": 1,
+      "text": "расширены,",
+      "start": 0.56,
+      "end": 1.22,
+      "probability": 0.9863888174295425
+    },
+    {
+      "index": 2,
+      "text": "пульс",
+      "start": 1.52,
+      "end": 1.86,
+      "probability": 0.9580018719037374
+    },
+    {
+      "index": 3,
+      "text": "двести",
+      "start": 1.86,
+      "end": 2.26,
+      "probability": 0.49786806444171816
+    },
+    {
+      "index": 4,
+      "text": "сорок,",
+      "start": 2.26,
+      "end": 2.84,
+      "probability": 0.9363127052783966
+    },
+    {
+      "index": 5,
+      "text": "давление",
+      "start": 3.02,
+      "end": 3.46,
+      "probability": 0.9739207923412323
+    },
+    {
+      "index": 6,
+      "text": "в",
+      "start": 3.46,
+      "end": 3.68,
+      "probability": 0.9959665536880493
+    },
+    {
+      "index": 7,
+      "text": "норме.",
+      "start": 3.68,
+      "end": 4.16,
+      "probability": 0.9955758452415466
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Зрачки",
+      "start": 0.0,
+      "end": 0.54,
+      "probability": 0.631237189421275
+    },
+    {
+      "word": " расширены",
+      "start": 0.54,
+      "end": 1.16,
+      "probability": 0.9729673713445663
+    },
+    {
+      "word": ",",
+      "start": 1.16,
+      "end": 1.58,
+      "probability": 0.48804402351379395
+    },
+    {
+      "word": " пульс",
+      "start": 1.58,
+      "end": 1.88,
+      "probability": 0.9448713858922323
+    },
+    {
+      "word": " двести",
+      "start": 1.88,
+      "end": 2.18,
+      "probability": 0.4904599138535559
+    },
+    {
+      "word": " сорок",
+      "start": 2.18,
+      "end": 2.84,
+      "probability": 0.9510448276996613
+    },
+    {
+      "word": ",",
+      "start": 2.84,
+      "end": 3.04,
+      "probability": 0.40875566005706787
+    },
+    {
+      "word": " давление",
+      "start": 3.04,
+      "end": 3.42,
+      "probability": 0.9728204607963562
+    },
+    {
+      "word": " в",
+      "start": 3.42,
+      "end": 3.68,
+      "probability": 0.9937399625778198
+    },
+    {
+      "word": " норме",
+      "start": 3.68,
+      "end": 4.18,
+      "probability": 0.9952438473701477
+    },
+    {
+      "word": ".",
+      "start": 4.18,
+      "end": 4.38,
+      "probability": 0.861589252948761
+    }
+  ],
+  "words": [
+    {
+      "text": "Зрачки",
+      "start": 0,
+      "end": 0.54
+    },
+    {
+      "text": "расширены,",
+      "start": 0.54,
+      "end": 1.16
+    },
+    {
+      "text": "пульс",
+      "start": 1.58,
+      "end": 1.88
+    },
+    {
+      "text": "двести",
+      "start": 1.88,
+      "end": 2.18
+    },
+    {
+      "text": "сорок,",
+      "start": 2.18,
+      "end": 2.84
+    },
+    {
+      "text": "давление",
+      "start": 3.04,
+      "end": 3.42
+    },
+    {
+      "text": "в",
+      "start": 3.42,
+      "end": 3.68
+    },
+    {
+      "text": "норме.",
+      "start": 3.68,
+      "end": 4.18
+    }
+  ]
+}

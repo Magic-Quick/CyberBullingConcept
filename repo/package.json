@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --configLoader native",
-    "build": "vite build --configLoader native && node tools/patch_html.js",
+    "build": "python ../tools/chronicles/validate_project.py && vite build --configLoader native && node tools/patch_html.js",
+    "build:candidate": "python ../tools/chronicles/validate_project.py --draft && vite build --configLoader native && node tools/patch_html.js --candidate",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },

@@ -1,13 +1,14 @@
 import plbx from '@playbox-ai/playable-kit/sdk';
 import { Application, Container, Graphics, Text, TextStyle } from 'pixi.js';
-import { loadAllAssets } from './assetsManager';
+import { initAssetMappings, loadAllAssets } from './assetsManager';
 import { MovieApp } from './MovieApp';
+import { ChroniclesApp } from './chronicles/ChroniclesApp';
 import { AmbientManager } from './AmbientManager';
 import { ClickTracker } from './ClickTracker';
 import { updateTweens } from './tween';
 
 let app: Application | undefined;
-let movieApp: MovieApp | undefined;
+let movieApp: MovieApp | ChroniclesApp | undefined;
 let wasPlayingBeforePause = false;
 
 // Network store URL hooks required by Playbox kit
@@ -42,6 +43,17 @@ plbx.on('resize', () => {
 
 // Boot via Playbox SDK gateway
 plbx.init(async () => {
+  if (new URLSearchParams(location.search).get('legacy') !== '1') {
+    initAssetMappings();
+    document.getElementById('intro-video')?.remove();
+    const canvas=document.getElementById('game-canvas');if(canvas)canvas.style.display='none';
+    movieApp=await ChroniclesApp.create();
+    (window as any).__movieApp=movieApp;
+    (window as any).__movieAppReady=true;
+    plbx.start();
+    ClickTracker.start({redirectAfterClicks:0});
+    return;
+  }
   try {
     await (document as any).fonts?.load?.("16px 'PxPlus IBM VGA 8x16'");
     await (document as any).fonts?.load?.("16px 'Fixedsys Excelsior'");

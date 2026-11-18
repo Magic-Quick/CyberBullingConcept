@@ -1,0 +1,76 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "f19b9ae102a083ea1b6aa114f8bed355e363330c7c5e9c4a7af9169de348882a",
+  "audio_sha256": "85bc13513acf53ce7303d7a73a06bbd35a497afc5b0bb6ed8d1b21f22d56513d",
+  "file": "media/interactive/chronicles/voice/f19b9ae102a083ea1b6aa114.mp3",
+  "duration": 2.182676,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.6666666666666666,
+  "asrMatchedWords": 2,
+  "authoredLexicalWords": 3,
+  "heardText": "Чашку безупречного из пресса.",
+  "promptedCoverage": 0.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "чашку",
+      "start": 0.0,
+      "end": 0.46,
+      "probability": 0.8679875334103903
+    },
+    {
+      "index": 1,
+      "text": "безупречного",
+      "start": 0.46,
+      "end": 1.16,
+      "probability": 0.9354606509208679
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "чашку",
+      "start": 0.0,
+      "end": 0.48,
+      "probability": 0.647985936064894
+    },
+    {
+      "word": " безупречного",
+      "start": 0.48,
+      "end": 1.12,
+      "probability": 0.9644949674606323
+    },
+    {
+      "word": " эспрессо",
+      "start": 1.12,
+      "end": 1.8,
+      "probability": 0.6019135244190693
+    },
+    {
+      "word": ".",
+      "start": 1.8,
+      "end": 1.94,
+      "probability": 0.2900916635990143
+    }
+  ],
+  "words": [
+    {
+      "text": "чашку",
+      "start": 0,
+      "end": 0.48
+    },
+    {
+      "text": "безупречного",
+      "start": 0.48,
+      "end": 1.12
+    },
+    {
+      "text": "эспрессо.",
+      "start": 1.12,
+      "end": 1.8
+    }
+  ]
+}

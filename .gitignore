@@ -58,3 +58,15 @@ LATEST_LIVE_URL.txt
 media/*
 !media/interactive/
 !media/interactive/**
+
+# Checked, baked masks and transcript cards used by the chronicles player.
+!media/visual/
+media/visual/*
+!media/visual/generated/
+media/visual/generated/*
+!media/visual/generated/Gui/
+media/visual/generated/Gui/*
+!media/visual/generated/Gui/interactive-context/
+!media/visual/generated/Gui/interactive-context/*.webp
+!media/visual/generated/Gui/neutral-portraits/
+!media/visual/generated/Gui/neutral-portraits/*.webp

@@ -1,0 +1,467 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "d80cb299b299f845d5a3de2c2fc42a30a5a937ba58878a55acab3327593cfb3f",
+  "audio_sha256": "7ec401b319c41015af32bc3d33c0a316c6d27c854ea85d541cd7ee82b55c7506",
+  "file": "media/interactive/chronicles/voice/d80cb299b299f845d5a3de2c.mp3",
+  "duration": 10.913379,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 23,
+  "authoredLexicalWords": 23,
+  "heardText": "Особое условие инспекции – драить вручную, без права задерживать дыхание, без права зажимать нос, без права выхода в Slack и без права на кофе.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Особое",
+      "start": 0.0,
+      "end": 0.5,
+      "probability": 0.9375802278518677
+    },
+    {
+      "index": 1,
+      "text": "условие",
+      "start": 0.5,
+      "end": 1.06,
+      "probability": 0.9733776450157166
+    },
+    {
+      "index": 2,
+      "text": "инспекции:",
+      "start": 1.06,
+      "end": 1.84,
+      "probability": 0.9939663112163544
+    },
+    {
+      "index": 3,
+      "text": "драить",
+      "start": 2.18,
+      "end": 2.52,
+      "probability": 0.632535402973493
+    },
+    {
+      "index": 4,
+      "text": "вручную,",
+      "start": 2.52,
+      "end": 3.1,
+      "probability": 0.9973692297935486
+    },
+    {
+      "index": 5,
+      "text": "без",
+      "start": 3.48,
+      "end": 3.64,
+      "probability": 0.9093994498252869
+    },
+    {
+      "index": 6,
+      "text": "права",
+      "start": 3.64,
+      "end": 4.04,
+      "probability": 0.838117927312851
+    },
+    {
+      "index": 7,
+      "text": "задерживать",
+      "start": 4.04,
+      "end": 4.62,
+      "probability": 0.9937294324239095
+    },
+    {
+      "index": 8,
+      "text": "дыхание,",
+      "start": 4.62,
+      "end": 5.14,
+      "probability": 0.9778619607289633
+    },
+    {
+      "index": 9,
+      "text": "без",
+      "start": 5.58,
+      "end": 5.84,
+      "probability": 0.9969642758369446
+    },
+    {
+      "index": 10,
+      "text": "права",
+      "start": 5.84,
+      "end": 6.26,
+      "probability": 0.99362912774086
+    },
+    {
+      "index": 11,
+      "text": "зажимать",
+      "start": 6.26,
+      "end": 6.72,
+      "probability": 0.9879284799098969
+    },
+    {
+      "index": 12,
+      "text": "нос,",
+      "start": 6.72,
+      "end": 6.98,
+      "probability": 0.9848294854164124
+    },
+    {
+      "index": 13,
+      "text": "без",
+      "start": 7.5,
+      "end": 7.64,
+      "probability": 0.996136486530304
+    },
+    {
+      "index": 14,
+      "text": "права",
+      "start": 7.64,
+      "end": 8.06,
+      "probability": 0.9863282144069672
+    },
+    {
+      "index": 15,
+      "text": "выхода",
+      "start": 8.06,
+      "end": 8.48,
+      "probability": 0.8232361376285553
+    },
+    {
+      "index": 16,
+      "text": "в",
+      "start": 8.48,
+      "end": 8.54,
+      "probability": 0.9970605969429016
+    },
+    {
+      "index": 17,
+      "text": "Slack",
+      "start": 8.54,
+      "end": 8.8,
+      "probability": 0.019047236070036888
+    },
+    {
+      "index": 18,
+      "text": "и",
+      "start": 8.8,
+      "end": 9.28,
+      "probability": 0.9377307295799255
+    },
+    {
+      "index": 19,
+      "text": "без",
+      "start": 9.28,
+      "end": 9.48,
+      "probability": 0.993532657623291
+    },
+    {
+      "index": 20,
+      "text": "права",
+      "start": 9.48,
+      "end": 9.88,
+      "probability": 0.9982625246047974
+    },
+    {
+      "index": 21,
+      "text": "на",
+      "start": 9.88,
+      "end": 10.0,
+      "probability": 0.9900988936424255
+    },
+    {
+      "index": 22,
+      "text": "кофе.",
+      "start": 10.0,
+      "end": 10.5,
+      "probability": 0.976854940255483
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Особое",
+      "start": 0.0,
+      "end": 0.5,
+      "probability": 0.7124156546697122
+    },
+    {
+      "word": " условие",
+      "start": 0.5,
+      "end": 1.02,
+      "probability": 0.979607105255127
+    },
+    {
+      "word": " инспекции",
+      "start": 1.02,
+      "end": 1.82,
+      "probability": 0.9927479922771454
+    },
+    {
+      "word": ":",
+      "start": 1.82,
+      "end": 2.08,
+      "probability": 0.0006740118260495365
+    },
+    {
+      "word": " драить",
+      "start": 2.08,
+      "end": 2.5,
+      "probability": 0.6525747776031494
+    },
+    {
+      "word": " вручную",
+      "start": 2.5,
+      "end": 3.06,
+      "probability": 0.99708491563797
+    },
+    {
+      "word": ",",
+      "start": 3.06,
+      "end": 3.5,
+      "probability": 0.8783403635025024
+    },
+    {
+      "word": " без",
+      "start": 3.5,
+      "end": 3.64,
+      "probability": 0.8937498331069946
+    },
+    {
+      "word": " права",
+      "start": 3.64,
+      "end": 4.04,
+      "probability": 0.7784707844257355
+    },
+    {
+      "word": " задерживать",
+      "start": 4.04,
+      "end": 4.6,
+      "probability": 0.9954230388005575
+    },
+    {
+      "word": " дыхание",
+      "start": 4.6,
+      "end": 5.12,
+      "probability": 0.9680097500483195
+    },
+    {
+      "word": ",",
+      "start": 5.12,
+      "end": 5.7,
+      "probability": 0.9589496850967407
+    },
+    {
+      "word": " без",
+      "start": 5.7,
+      "end": 5.86,
+      "probability": 0.9944645762443542
+    },
+    {
+      "word": " права",
+      "start": 5.86,
+      "end": 6.24,
+      "probability": 0.9885506331920624
+    },
+    {
+      "word": " зажимать",
+      "start": 6.24,
+      "end": 6.7,
+      "probability": 0.9886425286531448
+    },
+    {
+      "word": " нос",
+      "start": 6.7,
+      "end": 7.0,
+      "probability": 0.9856464266777039
+    },
+    {
+      "word": ",",
+      "start": 7.0,
+      "end": 7.5,
+      "probability": 0.9922951459884644
+    },
+    {
+      "word": " без",
+      "start": 7.5,
+      "end": 7.64,
+      "probability": 0.9943337440490723
+    },
+    {
+      "word": " права",
+      "start": 7.64,
+      "end": 8.06,
+      "probability": 0.9829746782779694
+    },
+    {
+      "word": " выхода",
+      "start": 8.06,
+      "end": 8.46,
+      "probability": 0.8467330038547516
+    },
+    {
+      "word": " в",
+      "start": 8.46,
+      "end": 8.54,
+      "probability": 0.9965104460716248
+    },
+    {
+      "word": " Slack",
+      "start": 8.54,
+      "end": 8.78,
+      "probability": 0.022122524678707123
+    },
+    {
+      "word": " и",
+      "start": 8.78,
+      "end": 9.28,
+      "probability": 0.874976396560669
+    },
+    {
+      "word": " без",
+      "start": 9.28,
+      "end": 9.48,
+      "probability": 0.9901442527770996
+    },
+    {
+      "word": " права",
+      "start": 9.48,
+      "end": 9.88,
+      "probability": 0.996824711561203
+    },
+    {
+      "word": " на",
+      "start": 9.88,
+      "end": 10.02,
+      "probability": 0.9910079836845398
+    },
+    {
+      "word": " кофе",
+      "start": 10.02,
+      "end": 10.5,
+      "probability": 0.9751541614532471
+    },
+    {
+      "word": ".",
+      "start": 10.5,
+      "end": 10.72,
+      "probability": 0.7893348336219788
+    }
+  ],
+  "words": [
+    {
+      "text": "Особое",
+      "start": 0,
+      "end": 0.5
+    },
+    {
+      "text": "условие",
+      "start": 0.5,
+      "end": 1.02
+    },
+    {
+      "text": "инспекции:",
+      "start": 1.02,
+      "end": 1.82
+    },
+    {
+      "text": "драить",
+      "start": 2.08,
+      "end": 2.5
+    },
+    {
+      "text": "вручную,",
+      "start": 2.5,
+      "end": 3.06
+    },
+    {
+      "text": "без",
+      "start": 3.5,
+      "end": 3.64
+    },
+    {
+      "text": "права",
+      "start": 3.64,
+      "end": 4.04
+    },
+    {
+      "text": "задерживать",
+      "start": 4.04,
+      "end": 4.6
+    },
+    {
+      "text": "дыхание,",
+      "start": 4.6,
+      "end": 5.12
+    },
+    {
+      "text": "без",
+      "start": 5.7,
+      "end": 5.86
+    },
+    {
+      "text": "права",
+      "start": 5.86,
+      "end": 6.24
+    },
+    {
+      "text": "зажимать",
+      "start": 6.24,
+      "end": 6.7
+    },
+    {
+      "text": "нос,",
+      "start": 6.7,
+      "end": 7.0
+    },
+    {
+      "text": "без",
+      "start": 7.5,
+      "end": 7.64
+    },
+    {
+      "text": "права",
+      "start": 7.64,
+      "end": 8.06
+    },
+    {
+      "text": "выхода",
+      "start": 8.06,
+      "end": 8.46
+    },
+    {
+      "text": "в",
+      "start": 8.46,
+      "end": 8.54
+    },
+    {
+      "text": "Slack",
+      "start": 8.54,
+      "end": 8.78
+    },
+    {
+      "text": "и",
+      "start": 8.78,
+      "end": 9.28
+    },
+    {
+      "text": "без",
+      "start": 9.28,
+      "end": 9.48
+    },
+    {
+      "text": "права",
+      "start": 9.48,
+      "end": 9.88
+    },
+    {
+      "text": "на",
+      "start": 9.88,
+      "end": 10.02
+    },
+    {
+      "text": "кофе.",
+      "start": 10.02,
+      "end": 10.5
+    }
+  ]
+}

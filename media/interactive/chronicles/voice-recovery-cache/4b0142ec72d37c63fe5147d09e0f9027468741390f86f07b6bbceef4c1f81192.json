@@ -1,0 +1,419 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "4b0142ec72d37c63fe5147d09e0f9027468741390f86f07b6bbceef4c1f81192",
+  "audio_sha256": "7c5653257e6d74de5f17959f9e8ed3979d7be0956bea2329662a7b4f6cc100c8",
+  "file": "media/interactive/chronicles/voice/4b0142ec72d37c63fe5147d0.mp3",
+  "duration": 10.44898,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 21,
+  "authoredLexicalWords": 21,
+  "heardText": "Стена тридцати семи пала. Плейриум запечатан, Клиентархи расписались в приёмке, а миллионы пальцев по всей Галактике уже тянутся к кнопке «Скачать».",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Стена",
+      "start": 0.0,
+      "end": 0.4,
+      "probability": 0.8936759531497955
+    },
+    {
+      "index": 1,
+      "text": "тридцати",
+      "start": 0.4,
+      "end": 0.84,
+      "probability": 0.7246708844322711
+    },
+    {
+      "index": 2,
+      "text": "семи",
+      "start": 0.84,
+      "end": 1.22,
+      "probability": 0.35352398455142975
+    },
+    {
+      "index": 3,
+      "text": "пала.",
+      "start": 1.22,
+      "end": 1.54,
+      "probability": 0.6629712283611298
+    },
+    {
+      "index": 4,
+      "text": "Плейриум",
+      "start": 1.84,
+      "end": 2.36,
+      "probability": 0.6503772512078285
+    },
+    {
+      "index": 5,
+      "text": "запечатан,",
+      "start": 2.36,
+      "end": 3.08,
+      "probability": 0.9970078865687052
+    },
+    {
+      "index": 6,
+      "text": "Клиентархи",
+      "start": 3.24,
+      "end": 3.94,
+      "probability": 0.8034516739814231
+    },
+    {
+      "index": 7,
+      "text": "расписались",
+      "start": 3.94,
+      "end": 4.52,
+      "probability": 0.9812215566635132
+    },
+    {
+      "index": 8,
+      "text": "в",
+      "start": 4.52,
+      "end": 4.66,
+      "probability": 0.992883563041687
+    },
+    {
+      "index": 9,
+      "text": "приёмке,",
+      "start": 4.66,
+      "end": 5.3,
+      "probability": 0.8786049485206604
+    },
+    {
+      "index": 10,
+      "text": "а",
+      "start": 5.5,
+      "end": 5.54,
+      "probability": 0.5843208432197571
+    },
+    {
+      "index": 11,
+      "text": "миллионы",
+      "start": 5.54,
+      "end": 6.0,
+      "probability": 0.9699994921684265
+    },
+    {
+      "index": 12,
+      "text": "пальцев",
+      "start": 6.0,
+      "end": 6.52,
+      "probability": 0.9977768957614899
+    },
+    {
+      "index": 13,
+      "text": "по",
+      "start": 6.52,
+      "end": 6.7,
+      "probability": 0.9722234010696411
+    },
+    {
+      "index": 14,
+      "text": "всей",
+      "start": 6.7,
+      "end": 6.94,
+      "probability": 0.9969584941864014
+    },
+    {
+      "index": 15,
+      "text": "Галактике",
+      "start": 6.94,
+      "end": 7.68,
+      "probability": 0.7786114104092121
+    },
+    {
+      "index": 16,
+      "text": "уже",
+      "start": 7.68,
+      "end": 7.9,
+      "probability": 0.9375469088554382
+    },
+    {
+      "index": 17,
+      "text": "тянутся",
+      "start": 7.9,
+      "end": 8.52,
+      "probability": 0.9687644243240356
+    },
+    {
+      "index": 18,
+      "text": "к",
+      "start": 8.52,
+      "end": 8.62,
+      "probability": 0.9768397212028503
+    },
+    {
+      "index": 19,
+      "text": "кнопке",
+      "start": 8.62,
+      "end": 9.22,
+      "probability": 0.9918090105056763
+    },
+    {
+      "index": 20,
+      "text": "«Скачать».",
+      "start": 9.22,
+      "end": 10.22,
+      "probability": 0.8681589861710867
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Стена",
+      "start": 0.0,
+      "end": 0.36,
+      "probability": 0.6263720039545054
+    },
+    {
+      "word": " тридцати",
+      "start": 0.36,
+      "end": 0.8,
+      "probability": 0.7310104097705334
+    },
+    {
+      "word": " семи",
+      "start": 0.8,
+      "end": 1.18,
+      "probability": 0.3446718081831932
+    },
+    {
+      "word": " пала",
+      "start": 1.18,
+      "end": 1.5,
+      "probability": 0.6966866105794907
+    },
+    {
+      "word": ".",
+      "start": 1.5,
+      "end": 1.88,
+      "probability": 0.20218300819396973
+    },
+    {
+      "word": " Плейриум",
+      "start": 1.88,
+      "end": 2.34,
+      "probability": 0.6735816821455956
+    },
+    {
+      "word": " запечатан",
+      "start": 2.34,
+      "end": 3.06,
+      "probability": 0.9958513577779134
+    },
+    {
+      "word": ",",
+      "start": 3.06,
+      "end": 3.28,
+      "probability": 0.08808636665344238
+    },
+    {
+      "word": " Клиентархи",
+      "start": 3.28,
+      "end": 3.94,
+      "probability": 0.8176992464189728
+    },
+    {
+      "word": " расписались",
+      "start": 3.94,
+      "end": 4.5,
+      "probability": 0.9837989409764608
+    },
+    {
+      "word": " в",
+      "start": 4.5,
+      "end": 4.66,
+      "probability": 0.9946414232254028
+    },
+    {
+      "word": " приёмке",
+      "start": 4.66,
+      "end": 5.26,
+      "probability": 0.9011523326237997
+    },
+    {
+      "word": ",",
+      "start": 5.26,
+      "end": 5.52,
+      "probability": 0.890379786491394
+    },
+    {
+      "word": " а",
+      "start": 5.52,
+      "end": 5.56,
+      "probability": 0.5369012951850891
+    },
+    {
+      "word": " миллионы",
+      "start": 5.56,
+      "end": 5.98,
+      "probability": 0.9769453704357147
+    },
+    {
+      "word": " пальцев",
+      "start": 5.98,
+      "end": 6.5,
+      "probability": 0.9981863498687744
+    },
+    {
+      "word": " по",
+      "start": 6.5,
+      "end": 6.7,
+      "probability": 0.9795368909835815
+    },
+    {
+      "word": " всей",
+      "start": 6.7,
+      "end": 6.94,
+      "probability": 0.9956899285316467
+    },
+    {
+      "word": " Галактике",
+      "start": 6.94,
+      "end": 7.64,
+      "probability": 0.7815245874226093
+    },
+    {
+      "word": " уже",
+      "start": 7.64,
+      "end": 7.9,
+      "probability": 0.9503108859062195
+    },
+    {
+      "word": " тянутся",
+      "start": 7.9,
+      "end": 8.5,
+      "probability": 0.9719320088624954
+    },
+    {
+      "word": " к",
+      "start": 8.5,
+      "end": 8.64,
+      "probability": 0.972137987613678
+    },
+    {
+      "word": " кнопке",
+      "start": 8.64,
+      "end": 9.18,
+      "probability": 0.9842958152294159
+    },
+    {
+      "word": " «Скачать».",
+      "start": 9.18,
+      "end": 10.26,
+      "probability": 0.8591003517309824
+    }
+  ],
+  "words": [
+    {
+      "text": "Стена",
+      "start": 0,
+      "end": 0.36
+    },
+    {
+      "text": "тридцати",
+      "start": 0.36,
+      "end": 0.8
+    },
+    {
+      "text": "семи",
+      "start": 0.8,
+      "end": 1.18
+    },
+    {
+      "text": "пала.",
+      "start": 1.18,
+      "end": 1.5
+    },
+    {
+      "text": "Плейриум",
+      "start": 1.88,
+      "end": 2.34
+    },
+    {
+      "text": "запечатан,",
+      "start": 2.34,
+      "end": 3.06
+    },
+    {
+      "text": "Клиентархи",
+      "start": 3.28,
+      "end": 3.94
+    },
+    {
+      "text": "расписались",
+      "start": 3.94,
+      "end": 4.5
+    },
+    {
+      "text": "в",
+      "start": 4.5,
+      "end": 4.66
+    },
+    {
+      "text": "приёмке,",
+      "start": 4.66,
+      "end": 5.26
+    },
+    {
+      "text": "а",
+      "start": 5.52,
+      "end": 5.56
+    },
+    {
+      "text": "миллионы",
+      "start": 5.56,
+      "end": 5.98
+    },
+    {
+      "text": "пальцев",
+      "start": 5.98,
+      "end": 6.5
+    },
+    {
+      "text": "по",
+      "start": 6.5,
+      "end": 6.7
+    },
+    {
+      "text": "всей",
+      "start": 6.7,
+      "end": 6.94
+    },
+    {
+      "text": "Галактике",
+      "start": 6.94,
+      "end": 7.64
+    },
+    {
+      "text": "уже",
+      "start": 7.64,
+      "end": 7.9
+    },
+    {
+      "text": "тянутся",
+      "start": 7.9,
+      "end": 8.5
+    },
+    {
+      "text": "к",
+      "start": 8.5,
+      "end": 8.64
+    },
+    {
+      "text": "кнопке",
+      "start": 8.64,
+      "end": 9.18
+    },
+    {
+      "text": "«Скачать».",
+      "start": 9.18,
+      "end": 10.26
+    }
+  ]
+}

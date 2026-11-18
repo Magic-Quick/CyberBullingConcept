@@ -1,0 +1,507 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "58909a4d3d7271ad338925f75080011853b081ceaba31c822ce12da38ff6b0fe",
+  "audio_sha256": "1c2b67f3dffc346633b2e431275ada0040b1c4235ea41fe607aba6860f3d4a9d",
+  "file": "media/interactive/chronicles/voice/58909a4d3d7271ad338925f7.mp3",
+  "duration": 14.117732,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.9230769230769231,
+  "asrMatchedWords": 24,
+  "authoredLexicalWords": 26,
+  "heardText": "Лично распорядился накормить новообращенного послушника Алексея Плейбаком до того, как тот окончательно отвалится от Станины и неустанно следил, чтобы голодающие биоузлы не зачахли безпитательного бульона.",
+  "promptedCoverage": 0.038461538461538464,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "лично",
+      "start": 0.0,
+      "end": 0.4,
+      "probability": 0.6466207802295685
+    },
+    {
+      "index": 1,
+      "text": "распорядился",
+      "start": 0.4,
+      "end": 1.16,
+      "probability": 0.9940244853496552
+    },
+    {
+      "index": 2,
+      "text": "накормить",
+      "start": 1.16,
+      "end": 1.74,
+      "probability": 0.9938074747721354
+    },
+    {
+      "index": 3,
+      "text": "Новообращённого",
+      "start": 1.74,
+      "end": 2.6,
+      "probability": 0.9363530158996582
+    },
+    {
+      "index": 4,
+      "text": "Послушника",
+      "start": 2.6,
+      "end": 3.4,
+      "probability": 0.9901854395866394
+    },
+    {
+      "index": 5,
+      "text": "Алексея",
+      "start": 3.4,
+      "end": 3.92,
+      "probability": 0.9897910356521606
+    },
+    {
+      "index": 6,
+      "text": "плейбаком",
+      "start": 3.92,
+      "end": 4.58,
+      "probability": 0.9068099975585937
+    },
+    {
+      "index": 7,
+      "text": "до",
+      "start": 4.58,
+      "end": 4.82,
+      "probability": 0.7562825083732605
+    },
+    {
+      "index": 8,
+      "text": "того,",
+      "start": 4.82,
+      "end": 5.08,
+      "probability": 0.9993919134140015
+    },
+    {
+      "index": 9,
+      "text": "как",
+      "start": 5.18,
+      "end": 5.26,
+      "probability": 0.9919507503509521
+    },
+    {
+      "index": 10,
+      "text": "тот",
+      "start": 5.26,
+      "end": 5.48,
+      "probability": 0.5935189127922058
+    },
+    {
+      "index": 11,
+      "text": "окончательно",
+      "start": 5.48,
+      "end": 6.22,
+      "probability": 0.9899624586105347
+    },
+    {
+      "index": 12,
+      "text": "отвалится",
+      "start": 6.22,
+      "end": 6.82,
+      "probability": 0.9307662645975748
+    },
+    {
+      "index": 13,
+      "text": "от",
+      "start": 6.82,
+      "end": 7.0,
+      "probability": 0.9978017210960388
+    },
+    {
+      "index": 14,
+      "text": "станины,",
+      "start": 7.0,
+      "end": 7.64,
+      "probability": 0.5061042383313179
+    },
+    {
+      "index": 15,
+      "text": "и",
+      "start": 7.64,
+      "end": 8.02,
+      "probability": 0.7124236822128296
+    },
+    {
+      "index": 16,
+      "text": "неустанно",
+      "start": 8.02,
+      "end": 8.82,
+      "probability": 0.9802551418542862
+    },
+    {
+      "index": 17,
+      "text": "следил,",
+      "start": 8.82,
+      "end": 9.34,
+      "probability": 0.997305303812027
+    },
+    {
+      "index": 18,
+      "text": "чтобы",
+      "start": 9.46,
+      "end": 9.58,
+      "probability": 0.9481932520866394
+    },
+    {
+      "index": 19,
+      "text": "голодающие",
+      "start": 9.58,
+      "end": 10.4,
+      "probability": 0.9898820966482162
+    },
+    {
+      "index": 20,
+      "text": "био-узлы",
+      "start": 10.4,
+      "end": 11.22,
+      "probability": 0.9565721452236176
+    },
+    {
+      "index": 21,
+      "text": "не",
+      "start": 11.22,
+      "end": 11.66,
+      "probability": 0.974195122718811
+    },
+    {
+      "index": 22,
+      "text": "зачахли",
+      "start": 11.66,
+      "end": 12.26,
+      "probability": 0.9630786379178365
+    },
+    {
+      "index": 25,
+      "text": "бульона.",
+      "start": 13.12,
+      "end": 13.62,
+      "probability": 0.9827845295270284
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "лично",
+      "start": 0.0,
+      "end": 0.38,
+      "probability": 0.0005193360266275704
+    },
+    {
+      "word": " распорядился",
+      "start": 0.38,
+      "end": 1.14,
+      "probability": 0.9954811483621597
+    },
+    {
+      "word": " накормить",
+      "start": 1.14,
+      "end": 1.72,
+      "probability": 0.9936993519465128
+    },
+    {
+      "word": " Новообращённого",
+      "start": 1.72,
+      "end": 2.7,
+      "probability": 0.6459402746737136
+    },
+    {
+      "word": " Послушника",
+      "start": 2.7,
+      "end": 3.36,
+      "probability": 0.6615160120030245
+    },
+    {
+      "word": " Алексея",
+      "start": 3.36,
+      "end": 3.9,
+      "probability": 0.9933346311251322
+    },
+    {
+      "word": " плейбаком",
+      "start": 3.9,
+      "end": 4.58,
+      "probability": 0.7573446480557322
+    },
+    {
+      "word": " до",
+      "start": 4.58,
+      "end": 4.82,
+      "probability": 0.6753556132316589
+    },
+    {
+      "word": " того",
+      "start": 4.82,
+      "end": 5.08,
+      "probability": 0.998768150806427
+    },
+    {
+      "word": ",",
+      "start": 5.08,
+      "end": 5.2,
+      "probability": 0.8775677680969238
+    },
+    {
+      "word": " как",
+      "start": 5.2,
+      "end": 5.26,
+      "probability": 0.9908193945884705
+    },
+    {
+      "word": " тот",
+      "start": 5.26,
+      "end": 5.48,
+      "probability": 0.40977931022644043
+    },
+    {
+      "word": " окончательно",
+      "start": 5.48,
+      "end": 6.18,
+      "probability": 0.9892397324244181
+    },
+    {
+      "word": " отвалится",
+      "start": 6.18,
+      "end": 6.78,
+      "probability": 0.9359860022862753
+    },
+    {
+      "word": " от",
+      "start": 6.78,
+      "end": 7.02,
+      "probability": 0.9938442707061768
+    },
+    {
+      "word": " станины",
+      "start": 7.02,
+      "end": 7.62,
+      "probability": 0.6029731004188458
+    },
+    {
+      "word": ",",
+      "start": 7.62,
+      "end": 7.96,
+      "probability": 0.26511454582214355
+    },
+    {
+      "word": " и",
+      "start": 7.96,
+      "end": 8.06,
+      "probability": 0.9384953379631042
+    },
+    {
+      "word": " неустанно",
+      "start": 8.06,
+      "end": 8.82,
+      "probability": 0.983067661523819
+    },
+    {
+      "word": " следил",
+      "start": 8.82,
+      "end": 9.32,
+      "probability": 0.9971373379230499
+    },
+    {
+      "word": ",",
+      "start": 9.32,
+      "end": 9.46,
+      "probability": 0.9833697080612183
+    },
+    {
+      "word": " чтобы",
+      "start": 9.46,
+      "end": 9.58,
+      "probability": 0.9419171810150146
+    },
+    {
+      "word": " голодающие",
+      "start": 9.58,
+      "end": 10.38,
+      "probability": 0.9928267300128937
+    },
+    {
+      "word": " био",
+      "start": 10.38,
+      "end": 10.72,
+      "probability": 0.9109133780002594
+    },
+    {
+      "word": "-узлы",
+      "start": 10.72,
+      "end": 11.18,
+      "probability": 0.6638541848709186
+    },
+    {
+      "word": " не",
+      "start": 11.18,
+      "end": 11.66,
+      "probability": 0.9700772166252136
+    },
+    {
+      "word": " зачахли",
+      "start": 11.66,
+      "end": 12.24,
+      "probability": 0.9614216089248657
+    },
+    {
+      "word": " без",
+      "start": 12.24,
+      "end": 12.46,
+      "probability": 0.7071496248245239
+    },
+    {
+      "word": " питательного",
+      "start": 12.46,
+      "end": 13.1,
+      "probability": 0.9003158013025919
+    },
+    {
+      "word": " бульона",
+      "start": 13.1,
+      "end": 13.58,
+      "probability": 0.9846901694933573
+    },
+    {
+      "word": ".",
+      "start": 13.58,
+      "end": 13.88,
+      "probability": 0.8235592246055603
+    }
+  ],
+  "words": [
+    {
+      "text": "лично",
+      "start": 0,
+      "end": 0.38
+    },
+    {
+      "text": "распорядился",
+      "start": 0.38,
+      "end": 1.14
+    },
+    {
+      "text": "накормить",
+      "start": 1.14,
+      "end": 1.72
+    },
+    {
+      "text": "Новообращённого",
+      "start": 1.72,
+      "end": 2.7
+    },
+    {
+      "text": "Послушника",
+      "start": 2.7,
+      "end": 3.36
+    },
+    {
+      "text": "Алексея",
+      "start": 3.36,
+      "end": 3.9
+    },
+    {
+      "text": "плейбаком",
+      "start": 3.9,
+      "end": 4.58
+    },
+    {
+      "text": "до",
+      "start": 4.58,
+      "end": 4.82
+    },
+    {
+      "text": "того,",
+      "start": 4.82,
+      "end": 5.08
+    },
+    {
+      "text": "как",
+      "start": 5.2,
+      "end": 5.26
+    },
+    {
+      "text": "тот",
+      "start": 5.26,
+      "end": 5.48
+    },
+    {
+      "text": "окончательно",
+      "start": 5.48,
+      "end": 6.18
+    },
+    {
+      "text": "отвалится",
+      "start": 6.18,
+      "end": 6.78
+    },
+    {
+      "text": "от",
+      "start": 6.78,
+      "end": 7.02
+    },
+    {
+      "text": "станины,",
+      "start": 7.02,
+      "end": 7.62
+    },
+    {
+      "text": "и",
+      "start": 7.96,
+      "end": 8.06
+    },
+    {
+      "text": "неустанно",
+      "start": 8.06,
+      "end": 8.82
+    },
+    {
+      "text": "следил,",
+      "start": 8.82,
+      "end": 9.32
+    },
+    {
+      "text": "чтобы",
+      "start": 9.46,
+      "end": 9.58
+    },
+    {
+      "text": "голодающие",
+      "start": 9.58,
+      "end": 10.38
+    },
+    {
+      "text": "био-узлы",
+      "start": 10.38,
+      "end": 11.18
+    },
+    {
+      "text": "не",
+      "start": 11.18,
+      "end": 11.66
+    },
+    {
+      "text": "зачахли",
+      "start": 11.66,
+      "end": 12.24
+    },
+    {
+      "text": "без",
+      "start": 12.24,
+      "end": 12.46
+    },
+    {
+      "text": "питательного",
+      "start": 12.46,
+      "end": 13.1
+    },
+    {
+      "text": "бульона.",
+      "start": 13.1,
+      "end": 13.58
+    }
+  ]
+}

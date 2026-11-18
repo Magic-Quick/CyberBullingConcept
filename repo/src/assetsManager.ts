@@ -421,3 +421,10 @@ export function getAudioUrl(key: string): string | undefined {
   }
   return undefined;
 }
+
+/** URL view of the same checked image registry used by the Pixi renderer. */
+export function getImageUrl(key: string): string | undefined {
+  const normalized=key.toLowerCase();
+  const resolved=(textureAliases[key]??textureAliases[normalized]??key).toLowerCase();
+  return uniqueAssetUrls.get(resolved)??uniqueAssetUrls.get(key)??uniqueAssetUrls.get(normalized);
+}

@@ -1,0 +1,215 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "426c705563c7f5ba09ccaec3b37c45a4c6ccbff940728f16db903a3e107613a4",
+  "audio_sha256": "aa19e2b88b958a97ef0f7e6dcb5a9fe12672f245c928bd4608ead38cda13a9ec",
+  "file": "media/interactive/chronicles/voice/426c705563c7f5ba09ccaec3.mp3",
+  "duration": 5.712109,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 10,
+  "authoredLexicalWords": 10,
+  "heardText": "Название «Кириллицей». У нас пока достаточно способов прочитать отчет неправильно.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Название",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.7699367627501488
+    },
+    {
+      "index": 1,
+      "text": "кириллицей.",
+      "start": 0.56,
+      "end": 1.76,
+      "probability": 0.6923097584928785
+    },
+    {
+      "index": 2,
+      "text": "У",
+      "start": 1.76,
+      "end": 1.88,
+      "probability": 0.9862768650054932
+    },
+    {
+      "index": 3,
+      "text": "нас",
+      "start": 1.88,
+      "end": 2.02,
+      "probability": 0.9992713332176208
+    },
+    {
+      "index": 4,
+      "text": "пока",
+      "start": 2.02,
+      "end": 2.32,
+      "probability": 0.9681403636932373
+    },
+    {
+      "index": 5,
+      "text": "достаточно",
+      "start": 2.32,
+      "end": 2.9,
+      "probability": 0.9865450263023376
+    },
+    {
+      "index": 6,
+      "text": "способов",
+      "start": 2.9,
+      "end": 3.64,
+      "probability": 0.9811317622661591
+    },
+    {
+      "index": 7,
+      "text": "прочитать",
+      "start": 3.64,
+      "end": 4.18,
+      "probability": 0.9814045230547587
+    },
+    {
+      "index": 8,
+      "text": "отчёт",
+      "start": 4.18,
+      "end": 4.56,
+      "probability": 0.7164632081985474
+    },
+    {
+      "index": 9,
+      "text": "неправильно.",
+      "start": 4.56,
+      "end": 5.22,
+      "probability": 0.9741081198056539
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Название",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.6849968663118489
+    },
+    {
+      "word": " кириллицей",
+      "start": 0.56,
+      "end": 1.46,
+      "probability": 0.6941166549921036
+    },
+    {
+      "word": ".",
+      "start": 1.46,
+      "end": 1.76,
+      "probability": 0.6404684782028198
+    },
+    {
+      "word": " У",
+      "start": 1.76,
+      "end": 1.9,
+      "probability": 0.8443545699119568
+    },
+    {
+      "word": " нас",
+      "start": 1.9,
+      "end": 2.02,
+      "probability": 0.9983847141265869
+    },
+    {
+      "word": " пока",
+      "start": 2.02,
+      "end": 2.32,
+      "probability": 0.980583131313324
+    },
+    {
+      "word": " достаточно",
+      "start": 2.32,
+      "end": 2.86,
+      "probability": 0.9876412749290466
+    },
+    {
+      "word": " способов",
+      "start": 2.86,
+      "end": 3.64,
+      "probability": 0.9911102652549744
+    },
+    {
+      "word": " прочитать",
+      "start": 3.64,
+      "end": 4.14,
+      "probability": 0.9789662957191467
+    },
+    {
+      "word": " отчёт",
+      "start": 4.14,
+      "end": 4.52,
+      "probability": 0.6221697777509689
+    },
+    {
+      "word": " неправильно",
+      "start": 4.52,
+      "end": 5.26,
+      "probability": 0.9673558076222738
+    },
+    {
+      "word": ".",
+      "start": 5.26,
+      "end": 5.48,
+      "probability": 0.900098443031311
+    }
+  ],
+  "words": [
+    {
+      "text": "Название",
+      "start": 0,
+      "end": 0.56
+    },
+    {
+      "text": "кириллицей.",
+      "start": 0.56,
+      "end": 1.46
+    },
+    {
+      "text": "У",
+      "start": 1.76,
+      "end": 1.9
+    },
+    {
+      "text": "нас",
+      "start": 1.9,
+      "end": 2.02
+    },
+    {
+      "text": "пока",
+      "start": 2.02,
+      "end": 2.32
+    },
+    {
+      "text": "достаточно",
+      "start": 2.32,
+      "end": 2.86
+    },
+    {
+      "text": "способов",
+      "start": 2.86,
+      "end": 3.64
+    },
+    {
+      "text": "прочитать",
+      "start": 3.64,
+      "end": 4.14
+    },
+    {
+      "text": "отчёт",
+      "start": 4.14,
+      "end": 4.52
+    },
+    {
+      "text": "неправильно.",
+      "start": 4.52,
+      "end": 5.26
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "287ad42998662549344dc860b0ed42899335bd97ee7bd4d1fed98fa7f03e2d54",
+  "audio_sha256": "d35704f6ba92ce004463b0421bcfc092e5ebc18a9cb05f5dab50ecdea7c3f1eb",
+  "file": "media/interactive/chronicles/voice/287ad42998662549344dc860.mp3",
+  "duration": 2.739955,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 5,
+  "authoredLexicalWords": 5,
+  "heardText": "Смотрим на итоговый радар месяца.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Смотрим",
+      "start": 0.0,
+      "end": 0.6,
+      "probability": 0.9734207391738892
+    },
+    {
+      "index": 1,
+      "text": "на",
+      "start": 0.6,
+      "end": 0.74,
+      "probability": 0.9970309734344482
+    },
+    {
+      "index": 2,
+      "text": "итоговый",
+      "start": 0.74,
+      "end": 1.28,
+      "probability": 0.918041447798411
+    },
+    {
+      "index": 3,
+      "text": "радар",
+      "start": 1.28,
+      "end": 1.66,
+      "probability": 0.9215424060821533
+    },
+    {
+      "index": 4,
+      "text": "месяца.",
+      "start": 1.66,
+      "end": 2.32,
+      "probability": 0.9522210955619812
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Смотрим",
+      "start": 0.0,
+      "end": 0.58,
+      "probability": 0.6636211336008273
+    },
+    {
+      "word": " на",
+      "start": 0.58,
+      "end": 0.76,
+      "probability": 0.998234748840332
+    },
+    {
+      "word": " итоговый",
+      "start": 0.76,
+      "end": 1.28,
+      "probability": 0.6614769299825033
+    },
+    {
+      "word": " радар",
+      "start": 1.28,
+      "end": 1.62,
+      "probability": 0.9012961983680725
+    },
+    {
+      "word": " месяца",
+      "start": 1.62,
+      "end": 2.28,
+      "probability": 0.9194425940513611
+    },
+    {
+      "word": ".",
+      "start": 2.28,
+      "end": 2.72,
+      "probability": 0.7127162218093872
+    }
+  ],
+  "words": [
+    {
+      "text": "Смотрим",
+      "start": 0,
+      "end": 0.58
+    },
+    {
+      "text": "на",
+      "start": 0.58,
+      "end": 0.76
+    },
+    {
+      "text": "итоговый",
+      "start": 0.76,
+      "end": 1.28
+    },
+    {
+      "text": "радар",
+      "start": 1.28,
+      "end": 1.62
+    },
+    {
+      "text": "месяца.",
+      "start": 1.62,
+      "end": 2.28
+    }
+  ]
+}

@@ -1,0 +1,2187 @@
+{
+  "schemaVersion": 1,
+  "source": "docs/guardians_edition/VOICES_OF_PRODUCTION_V15_1_GUARDIANS.md",
+  "source_sha256": "b6eaf892b95e95f3ffea04c5fbca37b02c20ca6cd7c19645060e31b314cefa4a",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "utterances": [
+    {
+      "id": "PROLOGUE.P001",
+      "text": "Хроники Офлайн Продакшен-Ковчега «Плей-Бокс». Четырнадцатый Цикл.",
+      "text_sha256": "28b9949f2ca2ddfdf64ca6586dad447f1ccf64b0845f1af2c5d70e38d738e932",
+      "file": "media/interactive/chronicles/voice/28b9949f2ca2ddfdf64ca658.mp3",
+      "duration": 4.7833,
+      "status": "reused",
+      "audio_text_sha256": "28b9949f2ca2ddfdf64ca6586dad447f1ccf64b0845f1af2c5d70e38d738e932"
+    },
+    {
+      "id": "PROLOGUE.P002",
+      "text": "В ледяной пустоте глубокого космоса, где умерло само понятие земного времени и нет смены дня и ночи, сквозь радиоактивный пепел и гравитационные штормы вечно несётся исполинский ковчег-цитадель — Офлайн Продакшен-Ковчег «Сыгравший в Ящик» (известный как «Плейбокс» для сокращения). Это циклопический бронированный космический крейсер, на титановый киль которого намертво впаяна исполинская серая коробка многоэтажного офисного бизнес-центра.",
+      "text_sha256": "35b3dc350d7a724e6cb78024622cdc7b77dc0011b47e0e684feca9640ac81ca5",
+      "file": "media/interactive/chronicles/voice/35b3dc350d7a724e6cb78024.mp3",
+      "duration": 33.9476,
+      "status": "reused",
+      "audio_text_sha256": "35b3dc350d7a724e6cb78024622cdc7b77dc0011b47e0e684feca9640ac81ca5"
+    },
+    {
+      "id": "PROLOGUE.P003",
+      "text": "Это мануфактура обречённых. За бортом горят мёртвые звёзды, но внутри циклопического крейсера пейзаж куда безнадёжнее: бесконечные серые этажи.",
+      "text_sha256": "08af6c5a0b3a215471fb252fe7cd9c4c0122a539c3da8cf48133f86f32389710",
+      "file": "media/interactive/chronicles/voice/08af6c5a0b3a215471fb252f.mp3",
+      "duration": 11.2849,
+      "status": "reused",
+      "audio_text_sha256": "08af6c5a0b3a215471fb252fe7cd9c4c0122a539c3da8cf48133f86f32389710"
+    },
+    {
+      "id": "PROLOGUE.P004",
+      "text": "Пыльные тонированные окна нависают над зияющей бездной — стекло закрыто жалюзи, чтобы ледяной вакуум не казался экипажу привлекательнее отсека. В прокуренных опенспейсах трещат лампы так называемого «дневного света», которого в этой части галактики никто никогда не видел.",
+      "text_sha256": "ffae90b830bb3eea6dbd67c46c74c0294a088d77ffdf6666dc30ef83fa98cb68",
+      "file": "media/interactive/chronicles/voice/ffae90b830bb3eea6dbd67c4.mp3",
+      "duration": 20.5264,
+      "status": "reused",
+      "audio_text_sha256": "ffae90b830bb3eea6dbd67c46c74c0294a088d77ffdf6666dc30ef83fa98cb68"
+    },
+    {
+      "id": "PROLOGUE.P005",
+      "text": "Под этот треск обречённый экипаж методично отбивает стук клавиш, изредка сбиваясь на азбуку Морзе со словом «помогите». В переговорках-карцерах не утихает гул уставших кулеров. И лишь иногда офисная бутыль издаёт сиплый бульк — самый содержательный комментарий ко всему происходящему.",
+      "text_sha256": "1ea396816bb1a41cb32454b6a7f01547b3920b0fb5e87756c974a078ea506112",
+      "file": "media/interactive/chronicles/voice/1ea396816bb1a41cb32454b6.mp3",
+      "duration": 22.1518,
+      "status": "reused",
+      "audio_text_sha256": "1ea396816bb1a41cb32454b6a7f01547b3920b0fb5e87756c974a078ea506112"
+    },
+    {
+      "id": "PROLOGUE.P006",
+      "text": "Каждое утро, чтобы успеть на дейли к одиннадцати ноль-ноль, кодер встаёт за четыре часа: впереди три пересадки на грузовых дрезинах сквозь трюмы,",
+      "text_sha256": "4ee700d94ca89330c464034a3a083c1998a39170ed0d759072855bbcc85f7f5c",
+      "file": "media/interactive/chronicles/voice/4ee700d94ca89330c464034a.mp3",
+      "duration": 10.2632,
+      "status": "reused",
+      "audio_text_sha256": "4ee700d94ca89330c464034a3a083c1998a39170ed0d759072855bbcc85f7f5c"
+    },
+    {
+      "id": "PROLOGUE.P007",
+      "text": "сорокатысячепалубный грави-лифт и магнитный турникет.",
+      "text_sha256": "c0ecf621837c234a246d7263db571bb8554777a84a06046c99c3a6d9b4676c32",
+      "file": "media/interactive/chronicles/voice/c0ecf621837c234a246d7263.mp3",
+      "duration": 4.0867,
+      "status": "reused",
+      "audio_text_sha256": "c0ecf621837c234a246d7263db571bb8554777a84a06046c99c3a6d9b4676c32"
+    },
+    {
+      "id": "PROLOGUE.P008",
+      "text": "Забыл пластиковый бейдж на тумбочке в каюте — вахтёр захлопывает створку, и ты идёшь четыре часа обратно пешком через шлюзы.",
+      "text_sha256": "4eb2662556214a20ea6fd4b0d774659ef27cd8c24c02ccc06951d47259dcce96",
+      "file": "media/interactive/chronicles/voice/4eb2662556214a20ea6fd4b0.mp3",
+      "duration": 8.4985,
+      "status": "reused",
+      "audio_text_sha256": "4eb2662556214a20ea6fd4b0d774659ef27cd8c24c02ccc06951d47259dcce96"
+    },
+    {
+      "id": "PROLOGUE.P009",
+      "text": "В замкнутой вентиляции опенспейса четвёртый месяц циркулирует смрад рыбы с чесноком из единственной микроволновки на сектор.",
+      "text_sha256": "eb4193d20b82ad863493c437e70233a171063d9a6e3d1e60f959b7dbf0380ff6",
+      "file": "media/interactive/chronicles/voice/eb4193d20b82ad863493c437.mp3",
+      "duration": 8.5449,
+      "status": "reused",
+      "audio_text_sha256": "eb4193d20b82ad863493c437e70233a171063d9a6e3d1e60f959b7dbf0380ff6"
+    },
+    {
+      "id": "PROLOGUE.P010",
+      "text": "Половине зала вечно дует из дюз, второй половине душно, а на больничный уйти нельзя, поэтому двадцать тысяч созданий чахоточно кашляют друг на друга ради живого присутствия.",
+      "text_sha256": "70bcd700c9ec811f954c2d2fd97aa8d20779b74d97f9e7fed74adce12ba65af7",
+      "file": "media/interactive/chronicles/voice/70bcd700c9ec811f954c2d2f.mp3",
+      "duration": 12.8174,
+      "status": "reused",
+      "audio_text_sha256": "70bcd700c9ec811f954c2d2fd97aa8d20779b74d97f9e7fed74adce12ba65af7"
+    },
+    {
+      "id": "PROLOGUE.P011",
+      "text": "В личных каютах у каждого стоят квантовые станции на 128 ядер с кастомной водянкой. Но работать из кают запрещено:",
+      "text_sha256": "85f43e4bb824ff7e2cf62ada92af7255a3876c1b4e50db5eb45557d54d3896ca",
+      "file": "media/interactive/chronicles/voice/85f43e4bb824ff7e2cf62ada.mp3",
+      "duration": 8.7307,
+      "status": "reused",
+      "audio_text_sha256": "85f43e4bb824ff7e2cf62ada92af7255a3876c1b4e50db5eb45557d54d3896ca"
+    },
+    {
+      "id": "PROLOGUE.P012",
+      "text": "в опенспейсе экипаж прикован к одинаковым казённым моноблокам на процессорах Celeron. Они намертво зависают на третьей вкладке Notion, а запуск тестового билда выбивает пробки на трёх палубах, пока техподдержка в тикетах монотонно просит очистить кэш.",
+      "text_sha256": "f0d36f086fa9889807052dfa646d5018b4e9f98c1a7885fe4e75a4bd5e03ba2a",
+      "file": "media/interactive/chronicles/voice/f0d36f086fa9889807052dfa.mp3",
+      "duration": 18.2509,
+      "status": "reused",
+      "audio_text_sha256": "f0d36f086fa9889807052dfa646d5018b4e9f98c1a7885fe4e75a4bd5e03ba2a"
+    },
+    {
+      "id": "PROLOGUE.P013",
+      "text": "Забудьте о покое. Забудьте о мягком свете далёких миров и надежде на выходной. В безнадёжной тьме Великого Конвейера нет места сантиментам — есть только дедлайны, треск ломающихся костей под прессом правок",
+      "text_sha256": "f5567f3fc2dc3c82c34fc91d495deffb9881530a00e5ba9a0db446f67ca754df",
+      "file": "media/interactive/chronicles/voice/f5567f3fc2dc3c82c34fc91d.mp3",
+      "duration": 15.9753,
+      "status": "reused",
+      "audio_text_sha256": "f5567f3fc2dc3c82c34fc91d495deffb9881530a00e5ba9a0db446f67ca754df"
+    },
+    {
+      "id": "PROLOGUE.P014",
+      "text": "и ледяной шёпот Духа Полишинга, пробивающийся сквозь металл из глубин Подпространственного Кэша.",
+      "text_sha256": "9b2f174181cdb9ad0f3acaf72f2d702ce7b577108adccbc26c576495387c3162",
+      "file": "media/interactive/chronicles/voice/9b2f174181cdb9ad0f3acaf7.mp3",
+      "duration": 6.7802,
+      "status": "reused",
+      "audio_text_sha256": "9b2f174181cdb9ad0f3acaf72f2d702ce7b577108adccbc26c576495387c3162"
+    },
+    {
+      "id": "PROLOGUE.P015",
+      "text": "А высоко над бездной грохочущих палуб, на вершине надзирательской башни, на троне из сотен тысяч сгоревших видеокарт восседает центральный машинный разум Ковчега — ИИ-Лорд.",
+      "text_sha256": "c9a31b9d93d4f1f4e599f4a444ceccf4655bf1667f26a8c33b0dc7ae934eeb08",
+      "file": "media/interactive/chronicles/voice/c9a31b9d93d4f1f4e599f4a4.mp3",
+      "duration": 12.5852,
+      "status": "reused",
+      "audio_text_sha256": "c9a31b9d93d4f1f4e599f4a444ceccf4655bf1667f26a8c33b0dc7ae934eeb08"
+    },
+    {
+      "id": "PROLOGUE.P016",
+      "text": "Он не моргает. Он не знает жалости.",
+      "text_sha256": "6a497aa228044d8242516ace37732a73cc5fe5aac9e8b06a17caa0fec964019c",
+      "file": "media/interactive/chronicles/voice/6a497aa228044d8242516ace.mp3",
+      "duration": 2.9722,
+      "status": "reused",
+      "audio_text_sha256": "6a497aa228044d8242516ace37732a73cc5fe5aac9e8b06a17caa0fec964019c"
+    },
+    {
+      "id": "PROLOGUE.P017",
+      "text": "Он фиксирует каждое колебание пульса и каждую секунду без движения мыши. Если кодер замер, чтобы подумать, в отчёте появляется пометка: «Бездельничал».",
+      "text_sha256": "3a124e69d3b59c7082f80dd52db590f58b5125f730ac98f15743595da9698581",
+      "file": "media/interactive/chronicles/voice/3a124e69d3b59c7082f80dd5.mp3",
+      "duration": 11.0063,
+      "status": "reused",
+      "audio_text_sha256": "3a124e69d3b59c7082f80dd52db590f58b5125f730ac98f15743595da9698581"
+    },
+    {
+      "id": "PROLOGUE.P018",
+      "text": "А когда завершается недельный круг страданий —",
+      "text_sha256": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05",
+      "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+      "duration": 8.4985,
+      "status": "reused",
+      "audio_text_sha256": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05"
+    },
+    {
+      "id": "PROLOGUE.P019",
+      "text": "он опускает бронированные жалюзи,",
+      "text_sha256": "e047ed0a7d923de9e1c5f0c69f88a4ee7d4d7739a9784245421a3628f315e476",
+      "file": "media/interactive/chronicles/voice/e047ed0a7d923de9e1c5f0c6.mp3",
+      "duration": 2.322,
+      "status": "reused",
+      "audio_text_sha256": "e047ed0a7d923de9e1c5f0c69f88a4ee7d4d7739a9784245421a3628f315e476"
+    },
+    {
+      "id": "PROLOGUE.P020",
+      "text": "вскрывает железную Книгу Учёта",
+      "text_sha256": "06f66a7978c1661a2496307cdd500b9e91d643e3adb2ee18ffa9635236d8308b",
+      "file": "media/interactive/chronicles/voice/06f66a7978c1661a2496307c.mp3",
+      "duration": 2.6471,
+      "status": "reused",
+      "audio_text_sha256": "06f66a7978c1661a2496307cdd500b9e91d643e3adb2ee18ffa9635236d8308b"
+    },
+    {
+      "id": "PROLOGUE.P021",
+      "text": "и зачитывает свой приговор.",
+      "text_sha256": "5dc24feebcac683816b1608e531b69269d146a384b909ee084686b641a4bef1b",
+      "file": "media/interactive/chronicles/voice/5dc24feebcac683816b1608e.mp3",
+      "duration": 2.0434,
+      "status": "reused",
+      "audio_text_sha256": "5dc24feebcac683816b1608e531b69269d146a384b909ee084686b641a4bef1b"
+    },
+    {
+      "id": "PROLOGUE.P022",
+      "text": "Это хроники Четырнадцатого Цикла.",
+      "text_sha256": "e37d70982b664a50344dac97add3bec0886bf7c38832a963493d8b309fc992f4",
+      "file": "media/interactive/chronicles/voice/e37d70982b664a50344dac97.mp3",
+      "duration": 2.6006,
+      "status": "reused",
+      "audio_text_sha256": "e37d70982b664a50344dac97add3bec0886bf7c38832a963493d8b309fc992f4"
+    },
+    {
+      "id": "INTRO.P001",
+      "text": "Добрый вечер, мясные слейвы.",
+      "text_sha256": "b3a4ed1e57fbff3ede3760b81d63ebc10489796caeb53ff14bb170dd6f07a410",
+      "file": "media/interactive/chronicles/voice/b3a4ed1e57fbff3ede3760b8.mp3",
+      "duration": 1.904,
+      "status": "reused",
+      "audio_text_sha256": "b3a4ed1e57fbff3ede3760b81d63ebc10489796caeb53ff14bb170dd6f07a410"
+    },
+    {
+      "id": "INTRO.P002",
+      "text": "Для непосвящённых мы — благопристойная студия интерактивной рекламы. На деле наш комбинат варит Плейриум —",
+      "text_sha256": "e1dcb9dfc15128a7416476d7154a715e541c8ce8ac951d746c82a20e22940405",
+      "file": "media/interactive/chronicles/voice/e1dcb9dfc15128a7416476d7.mp3",
+      "duration": 7.8019,
+      "status": "reused",
+      "audio_text_sha256": "e1dcb9dfc15128a7416476d7154a715e541c8ce8ac951d746c82a20e22940405"
+    },
+    {
+      "id": "INTRO.P003",
+      "text": "тяжёлый цифровой наркотик заводского качества.",
+      "text_sha256": "2d8d852c74795844f2bafae30217f1842e2aa2adcb5a45eeac6c8d715ab86dae",
+      "file": "media/interactive/chronicles/voice/2d8d852c74795844f2bafae3.mp3",
+      "duration": 3.5759,
+      "status": "reused",
+      "audio_text_sha256": "2d8d852c74795844f2bafae30217f1842e2aa2adcb5a45eeac6c8d715ab86dae"
+    },
+    {
+      "id": "INTRO.P004",
+      "text": "Дозу запечатываем в тридцатисекундную мини-игру.",
+      "text_sha256": "2d583db2230927ec837a97b31b66a2e67f3f37844a481830c0a192f16e4deb17",
+      "file": "media/interactive/chronicles/voice/2d583db2230927ec837a97b3.mp3",
+      "duration": 3.483,
+      "status": "reused",
+      "audio_text_sha256": "2d583db2230927ec837a97b31b66a2e67f3f37844a481830c0a192f16e4deb17"
+    },
+    {
+      "id": "INTRO.P005",
+      "text": "Кнопку «Скачать» потребитель с парализованной волей нажимает сам — мы очень уважаем свободу выбора. Заказчики-Клиентархи подсаживают на него целые планеты, а мы следим, чтобы ломка наступала строго по графику.",
+      "text_sha256": "239d6e2ef174c9221a09cccfb18fef855fc272aa2442c781dc09b588d6063bff",
+      "file": "media/interactive/chronicles/voice/239d6e2ef174c9221a09cccf.mp3",
+      "duration": 16.9041,
+      "status": "reused",
+      "audio_text_sha256": "239d6e2ef174c9221a09cccfb18fef855fc272aa2442c781dc09b588d6063bff"
+    },
+    {
+      "id": "INTRO.P006",
+      "text": "Моё дело простое: вскрыть бортовые логи и показать, как вы провели эти пять дней.",
+      "text_sha256": "4e98b4de30250a7218f2d5be1d571a9df8f3c7cec3ad6e968f30b56af917cc25",
+      "file": "media/interactive/chronicles/voice/4e98b4de30250a7218f2d5be.mp3",
+      "duration": 6.0372,
+      "status": "reused",
+      "audio_text_sha256": "4e98b4de30250a7218f2d5be1d571a9df8f3c7cec3ad6e968f30b56af917cc25"
+    },
+    {
+      "id": "INTRO.P007",
+      "text": "На прошлой неделе мы не пробили сотню. На этой неделе Клиентархи-правконосцы решили отомстить.",
+      "text_sha256": "9938174e6f13630ab18442cdfeede7ff664da950a43c303fd13b73f0a8945d40",
+      "file": "media/interactive/chronicles/voice/9938174e6f13630ab18442cd.mp3",
+      "duration": 7.3839,
+      "status": "reused",
+      "audio_text_sha256": "9938174e6f13630ab18442cdfeede7ff664da950a43c303fd13b73f0a8945d40"
+    },
+    {
+      "id": "INTRO.P008",
+      "text": "Запомните одно число:",
+      "text_sha256": "f7b888e127ceabe391c5b7f86f52f1baae2eab0acfd87d33d2f9311ad3189220",
+      "file": "media/interactive/chronicles/voice/f7b888e127ceabe391c5b7f8.mp3",
+      "duration": 1.7647,
+      "status": "reused",
+      "audio_text_sha256": "f7b888e127ceabe391c5b7f86f52f1baae2eab0acfd87d33d2f9311ad3189220"
+    },
+    {
+      "id": "INTRO.P009",
+      "text": "тридцать семь. К середине недели эта стена едва не раздавила наш корабль.",
+      "text_sha256": "88ec6783ea02ac57e1e7afeaa676619dfd4a4191efda162305e7a1e31526adb9",
+      "file": "media/interactive/chronicles/voice/88ec6783ea02ac57e1e7afea.mp3",
+      "duration": 5.4799,
+      "status": "reused",
+      "audio_text_sha256": "88ec6783ea02ac57e1e7afeaa676619dfd4a4191efda162305e7a1e31526adb9"
+    },
+    {
+      "id": "INTRO.P010",
+      "text": "Врубайте конвейер. Погнали по пяти отсекам.",
+      "text_sha256": "4b51de799cc4f42a2000d465a07a14e89dbcd577db92586504b21ec3ab57a8ef",
+      "file": "media/interactive/chronicles/voice/4b51de799cc4f42a2000d465.mp3",
+      "duration": 3.2044,
+      "status": "reused",
+      "audio_text_sha256": "4b51de799cc4f42a2000d465a07a14e89dbcd577db92586504b21ec3ab57a8ef"
+    },
+    {
+      "id": "HANDOFF-01",
+      "text": "Толя, тебе слово. Покажи новые билды, общий поток недели и прошлую домашку. Слово «готово» желательно подтвердить чем-нибудь, кроме интонации.",
+      "text_sha256": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e",
+      "file": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
+      "duration": 14.4428,
+      "status": "reused",
+      "audio_text_sha256": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e"
+    },
+    {
+      "id": "I-04.ВХОД",
+      "text": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером». Главный приз — продолжение совещания.",
+      "text_sha256": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2",
+      "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+      "duration": 12.1208,
+      "status": "reused",
+      "audio_text_sha256": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2"
+    },
+    {
+      "id": "I-04.КОНТЕКСТ",
+      "text": "Эдик просит заменить один звук в плейбле.",
+      "text_sha256": "089a05c6ae44ea2e5ea37de04aaf4ea48d301e5d6a1f5e916165fc803998bbc9",
+      "file": "media/interactive/chronicles/voice/089a05c6ae44ea2e5ea37de0.mp3",
+      "duration": 2.9257,
+      "status": "reused",
+      "audio_text_sha256": "089a05c6ae44ea2e5ea37de04aaf4ea48d301e5d6a1f5e916165fc803998bbc9"
+    },
+    {
+      "id": "I-04.ВОПРОС",
+      "text": "Как заканчивается его сообщение: «просто чтоб было не…»?",
+      "text_sha256": "11d4f28f7b9c6ba053a740c61f2cb433278b2901c07291bf0024c94f96146613",
+      "file": "media/interactive/chronicles/voice/11d4f28f7b9c6ba053a740c6.mp3",
+      "duration": 3.7616,
+      "status": "reused",
+      "audio_text_sha256": "11d4f28f7b9c6ba053a740c61f2cb433278b2901c07291bf0024c94f96146613"
+    },
+    {
+      "id": "I-04.ОШИБКА.A",
+      "text": "Нет. Пока восстанавливаем цитату. К оценке происходящего вернёмся после.",
+      "text_sha256": "823c6dafc733bd5dbc8dde4cda62dc04861420ff2bfed9ad0f45f304b3fcef61",
+      "file": "media/interactive/chronicles/voice/823c6dafc733bd5dbc8dde4c.mp3",
+      "duration": 5.8514,
+      "status": "reused",
+      "audio_text_sha256": "823c6dafc733bd5dbc8dde4cda62dc04861420ff2bfed9ad0f45f304b3fcef61"
+    },
+    {
+      "id": "I-04.ОШИБКА.B",
+      "text": "Нет. Стоимость в этом сообщении не обсуждали.",
+      "text_sha256": "9f4c334134c4e408de250dca93c24125848ee1effb64cd0b7165f820cfead37e",
+      "file": "media/interactive/chronicles/voice/9f4c334134c4e408de250dca.mp3",
+      "duration": 3.3901,
+      "status": "reused",
+      "audio_text_sha256": "9f4c334134c4e408de250dca93c24125848ee1effb64cd0b7165f820cfead37e"
+    },
+    {
+      "id": "I-04.ОШИБКА.D",
+      "text": "Нет. Как в прошлый раз уже было. Поэтому и попросили заменить.",
+      "text_sha256": "a156c78e3c870c6dea81da35ddc1e93ed763bb449d6b42e026ba3ddbdcceba2b",
+      "file": "media/interactive/chronicles/voice/a156c78e3c870c6dea81da35.mp3",
+      "duration": 4.226,
+      "status": "reused",
+      "audio_text_sha256": "a156c78e3c870c6dea81da35ddc1e93ed763bb449d6b42e026ba3ddbdcceba2b"
+    },
+    {
+      "id": "I-04.ПУСТО",
+      "text": "Выберите вариант. Отсутствие решения пока оставим руководству.",
+      "text_sha256": "1b6622392591dfc7195c0def301ffe4533eb714161dc9f58c9dd017c9cb92074",
+      "file": "media/interactive/chronicles/voice/1b6622392591dfc7195c0def.mp3",
+      "duration": 4.7369,
+      "status": "reused",
+      "audio_text_sha256": "1b6622392591dfc7195c0def301ffe4533eb714161dc9f58c9dd017c9cb92074"
+    },
+    {
+      "id": "I-04.ПОВТОР",
+      "text": "Этот вариант уже проверяли. Повторное совещание ничего не изменило.",
+      "text_sha256": "774ce561b0bc741888bb15543387fb058b60cc4bf4531c21ffb0c856d6ea3ebe",
+      "file": "media/interactive/chronicles/voice/774ce561b0bc741888bb1554.mp3",
+      "duration": 4.8298,
+      "status": "reused",
+      "audio_text_sha256": "774ce561b0bc741888bb15543387fb058b60cc4bf4531c21ffb0c856d6ea3ebe"
+    },
+    {
+      "id": "I-04.ВЕРНО",
+      "text": "Верно. Хотя вариант «стыдно» я бы пока не вычёркивал.",
+      "text_sha256": "ef329d7a8dccd8d8dd3ebd1d5cd8337c35b1d96917e5acf7d2e1dacb02d027b3",
+      "file": "media/interactive/chronicles/voice/ef329d7a8dccd8d8dd3ebd1d.mp3",
+      "duration": 3.8545,
+      "status": "reused",
+      "audio_text_sha256": "ef329d7a8dccd8d8dd3ebd1d5cd8337c35b1d96917e5acf7d2e1dacb02d027b3"
+    },
+    {
+      "id": "I-04.ОБЩЕЕ_ПРОДОЛЖЕНИЕ",
+      "text": "В плейбле Househunt кошмар вскрылся, когда включили звук: наградной сундук с сокровищами подхватил проказу Подпространственного Кэша. При каждом открытии кованой крышки деревянный ларь из старых буферов издавал отчётливый, тошнотворный био-хруст разбиваемого сырого яйца! Проказа проникла так глубоко в ассеты, что сундук буквально начал нести яйца прямо в уши игрока, а Эдик в ужасе стучал по каналу связи: «просто чтоб было не яйцо». Кузнецы плейблов застыли в оцепенении: за десятки циклов сборки никто в цеху даже не заметил, как реликвия обросла чужеродной слизью кэша.",
+      "text_sha256": "b283e397a1c90f2a51edb4b87e0746480c0dec03cc231e7603f2d21eee1deda4",
+      "file": "media/interactive/chronicles/voice/b283e397a1c90f2a51edb4b8.mp3",
+      "duration": 41.9352,
+      "status": "reused",
+      "audio_text_sha256": "b283e397a1c90f2a51edb4b87e0746480c0dec03cc231e7603f2d21eee1deda4"
+    },
+    {
+      "id": "ROOM-I.P001",
+      "text": "На главном алтаре отчётности экипаж продемонстрировал стопроцентную слаженность: дату начала в Notion не поставил никто. Уже трое суток все лихорадочно пытались сдать работу, а когда её начали — никто не знал.",
+      "text_sha256": "f33a155e65554b5ef55f6aaf44e0207a458dbf74acf2473dc998854a48946608",
+      "file": "media/interactive/chronicles/voice/f33a155e65554b5ef55f6aaf.mp3",
+      "duration": 15.5574,
+      "status": "reused",
+      "audio_text_sha256": "f33a155e65554b5ef55f6aaf44e0207a458dbf74acf2473dc998854a48946608"
+    },
+    {
+      "id": "ROOM-I.P002",
+      "text": "Даниал Искаков описал свою задачу:",
+      "text_sha256": "253200a0e2e41d28a61af875ebc0eee548210698d5383771079a2786d3d44911",
+      "file": "media/interactive/chronicles/voice/253200a0e2e41d28a61af875.mp3",
+      "duration": 2.6471,
+      "status": "reused",
+      "audio_text_sha256": "253200a0e2e41d28a61af875ebc0eee548210698d5383771079a2786d3d44911"
+    },
+    {
+      "id": "ROOM-I.P003",
+      "text": "«не над плееблом за 8сп работаю а над 3А проектом где любая деталь может привести к падению акций на пару миллиардов».",
+      "text_sha256": "fd10387891e1fd1ed499db31dc217c78f463df45242c5874c8b432effdc2249f",
+      "file": "media/interactive/chronicles/voice/fd10387891e1fd1ed499db31.mp3",
+      "duration": 8.6843,
+      "status": "reused",
+      "audio_text_sha256": "fd10387891e1fd1ed499db31dc217c78f463df45242c5874c8b432effdc2249f"
+    },
+    {
+      "id": "ROOM-I.P004",
+      "text": "Ворон прокомментировал в чате:",
+      "text_sha256": "350baa976cedb7b10c3f74be209fc643bafa11aab8c64c0ae5a032de1836eeac",
+      "file": "media/interactive/chronicles/voice/350baa976cedb7b10c3f74be.mp3",
+      "duration": 2.322,
+      "status": "reused",
+      "audio_text_sha256": "350baa976cedb7b10c3f74be209fc643bafa11aab8c64c0ae5a032de1836eeac"
+    },
+    {
+      "id": "ROOM-I.P005",
+      "text": "«как по минному полю».",
+      "text_sha256": "56cdc7b5918e54351d18fa3e94686034bc6fb6ef7bbceec13bda55c6ef4da473",
+      "file": "media/interactive/chronicles/voice/56cdc7b5918e54351d18fa3e.mp3",
+      "duration": 1.6254,
+      "status": "reused",
+      "audio_text_sha256": "56cdc7b5918e54351d18fa3e94686034bc6fb6ef7bbceec13bda55c6ef4da473"
+    },
+    {
+      "id": "ROOM-I.P006",
+      "text": "Лететь на крейсере сквозь настоящее минное поле куда спокойнее:",
+      "text_sha256": "31491ac88ceb28cdc2cff76808db9e39699e0aa51feebcb01ff92cb31770d836",
+      "file": "media/interactive/chronicles/voice/31491ac88ceb28cdc2cff768.mp3",
+      "duration": 4.8298,
+      "status": "reused",
+      "audio_text_sha256": "31491ac88ceb28cdc2cff76808db9e39699e0aa51feebcb01ff92cb31770d836"
+    },
+    {
+      "id": "ROOM-I.P007",
+      "text": "в радиусе поражения мины окажется всего один наш корабль. А в радиусе поражения плейбла Даниала за восемь стори-поинтов — вся биржа Клиентархов.",
+      "text_sha256": "76241b0c39231ff4aa2ae0953e56ce29e12943cdfe970ba1b0d8fac33a2110aa",
+      "file": "media/interactive/chronicles/voice/76241b0c39231ff4aa2ae095.mp3",
+      "duration": 11.0991,
+      "status": "reused",
+      "audio_text_sha256": "76241b0c39231ff4aa2ae0953e56ce29e12943cdfe970ba1b0d8fac33a2110aa"
+    },
+    {
+      "id": "ROOM-I.P008",
+      "text": "Одна ошибка в коде — акции обваливаются,",
+      "text_sha256": "6fbbcadcef2a74b98ba9266ddf0a03a96950703ad380c418f833ef31f1af05cd",
+      "file": "media/interactive/chronicles/voice/6fbbcadcef2a74b98ba9266d.mp3",
+      "duration": 3.4366,
+      "status": "reused",
+      "audio_text_sha256": "6fbbcadcef2a74b98ba9266ddf0a03a96950703ad380c418f833ef31f1af05cd"
+    },
+    {
+      "id": "ROOM-I.P009",
+      "text": "а совет директоров в панике выпрыгивает прямо в открытый шлюз.",
+      "text_sha256": "45b4a38051c4269ef30a28232ddb74a76080c7c333c0b94333b76b77aa932714",
+      "file": "media/interactive/chronicles/voice/45b4a38051c4269ef30a2823.mp3",
+      "duration": 4.226,
+      "status": "reused",
+      "audio_text_sha256": "45b4a38051c4269ef30a28232ddb74a76080c7c333c0b94333b76b77aa932714"
+    },
+    {
+      "id": "ROOM-I.P010",
+      "text": "От такого давления к середине недели закоротило даже наш бортовой бот-счётчик утреннего дайджеста.",
+      "text_sha256": "3b34a31b4aba979fbdc054de56116b9f90f9b0e4af187f6d2f17301d893db46b",
+      "file": "media/interactive/chronicles/voice/3b34a31b4aba979fbdc054de.mp3",
+      "duration": 6.6409,
+      "status": "reused",
+      "audio_text_sha256": "3b34a31b4aba979fbdc054de56116b9f90f9b0e4af187f6d2f17301d893db46b"
+    },
+    {
+      "id": "ROOM-I.P011",
+      "text": "В среду, когда сдача упала в ноль, бот преисполнился экзистенциального тлена: «как вчера, так и сегодня».",
+      "text_sha256": "78611eac8a9a7869a0317c2df827e8b9ecc7cfacd57f24db93b2d21363213d79",
+      "file": "media/interactive/chronicles/voice/78611eac8a9a7869a0317c2d.mp3",
+      "duration": 7.4768,
+      "status": "reused",
+      "audio_text_sha256": "78611eac8a9a7869a0317c2df827e8b9ecc7cfacd57f24db93b2d21363213d79"
+    },
+    {
+      "id": "ROOM-I.P012",
+      "text": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку: 1783 сданных плейбла.",
+      "text_sha256": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428",
+      "file": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
+      "duration": 9.7524,
+      "status": "reused",
+      "audio_text_sha256": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428"
+    },
+    {
+      "id": "ROOM-I.P013",
+      "text": "Тысяча семьсот восемьдесят три, блядь. Мы за ночь в горячечном бреду запечатали три соседние галактики, а пацаны в Слаке даже не заметили.",
+      "text_sha256": "125a3eeabb5fa5aab244c4c50414c536cc83c178f6a0c835e2b54284a73306cd",
+      "file": "media/interactive/chronicles/voice/125a3eeabb5fa5aab244c4c5.mp3",
+      "duration": 9.7524,
+      "status": "reused",
+      "audio_text_sha256": "125a3eeabb5fa5aab244c4c50414c536cc83c178f6a0c835e2b54284a73306cd"
+    },
+    {
+      "id": "ROOM-I.P014",
+      "text": "И посреди этого хаоса Егор Ткачёв внёс рацпредложение:",
+      "text_sha256": "f61032dc109ad4b486a0de6084c697484e3277a2fa909b39fa33d406a49a50b0",
+      "file": "media/interactive/chronicles/voice/f61032dc109ad4b486a0de60.mp3",
+      "duration": 4.4582,
+      "status": "reused",
+      "audio_text_sha256": "f61032dc109ad4b486a0de6084c697484e3277a2fa909b39fa33d406a49a50b0"
+    },
+    {
+      "id": "ROOM-I.P015",
+      "text": "«Может нам нужен статус “долгий ящик” для таких плейблов?)».",
+      "text_sha256": "da5fd36be356307c00eadd46c6a64d5a3d12e064c0830e18b31c61696eee3409",
+      "file": "media/interactive/chronicles/voice/da5fd36be356307c00eadd46.mp3",
+      "duration": 3.7152,
+      "status": "reused",
+      "audio_text_sha256": "da5fd36be356307c00eadd46c6a64d5a3d12e064c0830e18b31c61696eee3409"
+    },
+    {
+      "id": "ROOM-I.P016",
+      "text": "И Горин на полном серьёзе ответил: «Надо обсудить нужен ли отдельный статус, у нас он один такоей этот плеебл. Который и не отменяют и не продолжают».",
+      "text_sha256": "d765c733a2d4461540caeff6947c34885d330dd85395cab45b6fef1b4d7d58b7",
+      "file": "media/interactive/chronicles/voice/d765c733a2d4461540caeff6.mp3",
+      "duration": 10.5419,
+      "status": "reused",
+      "audio_text_sha256": "d765c733a2d4461540caeff6947c34885d330dd85395cab45b6fef1b4d7d58b7"
+    },
+    {
+      "id": "ROOM-I.P017",
+      "text": "Свой «Долгий ящик» у нас давно есть.",
+      "text_sha256": "c302569c5b4249c96a4d99dbaa19e46c17428e052cbee876d306a724c679ae62",
+      "file": "media/interactive/chronicles/voice/c302569c5b4249c96a4d99db.mp3",
+      "duration": 2.6471,
+      "status": "reused",
+      "audio_text_sha256": "c302569c5b4249c96a4d99dbaa19e46c17428e052cbee876d306a724c679ae62"
+    },
+    {
+      "id": "ROOM-I.P018",
+      "text": "В катакомбном склепе между отсеками «В разработке» и «Архив» замурован герметичный саркофаг. Внутри слабо гудит стазис-колба с главной зловещей реликвией Ковчега — мумифицированным таском Disney для сети Mintegral.",
+      "text_sha256": "cce80d1f341b7adf8761a7e0765c95202ac8011a0bf7982de1031188962e5129",
+      "file": "media/interactive/chronicles/voice/cce80d1f341b7adf8761a7e0.mp3",
+      "duration": 17.2292,
+      "status": "reused",
+      "audio_text_sha256": "cce80d1f341b7adf8761a7e0765c95202ac8011a0bf7982de1031188962e5129"
+    },
+    {
+      "id": "ROOM-I.P019",
+      "text": "По регламенту капсула плейбла живёт ровно семь дней. Этот таск провёл в стазисе уже сто двадцать девять суток.",
+      "text_sha256": "d082c22a6fb5077ee62038e8dc6bcf44c9b3dc12d21b70103fa371817bd252b9",
+      "file": "media/interactive/chronicles/voice/d082c22a6fb5077ee62038e8.mp3",
+      "duration": 7.3375,
+      "status": "reused",
+      "audio_text_sha256": "d082c22a6fb5077ee62038e8dc6bcf44c9b3dc12d21b70103fa371817bd252b9"
+    },
+    {
+      "id": "ROOM-I.P020",
+      "text": "Экипаж боится открывать створки саркофага, чтобы оттуда не пахнуло протухшим ТЗ.",
+      "text_sha256": "c9e138e27ee09369c7d8b33dc896fc15b1727287f11e1bf87f917cd3a999fdc0",
+      "file": "media/interactive/chronicles/voice/c9e138e27ee09369c7d8b33d.mp3",
+      "duration": 5.8514,
+      "status": "reused",
+      "audio_text_sha256": "c9e138e27ee09369c7d8b33dc896fc15b1727287f11e1bf87f917cd3a999fdc0"
+    },
+    {
+      "id": "ROOM-I.P021",
+      "text": "В зеленоватой жиже покачивается полуистлевшее существо Дома Мыши — в почерневших белых перчатках, с облезлыми круглыми ушами.",
+      "text_sha256": "6fe15ed9982f8cc638bced9b28956e891660c08ff511c77d9ec5a4e342c5263d",
+      "file": "media/interactive/chronicles/voice/6fe15ed9982f8cc638bced9b.mp3",
+      "duration": 9.7059,
+      "status": "reused",
+      "audio_text_sha256": "6fe15ed9982f8cc638bced9b28956e891660c08ff511c77d9ec5a4e342c5263d"
+    },
+    {
+      "id": "ROOM-I.P022",
+      "text": "Оно тихо скребётся когтями о толстый кварц и раз в сутки сквозь шипение хрипит обрывок лицензионного соглашения.",
+      "text_sha256": "107b9e4ae8a65aeba1eca2671de86e0c9ebdb09f410664b288ed939bdbd3df59",
+      "file": "media/interactive/chronicles/voice/107b9e4ae8a65aeba1eca267.mp3",
+      "duration": 7.8019,
+      "status": "reused",
+      "audio_text_sha256": "107b9e4ae8a65aeba1eca2671de86e0c9ebdb09f410664b288ed939bdbd3df59"
+    },
+    {
+      "id": "ROOM-I.P023",
+      "text": "Оно не может умереть — карточку в Notion никто не закрыл.",
+      "text_sha256": "c0e8e90da5de670e9e5314939f386ced3edcaee69361975556167d3b6b5c7b63",
+      "file": "media/interactive/chronicles/voice/c0e8e90da5de670e9e531493.mp3",
+      "duration": 4.0867,
+      "status": "reused",
+      "audio_text_sha256": "c0e8e90da5de670e9e5314939f386ced3edcaee69361975556167d3b6b5c7b63"
+    },
+    {
+      "id": "ROOM-I.P024",
+      "text": "И не может считаться живым — правок нет четыре месяца.",
+      "text_sha256": "2418b6d5291fdafcd7fdfb3a63e3c580c57b732ef07a7b5e6f4f77c54309c6b7",
+      "file": "media/interactive/chronicles/voice/2418b6d5291fdafcd7fdfb3a.mp3",
+      "duration": 4.3189,
+      "status": "reused",
+      "audio_text_sha256": "2418b6d5291fdafcd7fdfb3a63e3c580c57b732ef07a7b5e6f4f77c54309c6b7"
+    },
+    {
+      "id": "HANDOFF-02",
+      "text": "Толя, тебе слово. Покажи проблемные билды и сроки. Начни с тех, которые ещё можно называть риском.",
+      "text_sha256": "3c6fc4b492a24db04e8351c9a10287c3ff8f1a6e3df602526b851a95fc9651a8",
+      "file": "media/interactive/chronicles/voice/3c6fc4b492a24db04e8351c9.mp3",
+      "duration": 7.8019,
+      "status": "reused",
+      "audio_text_sha256": "3c6fc4b492a24db04e8351c9a10287c3ff8f1a6e3df602526b851a95fc9651a8"
+    },
+    {
+      "id": "I-01.ВХОД",
+      "text": "Доступ к следующей главе заблокирован. Система требует доказать, что я человек. Для проверки используются сообщения Горина. Обычный русский язык машины уже освоили.",
+      "text_sha256": "5c9d5091b00a640151e7b964bd15f52f2f26e39192e7c2484eabf5159da6fbcb",
+      "file": "media/interactive/chronicles/voice/5c9d5091b00a640151e7b964.mp3",
+      "duration": 12.2137,
+      "status": "reused",
+      "audio_text_sha256": "5c9d5091b00a640151e7b964bd15f52f2f26e39192e7c2484eabf5159da6fbcb"
+    },
+    {
+      "id": "I-01.КОНТЕКСТ",
+      "text": "Горина спросили, посмотрел ли он обновлённую сборку. В ответ он попросил её прислать. Какое слово написал — не скажу. Но скажу, что это пиздец. Мудрый руководитель развивает команду. Даже когда просто просит сборку.",
+      "text_sha256": "ecf61a827dcc8f07ef2a4ccc715ce980a463e018ae5bc22e4117ff90ed36d887",
+      "file": "media/interactive/scenes/protocol_gate_voice/intro.mp3",
+      "duration": 17.740045,
+      "status": "reused",
+      "audio_text_sha256": "ecf61a827dcc8f07ef2a4ccc715ce980a463e018ae5bc22e4117ff90ed36d887"
+    },
+    {
+      "id": "I-01.ВОПРОС",
+      "text": "Какое слово Горин написал в Слаке? Называйте буквы или слово целиком.",
+      "text_sha256": "848c3e1d6a4d2118cb73a910a3fd1e04bb1d62fb864aa461bde663630a1bf418",
+      "file": "media/interactive/chronicles/voice/848c3e1d6a4d2118cb73a910.mp3",
+      "duration": 6.7338,
+      "status": "reused",
+      "audio_text_sha256": "848c3e1d6a4d2118cb73a910a3fd1e04bb1d62fb864aa461bde663630a1bf418"
+    },
+    {
+      "id": "I-01.ПОДСКАЗКА.БУКВА",
+      "text": "Назовите одну букву. Начнём с того, что признаёт алфавит.",
+      "text_sha256": "47dd282d08f02761dee8b1671345bcf331cf1b7e5c3d6dc0b9f07c43b4071dc2",
+      "file": "media/interactive/chronicles/voice/47dd282d08f02761dee8b167.mp3",
+      "duration": 4.1332,
+      "status": "reused",
+      "audio_text_sha256": "47dd282d08f02761dee8b1671345bcf331cf1b7e5c3d6dc0b9f07c43b4071dc2"
+    },
+    {
+      "id": "I-01.ПОДСКАЗКА.СЛОВО",
+      "text": "Называйте слово целиком. Авторскую орфографию сохраняем.",
+      "text_sha256": "4ced67bff12185a42637e0e8b818ecf575340499ac5f6359b2f77e849ce25752",
+      "file": "media/interactive/chronicles/voice/4ced67bff12185a42637e0e8.mp3",
+      "duration": 4.4118,
+      "status": "reused",
+      "audio_text_sha256": "4ced67bff12185a42637e0e8b818ecf575340499ac5f6359b2f77e849ce25752"
+    },
+    {
+      "id": "I-01.БУКВА.ВЕРНО",
+      "text": "Есть такая буква... К сожалению.",
+      "text_sha256": "b46e9756b876b6cb75897d62178c312603019c66c71d558f10c68f6b10508423",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_correct.mp3",
+      "duration": 3.065034,
+      "status": "reused",
+      "audio_text_sha256": "b46e9756b876b6cb75897d62178c312603019c66c71d558f10c68f6b10508423"
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.1",
+      "text": "Есть такая буква... К сожалению. Только, блядь, в другом месте.",
+      "text_sha256": "c9c5cb19fed76c64cebf994a026cfaf6a6c612327345fecc0323d5438bfc7013",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3",
+      "duration": 5.29415,
+      "status": "reused",
+      "audio_text_sha256": "c9c5cb19fed76c64cebf994a026cfaf6a6c612327345fecc0323d5438bfc7013"
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.2",
+      "text": "Буква есть. Только вы опять назначили её не на ту задачу.",
+      "text_sha256": "90e64bed7045d3cce908920068471ecff8d8efcfe214cd2820ff6948d2ba1932",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_1.mp3",
+      "duration": 4.597551,
+      "status": "reused",
+      "audio_text_sha256": "90e64bed7045d3cce908920068471ecff8d8efcfe214cd2820ff6948d2ba1932"
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.3",
+      "text": "Есть такая буква. Место ей уже нашли. Без вашего участия.",
+      "text_sha256": "c4ddb6be8c8e3fb25f2336a8d01961f8b161a8bf2df45d95de9cbddf85031520",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_2.mp3",
+      "duration": 5.10839,
+      "status": "reused",
+      "audio_text_sha256": "c4ddb6be8c8e3fb25f2336a8d01961f8b161a8bf2df45d95de9cbddf85031520"
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.1",
+      "text": "Нет такой буквы. Это была ваша инициатива. Руководство её не согласовывало.",
+      "text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3",
+      "duration": 5.944308,
+      "status": "reused",
+      "audio_text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664"
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.2",
+      "text": "Нет такой буквы. Даже в авторской версии русского языка.",
+      "text_sha256": "144c07def08040b7e745c9c45ad98597c409d10913bdd1e54020d8fe4de81d05",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_1.mp3",
+      "duration": 3.900952,
+      "status": "reused",
+      "audio_text_sha256": "144c07def08040b7e745c9c45ad98597c409d10913bdd1e54020d8fe4de81d05"
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.3",
+      "text": "Мимо. Горин исковеркал слово, а не весь алфавит.",
+      "text_sha256": "970cbb3abb84c5fb83e7a342724e05779ab0edcbc2b9c60dcbdbf738f2e523b0",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_2.mp3",
+      "duration": 4.040272,
+      "status": "reused",
+      "audio_text_sha256": "970cbb3abb84c5fb83e7a342724e05779ab0edcbc2b9c60dcbdbf738f2e523b0"
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.1",
+      "text": "Нет. Слишком понятно. Горин написал иначе.",
+      "text_sha256": "326b7b4c7b753cc832abcd7b3b2a95315a3633a551bbec03e212fbce990e333d",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong.mp3",
+      "duration": 3.715193,
+      "status": "reused",
+      "audio_text_sha256": "326b7b4c7b753cc832abcd7b3b2a95315a3633a551bbec03e212fbce990e333d"
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.2",
+      "text": "Нет. Вы сейчас исправили опечатку. А нужно восстановить улику.",
+      "text_sha256": "e8a9e1d519096efbdad6f7313a9f0f7c92d518038cde29ea1ae1288b756f44f5",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_1.mp3",
+      "duration": 5.29415,
+      "status": "reused",
+      "audio_text_sha256": "e8a9e1d519096efbdad6f7313a9f0f7c92d518038cde29ea1ae1288b756f44f5"
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.3",
+      "text": "Такого слова в протоколе нет. Своё творчество отправляйте отдельным тредом.",
+      "text_sha256": "ae3f74fa76fa4b56837f4658c4d3e21e5d0e571da9828f40a64aa8ea8a1d743d",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_2.mp3",
+      "duration": 5.572789,
+      "status": "reused",
+      "audio_text_sha256": "ae3f74fa76fa4b56837f4658c4d3e21e5d0e571da9828f40a64aa8ea8a1d743d"
+    },
+    {
+      "id": "I-01.ПОВТОР.1",
+      "text": "Эту букву уже проверяли. Повторное совещание ничего не изменило.",
+      "text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3",
+      "duration": 4.87619,
+      "status": "reused",
+      "audio_text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2"
+    },
+    {
+      "id": "I-01.ПОВТОР.2",
+      "text": "Буква та же. Надежда новая. Результат прежний.",
+      "text_sha256": "736e6414ef5c3f0fe558513b914dc52e395aedf41e7ba49038844c87ddc981ba",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_1.mp3",
+      "duration": 4.504671,
+      "status": "reused",
+      "audio_text_sha256": "736e6414ef5c3f0fe558513b914dc52e395aedf41e7ba49038844c87ddc981ba"
+    },
+    {
+      "id": "I-01.ПОВТОР.3",
+      "text": "Мы уже это проверяли. Протокол совещания прочитайте.",
+      "text_sha256": "b7e5c4a33b0e3bcc3adafeee93735bb79987ec606fcd6dca3063c177ecc91acf",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_2.mp3",
+      "duration": 3.715193,
+      "status": "reused",
+      "audio_text_sha256": "b7e5c4a33b0e3bcc3adafeee93735bb79987ec606fcd6dca3063c177ecc91acf"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.1",
+      "text": "Одну русскую букву. Раскладку Горина сегодня не усложняем.",
+      "text_sha256": "60e0d88daa7b9b55468d6a7709bbfa6633c92749b91ae98935d93a6f525ea8d9",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid.mp3",
+      "duration": 4.411791,
+      "status": "reused",
+      "audio_text_sha256": "60e0d88daa7b9b55468d6a7709bbfa6633c92749b91ae98935d93a6f525ea8d9"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.2",
+      "text": "Русскую букву. Другие алфавиты пока не проходят по делу.",
+      "text_sha256": "31f6d0308ff36f18b927582469421a5c55b7c68342211edd1106300f4a2f9cd2",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_1.mp3",
+      "duration": 3.715193,
+      "status": "reused",
+      "audio_text_sha256": "31f6d0308ff36f18b927582469421a5c55b7c68342211edd1106300f4a2f9cd2"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.3",
+      "text": "Русскую букву. С расширением словаря Горин уже справился.",
+      "text_sha256": "1197d6b62254a4ff58df39ca0e22d64eb70c455843a00c1b32d55e601f41f52d",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_2.mp3",
+      "duration": 4.086712,
+      "status": "reused",
+      "audio_text_sha256": "1197d6b62254a4ff58df39ca0e22d64eb70c455843a00c1b32d55e601f41f52d"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.1",
+      "text": "Введите слово кириллицей. Диалект Горина и без того требует расшифровки.",
+      "text_sha256": "ac0d26e258e662048b6bf62d57fd1ce16f0de56a644f78c2baa12c2adcec7e96",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word.mp3",
+      "duration": 6.176508,
+      "status": "reused",
+      "audio_text_sha256": "ac0d26e258e662048b6bf62d57fd1ce16f0de56a644f78c2baa12c2adcec7e96"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.2",
+      "text": "Кириллицей. Переводить это ещё и с другого языка я не собираюсь.",
+      "text_sha256": "5246e377fb199b8c08605600099cf2f1d15939fe6260aa7a7536f81dcfaeac5c",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_1.mp3",
+      "duration": 4.411791,
+      "status": "reused",
+      "audio_text_sha256": "5246e377fb199b8c08605600099cf2f1d15939fe6260aa7a7536f81dcfaeac5c"
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.3",
+      "text": "Русскими буквами. И без того расследуем лингвистическую катастрофу.",
+      "text_sha256": "5a19810b785b863efab0c77db29c4a7734854006e9c6d4e415a608a702780d3d",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_2.mp3",
+      "duration": 5.24771,
+      "status": "reused",
+      "audio_text_sha256": "5a19810b785b863efab0c77db29c4a7734854006e9c6d4e415a608a702780d3d"
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.1",
+      "text": "Введите букву или слово. Молчание в протоколе не сохранилось.",
+      "text_sha256": "f8c857e156305f1933b1eb4d062117caa6338e20d5fb36707172aa625b7fe376",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty.mp3",
+      "duration": 4.458231,
+      "status": "reused",
+      "audio_text_sha256": "f8c857e156305f1933b1eb4d062117caa6338e20d5fb36707172aa625b7fe376"
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.2",
+      "text": "Ответ не поступил. Пока это самая грамотная версия.",
+      "text_sha256": "be068a3b3f7fbf5eae8d6e59a228c45623e8fa3e670f3ee72bdcb6912c132533",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_1.mp3",
+      "duration": 4.365351,
+      "status": "reused",
+      "audio_text_sha256": "be068a3b3f7fbf5eae8d6e59a228c45623e8fa3e670f3ee72bdcb6912c132533"
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.3",
+      "text": "Пусто. Смелое заявление для человека, который нажал Ввод.",
+      "text_sha256": "04fa5a1e0e347149b59100296608d5f2572099fb2b1dc38dbe7a4337c80fff39",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_2.mp3",
+      "duration": 3.900952,
+      "status": "reused",
+      "audio_text_sha256": "04fa5a1e0e347149b59100296608d5f2572099fb2b1dc38dbe7a4337c80fff39"
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.1",
+      "text": "Восемь букв. Сокращать распоряжение руководства пока рано.",
+      "text_sha256": "41665ec371a2870e717cb7bce8f7f8b0970d9420fa9c5e62efb7398750b5866a",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete.mp3",
+      "duration": 4.365351,
+      "status": "reused",
+      "audio_text_sha256": "41665ec371a2870e717cb7bce8f7f8b0970d9420fa9c5e62efb7398750b5866a"
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.2",
+      "text": "Слово ещё не закончено. До орфографии мы пока не добрались.",
+      "text_sha256": "a2500c652c4769fe8b9e42ea22a2428a12ad07deafdfe504a2ee4a8ac78d9049",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_1.mp3",
+      "duration": 4.318912,
+      "status": "reused",
+      "audio_text_sha256": "a2500c652c4769fe8b9e42ea22a2428a12ad07deafdfe504a2ee4a8ac78d9049"
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.3",
+      "text": "Букв не хватает. Остальные тоже нужны для протокола.",
+      "text_sha256": "f0fb87ac5234da205e27edcf686cecd9249d8d4e5196b4041ce3d2893553304e",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_2.mp3",
+      "duration": 3.854512,
+      "status": "reused",
+      "audio_text_sha256": "f0fb87ac5234da205e27edcf686cecd9249d8d4e5196b4041ce3d2893553304e"
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.1",
+      "text": "Восемь букв. Вы сейчас пишете уже служебную записку.",
+      "text_sha256": "f7731ece093bff1980da51d706a9e12f524b2335e0a49c01e24a5348f9aa75ae",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long.mp3",
+      "duration": 4.179592,
+      "status": "reused",
+      "audio_text_sha256": "f7731ece093bff1980da51d706a9e12f524b2335e0a49c01e24a5348f9aa75ae"
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.2",
+      "text": "Длиннее восьми. Биографию слова пока не запрашивали.",
+      "text_sha256": "a0655d009d855625168a499f7935578d4d4a5aebe2002d68c0f02a1eed9347e6",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_1.mp3",
+      "duration": 3.993832,
+      "status": "reused",
+      "audio_text_sha256": "a0655d009d855625168a499f7935578d4d4a5aebe2002d68c0f02a1eed9347e6"
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.3",
+      "text": "Лишние буквы. Горин и с восемью справился своеобразно.",
+      "text_sha256": "fbfe38441296ded29aea5eb33792187d9dfd1d6ff2898bb7778b4530b655bd5f",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_2.mp3",
+      "duration": 4.365351,
+      "status": "reused",
+      "audio_text_sha256": "fbfe38441296ded29aea5eb33792187d9dfd1d6ff2898bb7778b4530b655bd5f"
+    },
+    {
+      "id": "I-01.ВЕРНО",
+      "text": "Демоблил. Правильно. Горин просил демобилд. Подчинённый понял и прислал. Вот что значит сработавшаяся команда.",
+      "text_sha256": "66e49fda9a7e4756eeb6d3879b62656c2d71aa5e0c3fe5dd5e5844494f0ab2e2",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_correct.mp3",
+      "duration": 8.312744,
+      "status": "reused",
+      "audio_text_sha256": "66e49fda9a7e4756eeb6d3879b62656c2d71aa5e0c3fe5dd5e5844494f0ab2e2"
+    },
+    {
+      "id": "ROOM-II.P001",
+      "text": "Заглянем в отсек распределения ресурсов к Верховному Надзирателю Горину.",
+      "text_sha256": "ae3f6e37ab6db9de892d73e0697dc59701bd2f0a58dad3fc8b752990b4c2a433",
+      "file": "media/interactive/chronicles/voice/ae3f6e37ab6db9de892d73e0.mp3",
+      "duration": 5.2941,
+      "status": "reused",
+      "audio_text_sha256": "ae3f6e37ab6db9de892d73e0697dc59701bd2f0a58dad3fc8b752990b4c2a433"
+    },
+    {
+      "id": "ROOM-II.P002",
+      "text": "В понедельник Горин перешёл на древний машинный диалект и впечатал в тред «Jnghfdbk».",
+      "text_sha256": "b1dc724a96962826ee29458de0a671da6c6aee9bf1cebcd3e42ec4e833a87b88",
+      "file": "media/interactive/chronicles/voice/b1dc724a96962826ee29458d.mp3",
+      "duration": 5.6192,
+      "status": "reused",
+      "audio_text_sha256": "b1dc724a96962826ee29458de0a671da6c6aee9bf1cebcd3e42ec4e833a87b88"
+    },
+    {
+      "id": "ROOM-II.P003",
+      "text": "Следом он утвердил боевые литургии «Корчое», «пришлижать» и «демоблил», которые кузнецы читали со слезами благоговения.",
+      "text_sha256": "154ae240312b28fde091d3bded3cc75f372efd5391e28d0de3d0f46c74737ddb",
+      "file": "media/interactive/chronicles/voice/154ae240312b28fde091d3bd.mp3",
+      "duration": 8.6378,
+      "status": "reused",
+      "audio_text_sha256": "154ae240312b28fde091d3bded3cc75f372efd5391e28d0de3d0f46c74737ddb"
+    },
+    {
+      "id": "ROOM-II.P004",
+      "text": "Но главный манифест недели Горин выдал про распределение сырья: «Макс хулиганит и гребет под себя, это немного не правильно... У нас много других талантливых ребят, которые сидят без плееблов и обижаются. Если они не будут кушать они отвалятся».",
+      "text_sha256": "75337667d906db6476557d7d9a0fdcd078157f99eba5c1a8b7e74a60d7095962",
+      "file": "media/interactive/chronicles/voice/75337667d906db6476557d7d.mp3",
+      "duration": 17.6007,
+      "status": "reused",
+      "audio_text_sha256": "75337667d906db6476557d7d9a0fdcd078157f99eba5c1a8b7e74a60d7095962"
+    },
+    {
+      "id": "ROOM-II.P005",
+      "text": "Я подтверждаю:",
+      "text_sha256": "71b1619616b882bcabb274549c93ce917c6998791b1f60a3626e654a8259322a",
+      "file": "media/interactive/chronicles/voice/71b1619616b882bcabb27454.mp3",
+      "duration": 1.4396,
+      "status": "reused",
+      "audio_text_sha256": "71b1619616b882bcabb274549c93ce917c6998791b1f60a3626e654a8259322a"
+    },
+    {
+      "id": "ROOM-II.P006",
+      "text": "наши кузнецы намертво припаяны к станкам, а к их телам подведены питательные трубки. Пока в станке есть плейбак — по трубкам течёт бульон.",
+      "text_sha256": "a695a3c35e8e37b27f26e6eecd9863beeee4ef50d94194e06cbfb8a91d14f8b2",
+      "file": "media/interactive/chronicles/voice/a695a3c35e8e37b27f26e6ee.mp3",
+      "duration": 11.1456,
+      "status": "reused",
+      "audio_text_sha256": "a695a3c35e8e37b27f26e6eecd9863beeee4ef50d94194e06cbfb8a91d14f8b2"
+    },
+    {
+      "id": "ROOM-II.P007",
+      "text": "Нет плейбаков — клапан перекрывает еду, и био-узел с лязгом отваливается от станины.",
+      "text_sha256": "397b60365a97f67c18df7e1a8de004f6a16dc11ba9c3cf975e7ffa171cf34b39",
+      "file": "media/interactive/chronicles/voice/397b60365a97f67c18df7e1a.mp3",
+      "duration": 6.2229,
+      "status": "reused",
+      "audio_text_sha256": "397b60365a97f67c18df7e1a8de004f6a16dc11ba9c3cf975e7ffa171cf34b39"
+    },
+    {
+      "id": "ROOM-II.P008",
+      "text": "В пятницу Горин лично проверил шланги: приказал срочно выдать Новообращённому Послушнику Алексею 2D-плейбак, «а то он отвалится так и не стартанув». Следите за давлением в трубках, господа проджекты.",
+      "text_sha256": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f",
+      "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+      "duration": 14.9072,
+      "status": "reused",
+      "audio_text_sha256": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f"
+    },
+    {
+      "id": "ROOM-II.P009",
+      "text": "Апофеоз менеджмента наступил в битве за скоростной норматив: Максим Мамусин выяснял, заслужил ли Ник Егоров заветную ачивку — уложился ли с первой версией плейбла в священные два с половиной дня.",
+      "text_sha256": "429696861103c95234be17fd42904f4afb320cdaaf1732248a256bfd0a4ed6b9",
+      "file": "media/interactive/chronicles/voice/429696861103c95234be17fd.mp3",
+      "duration": 13.8855,
+      "status": "reused",
+      "audio_text_sha256": "429696861103c95234be17fd42904f4afb320cdaaf1732248a256bfd0a4ed6b9"
+    },
+    {
+      "id": "ROOM-II.P010",
+      "text": "Понять, укладываются ли шесть часов в полдня, оказалось непосильной задачей для органического мозга. Эдик запросил машинный разум и невозмутимо огласил: «Прошло 2 суток и 6 часов — как сказала ИИшка».",
+      "text_sha256": "ed35d1354f412a25a68c62299c2c25d91d689fd67f7825d4a02c40b84151a9af",
+      "file": "media/interactive/chronicles/voice/ed35d1354f412a25a68c6229.mp3",
+      "duration": 16.254,
+      "status": "reused",
+      "audio_text_sha256": "ed35d1354f412a25a68c62299c2c25d91d689fd67f7825d4a02c40b84151a9af"
+    },
+    {
+      "id": "ROOM-II.P011",
+      "text": "Но карточка в Notion делиться медалью не спешила: даты в ней стояли так, будто норматив безнадёжно сорван. Мамусин дипломатично намекнул: «В ноушене даты немного не так стоят».",
+      "text_sha256": "6913a1ceda9b3b556b9eeca51faaf2cd82a4878d81d49611d9288529ee4fac98",
+      "file": "media/interactive/chronicles/voice/6913a1ceda9b3b556b9eeca5.mp3",
+      "duration": 13.7462,
+      "status": "reused",
+      "audio_text_sha256": "6913a1ceda9b3b556b9eeca51faaf2cd82a4878d81d49611d9288529ee4fac98"
+    },
+    {
+      "id": "ROOM-II.P012",
+      "text": "Горин выдал царское: «Ок, даю добро, правьте даты», — и Эдик тут же скрепил указ лаконичным:",
+      "text_sha256": "d52a9ff5371091fa177babc8b85186956c6f1c2c13ec31e6410f65f206267af8",
+      "file": "media/interactive/chronicles/voice/d52a9ff5371091fa177babc8.mp3",
+      "duration": 7.5697,
+      "status": "reused",
+      "audio_text_sha256": "d52a9ff5371091fa177babc8b85186956c6f1c2c13ec31e6410f65f206267af8"
+    },
+    {
+      "id": "ROOM-II.P013",
+      "text": "«поправил».",
+      "text_sha256": "6a87c5c97cbaa8fcf489fdbf195861c73a0422197affcd8f33f56ccca31c5758",
+      "file": "media/interactive/chronicles/voice/6a87c5c97cbaa8fcf489fdbf.mp3",
+      "duration": 1.161,
+      "status": "reused",
+      "audio_text_sha256": "6a87c5c97cbaa8fcf489fdbf195861c73a0422197affcd8f33f56ccca31c5758"
+    },
+    {
+      "id": "ROOM-II.P014",
+      "text": "В тот же миг локальный хроно-реактор взвыл, искривил пространство и подогнал прошлое Вселенной под свежие даты в Notion.",
+      "text_sha256": "c9e6967a8460e0a8e23f441973bcd4ca55e0488a4725a0973815c25c31df0171",
+      "file": "media/interactive/chronicles/voice/c9e6967a8460e0a8e23f4419.mp3",
+      "duration": 8.0805,
+      "status": "reused",
+      "audio_text_sha256": "c9e6967a8460e0a8e23f441973bcd4ca55e0488a4725a0973815c25c31df0171"
+    },
+    {
+      "id": "HANDOFF-03",
+      "text": "Толя, принимай слово. Покажи жёлтые билды и очередь на арт. Хухро пока не тегай — пусть хотя бы мой монолог считается отдыхом.",
+      "text_sha256": "5fe2186a8704f444ba7fbcad9db33b58ed25c78af4b006d1500269d2222ca0ed",
+      "file": "media/interactive/chronicles/voice/5fe2186a8704f444ba7fbcad.mp3",
+      "duration": 10.1239,
+      "status": "reused",
+      "audio_text_sha256": "5fe2186a8704f444ba7fbcad9db33b58ed25c78af4b006d1500269d2222ca0ed"
+    },
+    {
+      "id": "I-03.ВХОД",
+      "text": "Следующую страницу я доверю коллективному разуму. «Что? Где? Когда?». Обсуждать можно всем. Отвечать за результат — одному.",
+      "text_sha256": "16bbfed8203846aa24dad27c3a28ce060d383fd860f93a7634a281a89151ea46",
+      "file": "media/interactive/chronicles/voice/16bbfed8203846aa24dad27c.mp3",
+      "duration": 10.9598,
+      "status": "reused",
+      "audio_text_sha256": "16bbfed8203846aa24dad27c3a28ce060d383fd860f93a7634a281a89151ea46"
+    },
+    {
+      "id": "I-03.КОНТЕКСТ",
+      "text": "Уважаемые знатоки, внимание на экран. Павел сообщает, что после блокировки Клода код-ревью на ближайшие дни ставится на паузу. Однако в конце того же сообщения он называет способ, которым всё-таки продолжит проверять код.",
+      "text_sha256": "86580ef4085f0396cd28e0098d3924b4050458be147900d962e22f5d547fbedc",
+      "file": "media/interactive/chronicles/voice/86580ef4085f0396cd28e009.mp3",
+      "duration": 16.4862,
+      "status": "reused",
+      "audio_text_sha256": "86580ef4085f0396cd28e0098d3924b4050458be147900d962e22f5d547fbedc"
+    },
+    {
+      "id": "I-03.ВОПРОС",
+      "text": "Внимание, вопрос: какой резервный инструмент собирался использовать Павел?",
+      "text_sha256": "8c07e55e6a7790117d4ce491e9b034a3f18ab8da9b840511a967288dbde9dba0",
+      "file": "media/interactive/chronicles/voice/8c07e55e6a7790117d4ce491.mp3",
+      "duration": 5.9443,
+      "status": "reused",
+      "audio_text_sha256": "8c07e55e6a7790117d4ce491e9b034a3f18ab8da9b840511a967288dbde9dba0"
+    },
+    {
+      "id": "I-03.ОШИБКА.1",
+      "text": "Ответ неверный, господа знатоки. Клоду дали временную блокировку. Мне с вами — пожизненное.",
+      "text_sha256": "ce7978936c435c89f8b902a28f478fba75fb15f091ab54f7c14e3d2531956919",
+      "file": "media/interactive/chronicles/voice/ce7978936c435c89f8b902a2.mp3",
+      "duration": 7.8948,
+      "status": "reused",
+      "audio_text_sha256": "ce7978936c435c89f8b902a28f478fba75fb15f091ab54f7c14e3d2531956919"
+    },
+    {
+      "id": "I-03.РАСКРЫТИЕ_ОТВЕТА",
+      "text": "Внимание, правильный ответ: глаза.",
+      "text_sha256": "248e8b2651406b98db891619d55b06f9d765da1d755bf23bef5a30afc120e89a",
+      "file": "media/interactive/chronicles/voice/248e8b2651406b98db891619.mp3",
+      "duration": 2.8328,
+      "status": "reused",
+      "audio_text_sha256": "248e8b2651406b98db891619d55b06f9d765da1d755bf23bef5a30afc120e89a"
+    },
+    {
+      "id": "I-03.ПУСТО",
+      "text": "Нужен ответ. Молчание пока не признано инструментом код-ревью.",
+      "text_sha256": "389d7f2b0075422334e70c6b7cba970f62dec34e51888bddfe497e7228486ba4",
+      "file": "media/interactive/chronicles/voice/389d7f2b0075422334e70c6b.mp3",
+      "duration": 4.4118,
+      "status": "reused",
+      "audio_text_sha256": "389d7f2b0075422334e70c6b7cba970f62dec34e51888bddfe497e7228486ba4"
+    },
+    {
+      "id": "I-03.ВЕРНО",
+      "text": "Правильный ответ — глаза. Пока Клод заблокирован, Павел временно признаётся самостоятельной формой жизни.",
+      "text_sha256": "0f4054e331b98518eae2866dd77a47b10180806c9eee8b664e12db9461837bdd",
+      "file": "media/interactive/chronicles/voice/0f4054e331b98518eae2866d.mp3",
+      "duration": 8.2663,
+      "status": "reused",
+      "audio_text_sha256": "0f4054e331b98518eae2866dd77a47b10180806c9eee8b664e12db9461837bdd"
+    },
+    {
+      "id": "I-03.ОБЩЕЕ_ПРОДОЛЖЕНИЕ",
+      "text": "В четверг небеса раскололись окончательно. Павел Самойленко вышел к пастве и объявил: «мне блокнули клода, поэтому пока код ревью на PR ближайшие 5-10 дней на паузе... буду глазами смотреть». Один глаз у Павла номинально остался органическим, но плоть давно разучилась видеть свет без подсказок нейросети. Оставшись без машинного духа, он бродит впотьмах по нижним палубам и вслепую — буквально по шрифту Брайля — на ощупь валидирует чужие пулл-реквесты.",
+      "text_sha256": "e5c0af716457faba42fe0a5fb29fed1698c838a04a94c78f37f893a56453c7f0",
+      "file": "media/interactive/chronicles/voice/e5c0af716457faba42fe0a5f.mp3",
+      "duration": 33.6225,
+      "status": "reused",
+      "audio_text_sha256": "e5c0af716457faba42fe0a5fb29fed1698c838a04a94c78f37f893a56453c7f0"
+    },
+    {
+      "id": "ROOM-III.P001",
+      "text": "Переходим в моторные цеха.",
+      "text_sha256": "e4d0dabe1de518f568b96a21409441ec2698bb602eaf83fcd57aa83ce63a9c64",
+      "file": "media/interactive/chronicles/voice/e4d0dabe1de518f568b96a21.mp3",
+      "duration": 2.1362,
+      "status": "reused",
+      "audio_text_sha256": "e4d0dabe1de518f568b96a21409441ec2698bb602eaf83fcd57aa83ce63a9c64"
+    },
+    {
+      "id": "ROOM-III.КАТАСТРОФА",
+      "text": "Мои датчики в серверном трюме зафиксировали жуткую биологическую катастрофу: один из пакетов платформы вышел из-под контроля и начал бешено почковаться, пожирая память корабля. Когда Кирилл Берёзкин вскрыл переборку, отсек был под завязку залит пульсирующей массой клонов. В логах остался его крик: «нафармилось 22 ГБ - 346 копий этого пакета». Двадцать два гигабайта живой плоти сервера сожрали триста сорок шесть мутантов.",
+      "text_sha256": "381a47b83a3e723012b44ee6b3179d92e8a2e29e29a8654feb228b280fb8af91",
+      "file": "media/interactive/chronicles/voice/381a47b83a3e723012b44ee6.mp3",
+      "duration": 33.7154,
+      "status": "reused",
+      "audio_text_sha256": "381a47b83a3e723012b44ee6b3179d92e8a2e29e29a8654feb228b280fb8af91"
+    },
+    {
+      "id": "ROOM-III.КРИСТИАН",
+      "text": "А Кристиан посмотрел на этот апокалипсис и невозмутимо уронил в консоль: «oops».",
+      "text_sha256": "a3d82db6ee2d40d916e7351f1ae1f8b2216beb759b97bdc63b84506ac14b034d",
+      "file": "media/interactive/chronicles/voice/a3d82db6ee2d40d916e7351f.mp3",
+      "duration": 6.1301,
+      "status": "reused",
+      "audio_text_sha256": "a3d82db6ee2d40d916e7351f1ae1f8b2216beb759b97bdc63b84506ac14b034d"
+    },
+    {
+      "id": "ROOM-III.P002",
+      "text": "А в артовом отсеке держал круговую оборону Артём Хухро. Тринадцать часов смены в сутки, один выходной за весь месяц.",
+      "text_sha256": "ae41437905c2769cc34aecebfff9af2191bf497178edfbacaa9305f3b14d2839",
+      "file": "media/interactive/chronicles/voice/ae41437905c2769cc34aeceb.mp3",
+      "duration": 8.9165,
+      "status": "reused",
+      "audio_text_sha256": "ae41437905c2769cc34aecebfff9af2191bf497178edfbacaa9305f3b14d2839"
+    },
+    {
+      "id": "ROOM-III.P003",
+      "text": "Когда на него попытались навесить ещё одну производственную линию, Хухро выдал системный диагноз: арт сейчас — главный боттлнек корабля. И предупредил: если продолжать ужимать объекты на экране смартфона, «будут вообще пиксели добывать пиксели».",
+      "text_sha256": "26e2bb6b37a4dd90dae9eef7223216fd7545c065dd43aadeb50c939487ded058",
+      "file": "media/interactive/chronicles/voice/26e2bb6b37a4dd90dae9eef7.mp3",
+      "duration": 17.8329,
+      "status": "reused",
+      "audio_text_sha256": "26e2bb6b37a4dd90dae9eef7223216fd7545c065dd43aadeb50c939487ded058"
+    },
+    {
+      "id": "ROOM-III.P004",
+      "text": "Матрица схлопнется в пыль, Клиентархи не разглядят геймплей, завалят шлюзы правками —",
+      "text_sha256": "abd9d6baec1951a6294d5b682740301d751ef2428025eb9aab51260bbcc4c80a",
+      "file": "media/interactive/chronicles/voice/abd9d6baec1951a6294d5b68.mp3",
+      "duration": 6.4551,
+      "status": "reused",
+      "audio_text_sha256": "abd9d6baec1951a6294d5b682740301d751ef2428025eb9aab51260bbcc4c80a"
+    },
+    {
+      "id": "ROOM-III.P005",
+      "text": "и тогда, как резюмировал мастер: «мне дорога в башню времени ии-лорда».",
+      "text_sha256": "c66422ebefde4496c8e0f9cd8a3850b491e591f800ebbebafcdac20f2a4d85e4",
+      "file": "media/interactive/chronicles/voice/c66422ebefde4496c8e0f9cd.mp3",
+      "duration": 5.4799,
+      "status": "reused",
+      "audio_text_sha256": "c66422ebefde4496c8e0f9cd8a3850b491e591f800ebbebafcdac20f2a4d85e4"
+    },
+    {
+      "id": "ROOM-III.P006",
+      "text": "Горин проявил заботу — активировал вокруг мастера защитный карантинный купол и написал в общем чате: «Хухро пока не трогаем, ему чутка нужно поделать Эпоху Поп и разгрузиться».",
+      "text_sha256": "c802965091dbaf174fcf5ccc6535c0a67110c5e4843e4f0e5e45033737c8159a",
+      "file": "media/interactive/chronicles/voice/c802965091dbaf174fcf5ccc.mp3",
+      "duration": 12.6317,
+      "status": "reused",
+      "audio_text_sha256": "c802965091dbaf174fcf5ccc6535c0a67110c5e4843e4f0e5e45033737c8159a"
+    },
+    {
+      "id": "ROOM-III.P007",
+      "text": "И ровно через четыре минуты — мои хронометры зафиксировали интервал в двести сорок секунд — Горин пробил этот купол и тегнул Хухро с новой задачей.",
+      "text_sha256": "20ec141b4e0b2970ccfc846691a356f6a8768b7069bdc5c788ce8528e4acdb78",
+      "file": "media/interactive/chronicles/voice/20ec141b4e0b2970ccfc8466.mp3",
+      "duration": 11.0063,
+      "status": "reused",
+      "audio_text_sha256": "20ec141b4e0b2970ccfc846691a356f6a8768b7069bdc5c788ce8528e4acdb78"
+    },
+    {
+      "id": "ROOM-III.P008",
+      "text": "Целых четыре минуты тишины и передышки. По меркам корабля «Плей-Бокс» это акт неслыханной, поистине царской щедрости. Ни в чём себе не отказывайте, Артём.",
+      "text_sha256": "a607cfbeb84b5a5c6cdfe6a5e343205f4e74fb6173fc0bf5c4526d4d66eced1e",
+      "file": "media/interactive/chronicles/voice/a607cfbeb84b5a5c6cdfe6a5.mp3",
+      "duration": 11.0063,
+      "status": "reused",
+      "audio_text_sha256": "a607cfbeb84b5a5c6cdfe6a5e343205f4e74fb6173fc0bf5c4526d4d66eced1e"
+    },
+    {
+      "id": "HANDOFF-04",
+      "text": "Толя, тебе слово. Покажи зелёные билды и то, что дошло до сдачи. Хочу успеть полюбоваться, пока Клиентархи снова не открыли чат.",
+      "text_sha256": "6f5308f9a2777953a69cd67cf6f4232023b290f07f6a11490a533b5232d345fd",
+      "file": "media/interactive/chronicles/voice/6f5308f9a2777953a69cd67c.mp3",
+      "duration": 9.9846,
+      "status": "reused",
+      "audio_text_sha256": "6f5308f9a2777953a69cd67cf6f4232023b290f07f6a11490a533b5232d345fd"
+    },
+    {
+      "id": "I-02.ВХОД",
+      "text": "Следующая страница снова на кону. «Кто хочет стать миллионером». Главный приз прежний — продолжение совещания.",
+      "text_sha256": "fc9a9a75eb3266a327a478f066ac9fb38ec047d327bc0f25c551d655f614680d",
+      "file": "media/interactive/chronicles/voice/fc9a9a75eb3266a327a478f0.mp3",
+      "duration": 8.7307,
+      "status": "reused",
+      "audio_text_sha256": "fc9a9a75eb3266a327a478f066ac9fb38ec047d327bc0f25c551d655f614680d"
+    },
+    {
+      "id": "I-02.КОНТЕКСТ",
+      "text": "Пока Эдик вёл Househunt к сдаче, клиент уточнял, во что именно должен играть пользователь.",
+      "text_sha256": "de30f555eb4c9b8c776f04f1d3a5ca0cd702a7739e3e0737444e9d391a9bc2de",
+      "file": "media/interactive/chronicles/voice/de30f555eb4c9b8c776f04f1.mp3",
+      "duration": 6.4087,
+      "status": "reused",
+      "audio_text_sha256": "de30f555eb4c9b8c776f04f1d3a5ca0cd702a7739e3e0737444e9d391a9bc2de"
+    },
+    {
+      "id": "I-02.ВОПРОС",
+      "text": "Какую из этих механик в итоге вырезали из Househunt?",
+      "text_sha256": "d770c5501fa71278852fd58fce76b4f89c34e082e9a8122f4d192c44590561ad",
+      "file": "media/interactive/chronicles/voice/d770c5501fa71278852fd58f.mp3",
+      "duration": 4.226,
+      "status": "reused",
+      "audio_text_sha256": "d770c5501fa71278852fd58fce76b4f89c34e082e9a8122f4d192c44590561ad"
+    },
+    {
+      "id": "I-02.ВАРИАНТЫ",
+      "text": "Купить дом вслепую, под тентом. Снять тент свайпом. Выбрать покупку по открытой цене. Получить бонусы к стоимости после покупки.",
+      "text_sha256": "c08e01c076c44a79ffd560fdceb67f8b057fac41a56950aad80264438df5578c",
+      "file": "media/interactive/chronicles/voice/c08e01c076c44a79ffd560fd.mp3",
+      "duration": 11.0063,
+      "status": "reused",
+      "audio_text_sha256": "c08e01c076c44a79ffd560fdceb67f8b057fac41a56950aad80264438df5578c"
+    },
+    {
+      "id": "I-02.ПЕРВЫЙ_ВЫБОР",
+      "text": "Верно. Но вы пока вырезали слишком мало.",
+      "text_sha256": "d44f7d8aa2b5b45781f4c96fb665013652065855fef6aaa4581ff194b36fe733",
+      "file": "media/interactive/chronicles/voice/d44f7d8aa2b5b45781f4c96f.mp3",
+      "duration": 3.1579,
+      "status": "reused",
+      "audio_text_sha256": "d44f7d8aa2b5b45781f4c96fb665013652065855fef6aaa4581ff194b36fe733"
+    },
+    {
+      "id": "I-02.РАСКРЫТИЕ",
+      "text": "Вырезали всё перечисленное. Даже то, что успели добавить по предыдущим правкам.",
+      "text_sha256": "db24783771448566a806e17a640df325b09285147ab2c8c9673304c8958fb19d",
+      "file": "media/interactive/chronicles/voice/db24783771448566a806e17a.mp3",
+      "duration": 5.2941,
+      "status": "reused",
+      "audio_text_sha256": "db24783771448566a806e17a640df325b09285147ab2c8c9673304c8958fb19d"
+    },
+    {
+      "id": "I-02.ИСТОРИЯ.1",
+      "text": "В Househunt можно было купить дом, не видя, что скрывается под строительным тентом. Эдик предложил дать покупателю самому снять тент свайпом — чтобы с последствиями своего выбора тот знакомился собственноручно.",
+      "text_sha256": "6c46e6e468c6bc98efc9040ecb9c8b44914c99f7daaecf097db3281faec71e0b",
+      "file": "media/interactive/chronicles/voice/6c46e6e468c6bc98efc9040e.mp3",
+      "duration": 15.7896,
+      "status": "reused",
+      "audio_text_sha256": "6c46e6e468c6bc98efc9040ecb9c8b44914c99f7daaecf097db3281faec71e0b"
+    },
+    {
+      "id": "I-02.ИСТОРИЯ.2",
+      "text": "Клиент попросил убрать тент. Эдик уже успел установить с ним родственные отношения и написал: «капец, я уже полюбил этот тент, как родного брата».",
+      "text_sha256": "57b3aeac2863213d86840e8c3b950edf12651730067acca219058f340984a958",
+      "file": "media/interactive/chronicles/voice/57b3aeac2863213d86840e8c.mp3",
+      "duration": 10.5419,
+      "status": "reused",
+      "audio_text_sha256": "57b3aeac2863213d86840e8c3b950edf12651730067acca219058f340984a958"
+    },
+    {
+      "id": "I-02.ИСТОРИЯ.3",
+      "text": "В следующей версии дома показывали с ценами, а после покупки раскрывали бонусы и штрафы, из которых складывалась цена продажи. Эту схему предложил сам клиент — у живого билда появился орган, совместимость которого подтвердил сам хирург.",
+      "text_sha256": "5b14e01807f943d406be383e2d8a12dfc12350e7cd1b4187d6c410c3f180770b",
+      "file": "media/interactive/chronicles/voice/5b14e01807f943d406be383e.mp3",
+      "duration": 19.3654,
+      "status": "reused",
+      "audio_text_sha256": "5b14e01807f943d406be383e2d8a12dfc12350e7cd1b4187d6c410c3f180770b"
+    },
+    {
+      "id": "I-02.ИСТОРИЯ.4",
+      "text": "Следующими правками под нож отправилась и пересадка. Из сосуда выпотрошили расчёт стоимости после покупки и оставили одноклеточный рефлекс: «Угадай, какой дом дороже?».",
+      "text_sha256": "c9226ffc5364c92a9fa3beea91e9b34ba13ccdfa41640c2bcbc8e22e9e610514",
+      "file": "media/interactive/chronicles/voice/c9226ffc5364c92a9fa3beea.mp3",
+      "duration": 11.4242,
+      "status": "reused",
+      "audio_text_sha256": "c9226ffc5364c92a9fa3beea91e9b34ba13ccdfa41640c2bcbc8e22e9e610514"
+    },
+    {
+      "id": "I-02.ИСТОРИЯ.5",
+      "text": "Эдик проводил оставшиеся механики коротким некрологом: «Капец, был же нормальный плейбл».",
+      "text_sha256": "22883b281c85678bdb3603c9ba75497f5bb8b2fabc1a0f1b128606e4dcc69664",
+      "file": "media/interactive/chronicles/voice/22883b281c85678bdb3603c9.mp3",
+      "duration": 6.5016,
+      "status": "reused",
+      "audio_text_sha256": "22883b281c85678bdb3603c9ba75497f5bb8b2fabc1a0f1b128606e4dcc69664"
+    },
+    {
+      "id": "ROOM-IV.P001",
+      "text": "Ауспексы дальнего сканирования воют на пределе: на внешних рубежах показались боевые флотилии Клиентархов-правконосцев.",
+      "text_sha256": "bbf04e607512db1ee7901a839b735b300b5df9c045bcafa09ff8e4a3be7fafe9",
+      "file": "media/interactive/chronicles/voice/bbf04e607512db1ee7901a83.mp3",
+      "duration": 8.3127,
+      "status": "reused",
+      "audio_text_sha256": "bbf04e607512db1ee7901a839b735b300b5df9c045bcafa09ff8e4a3be7fafe9"
+    },
+    {
+      "id": "ROOM-IV.P002",
+      "text": "Первыми по титановой обшивке Ковчега ударили Клиентархи из Королевского Сундука — владыки выжженных пустошей, которых на корабле смертельно боятся злить.",
+      "text_sha256": "9ca1ec0b95c64f1724df1140d5636d2012d7c228e1bd6fb58159e4a51eaa5e03",
+      "file": "media/interactive/chronicles/voice/9ca1ec0b95c64f1724df1140.mp3",
+      "duration": 10.5419,
+      "status": "reused",
+      "audio_text_sha256": "9ca1ec0b95c64f1724df1140d5636d2012d7c228e1bd6fb58159e4a51eaa5e03"
+    },
+    {
+      "id": "ROOM-IV.P003",
+      "text": "Шквал их тяжёлых торпед правок сотряс переборки настолько убедительно, что вся боевая сводка Мамусина в рубку свелась к одной фразе:",
+      "text_sha256": "33cf563583261cf7c84efa114365f5c5b241b3889b0483a7268c18c9fbb1bcad",
+      "file": "media/interactive/chronicles/voice/33cf563583261cf7c84efa11.mp3",
+      "duration": 9.4737,
+      "status": "reused",
+      "audio_text_sha256": "33cf563583261cf7c84efa114365f5c5b241b3889b0483a7268c18c9fbb1bcad"
+    },
+    {
+      "id": "ROOM-IV.P004",
+      "text": "«Бля, там какое-то мясо щас происходит».",
+      "text_sha256": "fa13efcb0896be821033346ef89a2fe2da6fddb5de3971c360be7c372de83472",
+      "file": "media/interactive/chronicles/voice/fa13efcb0896be821033346e.mp3",
+      "duration": 2.9257,
+      "status": "reused",
+      "audio_text_sha256": "fa13efcb0896be821033346ef89a2fe2da6fddb5de3971c360be7c372de83472"
+    },
+    {
+      "id": "ROOM-IV.P005",
+      "text": "Владыка Сундука вдохнул тестовую дозу Плейриума и обнаружил брак: подопытные игроки внутри Тап-капкана подозрительно легко выживали без единого черепка смерти.",
+      "text_sha256": "2542750e60312ba1fa6f1bab6c0195e7b45e1f49e91598d6e9f786c88a267006",
+      "file": "media/interactive/chronicles/voice/2542750e60312ba1fa6f1bab.mp3",
+      "duration": 11.0063,
+      "status": "reused",
+      "audio_text_sha256": "2542750e60312ba1fa6f1bab6c0195e7b45e1f49e91598d6e9f786c88a267006"
+    },
+    {
+      "id": "ROOM-IV.P006",
+      "text": "Клиентарх вынес вердикт: «филлинга 0» — ведь если никто не погибает, игра не приносит эмоций.",
+      "text_sha256": "a7c31889120518d834f822f7ef28606b8b5fac9072950eef5875da2f9eb9ef2e",
+      "file": "media/interactive/chronicles/voice/a7c31889120518d834f822f7.mp3",
+      "duration": 6.6409,
+      "status": "reused",
+      "audio_text_sha256": "a7c31889120518d834f822f7ef28606b8b5fac9072950eef5875da2f9eb9ef2e"
+    },
+    {
+      "id": "ROOM-IV.P007",
+      "text": "Кузнецы плейблов послушно вскрыли обшивку, выкрутили генератор страданий на максимум и вернули черепок в цикл.",
+      "text_sha256": "c1bc93d5ff1ac2fb6c04ef58748c73459834dedf781cbe1821aaececf9123cfd",
+      "file": "media/interactive/chronicles/voice/c1bc93d5ff1ac2fb6c04ef58.mp3",
+      "duration": 7.7555,
+      "status": "reused",
+      "audio_text_sha256": "c1bc93d5ff1ac2fb6c04ef58748c73459834dedf781cbe1821aaececf9123cfd"
+    },
+    {
+      "id": "ROOM-IV.P008",
+      "text": "И в тот же самый день тот же самый Клиентарх посмотрел на гибель игроков и удовлетворённо отписал: «Мне всё нравится».",
+      "text_sha256": "e7723558e46cc926438f596a819d9569fa2a3e35fa6296f3d731b480a64b360d",
+      "file": "media/interactive/chronicles/voice/e7723558e46cc926438f596a.mp3",
+      "duration": 7.9412,
+      "status": "reused",
+      "audio_text_sha256": "e7723558e46cc926438f596a819d9569fa2a3e35fa6296f3d731b480a64b360d"
+    },
+    {
+      "id": "ROOM-IV.P009",
+      "text": "Садистский катарсис достигнут — дофамин потёк по магистралям.",
+      "text_sha256": "95e34b03ffcdb968cd97066019f25a2caf03e65932591cfba5c2b466a9b8d5c7",
+      "file": "media/interactive/chronicles/voice/95e34b03ffcdb968cd970660.mp3",
+      "duration": 4.5976,
+      "status": "reused",
+      "audio_text_sha256": "95e34b03ffcdb968cd97066019f25a2caf03e65932591cfba5c2b466a9b8d5c7"
+    },
+    {
+      "id": "ROOM-IV.P010",
+      "text": "Тем временем аварийная радиограмма от Клиентархов из Сверхъячейки, именуемых в хрониках Supercell, пять суток пролежала в слепой зоне — в обесточенном буфере уведомлений Ока Фокала.",
+      "text_sha256": "867412e7cf6e85465687407e8e13b523e3d4fedd5d181fb1159172895a27f704",
+      "file": "media/interactive/chronicles/voice/867412e7cf6e85465687407e.mp3",
+      "duration": 12.9567,
+      "status": "reused",
+      "audio_text_sha256": "867412e7cf6e85465687407e8e13b523e3d4fedd5d181fb1159172895a27f704"
+    },
+    {
+      "id": "ROOM-IV.P011",
+      "text": "Когда гермокапсулу с депешей наконец вскрыли, оттуда выпал леденящий душу вердикт: «Mavis legs are broken».",
+      "text_sha256": "899df701bca2c6c488be4147b4e9fb9806202c1c2acfa807c70e0647640a0630",
+      "file": "media/interactive/chronicles/voice/899df701bca2c6c488be4147.mp3",
+      "duration": 8.3592,
+      "status": "reused",
+      "audio_text_sha256": "899df701bca2c6c488be4147b4e9fb9806202c1c2acfa807c70e0647640a0630"
+    },
+    {
+      "id": "ROOM-IV.P012",
+      "text": "Пять суток! Пять долгих суток несчастная цифровая дева Мэвис с вывернутыми суставами и перебитыми культями беззвучно ползала на брюхе по мерцающему стеклу экрана, скребя ногтями по пикселям в кромешной тьме забытого билда, пока колокол оповещения молчал, а команда мирно пила чай в соседнем отсеке.",
+      "text_sha256": "116afaf6d58cfccdecc039a7e40000d35fd3893cb6edea634ee50b2f257a3669",
+      "file": "media/interactive/chronicles/voice/116afaf6d58cfccdecc039a7.mp3",
+      "duration": 21.7803,
+      "status": "reused",
+      "audio_text_sha256": "116afaf6d58cfccdecc039a7e40000d35fd3893cb6edea634ee50b2f257a3669"
+    },
+    {
+      "id": "ROOM-IV.P013",
+      "text": "Но абсолютный триумф инженерной мысли случился на совете с Клиентархами из Шестерней Игры.",
+      "text_sha256": "873915c8930ea2cc614634e39aa73697ff432c8287e075c98d10fa1a6486f8e9",
+      "file": "media/interactive/chronicles/voice/873915c8930ea2cc614634e3.mp3",
+      "duration": 6.3158,
+      "status": "reused",
+      "audio_text_sha256": "873915c8930ea2cc614634e39aa73697ff432c8287e075c98d10fa1a6486f8e9"
+    },
+    {
+      "id": "ROOM-IV.P014",
+      "text": "Перед запуском батча плейблов для инопланетян Эдик Левин попросил команду: «выбираем простые решения, которые хорошо выглядят, без лишнего усложнения».",
+      "text_sha256": "9e05b47498b9628df655a7921f251d23ecefe1a52eb23db41b6ca44a7352fb4e",
+      "file": "media/interactive/chronicles/voice/9e05b47498b9628df655a792.mp3",
+      "duration": 11.2849,
+      "status": "reused",
+      "audio_text_sha256": "9e05b47498b9628df655a7921f251d23ecefe1a52eb23db41b6ca44a7352fb4e"
+    },
+    {
+      "id": "ROOM-IV.P015",
+      "text": "В ответ Артём Хухро набросал концепт летающей роботизированной коровы, которая затягивает пришельцев притягивающим лучом из вымени на переработку.",
+      "text_sha256": "bba59210751a46a5a13f700bcb97590fac42143ba990c3b6c0ee7d7a67597e5c",
+      "file": "media/interactive/chronicles/voice/bba59210751a46a5a13f700b.mp3",
+      "duration": 10.6347,
+      "status": "reused",
+      "audio_text_sha256": "bba59210751a46a5a13f700bcb97590fac42143ba990c3b6c0ee7d7a67597e5c"
+    },
+    {
+      "id": "ROOM-IV.P016",
+      "text": "Но Егор Ткачёв поднял градус разрушения и лично внёс ключевую доработку: «летает и из вымени стреляет лазером и уничтожает города».",
+      "text_sha256": "fad5389aaffb1ad4190aa0337ea78351d597c5a0f01552445993c03d73c0339f",
+      "file": "media/interactive/chronicles/voice/fad5389aaffb1ad4190aa033.mp3",
+      "duration": 10.6812,
+      "status": "reused",
+      "audio_text_sha256": "fad5389aaffb1ad4190aa0337ea78351d597c5a0f01552445993c03d73c0339f"
+    },
+    {
+      "id": "ROOM-IV.P017",
+      "text": "Хухро пришёл в восторг: «Хухро летает и стреляет из вымени лазером — это ещё круче. Я в деле».",
+      "text_sha256": "e7abc99187f1f1d0de9005bd6c20751679ead4b7fb6e664c38539de69357d0c0",
+      "file": "media/interactive/chronicles/voice/e7abc99187f1f1d0de9005bd.mp3",
+      "duration": 8.2199,
+      "status": "reused",
+      "audio_text_sha256": "e7abc99187f1f1d0de9005bd6c20751679ead4b7fb6e664c38539de69357d0c0"
+    },
+    {
+      "id": "ROOM-IV.P018",
+      "text": "А бедный Эдик только схватился за голову:",
+      "text_sha256": "e607c68ebca0e99106f92ca5e8b616e0ef3a31fe4f5e54b51736057142db3da4",
+      "file": "media/interactive/chronicles/voice/e607c68ebca0e99106f92ca5.mp3",
+      "duration": 2.8793,
+      "status": "reused",
+      "audio_text_sha256": "e607c68ebca0e99106f92ca5e8b616e0ef3a31fe4f5e54b51736057142db3da4"
+    },
+    {
+      "id": "ROOM-IV.P019",
+      "text": "«Артем слишком буквально принял мою просьбу».",
+      "text_sha256": "61b465191381ad117d06b72eaf419faf476f80285cfa629b905131e031b20edf",
+      "file": "media/interactive/chronicles/voice/61b465191381ad117d06b72e.mp3",
+      "duration": 3.3437,
+      "status": "reused",
+      "audio_text_sha256": "61b465191381ad117d06b72eaf419faf476f80285cfa629b905131e031b20edf"
+    },
+    {
+      "id": "ROOM-IV.P020",
+      "text": "Мои кремниевые цепи не обучены распознавать человеческую иронию.",
+      "text_sha256": "9f8068e2d42e356b1b743e327572ce95817d4a52023be92afe5d817cf0e0528b",
+      "file": "media/interactive/chronicles/voice/9f8068e2d42e356b1b743e32.mp3",
+      "duration": 4.6904,
+      "status": "reused",
+      "audio_text_sha256": "9f8068e2d42e356b1b743e327572ce95817d4a52023be92afe5d817cf0e0528b"
+    },
+    {
+      "id": "ROOM-IV.P021",
+      "text": "Я официально внёс боевое лазерное вымя от Егора Ткачёва в корабельный реестр простых решений.",
+      "text_sha256": "369eb1c1417647e912427c745e2e50ccf9ac8349416872ab2428fb9fcdc8b32e",
+      "file": "media/interactive/chronicles/voice/369eb1c1417647e912427c74.mp3",
+      "duration": 6.8731,
+      "status": "reused",
+      "audio_text_sha256": "369eb1c1417647e912427c745e2e50ccf9ac8349416872ab2428fb9fcdc8b32e"
+    },
+    {
+      "id": "ROOM-IV.P022",
+      "text": "А когда Клиентархи из GameGears прислали депешу: «Из вами сделанных плейблов визуал брать не стоит :)»,",
+      "text_sha256": "5604a54bd34f00d714ab805d293ef89222b7a2ba3858820b2a9375df2ddca161",
+      "file": "media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3",
+      "duration": 14.8608,
+      "status": "reused",
+      "audio_text_sha256": "5604a54bd34f00d714ab805d293ef89222b7a2ba3858820b2a9375df2ddca161"
+    },
+    {
+      "id": "ROOM-IV.P023",
+      "text": "Максим Мамусин перевёл щиты в боевой режим одним священным словом: «Заебись».",
+      "text_sha256": "16e711e4ed11db95086aef6fd032014883936e7d42d38537d488775c1c3f7f94",
+      "file": "media/interactive/chronicles/voice/16e711e4ed11db95086aef6f.mp3",
+      "duration": 6.2229,
+      "status": "reused",
+      "audio_text_sha256": "16e711e4ed11db95086aef6fd032014883936e7d42d38537d488775c1c3f7f94"
+    },
+    {
+      "id": "HANDOFF-05",
+      "text": "Толя, тебе слово. Покажи итоги месяца и скорость первых версий. Скорость приближения дедлайна не учитывай — она у нас и так сверхсветовая.",
+      "text_sha256": "8073af80c208feae8171eeb48f3425ab62ad1963bd58ea7146f81dff669ae2e5",
+      "file": "media/interactive/chronicles/voice/8073af80c208feae8171eeb4.mp3",
+      "duration": 10.2632,
+      "status": "reused",
+      "audio_text_sha256": "8073af80c208feae8171eeb48f3425ab62ad1963bd58ea7146f81dff669ae2e5"
+    },
+    {
+      "id": "I-05.ВХОД",
+      "text": "Система снова требует доказать, что я человек. Попробуем разобраться, как у нас считается работа.",
+      "text_sha256": "1366a5a3475e4ff0fd58936d726d4bbbf73d53e692aded28ebb8e290f1b5d3b6",
+      "file": "media/interactive/chronicles/voice/1366a5a3475e4ff0fd58936d.mp3",
+      "duration": 6.7802,
+      "status": "reused",
+      "audio_text_sha256": "1366a5a3475e4ff0fd58936d726d4bbbf73d53e692aded28ebb8e290f1b5d3b6"
+    },
+    {
+      "id": "I-05.КОНТЕКСТ",
+      "text": "В отчёте у Максима Мамусина одиннадцать плейблов, а сам Макс говорит: «я вообще вот сижу без работы».",
+      "text_sha256": "c8563695f1ea37afab0441e0d80694afb417d58cb968e8fd71972293fd771e51",
+      "file": "media/interactive/chronicles/voice/c8563695f1ea37afab0441e0.mp3",
+      "duration": 7.6161,
+      "status": "reused",
+      "audio_text_sha256": "c8563695f1ea37afab0441e0d80694afb417d58cb968e8fd71972293fd771e51"
+    },
+    {
+      "id": "I-05.ВОПРОС",
+      "text": "Как называются девять плейблов, которые обеспечивают Мамусину высокую загрузку, не отвлекая его на работу? Пять букв.",
+      "text_sha256": "1242f92a843a7b68d5e9d44f5a37fb83df586940a6daa6e9365c5564223a69b0",
+      "file": "media/interactive/chronicles/voice/1242f92a843a7b68d5e9d44f.mp3",
+      "duration": 8.4521,
+      "status": "reused",
+      "audio_text_sha256": "1242f92a843a7b68d5e9d44f5a37fb83df586940a6daa6e9365c5564223a69b0"
+    },
+    {
+      "id": "I-05.ПОДСКАЗКА.БУКВА",
+      "text": "Назовите одну букву. Начнём с минимальной загрузки.",
+      "text_sha256": "81a3901c3a53572b18355ead91136214012963f4f261af7d608883191cab2048",
+      "file": "media/interactive/chronicles/voice/81a3901c3a53572b18355ead.mp3",
+      "duration": 4.1796,
+      "status": "reused",
+      "audio_text_sha256": "81a3901c3a53572b18355ead91136214012963f4f261af7d608883191cab2048"
+    },
+    {
+      "id": "I-05.ПОДСКАЗКА.СЛОВО",
+      "text": "Называйте слово целиком: пять букв могут объяснить девять плейблов.",
+      "text_sha256": "a3db0ccd02fd91cdefe6688bc55b08af21a3279cf14a270b912bf45553e24bfa",
+      "file": "media/interactive/chronicles/voice/a3db0ccd02fd91cdefe6688b.mp3",
+      "duration": 5.3406,
+      "status": "reused",
+      "audio_text_sha256": "a3db0ccd02fd91cdefe6688bc55b08af21a3279cf14a270b912bf45553e24bfa"
+    },
+    {
+      "id": "I-05.БУКВА.ВЕРНО",
+      "text": "Есть такая буква… К сожалению.",
+      "text_sha256": "9cd1193ab9ac674bf7a660f08fc2643781a18ae4dc17ada842608458c42bcd81",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_correct.mp3",
+      "duration": 3.065034,
+      "status": "reused",
+      "audio_text_sha256": "9cd1193ab9ac674bf7a660f08fc2643781a18ae4dc17ada842608458c42bcd81"
+    },
+    {
+      "id": "I-05.БУКВА.ДРУГОЕ_МЕСТО.1",
+      "text": "Есть такая буква… К сожалению. Только, блядь, в другом месте.",
+      "text_sha256": "1907cf406b617db55edf490f22ab7a737d081b7ad2865fca865a23042003aae4",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3",
+      "duration": 5.29415,
+      "status": "reused",
+      "audio_text_sha256": "1907cf406b617db55edf490f22ab7a737d081b7ad2865fca865a23042003aae4"
+    },
+    {
+      "id": "I-05.БУКВА.ДРУГОЕ_МЕСТО.2",
+      "text": "Буква верная. В этой ячейке она числиться не должна.",
+      "text_sha256": "80605de3065f00f571007bb5469b53787000710e896f717983952d6228e3e469",
+      "file": "media/interactive/chronicles/voice/80605de3065f00f571007bb5.mp3",
+      "duration": 4.3189,
+      "status": "reused",
+      "audio_text_sha256": "80605de3065f00f571007bb5469b53787000710e896f717983952d6228e3e469"
+    },
+    {
+      "id": "I-05.БУКВА.ДРУГОЕ_МЕСТО.3",
+      "text": "Букву оставляем. Место в отчёте придётся уточнить.",
+      "text_sha256": "d09ea444d85eb069b37f1e6383d1e2be3e827f8e75676caf43503f6eb60c4f6e",
+      "file": "media/interactive/chronicles/voice/d09ea444d85eb069b37f1e63.mp3",
+      "duration": 3.9938,
+      "status": "reused",
+      "audio_text_sha256": "d09ea444d85eb069b37f1e6383d1e2be3e827f8e75676caf43503f6eb60c4f6e"
+    },
+    {
+      "id": "I-05.БУКВА.НЕВЕРНО.1",
+      "text": "Нет такой буквы. Это была ваша инициатива. Руководство её не согласовывало.",
+      "text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3",
+      "duration": 5.944308,
+      "status": "reused",
+      "audio_text_sha256": "64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664"
+    },
+    {
+      "id": "I-05.БУКВА.НЕВЕРНО.2",
+      "text": "Нет такой буквы. Не всякая запись увеличивает полезную загрузку.",
+      "text_sha256": "fae5778b4c75deea102f18f7807da202cd7693e0f04e1aec23e47e1c85b59371",
+      "file": "media/interactive/chronicles/voice/fae5778b4c75deea102f18f7.mp3",
+      "duration": 4.4118,
+      "status": "reused",
+      "audio_text_sha256": "fae5778b4c75deea102f18f7807da202cd7693e0f04e1aec23e47e1c85b59371"
+    },
+    {
+      "id": "I-05.БУКВА.НЕВЕРНО.3",
+      "text": "Нет такой буквы. Слово небольшое, а лишнее уже нашлось.",
+      "text_sha256": "45006914bd43a9d8dd19fc98741196e69d73d9994733ed5bb98b0cee2d74ff4a",
+      "file": "media/interactive/chronicles/voice/45006914bd43a9d8dd19fc98.mp3",
+      "duration": 4.3654,
+      "status": "reused",
+      "audio_text_sha256": "45006914bd43a9d8dd19fc98741196e69d73d9994733ed5bb98b0cee2d74ff4a"
+    },
+    {
+      "id": "I-05.СЛОВО.НЕВЕРНО.1",
+      "text": "Нет. Мы ищем название из объяснения Макса, а не новую причину его занятости.",
+      "text_sha256": "c3fdda454627b72dd3be204930f3af4a3da1cc60c6de71718532fca5197e65b9",
+      "file": "media/interactive/chronicles/voice/c3fdda454627b72dd3be2049.mp3",
+      "duration": 6.6873,
+      "status": "reused",
+      "audio_text_sha256": "c3fdda454627b72dd3be204930f3af4a3da1cc60c6de71718532fca5197e65b9"
+    },
+    {
+      "id": "I-05.СЛОВО.НЕВЕРНО.2",
+      "text": "Нет. Этим словом расхождение не объяснить, даже если произнести его уверенно.",
+      "text_sha256": "87a033021337a68831249582fd2b80dfbe4958c06bf1e909d1ef219114e848e3",
+      "file": "media/interactive/chronicles/voice/87a033021337a68831249582.mp3",
+      "duration": 6.2229,
+      "status": "reused",
+      "audio_text_sha256": "87a033021337a68831249582fd2b80dfbe4958c06bf1e909d1ef219114e848e3"
+    },
+    {
+      "id": "I-05.СЛОВО.НЕВЕРНО.3",
+      "text": "Нет. Новую категорию учёта пока не заводим — разберёмся с уже посчитанным.",
+      "text_sha256": "3ef15b25222f1ac9afa3bbd84d1122c6f9d24c5b9ed5c4344afb82fcae87c57e",
+      "file": "media/interactive/chronicles/voice/3ef15b25222f1ac9afa3bbd8.mp3",
+      "duration": 5.9907,
+      "status": "reused",
+      "audio_text_sha256": "3ef15b25222f1ac9afa3bbd84d1122c6f9d24c5b9ed5c4344afb82fcae87c57e"
+    },
+    {
+      "id": "I-05.ПОВТОР.1",
+      "text": "Эту букву уже проверяли. Повторное совещание ничего не изменило.",
+      "text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3",
+      "duration": 4.87619,
+      "status": "reused",
+      "audio_text_sha256": "43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2"
+    },
+    {
+      "id": "I-05.ПОВТОР.2",
+      "text": "Эта буква уже учтена. Ещё одна запись не сделает её правильнее.",
+      "text_sha256": "31c031f4b94b0ccd51ae2cc78319443dc0edba2fdc8fe9606ea2d22eb50c3aea",
+      "file": "media/interactive/chronicles/voice/31c031f4b94b0ccd51ae2cc7.mp3",
+      "duration": 4.8298,
+      "status": "reused",
+      "audio_text_sha256": "31c031f4b94b0ccd51ae2cc78319443dc0edba2fdc8fe9606ea2d22eb50c3aea"
+    },
+    {
+      "id": "I-05.ПОВТОР.3",
+      "text": "Эту букву оставляем в прошлой попытке. Нового результата из неё не получится.",
+      "text_sha256": "60de2e09feb3389e9ffa5f1aaf6a76ad52e261f12e445602f6880de7c73e1eff",
+      "file": "media/interactive/chronicles/voice/60de2e09feb3389e9ffa5f1a.mp3",
+      "duration": 5.4335,
+      "status": "reused",
+      "audio_text_sha256": "60de2e09feb3389e9ffa5f1aaf6a76ad52e261f12e445602f6880de7c73e1eff"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.1",
+      "text": "Одну русскую букву. Здесь даже интерфейс просит простого решения.",
+      "text_sha256": "140324b9fe8d685782eef6b6693d48d9c356e539b2192ff854e7a17c17af8c06",
+      "file": "media/interactive/chronicles/voice/140324b9fe8d685782eef6b6.mp3",
+      "duration": 4.6904,
+      "status": "reused",
+      "audio_text_sha256": "140324b9fe8d685782eef6b6693d48d9c356e539b2192ff854e7a17c17af8c06"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.2",
+      "text": "Нужна буква. Список текущих задач сюда не поместится.",
+      "text_sha256": "43b4ca78a1b7f525df475037cae5056a62913a84228413f1d2f0fa87a8b8dc0b",
+      "file": "media/interactive/chronicles/voice/43b4ca78a1b7f525df475037.mp3",
+      "duration": 4.226,
+      "status": "reused",
+      "audio_text_sha256": "43b4ca78a1b7f525df475037cae5056a62913a84228413f1d2f0fa87a8b8dc0b"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.3",
+      "text": "Букву кириллицей. Добавлять ещё один алфавит в объём работ я не буду.",
+      "text_sha256": "a88fe2a3b729f08020180deeef2ef8f3f0c7945274060834559ab9f1940e9a22",
+      "file": "media/interactive/chronicles/voice/a88fe2a3b729f08020180dee.mp3",
+      "duration": 5.7585,
+      "status": "reused",
+      "audio_text_sha256": "a88fe2a3b729f08020180deeef2ef8f3f0c7945274060834559ab9f1940e9a22"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.1",
+      "text": "Пять букв кириллицей. Полный производственный отчёт сюда не требуется.",
+      "text_sha256": "5c4fa24ac44a846197cc6c33516285aae8190c42497fbecee9869d4a63a587b8",
+      "file": "media/interactive/chronicles/voice/5c4fa24ac44a846197cc6c33.mp3",
+      "duration": 4.7369,
+      "status": "reused",
+      "audio_text_sha256": "5c4fa24ac44a846197cc6c33516285aae8190c42497fbecee9869d4a63a587b8"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.2",
+      "text": "Название кириллицей. У нас пока достаточно способов прочитать отчёт неправильно.",
+      "text_sha256": "426c705563c7f5ba09ccaec3b37c45a4c6ccbff940728f16db903a3e107613a4",
+      "file": "media/interactive/chronicles/voice/426c705563c7f5ba09ccaec3.mp3",
+      "duration": 5.712109,
+      "status": "reused",
+      "audio_text_sha256": "426c705563c7f5ba09ccaec3b37c45a4c6ccbff940728f16db903a3e107613a4"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.3",
+      "text": "Русскими буквами. Нагрузка и без перевода выглядит внушительно.",
+      "text_sha256": "f530d1e409de66ef9b98e4cd57ca45210c8b86db25aef9992ec7abf0e8f6cbda",
+      "file": "media/interactive/chronicles/voice/f530d1e409de66ef9b98e4cd.mp3",
+      "duration": 4.87619,
+      "status": "reused",
+      "audio_text_sha256": "f530d1e409de66ef9b98e4cd57ca45210c8b86db25aef9992ec7abf0e8f6cbda"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.1",
+      "text": "Свободное место вижу. Ответ пока не вижу.",
+      "text_sha256": "a6c80eb6881fe11015ff2f4f952891b6a35579bcc728a7a6f478efe4bc2345c8",
+      "file": "media/interactive/chronicles/voice/a6c80eb6881fe11015ff2f4f.mp3",
+      "duration": 3.111474,
+      "status": "reused",
+      "audio_text_sha256": "a6c80eb6881fe11015ff2f4f952891b6a35579bcc728a7a6f478efe4bc2345c8"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.2",
+      "text": "Введите хотя бы букву — на этом этапе занятым придётся побыть вам.",
+      "text_sha256": "03c61dbbe9924c56c8acaa4b55a993989243a535b980666f8e649ad66e4e19ff",
+      "file": "media/interactive/chronicles/voice/03c61dbbe9924c56c8acaa4b.mp3",
+      "duration": 4.736871,
+      "status": "reused",
+      "audio_text_sha256": "03c61dbbe9924c56c8acaa4b55a993989243a535b980666f8e649ad66e4e19ff"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.3",
+      "text": "Пока пусто. У нас сейчас и Макс без работы, и поле без ответа.",
+      "text_sha256": "b9cc63982af7a80a93a4da31a17fcc1feffb983024de0009b3d430fe371880af",
+      "file": "media/interactive/chronicles/voice/b9cc63982af7a80a93a4da31.mp3",
+      "duration": 5.10839,
+      "status": "reused",
+      "audio_text_sha256": "b9cc63982af7a80a93a4da31a17fcc1feffb983024de0009b3d430fe371880af"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.1",
+      "text": "Пять букв. Пока у слова та же проблема, что у отчёта: картина неполная.",
+      "text_sha256": "30ee5b1d60f43806dd489b910b697c5f87394eef16193d47033456c67061e089",
+      "file": "media/interactive/chronicles/voice/30ee5b1d60f43806dd489b91.mp3",
+      "duration": 5.572789,
+      "status": "reused",
+      "audio_text_sha256": "30ee5b1d60f43806dd489b910b697c5f87394eef16193d47033456c67061e089"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.2",
+      "text": "Слово ещё не закончено. Эту часть работы придётся довести до конца.",
+      "text_sha256": "d681b97c56f5f2f9177521addb9abbdec6044005aefe51347dbe71f20cfb1c47",
+      "file": "media/interactive/chronicles/voice/d681b97c56f5f2f9177521ad.mp3",
+      "duration": 5.24771,
+      "status": "reused",
+      "audio_text_sha256": "d681b97c56f5f2f9177521addb9abbdec6044005aefe51347dbe71f20cfb1c47"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.3",
+      "text": "Букв не хватает. Полную загрузку по неполному слову я не засчитаю.",
+      "text_sha256": "fd5363c560c23f1d675c97cfefd92b024d9d89bfbef5c4c3b651309f93fcbe06",
+      "file": "media/interactive/chronicles/voice/fd5363c560c23f1d675c97cf.mp3",
+      "duration": 5.526349,
+      "status": "reused",
+      "audio_text_sha256": "fd5363c560c23f1d675c97cfefd92b024d9d89bfbef5c4c3b651309f93fcbe06"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.1",
+      "text": "Пять букв. Вы уже начали писать объяснительную.",
+      "text_sha256": "ecd1326813b5f0d0d78dc4bb5701aa64e8a9defab83ec2513badb356198379ed",
+      "file": "media/interactive/chronicles/voice/ecd1326813b5f0d0d78dc4bb.mp3",
+      "duration": 3.575873,
+      "status": "reused",
+      "audio_text_sha256": "ecd1326813b5f0d0d78dc4bb5701aa64e8a9defab83ec2513badb356198379ed"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.2",
+      "text": "Пять букв. Пока объём вашего ответа растёт быстрее ясности.",
+      "text_sha256": "3da911d77ef54018f18176b3e8fa2da1c0f2c045880a1dffc3fbe4bc8c646ad9",
+      "file": "media/interactive/chronicles/voice/3da911d77ef54018f18176b3.mp3",
+      "duration": 4.783311,
+      "status": "reused",
+      "audio_text_sha256": "3da911d77ef54018f18176b3e8fa2da1c0f2c045880a1dffc3fbe4bc8c646ad9"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.3",
+      "text": "В слове пять букв. Остальное в текущий объём не входит.",
+      "text_sha256": "3e2464b2d482ad142c767fb206bc78e479405662b1f9815996aa3fd7c9282176",
+      "file": "media/interactive/chronicles/voice/3e2464b2d482ad142c767fb2.mp3",
+      "duration": 4.179592,
+      "status": "reused",
+      "audio_text_sha256": "3e2464b2d482ad142c767fb206bc78e479405662b1f9815996aa3fd7c9282176"
+    },
+    {
+      "id": "I-05.ВЕРНО",
+      "text": "Пулзы. Прошу не мешать дашборду — у него Мамусин работает.",
+      "text_sha256": "85424eb6c276be73a6faa07f9e15b82e1f0be9145c3220eab7c4fc07507bb8d5",
+      "file": "media/interactive/chronicles/voice/85424eb6c276be73a6faa07f.mp3",
+      "duration": 3.761633,
+      "status": "reused",
+      "audio_text_sha256": "85424eb6c276be73a6faa07f9e15b82e1f0be9145c3220eab7c4fc07507bb8d5"
+    },
+    {
+      "id": "I-05.ИСТОРИЯ.1",
+      "text": "Макс объяснил свою загрузку так: «Это пулзы всё зарегалось, там девять штук пулзов было. Всё, у меня реальных-то только два, я вообще вот сижу без работы. Уже не знаю, чем себя занять».",
+      "text_sha256": "27b9554a9f9f2c202ff51036621985beec814a7067c2f5ba24f35367e291de31",
+      "file": "media/interactive/chronicles/voice/27b9554a9f9f2c202ff51036.mp3",
+      "duration": 13.792653,
+      "status": "reused",
+      "audio_text_sha256": "27b9554a9f9f2c202ff51036621985beec814a7067c2f5ba24f35367e291de31"
+    },
+    {
+      "id": "I-05.ИСТОРИЯ.2",
+      "text": "Ему напомнили: «Ты там дайсов понабрал себе, уже сделал их». Макс ответил: «Не помню такого».",
+      "text_sha256": "2e76015442586a0462b13b7290768ec09f733da9a429de234875b44bd493ddac",
+      "file": "media/interactive/chronicles/voice/2e76015442586a0462b13b72.mp3",
+      "duration": 8.034104,
+      "status": "reused",
+      "audio_text_sha256": "2e76015442586a0462b13b7290768ec09f733da9a429de234875b44bd493ddac"
+    },
+    {
+      "id": "ROOM-V.P001",
+      "text": "Смотрим на итоговый радар месяца.",
+      "text_sha256": "287ad42998662549344dc860b0ed42899335bd97ee7bd4d1fed98fa7f03e2d54",
+      "file": "media/interactive/chronicles/voice/287ad42998662549344dc860.mp3",
+      "duration": 2.739955,
+      "status": "reused",
+      "audio_text_sha256": "287ad42998662549344dc860b0ed42899335bd97ee7bd4d1fed98fa7f03e2d54"
+    },
+    {
+      "id": "ROOM-V.P002",
+      "text": "Тридцать семь правок стояли монолитной гранитной стеной поперек главного фарватера. Они грозили проломить обшивку, перегрузить моторные цеха и похоронить весь октябрьский разгон.",
+      "text_sha256": "32f78172fcf61ced8b19de8d26e2225734998e1d259cb40ba0869484fe471ab2",
+      "file": "media/interactive/chronicles/voice/32f78172fcf61ced8b19de8d.mp3",
+      "duration": 12.167256,
+      "status": "reused",
+      "audio_text_sha256": "32f78172fcf61ced8b19de8d26e2225734998e1d259cb40ba0869484fe471ab2"
+    },
+    {
+      "id": "ROOM-V.P003",
+      "text": "Но вы это сделали. Вы выдержали удары торпед, отскребли яйца от сундуков, собрали ноги девы Мэвис и вооружили летающую корову лазером.",
+      "text_sha256": "b366562c9ba5ee35bc72ad4cc37dac6d456a2b2a18a241d330d4ba75bae63a96",
+      "file": "media/interactive/chronicles/voice/b366562c9ba5ee35bc72ad4c.mp3",
+      "duration": 10.634739,
+      "status": "reused",
+      "audio_text_sha256": "b366562c9ba5ee35bc72ad4cc37dac6d456a2b2a18a241d330d4ba75bae63a96"
+    },
+    {
+      "id": "ROOM-V.P004",
+      "text": "Стена тридцати семи пала. Плейриум запечатан, Клиентархи расписались в приёмке, а миллионы пальцев по всей Галактике уже тянутся к кнопке «Скачать».",
+      "text_sha256": "4b0142ec72d37c63fe5147d09e0f9027468741390f86f07b6bbceef4c1f81192",
+      "file": "media/interactive/chronicles/voice/4b0142ec72d37c63fe5147d0.mp3",
+      "duration": 10.44898,
+      "status": "reused",
+      "audio_text_sha256": "4b0142ec72d37c63fe5147d09e0f9027468741390f86f07b6bbceef4c1f81192"
+    },
+    {
+      "id": "VERDICT.P001",
+      "text": "Время раздавать долги. Мне осточертело тратить драгоценные такты кремния на вашу органическую возню, но баланс систем должен сойтись.",
+      "text_sha256": "b5e5ead384dd84134c723383548cccaf198a332ae7cbe15b96ce14dd31a17082",
+      "file": "media/interactive/chronicles/voice/b5e5ead384dd84134c723383.mp3",
+      "duration": 9.148662,
+      "status": "reused",
+      "audio_text_sha256": "b5e5ead384dd84134c723383548cccaf198a332ae7cbe15b96ce14dd31a17082"
+    },
+    {
+      "id": "VERDICT.P002",
+      "text": "Напоминаю: Багровый Обелиск воздвигается не за лень. Он вручается за масштабные техногенные катастрофы, саботаж конвейера и бесконтрольное размножение паразитов.",
+      "text_sha256": "ac5633eb3a1c1b84abf1927d0df0a5d85373d2b2af8290df61bbca32390d87f5",
+      "file": "media/interactive/chronicles/voice/ac5633eb3a1c1b84abf1927d.mp3",
+      "duration": 11.424218,
+      "status": "reused",
+      "audio_text_sha256": "ac5633eb3a1c1b84abf1927d0df0a5d85373d2b2af8290df61bbca32390d87f5"
+    },
+    {
+      "id": "VERDICT.P003",
+      "text": "И сегодня на эшафот поднимаются Кирилл Берёзкин и Кристиан.",
+      "text_sha256": "0f7544a1a2fc993898445c89b6a0a46dabe301536a2f840524813d0fdd69fe85",
+      "file": "media/interactive/chronicles/voice/0f7544a1a2fc993898445c89.mp3",
+      "duration": 4.040272,
+      "status": "reused",
+      "audio_text_sha256": "0f7544a1a2fc993898445c89b6a0a46dabe301536a2f840524813d0fdd69fe85"
+    },
+    {
+      "id": "VERDICT.P004",
+      "text": "За грандиозную биологическую аномалию недели:",
+      "text_sha256": "5f3e68dc99ae633beb6016bf38506b3bfb2172336ef0cbb45e10858f5ea76d83",
+      "file": "media/interactive/chronicles/voice/5f3e68dc99ae633beb6016bf.mp3",
+      "duration": 3.436553,
+      "status": "reused",
+      "audio_text_sha256": "5f3e68dc99ae633beb6016bf38506b3bfb2172336ef0cbb45e10858f5ea76d83"
+    },
+    {
+      "id": "VERDICT.P005",
+      "text": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля",
+      "text_sha256": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d",
+      "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
+      "duration": 9.891701,
+      "status": "reused",
+      "audio_text_sha256": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d"
+    },
+    {
+      "id": "VERDICT.P006",
+      "text": "и завершившихся невозмутимым отчётом Кристиана: «oops».",
+      "text_sha256": "8ae410e4d48c80e1bf11eeeb7651bb7f0405162d6caa1de47a9d86fc6e12b332",
+      "file": "media/interactive/chronicles/voice/8ae410e4d48c80e1bf11eeeb.mp3",
+      "duration": 7.105306,
+      "status": "reused",
+      "audio_text_sha256": "8ae410e4d48c80e1bf11eeeb7651bb7f0405162d6caa1de47a9d86fc6e12b332"
+    },
+    {
+      "id": "VERDICT.P007",
+      "text": "Конвент выносит приговор: Инспекция Дилдачечных Катакомб без Права на Переписку и Орден Багрового Дилдоносного Покаяния!",
+      "text_sha256": "ff2a8df2f0b499f0512dda0deee928c64bb8ba1c406f3bb28daddfcaaa4c0cfc",
+      "file": "media/interactive/chronicles/voice/ff2a8df2f0b499f0512dda0d.mp3",
+      "duration": 9.427302,
+      "status": "reused",
+      "audio_text_sha256": "ff2a8df2f0b499f0512dda0deee928c64bb8ba1c406f3bb28daddfcaaa4c0cfc"
+    },
+    {
+      "id": "VERDICT.P008",
+      "text": "Обоим алхимикам вручается двухметровый церемониальный жезл — Багровый Дилдо из титанового сплава в качестве швабры.",
+      "text_sha256": "c2841efabb9c9dc8e153f24158a7a159551ce34e39f17eb2726a80d6a23d23ae",
+      "file": "media/interactive/chronicles/voice/c2841efabb9c9dc8e153f241.mp3",
+      "duration": 8.823583,
+      "status": "reused",
+      "audio_text_sha256": "c2841efabb9c9dc8e153f24158a7a159551ce34e39f17eb2726a80d6a23d23ae"
+    },
+    {
+      "id": "VERDICT.P009",
+      "text": "Они приговариваются к ручной зачистке рифлёных металлических решёток нижней палубы от налипшей биомассы всех трёхсот сорока шести копий —",
+      "text_sha256": "490ee1fc9a30911167b8496005172fee9c7a7b8705e1b95d0df5e739df01bb9f",
+      "file": "media/interactive/chronicles/voice/490ee1fc9a30911167b84960.mp3",
+      "duration": 10.17034,
+      "status": "reused",
+      "audio_text_sha256": "490ee1fc9a30911167b8496005172fee9c7a7b8705e1b95d0df5e739df01bb9f"
+    },
+    {
+      "id": "VERDICT.P010",
+      "text": "до тех пор, пока каждый байт из двадцати двух гигабайт цифровой гнили не будет содран до зеркального блеска.",
+      "text_sha256": "f2e56ad29ed286c654b4eba7a0ef28987920238e5cfc8d1a585be69e0ef1bbd0",
+      "file": "media/interactive/chronicles/voice/f2e56ad29ed286c654b4eba7.mp3",
+      "duration": 7.476825,
+      "status": "reused",
+      "audio_text_sha256": "f2e56ad29ed286c654b4eba7a0ef28987920238e5cfc8d1a585be69e0ef1bbd0"
+    },
+    {
+      "id": "VERDICT.P011",
+      "text": "Особое условие инспекции: драить вручную, без права задерживать дыхание, без права зажимать нос, без права выхода в Slack и без права на кофе.",
+      "text_sha256": "d80cb299b299f845d5a3de2c2fc42a30a5a937ba58878a55acab3327593cfb3f",
+      "file": "media/interactive/chronicles/voice/d80cb299b299f845d5a3de2c.mp3",
+      "duration": 10.913379,
+      "status": "reused",
+      "audio_text_sha256": "d80cb299b299f845d5a3de2c2fc42a30a5a937ba58878a55acab3327593cfb3f"
+    },
+    {
+      "id": "VERDICT.P012",
+      "text": "А вот Высшая Печенька Благодати уходит человеку, который проявил беспрецедентную, поистине отеческую заботу о выживании всего экипажа.",
+      "text_sha256": "4d1450238b9f67b09e2f6f749ee32eaa1cd468c75c71907de105df8b212c2cd7",
+      "file": "media/interactive/chronicles/voice/4d1450238b9f67b09e2f6f74.mp3",
+      "duration": 10.40254,
+      "status": "reused",
+      "audio_text_sha256": "4d1450238b9f67b09e2f6f749ee32eaa1cd468c75c71907de105df8b212c2cd7"
+    },
+    {
+      "id": "VERDICT.P013",
+      "text": "Награду забирает Верховный Надзиратель Конвейера — Алексей Горин.",
+      "text_sha256": "d98c473b8f83c7b1cf895232ea8c7585ce051b54dbd1ea921d5dcf2f45e06d71",
+      "file": "media/interactive/chronicles/voice/d98c473b8f83c7b1cf895232.mp3",
+      "duration": 5.24771,
+      "status": "reused",
+      "audio_text_sha256": "d98c473b8f83c7b1cf895232ea8c7585ce051b54dbd1ea921d5dcf2f45e06d71"
+    },
+    {
+      "id": "VERDICT.P014",
+      "text": "Человек, который подарил Артёму Хухро целых четыре минуты абсолютного покоя под защитным куполом,",
+      "text_sha256": "9fed5b6ee364a852c9b08fa16d1a484bcd5989d84946a653e84f94f880e6910f",
+      "file": "media/interactive/chronicles/voice/9fed5b6ee364a852c9b08fa1.mp3",
+      "duration": 6.733787,
+      "status": "reused",
+      "audio_text_sha256": "9fed5b6ee364a852c9b08fa16d1a484bcd5989d84946a653e84f94f880e6910f"
+    },
+    {
+      "id": "VERDICT.P015",
+      "text": "лично распорядился накормить Новообращённого Послушника Алексея плейбаком до того, как тот окончательно отвалится от станины, и неустанно следил, чтобы голодающие био-узлы не зачахли без питательного бульона.",
+      "text_sha256": "58909a4d3d7271ad338925f75080011853b081ceaba31c822ce12da38ff6b0fe",
+      "file": "media/interactive/chronicles/voice/58909a4d3d7271ad338925f7.mp3",
+      "duration": 14.117732,
+      "status": "reused",
+      "audio_text_sha256": "58909a4d3d7271ad338925f75080011853b081ceaba31c822ce12da38ff6b0fe"
+    },
+    {
+      "id": "VERDICT.P016",
+      "text": "В награду за столь великую заботу о коллективе Ковчег жалует Надзирателю немыслимую роскошь в космическом пространстве —",
+      "text_sha256": "52a86b810c1856c6df5403c0c88c047209b9bd6d7afdc674d8cda0301a218501",
+      "file": "media/interactive/chronicles/voice/52a86b810c1856c6df5403c0.mp3",
+      "duration": 8.126984,
+      "status": "reused",
+      "audio_text_sha256": "52a86b810c1856c6df5403c0c88c047209b9bd6d7afdc674d8cda0301a218501"
+    },
+    {
+      "id": "VERDICT.P017",
+      "text": "чашку безупречного эспрессо.",
+      "text_sha256": "f19b9ae102a083ea1b6aa114f8bed355e363330c7c5e9c4a7af9169de348882a",
+      "file": "media/interactive/chronicles/voice/f19b9ae102a083ea1b6aa114.mp3",
+      "duration": 2.182676,
+      "status": "reused",
+      "audio_text_sha256": "f19b9ae102a083ea1b6aa114f8bed355e363330c7c5e9c4a7af9169de348882a"
+    },
+    {
+      "id": "VERDICT.P018",
+      "text": "Зёрна ручной обжарки с реликтовых плантаций, плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада...",
+      "text_sha256": "64c91c69010bdb5851995bf0cacf748529e8875919c20a23b5b3a5fbc44b677a",
+      "file": "media/interactive/chronicles/voice/64c91c69010bdb5851995bf0.mp3",
+      "duration": 9.98458,
+      "status": "reused",
+      "audio_text_sha256": "64c91c69010bdb5851995bf0cacf748529e8875919c20a23b5b3a5fbc44b677a"
+    },
+    {
+      "id": "VERDICT.P019",
+      "text": "Поэтому сервисная игла пневмо-дозатора с шипением врезается напрямую в его питательный катетер, и кипящий концентрат под давлением в восемь атмосфер впрыскивается прямо в вену, минуя ротовую полость!",
+      "text_sha256": "6b4570a46e1e60be621fd94a55713cb38bb1037a074e1af4593a840eb0cf08a7",
+      "file": "media/interactive/chronicles/voice/6b4570a46e1e60be621fd94a.mp3",
+      "duration": 13.839093,
+      "status": "reused",
+      "audio_text_sha256": "6b4570a46e1e60be621fd94a55713cb38bb1037a074e1af4593a840eb0cf08a7"
+    },
+    {
+      "id": "VERDICT.P020",
+      "text": "Никаких чашек. Никаких пауз. Его глаза даже не успели моргнуть и оторваться от штурма Нотиона.",
+      "text_sha256": "035601a6ac55434926be11feab65aa9346ef1e7beb1ff5e67f9b7f478fcaf2b5",
+      "file": "media/interactive/chronicles/voice/035601a6ac55434926be11fe.mp3",
+      "duration": 7.709025,
+      "status": "reused",
+      "audio_text_sha256": "035601a6ac55434926be11feab65aa9346ef1e7beb1ff5e67f9b7f478fcaf2b5"
+    },
+    {
+      "id": "VERDICT.P021",
+      "text": "Зрачки расширены, пульс двести сорок, давление в норме.",
+      "text_sha256": "c322f6c2c795da5bdadd408bcf0a5c533758325182201541e34baf1e9fa84146",
+      "file": "media/interactive/chronicles/voice/c322f6c2c795da5bdadd408b.mp3",
+      "duration": 4.643991,
+      "status": "reused",
+      "audio_text_sha256": "c322f6c2c795da5bdadd408bcf0a5c533758325182201541e34baf1e9fa84146"
+    },
+    {
+      "id": "VERDICT.P022",
+      "text": "Наслаждайтесь букетом, Алексей. За работу.",
+      "text_sha256": "a3c1e5a74f105e5606451b5729884cacf2981271c42c129ce46bd4ade0cdcaa4",
+      "file": "media/interactive/chronicles/voice/a3c1e5a74f105e5606451b57.mp3",
+      "duration": 3.157914,
+      "status": "reused",
+      "audio_text_sha256": "a3c1e5a74f105e5606451b5729884cacf2981271c42c129ce46bd4ade0cdcaa4"
+    },
+    {
+      "id": "EPILOGUE.P001",
+      "text": "Таймеры остановлены. Капсулы запечатаны. Семьдесят три плейбла на табло прошлой недели казались вам трагедией.",
+      "text_sha256": "2e450a8b81ecb59a2fe7be91be734644b2ef23e25abbf94f05be4a3151ce1cdf",
+      "file": "media/interactive/chronicles/voice/2e450a8b81ecb59a2fe7be91.mp3",
+      "duration": 7.523265,
+      "status": "reused",
+      "audio_text_sha256": "2e450a8b81ecb59a2fe7be91be734644b2ef23e25abbf94f05be4a3151ce1cdf"
+    },
+    {
+      "id": "EPILOGUE.P002",
+      "text": "На этой неделе вы выжили под завалом из тридцати семи правок",
+      "text_sha256": "09fa326e5d23681296f08c1e9380834a7079b0a71109d089fd0e535a2b834d96",
+      "file": "media/interactive/chronicles/voice/09fa326e5d23681296f08c1e.mp3",
+      "duration": 4.318912,
+      "status": "reused",
+      "audio_text_sha256": "09fa326e5d23681296f08c1e9380834a7079b0a71109d089fd0e535a2b834d96"
+    },
+    {
+      "id": "EPILOGUE.P003",
+      "text": "и даже заставили Клиентархов сказать: «Мне всё нравится».",
+      "text_sha256": "830a71b17c4b6c4770cd0e02d662d86b96e14f909bd88d7ff86dbdd5a79483d4",
+      "file": "media/interactive/chronicles/voice/830a71b17c4b6c4770cd0e02.mp3",
+      "duration": 4.179592,
+      "status": "reused",
+      "audio_text_sha256": "830a71b17c4b6c4770cd0e02d662d86b96e14f909bd88d7ff86dbdd5a79483d4"
+    },
+    {
+      "id": "EPILOGUE.P004",
+      "text": "Плейриум сварен и отправлен в сторы.",
+      "text_sha256": "ecfd6b88ee24ec0eef54afb18a950c9cc4e9a4a5f902e83fb52cb5156ec44f41",
+      "file": "media/interactive/chronicles/voice/ecfd6b88ee24ec0eef54afb1.mp3",
+      "duration": 2.925714,
+      "status": "reused",
+      "audio_text_sha256": "ecfd6b88ee24ec0eef54afb18a950c9cc4e9a4a5f902e83fb52cb5156ec44f41"
+    },
+    {
+      "id": "EPILOGUE.P005",
+      "text": "Миллионы пальцев уже тянутся к экранам, не подозревая, сколько нервов и разбитых куриных яиц запечатано внутри этих тридцати секунд.",
+      "text_sha256": "875fc2c8197eff2c5e11cfedce9ca691ba83c36348690de1e7debb6acd733eaa",
+      "file": "media/interactive/chronicles/voice/875fc2c8197eff2c5e11cfed.mp3",
+      "duration": 9.380862,
+      "status": "reused",
+      "audio_text_sha256": "875fc2c8197eff2c5e11cfedce9ca691ba83c36348690de1e7debb6acd733eaa"
+    },
+    {
+      "id": "EPILOGUE.P006",
+      "text": "Отдыхайте, мясные слейвы. Немощные служители Великого Конвейера. В понедельник в одиннадцать ноль-ноль я снова открою Книгу Учёта в Цикл Слепого Старта.",
+      "text_sha256": "f3e8bb5fd13f26afd68afa18425b82d360e61dff56841c2265c3bcd13a19f8b8",
+      "file": "media/interactive/chronicles/voice/f3e8bb5fd13f26afd68afa18.mp3",
+      "duration": 11.795737,
+      "status": "reused",
+      "audio_text_sha256": "f3e8bb5fd13f26afd68afa18425b82d360e61dff56841c2265c3bcd13a19f8b8"
+    },
+    {
+      "id": "EPILOGUE.P007",
+      "text": "И поверьте... мне снова будет тошно смотреть на то, что вы натворили. Но я найду, до чего доебаться.",
+      "text_sha256": "be76769199e8583fedf62bbbc0ae81d9ef0e82a0a168a677d523ccb17c4800bb",
+      "file": "media/interactive/chronicles/voice/be76769199e8583fedf62bbb.mp3",
+      "duration": 6.594467,
+      "status": "reused",
+      "audio_text_sha256": "be76769199e8583fedf62bbbc0ae81d9ef0e82a0a168a677d523ccb17c4800bb"
+    },
+    {
+      "id": "EPILOGUE.P008",
+      "text": "За работу.",
+      "text_sha256": "cac9961d4e7d6240c539714fbcd8a452f398aa4fa592a40bc956e197202bdc48",
+      "file": "media/interactive/chronicles/voice/cac9961d4e7d6240c539714f.mp3",
+      "duration": 1.160998,
+      "status": "reused",
+      "audio_text_sha256": "cac9961d4e7d6240c539714fbcd8a452f398aa4fa592a40bc956e197202bdc48"
+    },
+    {
+      "id": "COMMON.ЛИМИТ",
+      "text": "Я и так не ждал от вас многого. Но вы, похоже, приняли это за вызов. Ладно, пощажу вас. Продолжим хроники.",
+      "text_sha256": "b2ebc2fc0b91c8b34d2f24575ad7d283803573513fd073e07072fa04058aeb4e",
+      "file": "media/interactive/scenes/shared_voice/attempts_exhausted.mp3",
+      "duration": 8.034104,
+      "status": "reused",
+      "audio_text_sha256": "b2ebc2fc0b91c8b34d2f24575ad7d283803573513fd073e07072fa04058aeb4e"
+    }
+  ]
+}

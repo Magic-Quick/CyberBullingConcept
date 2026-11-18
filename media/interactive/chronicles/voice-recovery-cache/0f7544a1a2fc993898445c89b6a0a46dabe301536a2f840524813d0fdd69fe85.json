@@ -1,0 +1,191 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "0f7544a1a2fc993898445c89b6a0a46dabe301536a2f840524813d0fdd69fe85",
+  "audio_sha256": "ae352acbafe649b1549ec84feaded155afbe633a133c8482b7b53f25ce06fd3c",
+  "file": "media/interactive/chronicles/voice/0f7544a1a2fc993898445c89.mp3",
+  "duration": 4.040272,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 9,
+  "authoredLexicalWords": 9,
+  "heardText": "И сегодня на эшафот поднимаются Кирилл Берёзкин и Кристиан.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "И",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 0.8054009079933167
+    },
+    {
+      "index": 1,
+      "text": "сегодня",
+      "start": 0.14,
+      "end": 0.54,
+      "probability": 0.9936696887016296
+    },
+    {
+      "index": 2,
+      "text": "на",
+      "start": 0.54,
+      "end": 0.76,
+      "probability": 0.8906269073486328
+    },
+    {
+      "index": 3,
+      "text": "эшафот",
+      "start": 0.76,
+      "end": 1.16,
+      "probability": 0.4083959208801389
+    },
+    {
+      "index": 4,
+      "text": "поднимаются",
+      "start": 1.16,
+      "end": 1.76,
+      "probability": 0.9848657449086508
+    },
+    {
+      "index": 5,
+      "text": "Кирилл",
+      "start": 1.76,
+      "end": 2.22,
+      "probability": 0.9825498163700104
+    },
+    {
+      "index": 6,
+      "text": "Берёзкин",
+      "start": 2.22,
+      "end": 2.82,
+      "probability": 0.7808002278208732
+    },
+    {
+      "index": 7,
+      "text": "и",
+      "start": 2.82,
+      "end": 2.86,
+      "probability": 0.9974538683891296
+    },
+    {
+      "index": 8,
+      "text": "Кристиан.",
+      "start": 2.86,
+      "end": 3.58,
+      "probability": 0.9833789616823196
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "И",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.00025567359989508986
+    },
+    {
+      "word": " сегодня",
+      "start": 0.16,
+      "end": 0.52,
+      "probability": 0.9845753908157349
+    },
+    {
+      "word": " на",
+      "start": 0.52,
+      "end": 0.76,
+      "probability": 0.8126658201217651
+    },
+    {
+      "word": " эшафот",
+      "start": 0.76,
+      "end": 1.12,
+      "probability": 0.44219846557825804
+    },
+    {
+      "word": " поднимаются",
+      "start": 1.12,
+      "end": 1.66,
+      "probability": 0.9794625639915466
+    },
+    {
+      "word": " Кирилл",
+      "start": 1.66,
+      "end": 2.2,
+      "probability": 0.8479471355676651
+    },
+    {
+      "word": " Берёзкин",
+      "start": 2.2,
+      "end": 2.8,
+      "probability": 0.7856477491557599
+    },
+    {
+      "word": " и",
+      "start": 2.8,
+      "end": 2.88,
+      "probability": 0.9852756261825562
+    },
+    {
+      "word": " Кристиан",
+      "start": 2.88,
+      "end": 3.6,
+      "probability": 0.9694990962743759
+    },
+    {
+      "word": ".",
+      "start": 3.6,
+      "end": 3.62,
+      "probability": 0.9061275124549866
+    }
+  ],
+  "words": [
+    {
+      "text": "И",
+      "start": 0,
+      "end": 0.16
+    },
+    {
+      "text": "сегодня",
+      "start": 0.16,
+      "end": 0.52
+    },
+    {
+      "text": "на",
+      "start": 0.52,
+      "end": 0.76
+    },
+    {
+      "text": "эшафот",
+      "start": 0.76,
+      "end": 1.12
+    },
+    {
+      "text": "поднимаются",
+      "start": 1.12,
+      "end": 1.66
+    },
+    {
+      "text": "Кирилл",
+      "start": 1.66,
+      "end": 2.2
+    },
+    {
+      "text": "Берёзкин",
+      "start": 2.2,
+      "end": 2.8
+    },
+    {
+      "text": "и",
+      "start": 2.8,
+      "end": 2.88
+    },
+    {
+      "text": "Кристиан.",
+      "start": 2.88,
+      "end": 3.6
+    }
+  ]
+}

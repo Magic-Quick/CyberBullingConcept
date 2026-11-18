@@ -1,0 +1,275 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "b9cc63982af7a80a93a4da31a17fcc1feffb983024de0009b3d430fe371880af",
+  "audio_sha256": "4b3639ecc73622802c6b0fed883db57f257903235ab526c71821d6602646f224",
+  "file": "media/interactive/chronicles/voice/b9cc63982af7a80a93a4da31.mp3",
+  "duration": 5.10839,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 13,
+  "authoredLexicalWords": 13,
+  "heardText": "Пока пусто, у нас сейчас и Макс без работы и поле без ответа.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Пока",
+      "start": 0.0,
+      "end": 0.3,
+      "probability": 0.9155949950218201
+    },
+    {
+      "index": 1,
+      "text": "пусто.",
+      "start": 0.3,
+      "end": 0.86,
+      "probability": 0.9438926180203756
+    },
+    {
+      "index": 2,
+      "text": "У",
+      "start": 1.16,
+      "end": 1.26,
+      "probability": 0.9508619904518127
+    },
+    {
+      "index": 3,
+      "text": "нас",
+      "start": 1.26,
+      "end": 1.4,
+      "probability": 0.9992330074310303
+    },
+    {
+      "index": 4,
+      "text": "сейчас",
+      "start": 1.4,
+      "end": 1.74,
+      "probability": 0.9617776274681091
+    },
+    {
+      "index": 5,
+      "text": "и",
+      "start": 1.74,
+      "end": 1.96,
+      "probability": 0.8813586831092834
+    },
+    {
+      "index": 6,
+      "text": "Макс",
+      "start": 1.96,
+      "end": 2.2,
+      "probability": 0.8196272552013397
+    },
+    {
+      "index": 7,
+      "text": "без",
+      "start": 2.2,
+      "end": 2.4,
+      "probability": 0.9949725866317749
+    },
+    {
+      "index": 8,
+      "text": "работы,",
+      "start": 2.4,
+      "end": 2.88,
+      "probability": 0.9955423474311829
+    },
+    {
+      "index": 9,
+      "text": "и",
+      "start": 2.88,
+      "end": 3.46,
+      "probability": 0.43367624282836914
+    },
+    {
+      "index": 10,
+      "text": "поле",
+      "start": 3.46,
+      "end": 3.86,
+      "probability": 0.7332836538553238
+    },
+    {
+      "index": 11,
+      "text": "без",
+      "start": 3.86,
+      "end": 4.06,
+      "probability": 0.9882450103759766
+    },
+    {
+      "index": 12,
+      "text": "ответа.",
+      "start": 4.06,
+      "end": 4.7,
+      "probability": 0.996196448802948
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Пока",
+      "start": 0.0,
+      "end": 0.3,
+      "probability": 0.4605434446420986
+    },
+    {
+      "word": " пусто",
+      "start": 0.3,
+      "end": 0.84,
+      "probability": 0.967400868733724
+    },
+    {
+      "word": ".",
+      "start": 0.84,
+      "end": 1.14,
+      "probability": 0.17023226618766785
+    },
+    {
+      "word": " У",
+      "start": 1.14,
+      "end": 1.28,
+      "probability": 0.9357284307479858
+    },
+    {
+      "word": " нас",
+      "start": 1.28,
+      "end": 1.38,
+      "probability": 0.9976996779441833
+    },
+    {
+      "word": " сейчас",
+      "start": 1.38,
+      "end": 1.72,
+      "probability": 0.971021831035614
+    },
+    {
+      "word": " и",
+      "start": 1.72,
+      "end": 1.98,
+      "probability": 0.8036571741104126
+    },
+    {
+      "word": " Макс",
+      "start": 1.98,
+      "end": 2.2,
+      "probability": 0.7161503434181213
+    },
+    {
+      "word": " без",
+      "start": 2.2,
+      "end": 2.4,
+      "probability": 0.9883763194084167
+    },
+    {
+      "word": " работы",
+      "start": 2.4,
+      "end": 2.82,
+      "probability": 0.9912921786308289
+    },
+    {
+      "word": ",",
+      "start": 2.82,
+      "end": 3.3,
+      "probability": 0.4423612952232361
+    },
+    {
+      "word": " и",
+      "start": 3.3,
+      "end": 3.48,
+      "probability": 0.9170048236846924
+    },
+    {
+      "word": " поле",
+      "start": 3.48,
+      "end": 3.86,
+      "probability": 0.7190787196159363
+    },
+    {
+      "word": " без",
+      "start": 3.86,
+      "end": 4.04,
+      "probability": 0.9772840738296509
+    },
+    {
+      "word": " ответа",
+      "start": 4.04,
+      "end": 4.76,
+      "probability": 0.9950023293495178
+    },
+    {
+      "word": ".",
+      "start": 4.76,
+      "end": 4.86,
+      "probability": 0.8663681745529175
+    }
+  ],
+  "words": [
+    {
+      "text": "Пока",
+      "start": 0,
+      "end": 0.3
+    },
+    {
+      "text": "пусто.",
+      "start": 0.3,
+      "end": 0.84
+    },
+    {
+      "text": "У",
+      "start": 1.14,
+      "end": 1.28
+    },
+    {
+      "text": "нас",
+      "start": 1.28,
+      "end": 1.38
+    },
+    {
+      "text": "сейчас",
+      "start": 1.38,
+      "end": 1.72
+    },
+    {
+      "text": "и",
+      "start": 1.72,
+      "end": 1.98
+    },
+    {
+      "text": "Макс",
+      "start": 1.98,
+      "end": 2.2
+    },
+    {
+      "text": "без",
+      "start": 2.2,
+      "end": 2.4
+    },
+    {
+      "text": "работы,",
+      "start": 2.4,
+      "end": 2.82
+    },
+    {
+      "text": "и",
+      "start": 3.3,
+      "end": 3.48
+    },
+    {
+      "text": "поле",
+      "start": 3.48,
+      "end": 3.86
+    },
+    {
+      "text": "без",
+      "start": 3.86,
+      "end": 4.04
+    },
+    {
+      "text": "ответа.",
+      "start": 4.04,
+      "end": 4.76
+    }
+  ]
+}

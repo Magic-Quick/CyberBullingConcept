@@ -1,0 +1,323 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "64c91c69010bdb5851995bf0cacf748529e8875919c20a23b5b3a5fbc44b677a",
+  "audio_sha256": "a8eedf66b033da5005895cf31f727315ce7137bc73873e05f1a87fc9a27129d6",
+  "file": "media/interactive/chronicles/voice/64c91c69010bdb5851995bf0.mp3",
+  "duration": 9.98458,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 16,
+  "authoredLexicalWords": 16,
+  "heardText": "Зёрна ручной обжарки с реликтовых плантаций, плотная бархатная пенка цвета лесного ореха, глубокий аромат горького шоколада...",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Зёрна",
+      "start": 0.0,
+      "end": 0.46,
+      "probability": 0.4047987361749013
+    },
+    {
+      "index": 1,
+      "text": "ручной",
+      "start": 0.46,
+      "end": 0.84,
+      "probability": 0.9543492794036865
+    },
+    {
+      "index": 2,
+      "text": "обжарки",
+      "start": 0.84,
+      "end": 1.58,
+      "probability": 0.9944513291120529
+    },
+    {
+      "index": 3,
+      "text": "с",
+      "start": 1.58,
+      "end": 2.0,
+      "probability": 0.8485509157180786
+    },
+    {
+      "index": 4,
+      "text": "реликтовых",
+      "start": 2.0,
+      "end": 2.68,
+      "probability": 0.9760529160499573
+    },
+    {
+      "index": 5,
+      "text": "плантаций,",
+      "start": 2.68,
+      "end": 3.68,
+      "probability": 0.9537291526794434
+    },
+    {
+      "index": 6,
+      "text": "плотная",
+      "start": 3.94,
+      "end": 4.38,
+      "probability": 0.9867856105168661
+    },
+    {
+      "index": 7,
+      "text": "бархатная",
+      "start": 4.38,
+      "end": 5.04,
+      "probability": 0.9853541404008865
+    },
+    {
+      "index": 8,
+      "text": "пенка",
+      "start": 5.04,
+      "end": 5.5,
+      "probability": 0.94698033730189
+    },
+    {
+      "index": 9,
+      "text": "цвета",
+      "start": 5.5,
+      "end": 5.92,
+      "probability": 0.9955727458000183
+    },
+    {
+      "index": 10,
+      "text": "лесного",
+      "start": 5.92,
+      "end": 6.26,
+      "probability": 0.9906143546104431
+    },
+    {
+      "index": 11,
+      "text": "ореха,",
+      "start": 6.26,
+      "end": 6.84,
+      "probability": 0.9892660975456238
+    },
+    {
+      "index": 12,
+      "text": "глубокий",
+      "start": 7.28,
+      "end": 7.88,
+      "probability": 0.9905011455217997
+    },
+    {
+      "index": 13,
+      "text": "аромат",
+      "start": 7.88,
+      "end": 8.34,
+      "probability": 0.9958017071088155
+    },
+    {
+      "index": 14,
+      "text": "горького",
+      "start": 8.34,
+      "end": 8.9,
+      "probability": 0.9930819272994995
+    },
+    {
+      "index": 15,
+      "text": "шоколада...",
+      "start": 8.9,
+      "end": 9.78,
+      "probability": 0.8089434772729873
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Зёрна",
+      "start": 0.0,
+      "end": 0.46,
+      "probability": 0.28239236888475716
+    },
+    {
+      "word": " ручной",
+      "start": 0.46,
+      "end": 0.82,
+      "probability": 0.9208699663480123
+    },
+    {
+      "word": " обжарки",
+      "start": 0.82,
+      "end": 1.58,
+      "probability": 0.9869905412197113
+    },
+    {
+      "word": " с",
+      "start": 1.58,
+      "end": 2.0,
+      "probability": 0.8793347477912903
+    },
+    {
+      "word": " реликтовых",
+      "start": 2.0,
+      "end": 2.66,
+      "probability": 0.9660525321960449
+    },
+    {
+      "word": " плантаций",
+      "start": 2.66,
+      "end": 3.54,
+      "probability": 0.9410886764526367
+    },
+    {
+      "word": ",",
+      "start": 3.54,
+      "end": 3.94,
+      "probability": 0.7735248804092407
+    },
+    {
+      "word": " плотная",
+      "start": 3.94,
+      "end": 4.38,
+      "probability": 0.983229398727417
+    },
+    {
+      "word": " бархатная",
+      "start": 4.38,
+      "end": 5.04,
+      "probability": 0.9793016761541367
+    },
+    {
+      "word": " пенка",
+      "start": 5.04,
+      "end": 5.48,
+      "probability": 0.9282956123352051
+    },
+    {
+      "word": " цвета",
+      "start": 5.48,
+      "end": 5.92,
+      "probability": 0.9931399822235107
+    },
+    {
+      "word": " лесного",
+      "start": 5.92,
+      "end": 6.24,
+      "probability": 0.9917497932910919
+    },
+    {
+      "word": " ореха",
+      "start": 6.24,
+      "end": 6.82,
+      "probability": 0.9878031015396118
+    },
+    {
+      "word": ",",
+      "start": 6.82,
+      "end": 7.3,
+      "probability": 0.9781408309936523
+    },
+    {
+      "word": " глубокий",
+      "start": 7.3,
+      "end": 7.88,
+      "probability": 0.9927846789360046
+    },
+    {
+      "word": " аромат",
+      "start": 7.88,
+      "end": 8.32,
+      "probability": 0.9951375921567281
+    },
+    {
+      "word": " горького",
+      "start": 8.32,
+      "end": 8.88,
+      "probability": 0.9937809705734253
+    },
+    {
+      "word": " шоколада...",
+      "start": 8.88,
+      "end": 9.84,
+      "probability": 0.8016380820423364
+    }
+  ],
+  "words": [
+    {
+      "text": "Зёрна",
+      "start": 0,
+      "end": 0.46
+    },
+    {
+      "text": "ручной",
+      "start": 0.46,
+      "end": 0.82
+    },
+    {
+      "text": "обжарки",
+      "start": 0.82,
+      "end": 1.58
+    },
+    {
+      "text": "с",
+      "start": 1.58,
+      "end": 2.0
+    },
+    {
+      "text": "реликтовых",
+      "start": 2.0,
+      "end": 2.66
+    },
+    {
+      "text": "плантаций,",
+      "start": 2.66,
+      "end": 3.54
+    },
+    {
+      "text": "плотная",
+      "start": 3.94,
+      "end": 4.38
+    },
+    {
+      "text": "бархатная",
+      "start": 4.38,
+      "end": 5.04
+    },
+    {
+      "text": "пенка",
+      "start": 5.04,
+      "end": 5.48
+    },
+    {
+      "text": "цвета",
+      "start": 5.48,
+      "end": 5.92
+    },
+    {
+      "text": "лесного",
+      "start": 5.92,
+      "end": 6.24
+    },
+    {
+      "text": "ореха,",
+      "start": 6.24,
+      "end": 6.82
+    },
+    {
+      "text": "глубокий",
+      "start": 7.3,
+      "end": 7.88
+    },
+    {
+      "text": "аромат",
+      "start": 7.88,
+      "end": 8.32
+    },
+    {
+      "text": "горького",
+      "start": 8.32,
+      "end": 8.88
+    },
+    {
+      "text": "шоколада...",
+      "start": 8.88,
+      "end": 9.84
+    }
+  ]
+}

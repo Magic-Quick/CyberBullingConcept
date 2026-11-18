@@ -1,0 +1,345 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "f2e56ad29ed286c654b4eba7a0ef28987920238e5cfc8d1a585be69e0ef1bbd0",
+  "audio_sha256": "521111a97a61c8a27a5965bdb76da315d73f7ae5fe6da2f7346bfd84c67cea96",
+  "file": "media/interactive/chronicles/voice/f2e56ad29ed286c654b4eba7.mp3",
+  "duration": 7.476825,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.8888888888888888,
+  "asrMatchedWords": 16,
+  "authoredLexicalWords": 18,
+  "heardText": "До тех пор, пока каждый байт из 22 гигабайт цифровой гнили не будет содран до зеркального блеска.",
+  "promptedCoverage": 0.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "до",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 0.8887916803359985
+    },
+    {
+      "index": 1,
+      "text": "тех",
+      "start": 0.18,
+      "end": 0.34,
+      "probability": 0.9968103766441345
+    },
+    {
+      "index": 2,
+      "text": "пор,",
+      "start": 0.34,
+      "end": 0.64,
+      "probability": 0.9987452030181885
+    },
+    {
+      "index": 3,
+      "text": "пока",
+      "start": 0.7,
+      "end": 0.9,
+      "probability": 0.9869965314865112
+    },
+    {
+      "index": 4,
+      "text": "каждый",
+      "start": 0.9,
+      "end": 1.26,
+      "probability": 0.9876179695129395
+    },
+    {
+      "index": 5,
+      "text": "байт",
+      "start": 1.26,
+      "end": 1.68,
+      "probability": 0.8673442006111145
+    },
+    {
+      "index": 6,
+      "text": "из",
+      "start": 1.68,
+      "end": 1.88,
+      "probability": 0.9799100160598755
+    },
+    {
+      "index": 9,
+      "text": "гигабайт",
+      "start": 2.32,
+      "end": 3.14,
+      "probability": 0.8145230561494827
+    },
+    {
+      "index": 10,
+      "text": "цифровой",
+      "start": 3.14,
+      "end": 3.7,
+      "probability": 0.9943645894527435
+    },
+    {
+      "index": 11,
+      "text": "гнили",
+      "start": 3.7,
+      "end": 4.04,
+      "probability": 0.9495616952578226
+    },
+    {
+      "index": 12,
+      "text": "не",
+      "start": 4.04,
+      "end": 4.22,
+      "probability": 0.9248059988021851
+    },
+    {
+      "index": 13,
+      "text": "будет",
+      "start": 4.22,
+      "end": 4.46,
+      "probability": 0.9992625117301941
+    },
+    {
+      "index": 14,
+      "text": "содран",
+      "start": 4.46,
+      "end": 5.04,
+      "probability": 0.7328153649965922
+    },
+    {
+      "index": 15,
+      "text": "до",
+      "start": 5.04,
+      "end": 5.5,
+      "probability": 0.868283748626709
+    },
+    {
+      "index": 16,
+      "text": "зеркального",
+      "start": 5.5,
+      "end": 6.38,
+      "probability": 0.9846594780683517
+    },
+    {
+      "index": 17,
+      "text": "блеска.",
+      "start": 6.38,
+      "end": 7.04,
+      "probability": 0.9804016351699829
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "до",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 5.854925257153809e-05
+    },
+    {
+      "word": " тех",
+      "start": 0.18,
+      "end": 0.34,
+      "probability": 0.9967246651649475
+    },
+    {
+      "word": " пор",
+      "start": 0.34,
+      "end": 0.62,
+      "probability": 0.9949552416801453
+    },
+    {
+      "word": ",",
+      "start": 0.62,
+      "end": 0.7,
+      "probability": 0.6641157865524292
+    },
+    {
+      "word": " пока",
+      "start": 0.7,
+      "end": 0.9,
+      "probability": 0.9734194874763489
+    },
+    {
+      "word": " каждый",
+      "start": 0.9,
+      "end": 1.26,
+      "probability": 0.9712802767753601
+    },
+    {
+      "word": " байт",
+      "start": 1.26,
+      "end": 1.62,
+      "probability": 0.8955012559890747
+    },
+    {
+      "word": " из",
+      "start": 1.62,
+      "end": 1.88,
+      "probability": 0.9752887487411499
+    },
+    {
+      "word": " двадцати",
+      "start": 1.88,
+      "end": 2.32,
+      "probability": 0.6571685113012791
+    },
+    {
+      "word": " двух",
+      "start": 2.32,
+      "end": 2.6,
+      "probability": 0.7533486485481262
+    },
+    {
+      "word": " гигабайт",
+      "start": 2.6,
+      "end": 3.14,
+      "probability": 0.9201509654521942
+    },
+    {
+      "word": " цифровой",
+      "start": 3.14,
+      "end": 3.68,
+      "probability": 0.9925734102725983
+    },
+    {
+      "word": " гнили",
+      "start": 3.68,
+      "end": 4.02,
+      "probability": 0.9431095918019613
+    },
+    {
+      "word": " не",
+      "start": 4.02,
+      "end": 4.22,
+      "probability": 0.9648033380508423
+    },
+    {
+      "word": " будет",
+      "start": 4.22,
+      "end": 4.46,
+      "probability": 0.9983443021774292
+    },
+    {
+      "word": " содран",
+      "start": 4.46,
+      "end": 4.96,
+      "probability": 0.655763104557991
+    },
+    {
+      "word": " до",
+      "start": 4.96,
+      "end": 5.52,
+      "probability": 0.7364680767059326
+    },
+    {
+      "word": " зеркального",
+      "start": 5.52,
+      "end": 6.38,
+      "probability": 0.9723459035158157
+    },
+    {
+      "word": " блеска",
+      "start": 6.38,
+      "end": 7.06,
+      "probability": 0.9736226399739584
+    },
+    {
+      "word": ".",
+      "start": 7.06,
+      "end": 7.22,
+      "probability": 0.9411964416503906
+    }
+  ],
+  "words": [
+    {
+      "text": "до",
+      "start": 0,
+      "end": 0.18
+    },
+    {
+      "text": "тех",
+      "start": 0.18,
+      "end": 0.34
+    },
+    {
+      "text": "пор,",
+      "start": 0.34,
+      "end": 0.62
+    },
+    {
+      "text": "пока",
+      "start": 0.7,
+      "end": 0.9
+    },
+    {
+      "text": "каждый",
+      "start": 0.9,
+      "end": 1.26
+    },
+    {
+      "text": "байт",
+      "start": 1.26,
+      "end": 1.62
+    },
+    {
+      "text": "из",
+      "start": 1.62,
+      "end": 1.88
+    },
+    {
+      "text": "двадцати",
+      "start": 1.88,
+      "end": 2.32
+    },
+    {
+      "text": "двух",
+      "start": 2.32,
+      "end": 2.6
+    },
+    {
+      "text": "гигабайт",
+      "start": 2.6,
+      "end": 3.14
+    },
+    {
+      "text": "цифровой",
+      "start": 3.14,
+      "end": 3.68
+    },
+    {
+      "text": "гнили",
+      "start": 3.68,
+      "end": 4.02
+    },
+    {
+      "text": "не",
+      "start": 4.02,
+      "end": 4.22
+    },
+    {
+      "text": "будет",
+      "start": 4.22,
+      "end": 4.46
+    },
+    {
+      "text": "содран",
+      "start": 4.46,
+      "end": 4.96
+    },
+    {
+      "text": "до",
+      "start": 4.96,
+      "end": 5.52
+    },
+    {
+      "text": "зеркального",
+      "start": 5.52,
+      "end": 6.38
+    },
+    {
+      "text": "блеска.",
+      "start": 6.38,
+      "end": 7.06
+    }
+  ]
+}

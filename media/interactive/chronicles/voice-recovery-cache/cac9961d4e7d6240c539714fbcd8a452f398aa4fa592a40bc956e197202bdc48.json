@@ -1,0 +1,65 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "cac9961d4e7d6240c539714fbcd8a452f398aa4fa592a40bc956e197202bdc48",
+  "audio_sha256": "44c3a3f18173ab65eebd5857e879ced05402e547a4c0d7bf30c836f8b9c03e10",
+  "file": "media/interactive/chronicles/voice/cac9961d4e7d6240c539714f.mp3",
+  "duration": 1.160998,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 2,
+  "authoredLexicalWords": 2,
+  "heardText": "за работу.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "За",
+      "start": 0.0,
+      "end": 0.2,
+      "probability": 0.7198750972747803
+    },
+    {
+      "index": 1,
+      "text": "работу.",
+      "start": 0.2,
+      "end": 0.56,
+      "probability": 0.9950345754623413
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "За",
+      "start": 0.0,
+      "end": 0.28,
+      "probability": 0.10439860251790378
+    },
+    {
+      "word": " работу",
+      "start": 0.28,
+      "end": 0.56,
+      "probability": 0.3520108163356781
+    },
+    {
+      "word": ".",
+      "start": 0.56,
+      "end": 1.04,
+      "probability": 0.20082712173461914
+    }
+  ],
+  "words": [
+    {
+      "text": "За",
+      "start": 0,
+      "end": 0.28
+    },
+    {
+      "text": "работу.",
+      "start": 0.28,
+      "end": 0.56
+    }
+  ]
+}

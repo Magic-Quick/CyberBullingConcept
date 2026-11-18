@@ -1,0 +1,9 @@
+.chronicles-transport{position:fixed;bottom:0;left:0;right:0;z-index:100;isolation:isolate;pointer-events:none;line-height:1;font-family:'Share Tech Mono',monospace;user-select:none}
+.chronicles-transport:before{content:'';position:absolute;left:0;right:0;top:-24px;height:24px;background:rgba(5,5,8,.81);pointer-events:none;z-index:-1}
+.chronicles-transport>canvas{position:absolute;inset:0;display:block;pointer-events:auto;touch-action:none}
+.ct-access{position:absolute;inset:0;pointer-events:none}
+.ct-access .ct-hotspot{position:absolute;display:block;pointer-events:auto;opacity:0;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;min-height:0!important;min-width:0!important;background:transparent!important;box-shadow:none!important;color:transparent!important;font-size:0!important;cursor:pointer;touch-action:none}
+.ct-access .ct-hotspot:focus-visible{opacity:1;outline:2px solid #00d2ff!important;outline-offset:2px}
+.ct-access .ct-range{appearance:none;-webkit-appearance:none;cursor:ew-resize}
+.ct-tooltip{position:absolute;transform:translate(-50%,-100%);pointer-events:none;background:rgba(10,12,20,.95);border:1.5px solid #00d2ff;border-radius:6px;padding:5px 8px;color:#ecedf3;font:14px/1.15 'Share Tech Mono',monospace;white-space:nowrap;max-width:calc(100vw - 16px);overflow:hidden;text-overflow:ellipsis;z-index:5}
+.ct-tooltip[hidden]{display:none}.ct-seek-tooltip{border-color:#ff0033}.chronicles-director-open .chronicles-transport{visibility:hidden;pointer-events:none}

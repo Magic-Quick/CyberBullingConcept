@@ -1,0 +1,161 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "a6c80eb6881fe11015ff2f4f952891b6a35579bcc728a7a6f478efe4bc2345c8",
+  "audio_sha256": "169501a981a2139ec9dcddf140a7ed6d83473c8a07f9c8d872ca3ac61d9cbf02",
+  "file": "media/interactive/chronicles/voice/a6c80eb6881fe11015ff2f4f.mp3",
+  "duration": 3.111474,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 7,
+  "authoredLexicalWords": 7,
+  "heardText": "Свободное место вижу. Ответ пока не вижу.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Свободное",
+      "start": 0.0,
+      "end": 0.62,
+      "probability": 0.9112574259440104
+    },
+    {
+      "index": 1,
+      "text": "место",
+      "start": 0.62,
+      "end": 0.84,
+      "probability": 0.9951651096343994
+    },
+    {
+      "index": 2,
+      "text": "вижу.",
+      "start": 0.84,
+      "end": 1.14,
+      "probability": 0.8686403036117554
+    },
+    {
+      "index": 3,
+      "text": "Ответ",
+      "start": 1.52,
+      "end": 1.88,
+      "probability": 0.9836089015007019
+    },
+    {
+      "index": 4,
+      "text": "пока",
+      "start": 1.88,
+      "end": 2.12,
+      "probability": 0.9800726175308228
+    },
+    {
+      "index": 5,
+      "text": "не",
+      "start": 2.12,
+      "end": 2.3,
+      "probability": 0.9868568778038025
+    },
+    {
+      "index": 6,
+      "text": "вижу.",
+      "start": 2.3,
+      "end": 2.54,
+      "probability": 0.9961154460906982
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Свободное",
+      "start": 0.0,
+      "end": 0.6,
+      "probability": 0.7314645186052076
+    },
+    {
+      "word": " место",
+      "start": 0.6,
+      "end": 0.82,
+      "probability": 0.9904844760894775
+    },
+    {
+      "word": " вижу",
+      "start": 0.82,
+      "end": 1.12,
+      "probability": 0.867442786693573
+    },
+    {
+      "word": ".",
+      "start": 1.12,
+      "end": 1.54,
+      "probability": 0.6738479137420654
+    },
+    {
+      "word": " Ответ",
+      "start": 1.54,
+      "end": 1.86,
+      "probability": 0.8291855752468109
+    },
+    {
+      "word": " пока",
+      "start": 1.86,
+      "end": 2.1,
+      "probability": 0.9827423095703125
+    },
+    {
+      "word": " не",
+      "start": 2.1,
+      "end": 2.3,
+      "probability": 0.9543349742889404
+    },
+    {
+      "word": " вижу",
+      "start": 2.3,
+      "end": 2.56,
+      "probability": 0.9839506149291992
+    },
+    {
+      "word": ".",
+      "start": 2.56,
+      "end": 2.86,
+      "probability": 0.9324566125869751
+    }
+  ],
+  "words": [
+    {
+      "text": "Свободное",
+      "start": 0,
+      "end": 0.6
+    },
+    {
+      "text": "место",
+      "start": 0.6,
+      "end": 0.82
+    },
+    {
+      "text": "вижу.",
+      "start": 0.82,
+      "end": 1.12
+    },
+    {
+      "text": "Ответ",
+      "start": 1.54,
+      "end": 1.86
+    },
+    {
+      "text": "пока",
+      "start": 1.86,
+      "end": 2.1
+    },
+    {
+      "text": "не",
+      "start": 2.1,
+      "end": 2.3
+    },
+    {
+      "text": "вижу.",
+      "start": 2.3,
+      "end": 2.56
+    }
+  ]
+}

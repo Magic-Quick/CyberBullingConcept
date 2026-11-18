@@ -1,0 +1,274 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d",
+  "audio_sha256": "abb7dc41b38d79a0cade237e37f56ab836c462adbd01397b99ed74764b353139",
+  "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
+  "duration": 9.891701,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.9285714285714286,
+  "asrMatchedWords": 13,
+  "authoredLexicalWords": 14,
+  "heardText": "300 турок ршентисть, мутировавших копий и пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля.",
+  "promptedCoverage": 0.9285714285714286,
+  "matchedWordTimings": [
+    {
+      "index": 1,
+      "text": "мутировавших",
+      "start": 1.62,
+      "end": 2.48,
+      "probability": 0.9712487459182739
+    },
+    {
+      "index": 2,
+      "text": "копий",
+      "start": 2.48,
+      "end": 2.92,
+      "probability": 0.8058105111122131
+    },
+    {
+      "index": 3,
+      "text": "пакета",
+      "start": 3.0,
+      "end": 3.4,
+      "probability": 0.9883453845977783
+    },
+    {
+      "index": 4,
+      "text": "общим",
+      "start": 3.4,
+      "end": 4.0,
+      "probability": 0.9542130827903748
+    },
+    {
+      "index": 5,
+      "text": "весом",
+      "start": 4.0,
+      "end": 4.52,
+      "probability": 0.9937156736850739
+    },
+    {
+      "index": 6,
+      "text": "в",
+      "start": 4.52,
+      "end": 4.78,
+      "probability": 0.5390228033065796
+    },
+    {
+      "index": 7,
+      "text": "22",
+      "start": 4.78,
+      "end": 5.3,
+      "probability": 0.9821188449859619
+    },
+    {
+      "index": 8,
+      "text": "гигабайта",
+      "start": 5.3,
+      "end": 6.34,
+      "probability": 0.925847339630127
+    },
+    {
+      "index": 9,
+      "text": "дублированного",
+      "start": 6.34,
+      "end": 7.06,
+      "probability": 0.9589499115943909
+    },
+    {
+      "index": 10,
+      "text": "мусора,",
+      "start": 7.06,
+      "end": 7.6,
+      "probability": 0.986384908358256
+    },
+    {
+      "index": 11,
+      "text": "сожравших",
+      "start": 7.98,
+      "end": 8.54,
+      "probability": 0.9666441828012466
+    },
+    {
+      "index": 12,
+      "text": "память",
+      "start": 8.54,
+      "end": 8.98,
+      "probability": 0.9978802800178528
+    },
+    {
+      "index": 13,
+      "text": "корабля",
+      "start": 8.98,
+      "end": 9.54,
+      "probability": 0.9956823885440826
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "346",
+      "start": 0.0,
+      "end": 0.9,
+      "probability": 0.051488785742549226
+    },
+    {
+      "word": " мутировавших",
+      "start": 0.9,
+      "end": 2.46,
+      "probability": 0.7141526609659195
+    },
+    {
+      "word": " копий",
+      "start": 2.46,
+      "end": 2.9,
+      "probability": 0.8922801911830902
+    },
+    {
+      "word": " пакета",
+      "start": 2.9,
+      "end": 3.34,
+      "probability": 0.8368993202845255
+    },
+    {
+      "word": " общим",
+      "start": 3.34,
+      "end": 3.98,
+      "probability": 0.9505094289779663
+    },
+    {
+      "word": " весом",
+      "start": 3.98,
+      "end": 4.52,
+      "probability": 0.9937292337417603
+    },
+    {
+      "word": " в",
+      "start": 4.52,
+      "end": 4.78,
+      "probability": 0.7697577476501465
+    },
+    {
+      "word": " 22",
+      "start": 4.78,
+      "end": 5.32,
+      "probability": 0.9812460541725159
+    },
+    {
+      "word": " гигабайта",
+      "start": 5.32,
+      "end": 6.32,
+      "probability": 0.8629409313201905
+    },
+    {
+      "word": " дублированного",
+      "start": 6.32,
+      "end": 7.04,
+      "probability": 0.961089265346527
+    },
+    {
+      "word": " мусора",
+      "start": 7.04,
+      "end": 7.54,
+      "probability": 0.9831848740577698
+    },
+    {
+      "word": ",",
+      "start": 7.54,
+      "end": 8.0,
+      "probability": 0.5813620090484619
+    },
+    {
+      "word": " сожравших",
+      "start": 8.0,
+      "end": 8.54,
+      "probability": 0.9548694491386414
+    },
+    {
+      "word": " память",
+      "start": 8.54,
+      "end": 8.98,
+      "probability": 0.9970668256282806
+    },
+    {
+      "word": " корабля",
+      "start": 8.98,
+      "end": 9.48,
+      "probability": 0.9958110153675079
+    }
+  ],
+  "words": [
+    {
+      "text": "346",
+      "start": 0,
+      "end": 0.9
+    },
+    {
+      "text": "мутировавших",
+      "start": 0.9,
+      "end": 2.46
+    },
+    {
+      "text": "копий",
+      "start": 2.46,
+      "end": 2.9
+    },
+    {
+      "text": "пакета",
+      "start": 2.9,
+      "end": 3.34
+    },
+    {
+      "text": "общим",
+      "start": 3.34,
+      "end": 3.98
+    },
+    {
+      "text": "весом",
+      "start": 3.98,
+      "end": 4.52
+    },
+    {
+      "text": "в",
+      "start": 4.52,
+      "end": 4.78
+    },
+    {
+      "text": "22",
+      "start": 4.78,
+      "end": 5.32
+    },
+    {
+      "text": "гигабайта",
+      "start": 5.32,
+      "end": 6.32
+    },
+    {
+      "text": "дублированного",
+      "start": 6.32,
+      "end": 7.04
+    },
+    {
+      "text": "мусора,",
+      "start": 7.04,
+      "end": 7.54
+    },
+    {
+      "text": "сожравших",
+      "start": 8.0,
+      "end": 8.54
+    },
+    {
+      "text": "память",
+      "start": 8.54,
+      "end": 8.98
+    },
+    {
+      "text": "корабля",
+      "start": 8.98,
+      "end": 9.48
+    }
+  ]
+}

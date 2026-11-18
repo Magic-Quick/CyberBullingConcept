@@ -1,0 +1,281 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "30ee5b1d60f43806dd489b910b697c5f87394eef16193d47033456c67061e089",
+  "audio_sha256": "248c33cbc6a03e7c4598b95b844f1b2ac8d44175c3912571c008bc7f8f66e453",
+  "file": "media/interactive/chronicles/voice/30ee5b1d60f43806dd489b91.mp3",
+  "duration": 5.572789,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 13,
+  "authoredLexicalWords": 13,
+  "heardText": "Пять букв. Пока у слова та же проблема, что у отчёта картина неполная.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Пять",
+      "start": 0.0,
+      "end": 0.28,
+      "probability": 0.5882859528064728
+    },
+    {
+      "index": 1,
+      "text": "букв.",
+      "start": 0.28,
+      "end": 0.58,
+      "probability": 0.985400378704071
+    },
+    {
+      "index": 2,
+      "text": "Пока",
+      "start": 1.06,
+      "end": 1.4,
+      "probability": 0.9814966917037964
+    },
+    {
+      "index": 3,
+      "text": "у",
+      "start": 1.4,
+      "end": 1.6,
+      "probability": 0.08850280940532684
+    },
+    {
+      "index": 4,
+      "text": "слова",
+      "start": 1.6,
+      "end": 1.96,
+      "probability": 0.7521204352378845
+    },
+    {
+      "index": 5,
+      "text": "та",
+      "start": 1.96,
+      "end": 2.46,
+      "probability": 0.10162344574928284
+    },
+    {
+      "index": 6,
+      "text": "же",
+      "start": 2.46,
+      "end": 2.6,
+      "probability": 0.9955610036849976
+    },
+    {
+      "index": 7,
+      "text": "проблема,",
+      "start": 2.6,
+      "end": 3.02,
+      "probability": 0.9949583411216736
+    },
+    {
+      "index": 8,
+      "text": "что",
+      "start": 3.18,
+      "end": 3.34,
+      "probability": 0.9918572902679443
+    },
+    {
+      "index": 9,
+      "text": "у",
+      "start": 3.34,
+      "end": 3.46,
+      "probability": 0.9911666512489319
+    },
+    {
+      "index": 10,
+      "text": "отчёта:",
+      "start": 3.46,
+      "end": 3.88,
+      "probability": 0.7301466222852468
+    },
+    {
+      "index": 11,
+      "text": "картина",
+      "start": 3.88,
+      "end": 4.36,
+      "probability": 0.9947402874628702
+    },
+    {
+      "index": 12,
+      "text": "неполная.",
+      "start": 4.36,
+      "end": 5.08,
+      "probability": 0.7789388298988342
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Пять",
+      "start": 0.0,
+      "end": 0.3,
+      "probability": 0.49756715697731124
+    },
+    {
+      "word": " букв",
+      "start": 0.3,
+      "end": 0.52,
+      "probability": 0.985343337059021
+    },
+    {
+      "word": ".",
+      "start": 0.52,
+      "end": 1.1,
+      "probability": 0.5426846146583557
+    },
+    {
+      "word": " Пока",
+      "start": 1.1,
+      "end": 1.42,
+      "probability": 0.8985540866851807
+    },
+    {
+      "word": " у",
+      "start": 1.42,
+      "end": 1.62,
+      "probability": 0.0867767184972763
+    },
+    {
+      "word": " слова",
+      "start": 1.62,
+      "end": 1.96,
+      "probability": 0.7928507328033447
+    },
+    {
+      "word": " та",
+      "start": 1.96,
+      "end": 2.46,
+      "probability": 0.2879554331302643
+    },
+    {
+      "word": " же",
+      "start": 2.46,
+      "end": 2.6,
+      "probability": 0.9946411848068237
+    },
+    {
+      "word": " проблема",
+      "start": 2.6,
+      "end": 3.0,
+      "probability": 0.9932355284690857
+    },
+    {
+      "word": ",",
+      "start": 3.0,
+      "end": 3.18,
+      "probability": 0.7696322798728943
+    },
+    {
+      "word": " что",
+      "start": 3.18,
+      "end": 3.34,
+      "probability": 0.959172248840332
+    },
+    {
+      "word": " у",
+      "start": 3.34,
+      "end": 3.46,
+      "probability": 0.9893577694892883
+    },
+    {
+      "word": " отчёта",
+      "start": 3.46,
+      "end": 3.88,
+      "probability": 0.7297477554529905
+    },
+    {
+      "word": ":",
+      "start": 3.88,
+      "end": 4.04,
+      "probability": 4.279527558992413e-07
+    },
+    {
+      "word": " картина",
+      "start": 4.04,
+      "end": 4.34,
+      "probability": 0.9245395064353943
+    },
+    {
+      "word": " неполная",
+      "start": 4.34,
+      "end": 5.08,
+      "probability": 0.8201620479424795
+    },
+    {
+      "word": ".",
+      "start": 5.08,
+      "end": 5.3,
+      "probability": 0.8552597165107727
+    }
+  ],
+  "words": [
+    {
+      "text": "Пять",
+      "start": 0,
+      "end": 0.3
+    },
+    {
+      "text": "букв.",
+      "start": 0.3,
+      "end": 0.52
+    },
+    {
+      "text": "Пока",
+      "start": 1.1,
+      "end": 1.42
+    },
+    {
+      "text": "у",
+      "start": 1.42,
+      "end": 1.62
+    },
+    {
+      "text": "слова",
+      "start": 1.62,
+      "end": 1.96
+    },
+    {
+      "text": "та",
+      "start": 1.96,
+      "end": 2.46
+    },
+    {
+      "text": "же",
+      "start": 2.46,
+      "end": 2.6
+    },
+    {
+      "text": "проблема,",
+      "start": 2.6,
+      "end": 3.0
+    },
+    {
+      "text": "что",
+      "start": 3.18,
+      "end": 3.34
+    },
+    {
+      "text": "у",
+      "start": 3.34,
+      "end": 3.46
+    },
+    {
+      "text": "отчёта:",
+      "start": 3.46,
+      "end": 3.88
+    },
+    {
+      "text": "картина",
+      "start": 4.04,
+      "end": 4.34
+    },
+    {
+      "text": "неполная.",
+      "start": 4.34,
+      "end": 5.08
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "3da911d77ef54018f18176b3e8fa2da1c0f2c045880a1dffc3fbe4bc8c646ad9",
+  "audio_sha256": "080a15a286f2c2b2f517ecf5c4aebb5717e3e49389048d50ae783a92f74cc65c",
+  "file": "media/interactive/chronicles/voice/3da911d77ef54018f18176b3.mp3",
+  "duration": 4.783311,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 9,
+  "authoredLexicalWords": 9,
+  "heardText": "Пять букв. Пока объём вашего ответа растёт быстрее ясности.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Пять",
+      "start": 0.0,
+      "end": 0.28,
+      "probability": 0.5892741978168488
+    },
+    {
+      "index": 1,
+      "text": "букв.",
+      "start": 0.28,
+      "end": 0.56,
+      "probability": 0.9825392961502075
+    },
+    {
+      "index": 2,
+      "text": "Пока",
+      "start": 0.98,
+      "end": 1.22,
+      "probability": 0.9765831232070923
+    },
+    {
+      "index": 3,
+      "text": "объём",
+      "start": 1.22,
+      "end": 1.8,
+      "probability": 0.7109671831130981
+    },
+    {
+      "index": 4,
+      "text": "вашего",
+      "start": 1.8,
+      "end": 2.22,
+      "probability": 0.9586091935634613
+    },
+    {
+      "index": 5,
+      "text": "ответа",
+      "start": 2.22,
+      "end": 2.58,
+      "probability": 0.9944392144680023
+    },
+    {
+      "index": 6,
+      "text": "растёт",
+      "start": 2.58,
+      "end": 2.9,
+      "probability": 0.9181395769119263
+    },
+    {
+      "index": 7,
+      "text": "быстрее",
+      "start": 2.9,
+      "end": 3.54,
+      "probability": 0.9179537892341614
+    },
+    {
+      "index": 8,
+      "text": "ясности.",
+      "start": 3.54,
+      "end": 4.2,
+      "probability": 0.9470696449279785
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Пять",
+      "start": 0.0,
+      "end": 0.28,
+      "probability": 0.4978378697323933
+    },
+    {
+      "word": " букв",
+      "start": 0.28,
+      "end": 0.52,
+      "probability": 0.980490505695343
+    },
+    {
+      "word": ".",
+      "start": 0.52,
+      "end": 0.96,
+      "probability": 0.32154175639152527
+    },
+    {
+      "word": " Пока",
+      "start": 0.96,
+      "end": 1.22,
+      "probability": 0.9206017851829529
+    },
+    {
+      "word": " объём",
+      "start": 1.22,
+      "end": 1.78,
+      "probability": 0.7246519029140472
+    },
+    {
+      "word": " вашего",
+      "start": 1.78,
+      "end": 2.2,
+      "probability": 0.9357134401798248
+    },
+    {
+      "word": " ответа",
+      "start": 2.2,
+      "end": 2.58,
+      "probability": 0.9956352412700653
+    },
+    {
+      "word": " растёт",
+      "start": 2.58,
+      "end": 2.88,
+      "probability": 0.9404465854167938
+    },
+    {
+      "word": " быстрее",
+      "start": 2.88,
+      "end": 3.52,
+      "probability": 0.9332147836685181
+    },
+    {
+      "word": " ясности",
+      "start": 3.52,
+      "end": 4.2,
+      "probability": 0.9710696339607239
+    },
+    {
+      "word": ".",
+      "start": 4.2,
+      "end": 4.5,
+      "probability": 0.9183106422424316
+    }
+  ],
+  "words": [
+    {
+      "text": "Пять",
+      "start": 0,
+      "end": 0.28
+    },
+    {
+      "text": "букв.",
+      "start": 0.28,
+      "end": 0.52
+    },
+    {
+      "text": "Пока",
+      "start": 0.96,
+      "end": 1.22
+    },
+    {
+      "text": "объём",
+      "start": 1.22,
+      "end": 1.78
+    },
+    {
+      "text": "вашего",
+      "start": 1.78,
+      "end": 2.2
+    },
+    {
+      "text": "ответа",
+      "start": 2.2,
+      "end": 2.58
+    },
+    {
+      "text": "растёт",
+      "start": 2.58,
+      "end": 2.88
+    },
+    {
+      "text": "быстрее",
+      "start": 2.88,
+      "end": 3.52
+    },
+    {
+      "text": "ясности.",
+      "start": 3.52,
+      "end": 4.2
+    }
+  ]
+}

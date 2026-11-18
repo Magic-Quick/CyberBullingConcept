@@ -1,0 +1,293 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "2e450a8b81ecb59a2fe7be91be734644b2ef23e25abbf94f05be4a3151ce1cdf",
+  "audio_sha256": "fd4a5056373d8588415da38e1af8a75cceef7911616e63c62df0498ad0bffbc0",
+  "file": "media/interactive/chronicles/voice/2e450a8b81ecb59a2fe7be91.mp3",
+  "duration": 7.523265,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 14,
+  "authoredLexicalWords": 14,
+  "heardText": "Таймеры остановлены. Капсулы запечатаны. Семьдесят три плейбла на табло прошлой недели казались вам трагедией.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Таймеры",
+      "start": 0.0,
+      "end": 0.5,
+      "probability": 0.8214384466409683
+    },
+    {
+      "index": 1,
+      "text": "остановлены.",
+      "start": 0.5,
+      "end": 1.32,
+      "probability": 0.9898181955019633
+    },
+    {
+      "index": 2,
+      "text": "Капсулы",
+      "start": 1.52,
+      "end": 2.02,
+      "probability": 0.989344346523285
+    },
+    {
+      "index": 3,
+      "text": "запечатаны.",
+      "start": 2.02,
+      "end": 2.82,
+      "probability": 0.9970638155937195
+    },
+    {
+      "index": 4,
+      "text": "Семьдесят",
+      "start": 3.12,
+      "end": 3.84,
+      "probability": 0.7330549389123917
+    },
+    {
+      "index": 5,
+      "text": "три",
+      "start": 3.84,
+      "end": 4.06,
+      "probability": 0.8291473388671875
+    },
+    {
+      "index": 6,
+      "text": "плейбла",
+      "start": 4.06,
+      "end": 4.58,
+      "probability": 0.716298520565033
+    },
+    {
+      "index": 7,
+      "text": "на",
+      "start": 4.58,
+      "end": 4.68,
+      "probability": 0.9664500951766968
+    },
+    {
+      "index": 8,
+      "text": "табло",
+      "start": 4.68,
+      "end": 5.0,
+      "probability": 0.9732644955317179
+    },
+    {
+      "index": 9,
+      "text": "прошлой",
+      "start": 5.0,
+      "end": 5.44,
+      "probability": 0.9597833156585693
+    },
+    {
+      "index": 10,
+      "text": "недели",
+      "start": 5.44,
+      "end": 5.76,
+      "probability": 0.9911041557788849
+    },
+    {
+      "index": 11,
+      "text": "казались",
+      "start": 5.76,
+      "end": 6.16,
+      "probability": 0.9807373583316803
+    },
+    {
+      "index": 12,
+      "text": "вам",
+      "start": 6.16,
+      "end": 6.34,
+      "probability": 0.9572794437408447
+    },
+    {
+      "index": 13,
+      "text": "трагедией.",
+      "start": 6.34,
+      "end": 7.06,
+      "probability": 0.9707318246364594
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Таймеры",
+      "start": 0.0,
+      "end": 0.48,
+      "probability": 0.7308865104205324
+    },
+    {
+      "word": " остановлены",
+      "start": 0.48,
+      "end": 1.32,
+      "probability": 0.9887832403182983
+    },
+    {
+      "word": ".",
+      "start": 1.32,
+      "end": 1.54,
+      "probability": 0.3048003911972046
+    },
+    {
+      "word": " Капсулы",
+      "start": 1.54,
+      "end": 2.04,
+      "probability": 0.9521026730537414
+    },
+    {
+      "word": " запечатаны",
+      "start": 2.04,
+      "end": 2.8,
+      "probability": 0.9961803754170736
+    },
+    {
+      "word": ".",
+      "start": 2.8,
+      "end": 3.16,
+      "probability": 0.9418391585350037
+    },
+    {
+      "word": " Семьдесят",
+      "start": 3.16,
+      "end": 3.8,
+      "probability": 0.766841834783554
+    },
+    {
+      "word": " три",
+      "start": 3.8,
+      "end": 4.08,
+      "probability": 0.7244391441345215
+    },
+    {
+      "word": " плейбла",
+      "start": 4.08,
+      "end": 4.56,
+      "probability": 0.6705273613333702
+    },
+    {
+      "word": " на",
+      "start": 4.56,
+      "end": 4.7,
+      "probability": 0.9757565259933472
+    },
+    {
+      "word": " табло",
+      "start": 4.7,
+      "end": 5.0,
+      "probability": 0.9654844403266907
+    },
+    {
+      "word": " прошлой",
+      "start": 5.0,
+      "end": 5.42,
+      "probability": 0.9288070499897003
+    },
+    {
+      "word": " недели",
+      "start": 5.42,
+      "end": 5.74,
+      "probability": 0.9905427098274231
+    },
+    {
+      "word": " казались",
+      "start": 5.74,
+      "end": 6.14,
+      "probability": 0.950922042131424
+    },
+    {
+      "word": " вам",
+      "start": 6.14,
+      "end": 6.34,
+      "probability": 0.8810617923736572
+    },
+    {
+      "word": " трагедией",
+      "start": 6.34,
+      "end": 7.14,
+      "probability": 0.7592126931995153
+    },
+    {
+      "word": ".",
+      "start": 7.14,
+      "end": 7.28,
+      "probability": 0.9138754606246948
+    }
+  ],
+  "words": [
+    {
+      "text": "Таймеры",
+      "start": 0,
+      "end": 0.48
+    },
+    {
+      "text": "остановлены.",
+      "start": 0.48,
+      "end": 1.32
+    },
+    {
+      "text": "Капсулы",
+      "start": 1.54,
+      "end": 2.04
+    },
+    {
+      "text": "запечатаны.",
+      "start": 2.04,
+      "end": 2.8
+    },
+    {
+      "text": "Семьдесят",
+      "start": 3.16,
+      "end": 3.8
+    },
+    {
+      "text": "три",
+      "start": 3.8,
+      "end": 4.08
+    },
+    {
+      "text": "плейбла",
+      "start": 4.08,
+      "end": 4.56
+    },
+    {
+      "text": "на",
+      "start": 4.56,
+      "end": 4.7
+    },
+    {
+      "text": "табло",
+      "start": 4.7,
+      "end": 5.0
+    },
+    {
+      "text": "прошлой",
+      "start": 5.0,
+      "end": 5.42
+    },
+    {
+      "text": "недели",
+      "start": 5.42,
+      "end": 5.74
+    },
+    {
+      "text": "казались",
+      "start": 5.74,
+      "end": 6.14
+    },
+    {
+      "text": "вам",
+      "start": 6.14,
+      "end": 6.34
+    },
+    {
+      "text": "трагедией.",
+      "start": 6.34,
+      "end": 7.14
+    }
+  ]
+}

@@ -1,0 +1,6588 @@
+{
+  "schemaVersion": 1,
+  "clips": {
+    "41932520badf33347dcaf73695fd6fc9782fe0244db1c781038387a2d0189e45:ecf61a827dcc8f07ef2a4ccc715ce980a463e018ae5bc22e4117ff90ed36d887": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "41932520badf33347dcaf73695fd6fc9782fe0244db1c781038387a2d0189e45",
+      "file": "media/interactive/scenes/protocol_gate_voice/intro.mp3",
+      "duration": 17.740045,
+      "asrCoverage": 0.96875,
+      "asrMatchedWords": 31,
+      "authoredLexicalWords": 32,
+      "heardText": "Горино спросили, посмотрел ли он обновленную сборку. В ответ он попросил ее прислать. Какое слово написал? Не скажу. Но скажу, что это пиздец. Мудрый руководитель развивает команду. Даже когда просто просит сборку.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 1,
+          "text": "спросили,",
+          "start": 0.46,
+          "end": 1.1,
+          "probability": 0.9529137015342712
+        },
+        {
+          "index": 2,
+          "text": "посмотрел",
+          "start": 1.36,
+          "end": 1.98,
+          "probability": 0.9410389363765717
+        },
+        {
+          "index": 3,
+          "text": "ли",
+          "start": 1.98,
+          "end": 2.14,
+          "probability": 0.9988659620285034
+        },
+        {
+          "index": 4,
+          "text": "он",
+          "start": 2.14,
+          "end": 2.3,
+          "probability": 0.9975427389144897
+        },
+        {
+          "index": 5,
+          "text": "обновлённую",
+          "start": 2.3,
+          "end": 3.12,
+          "probability": 0.9630396813154221
+        },
+        {
+          "index": 6,
+          "text": "сборку.",
+          "start": 3.12,
+          "end": 3.68,
+          "probability": 0.9987708131472269
+        },
+        {
+          "index": 7,
+          "text": "В",
+          "start": 4.06,
+          "end": 4.28,
+          "probability": 0.9816983938217163
+        },
+        {
+          "index": 8,
+          "text": "ответ",
+          "start": 4.28,
+          "end": 4.62,
+          "probability": 0.9977288842201233
+        },
+        {
+          "index": 9,
+          "text": "он",
+          "start": 4.62,
+          "end": 5.06,
+          "probability": 0.4296433627605438
+        },
+        {
+          "index": 10,
+          "text": "попросил",
+          "start": 5.06,
+          "end": 5.68,
+          "probability": 0.9948339660962423
+        },
+        {
+          "index": 11,
+          "text": "её",
+          "start": 5.68,
+          "end": 5.84,
+          "probability": 0.672761082649231
+        },
+        {
+          "index": 12,
+          "text": "прислать.",
+          "start": 5.84,
+          "end": 6.44,
+          "probability": 0.9923739830652872
+        },
+        {
+          "index": 13,
+          "text": "Какое",
+          "start": 7.2,
+          "end": 7.8,
+          "probability": 0.9620716273784637
+        },
+        {
+          "index": 14,
+          "text": "слово",
+          "start": 7.8,
+          "end": 8.04,
+          "probability": 0.9961121678352356
+        },
+        {
+          "index": 15,
+          "text": "написал",
+          "start": 8.04,
+          "end": 8.7,
+          "probability": 0.9952143430709839
+        },
+        {
+          "index": 17,
+          "text": "не",
+          "start": 9.24,
+          "end": 9.48,
+          "probability": 0.8364110589027405
+        },
+        {
+          "index": 18,
+          "text": "скажу.",
+          "start": 9.48,
+          "end": 10.0,
+          "probability": 0.9844202697277069
+        },
+        {
+          "index": 19,
+          "text": "Но",
+          "start": 10.6,
+          "end": 10.82,
+          "probability": 0.926282525062561
+        },
+        {
+          "index": 20,
+          "text": "скажу,",
+          "start": 10.82,
+          "end": 11.22,
+          "probability": 0.9919140934944153
+        },
+        {
+          "index": 21,
+          "text": "что",
+          "start": 11.3,
+          "end": 11.38,
+          "probability": 0.9894337058067322
+        },
+        {
+          "index": 22,
+          "text": "это",
+          "start": 11.38,
+          "end": 11.6,
+          "probability": 0.9895805716514587
+        },
+        {
+          "index": 23,
+          "text": "пиздец.",
+          "start": 11.6,
+          "end": 12.34,
+          "probability": 0.9341093897819519
+        },
+        {
+          "index": 24,
+          "text": "Мудрый",
+          "start": 12.8,
+          "end": 13.26,
+          "probability": 0.9684647470712662
+        },
+        {
+          "index": 25,
+          "text": "руководитель",
+          "start": 13.26,
+          "end": 13.82,
+          "probability": 0.9950565546751022
+        },
+        {
+          "index": 26,
+          "text": "развивает",
+          "start": 13.82,
+          "end": 14.34,
+          "probability": 0.9784774780273438
+        },
+        {
+          "index": 27,
+          "text": "команду.",
+          "start": 14.34,
+          "end": 14.98,
+          "probability": 0.9971315264701843
+        },
+        {
+          "index": 28,
+          "text": "Даже",
+          "start": 15.44,
+          "end": 15.72,
+          "probability": 0.9913460612297058
+        },
+        {
+          "index": 29,
+          "text": "когда",
+          "start": 15.72,
+          "end": 15.94,
+          "probability": 0.8947317600250244
+        },
+        {
+          "index": 30,
+          "text": "просто",
+          "start": 15.94,
+          "end": 16.34,
+          "probability": 0.9694733023643494
+        },
+        {
+          "index": 31,
+          "text": "просит",
+          "start": 16.34,
+          "end": 16.78,
+          "probability": 0.9815561473369598
+        },
+        {
+          "index": 32,
+          "text": "сборку.",
+          "start": 16.78,
+          "end": 17.3,
+          "probability": 0.9984431068102518
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Горина",
+          "start": 0.0,
+          "end": 0.42,
+          "probability": 0.4900710669705101
+        },
+        {
+          "word": " спросили",
+          "start": 0.42,
+          "end": 1.08,
+          "probability": 0.9056556820869446
+        },
+        {
+          "word": ",",
+          "start": 1.08,
+          "end": 1.36,
+          "probability": 0.6344298720359802
+        },
+        {
+          "word": " посмотрел",
+          "start": 1.36,
+          "end": 1.98,
+          "probability": 0.9102852642536163
+        },
+        {
+          "word": " ли",
+          "start": 1.98,
+          "end": 2.14,
+          "probability": 0.9981803894042969
+        },
+        {
+          "word": " он",
+          "start": 2.14,
+          "end": 2.3,
+          "probability": 0.9958403706550598
+        },
+        {
+          "word": " обновлённую",
+          "start": 2.3,
+          "end": 3.12,
+          "probability": 0.814137053489685
+        },
+        {
+          "word": " сборку",
+          "start": 3.12,
+          "end": 3.64,
+          "probability": 0.9987336993217468
+        },
+        {
+          "word": ".",
+          "start": 3.64,
+          "end": 4.08,
+          "probability": 0.6815065741539001
+        },
+        {
+          "word": " В",
+          "start": 4.08,
+          "end": 4.3,
+          "probability": 0.973476231098175
+        },
+        {
+          "word": " ответ",
+          "start": 4.3,
+          "end": 4.6,
+          "probability": 0.9982095956802368
+        },
+        {
+          "word": " он",
+          "start": 4.6,
+          "end": 5.06,
+          "probability": 0.7102818489074707
+        },
+        {
+          "word": " попросил",
+          "start": 5.06,
+          "end": 5.68,
+          "probability": 0.9947498242060343
+        },
+        {
+          "word": " её",
+          "start": 5.68,
+          "end": 5.86,
+          "probability": 0.8779124617576599
+        },
+        {
+          "word": " прислать",
+          "start": 5.86,
+          "end": 6.44,
+          "probability": 0.9936389525731405
+        },
+        {
+          "word": ".",
+          "start": 6.44,
+          "end": 7.22,
+          "probability": 0.9248970150947571
+        },
+        {
+          "word": " Какое",
+          "start": 7.22,
+          "end": 7.8,
+          "probability": 0.8837378621101379
+        },
+        {
+          "word": " слово",
+          "start": 7.8,
+          "end": 8.04,
+          "probability": 0.9956269264221191
+        },
+        {
+          "word": " написал",
+          "start": 8.04,
+          "end": 8.68,
+          "probability": 0.9953833520412445
+        },
+        {
+          "word": " —",
+          "start": 8.68,
+          "end": 9.22,
+          "probability": 0.0017417168710380793
+        },
+        {
+          "word": " не",
+          "start": 9.22,
+          "end": 9.48,
+          "probability": 0.6471686363220215
+        },
+        {
+          "word": " скажу",
+          "start": 9.48,
+          "end": 9.98,
+          "probability": 0.977550208568573
+        },
+        {
+          "word": ".",
+          "start": 9.98,
+          "end": 10.6,
+          "probability": 0.6940531730651855
+        },
+        {
+          "word": " Но",
+          "start": 10.6,
+          "end": 10.82,
+          "probability": 0.8411469459533691
+        },
+        {
+          "word": " скажу",
+          "start": 10.82,
+          "end": 11.22,
+          "probability": 0.9940165281295776
+        },
+        {
+          "word": ",",
+          "start": 11.22,
+          "end": 11.32,
+          "probability": 0.8607162833213806
+        },
+        {
+          "word": " что",
+          "start": 11.32,
+          "end": 11.38,
+          "probability": 0.988205075263977
+        },
+        {
+          "word": " это",
+          "start": 11.38,
+          "end": 11.6,
+          "probability": 0.9892011880874634
+        },
+        {
+          "word": " пиздец",
+          "start": 11.6,
+          "end": 12.32,
+          "probability": 0.9307888299226761
+        },
+        {
+          "word": ".",
+          "start": 12.32,
+          "end": 12.88,
+          "probability": 0.6498379111289978
+        },
+        {
+          "word": " Мудрый",
+          "start": 12.88,
+          "end": 13.26,
+          "probability": 0.970091700553894
+        },
+        {
+          "word": " руководитель",
+          "start": 13.26,
+          "end": 13.8,
+          "probability": 0.9940535575151443
+        },
+        {
+          "word": " развивает",
+          "start": 13.8,
+          "end": 14.34,
+          "probability": 0.9748255908489227
+        },
+        {
+          "word": " команду",
+          "start": 14.34,
+          "end": 14.92,
+          "probability": 0.9961832463741302
+        },
+        {
+          "word": ".",
+          "start": 14.92,
+          "end": 15.46,
+          "probability": 0.6226024627685547
+        },
+        {
+          "word": " Даже",
+          "start": 15.46,
+          "end": 15.72,
+          "probability": 0.9931902289390564
+        },
+        {
+          "word": " когда",
+          "start": 15.72,
+          "end": 15.94,
+          "probability": 0.8918777704238892
+        },
+        {
+          "word": " просто",
+          "start": 15.94,
+          "end": 16.34,
+          "probability": 0.9780689477920532
+        },
+        {
+          "word": " просит",
+          "start": 16.34,
+          "end": 16.76,
+          "probability": 0.9805194437503815
+        },
+        {
+          "word": " сборку",
+          "start": 16.76,
+          "end": 17.3,
+          "probability": 0.9987328847249349
+        },
+        {
+          "word": ".",
+          "start": 17.3,
+          "end": 17.72,
+          "probability": 0.9165772199630737
+        }
+      ],
+      "words": [
+        {
+          "text": "Горина",
+          "start": 0,
+          "end": 0.42
+        },
+        {
+          "text": "спросили,",
+          "start": 0.42,
+          "end": 1.08
+        },
+        {
+          "text": "посмотрел",
+          "start": 1.36,
+          "end": 1.98
+        },
+        {
+          "text": "ли",
+          "start": 1.98,
+          "end": 2.14
+        },
+        {
+          "text": "он",
+          "start": 2.14,
+          "end": 2.3
+        },
+        {
+          "text": "обновлённую",
+          "start": 2.3,
+          "end": 3.12
+        },
+        {
+          "text": "сборку.",
+          "start": 3.12,
+          "end": 3.64
+        },
+        {
+          "text": "В",
+          "start": 4.08,
+          "end": 4.3
+        },
+        {
+          "text": "ответ",
+          "start": 4.3,
+          "end": 4.6
+        },
+        {
+          "text": "он",
+          "start": 4.6,
+          "end": 5.06
+        },
+        {
+          "text": "попросил",
+          "start": 5.06,
+          "end": 5.68
+        },
+        {
+          "text": "её",
+          "start": 5.68,
+          "end": 5.86
+        },
+        {
+          "text": "прислать.",
+          "start": 5.86,
+          "end": 6.44
+        },
+        {
+          "text": "Какое",
+          "start": 7.22,
+          "end": 7.8
+        },
+        {
+          "text": "слово",
+          "start": 7.8,
+          "end": 8.04
+        },
+        {
+          "text": "написал",
+          "start": 8.04,
+          "end": 8.68
+        },
+        {
+          "text": "—",
+          "start": 8.68,
+          "end": 8.68
+        },
+        {
+          "text": "не",
+          "start": 9.22,
+          "end": 9.48
+        },
+        {
+          "text": "скажу.",
+          "start": 9.48,
+          "end": 9.98
+        },
+        {
+          "text": "Но",
+          "start": 10.6,
+          "end": 10.82
+        },
+        {
+          "text": "скажу,",
+          "start": 10.82,
+          "end": 11.22
+        },
+        {
+          "text": "что",
+          "start": 11.32,
+          "end": 11.38
+        },
+        {
+          "text": "это",
+          "start": 11.38,
+          "end": 11.6
+        },
+        {
+          "text": "пиздец.",
+          "start": 11.6,
+          "end": 12.32
+        },
+        {
+          "text": "Мудрый",
+          "start": 12.88,
+          "end": 13.26
+        },
+        {
+          "text": "руководитель",
+          "start": 13.26,
+          "end": 13.8
+        },
+        {
+          "text": "развивает",
+          "start": 13.8,
+          "end": 14.34
+        },
+        {
+          "text": "команду.",
+          "start": 14.34,
+          "end": 14.92
+        },
+        {
+          "text": "Даже",
+          "start": 15.46,
+          "end": 15.72
+        },
+        {
+          "text": "когда",
+          "start": 15.72,
+          "end": 15.94
+        },
+        {
+          "text": "просто",
+          "start": 15.94,
+          "end": 16.34
+        },
+        {
+          "text": "просит",
+          "start": 16.34,
+          "end": 16.76
+        },
+        {
+          "text": "сборку.",
+          "start": 16.76,
+          "end": 17.3
+        }
+      ]
+    },
+    "d754da7d5af27180546918d5b5596daf54918c2555f89958ba9094bdda0288c8:b46e9756b876b6cb75897d62178c312603019c66c71d558f10c68f6b10508423": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "d754da7d5af27180546918d5b5596daf54918c2555f89958ba9094bdda0288c8",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_correct.mp3",
+      "duration": 3.065034,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 5,
+      "authoredLexicalWords": 5,
+      "heardText": "есть такая буква, к сожалению.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Есть",
+          "start": 0.0,
+          "end": 0.22,
+          "probability": 0.3262529671192169
+        },
+        {
+          "index": 1,
+          "text": "такая",
+          "start": 0.22,
+          "end": 0.5,
+          "probability": 0.8695976138114929
+        },
+        {
+          "index": 2,
+          "text": "буква...",
+          "start": 0.5,
+          "end": 1.52,
+          "probability": 0.9569665491580963
+        },
+        {
+          "index": 3,
+          "text": "К",
+          "start": 1.64,
+          "end": 1.76,
+          "probability": 0.9752272963523865
+        },
+        {
+          "index": 4,
+          "text": "сожалению.",
+          "start": 1.76,
+          "end": 2.22,
+          "probability": 0.9876085519790649
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Есть",
+          "start": 0.0,
+          "end": 0.26,
+          "probability": 0.4923048322343675
+        },
+        {
+          "word": " такая",
+          "start": 0.26,
+          "end": 0.5,
+          "probability": 0.9428476691246033
+        },
+        {
+          "word": " буква...",
+          "start": 0.5,
+          "end": 1.56,
+          "probability": 0.6005070361619195
+        },
+        {
+          "word": " К",
+          "start": 1.56,
+          "end": 1.76,
+          "probability": 0.38437536358833313
+        },
+        {
+          "word": " сожалению",
+          "start": 1.76,
+          "end": 2.18,
+          "probability": 0.9629242420196533
+        },
+        {
+          "word": ".",
+          "start": 2.18,
+          "end": 3.02,
+          "probability": 0.29223495721817017
+        }
+      ],
+      "words": [
+        {
+          "text": "Есть",
+          "start": 0,
+          "end": 0.26
+        },
+        {
+          "text": "такая",
+          "start": 0.26,
+          "end": 0.5
+        },
+        {
+          "text": "буква...",
+          "start": 0.5,
+          "end": 1.56
+        },
+        {
+          "text": "К",
+          "start": 1.56,
+          "end": 1.76
+        },
+        {
+          "text": "сожалению.",
+          "start": 1.76,
+          "end": 2.18
+        }
+      ]
+    },
+    "943373e2f8475c8397930f6396182629e941a6b46e1915a55e742b15cb0f8f69:c9c5cb19fed76c64cebf994a026cfaf6a6c612327345fecc0323d5438bfc7013": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "943373e2f8475c8397930f6396182629e941a6b46e1915a55e742b15cb0f8f69",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3",
+      "duration": 5.29415,
+      "asrCoverage": 0.9,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 10,
+      "heardText": "Есть такая буква, к сожалению, только блять в другом месте.",
+      "promptedCoverage": 0.7,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Есть",
+          "start": 0.0,
+          "end": 0.24,
+          "probability": 0.6197859048843384
+        },
+        {
+          "index": 1,
+          "text": "такая",
+          "start": 0.24,
+          "end": 0.52,
+          "probability": 0.9114040732383728
+        },
+        {
+          "index": 2,
+          "text": "буква...",
+          "start": 0.52,
+          "end": 1.48,
+          "probability": 0.9619498252868652
+        },
+        {
+          "index": 3,
+          "text": "К",
+          "start": 1.64,
+          "end": 1.84,
+          "probability": 0.903590202331543
+        },
+        {
+          "index": 4,
+          "text": "сожалению.",
+          "start": 1.84,
+          "end": 2.44,
+          "probability": 0.9921290874481201
+        },
+        {
+          "index": 5,
+          "text": "Только,",
+          "start": 3.14,
+          "end": 3.48,
+          "probability": 0.98363196849823
+        },
+        {
+          "index": 7,
+          "text": "в",
+          "start": 3.78,
+          "end": 3.92,
+          "probability": 0.8840892314910889
+        },
+        {
+          "index": 8,
+          "text": "другом",
+          "start": 3.92,
+          "end": 4.34,
+          "probability": 0.9971936047077179
+        },
+        {
+          "index": 9,
+          "text": "месте.",
+          "start": 4.34,
+          "end": 4.7,
+          "probability": 0.9893897175788879
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Есть",
+          "start": 0.0,
+          "end": 0.28,
+          "probability": 0.48227184017014224
+        },
+        {
+          "word": " такая",
+          "start": 0.28,
+          "end": 0.52,
+          "probability": 0.9183756709098816
+        },
+        {
+          "word": " буква...",
+          "start": 0.52,
+          "end": 1.78,
+          "probability": 0.6201902776956558
+        },
+        {
+          "word": " К",
+          "start": 1.78,
+          "end": 1.82,
+          "probability": 0.6613738536834717
+        },
+        {
+          "word": " сожалению",
+          "start": 1.82,
+          "end": 2.34,
+          "probability": 0.9930627942085266
+        },
+        {
+          "word": ".",
+          "start": 2.34,
+          "end": 3.16,
+          "probability": 0.07959569990634918
+        },
+        {
+          "word": " Только",
+          "start": 3.16,
+          "end": 3.5,
+          "probability": 0.8499587178230286
+        },
+        {
+          "word": ",",
+          "start": 3.5,
+          "end": 3.6,
+          "probability": 0.12814725935459137
+        },
+        {
+          "word": " блядь",
+          "start": 3.6,
+          "end": 3.8,
+          "probability": 0.7540403716266155
+        },
+        {
+          "word": ",",
+          "start": 3.8,
+          "end": 3.88,
+          "probability": 0.963503897190094
+        },
+        {
+          "word": " в",
+          "start": 3.88,
+          "end": 3.92,
+          "probability": 0.9945118427276611
+        },
+        {
+          "word": " другом",
+          "start": 3.92,
+          "end": 4.32,
+          "probability": 0.9962803423404694
+        },
+        {
+          "word": " месте",
+          "start": 4.32,
+          "end": 4.66,
+          "probability": 0.9929324388504028
+        },
+        {
+          "word": ".",
+          "start": 4.66,
+          "end": 5.14,
+          "probability": 0.6347978115081787
+        }
+      ],
+      "words": [
+        {
+          "text": "Есть",
+          "start": 0,
+          "end": 0.28
+        },
+        {
+          "text": "такая",
+          "start": 0.28,
+          "end": 0.52
+        },
+        {
+          "text": "буква...",
+          "start": 0.52,
+          "end": 1.78
+        },
+        {
+          "text": "К",
+          "start": 1.78,
+          "end": 1.82
+        },
+        {
+          "text": "сожалению.",
+          "start": 1.82,
+          "end": 2.34
+        },
+        {
+          "text": "Только,",
+          "start": 3.16,
+          "end": 3.5
+        },
+        {
+          "text": "блядь,",
+          "start": 3.6,
+          "end": 3.8
+        },
+        {
+          "text": "в",
+          "start": 3.88,
+          "end": 3.92
+        },
+        {
+          "text": "другом",
+          "start": 3.92,
+          "end": 4.32
+        },
+        {
+          "text": "месте.",
+          "start": 4.32,
+          "end": 4.66
+        }
+      ]
+    },
+    "ce5d248e6915c50f306c871bc564053e40ab2847ef9cd4bc65c2c464f4c05a4c:90e64bed7045d3cce908920068471ecff8d8efcfe214cd2820ff6948d2ba1932": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "ce5d248e6915c50f306c871bc564053e40ab2847ef9cd4bc65c2c464f4c05a4c",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_1.mp3",
+      "duration": 4.597551,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 11,
+      "authoredLexicalWords": 11,
+      "heardText": "Буква есть. Только вы опять назначили ее не на ту задачу.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Буква",
+          "start": 0.0,
+          "end": 0.42,
+          "probability": 0.8070502678553263
+        },
+        {
+          "index": 1,
+          "text": "есть.",
+          "start": 0.42,
+          "end": 0.7,
+          "probability": 0.9880678653717041
+        },
+        {
+          "index": 2,
+          "text": "Только",
+          "start": 1.26,
+          "end": 1.56,
+          "probability": 0.9608728289604187
+        },
+        {
+          "index": 3,
+          "text": "вы",
+          "start": 1.56,
+          "end": 1.78,
+          "probability": 0.9531449675559998
+        },
+        {
+          "index": 4,
+          "text": "опять",
+          "start": 1.78,
+          "end": 2.04,
+          "probability": 0.9625986218452454
+        },
+        {
+          "index": 5,
+          "text": "назначили",
+          "start": 2.04,
+          "end": 2.7,
+          "probability": 0.9975864291191101
+        },
+        {
+          "index": 6,
+          "text": "её",
+          "start": 2.7,
+          "end": 2.92,
+          "probability": 0.601398766040802
+        },
+        {
+          "index": 7,
+          "text": "не",
+          "start": 2.92,
+          "end": 3.12,
+          "probability": 0.9398524761199951
+        },
+        {
+          "index": 8,
+          "text": "на",
+          "start": 3.12,
+          "end": 3.34,
+          "probability": 0.9984423518180847
+        },
+        {
+          "index": 9,
+          "text": "ту",
+          "start": 3.34,
+          "end": 3.46,
+          "probability": 0.9506464600563049
+        },
+        {
+          "index": 10,
+          "text": "задачу.",
+          "start": 3.46,
+          "end": 4.16,
+          "probability": 0.9951955080032349
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Буква",
+          "start": 0.0,
+          "end": 0.42,
+          "probability": 0.6264705930370837
+        },
+        {
+          "word": " есть",
+          "start": 0.42,
+          "end": 0.7,
+          "probability": 0.995736837387085
+        },
+        {
+          "word": ".",
+          "start": 0.7,
+          "end": 1.3,
+          "probability": 0.7496846914291382
+        },
+        {
+          "word": " Только",
+          "start": 1.3,
+          "end": 1.58,
+          "probability": 0.8745498061180115
+        },
+        {
+          "word": " вы",
+          "start": 1.58,
+          "end": 1.76,
+          "probability": 0.9765258431434631
+        },
+        {
+          "word": " опять",
+          "start": 1.76,
+          "end": 2.06,
+          "probability": 0.9918345212936401
+        },
+        {
+          "word": " назначили",
+          "start": 2.06,
+          "end": 2.66,
+          "probability": 0.9977596998214722
+        },
+        {
+          "word": " её",
+          "start": 2.66,
+          "end": 2.9,
+          "probability": 0.4950219392776489
+        },
+        {
+          "word": " не",
+          "start": 2.9,
+          "end": 3.12,
+          "probability": 0.8814371228218079
+        },
+        {
+          "word": " на",
+          "start": 3.12,
+          "end": 3.34,
+          "probability": 0.9970443844795227
+        },
+        {
+          "word": " ту",
+          "start": 3.34,
+          "end": 3.46,
+          "probability": 0.8906935453414917
+        },
+        {
+          "word": " задачу",
+          "start": 3.46,
+          "end": 4.16,
+          "probability": 0.9956888854503632
+        },
+        {
+          "word": ".",
+          "start": 4.16,
+          "end": 4.34,
+          "probability": 0.5133864879608154
+        }
+      ],
+      "words": [
+        {
+          "text": "Буква",
+          "start": 0,
+          "end": 0.42
+        },
+        {
+          "text": "есть.",
+          "start": 0.42,
+          "end": 0.7
+        },
+        {
+          "text": "Только",
+          "start": 1.3,
+          "end": 1.58
+        },
+        {
+          "text": "вы",
+          "start": 1.58,
+          "end": 1.76
+        },
+        {
+          "text": "опять",
+          "start": 1.76,
+          "end": 2.06
+        },
+        {
+          "text": "назначили",
+          "start": 2.06,
+          "end": 2.66
+        },
+        {
+          "text": "её",
+          "start": 2.66,
+          "end": 2.9
+        },
+        {
+          "text": "не",
+          "start": 2.9,
+          "end": 3.12
+        },
+        {
+          "text": "на",
+          "start": 3.12,
+          "end": 3.34
+        },
+        {
+          "text": "ту",
+          "start": 3.34,
+          "end": 3.46
+        },
+        {
+          "text": "задачу.",
+          "start": 3.46,
+          "end": 4.16
+        }
+      ]
+    },
+    "9dae477b7c2d929df82b7749d679d471de01515aff813a0752f125053483ed32:c4ddb6be8c8e3fb25f2336a8d01961f8b161a8bf2df45d95de9cbddf85031520": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "9dae477b7c2d929df82b7749d679d471de01515aff813a0752f125053483ed32",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_2.mp3",
+      "duration": 5.10839,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 10,
+      "authoredLexicalWords": 10,
+      "heardText": "Есть такая буква, место ей уже нашли. Без вашего участия.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Есть",
+          "start": 0.0,
+          "end": 0.26,
+          "probability": 0.8655584454536438
+        },
+        {
+          "index": 1,
+          "text": "такая",
+          "start": 0.26,
+          "end": 0.56,
+          "probability": 0.9403811693191528
+        },
+        {
+          "index": 2,
+          "text": "буква.",
+          "start": 0.56,
+          "end": 1.22,
+          "probability": 0.9709099233150482
+        },
+        {
+          "index": 3,
+          "text": "Место",
+          "start": 1.44,
+          "end": 1.72,
+          "probability": 0.822613537311554
+        },
+        {
+          "index": 4,
+          "text": "ей",
+          "start": 1.72,
+          "end": 2.02,
+          "probability": 0.9313754439353943
+        },
+        {
+          "index": 5,
+          "text": "уже",
+          "start": 2.02,
+          "end": 2.28,
+          "probability": 0.9899291396141052
+        },
+        {
+          "index": 6,
+          "text": "нашли.",
+          "start": 2.28,
+          "end": 2.8,
+          "probability": 0.9974881410598755
+        },
+        {
+          "index": 7,
+          "text": "Без",
+          "start": 3.16,
+          "end": 3.5,
+          "probability": 0.9847996234893799
+        },
+        {
+          "index": 8,
+          "text": "вашего",
+          "start": 3.5,
+          "end": 3.94,
+          "probability": 0.977544754743576
+        },
+        {
+          "index": 9,
+          "text": "участия.",
+          "start": 3.94,
+          "end": 4.68,
+          "probability": 0.9946147402127584
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Есть",
+          "start": 0.0,
+          "end": 0.3,
+          "probability": 0.4953718944489083
+        },
+        {
+          "word": " такая",
+          "start": 0.3,
+          "end": 0.56,
+          "probability": 0.9336907267570496
+        },
+        {
+          "word": " буква",
+          "start": 0.56,
+          "end": 1.2,
+          "probability": 0.9017141461372375
+        },
+        {
+          "word": ".",
+          "start": 1.2,
+          "end": 1.54,
+          "probability": 0.10823968797922134
+        },
+        {
+          "word": " Место",
+          "start": 1.54,
+          "end": 1.78,
+          "probability": 0.8489363491535187
+        },
+        {
+          "word": " ей",
+          "start": 1.78,
+          "end": 2.02,
+          "probability": 0.960709273815155
+        },
+        {
+          "word": " уже",
+          "start": 2.02,
+          "end": 2.28,
+          "probability": 0.9901800155639648
+        },
+        {
+          "word": " нашли",
+          "start": 2.28,
+          "end": 2.76,
+          "probability": 0.9855135977268219
+        },
+        {
+          "word": ".",
+          "start": 2.76,
+          "end": 3.18,
+          "probability": 0.6786198616027832
+        },
+        {
+          "word": " Без",
+          "start": 3.18,
+          "end": 3.5,
+          "probability": 0.9701756536960602
+        },
+        {
+          "word": " вашего",
+          "start": 3.5,
+          "end": 3.94,
+          "probability": 0.9745908677577972
+        },
+        {
+          "word": " участия",
+          "start": 3.94,
+          "end": 4.68,
+          "probability": 0.9889827171961466
+        },
+        {
+          "word": ".",
+          "start": 4.68,
+          "end": 4.86,
+          "probability": 0.7657097578048706
+        }
+      ],
+      "words": [
+        {
+          "text": "Есть",
+          "start": 0,
+          "end": 0.3
+        },
+        {
+          "text": "такая",
+          "start": 0.3,
+          "end": 0.56
+        },
+        {
+          "text": "буква.",
+          "start": 0.56,
+          "end": 1.2
+        },
+        {
+          "text": "Место",
+          "start": 1.54,
+          "end": 1.78
+        },
+        {
+          "text": "ей",
+          "start": 1.78,
+          "end": 2.02
+        },
+        {
+          "text": "уже",
+          "start": 2.02,
+          "end": 2.28
+        },
+        {
+          "text": "нашли.",
+          "start": 2.28,
+          "end": 2.76
+        },
+        {
+          "text": "Без",
+          "start": 3.18,
+          "end": 3.5
+        },
+        {
+          "text": "вашего",
+          "start": 3.5,
+          "end": 3.94
+        },
+        {
+          "text": "участия.",
+          "start": 3.94,
+          "end": 4.68
+        }
+      ]
+    },
+    "6d05515e747a04676cb6bfa462b7349f7e5652fa7ee5b12d924c8f9794fcacd1:64c776fb99d7b62d742a8144545faa97346b2563cfc57e3daf209715d770c664": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "6d05515e747a04676cb6bfa462b7349f7e5652fa7ee5b12d924c8f9794fcacd1",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3",
+      "duration": 5.944308,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 11,
+      "authoredLexicalWords": 11,
+      "heardText": "Нет такой буквы. Это была ваша инициатива. Руководство её не согласовывало.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Нет",
+          "start": 0.0,
+          "end": 0.22,
+          "probability": 0.8086354732513428
+        },
+        {
+          "index": 1,
+          "text": "такой",
+          "start": 0.22,
+          "end": 0.54,
+          "probability": 0.9536591172218323
+        },
+        {
+          "index": 2,
+          "text": "буквы.",
+          "start": 0.54,
+          "end": 1.14,
+          "probability": 0.9944129288196564
+        },
+        {
+          "index": 3,
+          "text": "Это",
+          "start": 1.4,
+          "end": 1.54,
+          "probability": 0.9878960847854614
+        },
+        {
+          "index": 4,
+          "text": "была",
+          "start": 1.54,
+          "end": 1.76,
+          "probability": 0.994164764881134
+        },
+        {
+          "index": 5,
+          "text": "ваша",
+          "start": 1.76,
+          "end": 2.18,
+          "probability": 0.9634999632835388
+        },
+        {
+          "index": 6,
+          "text": "инициатива.",
+          "start": 2.18,
+          "end": 3.04,
+          "probability": 0.9941678047180176
+        },
+        {
+          "index": 7,
+          "text": "Руководство",
+          "start": 3.5,
+          "end": 4.08,
+          "probability": 0.9928865790367126
+        },
+        {
+          "index": 8,
+          "text": "её",
+          "start": 4.08,
+          "end": 4.36,
+          "probability": 0.5341668128967285
+        },
+        {
+          "index": 9,
+          "text": "не",
+          "start": 4.36,
+          "end": 4.56,
+          "probability": 0.9972148537635803
+        },
+        {
+          "index": 10,
+          "text": "согласовывало.",
+          "start": 4.56,
+          "end": 5.48,
+          "probability": 0.9769075214862823
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Нет",
+          "start": 0.0,
+          "end": 0.24,
+          "probability": 6.842053699074313e-05
+        },
+        {
+          "word": " такой",
+          "start": 0.24,
+          "end": 0.54,
+          "probability": 0.9773557186126709
+        },
+        {
+          "word": " буквы",
+          "start": 0.54,
+          "end": 1.12,
+          "probability": 0.989872545003891
+        },
+        {
+          "word": ".",
+          "start": 1.12,
+          "end": 1.36,
+          "probability": 0.44609853625297546
+        },
+        {
+          "word": " Это",
+          "start": 1.36,
+          "end": 1.56,
+          "probability": 0.951793372631073
+        },
+        {
+          "word": " была",
+          "start": 1.56,
+          "end": 1.74,
+          "probability": 0.9922962784767151
+        },
+        {
+          "word": " ваша",
+          "start": 1.74,
+          "end": 2.16,
+          "probability": 0.9715611338615417
+        },
+        {
+          "word": " инициатива",
+          "start": 2.16,
+          "end": 3.04,
+          "probability": 0.9934476852416992
+        },
+        {
+          "word": ".",
+          "start": 3.04,
+          "end": 3.3,
+          "probability": 0.7943463325500488
+        },
+        {
+          "word": " Руководство",
+          "start": 3.3,
+          "end": 4.08,
+          "probability": 0.9865545868873596
+        },
+        {
+          "word": " её",
+          "start": 4.08,
+          "end": 4.36,
+          "probability": 0.6947015523910522
+        },
+        {
+          "word": " не",
+          "start": 4.36,
+          "end": 4.56,
+          "probability": 0.9908666610717773
+        },
+        {
+          "word": " согласовывало",
+          "start": 4.56,
+          "end": 5.48,
+          "probability": 0.887830913066864
+        },
+        {
+          "word": ".",
+          "start": 5.48,
+          "end": 5.7,
+          "probability": 0.7990384101867676
+        }
+      ],
+      "words": [
+        {
+          "text": "Нет",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "text": "такой",
+          "start": 0.24,
+          "end": 0.54
+        },
+        {
+          "text": "буквы.",
+          "start": 0.54,
+          "end": 1.12
+        },
+        {
+          "text": "Это",
+          "start": 1.36,
+          "end": 1.56
+        },
+        {
+          "text": "была",
+          "start": 1.56,
+          "end": 1.74
+        },
+        {
+          "text": "ваша",
+          "start": 1.74,
+          "end": 2.16
+        },
+        {
+          "text": "инициатива.",
+          "start": 2.16,
+          "end": 3.04
+        },
+        {
+          "text": "Руководство",
+          "start": 3.3,
+          "end": 4.08
+        },
+        {
+          "text": "её",
+          "start": 4.08,
+          "end": 4.36
+        },
+        {
+          "text": "не",
+          "start": 4.36,
+          "end": 4.56
+        },
+        {
+          "text": "согласовывало.",
+          "start": 4.56,
+          "end": 5.48
+        }
+      ]
+    },
+    "7b7c1ad13f4de2c9df5f901cc956611395e26207e3d2784253f5e06e60938030:144c07def08040b7e745c9c45ad98597c409d10913bdd1e54020d8fe4de81d05": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "7b7c1ad13f4de2c9df5f901cc956611395e26207e3d2784253f5e06e60938030",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_1.mp3",
+      "duration": 3.900952,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 9,
+      "heardText": "Нет такой буквы, даже в авторской версии русского языка.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Нет",
+          "start": 0.0,
+          "end": 0.22,
+          "probability": 0.6579596400260925
+        },
+        {
+          "index": 1,
+          "text": "такой",
+          "start": 0.22,
+          "end": 0.52,
+          "probability": 0.9690754413604736
+        },
+        {
+          "index": 2,
+          "text": "буквы.",
+          "start": 0.52,
+          "end": 1.12,
+          "probability": 0.9941814243793488
+        },
+        {
+          "index": 3,
+          "text": "Даже",
+          "start": 1.34,
+          "end": 1.52,
+          "probability": 0.9944264888763428
+        },
+        {
+          "index": 4,
+          "text": "в",
+          "start": 1.52,
+          "end": 1.74,
+          "probability": 0.9763283133506775
+        },
+        {
+          "index": 5,
+          "text": "авторской",
+          "start": 1.74,
+          "end": 2.14,
+          "probability": 0.9914699594179789
+        },
+        {
+          "index": 6,
+          "text": "версии",
+          "start": 2.14,
+          "end": 2.56,
+          "probability": 0.9985252320766449
+        },
+        {
+          "index": 7,
+          "text": "русского",
+          "start": 2.56,
+          "end": 3.0,
+          "probability": 0.9957332611083984
+        },
+        {
+          "index": 8,
+          "text": "языка.",
+          "start": 3.0,
+          "end": 3.46,
+          "probability": 0.997102290391922
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Нет",
+          "start": 0.0,
+          "end": 0.24,
+          "probability": 0.00015708469436503947
+        },
+        {
+          "word": " такой",
+          "start": 0.24,
+          "end": 0.54,
+          "probability": 0.984457790851593
+        },
+        {
+          "word": " буквы",
+          "start": 0.54,
+          "end": 1.12,
+          "probability": 0.9933554530143738
+        },
+        {
+          "word": ".",
+          "start": 1.12,
+          "end": 1.26,
+          "probability": 0.03660484403371811
+        },
+        {
+          "word": " Даже",
+          "start": 1.26,
+          "end": 1.52,
+          "probability": 0.992345929145813
+        },
+        {
+          "word": " в",
+          "start": 1.52,
+          "end": 1.74,
+          "probability": 0.9548922181129456
+        },
+        {
+          "word": " авторской",
+          "start": 1.74,
+          "end": 2.12,
+          "probability": 0.9870505928993225
+        },
+        {
+          "word": " версии",
+          "start": 2.12,
+          "end": 2.54,
+          "probability": 0.9980900585651398
+        },
+        {
+          "word": " русского",
+          "start": 2.54,
+          "end": 2.98,
+          "probability": 0.9955356121063232
+        },
+        {
+          "word": " языка",
+          "start": 2.98,
+          "end": 3.56,
+          "probability": 0.9931158423423767
+        },
+        {
+          "word": ".",
+          "start": 3.56,
+          "end": 3.62,
+          "probability": 0.8125921487808228
+        }
+      ],
+      "words": [
+        {
+          "text": "Нет",
+          "start": 0,
+          "end": 0.24
+        },
+        {
+          "text": "такой",
+          "start": 0.24,
+          "end": 0.54
+        },
+        {
+          "text": "буквы.",
+          "start": 0.54,
+          "end": 1.12
+        },
+        {
+          "text": "Даже",
+          "start": 1.26,
+          "end": 1.52
+        },
+        {
+          "text": "в",
+          "start": 1.52,
+          "end": 1.74
+        },
+        {
+          "text": "авторской",
+          "start": 1.74,
+          "end": 2.12
+        },
+        {
+          "text": "версии",
+          "start": 2.12,
+          "end": 2.54
+        },
+        {
+          "text": "русского",
+          "start": 2.54,
+          "end": 2.98
+        },
+        {
+          "text": "языка.",
+          "start": 2.98,
+          "end": 3.56
+        }
+      ]
+    },
+    "7e1c4654ae62e15de73e3be9535bb70650d592c287ef5bcd388aad3b89d72599:970cbb3abb84c5fb83e7a342724e05779ab0edcbc2b9c60dcbdbf738f2e523b0": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "7e1c4654ae62e15de73e3be9535bb70650d592c287ef5bcd388aad3b89d72599",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_2.mp3",
+      "duration": 4.040272,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Мимо. Горин исковеркал слово, а не весь алфавит.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Мимо.",
+          "start": 0.0,
+          "end": 0.44,
+          "probability": 0.7415054738521576
+        },
+        {
+          "index": 1,
+          "text": "Горин",
+          "start": 0.8,
+          "end": 1.32,
+          "probability": 0.9140521883964539
+        },
+        {
+          "index": 2,
+          "text": "исковеркал",
+          "start": 1.32,
+          "end": 2.02,
+          "probability": 0.8869222402572632
+        },
+        {
+          "index": 3,
+          "text": "слово,",
+          "start": 2.02,
+          "end": 2.38,
+          "probability": 0.965781569480896
+        },
+        {
+          "index": 4,
+          "text": "а",
+          "start": 2.62,
+          "end": 2.72,
+          "probability": 0.9507878422737122
+        },
+        {
+          "index": 5,
+          "text": "не",
+          "start": 2.72,
+          "end": 2.82,
+          "probability": 0.9939110279083252
+        },
+        {
+          "index": 6,
+          "text": "весь",
+          "start": 2.82,
+          "end": 3.04,
+          "probability": 0.08101513236761093
+        },
+        {
+          "index": 7,
+          "text": "алфавит.",
+          "start": 3.04,
+          "end": 3.6,
+          "probability": 0.9770459234714508
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Мимо",
+          "start": 0.0,
+          "end": 0.44,
+          "probability": 0.4639802471247094
+        },
+        {
+          "word": ".",
+          "start": 0.44,
+          "end": 0.86,
+          "probability": 0.03648524731397629
+        },
+        {
+          "word": " Горин",
+          "start": 0.86,
+          "end": 1.32,
+          "probability": 0.8633232514063517
+        },
+        {
+          "word": " исковеркал",
+          "start": 1.32,
+          "end": 2.0,
+          "probability": 0.8600665926933289
+        },
+        {
+          "word": " слово",
+          "start": 2.0,
+          "end": 2.36,
+          "probability": 0.9281982183456421
+        },
+        {
+          "word": ",",
+          "start": 2.36,
+          "end": 2.64,
+          "probability": 0.8988374471664429
+        },
+        {
+          "word": " а",
+          "start": 2.64,
+          "end": 2.74,
+          "probability": 0.5957104563713074
+        },
+        {
+          "word": " не",
+          "start": 2.74,
+          "end": 2.84,
+          "probability": 0.9838452339172363
+        },
+        {
+          "word": " весь",
+          "start": 2.84,
+          "end": 3.04,
+          "probability": 0.024112895131111145
+        },
+        {
+          "word": " алфавит",
+          "start": 3.04,
+          "end": 3.58,
+          "probability": 0.9651497155427933
+        },
+        {
+          "word": ".",
+          "start": 3.58,
+          "end": 3.82,
+          "probability": 0.7952954769134521
+        }
+      ],
+      "words": [
+        {
+          "text": "Мимо.",
+          "start": 0,
+          "end": 0.44
+        },
+        {
+          "text": "Горин",
+          "start": 0.86,
+          "end": 1.32
+        },
+        {
+          "text": "исковеркал",
+          "start": 1.32,
+          "end": 2.0
+        },
+        {
+          "text": "слово,",
+          "start": 2.0,
+          "end": 2.36
+        },
+        {
+          "text": "а",
+          "start": 2.64,
+          "end": 2.74
+        },
+        {
+          "text": "не",
+          "start": 2.74,
+          "end": 2.84
+        },
+        {
+          "text": "весь",
+          "start": 2.84,
+          "end": 3.04
+        },
+        {
+          "text": "алфавит.",
+          "start": 3.04,
+          "end": 3.58
+        }
+      ]
+    },
+    "782ef2b17a129a201b0a6bc14f43cd56096821194a181c30368e76ce99bbc2d3:326b7b4c7b753cc832abcd7b3b2a95315a3633a551bbec03e212fbce990e333d": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "782ef2b17a129a201b0a6bc14f43cd56096821194a181c30368e76ce99bbc2d3",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong.mp3",
+      "duration": 3.715193,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 6,
+      "authoredLexicalWords": 6,
+      "heardText": "Нет, слишком понятно. Горин написал иначе.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Нет.",
+          "start": 0.0,
+          "end": 0.32,
+          "probability": 0.797722339630127
+        },
+        {
+          "index": 1,
+          "text": "Слишком",
+          "start": 0.62,
+          "end": 0.96,
+          "probability": 0.9957595467567444
+        },
+        {
+          "index": 2,
+          "text": "понятно.",
+          "start": 0.96,
+          "end": 1.54,
+          "probability": 0.9714188575744629
+        },
+        {
+          "index": 3,
+          "text": "Горин",
+          "start": 2.0,
+          "end": 2.38,
+          "probability": 0.9586215416590372
+        },
+        {
+          "index": 4,
+          "text": "написал",
+          "start": 2.38,
+          "end": 2.84,
+          "probability": 0.995179295539856
+        },
+        {
+          "index": 5,
+          "text": "иначе.",
+          "start": 2.84,
+          "end": 3.32,
+          "probability": 0.9903276364008585
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Нет",
+          "start": 0.0,
+          "end": 0.3,
+          "probability": 9.827009489526972e-05
+        },
+        {
+          "word": ".",
+          "start": 0.3,
+          "end": 0.66,
+          "probability": 0.3687852919101715
+        },
+        {
+          "word": " Слишком",
+          "start": 0.66,
+          "end": 1.06,
+          "probability": 0.9626995325088501
+        },
+        {
+          "word": " понятно",
+          "start": 1.06,
+          "end": 1.36,
+          "probability": 0.9673804044723511
+        },
+        {
+          "word": ".",
+          "start": 1.36,
+          "end": 1.98,
+          "probability": 0.6990341544151306
+        },
+        {
+          "word": " Горин",
+          "start": 1.98,
+          "end": 2.36,
+          "probability": 0.9461455742518107
+        },
+        {
+          "word": " написал",
+          "start": 2.36,
+          "end": 2.84,
+          "probability": 0.9933272302150726
+        },
+        {
+          "word": " иначе",
+          "start": 2.84,
+          "end": 3.3,
+          "probability": 0.9900136192639669
+        },
+        {
+          "word": ".",
+          "start": 3.3,
+          "end": 3.48,
+          "probability": 0.9042468070983887
+        }
+      ],
+      "words": [
+        {
+          "text": "Нет.",
+          "start": 0,
+          "end": 0.3
+        },
+        {
+          "text": "Слишком",
+          "start": 0.66,
+          "end": 1.06
+        },
+        {
+          "text": "понятно.",
+          "start": 1.06,
+          "end": 1.36
+        },
+        {
+          "text": "Горин",
+          "start": 1.98,
+          "end": 2.36
+        },
+        {
+          "text": "написал",
+          "start": 2.36,
+          "end": 2.84
+        },
+        {
+          "text": "иначе.",
+          "start": 2.84,
+          "end": 3.3
+        }
+      ]
+    },
+    "0f86c77efde220b4a2ce233903e958b2dac4934cae42fe5af3b03f8d6eccf8a1:e8a9e1d519096efbdad6f7313a9f0f7c92d518038cde29ea1ae1288b756f44f5": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "0f86c77efde220b4a2ce233903e958b2dac4934cae42fe5af3b03f8d6eccf8a1",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_1.mp3",
+      "duration": 5.29415,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 9,
+      "heardText": "Нет, вы сейчас исправили опечатку, а нужно восстановить улику.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Нет.",
+          "start": 0.0,
+          "end": 0.28,
+          "probability": 0.7056375741958618
+        },
+        {
+          "index": 1,
+          "text": "Вы",
+          "start": 0.8,
+          "end": 0.88,
+          "probability": 0.8799113035202026
+        },
+        {
+          "index": 2,
+          "text": "сейчас",
+          "start": 0.88,
+          "end": 1.16,
+          "probability": 0.9769604206085205
+        },
+        {
+          "index": 3,
+          "text": "исправили",
+          "start": 1.16,
+          "end": 1.78,
+          "probability": 0.9855043888092041
+        },
+        {
+          "index": 4,
+          "text": "опечатку.",
+          "start": 1.78,
+          "end": 2.42,
+          "probability": 0.9481316407521566
+        },
+        {
+          "index": 5,
+          "text": "А",
+          "start": 2.9,
+          "end": 3.0,
+          "probability": 0.988538384437561
+        },
+        {
+          "index": 6,
+          "text": "нужно",
+          "start": 3.0,
+          "end": 3.24,
+          "probability": 0.9822063446044922
+        },
+        {
+          "index": 7,
+          "text": "восстановить",
+          "start": 3.24,
+          "end": 4.34,
+          "probability": 0.9958670735359192
+        },
+        {
+          "index": 8,
+          "text": "улику.",
+          "start": 4.34,
+          "end": 4.8,
+          "probability": 0.9408071339130402
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Нет",
+          "start": 0.0,
+          "end": 0.3,
+          "probability": 0.0001713376841507852
+        },
+        {
+          "word": ".",
+          "start": 0.3,
+          "end": 0.74,
+          "probability": 0.2554827630519867
+        },
+        {
+          "word": " Вы",
+          "start": 0.74,
+          "end": 0.88,
+          "probability": 0.9365707039833069
+        },
+        {
+          "word": " сейчас",
+          "start": 0.88,
+          "end": 1.18,
+          "probability": 0.9918985366821289
+        },
+        {
+          "word": " исправили",
+          "start": 1.18,
+          "end": 1.76,
+          "probability": 0.9914705157279968
+        },
+        {
+          "word": " опечатку",
+          "start": 1.76,
+          "end": 2.4,
+          "probability": 0.9669276475906372
+        },
+        {
+          "word": ".",
+          "start": 2.4,
+          "end": 2.82,
+          "probability": 0.44283726811408997
+        },
+        {
+          "word": " А",
+          "start": 2.82,
+          "end": 3.0,
+          "probability": 0.9279288053512573
+        },
+        {
+          "word": " нужно",
+          "start": 3.0,
+          "end": 3.22,
+          "probability": 0.962033748626709
+        },
+        {
+          "word": " восстановить",
+          "start": 3.22,
+          "end": 4.32,
+          "probability": 0.9890374342600504
+        },
+        {
+          "word": " улику",
+          "start": 4.32,
+          "end": 4.78,
+          "probability": 0.9301068484783173
+        },
+        {
+          "word": ".",
+          "start": 4.78,
+          "end": 5.08,
+          "probability": 0.9329343438148499
+        }
+      ],
+      "words": [
+        {
+          "text": "Нет.",
+          "start": 0,
+          "end": 0.3
+        },
+        {
+          "text": "Вы",
+          "start": 0.74,
+          "end": 0.88
+        },
+        {
+          "text": "сейчас",
+          "start": 0.88,
+          "end": 1.18
+        },
+        {
+          "text": "исправили",
+          "start": 1.18,
+          "end": 1.76
+        },
+        {
+          "text": "опечатку.",
+          "start": 1.76,
+          "end": 2.4
+        },
+        {
+          "text": "А",
+          "start": 2.82,
+          "end": 3.0
+        },
+        {
+          "text": "нужно",
+          "start": 3.0,
+          "end": 3.22
+        },
+        {
+          "text": "восстановить",
+          "start": 3.22,
+          "end": 4.32
+        },
+        {
+          "text": "улику.",
+          "start": 4.32,
+          "end": 4.78
+        }
+      ]
+    },
+    "0c440fdd87c6133aa611d392c22a3519bf636c5d9993c7538c629a66821f026c:ae3f74fa76fa4b56837f4658c4d3e21e5d0e571da9828f40a64aa8ea8a1d743d": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "0c440fdd87c6133aa611d392c22a3519bf636c5d9993c7538c629a66821f026c",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_2.mp3",
+      "duration": 5.572789,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 10,
+      "authoredLexicalWords": 10,
+      "heardText": "Такого слова в протоколе нет. Своё творчество отправляйте отдельным тредом.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Такого",
+          "start": 0.0,
+          "end": 0.4,
+          "probability": 0.8920946419239044
+        },
+        {
+          "index": 1,
+          "text": "слова",
+          "start": 0.4,
+          "end": 0.66,
+          "probability": 0.961353600025177
+        },
+        {
+          "index": 2,
+          "text": "в",
+          "start": 0.66,
+          "end": 0.86,
+          "probability": 0.9957428574562073
+        },
+        {
+          "index": 3,
+          "text": "протоколе",
+          "start": 0.86,
+          "end": 1.42,
+          "probability": 0.9739838540554047
+        },
+        {
+          "index": 4,
+          "text": "нет.",
+          "start": 1.42,
+          "end": 1.62,
+          "probability": 0.9640024900436401
+        },
+        {
+          "index": 5,
+          "text": "Своё",
+          "start": 2.04,
+          "end": 2.56,
+          "probability": 0.9349280595779419
+        },
+        {
+          "index": 6,
+          "text": "творчество",
+          "start": 2.56,
+          "end": 3.26,
+          "probability": 0.9967593550682068
+        },
+        {
+          "index": 7,
+          "text": "отправляйте",
+          "start": 3.26,
+          "end": 4.0,
+          "probability": 0.9925324320793152
+        },
+        {
+          "index": 8,
+          "text": "отдельным",
+          "start": 4.0,
+          "end": 4.64,
+          "probability": 0.994863897562027
+        },
+        {
+          "index": 9,
+          "text": "тредом.",
+          "start": 4.64,
+          "end": 5.1,
+          "probability": 0.8508817752202352
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Такого",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.4972951805975754
+        },
+        {
+          "word": " слова",
+          "start": 0.38,
+          "end": 0.66,
+          "probability": 0.8794005513191223
+        },
+        {
+          "word": " в",
+          "start": 0.66,
+          "end": 0.86,
+          "probability": 0.9965102076530457
+        },
+        {
+          "word": " протоколе",
+          "start": 0.86,
+          "end": 1.42,
+          "probability": 0.9780012518167496
+        },
+        {
+          "word": " нет",
+          "start": 1.42,
+          "end": 1.6,
+          "probability": 0.9874317646026611
+        },
+        {
+          "word": ".",
+          "start": 1.6,
+          "end": 2.12,
+          "probability": 0.8728593587875366
+        },
+        {
+          "word": " Своё",
+          "start": 2.12,
+          "end": 2.56,
+          "probability": 0.893115242322286
+        },
+        {
+          "word": " творчество",
+          "start": 2.56,
+          "end": 3.24,
+          "probability": 0.9960334897041321
+        },
+        {
+          "word": " отправляйте",
+          "start": 3.24,
+          "end": 4.02,
+          "probability": 0.9840435832738876
+        },
+        {
+          "word": " отдельным",
+          "start": 4.02,
+          "end": 4.64,
+          "probability": 0.9945124089717865
+        },
+        {
+          "word": " тредом",
+          "start": 4.64,
+          "end": 5.1,
+          "probability": 0.8906615376472473
+        },
+        {
+          "word": ".",
+          "start": 5.1,
+          "end": 5.36,
+          "probability": 0.858987033367157
+        }
+      ],
+      "words": [
+        {
+          "text": "Такого",
+          "start": 0,
+          "end": 0.38
+        },
+        {
+          "text": "слова",
+          "start": 0.38,
+          "end": 0.66
+        },
+        {
+          "text": "в",
+          "start": 0.66,
+          "end": 0.86
+        },
+        {
+          "text": "протоколе",
+          "start": 0.86,
+          "end": 1.42
+        },
+        {
+          "text": "нет.",
+          "start": 1.42,
+          "end": 1.6
+        },
+        {
+          "text": "Своё",
+          "start": 2.12,
+          "end": 2.56
+        },
+        {
+          "text": "творчество",
+          "start": 2.56,
+          "end": 3.24
+        },
+        {
+          "text": "отправляйте",
+          "start": 3.24,
+          "end": 4.02
+        },
+        {
+          "text": "отдельным",
+          "start": 4.02,
+          "end": 4.64
+        },
+        {
+          "text": "тредом.",
+          "start": 4.64,
+          "end": 5.1
+        }
+      ]
+    },
+    "eee526650c30308915a10f5b5668d30db661b3b2e484a44f3592ab87b7b38b8c:43f0afb57eb069537062defde6bacd5f27406d2f7c78c8e54a7300a47a48e4c2": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "eee526650c30308915a10f5b5668d30db661b3b2e484a44f3592ab87b7b38b8c",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3",
+      "duration": 4.87619,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 9,
+      "heardText": "Эту букву уже проверяли. Повторное совещание ничего не изменило.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Эту",
+          "start": 0.0,
+          "end": 0.28,
+          "probability": 0.9339572191238403
+        },
+        {
+          "index": 1,
+          "text": "букву",
+          "start": 0.28,
+          "end": 0.7,
+          "probability": 0.9797053933143616
+        },
+        {
+          "index": 2,
+          "text": "уже",
+          "start": 0.7,
+          "end": 0.88,
+          "probability": 0.9868479371070862
+        },
+        {
+          "index": 3,
+          "text": "проверяли.",
+          "start": 0.88,
+          "end": 1.5,
+          "probability": 0.99607715010643
+        },
+        {
+          "index": 4,
+          "text": "Повторное",
+          "start": 1.78,
+          "end": 2.34,
+          "probability": 0.986918494105339
+        },
+        {
+          "index": 5,
+          "text": "совещание",
+          "start": 2.34,
+          "end": 3.06,
+          "probability": 0.9899379014968872
+        },
+        {
+          "index": 6,
+          "text": "ничего",
+          "start": 3.06,
+          "end": 3.44,
+          "probability": 0.88890141248703
+        },
+        {
+          "index": 7,
+          "text": "не",
+          "start": 3.44,
+          "end": 3.8,
+          "probability": 0.998714804649353
+        },
+        {
+          "index": 8,
+          "text": "изменило.",
+          "start": 3.8,
+          "end": 4.38,
+          "probability": 0.9912145733833313
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Эту",
+          "start": 0.0,
+          "end": 0.26,
+          "probability": 0.4978687370676198
+        },
+        {
+          "word": " букву",
+          "start": 0.26,
+          "end": 0.68,
+          "probability": 0.9721689522266388
+        },
+        {
+          "word": " уже",
+          "start": 0.68,
+          "end": 0.86,
+          "probability": 0.9905822277069092
+        },
+        {
+          "word": " проверяли",
+          "start": 0.86,
+          "end": 1.48,
+          "probability": 0.9900836050510406
+        },
+        {
+          "word": ".",
+          "start": 1.48,
+          "end": 1.74,
+          "probability": 0.5607147812843323
+        },
+        {
+          "word": " Повторное",
+          "start": 1.74,
+          "end": 2.32,
+          "probability": 0.9727049767971039
+        },
+        {
+          "word": " совещание",
+          "start": 2.32,
+          "end": 3.04,
+          "probability": 0.9943382143974304
+        },
+        {
+          "word": " ничего",
+          "start": 3.04,
+          "end": 3.42,
+          "probability": 0.7263987064361572
+        },
+        {
+          "word": " не",
+          "start": 3.42,
+          "end": 3.8,
+          "probability": 0.9965848922729492
+        },
+        {
+          "word": " изменило",
+          "start": 3.8,
+          "end": 4.38,
+          "probability": 0.9882276356220245
+        },
+        {
+          "word": ".",
+          "start": 4.38,
+          "end": 4.62,
+          "probability": 0.8807578086853027
+        }
+      ],
+      "words": [
+        {
+          "text": "Эту",
+          "start": 0,
+          "end": 0.26
+        },
+        {
+          "text": "букву",
+          "start": 0.26,
+          "end": 0.68
+        },
+        {
+          "text": "уже",
+          "start": 0.68,
+          "end": 0.86
+        },
+        {
+          "text": "проверяли.",
+          "start": 0.86,
+          "end": 1.48
+        },
+        {
+          "text": "Повторное",
+          "start": 1.74,
+          "end": 2.32
+        },
+        {
+          "text": "совещание",
+          "start": 2.32,
+          "end": 3.04
+        },
+        {
+          "text": "ничего",
+          "start": 3.04,
+          "end": 3.42
+        },
+        {
+          "text": "не",
+          "start": 3.42,
+          "end": 3.8
+        },
+        {
+          "text": "изменило.",
+          "start": 3.8,
+          "end": 4.38
+        }
+      ]
+    },
+    "989990d93690faad4e5e3f033664ea56b6caa0b0a2eec8297ba2f9e358f69a8c:736e6414ef5c3f0fe558513b914dc52e395aedf41e7ba49038844c87ddc981ba": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "989990d93690faad4e5e3f033664ea56b6caa0b0a2eec8297ba2f9e358f69a8c",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_1.mp3",
+      "duration": 4.504671,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 7,
+      "authoredLexicalWords": 7,
+      "heardText": "Буква та же. Надежда новая. Результат прежний.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Буква",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.6419625182946523
+        },
+        {
+          "index": 1,
+          "text": "та",
+          "start": 0.5,
+          "end": 0.7,
+          "probability": 0.9154419898986816
+        },
+        {
+          "index": 2,
+          "text": "же.",
+          "start": 0.7,
+          "end": 0.92,
+          "probability": 0.9523353576660156
+        },
+        {
+          "index": 3,
+          "text": "Надежда",
+          "start": 1.4,
+          "end": 2.14,
+          "probability": 0.9876321951548258
+        },
+        {
+          "index": 4,
+          "text": "новая.",
+          "start": 2.14,
+          "end": 2.58,
+          "probability": 0.9860231280326843
+        },
+        {
+          "index": 5,
+          "text": "Результат",
+          "start": 2.8,
+          "end": 3.36,
+          "probability": 0.9666871825853983
+        },
+        {
+          "index": 6,
+          "text": "прежний.",
+          "start": 3.36,
+          "end": 4.04,
+          "probability": 0.9219247301419576
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Буква",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.3516134469343039
+        },
+        {
+          "word": " та",
+          "start": 0.5,
+          "end": 0.72,
+          "probability": 0.7896423935890198
+        },
+        {
+          "word": " же",
+          "start": 0.72,
+          "end": 0.9,
+          "probability": 0.8914823532104492
+        },
+        {
+          "word": ".",
+          "start": 0.9,
+          "end": 1.42,
+          "probability": 0.11894956231117249
+        },
+        {
+          "word": " Надежда",
+          "start": 1.42,
+          "end": 2.12,
+          "probability": 0.9853940606117249
+        },
+        {
+          "word": " новая",
+          "start": 2.12,
+          "end": 2.52,
+          "probability": 0.9927432239055634
+        },
+        {
+          "word": ".",
+          "start": 2.52,
+          "end": 2.88,
+          "probability": 0.6557163596153259
+        },
+        {
+          "word": " Результат",
+          "start": 2.88,
+          "end": 3.32,
+          "probability": 0.9702264269193014
+        },
+        {
+          "word": " прежний",
+          "start": 3.32,
+          "end": 4.02,
+          "probability": 0.9331542452176412
+        },
+        {
+          "word": ".",
+          "start": 4.02,
+          "end": 4.3,
+          "probability": 0.9431161880493164
+        }
+      ],
+      "words": [
+        {
+          "text": "Буква",
+          "start": 0,
+          "end": 0.5
+        },
+        {
+          "text": "та",
+          "start": 0.5,
+          "end": 0.72
+        },
+        {
+          "text": "же.",
+          "start": 0.72,
+          "end": 0.9
+        },
+        {
+          "text": "Надежда",
+          "start": 1.42,
+          "end": 2.12
+        },
+        {
+          "text": "новая.",
+          "start": 2.12,
+          "end": 2.52
+        },
+        {
+          "text": "Результат",
+          "start": 2.88,
+          "end": 3.32
+        },
+        {
+          "text": "прежний.",
+          "start": 3.32,
+          "end": 4.02
+        }
+      ]
+    },
+    "2c6c8d9a57ca09b1f2794b9ec32a6f2271bc1a24c9cd0eef407ab929a2f9fdd8:b7e5c4a33b0e3bcc3adafeee93735bb79987ec606fcd6dca3063c177ecc91acf": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "2c6c8d9a57ca09b1f2794b9ec32a6f2271bc1a24c9cd0eef407ab929a2f9fdd8",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_2.mp3",
+      "duration": 3.715193,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 7,
+      "authoredLexicalWords": 7,
+      "heardText": "Мы уже это проверяли. Протокол совещания прочитайте.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Мы",
+          "start": 0.0,
+          "end": 0.18,
+          "probability": 0.8318312168121338
+        },
+        {
+          "index": 1,
+          "text": "уже",
+          "start": 0.18,
+          "end": 0.38,
+          "probability": 0.971872091293335
+        },
+        {
+          "index": 2,
+          "text": "это",
+          "start": 0.38,
+          "end": 0.56,
+          "probability": 0.9539133310317993
+        },
+        {
+          "index": 3,
+          "text": "проверяли.",
+          "start": 0.56,
+          "end": 1.1,
+          "probability": 0.9977646768093109
+        },
+        {
+          "index": 4,
+          "text": "Протокол",
+          "start": 1.5,
+          "end": 2.06,
+          "probability": 0.9687167555093765
+        },
+        {
+          "index": 5,
+          "text": "совещания",
+          "start": 2.06,
+          "end": 2.6,
+          "probability": 0.9534410039583842
+        },
+        {
+          "index": 6,
+          "text": "прочитайте.",
+          "start": 2.6,
+          "end": 3.22,
+          "probability": 0.9599939783414205
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Мы",
+          "start": 0.0,
+          "end": 0.16,
+          "probability": 0.00015762807743158191
+        },
+        {
+          "word": " уже",
+          "start": 0.16,
+          "end": 0.4,
+          "probability": 0.97150719165802
+        },
+        {
+          "word": " это",
+          "start": 0.4,
+          "end": 0.56,
+          "probability": 0.9484992623329163
+        },
+        {
+          "word": " проверяли",
+          "start": 0.56,
+          "end": 1.08,
+          "probability": 0.9917401671409607
+        },
+        {
+          "word": ".",
+          "start": 1.08,
+          "end": 1.5,
+          "probability": 0.6876440644264221
+        },
+        {
+          "word": " Протокол",
+          "start": 1.5,
+          "end": 2.04,
+          "probability": 0.9539250433444977
+        },
+        {
+          "word": " совещания",
+          "start": 2.04,
+          "end": 2.58,
+          "probability": 0.9448730746905009
+        },
+        {
+          "word": " прочитайте",
+          "start": 2.58,
+          "end": 3.22,
+          "probability": 0.8697342276573181
+        },
+        {
+          "word": ".",
+          "start": 3.22,
+          "end": 3.52,
+          "probability": 0.789730429649353
+        }
+      ],
+      "words": [
+        {
+          "text": "Мы",
+          "start": 0,
+          "end": 0.16
+        },
+        {
+          "text": "уже",
+          "start": 0.16,
+          "end": 0.4
+        },
+        {
+          "text": "это",
+          "start": 0.4,
+          "end": 0.56
+        },
+        {
+          "text": "проверяли.",
+          "start": 0.56,
+          "end": 1.08
+        },
+        {
+          "text": "Протокол",
+          "start": 1.5,
+          "end": 2.04
+        },
+        {
+          "text": "совещания",
+          "start": 2.04,
+          "end": 2.58
+        },
+        {
+          "text": "прочитайте.",
+          "start": 2.58,
+          "end": 3.22
+        }
+      ]
+    },
+    "31f30ee704c07116406769851b403f00dac01883a7f5be2444050f40af1a9538:60e0d88daa7b9b55468d6a7709bbfa6633c92749b91ae98935d93a6f525ea8d9": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "31f30ee704c07116406769851b403f00dac01883a7f5be2444050f40af1a9538",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid.mp3",
+      "duration": 4.411791,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Одну русскую букву. Раскладку Горина сегодня не усложняем.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Одну",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.7020082473754883
+        },
+        {
+          "index": 1,
+          "text": "русскую",
+          "start": 0.38,
+          "end": 0.84,
+          "probability": 0.9905830323696136
+        },
+        {
+          "index": 2,
+          "text": "букву.",
+          "start": 0.84,
+          "end": 1.48,
+          "probability": 0.9688964188098907
+        },
+        {
+          "index": 3,
+          "text": "Раскладку",
+          "start": 1.62,
+          "end": 2.22,
+          "probability": 0.9815017133951187
+        },
+        {
+          "index": 4,
+          "text": "Горина",
+          "start": 2.22,
+          "end": 2.6,
+          "probability": 0.7601453959941864
+        },
+        {
+          "index": 5,
+          "text": "сегодня",
+          "start": 2.6,
+          "end": 2.9,
+          "probability": 0.9843127727508545
+        },
+        {
+          "index": 6,
+          "text": "не",
+          "start": 2.9,
+          "end": 3.26,
+          "probability": 0.9956485629081726
+        },
+        {
+          "index": 7,
+          "text": "усложняем.",
+          "start": 3.26,
+          "end": 4.02,
+          "probability": 0.9901832491159439
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Одну",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.6312038440334314
+        },
+        {
+          "word": " русскую",
+          "start": 0.38,
+          "end": 0.84,
+          "probability": 0.9869958162307739
+        },
+        {
+          "word": " букву",
+          "start": 0.84,
+          "end": 1.42,
+          "probability": 0.9259615242481232
+        },
+        {
+          "word": ".",
+          "start": 1.42,
+          "end": 1.66,
+          "probability": 0.22045350074768066
+        },
+        {
+          "word": " Раскладку",
+          "start": 1.66,
+          "end": 2.22,
+          "probability": 0.9684973806142807
+        },
+        {
+          "word": " Горина",
+          "start": 2.22,
+          "end": 2.58,
+          "probability": 0.8467061519622803
+        },
+        {
+          "word": " сегодня",
+          "start": 2.58,
+          "end": 2.86,
+          "probability": 0.9775700569152832
+        },
+        {
+          "word": " не",
+          "start": 2.86,
+          "end": 3.26,
+          "probability": 0.9604521989822388
+        },
+        {
+          "word": " усложняем",
+          "start": 3.26,
+          "end": 4.02,
+          "probability": 0.9823303669691086
+        },
+        {
+          "word": ".",
+          "start": 4.02,
+          "end": 4.16,
+          "probability": 0.861038327217102
+        }
+      ],
+      "words": [
+        {
+          "text": "Одну",
+          "start": 0,
+          "end": 0.38
+        },
+        {
+          "text": "русскую",
+          "start": 0.38,
+          "end": 0.84
+        },
+        {
+          "text": "букву.",
+          "start": 0.84,
+          "end": 1.42
+        },
+        {
+          "text": "Раскладку",
+          "start": 1.66,
+          "end": 2.22
+        },
+        {
+          "text": "Горина",
+          "start": 2.22,
+          "end": 2.58
+        },
+        {
+          "text": "сегодня",
+          "start": 2.58,
+          "end": 2.86
+        },
+        {
+          "text": "не",
+          "start": 2.86,
+          "end": 3.26
+        },
+        {
+          "text": "усложняем.",
+          "start": 3.26,
+          "end": 4.02
+        }
+      ]
+    },
+    "c9ec8042c8085104d48499f6cbe41defdb00919c8262df289d7c2a6d5a1b65dd:31f6d0308ff36f18b927582469421a5c55b7c68342211edd1106300f4a2f9cd2": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "c9ec8042c8085104d48499f6cbe41defdb00919c8262df289d7c2a6d5a1b65dd",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_1.mp3",
+      "duration": 3.715193,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 9,
+      "heardText": "в русскую букву. Другие алфавиты пока не проходят по делу.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Русскую",
+          "start": 0.14,
+          "end": 0.52,
+          "probability": 0.984439879655838
+        },
+        {
+          "index": 1,
+          "text": "букву.",
+          "start": 0.52,
+          "end": 1.1,
+          "probability": 0.8399001359939575
+        },
+        {
+          "index": 2,
+          "text": "Другие",
+          "start": 1.22,
+          "end": 1.58,
+          "probability": 0.987462600072225
+        },
+        {
+          "index": 3,
+          "text": "алфавиты",
+          "start": 1.58,
+          "end": 2.02,
+          "probability": 0.9861169010400772
+        },
+        {
+          "index": 4,
+          "text": "пока",
+          "start": 2.02,
+          "end": 2.26,
+          "probability": 0.939235508441925
+        },
+        {
+          "index": 5,
+          "text": "не",
+          "start": 2.26,
+          "end": 2.38,
+          "probability": 0.9946637153625488
+        },
+        {
+          "index": 6,
+          "text": "проходят",
+          "start": 2.38,
+          "end": 2.8,
+          "probability": 0.9789332747459412
+        },
+        {
+          "index": 7,
+          "text": "по",
+          "start": 2.8,
+          "end": 2.96,
+          "probability": 0.994510293006897
+        },
+        {
+          "index": 8,
+          "text": "делу.",
+          "start": 2.96,
+          "end": 3.34,
+          "probability": 0.9964661300182343
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Русскую",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.5997677680764658
+        },
+        {
+          "word": " букву",
+          "start": 0.52,
+          "end": 1.1,
+          "probability": 0.5151783935725689
+        },
+        {
+          "word": ".",
+          "start": 1.1,
+          "end": 1.26,
+          "probability": 0.2885664105415344
+        },
+        {
+          "word": " Другие",
+          "start": 1.26,
+          "end": 1.58,
+          "probability": 0.9627639651298523
+        },
+        {
+          "word": " алфавиты",
+          "start": 1.58,
+          "end": 1.98,
+          "probability": 0.9817348271608353
+        },
+        {
+          "word": " пока",
+          "start": 1.98,
+          "end": 2.26,
+          "probability": 0.9583225250244141
+        },
+        {
+          "word": " не",
+          "start": 2.26,
+          "end": 2.38,
+          "probability": 0.9900892972946167
+        },
+        {
+          "word": " проходят",
+          "start": 2.38,
+          "end": 2.78,
+          "probability": 0.9409152865409851
+        },
+        {
+          "word": " по",
+          "start": 2.78,
+          "end": 2.96,
+          "probability": 0.9950942993164062
+        },
+        {
+          "word": " делу",
+          "start": 2.96,
+          "end": 3.36,
+          "probability": 0.988764613866806
+        },
+        {
+          "word": ".",
+          "start": 3.36,
+          "end": 3.46,
+          "probability": 0.8836443424224854
+        }
+      ],
+      "words": [
+        {
+          "text": "Русскую",
+          "start": 0,
+          "end": 0.52
+        },
+        {
+          "text": "букву.",
+          "start": 0.52,
+          "end": 1.1
+        },
+        {
+          "text": "Другие",
+          "start": 1.26,
+          "end": 1.58
+        },
+        {
+          "text": "алфавиты",
+          "start": 1.58,
+          "end": 1.98
+        },
+        {
+          "text": "пока",
+          "start": 1.98,
+          "end": 2.26
+        },
+        {
+          "text": "не",
+          "start": 2.26,
+          "end": 2.38
+        },
+        {
+          "text": "проходят",
+          "start": 2.38,
+          "end": 2.78
+        },
+        {
+          "text": "по",
+          "start": 2.78,
+          "end": 2.96
+        },
+        {
+          "text": "делу.",
+          "start": 2.96,
+          "end": 3.36
+        }
+      ]
+    },
+    "50fe80ba13e693fd926e3eb33077890759dd8bd5a2d3f73fb49204cf7bffb1f9:1197d6b62254a4ff58df39ca0e22d64eb70c455843a00c1b32d55e601f41f52d": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "50fe80ba13e693fd926e3eb33077890759dd8bd5a2d3f73fb49204cf7bffb1f9",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_2.mp3",
+      "duration": 4.086712,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "русскую букву, с расширением словаря Горин уже справился.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Русскую",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.9073932468891144
+        },
+        {
+          "index": 1,
+          "text": "букву.",
+          "start": 0.52,
+          "end": 1.08,
+          "probability": 0.9768154323101044
+        },
+        {
+          "index": 2,
+          "text": "С",
+          "start": 1.32,
+          "end": 1.4,
+          "probability": 0.9858459830284119
+        },
+        {
+          "index": 3,
+          "text": "расширением",
+          "start": 1.4,
+          "end": 1.98,
+          "probability": 0.9959121942520142
+        },
+        {
+          "index": 4,
+          "text": "словаря",
+          "start": 1.98,
+          "end": 2.46,
+          "probability": 0.8507933815320333
+        },
+        {
+          "index": 5,
+          "text": "Горин",
+          "start": 2.46,
+          "end": 2.76,
+          "probability": 0.8241873383522034
+        },
+        {
+          "index": 6,
+          "text": "уже",
+          "start": 2.76,
+          "end": 2.9,
+          "probability": 0.9340356588363647
+        },
+        {
+          "index": 7,
+          "text": "справился.",
+          "start": 2.9,
+          "end": 3.5,
+          "probability": 0.9956372678279877
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Русскую",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.57003480153071
+        },
+        {
+          "word": " букву",
+          "start": 0.5,
+          "end": 1.06,
+          "probability": 0.8888827860355377
+        },
+        {
+          "word": ".",
+          "start": 1.06,
+          "end": 1.34,
+          "probability": 0.11572500318288803
+        },
+        {
+          "word": " С",
+          "start": 1.34,
+          "end": 1.4,
+          "probability": 0.860296368598938
+        },
+        {
+          "word": " расширением",
+          "start": 1.4,
+          "end": 1.92,
+          "probability": 0.9899533838033676
+        },
+        {
+          "word": " словаря",
+          "start": 1.92,
+          "end": 2.42,
+          "probability": 0.8114289244016012
+        },
+        {
+          "word": " Горин",
+          "start": 2.42,
+          "end": 2.74,
+          "probability": 0.8652468125025431
+        },
+        {
+          "word": " уже",
+          "start": 2.74,
+          "end": 2.9,
+          "probability": 0.9375192523002625
+        },
+        {
+          "word": " справился",
+          "start": 2.9,
+          "end": 3.46,
+          "probability": 0.9792008101940155
+        },
+        {
+          "word": ".",
+          "start": 3.46,
+          "end": 3.92,
+          "probability": 0.7583402395248413
+        }
+      ],
+      "words": [
+        {
+          "text": "Русскую",
+          "start": 0,
+          "end": 0.5
+        },
+        {
+          "text": "букву.",
+          "start": 0.5,
+          "end": 1.06
+        },
+        {
+          "text": "С",
+          "start": 1.34,
+          "end": 1.4
+        },
+        {
+          "text": "расширением",
+          "start": 1.4,
+          "end": 1.92
+        },
+        {
+          "text": "словаря",
+          "start": 1.92,
+          "end": 2.42
+        },
+        {
+          "text": "Горин",
+          "start": 2.42,
+          "end": 2.74
+        },
+        {
+          "text": "уже",
+          "start": 2.74,
+          "end": 2.9
+        },
+        {
+          "text": "справился.",
+          "start": 2.9,
+          "end": 3.46
+        }
+      ]
+    },
+    "7e7999d18232df5aeedd41a99bc5ba69c4ac1ff949065786498a4f786f5a2571:ac0d26e258e662048b6bf62d57fd1ce16f0de56a644f78c2baa12c2adcec7e96": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "7e7999d18232df5aeedd41a99bc5ba69c4ac1ff949065786498a4f786f5a2571",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word.mp3",
+      "duration": 6.176508,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 10,
+      "authoredLexicalWords": 10,
+      "heardText": "Введите слово кириллицей. Диалект Горина и без того требует расшифровки.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Введите",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.857217808564504
+        },
+        {
+          "index": 1,
+          "text": "слово",
+          "start": 0.52,
+          "end": 0.86,
+          "probability": 0.9965059757232666
+        },
+        {
+          "index": 2,
+          "text": "кириллицей.",
+          "start": 0.86,
+          "end": 2.12,
+          "probability": 0.6593598879873752
+        },
+        {
+          "index": 3,
+          "text": "Диалект",
+          "start": 2.48,
+          "end": 3.08,
+          "probability": 0.8472749292850494
+        },
+        {
+          "index": 4,
+          "text": "Горина",
+          "start": 3.08,
+          "end": 3.54,
+          "probability": 0.8323495984077454
+        },
+        {
+          "index": 5,
+          "text": "и",
+          "start": 3.54,
+          "end": 3.92,
+          "probability": 0.7272831797599792
+        },
+        {
+          "index": 6,
+          "text": "без",
+          "start": 3.92,
+          "end": 4.08,
+          "probability": 0.9605506658554077
+        },
+        {
+          "index": 7,
+          "text": "того",
+          "start": 4.08,
+          "end": 4.36,
+          "probability": 0.9962334036827087
+        },
+        {
+          "index": 8,
+          "text": "требует",
+          "start": 4.36,
+          "end": 4.88,
+          "probability": 0.8176515102386475
+        },
+        {
+          "index": 9,
+          "text": "расшифровки.",
+          "start": 4.88,
+          "end": 5.64,
+          "probability": 0.9935131072998047
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Введите",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.6591692681928786
+        },
+        {
+          "word": " слово",
+          "start": 0.48,
+          "end": 0.86,
+          "probability": 0.9942207336425781
+        },
+        {
+          "word": " кириллицей",
+          "start": 0.86,
+          "end": 2.08,
+          "probability": 0.6864877559244633
+        },
+        {
+          "word": ".",
+          "start": 2.08,
+          "end": 2.6,
+          "probability": 0.6998388171195984
+        },
+        {
+          "word": " Диалект",
+          "start": 2.6,
+          "end": 3.06,
+          "probability": 0.8080684095621109
+        },
+        {
+          "word": " Горина",
+          "start": 3.06,
+          "end": 3.5,
+          "probability": 0.8430558840433756
+        },
+        {
+          "word": " и",
+          "start": 3.5,
+          "end": 3.92,
+          "probability": 0.8244378566741943
+        },
+        {
+          "word": " без",
+          "start": 3.92,
+          "end": 4.1,
+          "probability": 0.9571590423583984
+        },
+        {
+          "word": " того",
+          "start": 4.1,
+          "end": 4.36,
+          "probability": 0.9952367544174194
+        },
+        {
+          "word": " требует",
+          "start": 4.36,
+          "end": 4.86,
+          "probability": 0.8660562336444855
+        },
+        {
+          "word": " расшифровки",
+          "start": 4.86,
+          "end": 5.66,
+          "probability": 0.9911283254623413
+        },
+        {
+          "word": ".",
+          "start": 5.66,
+          "end": 5.88,
+          "probability": 0.9288240075111389
+        }
+      ],
+      "words": [
+        {
+          "text": "Введите",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "text": "слово",
+          "start": 0.48,
+          "end": 0.86
+        },
+        {
+          "text": "кириллицей.",
+          "start": 0.86,
+          "end": 2.08
+        },
+        {
+          "text": "Диалект",
+          "start": 2.6,
+          "end": 3.06
+        },
+        {
+          "text": "Горина",
+          "start": 3.06,
+          "end": 3.5
+        },
+        {
+          "text": "и",
+          "start": 3.5,
+          "end": 3.92
+        },
+        {
+          "text": "без",
+          "start": 3.92,
+          "end": 4.1
+        },
+        {
+          "text": "того",
+          "start": 4.1,
+          "end": 4.36
+        },
+        {
+          "text": "требует",
+          "start": 4.36,
+          "end": 4.86
+        },
+        {
+          "text": "расшифровки.",
+          "start": 4.86,
+          "end": 5.66
+        }
+      ]
+    },
+    "bd726a842736782a860fd53ad83a486ede5a5cef9a5cef2462d6990049ff6540:5246e377fb199b8c08605600099cf2f1d15939fe6260aa7a7536f81dcfaeac5c": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "bd726a842736782a860fd53ad83a486ede5a5cef9a5cef2462d6990049ff6540",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_1.mp3",
+      "duration": 4.411791,
+      "asrCoverage": 0.7272727272727273,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 11,
+      "heardText": "Кириллицы. Переводить это еще из другого языка я не собираюсь.",
+      "promptedCoverage": 0.0,
+      "matchedWordTimings": [
+        {
+          "index": 1,
+          "text": "Переводить",
+          "start": 1.16,
+          "end": 1.76,
+          "probability": 0.9343047887086868
+        },
+        {
+          "index": 2,
+          "text": "это",
+          "start": 1.76,
+          "end": 1.9,
+          "probability": 0.9894208908081055
+        },
+        {
+          "index": 3,
+          "text": "ещё",
+          "start": 1.9,
+          "end": 2.14,
+          "probability": 0.677026629447937
+        },
+        {
+          "index": 6,
+          "text": "другого",
+          "start": 2.32,
+          "end": 2.74,
+          "probability": 0.980412095785141
+        },
+        {
+          "index": 7,
+          "text": "языка",
+          "start": 2.74,
+          "end": 3.14,
+          "probability": 0.9972068071365356
+        },
+        {
+          "index": 8,
+          "text": "я",
+          "start": 3.14,
+          "end": 3.28,
+          "probability": 0.5691035985946655
+        },
+        {
+          "index": 9,
+          "text": "не",
+          "start": 3.28,
+          "end": 3.4,
+          "probability": 0.9984763264656067
+        },
+        {
+          "index": 10,
+          "text": "собираюсь.",
+          "start": 3.4,
+          "end": 3.98,
+          "probability": 0.9973527391751608
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Кириллицей",
+          "start": 0.0,
+          "end": 0.96,
+          "probability": 0.4176026995293796
+        },
+        {
+          "word": ".",
+          "start": 0.96,
+          "end": 1.22,
+          "probability": 0.3203320801258087
+        },
+        {
+          "word": " Переводить",
+          "start": 1.22,
+          "end": 1.72,
+          "probability": 0.9445692896842957
+        },
+        {
+          "word": " это",
+          "start": 1.72,
+          "end": 1.9,
+          "probability": 0.9835051894187927
+        },
+        {
+          "word": " ещё",
+          "start": 1.9,
+          "end": 2.14,
+          "probability": 0.3621871769428253
+        },
+        {
+          "word": " и",
+          "start": 2.14,
+          "end": 2.3,
+          "probability": 0.14929194748401642
+        },
+        {
+          "word": " с",
+          "start": 2.3,
+          "end": 2.36,
+          "probability": 0.8141371011734009
+        },
+        {
+          "word": " другого",
+          "start": 2.36,
+          "end": 2.72,
+          "probability": 0.98980712890625
+        },
+        {
+          "word": " языка",
+          "start": 2.72,
+          "end": 3.12,
+          "probability": 0.9960931837558746
+        },
+        {
+          "word": " я",
+          "start": 3.12,
+          "end": 3.28,
+          "probability": 0.6239017248153687
+        },
+        {
+          "word": " не",
+          "start": 3.28,
+          "end": 3.4,
+          "probability": 0.9959037899971008
+        },
+        {
+          "word": " собираюсь",
+          "start": 3.4,
+          "end": 3.98,
+          "probability": 0.9957288901011149
+        },
+        {
+          "word": ".",
+          "start": 3.98,
+          "end": 4.18,
+          "probability": 0.8475801944732666
+        }
+      ],
+      "words": [
+        {
+          "text": "Кириллицей.",
+          "start": 0,
+          "end": 0.96
+        },
+        {
+          "text": "Переводить",
+          "start": 1.22,
+          "end": 1.72
+        },
+        {
+          "text": "это",
+          "start": 1.72,
+          "end": 1.9
+        },
+        {
+          "text": "ещё",
+          "start": 1.9,
+          "end": 2.14
+        },
+        {
+          "text": "и",
+          "start": 2.14,
+          "end": 2.3
+        },
+        {
+          "text": "с",
+          "start": 2.3,
+          "end": 2.36
+        },
+        {
+          "text": "другого",
+          "start": 2.36,
+          "end": 2.72
+        },
+        {
+          "text": "языка",
+          "start": 2.72,
+          "end": 3.12
+        },
+        {
+          "text": "я",
+          "start": 3.12,
+          "end": 3.28
+        },
+        {
+          "text": "не",
+          "start": 3.28,
+          "end": 3.4
+        },
+        {
+          "text": "собираюсь.",
+          "start": 3.4,
+          "end": 3.98
+        }
+      ]
+    },
+    "c52e41679b47a44488ff54deafc2325fad6cede180d8c252028cb84071a1a5aa:5a19810b785b863efab0c77db29c4a7734854006e9c6d4e415a608a702780d3d": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "c52e41679b47a44488ff54deafc2325fad6cede180d8c252028cb84071a1a5aa",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_2.mp3",
+      "duration": 5.24771,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "русскими буквами. И без того расследуем лингвистическую катастрофу.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Русскими",
+          "start": 0.0,
+          "end": 0.6,
+          "probability": 0.968676745891571
+        },
+        {
+          "index": 1,
+          "text": "буквами.",
+          "start": 0.6,
+          "end": 1.16,
+          "probability": 0.9815400838851929
+        },
+        {
+          "index": 2,
+          "text": "И",
+          "start": 1.5,
+          "end": 1.76,
+          "probability": 0.9265289902687073
+        },
+        {
+          "index": 3,
+          "text": "без",
+          "start": 1.76,
+          "end": 1.92,
+          "probability": 0.9502788186073303
+        },
+        {
+          "index": 4,
+          "text": "того",
+          "start": 1.92,
+          "end": 2.12,
+          "probability": 0.9975689053535461
+        },
+        {
+          "index": 5,
+          "text": "расследуем",
+          "start": 2.12,
+          "end": 2.84,
+          "probability": 0.9915836453437805
+        },
+        {
+          "index": 6,
+          "text": "лингвистическую",
+          "start": 2.84,
+          "end": 4.02,
+          "probability": 0.9676812092463175
+        },
+        {
+          "index": 7,
+          "text": "катастрофу.",
+          "start": 4.02,
+          "end": 4.86,
+          "probability": 0.9902464389801026
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Русскими",
+          "start": 0.0,
+          "end": 0.6,
+          "probability": 0.7242580166926018
+        },
+        {
+          "word": " буквами",
+          "start": 0.6,
+          "end": 1.12,
+          "probability": 0.9377703368663788
+        },
+        {
+          "word": ".",
+          "start": 1.12,
+          "end": 1.56,
+          "probability": 0.09207243472337723
+        },
+        {
+          "word": " И",
+          "start": 1.56,
+          "end": 1.78,
+          "probability": 0.8947872519493103
+        },
+        {
+          "word": " без",
+          "start": 1.78,
+          "end": 1.92,
+          "probability": 0.9138117432594299
+        },
+        {
+          "word": " того",
+          "start": 1.92,
+          "end": 2.12,
+          "probability": 0.9967429041862488
+        },
+        {
+          "word": " расследуем",
+          "start": 2.12,
+          "end": 2.76,
+          "probability": 0.9883222381273905
+        },
+        {
+          "word": " лингвистическую",
+          "start": 2.76,
+          "end": 4.0,
+          "probability": 0.960155854622523
+        },
+        {
+          "word": " катастрофу",
+          "start": 4.0,
+          "end": 4.9,
+          "probability": 0.9908242106437684
+        },
+        {
+          "word": ".",
+          "start": 4.9,
+          "end": 5.0,
+          "probability": 0.8141065835952759
+        }
+      ],
+      "words": [
+        {
+          "text": "Русскими",
+          "start": 0,
+          "end": 0.6
+        },
+        {
+          "text": "буквами.",
+          "start": 0.6,
+          "end": 1.12
+        },
+        {
+          "text": "И",
+          "start": 1.56,
+          "end": 1.78
+        },
+        {
+          "text": "без",
+          "start": 1.78,
+          "end": 1.92
+        },
+        {
+          "text": "того",
+          "start": 1.92,
+          "end": 2.12
+        },
+        {
+          "text": "расследуем",
+          "start": 2.12,
+          "end": 2.76
+        },
+        {
+          "text": "лингвистическую",
+          "start": 2.76,
+          "end": 4.0
+        },
+        {
+          "text": "катастрофу.",
+          "start": 4.0,
+          "end": 4.9
+        }
+      ]
+    },
+    "07e20f8fbf2129ca853dce899b77b70acd150adf8444af8dc30dd78aaafe46af:f8c857e156305f1933b1eb4d062117caa6338e20d5fb36707172aa625b7fe376": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "07e20f8fbf2129ca853dce899b77b70acd150adf8444af8dc30dd78aaafe46af",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty.mp3",
+      "duration": 4.458231,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 9,
+      "authoredLexicalWords": 9,
+      "heardText": "Введите букву или слово, молчание в протоколе не сохранилось.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Введите",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.9146673083305359
+        },
+        {
+          "index": 1,
+          "text": "букву",
+          "start": 0.48,
+          "end": 0.98,
+          "probability": 0.95851930975914
+        },
+        {
+          "index": 2,
+          "text": "или",
+          "start": 0.98,
+          "end": 1.12,
+          "probability": 0.9889032244682312
+        },
+        {
+          "index": 3,
+          "text": "слово.",
+          "start": 1.12,
+          "end": 1.44,
+          "probability": 0.9644812941551208
+        },
+        {
+          "index": 4,
+          "text": "Молчание",
+          "start": 1.92,
+          "end": 2.46,
+          "probability": 0.9674385587374369
+        },
+        {
+          "index": 5,
+          "text": "в",
+          "start": 2.46,
+          "end": 2.58,
+          "probability": 0.9900296330451965
+        },
+        {
+          "index": 6,
+          "text": "протоколе",
+          "start": 2.58,
+          "end": 3.14,
+          "probability": 0.9859404414892197
+        },
+        {
+          "index": 7,
+          "text": "не",
+          "start": 3.14,
+          "end": 3.26,
+          "probability": 0.9967105388641357
+        },
+        {
+          "index": 8,
+          "text": "сохранилось.",
+          "start": 3.26,
+          "end": 3.92,
+          "probability": 0.9927869439125061
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Введите",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.6581450268616512
+        },
+        {
+          "word": " букву",
+          "start": 0.48,
+          "end": 0.96,
+          "probability": 0.9327933192253113
+        },
+        {
+          "word": " или",
+          "start": 0.96,
+          "end": 1.12,
+          "probability": 0.9893084764480591
+        },
+        {
+          "word": " слово",
+          "start": 1.12,
+          "end": 1.42,
+          "probability": 0.9618688225746155
+        },
+        {
+          "word": ".",
+          "start": 1.42,
+          "end": 1.92,
+          "probability": 0.28507956862449646
+        },
+        {
+          "word": " Молчание",
+          "start": 1.92,
+          "end": 2.42,
+          "probability": 0.8646646738052368
+        },
+        {
+          "word": " в",
+          "start": 2.42,
+          "end": 2.6,
+          "probability": 0.9896638989448547
+        },
+        {
+          "word": " протоколе",
+          "start": 2.6,
+          "end": 3.12,
+          "probability": 0.9911007732152939
+        },
+        {
+          "word": " не",
+          "start": 3.12,
+          "end": 3.26,
+          "probability": 0.9952794313430786
+        },
+        {
+          "word": " сохранилось",
+          "start": 3.26,
+          "end": 3.9,
+          "probability": 0.9923787117004395
+        },
+        {
+          "word": ".",
+          "start": 3.9,
+          "end": 4.24,
+          "probability": 0.6792669296264648
+        }
+      ],
+      "words": [
+        {
+          "text": "Введите",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "text": "букву",
+          "start": 0.48,
+          "end": 0.96
+        },
+        {
+          "text": "или",
+          "start": 0.96,
+          "end": 1.12
+        },
+        {
+          "text": "слово.",
+          "start": 1.12,
+          "end": 1.42
+        },
+        {
+          "text": "Молчание",
+          "start": 1.92,
+          "end": 2.42
+        },
+        {
+          "text": "в",
+          "start": 2.42,
+          "end": 2.6
+        },
+        {
+          "text": "протоколе",
+          "start": 2.6,
+          "end": 3.12
+        },
+        {
+          "text": "не",
+          "start": 3.12,
+          "end": 3.26
+        },
+        {
+          "text": "сохранилось.",
+          "start": 3.26,
+          "end": 3.9
+        }
+      ]
+    },
+    "9c91d7169ee40f463653cbd33cdbcd40aa47da69421488508e929ac355ff4ad6:be068a3b3f7fbf5eae8d6e59a228c45623e8fa3e670f3ee72bdcb6912c132533": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "9c91d7169ee40f463653cbd33cdbcd40aa47da69421488508e929ac355ff4ad6",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_1.mp3",
+      "duration": 4.365351,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "ответ не поступил. Пока это самая грамотная версия.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Ответ",
+          "start": 0.0,
+          "end": 0.34,
+          "probability": 0.5682715177536011
+        },
+        {
+          "index": 1,
+          "text": "не",
+          "start": 0.34,
+          "end": 0.6,
+          "probability": 0.9808281064033508
+        },
+        {
+          "index": 2,
+          "text": "поступил.",
+          "start": 0.6,
+          "end": 1.32,
+          "probability": 0.9987960159778595
+        },
+        {
+          "index": 3,
+          "text": "Пока",
+          "start": 1.8,
+          "end": 2.14,
+          "probability": 0.9598522782325745
+        },
+        {
+          "index": 4,
+          "text": "это",
+          "start": 2.14,
+          "end": 2.38,
+          "probability": 0.795760452747345
+        },
+        {
+          "index": 5,
+          "text": "самая",
+          "start": 2.38,
+          "end": 2.86,
+          "probability": 0.9618642330169678
+        },
+        {
+          "index": 6,
+          "text": "грамотная",
+          "start": 2.86,
+          "end": 3.44,
+          "probability": 0.9917916506528854
+        },
+        {
+          "index": 7,
+          "text": "версия.",
+          "start": 3.44,
+          "end": 3.96,
+          "probability": 0.9987736344337463
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Ответ",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.6609562443709365
+        },
+        {
+          "word": " не",
+          "start": 0.38,
+          "end": 0.6,
+          "probability": 0.9753257632255554
+        },
+        {
+          "word": " поступил",
+          "start": 0.6,
+          "end": 1.3,
+          "probability": 0.9974415898323059
+        },
+        {
+          "word": ".",
+          "start": 1.3,
+          "end": 1.88,
+          "probability": 0.506437361240387
+        },
+        {
+          "word": " Пока",
+          "start": 1.88,
+          "end": 2.14,
+          "probability": 0.8587400913238525
+        },
+        {
+          "word": " это",
+          "start": 2.14,
+          "end": 2.36,
+          "probability": 0.8205069899559021
+        },
+        {
+          "word": " самая",
+          "start": 2.36,
+          "end": 2.86,
+          "probability": 0.9746476411819458
+        },
+        {
+          "word": " грамотная",
+          "start": 2.86,
+          "end": 3.42,
+          "probability": 0.9849721640348434
+        },
+        {
+          "word": " версия",
+          "start": 3.42,
+          "end": 3.96,
+          "probability": 0.9972688257694244
+        },
+        {
+          "word": ".",
+          "start": 3.96,
+          "end": 4.3,
+          "probability": 0.8318274617195129
+        }
+      ],
+      "words": [
+        {
+          "text": "Ответ",
+          "start": 0,
+          "end": 0.38
+        },
+        {
+          "text": "не",
+          "start": 0.38,
+          "end": 0.6
+        },
+        {
+          "text": "поступил.",
+          "start": 0.6,
+          "end": 1.3
+        },
+        {
+          "text": "Пока",
+          "start": 1.88,
+          "end": 2.14
+        },
+        {
+          "text": "это",
+          "start": 2.14,
+          "end": 2.36
+        },
+        {
+          "text": "самая",
+          "start": 2.36,
+          "end": 2.86
+        },
+        {
+          "text": "грамотная",
+          "start": 2.86,
+          "end": 3.42
+        },
+        {
+          "text": "версия.",
+          "start": 3.42,
+          "end": 3.96
+        }
+      ]
+    },
+    "6d0bd7e9de2e1e7baaf0950f7eb883aed83b6cf78054d207676f9a5f31b7f15c:04fa5a1e0e347149b59100296608d5f2572099fb2b1dc38dbe7a4337c80fff39": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "6d0bd7e9de2e1e7baaf0950f7eb883aed83b6cf78054d207676f9a5f31b7f15c",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_2.mp3",
+      "duration": 3.900952,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Пусто. Смелое заявление для человека, который нажал Ввод.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Пусто.",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.5207091768582662
+        },
+        {
+          "index": 1,
+          "text": "Смелое",
+          "start": 0.84,
+          "end": 1.36,
+          "probability": 0.981719583272934
+        },
+        {
+          "index": 2,
+          "text": "заявление",
+          "start": 1.36,
+          "end": 1.9,
+          "probability": 0.9970669448375702
+        },
+        {
+          "index": 3,
+          "text": "для",
+          "start": 1.9,
+          "end": 2.06,
+          "probability": 0.9745041728019714
+        },
+        {
+          "index": 4,
+          "text": "человека,",
+          "start": 2.06,
+          "end": 2.46,
+          "probability": 0.9984946250915527
+        },
+        {
+          "index": 5,
+          "text": "который",
+          "start": 2.46,
+          "end": 2.82,
+          "probability": 0.996100664138794
+        },
+        {
+          "index": 6,
+          "text": "нажал",
+          "start": 2.82,
+          "end": 3.22,
+          "probability": 0.9920317530632019
+        },
+        {
+          "index": 7,
+          "text": "Ввод.",
+          "start": 3.22,
+          "end": 3.54,
+          "probability": 0.049346827901899815
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Пусто",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.34940798324532807
+        },
+        {
+          "word": ".",
+          "start": 0.52,
+          "end": 0.94,
+          "probability": 0.37773945927619934
+        },
+        {
+          "word": " Смелое",
+          "start": 0.94,
+          "end": 1.34,
+          "probability": 0.964894488453865
+        },
+        {
+          "word": " заявление",
+          "start": 1.34,
+          "end": 1.86,
+          "probability": 0.9955000877380371
+        },
+        {
+          "word": " для",
+          "start": 1.86,
+          "end": 2.06,
+          "probability": 0.9827750325202942
+        },
+        {
+          "word": " человека",
+          "start": 2.06,
+          "end": 2.38,
+          "probability": 0.993543267250061
+        },
+        {
+          "word": ",",
+          "start": 2.38,
+          "end": 2.42,
+          "probability": 0.9582738876342773
+        },
+        {
+          "word": " который",
+          "start": 2.42,
+          "end": 2.8,
+          "probability": 0.9921616911888123
+        },
+        {
+          "word": " нажал",
+          "start": 2.8,
+          "end": 3.18,
+          "probability": 0.9855097234249115
+        },
+        {
+          "word": " Ввод",
+          "start": 3.18,
+          "end": 3.54,
+          "probability": 0.010656774044036865
+        },
+        {
+          "word": ".",
+          "start": 3.54,
+          "end": 3.74,
+          "probability": 0.7876169681549072
+        }
+      ],
+      "words": [
+        {
+          "text": "Пусто.",
+          "start": 0,
+          "end": 0.52
+        },
+        {
+          "text": "Смелое",
+          "start": 0.94,
+          "end": 1.34
+        },
+        {
+          "text": "заявление",
+          "start": 1.34,
+          "end": 1.86
+        },
+        {
+          "text": "для",
+          "start": 1.86,
+          "end": 2.06
+        },
+        {
+          "text": "человека,",
+          "start": 2.06,
+          "end": 2.38
+        },
+        {
+          "text": "который",
+          "start": 2.42,
+          "end": 2.8
+        },
+        {
+          "text": "нажал",
+          "start": 2.8,
+          "end": 3.18
+        },
+        {
+          "text": "Ввод.",
+          "start": 3.18,
+          "end": 3.54
+        }
+      ]
+    },
+    "46e95b385b4c2594d2b5ecb5770b03940af1ab2937f43140b82847e298877cfb:41665ec371a2870e717cb7bce8f7f8b0970d9420fa9c5e62efb7398750b5866a": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "46e95b385b4c2594d2b5ecb5770b03940af1ab2937f43140b82847e298877cfb",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete.mp3",
+      "duration": 4.365351,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 7,
+      "authoredLexicalWords": 7,
+      "heardText": "Восемь букв. Сокращать распоряжение руководства пока рано.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Восемь",
+          "start": 0.0,
+          "end": 0.56,
+          "probability": 0.7277719900012016
+        },
+        {
+          "index": 1,
+          "text": "букв.",
+          "start": 0.56,
+          "end": 0.78,
+          "probability": 0.9334889650344849
+        },
+        {
+          "index": 2,
+          "text": "Сокращать",
+          "start": 1.1,
+          "end": 1.86,
+          "probability": 0.8448877185583115
+        },
+        {
+          "index": 3,
+          "text": "распоряжение",
+          "start": 1.86,
+          "end": 2.52,
+          "probability": 0.9684335291385651
+        },
+        {
+          "index": 4,
+          "text": "руководства",
+          "start": 2.52,
+          "end": 3.14,
+          "probability": 0.9419416338205338
+        },
+        {
+          "index": 5,
+          "text": "пока",
+          "start": 3.14,
+          "end": 3.42,
+          "probability": 0.8863974213600159
+        },
+        {
+          "index": 6,
+          "text": "рано.",
+          "start": 3.42,
+          "end": 3.84,
+          "probability": 0.9836365282535553
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Восемь",
+          "start": 0.0,
+          "end": 0.56,
+          "probability": 0.6582278381370088
+        },
+        {
+          "word": " букв",
+          "start": 0.56,
+          "end": 0.74,
+          "probability": 0.7426624894142151
+        },
+        {
+          "word": ".",
+          "start": 0.74,
+          "end": 1.18,
+          "probability": 0.26173004508018494
+        },
+        {
+          "word": " Сокращать",
+          "start": 1.18,
+          "end": 1.84,
+          "probability": 0.7817505672574043
+        },
+        {
+          "word": " распоряжение",
+          "start": 1.84,
+          "end": 2.5,
+          "probability": 0.9386888742446899
+        },
+        {
+          "word": " руководства",
+          "start": 2.5,
+          "end": 3.12,
+          "probability": 0.9181838482618332
+        },
+        {
+          "word": " пока",
+          "start": 3.12,
+          "end": 3.42,
+          "probability": 0.11951799690723419
+        },
+        {
+          "word": " рано",
+          "start": 3.42,
+          "end": 3.82,
+          "probability": 0.8375030159950256
+        },
+        {
+          "word": ".",
+          "start": 3.82,
+          "end": 4.2,
+          "probability": 0.8863071203231812
+        }
+      ],
+      "words": [
+        {
+          "text": "Восемь",
+          "start": 0,
+          "end": 0.56
+        },
+        {
+          "text": "букв.",
+          "start": 0.56,
+          "end": 0.74
+        },
+        {
+          "text": "Сокращать",
+          "start": 1.18,
+          "end": 1.84
+        },
+        {
+          "text": "распоряжение",
+          "start": 1.84,
+          "end": 2.5
+        },
+        {
+          "text": "руководства",
+          "start": 2.5,
+          "end": 3.12
+        },
+        {
+          "text": "пока",
+          "start": 3.12,
+          "end": 3.42
+        },
+        {
+          "text": "рано.",
+          "start": 3.42,
+          "end": 3.82
+        }
+      ]
+    },
+    "3c2c9e4a6db1639b328f2b5b5aa9ac73d6e30876b436d418a215a70593705700:a2500c652c4769fe8b9e42ea22a2428a12ad07deafdfe504a2ee4a8ac78d9049": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "3c2c9e4a6db1639b328f2b5b5aa9ac73d6e30876b436d418a215a70593705700",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_1.mp3",
+      "duration": 4.318912,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 10,
+      "authoredLexicalWords": 10,
+      "heardText": "Слово ещё не закончено. До орфографии мы пока не добрались.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Слово",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.9193212389945984
+        },
+        {
+          "index": 1,
+          "text": "ещё",
+          "start": 0.48,
+          "end": 0.74,
+          "probability": 0.7726588249206543
+        },
+        {
+          "index": 2,
+          "text": "не",
+          "start": 0.74,
+          "end": 0.94,
+          "probability": 0.9931060671806335
+        },
+        {
+          "index": 3,
+          "text": "закончено.",
+          "start": 0.94,
+          "end": 1.68,
+          "probability": 0.9894727170467377
+        },
+        {
+          "index": 4,
+          "text": "До",
+          "start": 1.86,
+          "end": 2.06,
+          "probability": 0.9852032661437988
+        },
+        {
+          "index": 5,
+          "text": "орфографии",
+          "start": 2.06,
+          "end": 2.96,
+          "probability": 0.8369633629918098
+        },
+        {
+          "index": 6,
+          "text": "мы",
+          "start": 2.96,
+          "end": 3.1,
+          "probability": 0.9732129573822021
+        },
+        {
+          "index": 7,
+          "text": "пока",
+          "start": 3.1,
+          "end": 3.36,
+          "probability": 0.9854522347450256
+        },
+        {
+          "index": 8,
+          "text": "не",
+          "start": 3.36,
+          "end": 3.52,
+          "probability": 0.9674409627914429
+        },
+        {
+          "index": 9,
+          "text": "добрались.",
+          "start": 3.52,
+          "end": 3.96,
+          "probability": 0.9792365729808807
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Слово",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.6199003790510081
+        },
+        {
+          "word": " ещё",
+          "start": 0.48,
+          "end": 0.74,
+          "probability": 0.8617923259735107
+        },
+        {
+          "word": " не",
+          "start": 0.74,
+          "end": 0.94,
+          "probability": 0.9857710599899292
+        },
+        {
+          "word": " закончено",
+          "start": 0.94,
+          "end": 1.66,
+          "probability": 0.9857764840126038
+        },
+        {
+          "word": ".",
+          "start": 1.66,
+          "end": 1.84,
+          "probability": 0.5139256715774536
+        },
+        {
+          "word": " До",
+          "start": 1.84,
+          "end": 2.06,
+          "probability": 0.9488734602928162
+        },
+        {
+          "word": " орфографии",
+          "start": 2.06,
+          "end": 2.96,
+          "probability": 0.8449444398283958
+        },
+        {
+          "word": " мы",
+          "start": 2.96,
+          "end": 3.1,
+          "probability": 0.9468119144439697
+        },
+        {
+          "word": " пока",
+          "start": 3.1,
+          "end": 3.34,
+          "probability": 0.9595365524291992
+        },
+        {
+          "word": " не",
+          "start": 3.34,
+          "end": 3.52,
+          "probability": 0.9631981253623962
+        },
+        {
+          "word": " добрались",
+          "start": 3.52,
+          "end": 3.98,
+          "probability": 0.968998372554779
+        },
+        {
+          "word": ".",
+          "start": 3.98,
+          "end": 4.22,
+          "probability": 0.861375629901886
+        }
+      ],
+      "words": [
+        {
+          "text": "Слово",
+          "start": 0,
+          "end": 0.48
+        },
+        {
+          "text": "ещё",
+          "start": 0.48,
+          "end": 0.74
+        },
+        {
+          "text": "не",
+          "start": 0.74,
+          "end": 0.94
+        },
+        {
+          "text": "закончено.",
+          "start": 0.94,
+          "end": 1.66
+        },
+        {
+          "text": "До",
+          "start": 1.84,
+          "end": 2.06
+        },
+        {
+          "text": "орфографии",
+          "start": 2.06,
+          "end": 2.96
+        },
+        {
+          "text": "мы",
+          "start": 2.96,
+          "end": 3.1
+        },
+        {
+          "text": "пока",
+          "start": 3.1,
+          "end": 3.34
+        },
+        {
+          "text": "не",
+          "start": 3.34,
+          "end": 3.52
+        },
+        {
+          "text": "добрались.",
+          "start": 3.52,
+          "end": 3.98
+        }
+      ]
+    },
+    "4f11d75a747c105005ff5e38f34181562e3279a57df10af55ad77db44b079988:f0fb87ac5234da205e27edcf686cecd9249d8d4e5196b4041ce3d2893553304e": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "4f11d75a747c105005ff5e38f34181562e3279a57df10af55ad77db44b079988",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_2.mp3",
+      "duration": 3.854512,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Букв не хватает. Остальные тоже нужны для протокола.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Букв",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.5426920056343079
+        },
+        {
+          "index": 1,
+          "text": "не",
+          "start": 0.38,
+          "end": 0.48,
+          "probability": 0.975250780582428
+        },
+        {
+          "index": 2,
+          "text": "хватает.",
+          "start": 0.48,
+          "end": 1.06,
+          "probability": 0.9986290037631989
+        },
+        {
+          "index": 3,
+          "text": "Остальные",
+          "start": 1.42,
+          "end": 1.96,
+          "probability": 0.9803181687990824
+        },
+        {
+          "index": 4,
+          "text": "тоже",
+          "start": 1.96,
+          "end": 2.22,
+          "probability": 0.9486477971076965
+        },
+        {
+          "index": 5,
+          "text": "нужны",
+          "start": 2.22,
+          "end": 2.64,
+          "probability": 0.9992216229438782
+        },
+        {
+          "index": 6,
+          "text": "для",
+          "start": 2.64,
+          "end": 2.76,
+          "probability": 0.9984117746353149
+        },
+        {
+          "index": 7,
+          "text": "протокола.",
+          "start": 2.76,
+          "end": 3.34,
+          "probability": 0.720780998468399
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Букв",
+          "start": 0.0,
+          "end": 0.38,
+          "probability": 0.32387721466754255
+        },
+        {
+          "word": " не",
+          "start": 0.38,
+          "end": 0.48,
+          "probability": 0.9753668904304504
+        },
+        {
+          "word": " хватает",
+          "start": 0.48,
+          "end": 1.0,
+          "probability": 0.9978843033313751
+        },
+        {
+          "word": ".",
+          "start": 1.0,
+          "end": 1.5,
+          "probability": 0.4553292393684387
+        },
+        {
+          "word": " Остальные",
+          "start": 1.5,
+          "end": 1.94,
+          "probability": 0.9682660102844238
+        },
+        {
+          "word": " тоже",
+          "start": 1.94,
+          "end": 2.24,
+          "probability": 0.9809507131576538
+        },
+        {
+          "word": " нужны",
+          "start": 2.24,
+          "end": 2.62,
+          "probability": 0.9989330768585205
+        },
+        {
+          "word": " для",
+          "start": 2.62,
+          "end": 2.76,
+          "probability": 0.9961094260215759
+        },
+        {
+          "word": " протокола",
+          "start": 2.76,
+          "end": 3.32,
+          "probability": 0.6896129498879114
+        },
+        {
+          "word": ".",
+          "start": 3.32,
+          "end": 3.64,
+          "probability": 0.8526180386543274
+        }
+      ],
+      "words": [
+        {
+          "text": "Букв",
+          "start": 0,
+          "end": 0.38
+        },
+        {
+          "text": "не",
+          "start": 0.38,
+          "end": 0.48
+        },
+        {
+          "text": "хватает.",
+          "start": 0.48,
+          "end": 1.0
+        },
+        {
+          "text": "Остальные",
+          "start": 1.5,
+          "end": 1.94
+        },
+        {
+          "text": "тоже",
+          "start": 1.94,
+          "end": 2.24
+        },
+        {
+          "text": "нужны",
+          "start": 2.24,
+          "end": 2.62
+        },
+        {
+          "text": "для",
+          "start": 2.62,
+          "end": 2.76
+        },
+        {
+          "text": "протокола.",
+          "start": 2.76,
+          "end": 3.32
+        }
+      ]
+    },
+    "d135411786056f0aa7298930c83a32a8b49e4abae0fcca26c3efd1d6fb7f8da5:f7731ece093bff1980da51d706a9e12f524b2335e0a49c01e24a5348f9aa75ae": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "d135411786056f0aa7298930c83a32a8b49e4abae0fcca26c3efd1d6fb7f8da5",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long.mp3",
+      "duration": 4.179592,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Восемь букв. Вы сейчас пишете уже служебную записку.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Восемь",
+          "start": 0.0,
+          "end": 0.52,
+          "probability": 0.753318265080452
+        },
+        {
+          "index": 1,
+          "text": "букв.",
+          "start": 0.52,
+          "end": 0.7,
+          "probability": 0.9772675037384033
+        },
+        {
+          "index": 2,
+          "text": "Вы",
+          "start": 1.16,
+          "end": 1.44,
+          "probability": 0.9696304202079773
+        },
+        {
+          "index": 3,
+          "text": "сейчас",
+          "start": 1.44,
+          "end": 1.7,
+          "probability": 0.9917303919792175
+        },
+        {
+          "index": 4,
+          "text": "пишете",
+          "start": 1.7,
+          "end": 2.22,
+          "probability": 0.7431080788373947
+        },
+        {
+          "index": 5,
+          "text": "уже",
+          "start": 2.22,
+          "end": 2.38,
+          "probability": 0.8195432424545288
+        },
+        {
+          "index": 6,
+          "text": "служебную",
+          "start": 2.38,
+          "end": 3.08,
+          "probability": 0.997361938158671
+        },
+        {
+          "index": 7,
+          "text": "записку.",
+          "start": 3.08,
+          "end": 3.74,
+          "probability": 0.9643661677837372
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Восемь",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.6734303367375105
+        },
+        {
+          "word": " букв",
+          "start": 0.5,
+          "end": 0.64,
+          "probability": 0.8499736785888672
+        },
+        {
+          "word": ".",
+          "start": 0.64,
+          "end": 1.18,
+          "probability": 0.5159927606582642
+        },
+        {
+          "word": " Вы",
+          "start": 1.18,
+          "end": 1.44,
+          "probability": 0.8809029459953308
+        },
+        {
+          "word": " сейчас",
+          "start": 1.44,
+          "end": 1.7,
+          "probability": 0.9822568297386169
+        },
+        {
+          "word": " пишете",
+          "start": 1.7,
+          "end": 2.2,
+          "probability": 0.8032034337520599
+        },
+        {
+          "word": " уже",
+          "start": 2.2,
+          "end": 2.4,
+          "probability": 0.8608751893043518
+        },
+        {
+          "word": " служебную",
+          "start": 2.4,
+          "end": 3.08,
+          "probability": 0.9983729720115662
+        },
+        {
+          "word": " записку",
+          "start": 3.08,
+          "end": 3.78,
+          "probability": 0.9346509873867035
+        },
+        {
+          "word": ".",
+          "start": 3.78,
+          "end": 3.92,
+          "probability": 0.7374549508094788
+        }
+      ],
+      "words": [
+        {
+          "text": "Восемь",
+          "start": 0,
+          "end": 0.5
+        },
+        {
+          "text": "букв.",
+          "start": 0.5,
+          "end": 0.64
+        },
+        {
+          "text": "Вы",
+          "start": 1.18,
+          "end": 1.44
+        },
+        {
+          "text": "сейчас",
+          "start": 1.44,
+          "end": 1.7
+        },
+        {
+          "text": "пишете",
+          "start": 1.7,
+          "end": 2.2
+        },
+        {
+          "text": "уже",
+          "start": 2.2,
+          "end": 2.4
+        },
+        {
+          "text": "служебную",
+          "start": 2.4,
+          "end": 3.08
+        },
+        {
+          "text": "записку.",
+          "start": 3.08,
+          "end": 3.78
+        }
+      ]
+    },
+    "29dd48d2bb88ea39585c1c31481f77600ffcfdbf12e8e32b2cf7b500a8bc8a03:a0655d009d855625168a499f7935578d4d4a5aebe2002d68c0f02a1eed9347e6": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "29dd48d2bb88ea39585c1c31481f77600ffcfdbf12e8e32b2cf7b500a8bc8a03",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_1.mp3",
+      "duration": 3.993832,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 7,
+      "authoredLexicalWords": 7,
+      "heardText": "Длиннее восьми. Биографию слова пока не запрашивали.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Длиннее",
+          "start": 0.0,
+          "end": 0.56,
+          "probability": 0.811951200167338
+        },
+        {
+          "index": 1,
+          "text": "восьми.",
+          "start": 0.56,
+          "end": 1.16,
+          "probability": 0.7528012494246165
+        },
+        {
+          "index": 2,
+          "text": "Биографию",
+          "start": 1.5,
+          "end": 2.08,
+          "probability": 0.9421317428350449
+        },
+        {
+          "index": 3,
+          "text": "слова",
+          "start": 2.08,
+          "end": 2.4,
+          "probability": 0.24264895915985107
+        },
+        {
+          "index": 4,
+          "text": "пока",
+          "start": 2.4,
+          "end": 2.72,
+          "probability": 0.9617025256156921
+        },
+        {
+          "index": 5,
+          "text": "не",
+          "start": 2.72,
+          "end": 2.88,
+          "probability": 0.9972251653671265
+        },
+        {
+          "index": 6,
+          "text": "запрашивали.",
+          "start": 2.88,
+          "end": 3.54,
+          "probability": 0.9829237908124924
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Длиннее",
+          "start": 0.0,
+          "end": 0.56,
+          "probability": 0.6335771907276163
+        },
+        {
+          "word": " восьми",
+          "start": 0.56,
+          "end": 1.12,
+          "probability": 0.767949233452479
+        },
+        {
+          "word": ".",
+          "start": 1.12,
+          "end": 1.54,
+          "probability": 0.7099915742874146
+        },
+        {
+          "word": " Биографию",
+          "start": 1.54,
+          "end": 2.08,
+          "probability": 0.8568877428770065
+        },
+        {
+          "word": " слова",
+          "start": 2.08,
+          "end": 2.38,
+          "probability": 0.22044730186462402
+        },
+        {
+          "word": " пока",
+          "start": 2.38,
+          "end": 2.72,
+          "probability": 0.975771963596344
+        },
+        {
+          "word": " не",
+          "start": 2.72,
+          "end": 2.88,
+          "probability": 0.9901698231697083
+        },
+        {
+          "word": " запрашивали",
+          "start": 2.88,
+          "end": 3.54,
+          "probability": 0.9891481399536133
+        },
+        {
+          "word": ".",
+          "start": 3.54,
+          "end": 3.8,
+          "probability": 0.9380475878715515
+        }
+      ],
+      "words": [
+        {
+          "text": "Длиннее",
+          "start": 0,
+          "end": 0.56
+        },
+        {
+          "text": "восьми.",
+          "start": 0.56,
+          "end": 1.12
+        },
+        {
+          "text": "Биографию",
+          "start": 1.54,
+          "end": 2.08
+        },
+        {
+          "text": "слова",
+          "start": 2.08,
+          "end": 2.38
+        },
+        {
+          "text": "пока",
+          "start": 2.38,
+          "end": 2.72
+        },
+        {
+          "text": "не",
+          "start": 2.72,
+          "end": 2.88
+        },
+        {
+          "text": "запрашивали.",
+          "start": 2.88,
+          "end": 3.54
+        }
+      ]
+    },
+    "95eb286014393657290485e2777bec7628fad4f8a934851bcd35f63b7f438813:fbfe38441296ded29aea5eb33792187d9dfd1d6ff2898bb7778b4530b655bd5f": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "95eb286014393657290485e2777bec7628fad4f8a934851bcd35f63b7f438813",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_2.mp3",
+      "duration": 4.365351,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 8,
+      "authoredLexicalWords": 8,
+      "heardText": "Лишние буквы. Горин и с восемью справился своеобразно.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Лишние",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.841151754061381
+        },
+        {
+          "index": 1,
+          "text": "буквы.",
+          "start": 0.5,
+          "end": 1.08,
+          "probability": 0.934367448091507
+        },
+        {
+          "index": 2,
+          "text": "Горин",
+          "start": 1.26,
+          "end": 1.74,
+          "probability": 0.8601519465446472
+        },
+        {
+          "index": 3,
+          "text": "и",
+          "start": 1.74,
+          "end": 1.9,
+          "probability": 0.4939880669116974
+        },
+        {
+          "index": 4,
+          "text": "с",
+          "start": 1.9,
+          "end": 2.0,
+          "probability": 0.8203216195106506
+        },
+        {
+          "index": 5,
+          "text": "восемью",
+          "start": 2.0,
+          "end": 2.4,
+          "probability": 0.6701840882500013
+        },
+        {
+          "index": 6,
+          "text": "справился",
+          "start": 2.4,
+          "end": 3.0,
+          "probability": 0.9918248355388641
+        },
+        {
+          "index": 7,
+          "text": "своеобразно.",
+          "start": 3.0,
+          "end": 3.92,
+          "probability": 0.9581876794497172
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Лишние",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.5787868839688599
+        },
+        {
+          "word": " буквы",
+          "start": 0.5,
+          "end": 1.06,
+          "probability": 0.9268357753753662
+        },
+        {
+          "word": ".",
+          "start": 1.06,
+          "end": 1.38,
+          "probability": 0.2413102090358734
+        },
+        {
+          "word": " Горин",
+          "start": 1.38,
+          "end": 1.72,
+          "probability": 0.8777205348014832
+        },
+        {
+          "word": " и",
+          "start": 1.72,
+          "end": 1.92,
+          "probability": 0.6599851846694946
+        },
+        {
+          "word": " с",
+          "start": 1.92,
+          "end": 2.0,
+          "probability": 0.8741387724876404
+        },
+        {
+          "word": " восемью",
+          "start": 2.0,
+          "end": 2.36,
+          "probability": 0.6121444155772527
+        },
+        {
+          "word": " справился",
+          "start": 2.36,
+          "end": 2.94,
+          "probability": 0.991575688123703
+        },
+        {
+          "word": " своеобразно",
+          "start": 2.94,
+          "end": 4.0,
+          "probability": 0.9499409794807434
+        },
+        {
+          "word": ".",
+          "start": 4.0,
+          "end": 4.06,
+          "probability": 0.8821332454681396
+        }
+      ],
+      "words": [
+        {
+          "text": "Лишние",
+          "start": 0,
+          "end": 0.5
+        },
+        {
+          "text": "буквы.",
+          "start": 0.5,
+          "end": 1.06
+        },
+        {
+          "text": "Горин",
+          "start": 1.38,
+          "end": 1.72
+        },
+        {
+          "text": "и",
+          "start": 1.72,
+          "end": 1.92
+        },
+        {
+          "text": "с",
+          "start": 1.92,
+          "end": 2.0
+        },
+        {
+          "text": "восемью",
+          "start": 2.0,
+          "end": 2.36
+        },
+        {
+          "text": "справился",
+          "start": 2.36,
+          "end": 2.94
+        },
+        {
+          "text": "своеобразно.",
+          "start": 2.94,
+          "end": 4.0
+        }
+      ]
+    },
+    "74398bd0461c4dfc621c1aea0b7611a164634e6b49504aa18f67a6bb5c5e2191:66e49fda9a7e4756eeb6d3879b62656c2d71aa5e0c3fe5dd5e5844494f0ab2e2": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "74398bd0461c4dfc621c1aea0b7611a164634e6b49504aa18f67a6bb5c5e2191",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_correct.mp3",
+      "duration": 8.312744,
+      "asrCoverage": 1.0,
+      "asrMatchedWords": 14,
+      "authoredLexicalWords": 14,
+      "heardText": "Демоблил. Правильно. Горин просил демобилд. Подчинённый понял и прислал. Вот что значит сработавшаяся команда.",
+      "promptedCoverage": 1.0,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Демоблил.",
+          "start": 0.0,
+          "end": 0.74,
+          "probability": 0.5077170106582344
+        },
+        {
+          "index": 1,
+          "text": "Правильно.",
+          "start": 1.04,
+          "end": 1.64,
+          "probability": 0.9481400847434998
+        },
+        {
+          "index": 2,
+          "text": "Горин",
+          "start": 1.92,
+          "end": 2.22,
+          "probability": 0.9298685987790426
+        },
+        {
+          "index": 3,
+          "text": "просил",
+          "start": 2.22,
+          "end": 2.62,
+          "probability": 0.9971455633640289
+        },
+        {
+          "index": 4,
+          "text": "демобилд.",
+          "start": 2.62,
+          "end": 3.3,
+          "probability": 0.6104553133249283
+        },
+        {
+          "index": 5,
+          "text": "Подчинённый",
+          "start": 3.56,
+          "end": 4.2,
+          "probability": 0.8032281503081322
+        },
+        {
+          "index": 6,
+          "text": "понял",
+          "start": 4.2,
+          "end": 4.52,
+          "probability": 0.9317426681518555
+        },
+        {
+          "index": 7,
+          "text": "и",
+          "start": 4.52,
+          "end": 4.7,
+          "probability": 0.9905969500541687
+        },
+        {
+          "index": 8,
+          "text": "прислал.",
+          "start": 4.7,
+          "end": 5.28,
+          "probability": 0.9952035744984945
+        },
+        {
+          "index": 9,
+          "text": "Вот",
+          "start": 5.4,
+          "end": 5.66,
+          "probability": 0.964760959148407
+        },
+        {
+          "index": 10,
+          "text": "что",
+          "start": 5.66,
+          "end": 5.9,
+          "probability": 0.7833855748176575
+        },
+        {
+          "index": 11,
+          "text": "значит",
+          "start": 5.9,
+          "end": 6.3,
+          "probability": 0.8922775387763977
+        },
+        {
+          "index": 12,
+          "text": "сработавшаяся",
+          "start": 6.3,
+          "end": 7.32,
+          "probability": 0.9696770191192627
+        },
+        {
+          "index": 13,
+          "text": "команда.",
+          "start": 7.32,
+          "end": 7.88,
+          "probability": 0.9975508153438568
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Демоблил",
+          "start": 0.0,
+          "end": 0.7,
+          "probability": 0.4070993622081005
+        },
+        {
+          "word": ".",
+          "start": 0.7,
+          "end": 1.04,
+          "probability": 0.28954824805259705
+        },
+        {
+          "word": " Правильно",
+          "start": 1.04,
+          "end": 1.6,
+          "probability": 0.8700453042984009
+        },
+        {
+          "word": ".",
+          "start": 1.6,
+          "end": 1.94,
+          "probability": 0.21939948201179504
+        },
+        {
+          "word": " Горин",
+          "start": 1.94,
+          "end": 2.22,
+          "probability": 0.9188462893168131
+        },
+        {
+          "word": " просил",
+          "start": 2.22,
+          "end": 2.6,
+          "probability": 0.9953977763652802
+        },
+        {
+          "word": " демобилд",
+          "start": 2.6,
+          "end": 3.32,
+          "probability": 0.6164068102836608
+        },
+        {
+          "word": ".",
+          "start": 3.32,
+          "end": 3.48,
+          "probability": 0.7841734886169434
+        },
+        {
+          "word": " Подчинённый",
+          "start": 3.48,
+          "end": 4.2,
+          "probability": 0.7738482408225537
+        },
+        {
+          "word": " понял",
+          "start": 4.2,
+          "end": 4.48,
+          "probability": 0.9651901125907898
+        },
+        {
+          "word": " и",
+          "start": 4.48,
+          "end": 4.72,
+          "probability": 0.9902946949005127
+        },
+        {
+          "word": " прислал",
+          "start": 4.72,
+          "end": 5.24,
+          "probability": 0.9940195282300314
+        },
+        {
+          "word": ".",
+          "start": 5.24,
+          "end": 5.44,
+          "probability": 0.7420850396156311
+        },
+        {
+          "word": " Вот",
+          "start": 5.44,
+          "end": 5.66,
+          "probability": 0.9366050958633423
+        },
+        {
+          "word": " что",
+          "start": 5.66,
+          "end": 5.9,
+          "probability": 0.8089458346366882
+        },
+        {
+          "word": " значит",
+          "start": 5.9,
+          "end": 6.3,
+          "probability": 0.847322940826416
+        },
+        {
+          "word": " сработавшаяся",
+          "start": 6.3,
+          "end": 7.32,
+          "probability": 0.9683786749839782
+        },
+        {
+          "word": " команда",
+          "start": 7.32,
+          "end": 7.88,
+          "probability": 0.9964928030967712
+        },
+        {
+          "word": ".",
+          "start": 7.88,
+          "end": 8.12,
+          "probability": 0.8852149248123169
+        }
+      ],
+      "words": [
+        {
+          "text": "Демоблил.",
+          "start": 0,
+          "end": 0.7
+        },
+        {
+          "text": "Правильно.",
+          "start": 1.04,
+          "end": 1.6
+        },
+        {
+          "text": "Горин",
+          "start": 1.94,
+          "end": 2.22
+        },
+        {
+          "text": "просил",
+          "start": 2.22,
+          "end": 2.6
+        },
+        {
+          "text": "демобилд.",
+          "start": 2.6,
+          "end": 3.32
+        },
+        {
+          "text": "Подчинённый",
+          "start": 3.48,
+          "end": 4.2
+        },
+        {
+          "text": "понял",
+          "start": 4.2,
+          "end": 4.48
+        },
+        {
+          "text": "и",
+          "start": 4.48,
+          "end": 4.72
+        },
+        {
+          "text": "прислал.",
+          "start": 4.72,
+          "end": 5.24
+        },
+        {
+          "text": "Вот",
+          "start": 5.44,
+          "end": 5.66
+        },
+        {
+          "text": "что",
+          "start": 5.66,
+          "end": 5.9
+        },
+        {
+          "text": "значит",
+          "start": 5.9,
+          "end": 6.3
+        },
+        {
+          "text": "сработавшаяся",
+          "start": 6.3,
+          "end": 7.32
+        },
+        {
+          "text": "команда.",
+          "start": 7.32,
+          "end": 7.88
+        }
+      ]
+    },
+    "322f33dbe81cf568d57250e02b6431c03cac5020c510a1ea4032bc4524df2369:b2ebc2fc0b91c8b34d2f24575ad7d283803573513fd073e07072fa04058aeb4e": {
+      "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+      "minimumAsrCoverage": 0.65,
+      "audio_sha256": "322f33dbe81cf568d57250e02b6431c03cac5020c510a1ea4032bc4524df2369",
+      "file": "media/interactive/scenes/shared_voice/attempts_exhausted.mp3",
+      "duration": 8.034104,
+      "asrCoverage": 0.95,
+      "asrMatchedWords": 19,
+      "authoredLexicalWords": 20,
+      "heardText": "Я и так не ждал от вас многого, но вы, похоже, приняли это за вызов. Ладно, пощежу вас. Продолжим хроники.",
+      "promptedCoverage": null,
+      "matchedWordTimings": [
+        {
+          "index": 0,
+          "text": "Я",
+          "start": 0.0,
+          "end": 0.2,
+          "probability": 0.7901400327682495
+        },
+        {
+          "index": 1,
+          "text": "и",
+          "start": 0.2,
+          "end": 0.34,
+          "probability": 0.8871070146560669
+        },
+        {
+          "index": 2,
+          "text": "так",
+          "start": 0.34,
+          "end": 0.48,
+          "probability": 0.9772751331329346
+        },
+        {
+          "index": 3,
+          "text": "не",
+          "start": 0.48,
+          "end": 0.64,
+          "probability": 0.974617063999176
+        },
+        {
+          "index": 4,
+          "text": "ждал",
+          "start": 0.64,
+          "end": 0.92,
+          "probability": 0.9839809536933899
+        },
+        {
+          "index": 5,
+          "text": "от",
+          "start": 0.92,
+          "end": 1.04,
+          "probability": 0.9883566498756409
+        },
+        {
+          "index": 6,
+          "text": "вас",
+          "start": 1.04,
+          "end": 1.18,
+          "probability": 0.9609518647193909
+        },
+        {
+          "index": 7,
+          "text": "многого.",
+          "start": 1.18,
+          "end": 1.86,
+          "probability": 0.8222126960754395
+        },
+        {
+          "index": 8,
+          "text": "Но",
+          "start": 2.12,
+          "end": 2.3,
+          "probability": 0.9831318855285645
+        },
+        {
+          "index": 9,
+          "text": "вы,",
+          "start": 2.3,
+          "end": 2.46,
+          "probability": 0.909514844417572
+        },
+        {
+          "index": 10,
+          "text": "похоже,",
+          "start": 2.52,
+          "end": 2.84,
+          "probability": 0.9926778078079224
+        },
+        {
+          "index": 11,
+          "text": "приняли",
+          "start": 2.94,
+          "end": 3.24,
+          "probability": 0.9936817288398743
+        },
+        {
+          "index": 12,
+          "text": "это",
+          "start": 3.24,
+          "end": 3.42,
+          "probability": 0.9883540868759155
+        },
+        {
+          "index": 13,
+          "text": "за",
+          "start": 3.42,
+          "end": 3.6,
+          "probability": 0.8996149301528931
+        },
+        {
+          "index": 14,
+          "text": "вызов.",
+          "start": 3.6,
+          "end": 4.02,
+          "probability": 0.9966926574707031
+        },
+        {
+          "index": 15,
+          "text": "Ладно,",
+          "start": 4.38,
+          "end": 4.9,
+          "probability": 0.9894479513168335
+        },
+        {
+          "index": 17,
+          "text": "вас.",
+          "start": 5.74,
+          "end": 6.0,
+          "probability": 0.9943245053291321
+        },
+        {
+          "index": 18,
+          "text": "Продолжим",
+          "start": 6.4,
+          "end": 6.92,
+          "probability": 0.9942202866077423
+        },
+        {
+          "index": 19,
+          "text": "хроники.",
+          "start": 6.92,
+          "end": 7.46,
+          "probability": 0.772058387597402
+        }
+      ],
+      "status": "aligned",
+      "reasons": [],
+      "attentionWordTimings": [
+        {
+          "word": "Я",
+          "start": 0.0,
+          "end": 0.2,
+          "probability": 0.00011471883772173896
+        },
+        {
+          "word": " и",
+          "start": 0.2,
+          "end": 0.34,
+          "probability": 0.8799278140068054
+        },
+        {
+          "word": " так",
+          "start": 0.34,
+          "end": 0.48,
+          "probability": 0.9587514400482178
+        },
+        {
+          "word": " не",
+          "start": 0.48,
+          "end": 0.66,
+          "probability": 0.9756522178649902
+        },
+        {
+          "word": " ждал",
+          "start": 0.66,
+          "end": 0.88,
+          "probability": 0.987499475479126
+        },
+        {
+          "word": " от",
+          "start": 0.88,
+          "end": 1.04,
+          "probability": 0.9829260110855103
+        },
+        {
+          "word": " вас",
+          "start": 1.04,
+          "end": 1.18,
+          "probability": 0.9436606168746948
+        },
+        {
+          "word": " многого",
+          "start": 1.18,
+          "end": 1.82,
+          "probability": 0.7232697159051895
+        },
+        {
+          "word": ".",
+          "start": 1.82,
+          "end": 2.12,
+          "probability": 0.11235027760267258
+        },
+        {
+          "word": " Но",
+          "start": 2.12,
+          "end": 2.32,
+          "probability": 0.9186720848083496
+        },
+        {
+          "word": " вы",
+          "start": 2.32,
+          "end": 2.46,
+          "probability": 0.7804749011993408
+        },
+        {
+          "word": ",",
+          "start": 2.46,
+          "end": 2.52,
+          "probability": 0.6210904717445374
+        },
+        {
+          "word": " похоже",
+          "start": 2.52,
+          "end": 2.8,
+          "probability": 0.9888287782669067
+        },
+        {
+          "word": ",",
+          "start": 2.8,
+          "end": 2.96,
+          "probability": 0.9741231799125671
+        },
+        {
+          "word": " приняли",
+          "start": 2.96,
+          "end": 3.22,
+          "probability": 0.9919421970844269
+        },
+        {
+          "word": " это",
+          "start": 3.22,
+          "end": 3.42,
+          "probability": 0.9791983366012573
+        },
+        {
+          "word": " за",
+          "start": 3.42,
+          "end": 3.6,
+          "probability": 0.8458183407783508
+        },
+        {
+          "word": " вызов",
+          "start": 3.6,
+          "end": 3.94,
+          "probability": 0.9959559440612793
+        },
+        {
+          "word": ".",
+          "start": 3.94,
+          "end": 4.38,
+          "probability": 0.9293225407600403
+        },
+        {
+          "word": " Ладно",
+          "start": 4.38,
+          "end": 4.86,
+          "probability": 0.9669164717197418
+        },
+        {
+          "word": ",",
+          "start": 4.86,
+          "end": 5.2,
+          "probability": 0.7554444074630737
+        },
+        {
+          "word": " пощажу",
+          "start": 5.2,
+          "end": 5.6,
+          "probability": 0.5103838890790939
+        },
+        {
+          "word": " вас",
+          "start": 5.6,
+          "end": 6.0,
+          "probability": 0.9930301308631897
+        },
+        {
+          "word": ".",
+          "start": 6.0,
+          "end": 6.4,
+          "probability": 0.6797254085540771
+        },
+        {
+          "word": " Продолжим",
+          "start": 6.4,
+          "end": 6.92,
+          "probability": 0.9920669943094254
+        },
+        {
+          "word": " хроники",
+          "start": 6.92,
+          "end": 7.44,
+          "probability": 0.8858318130175272
+        },
+        {
+          "word": ".",
+          "start": 7.44,
+          "end": 7.84,
+          "probability": 0.8361380100250244
+        }
+      ],
+      "words": [
+        {
+          "text": "Я",
+          "start": 0,
+          "end": 0.2
+        },
+        {
+          "text": "и",
+          "start": 0.2,
+          "end": 0.34
+        },
+        {
+          "text": "так",
+          "start": 0.34,
+          "end": 0.48
+        },
+        {
+          "text": "не",
+          "start": 0.48,
+          "end": 0.66
+        },
+        {
+          "text": "ждал",
+          "start": 0.66,
+          "end": 0.88
+        },
+        {
+          "text": "от",
+          "start": 0.88,
+          "end": 1.04
+        },
+        {
+          "text": "вас",
+          "start": 1.04,
+          "end": 1.18
+        },
+        {
+          "text": "многого.",
+          "start": 1.18,
+          "end": 1.82
+        },
+        {
+          "text": "Но",
+          "start": 2.12,
+          "end": 2.32
+        },
+        {
+          "text": "вы,",
+          "start": 2.32,
+          "end": 2.46
+        },
+        {
+          "text": "похоже,",
+          "start": 2.52,
+          "end": 2.8
+        },
+        {
+          "text": "приняли",
+          "start": 2.96,
+          "end": 3.22
+        },
+        {
+          "text": "это",
+          "start": 3.22,
+          "end": 3.42
+        },
+        {
+          "text": "за",
+          "start": 3.42,
+          "end": 3.6
+        },
+        {
+          "text": "вызов.",
+          "start": 3.6,
+          "end": 3.94
+        },
+        {
+          "text": "Ладно,",
+          "start": 4.38,
+          "end": 4.86
+        },
+        {
+          "text": "пощажу",
+          "start": 5.2,
+          "end": 5.6
+        },
+        {
+          "text": "вас.",
+          "start": 5.6,
+          "end": 6.0
+        },
+        {
+          "text": "Продолжим",
+          "start": 6.4,
+          "end": 6.92
+        },
+        {
+          "text": "хроники.",
+          "start": 6.92,
+          "end": 7.44
+        }
+      ]
+    }
+  }
+}

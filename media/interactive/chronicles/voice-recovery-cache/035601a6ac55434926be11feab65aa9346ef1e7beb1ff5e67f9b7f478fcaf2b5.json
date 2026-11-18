@@ -1,0 +1,297 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "035601a6ac55434926be11feab65aa9346ef1e7beb1ff5e67f9b7f478fcaf2b5",
+  "audio_sha256": "9aceccef9fb0a6c6a7cc7a69aebe2b8e6ebe4905a279c537a3c5f2c1088dfc79",
+  "file": "media/interactive/chronicles/voice/035601a6ac55434926be11fe.mp3",
+  "duration": 7.709025,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.8666666666666667,
+  "asrMatchedWords": 13,
+  "authoredLexicalWords": 15,
+  "heardText": "Никаких чашек. Никаких пауз. Его глаза даже не успели маргнуть и оторваться от штурма Натиона.",
+  "promptedCoverage": 0.7333333333333333,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Никаких",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.8344373106956482
+    },
+    {
+      "index": 1,
+      "text": "чашек.",
+      "start": 0.56,
+      "end": 1.2,
+      "probability": 0.9818469683329264
+    },
+    {
+      "index": 2,
+      "text": "Никаких",
+      "start": 1.64,
+      "end": 2.04,
+      "probability": 0.9917016426722208
+    },
+    {
+      "index": 3,
+      "text": "пауз.",
+      "start": 2.04,
+      "end": 2.62,
+      "probability": 0.8492047588030497
+    },
+    {
+      "index": 4,
+      "text": "Его",
+      "start": 3.06,
+      "end": 3.3,
+      "probability": 0.9881740808486938
+    },
+    {
+      "index": 5,
+      "text": "глаза",
+      "start": 3.3,
+      "end": 3.68,
+      "probability": 0.9965496063232422
+    },
+    {
+      "index": 6,
+      "text": "даже",
+      "start": 3.68,
+      "end": 3.96,
+      "probability": 0.9707562923431396
+    },
+    {
+      "index": 7,
+      "text": "не",
+      "start": 3.96,
+      "end": 4.14,
+      "probability": 0.9985087513923645
+    },
+    {
+      "index": 8,
+      "text": "успели",
+      "start": 4.14,
+      "end": 4.6,
+      "probability": 0.9994664192199707
+    },
+    {
+      "index": 10,
+      "text": "и",
+      "start": 5.18,
+      "end": 5.44,
+      "probability": 0.9531280994415283
+    },
+    {
+      "index": 11,
+      "text": "оторваться",
+      "start": 5.44,
+      "end": 6.06,
+      "probability": 0.9916203618049622
+    },
+    {
+      "index": 12,
+      "text": "от",
+      "start": 6.06,
+      "end": 6.26,
+      "probability": 0.9935513734817505
+    },
+    {
+      "index": 13,
+      "text": "штурма",
+      "start": 6.26,
+      "end": 6.7,
+      "probability": 0.9066153367360433
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Никаких",
+      "start": 0.0,
+      "end": 0.54,
+      "probability": 0.7252065948559903
+    },
+    {
+      "word": " чашек",
+      "start": 0.54,
+      "end": 1.18,
+      "probability": 0.9770647486050924
+    },
+    {
+      "word": ".",
+      "start": 1.18,
+      "end": 1.64,
+      "probability": 0.1887993961572647
+    },
+    {
+      "word": " Никаких",
+      "start": 1.64,
+      "end": 2.04,
+      "probability": 0.945080558458964
+    },
+    {
+      "word": " пауз",
+      "start": 2.04,
+      "end": 2.6,
+      "probability": 0.8645670413970947
+    },
+    {
+      "word": ".",
+      "start": 2.6,
+      "end": 3.1,
+      "probability": 0.8945761919021606
+    },
+    {
+      "word": " Его",
+      "start": 3.1,
+      "end": 3.3,
+      "probability": 0.9645949006080627
+    },
+    {
+      "word": " глаза",
+      "start": 3.3,
+      "end": 3.64,
+      "probability": 0.9967623949050903
+    },
+    {
+      "word": " даже",
+      "start": 3.64,
+      "end": 3.96,
+      "probability": 0.9808521866798401
+    },
+    {
+      "word": " не",
+      "start": 3.96,
+      "end": 4.14,
+      "probability": 0.9983997941017151
+    },
+    {
+      "word": " успели",
+      "start": 4.14,
+      "end": 4.58,
+      "probability": 0.9993525743484497
+    },
+    {
+      "word": " моргнуть",
+      "start": 4.58,
+      "end": 5.16,
+      "probability": 0.8079285621643066
+    },
+    {
+      "word": " и",
+      "start": 5.16,
+      "end": 5.44,
+      "probability": 0.8668950796127319
+    },
+    {
+      "word": " оторваться",
+      "start": 5.44,
+      "end": 6.02,
+      "probability": 0.9490200728178024
+    },
+    {
+      "word": " от",
+      "start": 6.02,
+      "end": 6.26,
+      "probability": 0.9729148745536804
+    },
+    {
+      "word": " штурма",
+      "start": 6.26,
+      "end": 6.7,
+      "probability": 0.8924106160799662
+    },
+    {
+      "word": " Нотиона",
+      "start": 6.7,
+      "end": 7.22,
+      "probability": 0.6220742668956518
+    },
+    {
+      "word": ".",
+      "start": 7.22,
+      "end": 7.5,
+      "probability": 0.8281958699226379
+    }
+  ],
+  "words": [
+    {
+      "text": "Никаких",
+      "start": 0,
+      "end": 0.54
+    },
+    {
+      "text": "чашек.",
+      "start": 0.54,
+      "end": 1.18
+    },
+    {
+      "text": "Никаких",
+      "start": 1.64,
+      "end": 2.04
+    },
+    {
+      "text": "пауз.",
+      "start": 2.04,
+      "end": 2.6
+    },
+    {
+      "text": "Его",
+      "start": 3.1,
+      "end": 3.3
+    },
+    {
+      "text": "глаза",
+      "start": 3.3,
+      "end": 3.64
+    },
+    {
+      "text": "даже",
+      "start": 3.64,
+      "end": 3.96
+    },
+    {
+      "text": "не",
+      "start": 3.96,
+      "end": 4.14
+    },
+    {
+      "text": "успели",
+      "start": 4.14,
+      "end": 4.58
+    },
+    {
+      "text": "моргнуть",
+      "start": 4.58,
+      "end": 5.16
+    },
+    {
+      "text": "и",
+      "start": 5.16,
+      "end": 5.44
+    },
+    {
+      "text": "оторваться",
+      "start": 5.44,
+      "end": 6.02
+    },
+    {
+      "text": "от",
+      "start": 6.02,
+      "end": 6.26
+    },
+    {
+      "text": "штурма",
+      "start": 6.26,
+      "end": 6.7
+    },
+    {
+      "text": "Нотиона.",
+      "start": 6.7,
+      "end": 7.22
+    }
+  ]
+}

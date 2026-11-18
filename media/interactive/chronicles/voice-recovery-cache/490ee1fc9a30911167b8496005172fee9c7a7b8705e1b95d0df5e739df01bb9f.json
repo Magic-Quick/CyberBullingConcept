@@ -1,0 +1,358 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "490ee1fc9a30911167b8496005172fee9c7a7b8705e1b95d0df5e739df01bb9f",
+  "audio_sha256": "805b4befa8bdd0ee42815e04f37d1c327001d9c94bfd5d30260d902c92a27879",
+  "file": "media/interactive/chronicles/voice/490ee1fc9a30911167b84960.mp3",
+  "duration": 10.17034,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 18,
+  "authoredLexicalWords": 18,
+  "heardText": "они приговариваются к ручной зачистке рифлёных металлических решёток нижней палубы от налипшей биомассы всех трёхсот сорока шести копий.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Они",
+      "start": 0.0,
+      "end": 0.22,
+      "probability": 0.18840676546096802
+    },
+    {
+      "index": 1,
+      "text": "приговариваются",
+      "start": 0.22,
+      "end": 1.06,
+      "probability": 0.787115965783596
+    },
+    {
+      "index": 2,
+      "text": "к",
+      "start": 1.06,
+      "end": 1.2,
+      "probability": 0.9954914450645447
+    },
+    {
+      "index": 3,
+      "text": "ручной",
+      "start": 1.2,
+      "end": 1.56,
+      "probability": 0.9774145682652792
+    },
+    {
+      "index": 4,
+      "text": "зачистке",
+      "start": 1.56,
+      "end": 2.28,
+      "probability": 0.9969725012779236
+    },
+    {
+      "index": 5,
+      "text": "рифлёных",
+      "start": 2.28,
+      "end": 3.02,
+      "probability": 0.6114254325628281
+    },
+    {
+      "index": 6,
+      "text": "металлических",
+      "start": 3.02,
+      "end": 3.82,
+      "probability": 0.9931617140769958
+    },
+    {
+      "index": 7,
+      "text": "решёток",
+      "start": 3.82,
+      "end": 4.36,
+      "probability": 0.7859806517759959
+    },
+    {
+      "index": 8,
+      "text": "нижней",
+      "start": 4.36,
+      "end": 4.8,
+      "probability": 0.9797309239705404
+    },
+    {
+      "index": 9,
+      "text": "палубы",
+      "start": 4.8,
+      "end": 5.44,
+      "probability": 0.9568803111712137
+    },
+    {
+      "index": 10,
+      "text": "от",
+      "start": 5.44,
+      "end": 5.98,
+      "probability": 0.3635665774345398
+    },
+    {
+      "index": 11,
+      "text": "налипшей",
+      "start": 5.98,
+      "end": 6.54,
+      "probability": 0.6587939858436584
+    },
+    {
+      "index": 12,
+      "text": "биомассы",
+      "start": 6.54,
+      "end": 7.24,
+      "probability": 0.949968621134758
+    },
+    {
+      "index": 13,
+      "text": "всех",
+      "start": 7.24,
+      "end": 7.52,
+      "probability": 0.9687163829803467
+    },
+    {
+      "index": 14,
+      "text": "трёхсот",
+      "start": 7.52,
+      "end": 8.26,
+      "probability": 0.8407320380210876
+    },
+    {
+      "index": 15,
+      "text": "сорока",
+      "start": 8.26,
+      "end": 8.86,
+      "probability": 0.9670763313770294
+    },
+    {
+      "index": 16,
+      "text": "шести",
+      "start": 8.86,
+      "end": 9.3,
+      "probability": 0.9835188090801239
+    },
+    {
+      "index": 17,
+      "text": "копий",
+      "start": 9.3,
+      "end": 9.76,
+      "probability": 0.991492360830307
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Они",
+      "start": 0.0,
+      "end": 0.24,
+      "probability": 0.45298285360877344
+    },
+    {
+      "word": " приговариваются",
+      "start": 0.24,
+      "end": 1.02,
+      "probability": 0.7917604267597198
+    },
+    {
+      "word": " к",
+      "start": 1.02,
+      "end": 1.22,
+      "probability": 0.9838660359382629
+    },
+    {
+      "word": " ручной",
+      "start": 1.22,
+      "end": 1.54,
+      "probability": 0.9681531389554342
+    },
+    {
+      "word": " зачистке",
+      "start": 1.54,
+      "end": 2.28,
+      "probability": 0.9964690605799357
+    },
+    {
+      "word": " рифлёных",
+      "start": 2.28,
+      "end": 3.02,
+      "probability": 0.6159425556659699
+    },
+    {
+      "word": " металлических",
+      "start": 3.02,
+      "end": 3.8,
+      "probability": 0.9922817826271058
+    },
+    {
+      "word": " решёток",
+      "start": 3.8,
+      "end": 4.36,
+      "probability": 0.7814750770727793
+    },
+    {
+      "word": " нижней",
+      "start": 4.36,
+      "end": 4.78,
+      "probability": 0.9724440972010294
+    },
+    {
+      "word": " палубы",
+      "start": 4.78,
+      "end": 5.44,
+      "probability": 0.941466232140859
+    },
+    {
+      "word": " от",
+      "start": 5.44,
+      "end": 6.0,
+      "probability": 0.22601227462291718
+    },
+    {
+      "word": " налипшей",
+      "start": 6.0,
+      "end": 6.54,
+      "probability": 0.6565683707594872
+    },
+    {
+      "word": " биомассы",
+      "start": 6.54,
+      "end": 7.24,
+      "probability": 0.9488565623760223
+    },
+    {
+      "word": " всех",
+      "start": 7.24,
+      "end": 7.52,
+      "probability": 0.9576072692871094
+    },
+    {
+      "word": " трёхсот",
+      "start": 7.52,
+      "end": 8.24,
+      "probability": 0.8864248871803284
+    },
+    {
+      "word": " сорока",
+      "start": 8.24,
+      "end": 8.84,
+      "probability": 0.977096825838089
+    },
+    {
+      "word": " шести",
+      "start": 8.84,
+      "end": 9.26,
+      "probability": 0.9818690419197083
+    },
+    {
+      "word": " копий",
+      "start": 9.26,
+      "end": 9.74,
+      "probability": 0.9846521317958832
+    },
+    {
+      "word": " —",
+      "start": 9.74,
+      "end": 10.14,
+      "probability": 0.0006170247797854245
+    }
+  ],
+  "words": [
+    {
+      "text": "Они",
+      "start": 0,
+      "end": 0.24
+    },
+    {
+      "text": "приговариваются",
+      "start": 0.24,
+      "end": 1.02
+    },
+    {
+      "text": "к",
+      "start": 1.02,
+      "end": 1.22
+    },
+    {
+      "text": "ручной",
+      "start": 1.22,
+      "end": 1.54
+    },
+    {
+      "text": "зачистке",
+      "start": 1.54,
+      "end": 2.28
+    },
+    {
+      "text": "рифлёных",
+      "start": 2.28,
+      "end": 3.02
+    },
+    {
+      "text": "металлических",
+      "start": 3.02,
+      "end": 3.8
+    },
+    {
+      "text": "решёток",
+      "start": 3.8,
+      "end": 4.36
+    },
+    {
+      "text": "нижней",
+      "start": 4.36,
+      "end": 4.78
+    },
+    {
+      "text": "палубы",
+      "start": 4.78,
+      "end": 5.44
+    },
+    {
+      "text": "от",
+      "start": 5.44,
+      "end": 6.0
+    },
+    {
+      "text": "налипшей",
+      "start": 6.0,
+      "end": 6.54
+    },
+    {
+      "text": "биомассы",
+      "start": 6.54,
+      "end": 7.24
+    },
+    {
+      "text": "всех",
+      "start": 7.24,
+      "end": 7.52
+    },
+    {
+      "text": "трёхсот",
+      "start": 7.52,
+      "end": 8.24
+    },
+    {
+      "text": "сорока",
+      "start": 8.24,
+      "end": 8.84
+    },
+    {
+      "text": "шести",
+      "start": 8.84,
+      "end": 9.26
+    },
+    {
+      "text": "копий",
+      "start": 9.26,
+      "end": 9.74
+    },
+    {
+      "text": "—",
+      "start": 9.74,
+      "end": 9.74
+    }
+  ]
+}

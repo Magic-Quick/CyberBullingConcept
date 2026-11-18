@@ -1,0 +1,371 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "be76769199e8583fedf62bbbc0ae81d9ef0e82a0a168a677d523ccb17c4800bb",
+  "audio_sha256": "a6d0a029d4e2a7cfd2b8d94e21f75df70ccc3d79642a504af1bb378b0a91a2c9",
+  "file": "media/interactive/chronicles/voice/be76769199e8583fedf62bbb.mp3",
+  "duration": 6.594467,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 18,
+  "authoredLexicalWords": 18,
+  "heardText": "И, поверьте, мне снова будет тошно смотреть на то, что вы натворили. Но я найду, до чего доебаться.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "И",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.6520719528198242
+    },
+    {
+      "index": 1,
+      "text": "поверьте...",
+      "start": 0.28,
+      "end": 0.7,
+      "probability": 0.9937756657600403
+    },
+    {
+      "index": 2,
+      "text": "мне",
+      "start": 1.24,
+      "end": 1.42,
+      "probability": 0.994212806224823
+    },
+    {
+      "index": 3,
+      "text": "снова",
+      "start": 1.42,
+      "end": 1.7,
+      "probability": 0.974207878112793
+    },
+    {
+      "index": 4,
+      "text": "будет",
+      "start": 1.7,
+      "end": 1.98,
+      "probability": 0.9779755473136902
+    },
+    {
+      "index": 5,
+      "text": "тошно",
+      "start": 1.98,
+      "end": 2.44,
+      "probability": 0.5488457282384237
+    },
+    {
+      "index": 6,
+      "text": "смотреть",
+      "start": 2.44,
+      "end": 2.72,
+      "probability": 0.9908561706542969
+    },
+    {
+      "index": 7,
+      "text": "на",
+      "start": 2.72,
+      "end": 2.96,
+      "probability": 0.9957706332206726
+    },
+    {
+      "index": 8,
+      "text": "то,",
+      "start": 2.96,
+      "end": 3.08,
+      "probability": 0.9981968998908997
+    },
+    {
+      "index": 9,
+      "text": "что",
+      "start": 3.14,
+      "end": 3.24,
+      "probability": 0.9951907396316528
+    },
+    {
+      "index": 10,
+      "text": "вы",
+      "start": 3.24,
+      "end": 3.38,
+      "probability": 0.9755344390869141
+    },
+    {
+      "index": 11,
+      "text": "натворили.",
+      "start": 3.38,
+      "end": 3.86,
+      "probability": 0.9961410363515218
+    },
+    {
+      "index": 12,
+      "text": "Но",
+      "start": 4.2,
+      "end": 4.6,
+      "probability": 0.982391893863678
+    },
+    {
+      "index": 13,
+      "text": "я",
+      "start": 4.6,
+      "end": 4.76,
+      "probability": 0.9620479345321655
+    },
+    {
+      "index": 14,
+      "text": "найду,",
+      "start": 4.76,
+      "end": 5.14,
+      "probability": 0.9490087032318115
+    },
+    {
+      "index": 15,
+      "text": "до",
+      "start": 5.16,
+      "end": 5.3,
+      "probability": 0.927567183971405
+    },
+    {
+      "index": 16,
+      "text": "чего",
+      "start": 5.3,
+      "end": 5.52,
+      "probability": 0.9948198199272156
+    },
+    {
+      "index": 17,
+      "text": "доебаться.",
+      "start": 5.52,
+      "end": 6.08,
+      "probability": 0.902055044968923
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "И",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 0.0008159601711668074
+    },
+    {
+      "word": " поверьте...",
+      "start": 0.14,
+      "end": 1.26,
+      "probability": 0.7356475397245958
+    },
+    {
+      "word": " мне",
+      "start": 1.26,
+      "end": 1.42,
+      "probability": 0.4886419475078583
+    },
+    {
+      "word": " снова",
+      "start": 1.42,
+      "end": 1.72,
+      "probability": 0.9854199290275574
+    },
+    {
+      "word": " будет",
+      "start": 1.72,
+      "end": 1.96,
+      "probability": 0.98244309425354
+    },
+    {
+      "word": " тошно",
+      "start": 1.96,
+      "end": 2.44,
+      "probability": 0.64614945029219
+    },
+    {
+      "word": " смотреть",
+      "start": 2.44,
+      "end": 2.72,
+      "probability": 0.9771217703819275
+    },
+    {
+      "word": " на",
+      "start": 2.72,
+      "end": 2.96,
+      "probability": 0.9957858920097351
+    },
+    {
+      "word": " то",
+      "start": 2.96,
+      "end": 3.08,
+      "probability": 0.9964838027954102
+    },
+    {
+      "word": ",",
+      "start": 3.08,
+      "end": 3.14,
+      "probability": 0.8342376947402954
+    },
+    {
+      "word": " что",
+      "start": 3.14,
+      "end": 3.24,
+      "probability": 0.9564064145088196
+    },
+    {
+      "word": " вы",
+      "start": 3.24,
+      "end": 3.36,
+      "probability": 0.9669914245605469
+    },
+    {
+      "word": " натворили",
+      "start": 3.36,
+      "end": 3.84,
+      "probability": 0.993246853351593
+    },
+    {
+      "word": ".",
+      "start": 3.84,
+      "end": 4.26,
+      "probability": 0.3057441711425781
+    },
+    {
+      "word": " Но",
+      "start": 4.26,
+      "end": 4.6,
+      "probability": 0.9110618829727173
+    },
+    {
+      "word": " я",
+      "start": 4.6,
+      "end": 4.76,
+      "probability": 0.9818236231803894
+    },
+    {
+      "word": " найду",
+      "start": 4.76,
+      "end": 5.14,
+      "probability": 0.9643293917179108
+    },
+    {
+      "word": ",",
+      "start": 5.14,
+      "end": 5.16,
+      "probability": 0.17733575403690338
+    },
+    {
+      "word": " до",
+      "start": 5.16,
+      "end": 5.3,
+      "probability": 0.9045290946960449
+    },
+    {
+      "word": " чего",
+      "start": 5.3,
+      "end": 5.5,
+      "probability": 0.9906156659126282
+    },
+    {
+      "word": " доебаться",
+      "start": 5.5,
+      "end": 6.06,
+      "probability": 0.9125944773356119
+    },
+    {
+      "word": ".",
+      "start": 6.06,
+      "end": 6.34,
+      "probability": 0.6483310461044312
+    }
+  ],
+  "words": [
+    {
+      "text": "И",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "поверьте...",
+      "start": 0.14,
+      "end": 1.26
+    },
+    {
+      "text": "мне",
+      "start": 1.26,
+      "end": 1.42
+    },
+    {
+      "text": "снова",
+      "start": 1.42,
+      "end": 1.72
+    },
+    {
+      "text": "будет",
+      "start": 1.72,
+      "end": 1.96
+    },
+    {
+      "text": "тошно",
+      "start": 1.96,
+      "end": 2.44
+    },
+    {
+      "text": "смотреть",
+      "start": 2.44,
+      "end": 2.72
+    },
+    {
+      "text": "на",
+      "start": 2.72,
+      "end": 2.96
+    },
+    {
+      "text": "то,",
+      "start": 2.96,
+      "end": 3.08
+    },
+    {
+      "text": "что",
+      "start": 3.14,
+      "end": 3.24
+    },
+    {
+      "text": "вы",
+      "start": 3.24,
+      "end": 3.36
+    },
+    {
+      "text": "натворили.",
+      "start": 3.36,
+      "end": 3.84
+    },
+    {
+      "text": "Но",
+      "start": 4.26,
+      "end": 4.6
+    },
+    {
+      "text": "я",
+      "start": 4.6,
+      "end": 4.76
+    },
+    {
+      "text": "найду,",
+      "start": 4.76,
+      "end": 5.14
+    },
+    {
+      "text": "до",
+      "start": 5.16,
+      "end": 5.3
+    },
+    {
+      "text": "чего",
+      "start": 5.3,
+      "end": 5.5
+    },
+    {
+      "text": "доебаться.",
+      "start": 5.5,
+      "end": 6.06
+    }
+  ]
+}

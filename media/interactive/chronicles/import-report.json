@@ -1,0 +1,15 @@
+{
+  "sourceSha256": "b6eaf892b95e95f3ffea04c5fbca37b02c20ca6cd7c19645060e31b314cefa4a",
+  "sourceExplicitBlocks": 107,
+  "ordinarySpeechBlocks": 135,
+  "totalSpeechBlocks": 242,
+  "sourceSpeechWords": 3587,
+  "scenes": 27,
+  "clips": 912,
+  "stops": 5,
+  "voiceStatus": {
+    "reused": 242
+  },
+  "musicAndSfxCommands": 155,
+  "missingVoiceIds": []
+}

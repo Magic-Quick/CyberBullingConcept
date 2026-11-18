@@ -1,0 +1,130 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "8ae410e4d48c80e1bf11eeeb7651bb7f0405162d6caa1de47a9d86fc6e12b332",
+  "audio_sha256": "69c8c9d7afb5c5c3ca2a36ab9edb2e15fdc879a7e8535d5e734640e6c6b2cfd2",
+  "file": "media/interactive/chronicles/voice/8ae410e4d48c80e1bf11eeeb.mp3",
+  "duration": 7.105306,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.8333333333333334,
+  "asrMatchedWords": 5,
+  "authoredLexicalWords": 6,
+  "heardText": "и завершившихся невозмутимым отчетом Кристиана Упс.",
+  "promptedCoverage": 0.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "и",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.6297245621681213
+    },
+    {
+      "index": 1,
+      "text": "завершившихся",
+      "start": 0.16,
+      "end": 0.86,
+      "probability": 0.9870974302291871
+    },
+    {
+      "index": 2,
+      "text": "невозмутимым",
+      "start": 0.86,
+      "end": 1.56,
+      "probability": 0.9724819540977478
+    },
+    {
+      "index": 3,
+      "text": "отчётом",
+      "start": 1.56,
+      "end": 2.1,
+      "probability": 0.9269685298204422
+    },
+    {
+      "index": 4,
+      "text": "Кристиана:",
+      "start": 2.1,
+      "end": 2.7,
+      "probability": 0.9328886717557907
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "и",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 0.00029870637808926404
+    },
+    {
+      "word": " завершившихся",
+      "start": 0.14,
+      "end": 0.84,
+      "probability": 0.9911158204078674
+    },
+    {
+      "word": " невозмутимым",
+      "start": 0.84,
+      "end": 1.56,
+      "probability": 0.9439610362052917
+    },
+    {
+      "word": " отчётом",
+      "start": 1.56,
+      "end": 2.08,
+      "probability": 0.8174502998590469
+    },
+    {
+      "word": " Кристиана",
+      "start": 2.08,
+      "end": 2.68,
+      "probability": 0.9016413241624832
+    },
+    {
+      "word": ":",
+      "start": 2.68,
+      "end": 2.92,
+      "probability": 7.813760021235794e-05
+    },
+    {
+      "word": " «oops».",
+      "start": 2.92,
+      "end": 5.2,
+      "probability": 0.2857458345970372
+    }
+  ],
+  "words": [
+    {
+      "text": "и",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "завершившихся",
+      "start": 0.14,
+      "end": 0.84
+    },
+    {
+      "text": "невозмутимым",
+      "start": 0.84,
+      "end": 1.56
+    },
+    {
+      "text": "отчётом",
+      "start": 1.56,
+      "end": 2.08
+    },
+    {
+      "text": "Кристиана:",
+      "start": 2.08,
+      "end": 2.68
+    },
+    {
+      "text": "«oops».",
+      "start": 2.92,
+      "end": 5.2
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Local verified sources only; no external API or generated correspondence",
+  "generatedBy": "tools/chronicles/prepare_context_images.py",
+  "games": {
+    "I-01": {
+      "pending": false,
+      "path": "media/visual/generated/Gui/interactive-context/i01-context.webp",
+      "width": 960,
+      "height": 178,
+      "sha256": "92acea4678779f3862e28bf7e97d721e7b51d537614a8dca0342d9f4f9729e0a",
+      "kind": "slack",
+      "source": {
+        "path": "repo/src/assets/slack/02_demoblil.webp",
+        "sha256": "f40c311c51c21abad4a88449c991f5ebfe62f132121cb4bdfbc6209cf20029f5"
+      },
+      "crop": [
+        0,
+        0,
+        960,
+        178
+      ],
+      "masks": [
+        [
+          175,
+          117,
+          319,
+          157
+        ]
+      ],
+      "maskMode": "baked_blur_and_opaque",
+      "note": "Подлинная просьба Горина; слово-разгадка целиком закрыто, автор и допустимый контекст сохранены."
+    },
+    "I-04": {
+      "pending": false,
+      "path": "media/visual/generated/Gui/interactive-context/i04-context.webp",
+      "width": 1600,
+      "height": 172,
+      "sha256": "f8d7719da2f0a6514ef90085876c8c9abc7dfebb41ce0b559aac5bd3e247f843",
+      "kind": "slack",
+      "source": {
+        "path": "media/slack_screenshots/backup/13_chest_egg_sound.png",
+        "sha256": "42b3dd2ebcedd68580b154218a7076b7c66e5f41abd4635342798c343584a453"
+      },
+      "crop": [
+        0,
+        274,
+        1600,
+        446
+      ],
+      "masks": [
+        [
+          924,
+          116,
+          1010,
+          160
+        ]
+      ],
+      "maskMode": "baked_blur_and_opaque",
+      "note": "Только реальное сообщение Эдика с требуемой просьбой; предыдущие сообщения с разгадкой исключены."
+    },
+    "I-03": {
+      "pending": false,
+      "path": "media/visual/generated/Gui/interactive-context/i03-context.webp",
+      "width": 1600,
+      "height": 128,
+      "sha256": "dcbc69104e48d67aba6baf2b8cb27c7f5edfae5c8588ff728e18a198401c3590",
+      "kind": "slack",
+      "source": {
+        "path": "media/slack_screenshots/backup/04_claude_banned.png",
+        "sha256": "a3059c253ece8d09db69a66f8ab15c8fdbf9ac1af305c929e342046ba6dd1be8"
+      },
+      "crop": [
+        0,
+        18,
+        1600,
+        146
+      ],
+      "masks": [],
+      "maskMode": "answer_reply_excluded_by_crop",
+      "note": "Показан только подлинный первый блок о блокировке. Позднейший ответ Павла и соседние реплики целиком за пределами кадра."
+    },
+    "I-02": {
+      "pending": false,
+      "path": "media/visual/generated/Gui/interactive-context/i02-context.webp",
+      "width": 910,
+      "height": 700,
+      "sha256": "4efd73c68e338d062c3104753598243a1ba8c8ce25230709ad500c514dced02e",
+      "kind": "portrait",
+      "source": {
+        "path": "web_assets/images/team/retro_warhammer_eduard_levin_gpt_v3.png",
+        "sha256": "ef9e4234cb8a7f9db2953271670fbfe7e83a40486e28e2c8a912f2b8c4f97800"
+      },
+      "crop": [
+        200,
+        0,
+        1110,
+        700
+      ],
+      "masks": [],
+      "fallback": true,
+      "note": "Предусмотренный сценарием нейтральный портрет Эдика: без домов, тента и вивисекции. Подготовленный подлинный игровой скриншот C9 пока отсутствует; переписка не выдумывается."
+    },
+    "I-05": {
+      "pending": false,
+      "path": "media/visual/generated/Gui/interactive-context/i05-context.webp",
+      "width": 1600,
+      "height": 610,
+      "sha256": "9456a1ce1dae8d03f16be4c5cdd5215fb94a9f6655c6c0bc4fa613609c22d068",
+      "kind": "transcript",
+      "source": {
+        "path": "docs/research_facts/facts_2026-09-25_meetings.md",
+        "line": 87,
+        "sha256": "444bb0081a9366a8d9a1751326a7c9be32c0ba80ed02de6cc14d4124e7d02c56",
+        "excerptSha256": "af7f8a426302976e986014bf98aa40c9a50ec629dc89535b179372cfb10a0ce5"
+      },
+      "sourceLabel": "Из производственного синка",
+      "masks": [
+        [
+          175,
+          197,
+          290,
+          246
+        ],
+        [
+          869,
+          197,
+          999,
+          246
+        ]
+      ],
+      "maskMode": "baked_blur_and_opaque",
+      "maskedOccurrences": 2,
+      "note": "Подлинная речь Макса; все формы ответа скрыты. Даты и Slack-интерфейс не добавлялись."
+    }
+  }
+}

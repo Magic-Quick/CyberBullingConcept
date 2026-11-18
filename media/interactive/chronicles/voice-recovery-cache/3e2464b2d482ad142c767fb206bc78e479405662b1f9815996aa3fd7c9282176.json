@@ -1,0 +1,215 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "3e2464b2d482ad142c767fb206bc78e479405662b1f9815996aa3fd7c9282176",
+  "audio_sha256": "f4920deedaea60208b5ba26a639b7d535cbc5fdc6d84e1f8613a982562e637cf",
+  "file": "media/interactive/chronicles/voice/3e2464b2d482ad142c767fb2.mp3",
+  "duration": 4.179592,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 10,
+  "authoredLexicalWords": 10,
+  "heardText": "В слове пять букв. Остальное в текущий объём не входит.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "В",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 0.7850620746612549
+    },
+    {
+      "index": 1,
+      "text": "слове",
+      "start": 0.16,
+      "end": 0.52,
+      "probability": 0.9542281031608582
+    },
+    {
+      "index": 2,
+      "text": "пять",
+      "start": 0.52,
+      "end": 0.68,
+      "probability": 0.21441788971424103
+    },
+    {
+      "index": 3,
+      "text": "букв.",
+      "start": 0.68,
+      "end": 1.06,
+      "probability": 0.9900630116462708
+    },
+    {
+      "index": 4,
+      "text": "Остальное",
+      "start": 1.4,
+      "end": 2.02,
+      "probability": 0.9910182356834412
+    },
+    {
+      "index": 5,
+      "text": "в",
+      "start": 2.02,
+      "end": 2.32,
+      "probability": 0.9333940148353577
+    },
+    {
+      "index": 6,
+      "text": "текущий",
+      "start": 2.32,
+      "end": 2.84,
+      "probability": 0.9955288767814636
+    },
+    {
+      "index": 7,
+      "text": "объём",
+      "start": 2.84,
+      "end": 3.18,
+      "probability": 0.7510371506214142
+    },
+    {
+      "index": 8,
+      "text": "не",
+      "start": 3.18,
+      "end": 3.32,
+      "probability": 0.9937636256217957
+    },
+    {
+      "index": 9,
+      "text": "входит.",
+      "start": 3.32,
+      "end": 3.66,
+      "probability": 0.9738862216472626
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "В",
+      "start": 0.0,
+      "end": 0.18,
+      "probability": 0.0005774093442596495
+    },
+    {
+      "word": " слове",
+      "start": 0.18,
+      "end": 0.52,
+      "probability": 0.9644805788993835
+    },
+    {
+      "word": " пять",
+      "start": 0.52,
+      "end": 0.66,
+      "probability": 0.5827581882476807
+    },
+    {
+      "word": " букв",
+      "start": 0.66,
+      "end": 1.0,
+      "probability": 0.979979395866394
+    },
+    {
+      "word": ".",
+      "start": 1.0,
+      "end": 1.46,
+      "probability": 0.3835912346839905
+    },
+    {
+      "word": " Остальное",
+      "start": 1.46,
+      "end": 1.98,
+      "probability": 0.9466331005096436
+    },
+    {
+      "word": " в",
+      "start": 1.98,
+      "end": 2.34,
+      "probability": 0.955055296421051
+    },
+    {
+      "word": " текущий",
+      "start": 2.34,
+      "end": 2.84,
+      "probability": 0.9894508421421051
+    },
+    {
+      "word": " объём",
+      "start": 2.84,
+      "end": 3.16,
+      "probability": 0.7621836364269257
+    },
+    {
+      "word": " не",
+      "start": 3.16,
+      "end": 3.32,
+      "probability": 0.9917696714401245
+    },
+    {
+      "word": " входит",
+      "start": 3.32,
+      "end": 3.64,
+      "probability": 0.9730320274829865
+    },
+    {
+      "word": ".",
+      "start": 3.64,
+      "end": 3.96,
+      "probability": 0.9289256930351257
+    }
+  ],
+  "words": [
+    {
+      "text": "В",
+      "start": 0,
+      "end": 0.18
+    },
+    {
+      "text": "слове",
+      "start": 0.18,
+      "end": 0.52
+    },
+    {
+      "text": "пять",
+      "start": 0.52,
+      "end": 0.66
+    },
+    {
+      "text": "букв.",
+      "start": 0.66,
+      "end": 1.0
+    },
+    {
+      "text": "Остальное",
+      "start": 1.46,
+      "end": 1.98
+    },
+    {
+      "text": "в",
+      "start": 1.98,
+      "end": 2.34
+    },
+    {
+      "text": "текущий",
+      "start": 2.34,
+      "end": 2.84
+    },
+    {
+      "text": "объём",
+      "start": 2.84,
+      "end": 3.16
+    },
+    {
+      "text": "не",
+      "start": 3.16,
+      "end": 3.32
+    },
+    {
+      "text": "входит.",
+      "start": 3.32,
+      "end": 3.64
+    }
+  ]
+}

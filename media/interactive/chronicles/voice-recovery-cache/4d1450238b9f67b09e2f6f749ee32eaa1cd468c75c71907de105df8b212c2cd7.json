@@ -1,0 +1,347 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "4d1450238b9f67b09e2f6f749ee32eaa1cd468c75c71907de105df8b212c2cd7",
+  "audio_sha256": "6bae9a692fd435190b51ca057cb993370d3e4a7c299918becd038a62ec36662a",
+  "file": "media/interactive/chronicles/voice/4d1450238b9f67b09e2f6f74.mp3",
+  "duration": 10.40254,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 17,
+  "authoredLexicalWords": 17,
+  "heardText": "А вот высшая печенька благодати уходит человеку, который проявил беспрецедентную, поистине отеческую заботу о выживании всего экипажа.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "А",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 0.5652467608451843
+    },
+    {
+      "index": 1,
+      "text": "вот",
+      "start": 0.14,
+      "end": 0.3,
+      "probability": 0.9969109892845154
+    },
+    {
+      "index": 2,
+      "text": "Высшая",
+      "start": 0.3,
+      "end": 0.76,
+      "probability": 0.8389407396316528
+    },
+    {
+      "index": 3,
+      "text": "Печенька",
+      "start": 0.76,
+      "end": 1.34,
+      "probability": 0.941033124923706
+    },
+    {
+      "index": 4,
+      "text": "Благодати",
+      "start": 1.34,
+      "end": 1.96,
+      "probability": 0.8493066628774008
+    },
+    {
+      "index": 5,
+      "text": "уходит",
+      "start": 1.96,
+      "end": 2.4,
+      "probability": 0.9941153228282928
+    },
+    {
+      "index": 6,
+      "text": "человеку,",
+      "start": 2.4,
+      "end": 3.26,
+      "probability": 0.9893162250518799
+    },
+    {
+      "index": 7,
+      "text": "который",
+      "start": 3.34,
+      "end": 3.6,
+      "probability": 0.9827356338500977
+    },
+    {
+      "index": 8,
+      "text": "проявил",
+      "start": 3.6,
+      "end": 4.18,
+      "probability": 0.9960935711860657
+    },
+    {
+      "index": 9,
+      "text": "беспрецедентную,",
+      "start": 4.18,
+      "end": 5.44,
+      "probability": 0.9639866848786672
+    },
+    {
+      "index": 10,
+      "text": "поистине",
+      "start": 5.7,
+      "end": 6.28,
+      "probability": 0.9326781431833903
+    },
+    {
+      "index": 11,
+      "text": "отеческую",
+      "start": 6.28,
+      "end": 7.1,
+      "probability": 0.8813484460115433
+    },
+    {
+      "index": 12,
+      "text": "заботу",
+      "start": 7.1,
+      "end": 7.92,
+      "probability": 0.9677361845970154
+    },
+    {
+      "index": 13,
+      "text": "о",
+      "start": 7.92,
+      "end": 8.1,
+      "probability": 0.9077825546264648
+    },
+    {
+      "index": 14,
+      "text": "выживании",
+      "start": 8.1,
+      "end": 8.76,
+      "probability": 0.9934544563293457
+    },
+    {
+      "index": 15,
+      "text": "всего",
+      "start": 8.76,
+      "end": 9.22,
+      "probability": 0.9079548716545105
+    },
+    {
+      "index": 16,
+      "text": "экипажа.",
+      "start": 9.22,
+      "end": 10.02,
+      "probability": 0.9948975801467895
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "А",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 6.133903661975637e-05
+    },
+    {
+      "word": " вот",
+      "start": 0.14,
+      "end": 0.3,
+      "probability": 0.9919689297676086
+    },
+    {
+      "word": " Высшая",
+      "start": 0.3,
+      "end": 0.76,
+      "probability": 0.6995855321486791
+    },
+    {
+      "word": " Печенька",
+      "start": 0.76,
+      "end": 1.34,
+      "probability": 0.8880446702241898
+    },
+    {
+      "word": " Благодати",
+      "start": 1.34,
+      "end": 1.96,
+      "probability": 0.7161951884627342
+    },
+    {
+      "word": " уходит",
+      "start": 1.96,
+      "end": 2.4,
+      "probability": 0.9771331548690796
+    },
+    {
+      "word": " человеку",
+      "start": 2.4,
+      "end": 3.26,
+      "probability": 0.9460852146148682
+    },
+    {
+      "word": ",",
+      "start": 3.26,
+      "end": 3.38,
+      "probability": 0.9308620095252991
+    },
+    {
+      "word": " который",
+      "start": 3.38,
+      "end": 3.6,
+      "probability": 0.7494522929191589
+    },
+    {
+      "word": " проявил",
+      "start": 3.6,
+      "end": 4.16,
+      "probability": 0.9918010433514913
+    },
+    {
+      "word": " беспрецедентную",
+      "start": 4.16,
+      "end": 5.42,
+      "probability": 0.9520409901936849
+    },
+    {
+      "word": ",",
+      "start": 5.42,
+      "end": 5.7,
+      "probability": 0.3957405388355255
+    },
+    {
+      "word": " поистине",
+      "start": 5.7,
+      "end": 6.28,
+      "probability": 0.9193164904912313
+    },
+    {
+      "word": " отеческую",
+      "start": 6.28,
+      "end": 7.1,
+      "probability": 0.8931224942207336
+    },
+    {
+      "word": " заботу",
+      "start": 7.1,
+      "end": 7.78,
+      "probability": 0.9766367475191752
+    },
+    {
+      "word": " о",
+      "start": 7.78,
+      "end": 8.12,
+      "probability": 0.8671932220458984
+    },
+    {
+      "word": " выживании",
+      "start": 8.12,
+      "end": 8.7,
+      "probability": 0.9807600826025009
+    },
+    {
+      "word": " всего",
+      "start": 8.7,
+      "end": 9.24,
+      "probability": 0.8918667435646057
+    },
+    {
+      "word": " экипажа",
+      "start": 9.24,
+      "end": 10.08,
+      "probability": 0.9948042273521424
+    },
+    {
+      "word": ".",
+      "start": 10.08,
+      "end": 10.14,
+      "probability": 0.6792554259300232
+    }
+  ],
+  "words": [
+    {
+      "text": "А",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "вот",
+      "start": 0.14,
+      "end": 0.3
+    },
+    {
+      "text": "Высшая",
+      "start": 0.3,
+      "end": 0.76
+    },
+    {
+      "text": "Печенька",
+      "start": 0.76,
+      "end": 1.34
+    },
+    {
+      "text": "Благодати",
+      "start": 1.34,
+      "end": 1.96
+    },
+    {
+      "text": "уходит",
+      "start": 1.96,
+      "end": 2.4
+    },
+    {
+      "text": "человеку,",
+      "start": 2.4,
+      "end": 3.26
+    },
+    {
+      "text": "который",
+      "start": 3.38,
+      "end": 3.6
+    },
+    {
+      "text": "проявил",
+      "start": 3.6,
+      "end": 4.16
+    },
+    {
+      "text": "беспрецедентную,",
+      "start": 4.16,
+      "end": 5.42
+    },
+    {
+      "text": "поистине",
+      "start": 5.7,
+      "end": 6.28
+    },
+    {
+      "text": "отеческую",
+      "start": 6.28,
+      "end": 7.1
+    },
+    {
+      "text": "заботу",
+      "start": 7.1,
+      "end": 7.78
+    },
+    {
+      "text": "о",
+      "start": 7.78,
+      "end": 8.12
+    },
+    {
+      "text": "выживании",
+      "start": 8.12,
+      "end": 8.7
+    },
+    {
+      "text": "всего",
+      "start": 8.7,
+      "end": 9.24
+    },
+    {
+      "text": "экипажа.",
+      "start": 9.24,
+      "end": 10.08
+    }
+  ]
+}

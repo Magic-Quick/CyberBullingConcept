@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 1,
+  "method": "local_faster_whisper_small_attention_alignment_asr_verified_v1",
+  "network": "disabled",
+  "minimumAsrCoverage": 0.65,
+  "model": "small",
+  "device": "cpu",
+  "computeType": "int8",
+  "clips": [
+    {
+      "id": "I-01.КОНТЕКСТ",
+      "file": "media/interactive/scenes/protocol_gate_voice/intro.mp3",
+      "audio_sha256": "41932520badf33347dcaf73695fd6fc9782fe0244db1c781038387a2d0189e45",
+      "status": "aligned",
+      "asrCoverage": 0.96875,
+      "matched_words": 31,
+      "total_words": 32,
+      "publishedWords": 33,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.0017417168710380793,
+        "median": 0.970091700553894
+      }
+    },
+    {
+      "id": "I-01.БУКВА.ВЕРНО",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_correct.mp3",
+      "audio_sha256": "d754da7d5af27180546918d5b5596daf54918c2555f89958ba9094bdda0288c8",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 5,
+      "total_words": 5,
+      "publishedWords": 5,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.29223495721817017,
+        "median": 0.5464059341981435
+      }
+    },
+    {
+      "id": "I-05.БУКВА.ВЕРНО",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_correct.mp3",
+      "audio_sha256": "d754da7d5af27180546918d5b5596daf54918c2555f89958ba9094bdda0288c8",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 5,
+      "total_words": 5,
+      "publishedWords": 5,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.29223495721817017,
+        "median": 0.5464059341981435
+      }
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3",
+      "audio_sha256": "943373e2f8475c8397930f6396182629e941a6b46e1915a55e742b15cb0f8f69",
+      "status": "aligned",
+      "asrCoverage": 0.9,
+      "matched_words": 9,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.07959569990634918,
+        "median": 0.801999544724822
+      }
+    },
+    {
+      "id": "I-05.БУКВА.ДРУГОЕ_МЕСТО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced.mp3",
+      "audio_sha256": "943373e2f8475c8397930f6396182629e941a6b46e1915a55e742b15cb0f8f69",
+      "status": "aligned",
+      "asrCoverage": 0.9,
+      "matched_words": 9,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.07959569990634918,
+        "median": 0.801999544724822
+      }
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_1.mp3",
+      "audio_sha256": "ce5d248e6915c50f306c871bc564053e40ab2847ef9cd4bc65c2c464f4c05a4c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 11,
+      "total_words": 11,
+      "publishedWords": 11,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.4950219392776489,
+        "median": 0.8906935453414917
+      }
+    },
+    {
+      "id": "I-01.БУКВА.ДРУГОЕ_МЕСТО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_misplaced_alt_2.mp3",
+      "audio_sha256": "9dae477b7c2d929df82b7749d679d471de01515aff813a0752f125053483ed32",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 10,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.10823968797922134,
+        "median": 0.9336907267570496
+      }
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3",
+      "audio_sha256": "6d05515e747a04676cb6bfa462b7349f7e5652fa7ee5b12d924c8f9794fcacd1",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 11,
+      "total_words": 11,
+      "publishedWords": 11,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 6.842053699074313e-05,
+        "median": 0.9616772532463074
+      }
+    },
+    {
+      "id": "I-05.БУКВА.НЕВЕРНО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong.mp3",
+      "audio_sha256": "6d05515e747a04676cb6bfa462b7349f7e5652fa7ee5b12d924c8f9794fcacd1",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 11,
+      "total_words": 11,
+      "publishedWords": 11,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 6.842053699074313e-05,
+        "median": 0.9616772532463074
+      }
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_1.mp3",
+      "audio_sha256": "7b7c1ad13f4de2c9df5f901cc956611395e26207e3d2784253f5e06e60938030",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.00015708469436503947,
+        "median": 0.9870505928993225
+      }
+    },
+    {
+      "id": "I-01.БУКВА.НЕВЕРНО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/letter_wrong_alt_2.mp3",
+      "audio_sha256": "7e1c4654ae62e15de73e3be9535bb70650d592c287ef5bcd388aad3b89d72599",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.024112895131111145,
+        "median": 0.8600665926933289
+      }
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong.mp3",
+      "audio_sha256": "782ef2b17a129a201b0a6bc14f43cd56096821194a181c30368e76ce99bbc2d3",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 6,
+      "total_words": 6,
+      "publishedWords": 6,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 9.827009489526972e-05,
+        "median": 0.9461455742518107
+      }
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_1.mp3",
+      "audio_sha256": "0f86c77efde220b4a2ce233903e958b2dac4934cae42fe5af3b03f8d6eccf8a1",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.0001713376841507852,
+        "median": 0.9347525238990784
+      }
+    },
+    {
+      "id": "I-01.СЛОВО.НЕВЕРНО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_wrong_alt_2.mp3",
+      "audio_sha256": "0c440fdd87c6133aa611d392c22a3519bf636c5d9993c7538c629a66821f026c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 10,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.4972951805975754,
+        "median": 0.9355582470695178
+      }
+    },
+    {
+      "id": "I-01.ПОВТОР.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3",
+      "audio_sha256": "eee526650c30308915a10f5b5668d30db661b3b2e484a44f3592ab87b7b38b8c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.4978687370676198,
+        "median": 0.9727049767971039
+      }
+    },
+    {
+      "id": "I-05.ПОВТОР.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter.mp3",
+      "audio_sha256": "eee526650c30308915a10f5b5668d30db661b3b2e484a44f3592ab87b7b38b8c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.4978687370676198,
+        "median": 0.9727049767971039
+      }
+    },
+    {
+      "id": "I-01.ПОВТОР.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_1.mp3",
+      "audio_sha256": "989990d93690faad4e5e3f033664ea56b6caa0b0a2eec8297ba2f9e358f69a8c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 7,
+      "total_words": 7,
+      "publishedWords": 7,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.11894956231117249,
+        "median": 0.9123182992140453
+      }
+    },
+    {
+      "id": "I-01.ПОВТОР.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/repeat_letter_alt_2.mp3",
+      "audio_sha256": "2c6c8d9a57ca09b1f2794b9ec32a6f2271bc1a24c9cd0eef407ab929a2f9fdd8",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 7,
+      "total_words": 7,
+      "publishedWords": 7,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.00015762807743158191,
+        "median": 0.9448730746905009
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid.mp3",
+      "audio_sha256": "31f30ee704c07116406769851b403f00dac01883a7f5be2444050f40af1a9538",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.22045350074768066,
+        "median": 0.943206861615181
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_1.mp3",
+      "audio_sha256": "c9ec8042c8085104d48499f6cbe41defdb00919c8262df289d7c2a6d5a1b65dd",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.2885664105415344,
+        "median": 0.9583225250244141
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНАЯ_БУКВА.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_alt_2.mp3",
+      "audio_sha256": "50fe80ba13e693fd926e3eb33077890759dd8bd5a2d3f73fb49204cf7bffb1f9",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.11572500318288803,
+        "median": 0.8627715905507405
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word.mp3",
+      "audio_sha256": "7e7999d18232df5aeedd41a99bc5ba69c4ac1ff949065786498a4f786f5a2571",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 10,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.6591692681928786,
+        "median": 0.8545560588439305
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_1.mp3",
+      "audio_sha256": "bd726a842736782a860fd53ad83a486ede5a5cef9a5cef2462d6990049ff6540",
+      "status": "aligned",
+      "asrCoverage": 0.7272727272727273,
+      "matched_words": 8,
+      "total_words": 11,
+      "publishedWords": 11,
+      "reasons": [],
+      "reviewRecommended": true,
+      "attentionTokenProbability": {
+        "minimum": 0.14929194748401642,
+        "median": 0.8475801944732666
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/invalid_word_alt_2.mp3",
+      "audio_sha256": "c52e41679b47a44488ff54deafc2325fad6cede180d8c252028cb84071a1a5aa",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.09207243472337723,
+        "median": 0.9257910400629044
+      }
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty.mp3",
+      "audio_sha256": "07e20f8fbf2129ca853dce899b77b70acd150adf8444af8dc30dd78aaafe46af",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 9,
+      "total_words": 9,
+      "publishedWords": 9,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.28507956862449646,
+        "median": 0.9618688225746155
+      }
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_1.mp3",
+      "audio_sha256": "9c91d7169ee40f463653cbd33cdbcd40aa47da69421488508e929ac355ff4ad6",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.506437361240387,
+        "median": 0.9166938662528992
+      }
+    },
+    {
+      "id": "I-01.ВВОД.ПУСТО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/empty_alt_2.mp3",
+      "audio_sha256": "6d0bd7e9de2e1e7baaf0950f7eb883aed83b6cf78054d207676f9a5f31b7f15c",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.010656774044036865,
+        "median": 0.964894488453865
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete.mp3",
+      "audio_sha256": "46e95b385b4c2594d2b5ecb5770b03940af1ab2937f43140b82847e298877cfb",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 7,
+      "total_words": 7,
+      "publishedWords": 7,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.11951799690723419,
+        "median": 0.7817505672574043
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_1.mp3",
+      "audio_sha256": "3c2c9e4a6db1639b328f2b5b5aa9ac73d6e30876b436d418a215a70593705700",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 10,
+      "total_words": 10,
+      "publishedWords": 10,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.5139256715774536,
+        "median": 0.9478426873683929
+      }
+    },
+    {
+      "id": "I-01.ВВОД.НЕЗАВЕРШЕНО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/incomplete_alt_2.mp3",
+      "audio_sha256": "4f11d75a747c105005ff5e38f34181562e3279a57df10af55ad77db44b079988",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.32387721466754255,
+        "median": 0.9718164503574371
+      }
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.1",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long.mp3",
+      "audio_sha256": "d135411786056f0aa7298930c83a32a8b49e4abae0fcca26c3efd1d6fb7f8da5",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.5159927606582642,
+        "median": 0.8554244339466095
+      }
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.2",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_1.mp3",
+      "audio_sha256": "29dd48d2bb88ea39585c1c31481f77600ffcfdbf12e8e32b2cf7b500a8bc8a03",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 7,
+      "total_words": 7,
+      "publishedWords": 7,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.22044730186462402,
+        "median": 0.8568877428770065
+      }
+    },
+    {
+      "id": "I-01.ВВОД.СЛИШКОМ_ДЛИННО.3",
+      "file": "media/interactive/scenes/protocol_gate_voice/too_long_alt_2.mp3",
+      "audio_sha256": "95eb286014393657290485e2777bec7628fad4f8a934851bcd35f63b7f438813",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 8,
+      "total_words": 8,
+      "publishedWords": 8,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.2413102090358734,
+        "median": 0.8759296536445618
+      }
+    },
+    {
+      "id": "I-01.ВЕРНО",
+      "file": "media/interactive/scenes/protocol_gate_voice/word_correct.mp3",
+      "audio_sha256": "74398bd0461c4dfc621c1aea0b7611a164634e6b49504aa18f67a6bb5c5e2191",
+      "status": "aligned",
+      "asrCoverage": 1.0,
+      "matched_words": 14,
+      "total_words": 14,
+      "publishedWords": 14,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.21939948201179504,
+        "median": 0.8700453042984009
+      }
+    },
+    {
+      "id": "COMMON.ЛИМИТ",
+      "file": "media/interactive/scenes/shared_voice/attempts_exhausted.mp3",
+      "audio_sha256": "322f33dbe81cf568d57250e02b6431c03cac5020c510a1ea4032bc4524df2369",
+      "status": "aligned",
+      "asrCoverage": 0.95,
+      "matched_words": 19,
+      "total_words": 20,
+      "publishedWords": 20,
+      "reasons": [],
+      "reviewRecommended": false,
+      "attentionTokenProbability": {
+        "minimum": 0.00011471883772173896,
+        "median": 0.9293225407600403
+      }
+    }
+  ],
+  "modelAvailable": true,
+  "wordTimesAreModelEstimates": true,
+  "verification": "Maximum exact lexical ASR coverage across an unprompted and, when needed, prompted pass",
+  "wordTimeEstimator": "Whisper attention alignment constrained to the approved transcript; no interpolation",
+  "summary": {
+    "uniqueAudioFiles": 31,
+    "utterances": 35,
+    "aligned": 35,
+    "partial": 0,
+    "reviewRecommended": 1,
+    "publishedWordTimings": 341
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "9fed5b6ee364a852c9b08fa16d1a484bcd5989d84946a653e84f94f880e6910f",
+  "audio_sha256": "705538f3d80a7f4b3faaee7cec9929cfcf1bbec3a19fe5113d852f62826de5ee",
+  "file": "media/interactive/chronicles/voice/9fed5b6ee364a852c9b08fa1.mp3",
+  "duration": 6.733787,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 13,
+  "authoredLexicalWords": 13,
+  "heardText": "Человек, который подарил Артёму Хухро целых четыре минуты абсолютного покоя под защитным куполом.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Человек,",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.8167700370152792
+    },
+    {
+      "index": 1,
+      "text": "который",
+      "start": 0.64,
+      "end": 0.86,
+      "probability": 0.9895304441452026
+    },
+    {
+      "index": 2,
+      "text": "подарил",
+      "start": 0.86,
+      "end": 1.42,
+      "probability": 0.9952146112918854
+    },
+    {
+      "index": 3,
+      "text": "Артёму",
+      "start": 1.42,
+      "end": 1.86,
+      "probability": 0.757781432941556
+    },
+    {
+      "index": 4,
+      "text": "Хухро",
+      "start": 1.86,
+      "end": 2.24,
+      "probability": 0.6035608251889547
+    },
+    {
+      "index": 5,
+      "text": "целых",
+      "start": 2.24,
+      "end": 2.62,
+      "probability": 0.9941065013408661
+    },
+    {
+      "index": 6,
+      "text": "четыре",
+      "start": 2.62,
+      "end": 3.12,
+      "probability": 0.8877796828746796
+    },
+    {
+      "index": 7,
+      "text": "минуты",
+      "start": 3.12,
+      "end": 3.7,
+      "probability": 0.9969455897808075
+    },
+    {
+      "index": 8,
+      "text": "абсолютного",
+      "start": 3.7,
+      "end": 4.56,
+      "probability": 0.6738552749156952
+    },
+    {
+      "index": 9,
+      "text": "покоя",
+      "start": 4.56,
+      "end": 5.06,
+      "probability": 0.988480806350708
+    },
+    {
+      "index": 10,
+      "text": "под",
+      "start": 5.06,
+      "end": 5.22,
+      "probability": 0.9878002405166626
+    },
+    {
+      "index": 11,
+      "text": "защитным",
+      "start": 5.22,
+      "end": 5.84,
+      "probability": 0.8867316643397013
+    },
+    {
+      "index": 12,
+      "text": "куполом,",
+      "start": 5.84,
+      "end": 6.4,
+      "probability": 0.8882409532864889
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Человек",
+      "start": 0.0,
+      "end": 0.54,
+      "probability": 0.6659577493167793
+    },
+    {
+      "word": ",",
+      "start": 0.54,
+      "end": 0.62,
+      "probability": 0.9457823634147644
+    },
+    {
+      "word": " который",
+      "start": 0.62,
+      "end": 0.84,
+      "probability": 0.9800745248794556
+    },
+    {
+      "word": " подарил",
+      "start": 0.84,
+      "end": 1.42,
+      "probability": 0.995502233505249
+    },
+    {
+      "word": " Артёму",
+      "start": 1.42,
+      "end": 1.84,
+      "probability": 0.7613046746701002
+    },
+    {
+      "word": " Хухро",
+      "start": 1.84,
+      "end": 2.24,
+      "probability": 0.6507164686918259
+    },
+    {
+      "word": " целых",
+      "start": 2.24,
+      "end": 2.6,
+      "probability": 0.9954679012298584
+    },
+    {
+      "word": " четыре",
+      "start": 2.6,
+      "end": 3.12,
+      "probability": 0.9094662070274353
+    },
+    {
+      "word": " минуты",
+      "start": 3.12,
+      "end": 3.68,
+      "probability": 0.9958728849887848
+    },
+    {
+      "word": " абсолютного",
+      "start": 3.68,
+      "end": 4.58,
+      "probability": 0.7662241160869598
+    },
+    {
+      "word": " покоя",
+      "start": 4.58,
+      "end": 5.06,
+      "probability": 0.9804444313049316
+    },
+    {
+      "word": " под",
+      "start": 5.06,
+      "end": 5.22,
+      "probability": 0.9748416543006897
+    },
+    {
+      "word": " защитным",
+      "start": 5.22,
+      "end": 5.84,
+      "probability": 0.8864191770553589
+    },
+    {
+      "word": " куполом",
+      "start": 5.84,
+      "end": 6.42,
+      "probability": 0.918755054473877
+    },
+    {
+      "word": ",",
+      "start": 6.42,
+      "end": 6.64,
+      "probability": 0.333956241607666
+    }
+  ],
+  "words": [
+    {
+      "text": "Человек,",
+      "start": 0,
+      "end": 0.54
+    },
+    {
+      "text": "который",
+      "start": 0.62,
+      "end": 0.84
+    },
+    {
+      "text": "подарил",
+      "start": 0.84,
+      "end": 1.42
+    },
+    {
+      "text": "Артёму",
+      "start": 1.42,
+      "end": 1.84
+    },
+    {
+      "text": "Хухро",
+      "start": 1.84,
+      "end": 2.24
+    },
+    {
+      "text": "целых",
+      "start": 2.24,
+      "end": 2.6
+    },
+    {
+      "text": "четыре",
+      "start": 2.6,
+      "end": 3.12
+    },
+    {
+      "text": "минуты",
+      "start": 3.12,
+      "end": 3.68
+    },
+    {
+      "text": "абсолютного",
+      "start": 3.68,
+      "end": 4.58
+    },
+    {
+      "text": "покоя",
+      "start": 4.58,
+      "end": 5.06
+    },
+    {
+      "text": "под",
+      "start": 5.06,
+      "end": 5.22
+    },
+    {
+      "text": "защитным",
+      "start": 5.22,
+      "end": 5.84
+    },
+    {
+      "text": "куполом,",
+      "start": 5.84,
+      "end": 6.42
+    }
+  ]
+}

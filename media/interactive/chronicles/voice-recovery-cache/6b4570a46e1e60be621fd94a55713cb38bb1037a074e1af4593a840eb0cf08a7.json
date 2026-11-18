@@ -1,0 +1,519 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "6b4570a46e1e60be621fd94a55713cb38bb1037a074e1af4593a840eb0cf08a7",
+  "audio_sha256": "4579126b2aef558f92acac6ea2bf0e018c4211ff7a18191a6b8b3a04dc318712",
+  "file": "media/interactive/chronicles/voice/6b4570a46e1e60be621fd94a.mp3",
+  "duration": 13.839093,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.9259259259259259,
+  "asrMatchedWords": 25,
+  "authoredLexicalWords": 27,
+  "heardText": "В этом случае сервисная игла пневмо-дозатора с шипением врезается напрямую в его питательный катетер, и кипящий концентрат под давлением в восемь атмосфер впрыскивается прямо в вену, минуя ротовую полость!",
+  "promptedCoverage": 0.9259259259259259,
+  "matchedWordTimings": [
+    {
+      "index": 1,
+      "text": "сервисная",
+      "start": 0.64,
+      "end": 1.16,
+      "probability": 0.7556158602237701
+    },
+    {
+      "index": 2,
+      "text": "игла",
+      "start": 1.16,
+      "end": 1.58,
+      "probability": 0.3893910199403763
+    },
+    {
+      "index": 4,
+      "text": "с",
+      "start": 2.64,
+      "end": 2.8,
+      "probability": 0.9614487886428833
+    },
+    {
+      "index": 5,
+      "text": "шипением",
+      "start": 2.8,
+      "end": 3.34,
+      "probability": 0.9800038933753967
+    },
+    {
+      "index": 6,
+      "text": "врезается",
+      "start": 3.34,
+      "end": 4.08,
+      "probability": 0.9750926494598389
+    },
+    {
+      "index": 7,
+      "text": "напрямую",
+      "start": 4.08,
+      "end": 4.64,
+      "probability": 0.9869785904884338
+    },
+    {
+      "index": 8,
+      "text": "в",
+      "start": 4.64,
+      "end": 4.74,
+      "probability": 0.9464637041091919
+    },
+    {
+      "index": 9,
+      "text": "его",
+      "start": 4.74,
+      "end": 4.9,
+      "probability": 0.9576194882392883
+    },
+    {
+      "index": 10,
+      "text": "питательный",
+      "start": 4.9,
+      "end": 5.56,
+      "probability": 0.9890160163243612
+    },
+    {
+      "index": 11,
+      "text": "катетер,",
+      "start": 5.56,
+      "end": 6.28,
+      "probability": 0.8803486029307047
+    },
+    {
+      "index": 12,
+      "text": "и",
+      "start": 6.64,
+      "end": 6.76,
+      "probability": 0.9491384625434875
+    },
+    {
+      "index": 13,
+      "text": "кипящий",
+      "start": 6.76,
+      "end": 7.34,
+      "probability": 0.9566945731639862
+    },
+    {
+      "index": 14,
+      "text": "концентрат",
+      "start": 7.34,
+      "end": 7.96,
+      "probability": 0.9766590595245361
+    },
+    {
+      "index": 15,
+      "text": "под",
+      "start": 7.96,
+      "end": 8.18,
+      "probability": 0.960806131362915
+    },
+    {
+      "index": 16,
+      "text": "давлением",
+      "start": 8.18,
+      "end": 8.76,
+      "probability": 0.9896374543507894
+    },
+    {
+      "index": 17,
+      "text": "в",
+      "start": 8.76,
+      "end": 8.94,
+      "probability": 0.16475309431552887
+    },
+    {
+      "index": 18,
+      "text": "восемь",
+      "start": 8.94,
+      "end": 9.28,
+      "probability": 0.6724336370825768
+    },
+    {
+      "index": 19,
+      "text": "атмосфер",
+      "start": 9.28,
+      "end": 9.82,
+      "probability": 0.9643293768167496
+    },
+    {
+      "index": 20,
+      "text": "впрыскивается",
+      "start": 9.82,
+      "end": 10.66,
+      "probability": 0.9458864331245422
+    },
+    {
+      "index": 21,
+      "text": "прямо",
+      "start": 10.66,
+      "end": 10.92,
+      "probability": 0.9335096478462219
+    },
+    {
+      "index": 22,
+      "text": "в",
+      "start": 10.92,
+      "end": 11.24,
+      "probability": 0.9965608716011047
+    },
+    {
+      "index": 23,
+      "text": "вену,",
+      "start": 11.24,
+      "end": 11.6,
+      "probability": 0.9343932072321574
+    },
+    {
+      "index": 24,
+      "text": "минуя",
+      "start": 11.7,
+      "end": 12.14,
+      "probability": 0.7723016242186228
+    },
+    {
+      "index": 25,
+      "text": "ротовую",
+      "start": 12.14,
+      "end": 12.76,
+      "probability": 0.9216202050447464
+    },
+    {
+      "index": 26,
+      "text": "полость!",
+      "start": 12.76,
+      "end": 13.4,
+      "probability": 0.982066810131073
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Поэтому",
+      "start": 0.0,
+      "end": 0.44,
+      "probability": 0.561993567446431
+    },
+    {
+      "word": " сервисная",
+      "start": 0.44,
+      "end": 1.12,
+      "probability": 0.9546609073877335
+    },
+    {
+      "word": " игла",
+      "start": 1.12,
+      "end": 1.58,
+      "probability": 0.4067681059241295
+    },
+    {
+      "word": " пневмо",
+      "start": 1.58,
+      "end": 2.06,
+      "probability": 0.42556081238823634
+    },
+    {
+      "word": "-дозатора",
+      "start": 2.06,
+      "end": 2.64,
+      "probability": 0.7522340774536133
+    },
+    {
+      "word": " с",
+      "start": 2.64,
+      "end": 2.82,
+      "probability": 0.9958468079566956
+    },
+    {
+      "word": " шипением",
+      "start": 2.82,
+      "end": 3.34,
+      "probability": 0.9818475842475891
+    },
+    {
+      "word": " врезается",
+      "start": 3.34,
+      "end": 4.06,
+      "probability": 0.988740603129069
+    },
+    {
+      "word": " напрямую",
+      "start": 4.06,
+      "end": 4.62,
+      "probability": 0.9961430231730143
+    },
+    {
+      "word": " в",
+      "start": 4.62,
+      "end": 4.74,
+      "probability": 0.9681333303451538
+    },
+    {
+      "word": " его",
+      "start": 4.74,
+      "end": 4.92,
+      "probability": 0.9895752668380737
+    },
+    {
+      "word": " питательный",
+      "start": 4.92,
+      "end": 5.56,
+      "probability": 0.9927929441134135
+    },
+    {
+      "word": " катетер",
+      "start": 5.56,
+      "end": 6.24,
+      "probability": 0.8565856615702311
+    },
+    {
+      "word": ",",
+      "start": 6.24,
+      "end": 6.46,
+      "probability": 0.26140910387039185
+    },
+    {
+      "word": " и",
+      "start": 6.46,
+      "end": 6.76,
+      "probability": 0.9329141974449158
+    },
+    {
+      "word": " кипящий",
+      "start": 6.76,
+      "end": 7.34,
+      "probability": 0.9796446263790131
+    },
+    {
+      "word": " концентрат",
+      "start": 7.34,
+      "end": 7.96,
+      "probability": 0.9829088449478149
+    },
+    {
+      "word": " под",
+      "start": 7.96,
+      "end": 8.18,
+      "probability": 0.9805206656455994
+    },
+    {
+      "word": " давлением",
+      "start": 8.18,
+      "end": 8.7,
+      "probability": 0.9892809192339579
+    },
+    {
+      "word": " в",
+      "start": 8.7,
+      "end": 8.96,
+      "probability": 0.20827831327915192
+    },
+    {
+      "word": " восемь",
+      "start": 8.96,
+      "end": 9.26,
+      "probability": 0.6716560069471598
+    },
+    {
+      "word": " атмосфер",
+      "start": 9.26,
+      "end": 9.8,
+      "probability": 0.9752065688371658
+    },
+    {
+      "word": " впрыскивается",
+      "start": 9.8,
+      "end": 10.64,
+      "probability": 0.9498562812805176
+    },
+    {
+      "word": " прямо",
+      "start": 10.64,
+      "end": 10.94,
+      "probability": 0.9781865477561951
+    },
+    {
+      "word": " в",
+      "start": 10.94,
+      "end": 11.26,
+      "probability": 0.9974231719970703
+    },
+    {
+      "word": " вену",
+      "start": 11.26,
+      "end": 11.62,
+      "probability": 0.9104613661766052
+    },
+    {
+      "word": ",",
+      "start": 11.62,
+      "end": 11.7,
+      "probability": 0.7612783312797546
+    },
+    {
+      "word": " минуя",
+      "start": 11.7,
+      "end": 12.14,
+      "probability": 0.732345332702001
+    },
+    {
+      "word": " ротовую",
+      "start": 12.14,
+      "end": 12.76,
+      "probability": 0.9407641589641571
+    },
+    {
+      "word": " полость",
+      "start": 12.76,
+      "end": 13.38,
+      "probability": 0.9765703678131104
+    },
+    {
+      "word": "!",
+      "start": 13.38,
+      "end": 13.66,
+      "probability": 0.03475764021277428
+    }
+  ],
+  "words": [
+    {
+      "text": "Поэтому",
+      "start": 0,
+      "end": 0.44
+    },
+    {
+      "text": "сервисная",
+      "start": 0.44,
+      "end": 1.12
+    },
+    {
+      "text": "игла",
+      "start": 1.12,
+      "end": 1.58
+    },
+    {
+      "text": "пневмо-дозатора",
+      "start": 1.58,
+      "end": 2.64
+    },
+    {
+      "text": "с",
+      "start": 2.64,
+      "end": 2.82
+    },
+    {
+      "text": "шипением",
+      "start": 2.82,
+      "end": 3.34
+    },
+    {
+      "text": "врезается",
+      "start": 3.34,
+      "end": 4.06
+    },
+    {
+      "text": "напрямую",
+      "start": 4.06,
+      "end": 4.62
+    },
+    {
+      "text": "в",
+      "start": 4.62,
+      "end": 4.74
+    },
+    {
+      "text": "его",
+      "start": 4.74,
+      "end": 4.92
+    },
+    {
+      "text": "питательный",
+      "start": 4.92,
+      "end": 5.56
+    },
+    {
+      "text": "катетер,",
+      "start": 5.56,
+      "end": 6.24
+    },
+    {
+      "text": "и",
+      "start": 6.46,
+      "end": 6.76
+    },
+    {
+      "text": "кипящий",
+      "start": 6.76,
+      "end": 7.34
+    },
+    {
+      "text": "концентрат",
+      "start": 7.34,
+      "end": 7.96
+    },
+    {
+      "text": "под",
+      "start": 7.96,
+      "end": 8.18
+    },
+    {
+      "text": "давлением",
+      "start": 8.18,
+      "end": 8.7
+    },
+    {
+      "text": "в",
+      "start": 8.7,
+      "end": 8.96
+    },
+    {
+      "text": "восемь",
+      "start": 8.96,
+      "end": 9.26
+    },
+    {
+      "text": "атмосфер",
+      "start": 9.26,
+      "end": 9.8
+    },
+    {
+      "text": "впрыскивается",
+      "start": 9.8,
+      "end": 10.64
+    },
+    {
+      "text": "прямо",
+      "start": 10.64,
+      "end": 10.94
+    },
+    {
+      "text": "в",
+      "start": 10.94,
+      "end": 11.26
+    },
+    {
+      "text": "вену,",
+      "start": 11.26,
+      "end": 11.62
+    },
+    {
+      "text": "минуя",
+      "start": 11.7,
+      "end": 12.14
+    },
+    {
+      "text": "ротовую",
+      "start": 12.14,
+      "end": 12.76
+    },
+    {
+      "text": "полость!",
+      "start": 12.76,
+      "end": 13.38
+    }
+  ]
+}

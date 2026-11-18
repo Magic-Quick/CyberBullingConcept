@@ -1,0 +1,25 @@
+{
+  "utterances": 242,
+  "generatedEntries": 242,
+  "uniqueAudioFiles": 238,
+  "wordTimings": 3587,
+  "recovered": {
+    "mergedClips": 242,
+    "recoveredAligned": 48,
+    "recoveredPartial": 0,
+    "completeUtterances": 242,
+    "remaining": []
+  },
+  "issues": [],
+  "reviewRecommended": [
+    {
+      "id": "VERDICT.P006",
+      "coverage": 0.8333333333333334
+    },
+    {
+      "id": "VERDICT.P017",
+      "coverage": 0.6666666666666666
+    }
+  ],
+  "newNetworkRequests": 0
+}

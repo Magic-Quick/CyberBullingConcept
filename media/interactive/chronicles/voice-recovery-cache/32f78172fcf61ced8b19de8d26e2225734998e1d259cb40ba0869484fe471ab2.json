@@ -1,0 +1,437 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "32f78172fcf61ced8b19de8d26e2225734998e1d259cb40ba0869484fe471ab2",
+  "audio_sha256": "b02bbb622b2ffe0e618834a4596ac9070b37c37fb08412e6915db3e873b87623",
+  "file": "media/interactive/chronicles/voice/32f78172fcf61ced8b19de8d.mp3",
+  "duration": 12.167256,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 22,
+  "authoredLexicalWords": 22,
+  "heardText": "Тридцать семь правок стояли монолитной гранитной стеной поперек главного фарватера. Они грозили проломить обшивку, перегрузить моторные цеха и похоронить весь октябрьский разгон.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Тридцать",
+      "start": 0.0,
+      "end": 0.58,
+      "probability": 0.7903127014636994
+    },
+    {
+      "index": 1,
+      "text": "семь",
+      "start": 0.58,
+      "end": 0.8,
+      "probability": 0.9639195203781128
+    },
+    {
+      "index": 2,
+      "text": "правок",
+      "start": 0.8,
+      "end": 1.34,
+      "probability": 0.981006383895874
+    },
+    {
+      "index": 3,
+      "text": "стояли",
+      "start": 1.34,
+      "end": 1.86,
+      "probability": 0.9940264523029327
+    },
+    {
+      "index": 4,
+      "text": "монолитной",
+      "start": 1.86,
+      "end": 2.56,
+      "probability": 0.9756563901901245
+    },
+    {
+      "index": 5,
+      "text": "гранитной",
+      "start": 2.56,
+      "end": 3.14,
+      "probability": 0.8817159086465836
+    },
+    {
+      "index": 6,
+      "text": "стеной",
+      "start": 3.14,
+      "end": 3.56,
+      "probability": 0.9075025022029877
+    },
+    {
+      "index": 7,
+      "text": "поперек",
+      "start": 3.56,
+      "end": 3.98,
+      "probability": 0.9350040157636007
+    },
+    {
+      "index": 8,
+      "text": "главного",
+      "start": 3.98,
+      "end": 4.52,
+      "probability": 0.9875994026660919
+    },
+    {
+      "index": 9,
+      "text": "фарватера.",
+      "start": 4.52,
+      "end": 5.16,
+      "probability": 0.9021873325109482
+    },
+    {
+      "index": 10,
+      "text": "Они",
+      "start": 5.48,
+      "end": 5.84,
+      "probability": 0.9883381724357605
+    },
+    {
+      "index": 11,
+      "text": "грозили",
+      "start": 5.84,
+      "end": 6.32,
+      "probability": 0.9889448285102844
+    },
+    {
+      "index": 12,
+      "text": "проломить",
+      "start": 6.32,
+      "end": 6.8,
+      "probability": 0.9832043647766113
+    },
+    {
+      "index": 13,
+      "text": "обшивку,",
+      "start": 6.8,
+      "end": 7.4,
+      "probability": 0.9877578914165497
+    },
+    {
+      "index": 14,
+      "text": "перегрузить",
+      "start": 7.8,
+      "end": 8.34,
+      "probability": 0.9975770711898804
+    },
+    {
+      "index": 15,
+      "text": "моторные",
+      "start": 8.34,
+      "end": 8.92,
+      "probability": 0.9576535224914551
+    },
+    {
+      "index": 16,
+      "text": "цеха",
+      "start": 8.92,
+      "end": 9.56,
+      "probability": 0.9631708860397339
+    },
+    {
+      "index": 17,
+      "text": "и",
+      "start": 9.56,
+      "end": 9.76,
+      "probability": 0.9472480416297913
+    },
+    {
+      "index": 18,
+      "text": "похоронить",
+      "start": 9.76,
+      "end": 10.34,
+      "probability": 0.9984055757522583
+    },
+    {
+      "index": 19,
+      "text": "весь",
+      "start": 10.34,
+      "end": 10.52,
+      "probability": 0.999560534954071
+    },
+    {
+      "index": 20,
+      "text": "октябрьский",
+      "start": 10.52,
+      "end": 11.26,
+      "probability": 0.9647868871688843
+    },
+    {
+      "index": 21,
+      "text": "разгон.",
+      "start": 11.26,
+      "end": 11.78,
+      "probability": 0.9815977215766907
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Тридцать",
+      "start": 0.0,
+      "end": 0.54,
+      "probability": 0.7389005702909344
+    },
+    {
+      "word": " семь",
+      "start": 0.54,
+      "end": 0.84,
+      "probability": 0.9466297626495361
+    },
+    {
+      "word": " правок",
+      "start": 0.84,
+      "end": 1.32,
+      "probability": 0.9787200689315796
+    },
+    {
+      "word": " стояли",
+      "start": 1.32,
+      "end": 1.86,
+      "probability": 0.9961537718772888
+    },
+    {
+      "word": " монолитной",
+      "start": 1.86,
+      "end": 2.54,
+      "probability": 0.9651056081056595
+    },
+    {
+      "word": " гранитной",
+      "start": 2.54,
+      "end": 3.14,
+      "probability": 0.8941854387521744
+    },
+    {
+      "word": " стеной",
+      "start": 3.14,
+      "end": 3.56,
+      "probability": 0.8861151933670044
+    },
+    {
+      "word": " поперек",
+      "start": 3.56,
+      "end": 3.94,
+      "probability": 0.9368451635042826
+    },
+    {
+      "word": " главного",
+      "start": 3.94,
+      "end": 4.52,
+      "probability": 0.9833472073078156
+    },
+    {
+      "word": " фарватера",
+      "start": 4.52,
+      "end": 5.14,
+      "probability": 0.9021858423948288
+    },
+    {
+      "word": ".",
+      "start": 5.14,
+      "end": 5.56,
+      "probability": 0.7967976331710815
+    },
+    {
+      "word": " Они",
+      "start": 5.56,
+      "end": 5.84,
+      "probability": 0.972745954990387
+    },
+    {
+      "word": " грозили",
+      "start": 5.84,
+      "end": 6.3,
+      "probability": 0.9884336392084757
+    },
+    {
+      "word": " проломить",
+      "start": 6.3,
+      "end": 6.78,
+      "probability": 0.9830565750598907
+    },
+    {
+      "word": " обшивку",
+      "start": 6.78,
+      "end": 7.38,
+      "probability": 0.9871960878372192
+    },
+    {
+      "word": ",",
+      "start": 7.38,
+      "end": 7.78,
+      "probability": 0.9836264252662659
+    },
+    {
+      "word": " перегрузить",
+      "start": 7.78,
+      "end": 8.32,
+      "probability": 0.9963011890649796
+    },
+    {
+      "word": " моторные",
+      "start": 8.32,
+      "end": 8.92,
+      "probability": 0.9703273773193359
+    },
+    {
+      "word": " цеха",
+      "start": 8.92,
+      "end": 9.46,
+      "probability": 0.9648552536964417
+    },
+    {
+      "word": " и",
+      "start": 9.46,
+      "end": 9.76,
+      "probability": 0.9023934602737427
+    },
+    {
+      "word": " похоронить",
+      "start": 9.76,
+      "end": 10.32,
+      "probability": 0.9986315170923868
+    },
+    {
+      "word": " весь",
+      "start": 10.32,
+      "end": 10.54,
+      "probability": 0.9992164373397827
+    },
+    {
+      "word": " октябрьский",
+      "start": 10.54,
+      "end": 11.26,
+      "probability": 0.9632473826408386
+    },
+    {
+      "word": " разгон",
+      "start": 11.26,
+      "end": 11.76,
+      "probability": 0.9733565449714661
+    },
+    {
+      "word": ".",
+      "start": 11.76,
+      "end": 12.1,
+      "probability": 0.9799556136131287
+    }
+  ],
+  "words": [
+    {
+      "text": "Тридцать",
+      "start": 0,
+      "end": 0.54
+    },
+    {
+      "text": "семь",
+      "start": 0.54,
+      "end": 0.84
+    },
+    {
+      "text": "правок",
+      "start": 0.84,
+      "end": 1.32
+    },
+    {
+      "text": "стояли",
+      "start": 1.32,
+      "end": 1.86
+    },
+    {
+      "text": "монолитной",
+      "start": 1.86,
+      "end": 2.54
+    },
+    {
+      "text": "гранитной",
+      "start": 2.54,
+      "end": 3.14
+    },
+    {
+      "text": "стеной",
+      "start": 3.14,
+      "end": 3.56
+    },
+    {
+      "text": "поперек",
+      "start": 3.56,
+      "end": 3.94
+    },
+    {
+      "text": "главного",
+      "start": 3.94,
+      "end": 4.52
+    },
+    {
+      "text": "фарватера.",
+      "start": 4.52,
+      "end": 5.14
+    },
+    {
+      "text": "Они",
+      "start": 5.56,
+      "end": 5.84
+    },
+    {
+      "text": "грозили",
+      "start": 5.84,
+      "end": 6.3
+    },
+    {
+      "text": "проломить",
+      "start": 6.3,
+      "end": 6.78
+    },
+    {
+      "text": "обшивку,",
+      "start": 6.78,
+      "end": 7.38
+    },
+    {
+      "text": "перегрузить",
+      "start": 7.78,
+      "end": 8.32
+    },
+    {
+      "text": "моторные",
+      "start": 8.32,
+      "end": 8.92
+    },
+    {
+      "text": "цеха",
+      "start": 8.92,
+      "end": 9.46
+    },
+    {
+      "text": "и",
+      "start": 9.46,
+      "end": 9.76
+    },
+    {
+      "text": "похоронить",
+      "start": 9.76,
+      "end": 10.32
+    },
+    {
+      "text": "весь",
+      "start": 10.32,
+      "end": 10.54
+    },
+    {
+      "text": "октябрьский",
+      "start": 10.54,
+      "end": 11.26
+    },
+    {
+      "text": "разгон.",
+      "start": 11.26,
+      "end": 11.76
+    }
+  ]
+}

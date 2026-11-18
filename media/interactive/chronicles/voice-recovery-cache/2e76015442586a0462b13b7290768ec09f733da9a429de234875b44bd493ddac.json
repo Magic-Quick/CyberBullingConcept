@@ -1,0 +1,311 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "2e76015442586a0462b13b7290768ec09f733da9a429de234875b44bd493ddac",
+  "audio_sha256": "eabf3928b27f7e9d7ca8137520b83ec9a4f2b8efcd1ea12c476df4c138b17f86",
+  "file": "media/interactive/chronicles/voice/2e76015442586a0462b13b72.mp3",
+  "duration": 8.034104,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 15,
+  "authoredLexicalWords": 15,
+  "heardText": "Ему напомнили, ты там Дайсов понабрал себе, уже сделал их. Макс ответил, не помню такого.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Ему",
+      "start": 0.0,
+      "end": 0.32,
+      "probability": 0.8271263241767883
+    },
+    {
+      "index": 1,
+      "text": "напомнили:",
+      "start": 0.32,
+      "end": 0.92,
+      "probability": 0.996184915304184
+    },
+    {
+      "index": 2,
+      "text": "«Ты",
+      "start": 1.38,
+      "end": 1.56,
+      "probability": 0.6406433582305908
+    },
+    {
+      "index": 3,
+      "text": "там",
+      "start": 1.56,
+      "end": 1.74,
+      "probability": 0.929766058921814
+    },
+    {
+      "index": 4,
+      "text": "дайсов",
+      "start": 1.74,
+      "end": 2.22,
+      "probability": 0.9473698288202286
+    },
+    {
+      "index": 5,
+      "text": "понабрал",
+      "start": 2.22,
+      "end": 2.64,
+      "probability": 0.9377734859784445
+    },
+    {
+      "index": 6,
+      "text": "себе,",
+      "start": 2.64,
+      "end": 2.94,
+      "probability": 0.9850200414657593
+    },
+    {
+      "index": 7,
+      "text": "уже",
+      "start": 3.46,
+      "end": 3.68,
+      "probability": 0.976740837097168
+    },
+    {
+      "index": 8,
+      "text": "сделал",
+      "start": 3.68,
+      "end": 4.14,
+      "probability": 0.9824371337890625
+    },
+    {
+      "index": 9,
+      "text": "их».",
+      "start": 4.14,
+      "end": 4.6,
+      "probability": 0.9947779178619385
+    },
+    {
+      "index": 10,
+      "text": "Макс",
+      "start": 5.08,
+      "end": 5.5,
+      "probability": 0.9726669490337372
+    },
+    {
+      "index": 11,
+      "text": "ответил:",
+      "start": 5.5,
+      "end": 6.1,
+      "probability": 0.9848362505435944
+    },
+    {
+      "index": 12,
+      "text": "«Не",
+      "start": 6.56,
+      "end": 6.66,
+      "probability": 0.9650425314903259
+    },
+    {
+      "index": 13,
+      "text": "помню",
+      "start": 6.66,
+      "end": 7.06,
+      "probability": 0.9993225932121277
+    },
+    {
+      "index": 14,
+      "text": "такого».",
+      "start": 7.06,
+      "end": 7.34,
+      "probability": 0.9832810759544373
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Ему",
+      "start": 0.0,
+      "end": 0.3,
+      "probability": 0.4950992934154783
+    },
+    {
+      "word": " напомнили",
+      "start": 0.3,
+      "end": 0.9,
+      "probability": 0.9959690570831299
+    },
+    {
+      "word": ":",
+      "start": 0.9,
+      "end": 1.4,
+      "probability": 0.00040821498259902
+    },
+    {
+      "word": " «Ты",
+      "start": 1.4,
+      "end": 1.56,
+      "probability": 0.7149487733840942
+    },
+    {
+      "word": " там",
+      "start": 1.56,
+      "end": 1.76,
+      "probability": 0.9837409257888794
+    },
+    {
+      "word": " дайсов",
+      "start": 1.76,
+      "end": 2.22,
+      "probability": 0.7410920998081565
+    },
+    {
+      "word": " понабрал",
+      "start": 2.22,
+      "end": 2.6,
+      "probability": 0.9216665426890055
+    },
+    {
+      "word": " себе",
+      "start": 2.6,
+      "end": 2.9,
+      "probability": 0.9934077262878418
+    },
+    {
+      "word": ",",
+      "start": 2.9,
+      "end": 3.44,
+      "probability": 0.6603966951370239
+    },
+    {
+      "word": " уже",
+      "start": 3.44,
+      "end": 3.68,
+      "probability": 0.9706810116767883
+    },
+    {
+      "word": " сделал",
+      "start": 3.68,
+      "end": 4.14,
+      "probability": 0.9841735363006592
+    },
+    {
+      "word": " их».",
+      "start": 4.14,
+      "end": 5.1,
+      "probability": 0.7803407609462738
+    },
+    {
+      "word": " Макс",
+      "start": 5.1,
+      "end": 5.48,
+      "probability": 0.9466579556465149
+    },
+    {
+      "word": " ответил",
+      "start": 5.48,
+      "end": 6.1,
+      "probability": 0.9940000176429749
+    },
+    {
+      "word": ":",
+      "start": 6.1,
+      "end": 6.56,
+      "probability": 0.013222937472164631
+    },
+    {
+      "word": " «Не",
+      "start": 6.56,
+      "end": 6.68,
+      "probability": 0.9766733944416046
+    },
+    {
+      "word": " помню",
+      "start": 6.68,
+      "end": 7.06,
+      "probability": 0.9993437230587006
+    },
+    {
+      "word": " такого».",
+      "start": 7.06,
+      "end": 7.96,
+      "probability": 0.9237937927246094
+    }
+  ],
+  "words": [
+    {
+      "text": "Ему",
+      "start": 0,
+      "end": 0.3
+    },
+    {
+      "text": "напомнили:",
+      "start": 0.3,
+      "end": 0.9
+    },
+    {
+      "text": "«Ты",
+      "start": 1.4,
+      "end": 1.56
+    },
+    {
+      "text": "там",
+      "start": 1.56,
+      "end": 1.76
+    },
+    {
+      "text": "дайсов",
+      "start": 1.76,
+      "end": 2.22
+    },
+    {
+      "text": "понабрал",
+      "start": 2.22,
+      "end": 2.6
+    },
+    {
+      "text": "себе,",
+      "start": 2.6,
+      "end": 2.9
+    },
+    {
+      "text": "уже",
+      "start": 3.44,
+      "end": 3.68
+    },
+    {
+      "text": "сделал",
+      "start": 3.68,
+      "end": 4.14
+    },
+    {
+      "text": "их».",
+      "start": 4.14,
+      "end": 5.1
+    },
+    {
+      "text": "Макс",
+      "start": 5.1,
+      "end": 5.48
+    },
+    {
+      "text": "ответил:",
+      "start": 5.48,
+      "end": 6.1
+    },
+    {
+      "text": "«Не",
+      "start": 6.56,
+      "end": 6.68
+    },
+    {
+      "text": "помню",
+      "start": 6.68,
+      "end": 7.06
+    },
+    {
+      "text": "такого».",
+      "start": 7.06,
+      "end": 7.96
+    }
+  ]
+}

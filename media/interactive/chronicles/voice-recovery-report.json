@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "network": "disabled",
+  "minimumAsrCoverage": 0.65,
+  "inputs": [
+    {
+      "path": "media/interactive/chronicles/generated-voice.json",
+      "status": "merged",
+      "clips": 193
+    },
+    {
+      "path": "media/interactive/chronicles/generated-voice.json.tmp",
+      "status": "merged",
+      "clips": 194
+    }
+  ],
+  "initialMergedClips": 194,
+  "requestedRecovery": 48,
+  "model": "small",
+  "device": "cpu",
+  "computeType": "int8",
+  "cpuThreads": 4,
+  "wordTimeEstimator": "Cached Whisper attention alignment constrained to exact authored words; no interpolation",
+  "clips": [
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.2",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/426c705563c7f5ba09ccaec3.mp3",
+      "duration": 5.712109,
+      "asrCoverage": 1.0,
+      "publishedWords": 10,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/426c705563c7f5ba09ccaec3b37c45a4c6ccbff940728f16db903a3e107613a4.json"
+    },
+    {
+      "id": "I-05.ВВОД.НЕКОРРЕКТНОЕ_СЛОВО.3",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/f530d1e409de66ef9b98e4cd.mp3",
+      "duration": 4.87619,
+      "asrCoverage": 1.0,
+      "publishedWords": 8,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/f530d1e409de66ef9b98e4cd57ca45210c8b86db25aef9992ec7abf0e8f6cbda.json"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.1",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/a6c80eb6881fe11015ff2f4f.mp3",
+      "duration": 3.111474,
+      "asrCoverage": 1.0,
+      "publishedWords": 7,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/a6c80eb6881fe11015ff2f4f952891b6a35579bcc728a7a6f478efe4bc2345c8.json"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.2",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/03c61dbbe9924c56c8acaa4b.mp3",
+      "duration": 4.736871,
+      "asrCoverage": 1.0,
+      "publishedWords": 12,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/03c61dbbe9924c56c8acaa4b55a993989243a535b980666f8e649ad66e4e19ff.json"
+    },
+    {
+      "id": "I-05.ВВОД.ПУСТО.3",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/b9cc63982af7a80a93a4da31.mp3",
+      "duration": 5.10839,
+      "asrCoverage": 1.0,
+      "publishedWords": 13,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/b9cc63982af7a80a93a4da31a17fcc1feffb983024de0009b3d430fe371880af.json"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.1",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/30ee5b1d60f43806dd489b91.mp3",
+      "duration": 5.572789,
+      "asrCoverage": 1.0,
+      "publishedWords": 13,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/30ee5b1d60f43806dd489b910b697c5f87394eef16193d47033456c67061e089.json"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.2",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/d681b97c56f5f2f9177521ad.mp3",
+      "duration": 5.24771,
+      "asrCoverage": 1.0,
+      "publishedWords": 11,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/d681b97c56f5f2f9177521addb9abbdec6044005aefe51347dbe71f20cfb1c47.json"
+    },
+    {
+      "id": "I-05.ВВОД.НЕЗАВЕРШЕНО.3",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/fd5363c560c23f1d675c97cf.mp3",
+      "duration": 5.526349,
+      "asrCoverage": 1.0,
+      "publishedWords": 11,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/fd5363c560c23f1d675c97cfefd92b024d9d89bfbef5c4c3b651309f93fcbe06.json"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.1",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/ecd1326813b5f0d0d78dc4bb.mp3",
+      "duration": 3.575873,
+      "asrCoverage": 1.0,
+      "publishedWords": 7,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/ecd1326813b5f0d0d78dc4bb5701aa64e8a9defab83ec2513badb356198379ed.json"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.2",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/3da911d77ef54018f18176b3.mp3",
+      "duration": 4.783311,
+      "asrCoverage": 1.0,
+      "publishedWords": 9,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/3da911d77ef54018f18176b3e8fa2da1c0f2c045880a1dffc3fbe4bc8c646ad9.json"
+    },
+    {
+      "id": "I-05.ВВОД.СЛИШКОМ_ДЛИННО.3",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/3e2464b2d482ad142c767fb2.mp3",
+      "duration": 4.179592,
+      "asrCoverage": 1.0,
+      "publishedWords": 10,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/3e2464b2d482ad142c767fb206bc78e479405662b1f9815996aa3fd7c9282176.json"
+    },
+    {
+      "id": "I-05.ВЕРНО",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/85424eb6c276be73a6faa07f.mp3",
+      "duration": 3.761633,
+      "asrCoverage": 1.0,
+      "publishedWords": 10,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/85424eb6c276be73a6faa07f9e15b82e1f0be9145c3220eab7c4fc07507bb8d5.json"
+    },
+    {
+      "id": "I-05.ИСТОРИЯ.1",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/27b9554a9f9f2c202ff51036.mp3",
+      "duration": 13.792653,
+      "asrCoverage": 0.96875,
+      "publishedWords": 32,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/27b9554a9f9f2c202ff51036621985beec814a7067c2f5ba24f35367e291de31.json"
+    },
+    {
+      "id": "I-05.ИСТОРИЯ.2",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/2e76015442586a0462b13b72.mp3",
+      "duration": 8.034104,
+      "asrCoverage": 1.0,
+      "publishedWords": 15,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/2e76015442586a0462b13b7290768ec09f733da9a429de234875b44bd493ddac.json"
+    },
+    {
+      "id": "ROOM-V.P001",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/287ad42998662549344dc860.mp3",
+      "duration": 2.739955,
+      "asrCoverage": 1.0,
+      "publishedWords": 5,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/287ad42998662549344dc860b0ed42899335bd97ee7bd4d1fed98fa7f03e2d54.json"
+    },
+    {
+      "id": "ROOM-V.P002",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/32f78172fcf61ced8b19de8d.mp3",
+      "duration": 12.167256,
+      "asrCoverage": 1.0,
+      "publishedWords": 22,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/32f78172fcf61ced8b19de8d26e2225734998e1d259cb40ba0869484fe471ab2.json"
+    },
+    {
+      "id": "ROOM-V.P003",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/b366562c9ba5ee35bc72ad4c.mp3",
+      "duration": 10.634739,
+      "asrCoverage": 1.0,
+      "publishedWords": 21,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/b366562c9ba5ee35bc72ad4cc37dac6d456a2b2a18a241d330d4ba75bae63a96.json"
+    },
+    {
+      "id": "ROOM-V.P004",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/4b0142ec72d37c63fe5147d0.mp3",
+      "duration": 10.44898,
+      "asrCoverage": 1.0,
+      "publishedWords": 21,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/4b0142ec72d37c63fe5147d09e0f9027468741390f86f07b6bbceef4c1f81192.json"
+    },
+    {
+      "id": "VERDICT.P001",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/b5e5ead384dd84134c723383.mp3",
+      "duration": 9.148662,
+      "asrCoverage": 1.0,
+      "publishedWords": 18,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/b5e5ead384dd84134c723383548cccaf198a332ae7cbe15b96ce14dd31a17082.json"
+    },
+    {
+      "id": "VERDICT.P002",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/ac5633eb3a1c1b84abf1927d.mp3",
+      "duration": 11.424218,
+      "asrCoverage": 1.0,
+      "publishedWords": 19,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/ac5633eb3a1c1b84abf1927d0df0a5d85373d2b2af8290df61bbca32390d87f5.json"
+    },
+    {
+      "id": "VERDICT.P003",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/0f7544a1a2fc993898445c89.mp3",
+      "duration": 4.040272,
+      "asrCoverage": 1.0,
+      "publishedWords": 9,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/0f7544a1a2fc993898445c89b6a0a46dabe301536a2f840524813d0fdd69fe85.json"
+    },
+    {
+      "id": "VERDICT.P004",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/5f3e68dc99ae633beb6016bf.mp3",
+      "duration": 3.436553,
+      "asrCoverage": 1.0,
+      "publishedWords": 5,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/5f3e68dc99ae633beb6016bf38506b3bfb2172336ef0cbb45e10858f5ea76d83.json"
+    },
+    {
+      "id": "VERDICT.P005",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
+      "duration": 9.891701,
+      "asrCoverage": 0.9285714285714286,
+      "publishedWords": 14,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d.json"
+    },
+    {
+      "id": "VERDICT.P006",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/8ae410e4d48c80e1bf11eeeb.mp3",
+      "duration": 7.105306,
+      "asrCoverage": 0.8333333333333334,
+      "publishedWords": 6,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/8ae410e4d48c80e1bf11eeeb7651bb7f0405162d6caa1de47a9d86fc6e12b332.json"
+    },
+    {
+      "id": "VERDICT.P007",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/ff2a8df2f0b499f0512dda0d.mp3",
+      "duration": 9.427302,
+      "asrCoverage": 1.0,
+      "publishedWords": 15,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/ff2a8df2f0b499f0512dda0deee928c64bb8ba1c406f3bb28daddfcaaa4c0cfc.json"
+    },
+    {
+      "id": "VERDICT.P008",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/c2841efabb9c9dc8e153f241.mp3",
+      "duration": 8.823583,
+      "asrCoverage": 1.0,
+      "publishedWords": 15,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/c2841efabb9c9dc8e153f24158a7a159551ce34e39f17eb2726a80d6a23d23ae.json"
+    },
+    {
+      "id": "VERDICT.P009",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/490ee1fc9a30911167b84960.mp3",
+      "duration": 10.17034,
+      "asrCoverage": 1.0,
+      "publishedWords": 19,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/490ee1fc9a30911167b8496005172fee9c7a7b8705e1b95d0df5e739df01bb9f.json"
+    },
+    {
+      "id": "VERDICT.P010",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/f2e56ad29ed286c654b4eba7.mp3",
+      "duration": 7.476825,
+      "asrCoverage": 0.8888888888888888,
+      "publishedWords": 18,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/f2e56ad29ed286c654b4eba7a0ef28987920238e5cfc8d1a585be69e0ef1bbd0.json"
+    },
+    {
+      "id": "VERDICT.P011",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/d80cb299b299f845d5a3de2c.mp3",
+      "duration": 10.913379,
+      "asrCoverage": 1.0,
+      "publishedWords": 23,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/d80cb299b299f845d5a3de2c2fc42a30a5a937ba58878a55acab3327593cfb3f.json"
+    },
+    {
+      "id": "VERDICT.P012",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/4d1450238b9f67b09e2f6f74.mp3",
+      "duration": 10.40254,
+      "asrCoverage": 1.0,
+      "publishedWords": 17,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/4d1450238b9f67b09e2f6f749ee32eaa1cd468c75c71907de105df8b212c2cd7.json"
+    },
+    {
+      "id": "VERDICT.P013",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/d98c473b8f83c7b1cf895232.mp3",
+      "duration": 5.24771,
+      "asrCoverage": 1.0,
+      "publishedWords": 8,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/d98c473b8f83c7b1cf895232ea8c7585ce051b54dbd1ea921d5dcf2f45e06d71.json"
+    },
+    {
+      "id": "VERDICT.P014",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/9fed5b6ee364a852c9b08fa1.mp3",
+      "duration": 6.733787,
+      "asrCoverage": 1.0,
+      "publishedWords": 13,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/9fed5b6ee364a852c9b08fa16d1a484bcd5989d84946a653e84f94f880e6910f.json"
+    },
+    {
+      "id": "VERDICT.P015",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/58909a4d3d7271ad338925f7.mp3",
+      "duration": 14.117732,
+      "asrCoverage": 0.9230769230769231,
+      "publishedWords": 26,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/58909a4d3d7271ad338925f75080011853b081ceaba31c822ce12da38ff6b0fe.json"
+    },
+    {
+      "id": "VERDICT.P016",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/52a86b810c1856c6df5403c0.mp3",
+      "duration": 8.126984,
+      "asrCoverage": 1.0,
+      "publishedWords": 17,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/52a86b810c1856c6df5403c0c88c047209b9bd6d7afdc674d8cda0301a218501.json"
+    },
+    {
+      "id": "VERDICT.P017",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/f19b9ae102a083ea1b6aa114.mp3",
+      "duration": 2.182676,
+      "asrCoverage": 0.6666666666666666,
+      "publishedWords": 3,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/f19b9ae102a083ea1b6aa114f8bed355e363330c7c5e9c4a7af9169de348882a.json"
+    },
+    {
+      "id": "VERDICT.P018",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/64c91c69010bdb5851995bf0.mp3",
+      "duration": 9.98458,
+      "asrCoverage": 1.0,
+      "publishedWords": 16,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/64c91c69010bdb5851995bf0cacf748529e8875919c20a23b5b3a5fbc44b677a.json"
+    },
+    {
+      "id": "VERDICT.P019",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/6b4570a46e1e60be621fd94a.mp3",
+      "duration": 13.839093,
+      "asrCoverage": 0.9259259259259259,
+      "publishedWords": 27,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/6b4570a46e1e60be621fd94a55713cb38bb1037a074e1af4593a840eb0cf08a7.json"
+    },
+    {
+      "id": "VERDICT.P020",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/035601a6ac55434926be11fe.mp3",
+      "duration": 7.709025,
+      "asrCoverage": 0.8666666666666667,
+      "publishedWords": 15,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/035601a6ac55434926be11feab65aa9346ef1e7beb1ff5e67f9b7f478fcaf2b5.json"
+    },
+    {
+      "id": "VERDICT.P021",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/c322f6c2c795da5bdadd408b.mp3",
+      "duration": 4.643991,
+      "asrCoverage": 1.0,
+      "publishedWords": 8,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/c322f6c2c795da5bdadd408bcf0a5c533758325182201541e34baf1e9fa84146.json"
+    },
+    {
+      "id": "VERDICT.P022",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/a3c1e5a74f105e5606451b57.mp3",
+      "duration": 3.157914,
+      "asrCoverage": 1.0,
+      "publishedWords": 5,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/a3c1e5a74f105e5606451b5729884cacf2981271c42c129ce46bd4ade0cdcaa4.json"
+    },
+    {
+      "id": "EPILOGUE.P001",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/2e450a8b81ecb59a2fe7be91.mp3",
+      "duration": 7.523265,
+      "asrCoverage": 1.0,
+      "publishedWords": 14,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/2e450a8b81ecb59a2fe7be91be734644b2ef23e25abbf94f05be4a3151ce1cdf.json"
+    },
+    {
+      "id": "EPILOGUE.P002",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/09fa326e5d23681296f08c1e.mp3",
+      "duration": 4.318912,
+      "asrCoverage": 1.0,
+      "publishedWords": 11,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/09fa326e5d23681296f08c1e9380834a7079b0a71109d089fd0e535a2b834d96.json"
+    },
+    {
+      "id": "EPILOGUE.P003",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/830a71b17c4b6c4770cd0e02.mp3",
+      "duration": 4.179592,
+      "asrCoverage": 1.0,
+      "publishedWords": 8,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/830a71b17c4b6c4770cd0e02d662d86b96e14f909bd88d7ff86dbdd5a79483d4.json"
+    },
+    {
+      "id": "EPILOGUE.P004",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/ecfd6b88ee24ec0eef54afb1.mp3",
+      "duration": 2.925714,
+      "asrCoverage": 1.0,
+      "publishedWords": 6,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/ecfd6b88ee24ec0eef54afb18a950c9cc4e9a4a5f902e83fb52cb5156ec44f41.json"
+    },
+    {
+      "id": "EPILOGUE.P005",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/875fc2c8197eff2c5e11cfed.mp3",
+      "duration": 9.380862,
+      "asrCoverage": 1.0,
+      "publishedWords": 19,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/875fc2c8197eff2c5e11cfedce9ca691ba83c36348690de1e7debb6acd733eaa.json"
+    },
+    {
+      "id": "EPILOGUE.P006",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/f3e8bb5fd13f26afd68afa18.mp3",
+      "duration": 11.795737,
+      "asrCoverage": 0.9047619047619048,
+      "publishedWords": 21,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/f3e8bb5fd13f26afd68afa18425b82d360e61dff56841c2265c3bcd13a19f8b8.json"
+    },
+    {
+      "id": "EPILOGUE.P007",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/be76769199e8583fedf62bbb.mp3",
+      "duration": 6.594467,
+      "asrCoverage": 1.0,
+      "publishedWords": 18,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/be76769199e8583fedf62bbbc0ae81d9ef0e82a0a168a677d523ccb17c4800bb.json"
+    },
+    {
+      "id": "EPILOGUE.P008",
+      "status": "aligned",
+      "file": "media/interactive/chronicles/voice/cac9961d4e7d6240c539714f.mp3",
+      "duration": 1.160998,
+      "asrCoverage": 1.0,
+      "publishedWords": 2,
+      "reasons": [],
+      "sidecar": "media/interactive/chronicles/voice-recovery-cache/cac9961d4e7d6240c539714fbcd8a452f398aa4fa592a40bc956e197202bdc48.json"
+    }
+  ],
+  "summary": {
+    "mergedClips": 242,
+    "recoveredAligned": 48,
+    "recoveredPartial": 0,
+    "completeUtterances": 242,
+    "remaining": []
+  }
+}

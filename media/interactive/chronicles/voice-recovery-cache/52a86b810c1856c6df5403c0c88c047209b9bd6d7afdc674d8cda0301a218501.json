@@ -1,0 +1,322 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "52a86b810c1856c6df5403c0c88c047209b9bd6d7afdc674d8cda0301a218501",
+  "audio_sha256": "68f48f14ca4d14d3ed618c7c136f7649bf03b02319a9d5be53dcbe2a3205548e",
+  "file": "media/interactive/chronicles/voice/52a86b810c1856c6df5403c0.mp3",
+  "duration": 8.126984,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 16,
+  "authoredLexicalWords": 16,
+  "heardText": "В награду за столь великую заботу о коллективе Ковчег жалует Надзирателю немыслимую роскошь в космическом пространстве.",
+  "promptedCoverage": 1.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "В",
+      "start": 0.0,
+      "end": 0.14,
+      "probability": 0.9195521473884583
+    },
+    {
+      "index": 1,
+      "text": "награду",
+      "start": 0.14,
+      "end": 0.68,
+      "probability": 0.9905034899711609
+    },
+    {
+      "index": 2,
+      "text": "за",
+      "start": 0.68,
+      "end": 0.8,
+      "probability": 0.9957549571990967
+    },
+    {
+      "index": 3,
+      "text": "столь",
+      "start": 0.8,
+      "end": 1.14,
+      "probability": 0.9933543801307678
+    },
+    {
+      "index": 4,
+      "text": "великую",
+      "start": 1.14,
+      "end": 1.58,
+      "probability": 0.9814526438713074
+    },
+    {
+      "index": 5,
+      "text": "заботу",
+      "start": 1.58,
+      "end": 2.14,
+      "probability": 0.9887429475784302
+    },
+    {
+      "index": 6,
+      "text": "о",
+      "start": 2.14,
+      "end": 2.26,
+      "probability": 0.9122999310493469
+    },
+    {
+      "index": 7,
+      "text": "коллективе",
+      "start": 2.26,
+      "end": 2.9,
+      "probability": 0.982184499502182
+    },
+    {
+      "index": 8,
+      "text": "Ковчег",
+      "start": 2.9,
+      "end": 3.44,
+      "probability": 0.5049799643456936
+    },
+    {
+      "index": 9,
+      "text": "жалует",
+      "start": 3.44,
+      "end": 3.96,
+      "probability": 0.838064988454183
+    },
+    {
+      "index": 10,
+      "text": "Надзирателю",
+      "start": 3.96,
+      "end": 4.68,
+      "probability": 0.7566835425794125
+    },
+    {
+      "index": 11,
+      "text": "немыслимую",
+      "start": 4.68,
+      "end": 5.46,
+      "probability": 0.9011282444000244
+    },
+    {
+      "index": 12,
+      "text": "роскошь",
+      "start": 5.46,
+      "end": 6.04,
+      "probability": 0.9563354651133219
+    },
+    {
+      "index": 13,
+      "text": "в",
+      "start": 6.04,
+      "end": 6.12,
+      "probability": 0.9874825477600098
+    },
+    {
+      "index": 14,
+      "text": "космическом",
+      "start": 6.12,
+      "end": 6.82,
+      "probability": 0.9910081326961517
+    },
+    {
+      "index": 15,
+      "text": "пространстве",
+      "start": 6.82,
+      "end": 7.62,
+      "probability": 0.9967272877693176
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "В",
+      "start": 0.0,
+      "end": 0.16,
+      "probability": 5.599311043624766e-05
+    },
+    {
+      "word": " награду",
+      "start": 0.16,
+      "end": 0.66,
+      "probability": 0.9871168434619904
+    },
+    {
+      "word": " за",
+      "start": 0.66,
+      "end": 0.82,
+      "probability": 0.996182382106781
+    },
+    {
+      "word": " столь",
+      "start": 0.82,
+      "end": 1.1,
+      "probability": 0.9917705357074738
+    },
+    {
+      "word": " великую",
+      "start": 1.1,
+      "end": 1.56,
+      "probability": 0.973259687423706
+    },
+    {
+      "word": " заботу",
+      "start": 1.56,
+      "end": 2.14,
+      "probability": 0.9919446508089701
+    },
+    {
+      "word": " о",
+      "start": 2.14,
+      "end": 2.28,
+      "probability": 0.9595102071762085
+    },
+    {
+      "word": " коллективе",
+      "start": 2.28,
+      "end": 2.86,
+      "probability": 0.9804647415876389
+    },
+    {
+      "word": " Ковчег",
+      "start": 2.86,
+      "end": 3.42,
+      "probability": 0.49230629205703735
+    },
+    {
+      "word": " жалует",
+      "start": 3.42,
+      "end": 3.94,
+      "probability": 0.7749375800291697
+    },
+    {
+      "word": " Надзирателю",
+      "start": 3.94,
+      "end": 4.68,
+      "probability": 0.6910470113158226
+    },
+    {
+      "word": " немыслимую",
+      "start": 4.68,
+      "end": 5.46,
+      "probability": 0.896571159362793
+    },
+    {
+      "word": " роскошь",
+      "start": 5.46,
+      "end": 6.02,
+      "probability": 0.9366845687230428
+    },
+    {
+      "word": " в",
+      "start": 6.02,
+      "end": 6.14,
+      "probability": 0.9748485684394836
+    },
+    {
+      "word": " космическом",
+      "start": 6.14,
+      "end": 6.8,
+      "probability": 0.9886119216680527
+    },
+    {
+      "word": " пространстве",
+      "start": 6.8,
+      "end": 7.6,
+      "probability": 0.9921882152557373
+    },
+    {
+      "word": " —",
+      "start": 7.6,
+      "end": 8.0,
+      "probability": 0.0011468700831755996
+    }
+  ],
+  "words": [
+    {
+      "text": "В",
+      "start": 0,
+      "end": 0.16
+    },
+    {
+      "text": "награду",
+      "start": 0.16,
+      "end": 0.66
+    },
+    {
+      "text": "за",
+      "start": 0.66,
+      "end": 0.82
+    },
+    {
+      "text": "столь",
+      "start": 0.82,
+      "end": 1.1
+    },
+    {
+      "text": "великую",
+      "start": 1.1,
+      "end": 1.56
+    },
+    {
+      "text": "заботу",
+      "start": 1.56,
+      "end": 2.14
+    },
+    {
+      "text": "о",
+      "start": 2.14,
+      "end": 2.28
+    },
+    {
+      "text": "коллективе",
+      "start": 2.28,
+      "end": 2.86
+    },
+    {
+      "text": "Ковчег",
+      "start": 2.86,
+      "end": 3.42
+    },
+    {
+      "text": "жалует",
+      "start": 3.42,
+      "end": 3.94
+    },
+    {
+      "text": "Надзирателю",
+      "start": 3.94,
+      "end": 4.68
+    },
+    {
+      "text": "немыслимую",
+      "start": 4.68,
+      "end": 5.46
+    },
+    {
+      "text": "роскошь",
+      "start": 5.46,
+      "end": 6.02
+    },
+    {
+      "text": "в",
+      "start": 6.02,
+      "end": 6.14
+    },
+    {
+      "text": "космическом",
+      "start": 6.14,
+      "end": 6.8
+    },
+    {
+      "text": "пространстве",
+      "start": 6.8,
+      "end": 7.6
+    },
+    {
+      "text": "—",
+      "start": 7.6,
+      "end": 7.6
+    }
+  ]
+}

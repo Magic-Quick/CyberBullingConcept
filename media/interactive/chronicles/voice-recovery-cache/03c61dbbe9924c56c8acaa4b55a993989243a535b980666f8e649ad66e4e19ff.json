@@ -1,0 +1,238 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "03c61dbbe9924c56c8acaa4b55a993989243a535b980666f8e649ad66e4e19ff",
+  "audio_sha256": "d6c8a63b3b211312f6bf061cd3761c6bf5fb821979ff6ba78adcdf4c5bac5df3",
+  "file": "media/interactive/chronicles/voice/03c61dbbe9924c56c8acaa4b.mp3",
+  "duration": 4.736871,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 1.0,
+  "asrMatchedWords": 11,
+  "authoredLexicalWords": 11,
+  "heardText": "Введите хотя бы букву. На этом этапе занятым придется побыть вам.",
+  "promptedCoverage": null,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Введите",
+      "start": 0.0,
+      "end": 0.56,
+      "probability": 0.866305947303772
+    },
+    {
+      "index": 1,
+      "text": "хотя",
+      "start": 0.56,
+      "end": 0.72,
+      "probability": 0.986935019493103
+    },
+    {
+      "index": 2,
+      "text": "бы",
+      "start": 0.72,
+      "end": 0.94,
+      "probability": 0.9928200840950012
+    },
+    {
+      "index": 3,
+      "text": "букву",
+      "start": 0.94,
+      "end": 1.44,
+      "probability": 0.9721401631832123
+    },
+    {
+      "index": 5,
+      "text": "на",
+      "start": 1.8,
+      "end": 2.0,
+      "probability": 0.9900621175765991
+    },
+    {
+      "index": 6,
+      "text": "этом",
+      "start": 2.0,
+      "end": 2.18,
+      "probability": 0.9954001307487488
+    },
+    {
+      "index": 7,
+      "text": "этапе",
+      "start": 2.18,
+      "end": 2.6,
+      "probability": 0.9963092803955078
+    },
+    {
+      "index": 8,
+      "text": "занятым",
+      "start": 2.6,
+      "end": 3.18,
+      "probability": 0.9441718061765035
+    },
+    {
+      "index": 9,
+      "text": "придётся",
+      "start": 3.18,
+      "end": 3.62,
+      "probability": 0.8583382368087769
+    },
+    {
+      "index": 10,
+      "text": "побыть",
+      "start": 3.62,
+      "end": 4.06,
+      "probability": 0.9521673321723938
+    },
+    {
+      "index": 11,
+      "text": "вам.",
+      "start": 4.06,
+      "end": 4.24,
+      "probability": 0.888510525226593
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Введите",
+      "start": 0.0,
+      "end": 0.52,
+      "probability": 0.6537580737155319
+    },
+    {
+      "word": " хотя",
+      "start": 0.52,
+      "end": 0.7,
+      "probability": 0.9873908162117004
+    },
+    {
+      "word": " бы",
+      "start": 0.7,
+      "end": 0.94,
+      "probability": 0.9804217219352722
+    },
+    {
+      "word": " букву",
+      "start": 0.94,
+      "end": 1.42,
+      "probability": 0.9327952265739441
+    },
+    {
+      "word": " —",
+      "start": 1.42,
+      "end": 1.8,
+      "probability": 0.014178639277815819
+    },
+    {
+      "word": " на",
+      "start": 1.8,
+      "end": 2.0,
+      "probability": 0.9600194692611694
+    },
+    {
+      "word": " этом",
+      "start": 2.0,
+      "end": 2.2,
+      "probability": 0.9899848699569702
+    },
+    {
+      "word": " этапе",
+      "start": 2.2,
+      "end": 2.58,
+      "probability": 0.9911683003107706
+    },
+    {
+      "word": " занятым",
+      "start": 2.58,
+      "end": 3.18,
+      "probability": 0.9702002008756002
+    },
+    {
+      "word": " придётся",
+      "start": 3.18,
+      "end": 3.6,
+      "probability": 0.6629156023263931
+    },
+    {
+      "word": " побыть",
+      "start": 3.6,
+      "end": 4.04,
+      "probability": 0.8511600097020467
+    },
+    {
+      "word": " вам",
+      "start": 4.04,
+      "end": 4.28,
+      "probability": 0.7817286252975464
+    },
+    {
+      "word": ".",
+      "start": 4.28,
+      "end": 4.46,
+      "probability": 0.887607753276825
+    }
+  ],
+  "words": [
+    {
+      "text": "Введите",
+      "start": 0,
+      "end": 0.52
+    },
+    {
+      "text": "хотя",
+      "start": 0.52,
+      "end": 0.7
+    },
+    {
+      "text": "бы",
+      "start": 0.7,
+      "end": 0.94
+    },
+    {
+      "text": "букву",
+      "start": 0.94,
+      "end": 1.42
+    },
+    {
+      "text": "—",
+      "start": 1.42,
+      "end": 1.42
+    },
+    {
+      "text": "на",
+      "start": 1.8,
+      "end": 2.0
+    },
+    {
+      "text": "этом",
+      "start": 2.0,
+      "end": 2.2
+    },
+    {
+      "text": "этапе",
+      "start": 2.2,
+      "end": 2.58
+    },
+    {
+      "text": "занятым",
+      "start": 2.58,
+      "end": 3.18
+    },
+    {
+      "text": "придётся",
+      "start": 3.18,
+      "end": 3.6
+    },
+    {
+      "text": "побыть",
+      "start": 3.6,
+      "end": 4.04
+    },
+    {
+      "text": "вам.",
+      "start": 4.04,
+      "end": 4.28
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "method": "elevenlabs_existing_audio_local_alignment_recovery",
+  "text_sha256": "f3e8bb5fd13f26afd68afa18425b82d360e61dff56841c2265c3bcd13a19f8b8",
+  "audio_sha256": "133a836dadade5527c0be6ab77b2b0ca6b0409732cad49057b1d957b7637c1b5",
+  "file": "media/interactive/chronicles/voice/f3e8bb5fd13f26afd68afa18.mp3",
+  "duration": 11.795737,
+  "minimumAsrCoverage": 0.65,
+  "status": "aligned",
+  "reasons": [],
+  "wordTimesAreModelEstimates": true,
+  "interpolation": false,
+  "asrCoverage": 0.9047619047619048,
+  "asrMatchedWords": 19,
+  "authoredLexicalWords": 21,
+  "heardText": "Отдыхайте, мясные слейвы, немощные служители великого конвейера. В понедельник в 11.00 я снова открою книгу учета в цикл слепого старта.",
+  "promptedCoverage": 0.0,
+  "matchedWordTimings": [
+    {
+      "index": 0,
+      "text": "Отдыхайте,",
+      "start": 0.0,
+      "end": 0.78,
+      "probability": 0.8991032540798187
+    },
+    {
+      "index": 1,
+      "text": "мясные",
+      "start": 1.06,
+      "end": 1.56,
+      "probability": 0.8907590210437775
+    },
+    {
+      "index": 2,
+      "text": "слейвы.",
+      "start": 1.56,
+      "end": 2.32,
+      "probability": 0.7075245827436447
+    },
+    {
+      "index": 3,
+      "text": "Немощные",
+      "start": 2.52,
+      "end": 3.2,
+      "probability": 0.8949765761693319
+    },
+    {
+      "index": 4,
+      "text": "служители",
+      "start": 3.2,
+      "end": 3.8,
+      "probability": 0.9962393939495087
+    },
+    {
+      "index": 5,
+      "text": "Великого",
+      "start": 3.8,
+      "end": 4.52,
+      "probability": 0.949582596619924
+    },
+    {
+      "index": 6,
+      "text": "Конвейера.",
+      "start": 4.52,
+      "end": 5.18,
+      "probability": 0.9721898883581161
+    },
+    {
+      "index": 7,
+      "text": "В",
+      "start": 5.64,
+      "end": 5.8,
+      "probability": 0.9796730279922485
+    },
+    {
+      "index": 8,
+      "text": "понедельник",
+      "start": 5.8,
+      "end": 6.44,
+      "probability": 0.991153672337532
+    },
+    {
+      "index": 9,
+      "text": "в",
+      "start": 6.44,
+      "end": 6.56,
+      "probability": 0.9656561613082886
+    },
+    {
+      "index": 12,
+      "text": "я",
+      "start": 7.52,
+      "end": 7.92,
+      "probability": 0.9863052368164062
+    },
+    {
+      "index": 13,
+      "text": "снова",
+      "start": 7.92,
+      "end": 8.2,
+      "probability": 0.9933433532714844
+    },
+    {
+      "index": 14,
+      "text": "открою",
+      "start": 8.2,
+      "end": 8.7,
+      "probability": 0.9885403712590536
+    },
+    {
+      "index": 15,
+      "text": "Книгу",
+      "start": 8.7,
+      "end": 9.04,
+      "probability": 0.9832480549812317
+    },
+    {
+      "index": 16,
+      "text": "Учёта",
+      "start": 9.04,
+      "end": 9.52,
+      "probability": 0.8761079609394073
+    },
+    {
+      "index": 17,
+      "text": "в",
+      "start": 9.52,
+      "end": 9.8,
+      "probability": 0.9378007650375366
+    },
+    {
+      "index": 18,
+      "text": "Цикл",
+      "start": 9.8,
+      "end": 10.24,
+      "probability": 0.8223277727762858
+    },
+    {
+      "index": 19,
+      "text": "Слепого",
+      "start": 10.24,
+      "end": 10.78,
+      "probability": 0.8738904595375061
+    },
+    {
+      "index": 20,
+      "text": "Старта.",
+      "start": 10.78,
+      "end": 11.3,
+      "probability": 0.9886787235736847
+    }
+  ],
+  "attentionWordTimings": [
+    {
+      "word": "Отдыхайте",
+      "start": 0.0,
+      "end": 0.76,
+      "probability": 0.7488973013911163
+    },
+    {
+      "word": ",",
+      "start": 0.76,
+      "end": 1.06,
+      "probability": 0.6616674065589905
+    },
+    {
+      "word": " мясные",
+      "start": 1.06,
+      "end": 1.56,
+      "probability": 0.7655327916145325
+    },
+    {
+      "word": " слейвы",
+      "start": 1.56,
+      "end": 2.22,
+      "probability": 0.7470453381538391
+    },
+    {
+      "word": ".",
+      "start": 2.22,
+      "end": 2.64,
+      "probability": 0.10098946839570999
+    },
+    {
+      "word": " Немощные",
+      "start": 2.64,
+      "end": 3.2,
+      "probability": 0.9623648077249527
+    },
+    {
+      "word": " служители",
+      "start": 3.2,
+      "end": 3.8,
+      "probability": 0.9946869313716888
+    },
+    {
+      "word": " Великого",
+      "start": 3.8,
+      "end": 4.54,
+      "probability": 0.7939380034804344
+    },
+    {
+      "word": " Конвейера",
+      "start": 4.54,
+      "end": 5.14,
+      "probability": 0.7392432987689972
+    },
+    {
+      "word": ".",
+      "start": 5.14,
+      "end": 5.66,
+      "probability": 0.6415140628814697
+    },
+    {
+      "word": " В",
+      "start": 5.66,
+      "end": 5.8,
+      "probability": 0.9392915368080139
+    },
+    {
+      "word": " понедельник",
+      "start": 5.8,
+      "end": 6.4,
+      "probability": 0.989826112985611
+    },
+    {
+      "word": " в",
+      "start": 6.4,
+      "end": 6.56,
+      "probability": 0.9701777696609497
+    },
+    {
+      "word": " одиннадцать",
+      "start": 6.56,
+      "end": 7.08,
+      "probability": 0.75089190620929
+    },
+    {
+      "word": " ноль",
+      "start": 7.08,
+      "end": 7.32,
+      "probability": 0.6399428844451904
+    },
+    {
+      "word": "-ноль",
+      "start": 7.32,
+      "end": 7.66,
+      "probability": 0.6193408320347468
+    },
+    {
+      "word": " я",
+      "start": 7.66,
+      "end": 7.9,
+      "probability": 0.8406814932823181
+    },
+    {
+      "word": " снова",
+      "start": 7.9,
+      "end": 8.2,
+      "probability": 0.9846420884132385
+    },
+    {
+      "word": " открою",
+      "start": 8.2,
+      "end": 8.68,
+      "probability": 0.9879857500394186
+    },
+    {
+      "word": " Книгу",
+      "start": 8.68,
+      "end": 9.04,
+      "probability": 0.6505325622856617
+    },
+    {
+      "word": " Учёта",
+      "start": 9.04,
+      "end": 9.56,
+      "probability": 0.7164833098649979
+    },
+    {
+      "word": " в",
+      "start": 9.56,
+      "end": 9.8,
+      "probability": 0.9623720049858093
+    },
+    {
+      "word": " Цикл",
+      "start": 9.8,
+      "end": 10.22,
+      "probability": 0.8018929958343506
+    },
+    {
+      "word": " Слепого",
+      "start": 10.22,
+      "end": 10.72,
+      "probability": 0.9189142882823944
+    },
+    {
+      "word": " Старта",
+      "start": 10.72,
+      "end": 11.26,
+      "probability": 0.938165287176768
+    },
+    {
+      "word": ".",
+      "start": 11.26,
+      "end": 11.58,
+      "probability": 0.8906064629554749
+    }
+  ],
+  "words": [
+    {
+      "text": "Отдыхайте,",
+      "start": 0,
+      "end": 0.76
+    },
+    {
+      "text": "мясные",
+      "start": 1.06,
+      "end": 1.56
+    },
+    {
+      "text": "слейвы.",
+      "start": 1.56,
+      "end": 2.22
+    },
+    {
+      "text": "Немощные",
+      "start": 2.64,
+      "end": 3.2
+    },
+    {
+      "text": "служители",
+      "start": 3.2,
+      "end": 3.8
+    },
+    {
+      "text": "Великого",
+      "start": 3.8,
+      "end": 4.54
+    },
+    {
+      "text": "Конвейера.",
+      "start": 4.54,
+      "end": 5.14
+    },
+    {
+      "text": "В",
+      "start": 5.66,
+      "end": 5.8
+    },
+    {
+      "text": "понедельник",
+      "start": 5.8,
+      "end": 6.4
+    },
+    {
+      "text": "в",
+      "start": 6.4,
+      "end": 6.56
+    },
+    {
+      "text": "одиннадцать",
+      "start": 6.56,
+      "end": 7.08
+    },
+    {
+      "text": "ноль-ноль",
+      "start": 7.08,
+      "end": 7.66
+    },
+    {
+      "text": "я",
+      "start": 7.66,
+      "end": 7.9
+    },
+    {
+      "text": "снова",
+      "start": 7.9,
+      "end": 8.2
+    },
+    {
+      "text": "открою",
+      "start": 8.2,
+      "end": 8.68
+    },
+    {
+      "text": "Книгу",
+      "start": 8.68,
+      "end": 9.04
+    },
+    {
+      "text": "Учёта",
+      "start": 9.04,
+      "end": 9.56
+    },
+    {
+      "text": "в",
+      "start": 9.56,
+      "end": 9.8
+    },
+    {
+      "text": "Цикл",
+      "start": 9.8,
+      "end": 10.22
+    },
+    {
+      "text": "Слепого",
+      "start": 10.22,
+      "end": 10.72
+    },
+    {
+      "text": "Старта.",
+      "start": 10.72,
+      "end": 11.26
+    }
+  ]
+}

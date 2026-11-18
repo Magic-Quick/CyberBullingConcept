@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "Reviewed existing art only. No generated faces, external services, source edits or Fin writes.",
+  "rendering": "1280x720, contain on plain dark matte; keep the whole prepared frame visible during identity reveal",
+  "sourceNameplatesReviewed": 27,
+  "portraitFiles": 8,
+  "portraits": {
+    "danial": {
+      "name": "Даниал Искаков",
+      "path": "media/visual/generated/Gui/neutral-portraits/danial-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c5523bbb936876185e7376adb1fc53c1fa587c0e874f1b67e0a32cadcde0a184",
+      "source": {
+        "path": "web_assets/images/team/retro_film_danial_iskakov_sapper_v1.png",
+        "sha256": "c28d2ad74f83ad5a8173070448927672604d681c575bfbefd291081e282b25a6",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        410,
+        0,
+        1170,
+        570
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убраны мина, инструменты и руки до аналогии с минным полем."
+    },
+    "egor": {
+      "name": "Егор Ткачёв",
+      "path": "media/visual/generated/Gui/neutral-portraits/egor-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "311d0600dbaf0117db6fd927f003d8886e40ec56fed57acbf485b2de235e6d81",
+      "source": {
+        "path": "repo/src/assets/images/retro_horror_film_egor_mickey_vat_v14.webp",
+        "sha256": "cc99f5685e90030902e88d3525e08d7e15fe30302bc4f45b3f9751b0654b91b8",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        590,
+        0,
+        1110,
+        700
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убраны силуэт Микки и стазис-колба до истории Disney/Mintegral."
+    },
+    "nick": {
+      "name": "Ник Егоров",
+      "path": "media/visual/generated/Gui/neutral-portraits/nick-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5fbbe01e428810e952c8086b2d687b1c74eec229402172ba053312b8f8f74dd4",
+      "source": {
+        "path": "web_assets/images/team/retro_film_nick_egorov_speedrun_v3.png",
+        "sha256": "a87a5c57246ad7f8abe79f3d4faafa6eaaa01b09037c70cfbf96a79aadc8548a",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        400,
+        40,
+        1040,
+        620
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убраны часы и экран TIME DILATION / SHIFT DEADLINE до хроно-реактора."
+    },
+    "artem": {
+      "name": "Артём Хухро",
+      "path": "media/visual/generated/Gui/neutral-portraits/artem-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e4b311e95f18cb9772837b7c7f56748cd0bdf15a46d9ecc97cd55a6ba40d00a6",
+      "source": {
+        "path": "web_assets/images/team/retro_film_artem_khukhro_guyver_gemini_v19.png",
+        "sha256": "15be87a8ecdfd326f33103f871d82addddfa81bfab6f0faacfbb3d9735830628",
+        "width": 1024,
+        "height": 683
+      },
+      "crop": [
+        240,
+        0,
+        680,
+        360
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убрана голограмма коровы до её первого упоминания в зале IV."
+    },
+    "alexey-novice": {
+      "name": "Алексей (новенький)",
+      "path": "media/visual/generated/Gui/neutral-portraits/alexey-novice-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b33a35d078fe32cb1cf9621eec0f30f55df72b6754ca93f4bad4a3ae2dfc6511",
+      "source": {
+        "path": "web_assets/images/team/retro_film_alexey_novice_v4.png",
+        "sha256": "3da0f27641bd4f66f0da59cfa36d7f22aa68ff34f61d41f2a6513795823e4557",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        580,
+        10,
+        1160,
+        570
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убран планшет с надписью 2D PLAYABLE TASK до выдачи 2D-плейбака."
+    },
+    "kristian": {
+      "name": "Кристиан",
+      "path": "media/visual/generated/Gui/neutral-portraits/kristian-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4e9e4c8c943c66b62b82b67e3f28234a822eac0ccf0877ef752ef052d4b0340e",
+      "source": {
+        "path": "web_assets/images/team/retro_film_kristian_repository_guardian_v2.png",
+        "sha256": "aa48e1856f0c8bd99f6e641c7b2e58cdad2f7013cadf212d09a201b1ab4128d7",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        240,
+        35,
+        760,
+        540
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Убран церемониальный предмет в руках до оглашения кары."
+    },
+    "kirill": {
+      "name": "Кирилл Берёзкин",
+      "path": "media/visual/generated/Gui/neutral-portraits/kirill-neutral.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e96c19aa570f526e8e3b3c3a368360e43c3be4a5a7a383e753ad8515e7722bf0",
+      "source": {
+        "path": "web_assets/images/team/retro_film_kirill_beryozkin_v2.png",
+        "sha256": "d2d67ebcaf7ab5b1b19abff23f9b2cfdb5bc4af62d3d363d46af169897ebe088",
+        "width": 1536,
+        "height": 1024
+      },
+      "crop": [
+        450,
+        90,
+        1000,
+        600
+      ],
+      "mode": "face_and_shoulders_crop_black_matte",
+      "note": "Нейтральная идентификация вместо эшафота, решёток и предметов будущего приговора."
+    },
+    "kirill-kristian-pair": {
+      "name": "Кирилл Берёзкин и Кристиан",
+      "path": "media/visual/generated/Gui/neutral-portraits/kirill-kristian-neutral-pair.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7781ff3fa8dd1d6a01dfc6243b378145a1d80fd3a2178d20dd6f84b3fca51850",
+      "sourcePortraitIds": [
+        "kirill",
+        "kristian"
+      ],
+      "mode": "two_existing_portraits_black_matte",
+      "note": "Не новое событие: два подлинных кадрированных портрета вместо преждевременных жезлов и решёток эшафота."
+    }
+  },
+  "frameOverrides": [
+    {
+      "frameClipId": "ROOM-I.L269",
+      "portraitId": "danial",
+      "nameplateLines": [
+        271
+      ]
+    },
+    {
+      "frameClipId": "ROOM-I.L312",
+      "portraitId": "egor",
+      "nameplateLines": [
+        314
+      ]
+    },
+    {
+      "frameClipId": "ROOM-IV.L979",
+      "portraitId": "egor",
+      "nameplateLines": [
+        980
+      ]
+    },
+    {
+      "frameClipId": "ROOM-II.L615",
+      "portraitId": "nick",
+      "nameplateLines": [
+        616
+      ]
+    },
+    {
+      "frameClipId": "ROOM-III.L772",
+      "portraitId": "artem",
+      "nameplateLines": [
+        773
+      ]
+    },
+    {
+      "frameClipId": "ROOM-IV.L974",
+      "portraitId": "artem",
+      "nameplateLines": [
+        975
+      ]
+    },
+    {
+      "frameClipId": "ROOM-II.L610",
+      "portraitId": "alexey-novice",
+      "nameplateLines": [
+        611
+      ]
+    },
+    {
+      "frameClipId": "VERDICT.L1355",
+      "portraitId": "alexey-novice",
+      "nameplateLines": [
+        1356
+      ]
+    },
+    {
+      "frameClipId": "ROOM-III.L764",
+      "portraitId": "kristian",
+      "nameplateLines": [
+        765
+      ]
+    },
+    {
+      "frameClipId": "VERDICT.L1316",
+      "portraitId": "kristian",
+      "nameplateLines": [
+        1317
+      ]
+    },
+    {
+      "frameClipId": "VERDICT.L1304",
+      "portraitId": "kirill-kristian-pair",
+      "nameplateLines": [
+        1306,
+        1307
+      ]
+    }
+  ],
+  "fullSourceAllowedFrom": {
+    "danial": {
+      "sceneId": "ROOM-I",
+      "assetKey": "retro_film_danial_iskakov_sapper_v1",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "ROOM-I.P006",
+        "wordIndex": 5,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "Лететь на крейсере сквозь настоящее минное поле"
+    },
+    "egor": {
+      "sceneId": "ROOM-I",
+      "assetKey": "retro_horror_film_egor_mickey_vat_v14",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "ROOM-I.P018",
+        "wordIndex": 24,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "мумифицированным таском Disney для сети Mintegral"
+    },
+    "nick": {
+      "sceneId": "ROOM-II",
+      "assetKey": "retro_film_nick_egorov_speedrun_v3",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "ROOM-II.P014",
+        "wordIndex": 5,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "В тот же миг локальный хроно-реактор взвыл"
+    },
+    "artem": {
+      "sceneId": "ROOM-IV",
+      "assetKey": "retro_film_artem_khukhro_guyver_gemini_v19",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "ROOM-IV.P015",
+        "wordIndex": 8,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "концепт летающей роботизированной коровы"
+    },
+    "alexey-novice": {
+      "sceneId": "ROOM-II",
+      "assetKey": "retro_film_alexey_novice_v4",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "ROOM-II.P008",
+        "wordIndex": 12,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "срочно выдать Новообращённому Послушнику Алексею 2D-плейбак"
+    },
+    "kristian": {
+      "sceneId": "VERDICT",
+      "assetKey": "retro_film_kristian_repository_guardian_v2",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "VERDICT.P008",
+        "wordIndex": 5,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "двухметровый церемониальный жезл"
+    },
+    "kirill-kristian-pair": {
+      "sceneId": "VERDICT",
+      "assetKey": "retro_film_tribunal_scaffold_kirill_kristian_v1",
+      "allowedFrom": {
+        "type": "word",
+        "utteranceId": "VERDICT.P009",
+        "wordIndex": 7,
+        "edge": "start",
+        "offset": 0
+      },
+      "quote": "рифлёных металлических решёток нижней палубы"
+    }
+  },
+  "additionalReview": [
+    {
+      "nameplateLine": 679,
+      "name": "Павел Самойленко",
+      "status": "keep_medium_shot_do_not_zoom_eyes",
+      "note": "В существующем каноническом кадре виден механический монокль. Не усиливать его кропом/приближением до ответа ЧГК. Нейтральный реальный avatar_pavel существует, но замена канонического арта фотопортретом автоматически не выполнялась."
+    }
+  ]
+}
