@@ -1,0 +1,68 @@
+{
+  "text": "А когда завершается недельный круг страданий —",
+  "text_sha256": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05",
+  "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+  "duration": 2.86,
+  "words": [
+    {
+      "text": "А",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "когда",
+      "start": 0.14,
+      "end": 0.36
+    },
+    {
+      "text": "завершается",
+      "start": 0.36,
+      "end": 1.06
+    },
+    {
+      "text": "недельный",
+      "start": 1.06,
+      "end": 1.7
+    },
+    {
+      "text": "круг",
+      "start": 1.7,
+      "end": 1.86
+    },
+    {
+      "text": "страданий",
+      "start": 1.86,
+      "end": 2.52
+    },
+    {
+      "text": "—",
+      "start": 2.52,
+      "end": 2.52
+    }
+  ],
+  "audio_sha256": "471a38869c6176d5e9ba648987ea517e463090b13547c7cd70e3f4c15295fdbd",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "GXwFG72haRUIsLt92ln4",
+  "repair": {
+    "source": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+    "sourceSha256": "3427c2272e9cb1200a6b0c6efa76c6c7cef4c9fa5d9c95dd081bee7187ea8ef4",
+    "cuts": [
+      [
+        2.85,
+        8.4885,
+        0
+      ]
+    ],
+    "method": "local_edit_no_generation",
+    "heard": "А когда завершается недельный круг страданий.",
+    "coverage": 1.0,
+    "alignmentReview": []
+  }
+}

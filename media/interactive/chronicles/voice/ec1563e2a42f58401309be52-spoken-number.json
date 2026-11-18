@@ -1,0 +1,106 @@
+{
+  "text": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку: 1783 сданных плейбла.",
+  "text_sha256": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428",
+  "file": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+  "duration": 9.9846,
+  "words": [
+    {
+      "text": "А",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "в",
+      "start": 0.14,
+      "end": 0.24
+    },
+    {
+      "text": "четверг",
+      "start": 0.24,
+      "end": 0.84
+    },
+    {
+      "text": "у",
+      "start": 0.84,
+      "end": 1.02
+    },
+    {
+      "text": "кремниевой",
+      "start": 1.02,
+      "end": 1.5
+    },
+    {
+      "text": "железяки",
+      "start": 1.5,
+      "end": 2.18
+    },
+    {
+      "text": "окончательно",
+      "start": 2.18,
+      "end": 2.98
+    },
+    {
+      "text": "сорвало",
+      "start": 2.98,
+      "end": 3.56
+    },
+    {
+      "text": "крышу,",
+      "start": 3.56,
+      "end": 4.2
+    },
+    {
+      "text": "и",
+      "start": 4.38,
+      "end": 4.44
+    },
+    {
+      "text": "он",
+      "start": 4.44,
+      "end": 4.56
+    },
+    {
+      "text": "выкатил",
+      "start": 4.56,
+      "end": 5.04
+    },
+    {
+      "text": "сводку:",
+      "start": 5.04,
+      "end": 5.68
+    },
+    {
+      "text": "1783",
+      "start": 6.24,
+      "end": 8.08
+    },
+    {
+      "text": "сданных",
+      "start": 8.08,
+      "end": 8.92
+    },
+    {
+      "text": "плейбла.",
+      "start": 8.92,
+      "end": 9.56
+    }
+  ],
+  "audio_sha256": "93698fc24ab58b74aaab23abe45f59eaa194fb1b28ee7bc3fd6ed65132b42831",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.75,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "EQzmo1sQJNoOZGDGChkt",
+  "tts_text": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку: тысяча семьсот восемьдесят три сданных плейбла.",
+  "repair": {
+    "method": "verified_numeric_retake",
+    "reason": "unintelligible reading of digits",
+    "source": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
+    "heard": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку. 1783 данных Плейбла.",
+    "alignmentReview": []
+  }
+}

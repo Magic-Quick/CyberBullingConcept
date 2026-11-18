@@ -3,7 +3,7 @@ import { clipRange, resolveTime } from './timeline';
 
 interface Sound {
   audio: HTMLAudioElement; clip: Clip; url: string; failed: boolean; target: number;
-  pendingPlay: boolean; audible: boolean; metadata: () => void; error: () => void;
+  pendingPlay: boolean; audible: boolean; metadata: () => void; error: () => void; timelineStart:number; timelineEnd:number;
 }
 interface Bed extends Sound {
   identity: string; gain: number; once: boolean; project?: Project; ownedClip?: Clip;
@@ -63,6 +63,11 @@ export class AudioMixer {
 
   get buffering(): boolean { return [...this.sounds.values()].some(s => s.clip.kind === 'voice' && s.audible && !s.failed && s.audio.readyState < 3); }
 
+  /** The sample clock drives speech, including an MP3's physical end/padding. */
+  voiceTime(utteranceId:string|undefined):number|null{return this.sampleTime([...this.sounds.values()].find(s=>s.clip.kind==='voice'&&s.clip.utteranceId===utteranceId));}
+  clipTime(clipId:string):number|null{return this.sampleTime([...this.sounds.values()].find(s=>s.clip.id===clipId));}
+  private sampleTime(sound:Sound|undefined):number|null{if(!sound||sound.failed||!sound.audible||sound.audio.readyState<2)return null;return sound.audio.ended?sound.timelineEnd:Math.min(sound.timelineEnd,sound.timelineStart+Math.max(0,sound.audio.currentTime-(sound.clip.sourceIn??0)));}
+
   private release(sound: Sound): void {
     // Clearing src may itself dispatch events; remove listeners and owner before doing it.
     sound.audio.removeEventListener('loadedmetadata', sound.metadata);
@@ -75,7 +80,7 @@ export class AudioMixer {
   }
   private createSound(clip: Clip, url: string, current: (sound: Sound) => boolean): Sound {
     const audio = new Audio(url); audio.preload = 'auto';
-    const sound: Sound = { audio, clip, url, failed: false, target: clip.sourceIn || 0, pendingPlay: false, audible: false, metadata: () => {}, error: () => {} };
+    const sound: Sound = { audio, clip, url, failed: false, target: clip.sourceIn || 0, pendingPlay: false, audible: false, metadata: () => {}, error: () => {},timelineStart:0,timelineEnd:Infinity };
     sound.metadata = () => { if (current(sound)) this.seek(sound); };
     sound.error = () => {
       if (!current(sound) || sound.failed) return;
@@ -174,15 +179,18 @@ export class AudioMixer {
       const end = !clip.loop && length !== undefined ? Math.min(range.end, range.start + length) : range.end;
       if (time >= end || end <= range.start) continue;
       if (sound && sound.url !== url) { this.sounds.delete(key); this.release(sound); sound = undefined; }
+      const initialSound=!sound;
       if (!sound) {
         sound = this.createSound(clip, url, candidate => this.epoch === epoch && this.sounds.get(key) === candidate);
         this.sounds.set(key, sound); if (clip.kind === 'sfx') this.playedSfx.add(key);
       }
-      keep.add(key); sound.clip = clip; sound.audible = true;
+      keep.add(key); sound.clip = clip; sound.audible = true; sound.timelineStart=range.start;sound.timelineEnd=end;
       const audio = sound.audio; audio.loop = Boolean(clip.loop);
       sound.target = source + (clip.loop && length && length > 0 ? local % length : local);
       const outsideSource = audio.currentTime < source - .02 || length !== undefined && audio.currentTime >= source + length;
-      if (seek || outsideSource || Math.abs(audio.currentTime - sound.target) > .4) this.seek(sound);
+      // A delayed animation frame must not rewind speech repeatedly. Explicit
+      // seeking still applies; normal playback follows the audio sample clock.
+      if (seek || outsideSource || initialSound) this.seek(sound);
       let gain = clip.gain ?? 1;
       if (cueChannel === 'BASE' && duckBaseTo !== undefined) gain = Math.min(gain, duckBaseTo);
       const commandGain = this.commandCeiling(clip, project);

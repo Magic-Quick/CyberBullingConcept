@@ -1,0 +1,305 @@
+{
+  "date": "2026-11-18",
+  "method": "Local unprompted Whisper small int8 ASR, word alignment and manual comparison of flagged text; not a complete listening review",
+  "networkForAudit": "not_used",
+  "auditedNewVoiceCount": 207,
+  "repaired": [
+    {
+      "id": "HANDOFF-01",
+      "file": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
+      "sha256": "650f611b4ec7aae4836863bd1241a8778a8b3e1c73a66b2a47ac688fcfb85919",
+      "independentRecognition": "Толя, тебе слово. Покажи новые билды. Общий поток недели и прошлую домашку. Слово готово. Желательно подтвердить чем -нибудь, кроме интонации.",
+      "method": "verified_retake"
+    },
+    {
+      "id": "I-04.ВХОД",
+      "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+      "sha256": "f47f903046fedc06f58ba9d39a9f25392d1f43230ab2d193eb51f8d686f4455e",
+      "independentRecognition": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером ?» Главный приз — продолжение совещания.",
+      "method": "local_edit_no_generation"
+    },
+    {
+      "id": "PROLOGUE.P018",
+      "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+      "sha256": "471a38869c6176d5e9ba648987ea517e463090b13547c7cd70e3f4c15295fdbd",
+      "independentRecognition": "А когда завершается недельный круг страданий.",
+      "method": "local_edit_no_generation"
+    },
+    {
+      "id": "ROOM-II.P008",
+      "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+      "sha256": "661d0303df9535e8b184ce929eb41ccce4bd870f6d90c2c5543438222a0f786e",
+      "independentRecognition": "В пятницу Горин лично проверил шланги, приказал срочно выдать новообращенному послушнику Алексею 2D Playback. А то он отвалится так и не стартанув. Следите за давлением в трубках, господа Проджекты.",
+      "method": "local_edit_no_generation"
+    },
+    {
+      "id": "VERDICT.P005",
+      "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3",
+      "sha256": "84895b078d754bff4df7aea3ad896466f8814c9422a31491c59986274e79a29c",
+      "independentRecognition": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля.",
+      "method": "verified_numeric_retake"
+    },
+    {
+      "id": "ROOM-I.P012",
+      "file": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+      "sha256": "93698fc24ab58b74aaab23abe45f59eaa194fb1b28ee7bc3fd6ed65132b42831",
+      "independentRecognition": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку. 1783 данных Плейбла.",
+      "method": "verified_numeric_retake"
+    }
+  ],
+  "remainingAsrReviewFlags": [
+    {
+      "id": "PROLOGUE.P002",
+      "heard": "В ледяной пустоте глубокого космоса, где умерло само понятие земного времени и нет смены дня и ночи, сквозь радиоактивный пепел и гравитационные штормы вечно несется исполинский ковчек «Цитадель». Оффлайн – продакшн -ковчек, сыгравший в ящик, известный как «Плейбокс» для сокращения. Это циклопический, бронированный космический крейсер, на титановой киль, которого намертво впаяна исполинская серая коробка многоэтажного офисного бизнес -центра.",
+      "differences": [
+        {
+          "kind": "replace",
+          "expected": [
+            "ковчегцитадель",
+            "офлайн",
+            "продакшенковчег"
+          ],
+          "heard": [
+            "ковчек",
+            "цитадель",
+            "оффлайн",
+            "продакшн",
+            "ковчек"
+          ],
+          "heardIndices": [
+            26,
+            31
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "титановый"
+          ],
+          "heard": [
+            "титановой"
+          ],
+          "heardIndices": [
+            45,
+            46
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "бизнесцентра"
+          ],
+          "heard": [
+            "бизнес",
+            "центра"
+          ],
+          "heardIndices": [
+            55,
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-04.ОБЩЕЕ_ПРОДОЛЖЕНИЕ",
+      "heard": "В плейбле хаус -хант кошмар вскрылся, когда включили звук. Наградный сундук с сокровищами подхватил проказу подпространственного кэша. При каждом открытии кованой крышки деревянный ларь из старых буферов издавал отчетливый, тошнотворный биохрус с разбиваемого сырого яйца. Проказа проникла так глубоко в ассеты, что сундук буквально начал нести яйца прямо в уши игрока, а Эдик в ужасе стучал по каналу связи. Просто чтоб было не яйцо. Кузнец и плейбла взастыли в оцепенении. За десятки циклов сборки никто в цеху даже не заметил, как реликвия обросла чужеродной слизью кеша.",
+      "differences": [
+        {
+          "kind": "replace",
+          "expected": [
+            "househunt"
+          ],
+          "heard": [
+            "хаус",
+            "хант"
+          ],
+          "heardIndices": [
+            2,
+            4
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "наградной"
+          ],
+          "heard": [
+            "наградный"
+          ],
+          "heardIndices": [
+            9,
+            10
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "биохруст"
+          ],
+          "heard": [
+            "биохрус",
+            "с"
+          ],
+          "heardIndices": [
+            30,
+            32
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "кузнецы",
+            "плейблов",
+            "застыли"
+          ],
+          "heard": [
+            "кузнец",
+            "и",
+            "плейбла",
+            "взастыли"
+          ],
+          "heardIndices": [
+            64,
+            68
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "кэша"
+          ],
+          "heard": [
+            "кеша"
+          ],
+          "heardIndices": [
+            85,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-03.ОБЩЕЕ_ПРОДОЛЖЕНИЕ",
+      "heard": "В четверг небеса раскололись окончательно. Павел Самайленко вышел к пасте и объявил. Мне блокнули к лада, поэтому пока кот -ривью на пиар, ближайшие 5 -10 дней на паузе, буду глазами смотреть. Один глаз у Павла номинально остался органическим, но плоть давно разучилась видеть свет без подсказок нейросети. Оставшись без машинного духа, он бродит в потьмах по нижним палубам и вслепую. Буквально по шрифту Брайля на ощупь валидирует чужие пул реквесты.",
+      "differences": [
+        {
+          "kind": "replace",
+          "expected": [
+            "самойленко"
+          ],
+          "heard": [
+            "самайленко"
+          ],
+          "heardIndices": [
+            6,
+            7
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "пастве"
+          ],
+          "heard": [
+            "пасте"
+          ],
+          "heardIndices": [
+            9,
+            10
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "клода"
+          ],
+          "heard": [
+            "к",
+            "лада"
+          ],
+          "heardIndices": [
+            14,
+            16
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "код",
+            "ревью"
+          ],
+          "heard": [
+            "кот",
+            "ривью"
+          ],
+          "heardIndices": [
+            18,
+            20
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "pr"
+          ],
+          "heard": [
+            "пиар"
+          ],
+          "heardIndices": [
+            21,
+            22
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "510"
+          ],
+          "heard": [
+            "5",
+            "10"
+          ],
+          "heardIndices": [
+            23,
+            25
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "впотьмах"
+          ],
+          "heard": [
+            "в",
+            "потьмах"
+          ],
+          "heardIndices": [
+            53,
+            55
+          ]
+        },
+        {
+          "kind": "replace",
+          "expected": [
+            "пуллреквесты"
+          ],
+          "heard": [
+            "пул",
+            "реквесты"
+          ],
+          "heardIndices": [
+            68,
+            70
+          ]
+        }
+      ]
+    }
+  ],
+  "numericTtsNormalization": {
+    "id": "ROOM-I.P012",
+    "source": "1783",
+    "sentToTts": "тысяча семьсот восемьдесят три",
+    "explicitUserApproval": true,
+    "masterSpeechUnchanged": true
+  }
+}

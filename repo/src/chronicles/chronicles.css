@@ -6,3 +6,21 @@
 /* Viewer chrome keeps the approved WS-96 console; editing lives in DirectorPanel. */
 .chronicles-toolbar,.chronicles-bar{display:none}
 .chronicles-captions{left:50%;right:auto;width:max-content;max-width:84%;transform:translateX(-50%);bottom:18px;padding:12px 24px;border-radius:0;background:#000e;color:#00f5d4;font-size:clamp(15px,1.5625vw,24px);font-weight:400;line-height:1.4;text-shadow:none}
+/* Viewer buttons and subtitle geometry match MovieApp._createButton/Subtitles. */
+.chronicles-shell button{font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:bold;letter-spacing:1px;border:1.5px solid #3a3f5a;border-radius:8px;background:#141622f2;color:#fff;min-height:36px}
+.chronicles-shell button:hover{background:#242838;border-color:#00d2ff}
+.chronicles-overlay{gap:0;padding:0}
+.chronicles-overlay .primary,.chronicles-game>.primary{width:136px;min-width:136px;height:36px;min-height:36px;padding:0;background:#ff5e1af2;color:#050508;border:1.5px solid #ffa800;border-radius:8px;font-size:12px;font-weight:bold;letter-spacing:1px}
+.chronicles-overlay .primary:hover,.chronicles-game>.primary:hover{background:#ff7b3af2}
+.chronicles-captions{max-width:var(--caption-max,90%);min-width:var(--caption-minWidth,200px);min-height:var(--caption-minHeight,38px);bottom:max(var(--caption-clearance,24px),calc(var(--caption-hud,0px) + var(--caption-gap,20px)));padding:var(--caption-py,14px) var(--caption-px,26px);font-size:var(--caption-font,21px);line-height:var(--caption-line,28px);letter-spacing:.6px;background:#000e;overflow:visible;max-height:none}
+.chronicles-captions:empty{display:none}
+.movie-opening{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#000}
+.movie-opening>video,.movie-opening>canvas{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.movie-opening>video{opacity:0}
+.movie-opening-access{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+/* Playback feedback reuses the original MovieApp sizes, colors and timing. */
+.chronicles-center-ripple,.chronicles-side-ripple{position:absolute;top:50%;left:50%;z-index:90;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center;color:#fff;transform:translate(-50%,-50%)}
+.chronicles-center-ripple{width:76px;height:76px;border:2px solid #ffffffe6;border-radius:50%;background:rgba(0,0,0,.65);font:26px 'Segoe UI Emoji',Inter,sans-serif}
+.chronicles-side-ripple{width:92px;height:40px;border:1.5px solid #ff3b30;border-radius:20px;background:rgba(0,0,0,.72);font:bold 14px 'Share Tech Mono',monospace}
+
+.chronicles-picture{position:absolute;inset:0;pointer-events:none}.chronicles-previous-picture{pointer-events:none}

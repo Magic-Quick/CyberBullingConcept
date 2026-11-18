@@ -34,6 +34,25 @@ class FakeAudio {
 }
 globalThis.Audio = FakeAudio;
 const flush = async () => { await Promise.resolve(); await Promise.resolve(); await Promise.resolve(); };
+
+test('a late animation frame never rewinds playing speech; the sample clock remains authoritative',async()=>{
+  const f=fixture(audioClip({id:'voice',kind:'voice',trackId:'A1',utteranceId:'u'}));
+  f.mixer.sync(f.p,[f.clip],0,true,'owner');await flush();
+  f.audio.currentTime=5;f.mixer.sync(f.p,[f.clip],.2,true,'owner');
+  assert.equal(f.audio.currentTime,5);assert.equal(f.mixer.voiceTime('u'),5);
+  f.mixer.sync(f.p,[f.clip],2,true,'owner',true);assert.equal(f.audio.currentTime,2);
+});
+test('sample clock accounts for trims and maps a physical MP3 end to the authored endpoint',async()=>{
+  const f=fixture(audioClip({id:'voice',kind:'voice',trackId:'A1',utteranceId:'u',start:{type:'scene',offset:3},sourceIn:2,sourceOut:6}));
+  f.mixer.sync(f.p,[f.clip],3,true,'owner');await flush();f.audio.currentTime=4.5;
+  assert.equal(f.mixer.voiceTime('u'),5.5);f.audio.currentTime=5.98;f.audio.ended=true;assert.equal(f.mixer.voiceTime('u'),7);
+});
+test('pause and play resume the same speech sample without an implicit seek',async()=>{
+  const f=fixture(audioClip({id:'voice',kind:'voice',trackId:'A1',utteranceId:'u'}));
+  f.mixer.sync(f.p,[f.clip],0,true,'owner');await flush();const audio=f.audio;audio.currentTime=3.2;
+  f.mixer.sync(f.p,[f.clip],3.2,false,'owner');assert.equal(audio.paused,true);
+  f.mixer.sync(f.p,[f.clip],3.2,true,'owner');await flush();assert.equal(audio.paused,false);assert.equal(audio.currentTime,3.2);assert.equal(f.audio,audio);
+});
 const audioClip = (patch = {}) => ({ id: 'cue', sceneId: 'scene', trackId: 'A6', kind: 'sfx', assetId: 'asset', start: { type: 'scene', offset: 0 }, duration: 10, ...patch });
 function project(clip, trackPatch = {}) {
   return { schemaVersion: 1, id: 'p', title: 'P', tracks: [{ id: clip.trackId, kind: clip.kind, label: 'Track', order: 1, ...trackPatch }], assets: [{ id: clip.assetId, kind: 'audio', duration: 10 }], utterances: [], scenes: [{ id: 'scene', title: 'Scene', kind: 'room', duration: 10, utteranceIds: [] }], clips: [clip], stops: [], sequence: [] };

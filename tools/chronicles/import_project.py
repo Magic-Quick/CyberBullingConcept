@@ -601,6 +601,23 @@ class Importer:
                           'roomSceneId': 'ROOM-' + roman, 'game': game})
         return stops
 
+    def preserve_legacy_opening(self):
+        """The approved visual opening is authored in the project, outside TTS."""
+        if not OUTPUT.is_file():
+            return False
+        block = re.search(r'```chronicles-config\n([\s\S]*?)\n```', OUTPUT.read_text(encoding='utf-8-sig'))
+        previous = json.loads(block[1]) if block else {}
+        scene = next((s for s in previous.get('scenes', []) if s.get('opening')), None)
+        if not scene:
+            return False
+        opening = {'id': 'OPENING', 'title': scene['title'], 'kind': 'intro', 'utteranceIds': [],
+                   'duration': scene['opening']['introEndTime'], 'opening': scene['opening']}
+        self.scenes = {'OPENING': opening, **self.scenes}
+        self.clips.append({'id': 'opening.music', 'sceneId': 'OPENING', 'trackId': 'A2', 'kind': 'audio',
+                           'assetId': self.asset(scene['opening']['trackKey'], 'audio'), 'label': 'Исходная музыка заставки',
+                           'start': scene_point(), 'duration': opening['duration'], 'gain': 1, 'fadeIn': 1.5, 'fadeOut': .6})
+        return True
+
     def preserve_legacy_song(self):
         """Keep the completed music performance as an optional, non-narrative extra."""
         path = ROOT / 'repo/src/storyData.ts'
@@ -638,7 +655,10 @@ class Importer:
         self.arrange()
         stops = self.games()
         extras = self.preserve_legacy_song()
+        has_opening = self.preserve_legacy_opening()
         sequence = [{'kind': 'scene', 'sceneId': 'PROLOGUE'}, {'kind': 'scene', 'sceneId': 'INTRO'}]
+        if has_opening:
+            sequence.insert(0, {'kind': 'scene', 'sceneId': 'OPENING'})
         for roman, gid in zip(ROMANS, GAME_ORDER):
             sequence.extend([{'kind': 'stop', 'stopId': 'STOP-' + roman}, {'kind': 'scene', 'sceneId': 'SHARED-' + gid},
                              {'kind': 'scene', 'sceneId': 'ROOM-' + roman}])

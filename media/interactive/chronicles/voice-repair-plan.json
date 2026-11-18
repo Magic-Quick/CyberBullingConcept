@@ -1,0 +1,42 @@
+{
+  "repairs": [
+    {
+      "id": "I-04.ВХОД",
+      "source": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+      "cuts": [
+        [
+          5.54,
+          6.12,
+          0.04
+        ],
+        [
+          8.65,
+          10.1,
+          0.12
+        ]
+      ]
+    },
+    {
+      "id": "PROLOGUE.P018",
+      "source": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+      "cuts": [
+        [
+          2.85,
+          8.4885,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "ROOM-II.P008",
+      "source": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+      "cuts": [
+        [
+          9.82,
+          10.4,
+          0.02
+        ]
+      ]
+    }
+  ]
+}

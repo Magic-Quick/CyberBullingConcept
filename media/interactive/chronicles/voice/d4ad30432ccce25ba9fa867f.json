@@ -1,0 +1,133 @@
+{
+  "text": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером». Главный приз — продолжение совещания.",
+  "text_sha256": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2",
+  "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+  "duration": 10.250816,
+  "words": [
+    {
+      "text": "Толя,",
+      "start": 0,
+      "end": 0.32
+    },
+    {
+      "text": "спасибо.",
+      "start": 0.64,
+      "end": 1.02
+    },
+    {
+      "text": "Следующую",
+      "start": 1.74,
+      "end": 2.44
+    },
+    {
+      "text": "страницу",
+      "start": 2.44,
+      "end": 2.98
+    },
+    {
+      "text": "я",
+      "start": 2.98,
+      "end": 3.3
+    },
+    {
+      "text": "поставил",
+      "start": 3.3,
+      "end": 3.8
+    },
+    {
+      "text": "на",
+      "start": 3.8,
+      "end": 3.96
+    },
+    {
+      "text": "кон.",
+      "start": 3.96,
+      "end": 4.22
+    },
+    {
+      "text": "Играем",
+      "start": 4.78,
+      "end": 5.3
+    },
+    {
+      "text": "в",
+      "start": 5.3,
+      "end": 5.52
+    },
+    {
+      "text": "«Кто",
+      "start": 5.52,
+      "end": 5.82
+    },
+    {
+      "text": "хочет",
+      "start": 5.82,
+      "end": 6.04
+    },
+    {
+      "text": "стать",
+      "start": 6.04,
+      "end": 6.32
+    },
+    {
+      "text": "миллионером».",
+      "start": 6.32,
+      "end": 7.42
+    },
+    {
+      "text": "Главный",
+      "start": 7.42,
+      "end": 7.9
+    },
+    {
+      "text": "приз",
+      "start": 7.9,
+      "end": 8.12
+    },
+    {
+      "text": "—",
+      "start": 8.12,
+      "end": 8.12
+    },
+    {
+      "text": "продолжение",
+      "start": 8.36,
+      "end": 9.02
+    },
+    {
+      "text": "совещания.",
+      "start": 9.02,
+      "end": 9.7
+    }
+  ],
+  "audio_sha256": "f47f903046fedc06f58ba9d39a9f25392d1f43230ab2d193eb51f8d686f4455e",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "Su48yuzrMhnNpvqFO73V",
+  "repair": {
+    "source": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+    "sourceSha256": "23eec2d55c4bc9b36103a595b3f5ee2a081247ec7f01242dcaae28ac0a001275",
+    "cuts": [
+      [
+        5.54,
+        6.12,
+        0.04
+      ],
+      [
+        8.65,
+        10.1,
+        0.12
+      ]
+    ],
+    "method": "local_edit_no_generation",
+    "heard": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером ?» Главный приз — продолжение совещания.",
+    "coverage": 1.0,
+    "alignmentReview": []
+  }
+}

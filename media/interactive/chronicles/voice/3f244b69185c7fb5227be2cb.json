@@ -1,0 +1,173 @@
+{
+  "text": "В пятницу Горин лично проверил шланги: приказал срочно выдать Новообращённому Послушнику Алексею 2D-плейбак, «а то он отвалится так и не стартанув». Следите за давлением в трубках, господа проджекты.",
+  "text_sha256": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f",
+  "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+  "duration": 14.347211,
+  "words": [
+    {
+      "text": "В",
+      "start": 0,
+      "end": 0.14
+    },
+    {
+      "text": "пятницу",
+      "start": 0.14,
+      "end": 0.64
+    },
+    {
+      "text": "Горин",
+      "start": 0.64,
+      "end": 1.06
+    },
+    {
+      "text": "лично",
+      "start": 1.06,
+      "end": 1.48
+    },
+    {
+      "text": "проверил",
+      "start": 1.48,
+      "end": 1.92
+    },
+    {
+      "text": "шланги:",
+      "start": 1.92,
+      "end": 2.46
+    },
+    {
+      "text": "приказал",
+      "start": 2.78,
+      "end": 3.36
+    },
+    {
+      "text": "срочно",
+      "start": 3.36,
+      "end": 3.88
+    },
+    {
+      "text": "выдать",
+      "start": 3.88,
+      "end": 4.18
+    },
+    {
+      "text": "Новообращённому",
+      "start": 4.18,
+      "end": 5.26
+    },
+    {
+      "text": "Послушнику",
+      "start": 5.26,
+      "end": 6.0
+    },
+    {
+      "text": "Алексею",
+      "start": 6.0,
+      "end": 6.72
+    },
+    {
+      "text": "2D-плейбак,",
+      "start": 6.72,
+      "end": 7.84
+    },
+    {
+      "text": "«а",
+      "start": 8.22,
+      "end": 8.46
+    },
+    {
+      "text": "то",
+      "start": 8.46,
+      "end": 8.62
+    },
+    {
+      "text": "он",
+      "start": 8.62,
+      "end": 8.94
+    },
+    {
+      "text": "отвалится",
+      "start": 8.94,
+      "end": 9.56
+    },
+    {
+      "text": "так",
+      "start": 9.56,
+      "end": 9.8
+    },
+    {
+      "text": "и",
+      "start": 9.8,
+      "end": 9.94
+    },
+    {
+      "text": "не",
+      "start": 9.94,
+      "end": 10.04
+    },
+    {
+      "text": "стартанув».",
+      "start": 10.04,
+      "end": 10.96
+    },
+    {
+      "text": "Следите",
+      "start": 10.96,
+      "end": 11.48
+    },
+    {
+      "text": "за",
+      "start": 11.48,
+      "end": 11.68
+    },
+    {
+      "text": "давлением",
+      "start": 11.68,
+      "end": 12.04
+    },
+    {
+      "text": "в",
+      "start": 12.04,
+      "end": 12.22
+    },
+    {
+      "text": "трубках,",
+      "start": 12.22,
+      "end": 12.68
+    },
+    {
+      "text": "господа",
+      "start": 12.92,
+      "end": 13.3
+    },
+    {
+      "text": "проджекты.",
+      "start": 13.3,
+      "end": 13.96
+    }
+  ],
+  "audio_sha256": "661d0303df9535e8b184ce929eb41ccce4bd870f6d90c2c5543438222a0f786e",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "aLmwo6LSb5gMLoph9pcT",
+  "repair": {
+    "source": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+    "sourceSha256": "340818ad30729ebe38ed62f4c49fcd6d9cd8c7744a97a2d90748022595764401",
+    "cuts": [
+      [
+        9.82,
+        10.4,
+        0.02
+      ]
+    ],
+    "method": "local_edit_no_generation",
+    "heard": "В пятницу Горин лично проверил шланги, приказал срочно выдать новообращенному послушнику Алексею 2D Playback. А то он отвалится так и не стартанув. Следите за давлением в трубках, господа Проджекты.",
+    "coverage": 0.9655172413793104,
+    "alignmentReview": []
+  }
+}

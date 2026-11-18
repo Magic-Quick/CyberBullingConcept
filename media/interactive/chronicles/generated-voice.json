@@ -4592,46 +4592,46 @@
     "PROLOGUE.P018": {
       "text": "А когда завершается недельный круг страданий —",
       "text_sha256": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05",
-      "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
-      "duration": 8.4985,
+      "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+      "duration": 2.86,
       "words": [
         {
           "text": "А",
-          "start": 0.0,
-          "end": 0.093
+          "start": 0,
+          "end": 0.14
         },
         {
           "text": "когда",
-          "start": 0.186,
-          "end": 0.43
+          "start": 0.14,
+          "end": 0.36
         },
         {
           "text": "завершается",
-          "start": 0.476,
-          "end": 1.103
+          "start": 0.36,
+          "end": 1.06
         },
         {
           "text": "недельный",
-          "start": 1.173,
-          "end": 1.707
+          "start": 1.06,
+          "end": 1.7
         },
         {
           "text": "круг",
-          "start": 1.753,
-          "end": 1.962
+          "start": 1.7,
+          "end": 1.86
         },
         {
           "text": "страданий",
-          "start": 2.009,
-          "end": 2.659
+          "start": 1.86,
+          "end": 2.52
         },
         {
           "text": "—",
-          "start": 2.752,
-          "end": 8.499
+          "start": 2.52,
+          "end": 2.52
         }
       ],
-      "audio_sha256": "3427c2272e9cb1200a6b0c6efa76c6c7cef4c9fa5d9c95dd081bee7187ea8ef4",
+      "audio_sha256": "471a38869c6176d5e9ba648987ea517e463090b13547c7cd70e3f4c15295fdbd",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
@@ -4640,7 +4640,22 @@
         "style": 0.0,
         "use_speaker_boost": true
       },
-      "request_id": "GXwFG72haRUIsLt92ln4"
+      "request_id": "GXwFG72haRUIsLt92ln4",
+      "repair": {
+        "source": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+        "sourceSha256": "3427c2272e9cb1200a6b0c6efa76c6c7cef4c9fa5d9c95dd081bee7187ea8ef4",
+        "cuts": [
+          [
+            2.85,
+            8.4885,
+            0
+          ]
+        ],
+        "method": "local_edit_no_generation",
+        "heard": "А когда завершается недельный круг страданий.",
+        "coverage": 1.0,
+        "alignmentReview": []
+      }
     },
     "PROLOGUE.P017": {
       "text": "Он фиксирует каждое колебание пульса и каждую секунду без движения мыши. Если кодер замер, чтобы подумать, в отчёте появляется пометка: «Бездельничал».",
@@ -5630,106 +5645,106 @@
     "I-04.ВХОД": {
       "text": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером». Главный приз — продолжение совещания.",
       "text_sha256": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2",
-      "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
-      "duration": 12.1208,
+      "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+      "duration": 10.250816,
       "words": [
         {
           "text": "Толя,",
-          "start": 0.0,
-          "end": 0.499
+          "start": 0,
+          "end": 0.32
         },
         {
           "text": "спасибо.",
-          "start": 0.627,
-          "end": 1.428
+          "start": 0.64,
+          "end": 1.02
         },
         {
           "text": "Следующую",
-          "start": 1.811,
-          "end": 2.438
+          "start": 1.74,
+          "end": 2.44
         },
         {
           "text": "страницу",
-          "start": 2.485,
-          "end": 3.1
+          "start": 2.44,
+          "end": 2.98
         },
         {
           "text": "я",
-          "start": 3.228,
-          "end": 3.32
+          "start": 2.98,
+          "end": 3.3
         },
         {
           "text": "поставил",
-          "start": 3.379,
-          "end": 3.82
+          "start": 3.3,
+          "end": 3.8
         },
         {
           "text": "на",
-          "start": 3.878,
-          "end": 3.947
+          "start": 3.8,
+          "end": 3.96
         },
         {
           "text": "кон.",
-          "start": 4.017,
-          "end": 4.412
+          "start": 3.96,
+          "end": 4.22
         },
         {
           "text": "Играем",
-          "start": 4.795,
-          "end": 5.317
+          "start": 4.78,
+          "end": 5.3
         },
         {
           "text": "в",
-          "start": 5.41,
-          "end": 5.526
+          "start": 5.3,
+          "end": 5.52
         },
         {
           "text": "«Кто",
-          "start": 5.55,
-          "end": 6.374
+          "start": 5.52,
+          "end": 5.82
         },
         {
           "text": "хочет",
-          "start": 6.432,
-          "end": 6.699
+          "start": 5.82,
+          "end": 6.04
         },
         {
           "text": "стать",
-          "start": 6.734,
-          "end": 6.943
+          "start": 6.04,
+          "end": 6.32
         },
         {
           "text": "миллионером».",
-          "start": 6.978,
-          "end": 7.674
+          "start": 6.32,
+          "end": 7.42
         },
         {
           "text": "Главный",
-          "start": 8.057,
-          "end": 8.464
+          "start": 7.42,
+          "end": 7.9
         },
         {
           "text": "приз",
-          "start": 8.499,
-          "end": 8.707
+          "start": 7.9,
+          "end": 8.12
         },
         {
           "text": "—",
-          "start": 8.731,
-          "end": 10.147
+          "start": 8.12,
+          "end": 8.12
         },
         {
           "text": "продолжение",
-          "start": 10.275,
-          "end": 10.96
+          "start": 8.36,
+          "end": 9.02
         },
         {
           "text": "совещания.",
-          "start": 11.018,
-          "end": 12.121
+          "start": 9.02,
+          "end": 9.7
         }
       ],
-      "audio_sha256": "23eec2d55c4bc9b36103a595b3f5ee2a081247ec7f01242dcaae28ac0a001275",
+      "audio_sha256": "f47f903046fedc06f58ba9d39a9f25392d1f43230ab2d193eb51f8d686f4455e",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
@@ -5738,120 +5753,146 @@
         "style": 0.0,
         "use_speaker_boost": true
       },
-      "request_id": "Su48yuzrMhnNpvqFO73V"
+      "request_id": "Su48yuzrMhnNpvqFO73V",
+      "repair": {
+        "source": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+        "sourceSha256": "23eec2d55c4bc9b36103a595b3f5ee2a081247ec7f01242dcaae28ac0a001275",
+        "cuts": [
+          [
+            5.54,
+            6.12,
+            0.04
+          ],
+          [
+            8.65,
+            10.1,
+            0.12
+          ]
+        ],
+        "method": "local_edit_no_generation",
+        "heard": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером ?» Главный приз — продолжение совещания.",
+        "coverage": 1.0,
+        "alignmentReview": []
+      }
     },
     "HANDOFF-01": {
       "text": "Толя, тебе слово. Покажи новые билды, общий поток недели и прошлую домашку. Слово «готово» желательно подтвердить чем-нибудь, кроме интонации.",
       "text_sha256": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e",
-      "file": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
-      "duration": 14.4428,
+      "file": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
+      "duration": 11.8886,
       "words": [
         {
           "text": "Толя,",
           "start": 0.0,
-          "end": 0.569
+          "end": 0.534
         },
         {
           "text": "тебе",
-          "start": 0.627,
+          "start": 0.65,
           "end": 0.94
         },
         {
           "text": "слово.",
-          "start": 0.998,
-          "end": 1.637
+          "start": 0.987,
+          "end": 1.625
         },
         {
           "text": "Покажи",
-          "start": 1.753,
-          "end": 2.218
+          "start": 1.869,
+          "end": 2.345
         },
         {
           "text": "новые",
-          "start": 2.287,
-          "end": 2.601
+          "start": 2.415,
+          "end": 2.728
         },
         {
           "text": "билды,",
-          "start": 2.647,
-          "end": 3.193
+          "start": 2.775,
+          "end": 3.344
         },
         {
           "text": "общий",
-          "start": 3.402,
-          "end": 3.796
+          "start": 3.587,
+          "end": 3.982
         },
         {
           "text": "поток",
-          "start": 3.843,
-          "end": 4.191
+          "start": 4.04,
+          "end": 4.4
         },
         {
           "text": "недели",
-          "start": 4.261,
-          "end": 4.748
+          "start": 4.47,
+          "end": 5.004
         },
         {
           "text": "и",
-          "start": 4.83,
-          "end": 4.899
+          "start": 5.12,
+          "end": 5.201
         },
         {
           "text": "прошлую",
-          "start": 4.969,
-          "end": 5.422
+          "start": 5.271,
+          "end": 5.724
         },
         {
           "text": "домашку.",
-          "start": 5.492,
-          "end": 6.235
+          "start": 5.793,
+          "end": 6.56
         },
         {
           "text": "Слово",
-          "start": 6.676,
-          "end": 7.082
+          "start": 7.001,
+          "end": 7.419
         },
         {
           "text": "«готово»",
-          "start": 7.105,
-          "end": 10.588
+          "start": 7.442,
+          "end": 8.115
         },
         {
           "text": "желательно",
-          "start": 10.762,
-          "end": 11.413
+          "start": 8.29,
+          "end": 8.928
         },
         {
           "text": "подтвердить",
-          "start": 11.459,
-          "end": 12.074
+          "start": 8.975,
+          "end": 9.555
         },
         {
           "text": "чем-нибудь,",
-          "start": 12.109,
-          "end": 12.806
+          "start": 9.578,
+          "end": 10.263
         },
         {
           "text": "кроме",
-          "start": 12.841,
-          "end": 13.189
+          "start": 10.298,
+          "end": 10.623
         },
         {
           "text": "интонации.",
-          "start": 13.247,
-          "end": 14.443
+          "start": 10.681,
+          "end": 11.889
         }
       ],
-      "audio_sha256": "720f40a66d7d61b24c771cebcde0dbfda83e0e4c7b5add618c5b093ece28868f",
+      "audio_sha256": "650f611b4ec7aae4836863bd1241a8778a8b3e1c73a66b2a47ac688fcfb85919",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
-        "stability": 0.5,
+        "stability": 0.75,
         "similarity_boost": 0.75,
         "style": 0.0,
         "use_speaker_boost": true
       },
-      "request_id": "1Ak3ilM55ybVB8qTa7wk"
+      "request_id": "F5rCnWRgElcgwyX13ifD",
+      "repair": {
+        "method": "verified_retake",
+        "reason": "unintelligible extra take in original",
+        "source": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
+        "heard": "Толя, тебе слово. Покажи новые билды. Общий поток недели и прошлую домашку. Слово готово. Желательно подтвердить чем -нибудь, кроме интонации."
+      }
     },
     "I-04.КОНТЕКСТ": {
       "text": "Эдик просит заменить один звук в плейбле.",
@@ -7676,100 +7717,108 @@
     "ROOM-I.P012": {
       "text": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку: 1783 сданных плейбла.",
       "text_sha256": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428",
-      "file": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
-      "duration": 9.7524,
+      "file": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+      "duration": 9.9846,
       "words": [
         {
           "text": "А",
-          "start": 0.0,
-          "end": 0.093
+          "start": 0,
+          "end": 0.14
         },
         {
           "text": "в",
-          "start": 0.163,
-          "end": 0.186
+          "start": 0.14,
+          "end": 0.24
         },
         {
           "text": "четверг",
-          "start": 0.279,
-          "end": 0.778
+          "start": 0.24,
+          "end": 0.84
         },
         {
           "text": "у",
-          "start": 0.859,
-          "end": 0.882
+          "start": 0.84,
+          "end": 1.02
         },
         {
           "text": "кремниевой",
-          "start": 0.929,
-          "end": 1.463
+          "start": 1.02,
+          "end": 1.5
         },
         {
           "text": "железяки",
-          "start": 1.521,
-          "end": 2.078
+          "start": 1.5,
+          "end": 2.18
         },
         {
           "text": "окончательно",
-          "start": 2.148,
-          "end": 3.065
+          "start": 2.18,
+          "end": 2.98
         },
         {
           "text": "сорвало",
-          "start": 3.111,
-          "end": 3.576
+          "start": 2.98,
+          "end": 3.56
         },
         {
           "text": "крышу,",
-          "start": 3.634,
-          "end": 4.145
+          "start": 3.56,
+          "end": 4.2
         },
         {
           "text": "и",
-          "start": 4.18,
-          "end": 4.226
+          "start": 4.38,
+          "end": 4.44
         },
         {
           "text": "он",
-          "start": 4.272,
-          "end": 4.377
+          "start": 4.44,
+          "end": 4.56
         },
         {
           "text": "выкатил",
-          "start": 4.435,
-          "end": 4.83
+          "start": 4.56,
+          "end": 5.04
         },
         {
           "text": "сводку:",
-          "start": 4.899,
-          "end": 5.561
+          "start": 5.04,
+          "end": 5.68
         },
         {
           "text": "1783",
-          "start": 5.944,
-          "end": 8.022
+          "start": 6.24,
+          "end": 8.08
         },
         {
           "text": "сданных",
-          "start": 8.197,
-          "end": 8.731
+          "start": 8.08,
+          "end": 8.92
         },
         {
           "text": "плейбла.",
-          "start": 8.8,
-          "end": 9.752
+          "start": 8.92,
+          "end": 9.56
         }
       ],
-      "audio_sha256": "7bf0b776b5a9145f774392889b7e3de4ab8efa362dfe3586e8996ad94cccee21",
+      "audio_sha256": "93698fc24ab58b74aaab23abe45f59eaa194fb1b28ee7bc3fd6ed65132b42831",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
-        "stability": 0.5,
+        "stability": 0.75,
         "similarity_boost": 0.75,
         "style": 0.0,
         "use_speaker_boost": true
       },
-      "request_id": "gCCEYbbN9i59VLaBXrAF"
+      "request_id": "EQzmo1sQJNoOZGDGChkt",
+      "tts_text": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку: тысяча семьсот восемьдесят три сданных плейбла.",
+      "repair": {
+        "method": "verified_numeric_retake",
+        "reason": "unintelligible reading of digits",
+        "source": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
+        "heard": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку. 1783 данных Плейбла.",
+        "alignmentReview": []
+      }
     },
     "ROOM-I.P014": {
       "text": "И посреди этого хаоса Егор Ткачёв внёс рацпредложение:",
@@ -10011,151 +10060,151 @@
     "ROOM-II.P008": {
       "text": "В пятницу Горин лично проверил шланги: приказал срочно выдать Новообращённому Послушнику Алексею 2D-плейбак, «а то он отвалится так и не стартанув». Следите за давлением в трубках, господа проджекты.",
       "text_sha256": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f",
-      "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
-      "duration": 14.9072,
+      "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+      "duration": 14.347211,
       "words": [
         {
           "text": "В",
-          "start": 0.0,
-          "end": 0.093
+          "start": 0,
+          "end": 0.14
         },
         {
           "text": "пятницу",
-          "start": 0.174,
-          "end": 0.72
+          "start": 0.14,
+          "end": 0.64
         },
         {
           "text": "Горин",
-          "start": 0.801,
-          "end": 1.057
+          "start": 0.64,
+          "end": 1.06
         },
         {
           "text": "лично",
-          "start": 1.138,
-          "end": 1.486
+          "start": 1.06,
+          "end": 1.48
         },
         {
           "text": "проверил",
-          "start": 1.533,
-          "end": 1.916
+          "start": 1.48,
+          "end": 1.92
         },
         {
           "text": "шланги:",
-          "start": 1.997,
-          "end": 2.682
+          "start": 1.92,
+          "end": 2.46
         },
         {
           "text": "приказал",
-          "start": 2.763,
-          "end": 3.344
+          "start": 2.78,
+          "end": 3.36
         },
         {
           "text": "срочно",
-          "start": 3.413,
-          "end": 3.878
+          "start": 3.36,
+          "end": 3.88
         },
         {
           "text": "выдать",
-          "start": 3.924,
-          "end": 4.214
+          "start": 3.88,
+          "end": 4.18
         },
         {
           "text": "Новообращённому",
-          "start": 4.261,
-          "end": 5.259
+          "start": 4.18,
+          "end": 5.26
         },
         {
           "text": "Послушнику",
-          "start": 5.329,
-          "end": 6.037
+          "start": 5.26,
+          "end": 6.0
         },
         {
           "text": "Алексею",
-          "start": 6.118,
-          "end": 6.711
+          "start": 6.0,
+          "end": 6.72
         },
         {
           "text": "2D-плейбак,",
-          "start": 6.885,
-          "end": 8.034
+          "start": 6.72,
+          "end": 7.84
         },
         {
           "text": "«а",
-          "start": 8.15,
-          "end": 8.452
+          "start": 8.22,
+          "end": 8.46
         },
         {
           "text": "то",
-          "start": 8.475,
-          "end": 8.707
+          "start": 8.46,
+          "end": 8.62
         },
         {
           "text": "он",
-          "start": 8.8,
-          "end": 8.986
+          "start": 8.62,
+          "end": 8.94
         },
         {
           "text": "отвалится",
-          "start": 9.044,
-          "end": 9.613
+          "start": 8.94,
+          "end": 9.56
         },
         {
           "text": "так",
-          "start": 9.683,
-          "end": 9.868
+          "start": 9.56,
+          "end": 9.8
         },
         {
           "text": "и",
-          "start": 9.915,
-          "end": 10.356
+          "start": 9.8,
+          "end": 9.94
         },
         {
           "text": "не",
-          "start": 10.472,
-          "end": 10.565
+          "start": 9.94,
+          "end": 10.04
         },
         {
           "text": "стартанув».",
-          "start": 10.6,
-          "end": 11.366
+          "start": 10.04,
+          "end": 10.96
         },
         {
           "text": "Следите",
-          "start": 11.54,
-          "end": 12.086
+          "start": 10.96,
+          "end": 11.48
         },
         {
           "text": "за",
-          "start": 12.144,
-          "end": 12.237
+          "start": 11.48,
+          "end": 11.68
         },
         {
           "text": "давлением",
-          "start": 12.272,
-          "end": 12.701
+          "start": 11.68,
+          "end": 12.04
         },
         {
           "text": "в",
-          "start": 12.725,
-          "end": 12.748
+          "start": 12.04,
+          "end": 12.22
         },
         {
           "text": "трубках,",
-          "start": 12.806,
-          "end": 13.317
+          "start": 12.22,
+          "end": 12.68
         },
         {
           "text": "господа",
-          "start": 13.433,
-          "end": 13.886
+          "start": 12.92,
+          "end": 13.3
         },
         {
           "text": "проджекты.",
-          "start": 13.932,
-          "end": 14.907
+          "start": 13.3,
+          "end": 13.96
         }
       ],
-      "audio_sha256": "340818ad30729ebe38ed62f4c49fcd6d9cd8c7744a97a2d90748022595764401",
+      "audio_sha256": "661d0303df9535e8b184ce929eb41ccce4bd870f6d90c2c5543438222a0f786e",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
@@ -10164,7 +10213,22 @@
         "style": 0.0,
         "use_speaker_boost": true
       },
-      "request_id": "aLmwo6LSb5gMLoph9pcT"
+      "request_id": "aLmwo6LSb5gMLoph9pcT",
+      "repair": {
+        "source": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+        "sourceSha256": "340818ad30729ebe38ed62f4c49fcd6d9cd8c7744a97a2d90748022595764401",
+        "cuts": [
+          [
+            9.82,
+            10.4,
+            0.02
+          ]
+        ],
+        "method": "local_edit_no_generation",
+        "heard": "В пятницу Горин лично проверил шланги, приказал срочно выдать новообращенному послушнику Алексею 2D Playback. А то он отвалится так и не стартанув. Следите за давлением в трубках, господа Проджекты.",
+        "coverage": 0.9655172413793104,
+        "alignmentReview": []
+      }
     },
     "ROOM-II.P009": {
       "text": "Апофеоз менеджмента наступил в битве за скоростной норматив: Максим Мамусин выяснял, заслужил ли Ник Егоров заветную ачивку — уложился ли с первой версией плейбла в священные два с половиной дня.",
@@ -20332,13 +20396,13 @@
     "VERDICT.P005": {
       "text": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля",
       "text_sha256": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d",
-      "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
-      "duration": 9.891701,
-      "audio_sha256": "abb7dc41b38d79a0cade237e37f56ab836c462adbd01397b99ed74764b353139",
+      "file": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3",
+      "duration": 9.1951,
+      "audio_sha256": "84895b078d754bff4df7aea3ad896466f8814c9422a31491c59986274e79a29c",
       "voice_id": "GquPFn9xormgmHaJ2KdN",
       "model_id": "eleven_multilingual_v2",
       "settings": {
-        "stability": 0.5,
+        "stability": 0.75,
         "similarity_boost": 0.75,
         "style": 0.0,
         "use_speaker_boost": true
@@ -20358,74 +20422,83 @@
         {
           "text": "346",
           "start": 0,
-          "end": 0.9
+          "end": 1.24
         },
         {
           "text": "мутировавших",
-          "start": 0.9,
-          "end": 2.46
+          "start": 1.24,
+          "end": 2.2
         },
         {
           "text": "копий",
-          "start": 2.46,
-          "end": 2.9
+          "start": 2.2,
+          "end": 2.66
         },
         {
           "text": "пакета",
-          "start": 2.9,
-          "end": 3.34
+          "start": 2.66,
+          "end": 3.08
         },
         {
           "text": "общим",
-          "start": 3.34,
-          "end": 3.98
+          "start": 3.08,
+          "end": 3.66
         },
         {
           "text": "весом",
-          "start": 3.98,
-          "end": 4.52
+          "start": 3.66,
+          "end": 4.16
         },
         {
           "text": "в",
-          "start": 4.52,
-          "end": 4.78
+          "start": 4.16,
+          "end": 4.44
         },
         {
           "text": "22",
-          "start": 4.78,
-          "end": 5.32
+          "start": 4.44,
+          "end": 4.82
         },
         {
           "text": "гигабайта",
-          "start": 5.32,
-          "end": 6.32
+          "start": 4.82,
+          "end": 5.72
         },
         {
           "text": "дублированного",
-          "start": 6.32,
-          "end": 7.04
+          "start": 5.72,
+          "end": 6.44
         },
         {
           "text": "мусора,",
-          "start": 7.04,
-          "end": 7.54
+          "start": 6.44,
+          "end": 6.92
         },
         {
           "text": "сожравших",
-          "start": 8.0,
-          "end": 8.54
+          "start": 7.3,
+          "end": 7.88
         },
         {
           "text": "память",
-          "start": 8.54,
-          "end": 8.98
+          "start": 7.88,
+          "end": 8.32
         },
         {
           "text": "корабля",
-          "start": 8.98,
-          "end": 9.48
+          "start": 8.32,
+          "end": 8.78
         }
-      ]
+      ],
+      "tts_text": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля",
+      "request_id": "BZlWtwFMWeBtxAaD4NIP",
+      "repair": {
+        "method": "verified_numeric_retake",
+        "reason": "unintelligible reading of digits",
+        "source": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
+        "heard": "346 мутировавших копий пакета общим весом в 22 гигабайта дублированного мусора, сожравших память корабля.",
+        "alignmentReview": []
+      }
     },
     "VERDICT.P006": {
       "text": "и завершившихся невозмутимым отчётом Кристиана: «oops».",

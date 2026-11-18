@@ -2181,14 +2181,6 @@
       "sha256": "f8e210cab504ea22841ec49a320785e72620fd126824e2f49e416bbba8cb29ce"
     },
     {
-      "id": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
-      "label": "PROLOGUE.P018",
-      "duration": 8.4985,
-      "sha256": "3427c2272e9cb1200a6b0c6efa76c6c7cef4c9fa5d9c95dd081bee7187ea8ef4"
-    },
-    {
       "id": "audio:media/interactive/chronicles/voice/e047ed0a7d923de9e1c5f0c6.mp3",
       "kind": "audio",
       "path": "media/interactive/chronicles/voice/e047ed0a7d923de9e1c5f0c6.mp3",
@@ -2299,22 +2291,6 @@
       "label": "INTRO.P010",
       "duration": 3.2044,
       "sha256": "852eaf4584ac77674afe2103aa50d508d2a96f800cda062882850cd80e5c5bd3"
-    },
-    {
-      "id": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
-      "label": "HANDOFF-01",
-      "duration": 14.4428,
-      "sha256": "720f40a66d7d61b24c771cebcde0dbfda83e0e4c7b5add618c5b093ece28868f"
-    },
-    {
-      "id": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
-      "label": "I-04.ВХОД",
-      "duration": 12.1208,
-      "sha256": "23eec2d55c4bc9b36103a595b3f5ee2a081247ec7f01242dcaae28ac0a001275"
     },
     {
       "id": "audio:media/interactive/chronicles/voice/089a05c6ae44ea2e5ea37de0.mp3",
@@ -2475,14 +2451,6 @@
       "label": "ROOM-I.P011",
       "duration": 7.4768,
       "sha256": "98f9a5acb058357d0d63d057ff2da460adf5e70f67a7f7a7ee903a50046acc2f"
-    },
-    {
-      "id": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
-      "label": "ROOM-I.P012",
-      "duration": 9.7524,
-      "sha256": "7bf0b776b5a9145f774392889b7e3de4ab8efa362dfe3586e8996ad94cccee21"
     },
     {
       "id": "audio:media/interactive/chronicles/voice/125a3eeabb5fa5aab244c4c5.mp3",
@@ -2915,14 +2883,6 @@
       "label": "ROOM-II.P007",
       "duration": 6.2229,
       "sha256": "4ebd9e265603c04fdf7847c74be61be56b5ba001c604cc2afcf10691be05fe53"
-    },
-    {
-      "id": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
-      "label": "ROOM-II.P008",
-      "duration": 14.9072,
-      "sha256": "340818ad30729ebe38ed62f4c49fcd6d9cd8c7744a97a2d90748022595764401"
     },
     {
       "id": "audio:media/interactive/chronicles/voice/429696861103c95234be17fd.mp3",
@@ -3731,14 +3691,6 @@
       "label": "VERDICT.P004",
       "duration": 3.436553,
       "sha256": "497cd4cddc7bd3644348deb821a4dda0d409614ef61f89c89cb8715f46e8daf2"
-    },
-    {
-      "id": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
-      "label": "VERDICT.P005",
-      "duration": 9.891701,
-      "sha256": "abb7dc41b38d79a0cade237e37f56ab836c462adbd01397b99ed74764b353139"
     },
     {
       "id": "audio:media/interactive/chronicles/voice/8ae410e4d48c80e1bf11eeeb.mp3",
@@ -4574,6 +4526,60 @@
       "id": "image:ai_lord_calm_singing",
       "kind": "image",
       "key": "ai_lord_calm_singing"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+      "label": "I-04.ВХОД",
+      "duration": 10.250816,
+      "sha256": "f47f903046fedc06f58ba9d39a9f25392d1f43230ab2d193eb51f8d686f4455e"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
+      "label": "HANDOFF-01",
+      "duration": 11.8886,
+      "sha256": "650f611b4ec7aae4836863bd1241a8778a8b3e1c73a66b2a47ac688fcfb85919"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+      "label": "PROLOGUE.P018",
+      "duration": 2.86,
+      "sha256": "471a38869c6176d5e9ba648987ea517e463090b13547c7cd70e3f4c15295fdbd"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+      "label": "ROOM-II.P008",
+      "duration": 14.347211,
+      "sha256": "661d0303df9535e8b184ce929eb41ccce4bd870f6d90c2c5543438222a0f786e"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3",
+      "label": "VERDICT.P005",
+      "duration": 9.1951,
+      "sha256": "84895b078d754bff4df7aea3ad896466f8814c9422a31491c59986274e79a29c"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+      "label": "ROOM-I.P012",
+      "duration": 9.9846,
+      "sha256": "93698fc24ab58b74aaab23abe45f59eaa194fb1b28ee7bc3fd6ed65132b42831"
+    },
+    {
+      "id": "audio:melodic_tension_mournful_vocal_drone",
+      "kind": "audio",
+      "key": "melodic_tension_mournful_vocal_drone",
+      "label": "melodic_tension_mournful_vocal_drone"
     }
   ],
   "utterances": [
@@ -6752,44 +6758,44 @@
       "subtitleText": null,
       "sourceLine": 82,
       "textHash": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05",
-      "duration": 8.4985,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+      "duration": 2.86,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
       "audioTextHash": "bbf3e7e7db1c857ace786ded3937bfe4983f5bbdd8863564d45c3d76aaa28f05",
       "words": [
         {
           "text": "А",
           "start": 0,
-          "end": 0.093
+          "end": 0.14
         },
         {
           "text": "когда",
-          "start": 0.186,
-          "end": 0.43
+          "start": 0.14,
+          "end": 0.36
         },
         {
           "text": "завершается",
-          "start": 0.476,
-          "end": 1.103
+          "start": 0.36,
+          "end": 1.06
         },
         {
           "text": "недельный",
-          "start": 1.173,
-          "end": 1.707
+          "start": 1.06,
+          "end": 1.7
         },
         {
           "text": "круг",
-          "start": 1.753,
-          "end": 1.962
+          "start": 1.7,
+          "end": 1.86
         },
         {
           "text": "страданий",
-          "start": 2.009,
-          "end": 2.659
+          "start": 1.86,
+          "end": 2.52
         },
         {
           "text": "—",
-          "start": 2.752,
-          "end": 8.499
+          "start": 2.52,
+          "end": 2.52
         }
       ]
     },
@@ -7577,104 +7583,104 @@
       "subtitleText": null,
       "sourceLine": 140,
       "textHash": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e",
-      "duration": 14.4428,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
+      "duration": 11.8886,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
       "audioTextHash": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e",
       "words": [
         {
           "text": "Толя,",
           "start": 0,
-          "end": 0.569
+          "end": 0.534
         },
         {
           "text": "тебе",
-          "start": 0.627,
+          "start": 0.65,
           "end": 0.94
         },
         {
           "text": "слово.",
-          "start": 0.998,
-          "end": 1.637
+          "start": 0.987,
+          "end": 1.625
         },
         {
           "text": "Покажи",
-          "start": 1.753,
-          "end": 2.218
+          "start": 1.869,
+          "end": 2.345
         },
         {
           "text": "новые",
-          "start": 2.287,
-          "end": 2.601
+          "start": 2.415,
+          "end": 2.728
         },
         {
           "text": "билды,",
-          "start": 2.647,
-          "end": 3.193
+          "start": 2.775,
+          "end": 3.344
         },
         {
           "text": "общий",
-          "start": 3.402,
-          "end": 3.796
+          "start": 3.587,
+          "end": 3.982
         },
         {
           "text": "поток",
-          "start": 3.843,
-          "end": 4.191
+          "start": 4.04,
+          "end": 4.4
         },
         {
           "text": "недели",
-          "start": 4.261,
-          "end": 4.748
+          "start": 4.47,
+          "end": 5.004
         },
         {
           "text": "и",
-          "start": 4.83,
-          "end": 4.899
+          "start": 5.12,
+          "end": 5.201
         },
         {
           "text": "прошлую",
-          "start": 4.969,
-          "end": 5.422
+          "start": 5.271,
+          "end": 5.724
         },
         {
           "text": "домашку.",
-          "start": 5.492,
-          "end": 6.235
+          "start": 5.793,
+          "end": 6.56
         },
         {
           "text": "Слово",
-          "start": 6.676,
-          "end": 7.082
+          "start": 7.001,
+          "end": 7.419
         },
         {
           "text": "«готово»",
-          "start": 7.105,
-          "end": 10.588
+          "start": 7.442,
+          "end": 8.115
         },
         {
           "text": "желательно",
-          "start": 10.762,
-          "end": 11.413
+          "start": 8.29,
+          "end": 8.928
         },
         {
           "text": "подтвердить",
-          "start": 11.459,
-          "end": 12.074
+          "start": 8.975,
+          "end": 9.555
         },
         {
           "text": "чем-нибудь,",
-          "start": 12.109,
-          "end": 12.806
+          "start": 9.578,
+          "end": 10.263
         },
         {
           "text": "кроме",
-          "start": 12.841,
-          "end": 13.189
+          "start": 10.298,
+          "end": 10.623
         },
         {
           "text": "интонации.",
-          "start": 13.247,
-          "end": 14.443
+          "start": 10.681,
+          "end": 11.889
         }
       ]
     },
@@ -7684,104 +7690,104 @@
       "subtitleText": null,
       "sourceLine": 160,
       "textHash": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2",
-      "duration": 12.1208,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+      "duration": 10.250816,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
       "audioTextHash": "d4ad30432ccce25ba9fa867f2ca676d4a6fc48bea4f196a1489d610875aa46a2",
       "words": [
         {
           "text": "Толя,",
           "start": 0,
-          "end": 0.499
+          "end": 0.32
         },
         {
           "text": "спасибо.",
-          "start": 0.627,
-          "end": 1.428
+          "start": 0.64,
+          "end": 1.02
         },
         {
           "text": "Следующую",
-          "start": 1.811,
-          "end": 2.438
+          "start": 1.74,
+          "end": 2.44
         },
         {
           "text": "страницу",
-          "start": 2.485,
-          "end": 3.1
+          "start": 2.44,
+          "end": 2.98
         },
         {
           "text": "я",
-          "start": 3.228,
-          "end": 3.32
+          "start": 2.98,
+          "end": 3.3
         },
         {
           "text": "поставил",
-          "start": 3.379,
-          "end": 3.82
+          "start": 3.3,
+          "end": 3.8
         },
         {
           "text": "на",
-          "start": 3.878,
-          "end": 3.947
+          "start": 3.8,
+          "end": 3.96
         },
         {
           "text": "кон.",
-          "start": 4.017,
-          "end": 4.412
+          "start": 3.96,
+          "end": 4.22
         },
         {
           "text": "Играем",
-          "start": 4.795,
-          "end": 5.317
+          "start": 4.78,
+          "end": 5.3
         },
         {
           "text": "в",
-          "start": 5.41,
-          "end": 5.526
+          "start": 5.3,
+          "end": 5.52
         },
         {
           "text": "«Кто",
-          "start": 5.55,
-          "end": 6.374
+          "start": 5.52,
+          "end": 5.82
         },
         {
           "text": "хочет",
-          "start": 6.432,
-          "end": 6.699
+          "start": 5.82,
+          "end": 6.04
         },
         {
           "text": "стать",
-          "start": 6.734,
-          "end": 6.943
+          "start": 6.04,
+          "end": 6.32
         },
         {
           "text": "миллионером».",
-          "start": 6.978,
-          "end": 7.674
+          "start": 6.32,
+          "end": 7.42
         },
         {
           "text": "Главный",
-          "start": 8.057,
-          "end": 8.464
+          "start": 7.42,
+          "end": 7.9
         },
         {
           "text": "приз",
-          "start": 8.499,
-          "end": 8.707
+          "start": 7.9,
+          "end": 8.12
         },
         {
           "text": "—",
-          "start": 8.731,
-          "end": 10.147
+          "start": 8.12,
+          "end": 8.12
         },
         {
           "text": "продолжение",
-          "start": 10.275,
-          "end": 10.96
+          "start": 8.36,
+          "end": 9.02
         },
         {
           "text": "совещания.",
-          "start": 11.018,
-          "end": 12.121
+          "start": 9.02,
+          "end": 9.7
         }
       ]
     },
@@ -9491,89 +9497,89 @@
       "subtitleText": null,
       "sourceLine": 307,
       "textHash": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428",
-      "duration": 9.7524,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3",
+      "duration": 9.9846,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
       "audioTextHash": "ec1563e2a42f58401309be52fb92ca9ab636f3ec2fb838911dda862935fbc428",
       "words": [
         {
           "text": "А",
           "start": 0,
-          "end": 0.093
+          "end": 0.14
         },
         {
           "text": "в",
-          "start": 0.163,
-          "end": 0.186
+          "start": 0.14,
+          "end": 0.24
         },
         {
           "text": "четверг",
-          "start": 0.279,
-          "end": 0.778
+          "start": 0.24,
+          "end": 0.84
         },
         {
           "text": "у",
-          "start": 0.859,
-          "end": 0.882
+          "start": 0.84,
+          "end": 1.02
         },
         {
           "text": "кремниевой",
-          "start": 0.929,
-          "end": 1.463
+          "start": 1.02,
+          "end": 1.5
         },
         {
           "text": "железяки",
-          "start": 1.521,
-          "end": 2.078
+          "start": 1.5,
+          "end": 2.18
         },
         {
           "text": "окончательно",
-          "start": 2.148,
-          "end": 3.065
+          "start": 2.18,
+          "end": 2.98
         },
         {
           "text": "сорвало",
-          "start": 3.111,
-          "end": 3.576
+          "start": 2.98,
+          "end": 3.56
         },
         {
           "text": "крышу,",
-          "start": 3.634,
-          "end": 4.145
+          "start": 3.56,
+          "end": 4.2
         },
         {
           "text": "и",
-          "start": 4.18,
-          "end": 4.226
+          "start": 4.38,
+          "end": 4.44
         },
         {
           "text": "он",
-          "start": 4.272,
-          "end": 4.377
+          "start": 4.44,
+          "end": 4.56
         },
         {
           "text": "выкатил",
-          "start": 4.435,
-          "end": 4.83
+          "start": 4.56,
+          "end": 5.04
         },
         {
           "text": "сводку:",
-          "start": 4.899,
-          "end": 5.561
+          "start": 5.04,
+          "end": 5.68
         },
         {
           "text": "1783",
-          "start": 5.944,
-          "end": 8.022
+          "start": 6.24,
+          "end": 8.08
         },
         {
           "text": "сданных",
-          "start": 8.197,
-          "end": 8.731
+          "start": 8.08,
+          "end": 8.92
         },
         {
           "text": "плейбла.",
-          "start": 8.8,
-          "end": 9.752
+          "start": 8.92,
+          "end": 9.56
         }
       ]
     },
@@ -13466,149 +13472,149 @@
       "subtitleText": null,
       "sourceLine": 612,
       "textHash": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f",
-      "duration": 14.9072,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+      "duration": 14.347211,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
       "audioTextHash": "3f244b69185c7fb5227be2cb79030b7ce8c11674f3d240aa85ffc67a2258d97f",
       "words": [
         {
           "text": "В",
           "start": 0,
-          "end": 0.093
+          "end": 0.14
         },
         {
           "text": "пятницу",
-          "start": 0.174,
-          "end": 0.72
+          "start": 0.14,
+          "end": 0.64
         },
         {
           "text": "Горин",
-          "start": 0.801,
-          "end": 1.057
+          "start": 0.64,
+          "end": 1.06
         },
         {
           "text": "лично",
-          "start": 1.138,
-          "end": 1.486
+          "start": 1.06,
+          "end": 1.48
         },
         {
           "text": "проверил",
-          "start": 1.533,
-          "end": 1.916
+          "start": 1.48,
+          "end": 1.92
         },
         {
           "text": "шланги:",
-          "start": 1.997,
-          "end": 2.682
+          "start": 1.92,
+          "end": 2.46
         },
         {
           "text": "приказал",
-          "start": 2.763,
-          "end": 3.344
+          "start": 2.78,
+          "end": 3.36
         },
         {
           "text": "срочно",
-          "start": 3.413,
-          "end": 3.878
+          "start": 3.36,
+          "end": 3.88
         },
         {
           "text": "выдать",
-          "start": 3.924,
-          "end": 4.214
+          "start": 3.88,
+          "end": 4.18
         },
         {
           "text": "Новообращённому",
-          "start": 4.261,
-          "end": 5.259
+          "start": 4.18,
+          "end": 5.26
         },
         {
           "text": "Послушнику",
-          "start": 5.329,
-          "end": 6.037
+          "start": 5.26,
+          "end": 6
         },
         {
           "text": "Алексею",
-          "start": 6.118,
-          "end": 6.711
+          "start": 6,
+          "end": 6.72
         },
         {
           "text": "2D-плейбак,",
-          "start": 6.885,
-          "end": 8.034
+          "start": 6.72,
+          "end": 7.84
         },
         {
           "text": "«а",
-          "start": 8.15,
-          "end": 8.452
+          "start": 8.22,
+          "end": 8.46
         },
         {
           "text": "то",
-          "start": 8.475,
-          "end": 8.707
+          "start": 8.46,
+          "end": 8.62
         },
         {
           "text": "он",
-          "start": 8.8,
-          "end": 8.986
+          "start": 8.62,
+          "end": 8.94
         },
         {
           "text": "отвалится",
-          "start": 9.044,
-          "end": 9.613
+          "start": 8.94,
+          "end": 9.56
         },
         {
           "text": "так",
-          "start": 9.683,
-          "end": 9.868
+          "start": 9.56,
+          "end": 9.8
         },
         {
           "text": "и",
-          "start": 9.915,
-          "end": 10.356
+          "start": 9.8,
+          "end": 9.94
         },
         {
           "text": "не",
-          "start": 10.472,
-          "end": 10.565
+          "start": 9.94,
+          "end": 10.04
         },
         {
           "text": "стартанув».",
-          "start": 10.6,
-          "end": 11.366
+          "start": 10.04,
+          "end": 10.96
         },
         {
           "text": "Следите",
-          "start": 11.54,
-          "end": 12.086
+          "start": 10.96,
+          "end": 11.48
         },
         {
           "text": "за",
-          "start": 12.144,
-          "end": 12.237
+          "start": 11.48,
+          "end": 11.68
         },
         {
           "text": "давлением",
-          "start": 12.272,
-          "end": 12.701
+          "start": 11.68,
+          "end": 12.04
         },
         {
           "text": "в",
-          "start": 12.725,
-          "end": 12.748
+          "start": 12.04,
+          "end": 12.22
         },
         {
           "text": "трубках,",
-          "start": 12.806,
-          "end": 13.317
+          "start": 12.22,
+          "end": 12.68
         },
         {
           "text": "господа",
-          "start": 13.433,
-          "end": 13.886
+          "start": 12.92,
+          "end": 13.3
         },
         {
           "text": "проджекты.",
-          "start": 13.932,
-          "end": 14.907
+          "start": 13.3,
+          "end": 13.96
         }
       ]
     },
@@ -23178,79 +23184,79 @@
       "subtitleText": null,
       "sourceLine": 1314,
       "textHash": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d",
-      "duration": 9.891701,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3",
+      "duration": 9.1951,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3",
       "audioTextHash": "cc97fdc23ad8f87c9baa5bb1f61a5484d52015e7764a71f1dae3a28e97a9f30d",
       "words": [
         {
           "text": "346",
           "start": 0,
-          "end": 0.9
+          "end": 1.24
         },
         {
           "text": "мутировавших",
-          "start": 0.9,
-          "end": 2.46
+          "start": 1.24,
+          "end": 2.2
         },
         {
           "text": "копий",
-          "start": 2.46,
-          "end": 2.9
+          "start": 2.2,
+          "end": 2.66
         },
         {
           "text": "пакета",
-          "start": 2.9,
-          "end": 3.34
+          "start": 2.66,
+          "end": 3.08
         },
         {
           "text": "общим",
-          "start": 3.34,
-          "end": 3.98
+          "start": 3.08,
+          "end": 3.66
         },
         {
           "text": "весом",
-          "start": 3.98,
-          "end": 4.52
+          "start": 3.66,
+          "end": 4.16
         },
         {
           "text": "в",
-          "start": 4.52,
-          "end": 4.78
+          "start": 4.16,
+          "end": 4.44
         },
         {
           "text": "22",
-          "start": 4.78,
-          "end": 5.32
+          "start": 4.44,
+          "end": 4.82
         },
         {
           "text": "гигабайта",
-          "start": 5.32,
-          "end": 6.32
+          "start": 4.82,
+          "end": 5.72
         },
         {
           "text": "дублированного",
-          "start": 6.32,
-          "end": 7.04
+          "start": 5.72,
+          "end": 6.44
         },
         {
           "text": "мусора,",
-          "start": 7.04,
-          "end": 7.54
+          "start": 6.44,
+          "end": 6.92
         },
         {
           "text": "сожравших",
-          "start": 8,
-          "end": 8.54
+          "start": 7.3,
+          "end": 7.88
         },
         {
           "text": "память",
-          "start": 8.54,
-          "end": 8.98
+          "start": 7.88,
+          "end": 8.32
         },
         {
           "text": "корабля",
-          "start": 8.98,
-          "end": 9.48
+          "start": 8.32,
+          "end": 8.78
         }
       ]
     },
@@ -25419,6 +25425,35 @@
   ],
   "scenes": [
     {
+      "id": "OPENING",
+      "title": "Заставка",
+      "kind": "intro",
+      "utteranceIds": [],
+      "duration": 45.5,
+      "opening": {
+        "trackKey": "desolate_cry",
+        "logoDisperseTime": 19.5,
+        "logoFadeOutTime": 23.5,
+        "titleDropTime": 27,
+        "titleFadeOutTime": 33.5,
+        "cycleStartTime": 35.5,
+        "cycleFadeOutTime": 40.5,
+        "introEndTime": 45.5,
+        "disclaimerStart": 0.4,
+        "disclaimerTypeEnd": 5.4,
+        "disclaimerHoldEnd": 6.8,
+        "disclaimerFadeEnd": 7.8,
+        "disclaimerText": "Настоящий материал создан с применением генеративного ИИ и не отражает точку зрения компании либо её представителей. Содержание основано на анализе реальных рабочих данных.",
+        "skullLogoKey": "playbox_skull_logo",
+        "studioLogoKey": "playbox_real_logo",
+        "seriesLogoKey": "series_title_logo",
+        "studiosText": "STUDIOS",
+        "presentsText": "PRESENTS",
+        "seriesSubtitle": "[ ХРОНИКИ ПРОДАКШН-КОВЧЕГА ]",
+        "cycleText": "[ ЧЕТЫРНАДЦАТЫЙ ЦИКЛ ]"
+      }
+    },
+    {
       "id": "PROLOGUE",
       "title": "Пролог",
       "kind": "intro",
@@ -25446,7 +25481,12 @@
         "PROLOGUE.P021",
         "PROLOGUE.P022"
       ],
-      "duration": 231.3171
+      "duration": 225.6786,
+      "transition": {
+        "type": "line_lr",
+        "duration": 2.4,
+        "randomSound": true
+      }
     },
     {
       "id": "INTRO",
@@ -25464,7 +25504,12 @@
         "INTRO.P009",
         "INTRO.P010"
       ],
-      "duration": 57.539
+      "duration": 57.539,
+      "transition": {
+        "type": "line_rl",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "HANDOFF-01",
@@ -25473,7 +25518,7 @@
       "utteranceIds": [
         "HANDOFF-01"
       ],
-      "duration": 14.4428
+      "duration": 11.8886
     },
     {
       "id": "GAME-I-04",
@@ -25490,7 +25535,7 @@
         "I-04.ПОВТОР",
         "I-04.ВЕРНО"
       ],
-      "duration": 51.6968
+      "duration": 49.826816
     },
     {
       "id": "SHARED-I-04",
@@ -25531,7 +25576,12 @@
         "ROOM-I.P023",
         "ROOM-I.P024"
       ],
-      "duration": 189.7441
+      "duration": 189.9763,
+      "transition": {
+        "type": "line_tb",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "HANDOFF-02",
@@ -25611,7 +25661,12 @@
         "ROOM-II.P013",
         "ROOM-II.P014"
       ],
-      "duration": 161.564
+      "duration": 161.004011,
+      "transition": {
+        "type": "circle_iris",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "HANDOFF-03",
@@ -25662,7 +25717,12 @@
         "ROOM-III.P007",
         "ROOM-III.P008"
       ],
-      "duration": 133.3104
+      "duration": 133.3104,
+      "transition": {
+        "type": "circle_iris_corner",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "HANDOFF-04",
@@ -25729,7 +25789,12 @@
         "ROOM-IV.P022",
         "ROOM-IV.P023"
       ],
-      "duration": 231.2984
+      "duration": 231.2984,
+      "transition": {
+        "type": "line_lr",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "HANDOFF-05",
@@ -25802,7 +25867,12 @@
         "ROOM-V.P003",
         "ROOM-V.P004"
       ],
-      "duration": 35.99093
+      "duration": 35.99093,
+      "transition": {
+        "type": "line_rl",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "VERDICT",
@@ -25832,7 +25902,12 @@
         "VERDICT.P021",
         "VERDICT.P022"
       ],
-      "duration": 208.004173
+      "duration": 207.307572,
+      "transition": {
+        "type": "line_tb",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "EPILOGUE",
@@ -25848,14 +25923,24 @@
         "EPILOGUE.P007",
         "EPILOGUE.P008"
       ],
-      "duration": 50.879547
+      "duration": 50.879547,
+      "transition": {
+        "type": "circle_iris",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "DIRECTIVES",
       "title": "Директивы Лорда",
       "kind": "epilogue",
       "utteranceIds": [],
-      "duration": 30
+      "duration": 30,
+      "transition": {
+        "type": "circle_iris_corner",
+        "duration": 2.4,
+        "randomSound": false
+      }
     },
     {
       "id": "GAME-COMMON",
@@ -25917,7 +26002,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 231.3171
+        "offset": 225.6786
       }
     },
     {
@@ -26466,7 +26551,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 231.3171
+        "offset": 225.6786
       }
     },
     {
@@ -26858,7 +26943,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 14.4428
+        "offset": 11.8886
       }
     },
     {
@@ -26878,7 +26963,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 14.4428
+        "offset": 11.8886
       },
       "audioCommand": {
         "action": "silence",
@@ -26937,7 +27022,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 12.1208
+        "offset": 10.250816
       }
     },
     {
@@ -26945,7 +27030,7 @@
       "sceneId": "GAME-I-04",
       "start": {
         "type": "scene",
-        "offset": 12.1208
+        "offset": 10.250816
       },
       "trackId": "V1",
       "kind": "frame",
@@ -26962,7 +27047,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 51.6968
+        "offset": 49.826816
       }
     },
     {
@@ -26970,7 +27055,7 @@
       "sceneId": "GAME-I-04",
       "start": {
         "type": "scene",
-        "offset": 15.1208
+        "offset": 13.250816
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -27200,7 +27285,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 51.6968
+        "offset": 49.826816
       },
       "audioCommand": {
         "action": "duck",
@@ -27273,7 +27358,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 51.6968
+        "offset": 49.826816
       },
       "audioCommand": {
         "action": "silence",
@@ -27505,7 +27590,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 189.7441
+        "offset": 189.9763
       }
     },
     {
@@ -27866,7 +27951,7 @@
       "duckBaseTo": 0.005,
       "end": {
         "type": "scene",
-        "offset": 189.7441
+        "offset": 189.9763
       }
     },
     {
@@ -27980,7 +28065,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 100.0502
+        "offset": 100.2824
       }
     },
     {
@@ -27988,7 +28073,7 @@
       "sceneId": "ROOM-I",
       "start": {
         "type": "scene",
-        "offset": 100.0502
+        "offset": 100.2824
       },
       "trackId": "V1",
       "kind": "frame",
@@ -28005,7 +28090,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 114.2236
+        "offset": 114.4558
       }
     },
     {
@@ -28013,7 +28098,7 @@
       "sceneId": "ROOM-I",
       "start": {
         "type": "scene",
-        "offset": 103.0502
+        "offset": 103.2824
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -28062,7 +28147,7 @@
       "sceneId": "ROOM-I",
       "start": {
         "type": "scene",
-        "offset": 114.2236
+        "offset": 114.4558
       },
       "trackId": "V1",
       "kind": "frame",
@@ -28089,7 +28174,7 @@
       "sceneId": "ROOM-I",
       "start": {
         "type": "scene",
-        "offset": 117.2236
+        "offset": 117.4558
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -28361,7 +28446,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 189.7441
+        "offset": 189.9763
       }
     },
     {
@@ -29637,7 +29722,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 161.564
+        "offset": 161.004011
       }
     },
     {
@@ -29971,7 +30056,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 108.7526
+        "offset": 108.192611
       }
     },
     {
@@ -29979,7 +30064,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 82.8671
+        "offset": 82.307111
       },
       "trackId": "V1",
       "kind": "frame",
@@ -29996,7 +30081,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 88.8671
+        "offset": 88.307111
       }
     },
     {
@@ -30004,7 +30089,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 85.8671
+        "offset": 85.307111
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -30024,7 +30109,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 88.8671
+        "offset": 88.307111
       },
       "trackId": "V1",
       "kind": "frame",
@@ -30051,7 +30136,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 91.8671
+        "offset": 91.307111
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -30071,7 +30156,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 108.7526
+        "offset": 108.192611
       },
       "trackId": "V1",
       "kind": "frame",
@@ -30098,7 +30183,7 @@
       "sceneId": "ROOM-II",
       "start": {
         "type": "scene",
-        "offset": 111.7526
+        "offset": 111.192611
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -30251,7 +30336,7 @@
       "duckBaseTo": 0,
       "end": {
         "type": "scene",
-        "offset": 161.564
+        "offset": 161.004011
       }
     },
     {
@@ -34352,7 +34437,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 208.004173
+        "offset": 207.307572
       }
     },
     {
@@ -34587,7 +34672,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 43.941406
+        "offset": 43.244805
       }
     },
     {
@@ -34595,7 +34680,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 43.941406
+        "offset": 43.244805
       },
       "trackId": "V1",
       "kind": "frame",
@@ -34622,7 +34707,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 46.941406
+        "offset": 46.244805
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -34688,7 +34773,7 @@
       "duckBaseTo": 0.005,
       "end": {
         "type": "scene",
-        "offset": 208.004173
+        "offset": 207.307572
       }
     },
     {
@@ -34860,7 +34945,7 @@
       "duckBaseTo": 0,
       "end": {
         "type": "scene",
-        "offset": 208.004173
+        "offset": 207.307572
       }
     },
     {
@@ -34887,7 +34972,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 114.260681
+        "offset": 113.56408
       }
     },
     {
@@ -34895,7 +34980,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 114.260681
+        "offset": 113.56408
       },
       "trackId": "V1",
       "kind": "frame",
@@ -34922,7 +35007,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 117.260681
+        "offset": 116.56408
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -34961,7 +35046,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 132.242178
+        "offset": 131.545577
       }
     },
     {
@@ -34969,7 +35054,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 132.242178
+        "offset": 131.545577
       },
       "trackId": "V1",
       "kind": "frame",
@@ -34996,7 +35081,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 135.242178
+        "offset": 134.545577
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -35122,7 +35207,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 186.493243
+        "offset": 185.796642
       }
     },
     {
@@ -35151,7 +35236,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 186.493243
+        "offset": 185.796642
       },
       "trackId": "V1",
       "kind": "frame",
@@ -35178,7 +35263,7 @@
       "sceneId": "VERDICT",
       "start": {
         "type": "scene",
-        "offset": 189.493243
+        "offset": 188.796642
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -35246,7 +35331,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 208.004173
+        "offset": 207.307572
       }
     },
     {
@@ -35698,7 +35783,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 161.564
+        "offset": 161.004011
       }
     },
     {
@@ -35754,7 +35839,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 82.8671
+        "offset": 82.307111
       }
     },
     {
@@ -36423,9 +36508,9 @@
         "type": "scene",
         "offset": 213.2055
       },
-      "duration": 8.4985,
+      "duration": 2.86,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3"
     },
     {
       "id": "subtitle.PROLOGUE.P018",
@@ -36456,7 +36541,7 @@
       "label": "PROLOGUE.P019",
       "start": {
         "type": "scene",
-        "offset": 221.704
+        "offset": 216.0655
       },
       "duration": 2.322,
       "gain": 1,
@@ -36491,7 +36576,7 @@
       "label": "PROLOGUE.P020",
       "start": {
         "type": "scene",
-        "offset": 224.026
+        "offset": 218.3875
       },
       "duration": 2.6471,
       "gain": 1,
@@ -36526,7 +36611,7 @@
       "label": "PROLOGUE.P021",
       "start": {
         "type": "scene",
-        "offset": 226.6731
+        "offset": 221.0346
       },
       "duration": 2.0434,
       "gain": 1,
@@ -36561,7 +36646,7 @@
       "label": "PROLOGUE.P022",
       "start": {
         "type": "scene",
-        "offset": 228.7165
+        "offset": 223.078
       },
       "duration": 2.6006,
       "gain": 1,
@@ -36948,9 +37033,9 @@
         "type": "scene",
         "offset": 0
       },
-      "duration": 14.4428,
+      "duration": 11.8886,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3"
     },
     {
       "id": "subtitle.HANDOFF-01",
@@ -36983,9 +37068,9 @@
         "type": "scene",
         "offset": 0
       },
-      "duration": 12.1208,
+      "duration": 10.250816,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+      "assetId": "audio:media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
       "event": "I-04.ВХОД"
     },
     {
@@ -37018,7 +37103,7 @@
       "label": "I-04.КОНТЕКСТ",
       "start": {
         "type": "scene",
-        "offset": 18.1208
+        "offset": 16.250816
       },
       "duration": 2.9257,
       "gain": 1,
@@ -37055,7 +37140,7 @@
       "label": "I-04.ВОПРОС",
       "start": {
         "type": "scene",
-        "offset": 21.0465
+        "offset": 19.176516
       },
       "duration": 3.7616,
       "gain": 1,
@@ -37092,7 +37177,7 @@
       "label": "I-04.ОШИБКА.A",
       "start": {
         "type": "scene",
-        "offset": 24.8081
+        "offset": 22.938116
       },
       "duration": 5.8514,
       "gain": 1,
@@ -37129,7 +37214,7 @@
       "label": "I-04.ОШИБКА.B",
       "start": {
         "type": "scene",
-        "offset": 30.6595
+        "offset": 28.789516
       },
       "duration": 3.3901,
       "gain": 1,
@@ -37166,7 +37251,7 @@
       "label": "I-04.ОШИБКА.D",
       "start": {
         "type": "scene",
-        "offset": 34.0496
+        "offset": 32.179616
       },
       "duration": 4.226,
       "gain": 1,
@@ -37203,7 +37288,7 @@
       "label": "I-04.ПУСТО",
       "start": {
         "type": "scene",
-        "offset": 38.2756
+        "offset": 36.405616
       },
       "duration": 4.7369,
       "gain": 1,
@@ -37240,7 +37325,7 @@
       "label": "I-04.ПОВТОР",
       "start": {
         "type": "scene",
-        "offset": 43.0125
+        "offset": 41.142516
       },
       "duration": 4.8298,
       "gain": 1,
@@ -37277,7 +37362,7 @@
       "label": "I-04.ВЕРНО",
       "start": {
         "type": "scene",
-        "offset": 47.8423
+        "offset": 45.972316
       },
       "duration": 3.8545,
       "gain": 1,
@@ -37736,9 +37821,9 @@
         "type": "scene",
         "offset": 80.5454
       },
-      "duration": 9.7524,
+      "duration": 9.9846,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3"
     },
     {
       "id": "subtitle.ROOM-I.P012",
@@ -37769,7 +37854,7 @@
       "label": "ROOM-I.P013",
       "start": {
         "type": "scene",
-        "offset": 90.2978
+        "offset": 90.53
       },
       "duration": 9.7524,
       "gain": 1,
@@ -37804,7 +37889,7 @@
       "label": "ROOM-I.P014",
       "start": {
         "type": "scene",
-        "offset": 106.0502
+        "offset": 106.2824
       },
       "duration": 4.4582,
       "gain": 1,
@@ -37839,7 +37924,7 @@
       "label": "ROOM-I.P015",
       "start": {
         "type": "scene",
-        "offset": 110.5084
+        "offset": 110.7406
       },
       "duration": 3.7152,
       "gain": 1,
@@ -37874,7 +37959,7 @@
       "label": "ROOM-I.P016",
       "start": {
         "type": "scene",
-        "offset": 120.2236
+        "offset": 120.4558
       },
       "duration": 10.5419,
       "gain": 1,
@@ -37909,7 +37994,7 @@
       "label": "ROOM-I.P017",
       "start": {
         "type": "scene",
-        "offset": 130.7655
+        "offset": 130.9977
       },
       "duration": 2.6471,
       "gain": 1,
@@ -37944,7 +38029,7 @@
       "label": "ROOM-I.P018",
       "start": {
         "type": "scene",
-        "offset": 133.4126
+        "offset": 133.6448
       },
       "duration": 17.2292,
       "gain": 1,
@@ -37979,7 +38064,7 @@
       "label": "ROOM-I.P019",
       "start": {
         "type": "scene",
-        "offset": 150.6418
+        "offset": 150.874
       },
       "duration": 7.3375,
       "gain": 1,
@@ -38014,7 +38099,7 @@
       "label": "ROOM-I.P020",
       "start": {
         "type": "scene",
-        "offset": 157.9793
+        "offset": 158.2115
       },
       "duration": 5.8514,
       "gain": 1,
@@ -38049,7 +38134,7 @@
       "label": "ROOM-I.P021",
       "start": {
         "type": "scene",
-        "offset": 163.8307
+        "offset": 164.0629
       },
       "duration": 9.7059,
       "gain": 1,
@@ -38084,7 +38169,7 @@
       "label": "ROOM-I.P022",
       "start": {
         "type": "scene",
-        "offset": 173.5366
+        "offset": 173.7688
       },
       "duration": 7.8019,
       "gain": 1,
@@ -38119,7 +38204,7 @@
       "label": "ROOM-I.P023",
       "start": {
         "type": "scene",
-        "offset": 181.3385
+        "offset": 181.5707
       },
       "duration": 4.0867,
       "gain": 1,
@@ -38154,7 +38239,7 @@
       "label": "ROOM-I.P024",
       "start": {
         "type": "scene",
-        "offset": 185.4252
+        "offset": 185.6574
       },
       "duration": 4.3189,
       "gain": 1,
@@ -39729,9 +39814,9 @@
         "type": "scene",
         "offset": 67.9599
       },
-      "duration": 14.9072,
+      "duration": 14.347211,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3"
     },
     {
       "id": "subtitle.ROOM-II.P008",
@@ -39762,7 +39847,7 @@
       "label": "ROOM-II.P009",
       "start": {
         "type": "scene",
-        "offset": 94.8671
+        "offset": 94.307111
       },
       "duration": 13.8855,
       "gain": 1,
@@ -39797,7 +39882,7 @@
       "label": "ROOM-II.P010",
       "start": {
         "type": "scene",
-        "offset": 114.7526
+        "offset": 114.192611
       },
       "duration": 16.254,
       "gain": 1,
@@ -39832,7 +39917,7 @@
       "label": "ROOM-II.P011",
       "start": {
         "type": "scene",
-        "offset": 131.0066
+        "offset": 130.446611
       },
       "duration": 13.7462,
       "gain": 1,
@@ -39867,7 +39952,7 @@
       "label": "ROOM-II.P012",
       "start": {
         "type": "scene",
-        "offset": 144.7528
+        "offset": 144.192811
       },
       "duration": 7.5697,
       "gain": 1,
@@ -39902,7 +39987,7 @@
       "label": "ROOM-II.P013",
       "start": {
         "type": "scene",
-        "offset": 152.3225
+        "offset": 151.762511
       },
       "duration": 1.161,
       "gain": 1,
@@ -39937,7 +40022,7 @@
       "label": "ROOM-II.P014",
       "start": {
         "type": "scene",
-        "offset": 153.4835
+        "offset": 152.923511
       },
       "duration": 8.0805,
       "gain": 1,
@@ -43533,9 +43618,9 @@
         "type": "scene",
         "offset": 34.049705
       },
-      "duration": 9.891701,
+      "duration": 9.1951,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/cc97fdc23ad8f87c9baa5bb1-retake.mp3"
     },
     {
       "id": "subtitle.VERDICT.P005",
@@ -43566,7 +43651,7 @@
       "label": "VERDICT.P006",
       "start": {
         "type": "scene",
-        "offset": 49.941406
+        "offset": 49.244805
       },
       "duration": 7.105306,
       "gain": 1,
@@ -43601,7 +43686,7 @@
       "label": "VERDICT.P007",
       "start": {
         "type": "scene",
-        "offset": 57.046712
+        "offset": 56.350111
       },
       "duration": 9.427302,
       "gain": 1,
@@ -43636,7 +43721,7 @@
       "label": "VERDICT.P008",
       "start": {
         "type": "scene",
-        "offset": 66.474014
+        "offset": 65.777413
       },
       "duration": 8.823583,
       "gain": 1,
@@ -43671,7 +43756,7 @@
       "label": "VERDICT.P009",
       "start": {
         "type": "scene",
-        "offset": 75.297597
+        "offset": 74.600996
       },
       "duration": 10.17034,
       "gain": 1,
@@ -43706,7 +43791,7 @@
       "label": "VERDICT.P010",
       "start": {
         "type": "scene",
-        "offset": 85.467937
+        "offset": 84.771336
       },
       "duration": 7.476825,
       "gain": 1,
@@ -43741,7 +43826,7 @@
       "label": "VERDICT.P011",
       "start": {
         "type": "scene",
-        "offset": 92.944762
+        "offset": 92.248161
       },
       "duration": 10.913379,
       "gain": 1,
@@ -43776,7 +43861,7 @@
       "label": "VERDICT.P012",
       "start": {
         "type": "scene",
-        "offset": 103.858141
+        "offset": 103.16154
       },
       "duration": 10.40254,
       "gain": 1,
@@ -43811,7 +43896,7 @@
       "label": "VERDICT.P013",
       "start": {
         "type": "scene",
-        "offset": 120.260681
+        "offset": 119.56408
       },
       "duration": 5.24771,
       "gain": 1,
@@ -43846,7 +43931,7 @@
       "label": "VERDICT.P014",
       "start": {
         "type": "scene",
-        "offset": 125.508391
+        "offset": 124.81179
       },
       "duration": 6.733787,
       "gain": 1,
@@ -43881,7 +43966,7 @@
       "label": "VERDICT.P015",
       "start": {
         "type": "scene",
-        "offset": 138.242178
+        "offset": 137.545577
       },
       "duration": 14.117732,
       "gain": 1,
@@ -43916,7 +44001,7 @@
       "label": "VERDICT.P016",
       "start": {
         "type": "scene",
-        "offset": 152.35991
+        "offset": 151.663309
       },
       "duration": 8.126984,
       "gain": 1,
@@ -43951,7 +44036,7 @@
       "label": "VERDICT.P017",
       "start": {
         "type": "scene",
-        "offset": 160.486894
+        "offset": 159.790293
       },
       "duration": 2.182676,
       "gain": 1,
@@ -43986,7 +44071,7 @@
       "label": "VERDICT.P018",
       "start": {
         "type": "scene",
-        "offset": 162.66957
+        "offset": 161.972969
       },
       "duration": 9.98458,
       "gain": 1,
@@ -44021,7 +44106,7 @@
       "label": "VERDICT.P019",
       "start": {
         "type": "scene",
-        "offset": 172.65415
+        "offset": 171.957549
       },
       "duration": 13.839093,
       "gain": 1,
@@ -44056,7 +44141,7 @@
       "label": "VERDICT.P020",
       "start": {
         "type": "scene",
-        "offset": 192.493243
+        "offset": 191.796642
       },
       "duration": 7.709025,
       "gain": 1,
@@ -44091,7 +44176,7 @@
       "label": "VERDICT.P021",
       "start": {
         "type": "scene",
-        "offset": 200.202268
+        "offset": 199.505667
       },
       "duration": 4.643991,
       "gain": 1,
@@ -44126,7 +44211,7 @@
       "label": "VERDICT.P022",
       "start": {
         "type": "scene",
-        "offset": 204.846259
+        "offset": 204.149658
       },
       "duration": 3.157914,
       "gain": 1,
@@ -44520,7 +44605,7 @@
       },
       "end": {
         "type": "scene",
-        "offset": 51.6968
+        "offset": 49.826816
       },
       "transform": {
         "x": 0.5,
@@ -45150,6 +45235,162 @@
         "offset": 212.7
       },
       "duration": 8.75
+    },
+    {
+      "id": "opening.music",
+      "sceneId": "OPENING",
+      "trackId": "A2",
+      "kind": "audio",
+      "assetId": "audio:desolate_cry",
+      "label": "Исходная музыка заставки",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 45.5,
+      "gain": 1,
+      "fadeIn": 1.5,
+      "fadeOut": 0.6
+    },
+    {
+      "id": "transition.PROLOGUE",
+      "sceneId": "PROLOGUE",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_tension_riser_to_brutal_cut",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.INTRO",
+      "sceneId": "INTRO",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_braam_sub_drop",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.ROOM-I",
+      "sceneId": "ROOM-I",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:melodic_tension_mournful_vocal_drone",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.72
+    },
+    {
+      "id": "transition.ROOM-II",
+      "sceneId": "ROOM-II",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_tension_riser_to_brutal_cut",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.ROOM-III",
+      "sceneId": "ROOM-III",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_braam_sub_drop",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.ROOM-IV",
+      "sceneId": "ROOM-IV",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:melodic_tension_mournful_vocal_drone",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.72
+    },
+    {
+      "id": "transition.ROOM-V",
+      "sceneId": "ROOM-V",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_tension_riser_to_brutal_cut",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.VERDICT",
+      "sceneId": "VERDICT",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_braam_sub_drop",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
+    },
+    {
+      "id": "transition.EPILOGUE",
+      "sceneId": "EPILOGUE",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:melodic_tension_mournful_vocal_drone",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.72
+    },
+    {
+      "id": "transition.DIRECTIVES",
+      "sceneId": "DIRECTIVES",
+      "trackId": "A6",
+      "kind": "sfx",
+      "label": "Звук оптического перехода",
+      "assetId": "audio:trailer_tension_riser_to_brutal_cut",
+      "start": {
+        "type": "scene",
+        "offset": 0
+      },
+      "duration": 8,
+      "gain": 0.7
     }
   ],
   "stops": [
@@ -45501,6 +45742,10 @@
   "sequence": [
     {
       "kind": "scene",
+      "sceneId": "OPENING"
+    },
+    {
+      "kind": "scene",
       "sceneId": "PROLOGUE"
     },
     {
@@ -45584,6 +45829,50 @@
     {
       "kind": "scene",
       "sceneId": "SONG"
+    }
+  ],
+  "navigation": [
+    {
+      "id": "nav:opening",
+      "sceneId": "OPENING",
+      "title": "Заставка",
+      "sticker": "logo",
+      "at": {
+        "type": "scene",
+        "offset": 0
+      }
+    },
+    {
+      "id": "nav:prologue",
+      "sceneId": "PROLOGUE",
+      "title": "Пролог",
+      "sticker": "speech",
+      "at": {
+        "type": "scene",
+        "offset": 0
+      }
+    },
+    {
+      "id": "nav:verdict",
+      "sceneId": "VERDICT",
+      "title": "Вердикт",
+      "sticker": "punishment",
+      "at": {
+        "type": "scene",
+        "offset": 0
+      }
+    },
+    {
+      "id": "nav:reward",
+      "sceneId": "VERDICT",
+      "title": "Высшая милость",
+      "sticker": "reward",
+      "at": {
+        "type": "utterance",
+        "utteranceId": "VERDICT.P012",
+        "edge": "start",
+        "offset": 0
+      }
     }
   ]
 }

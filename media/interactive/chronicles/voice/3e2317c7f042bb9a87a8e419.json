@@ -1,0 +1,128 @@
+{
+  "text": "Толя, тебе слово. Покажи новые билды, общий поток недели и прошлую домашку. Слово «готово» желательно подтвердить чем-нибудь, кроме интонации.",
+  "text_sha256": "3e2317c7f042bb9a87a8e419362fbacb1488e381a4d6796d513540bc5b35020e",
+  "file": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-clean.mp3",
+  "duration": 11.472812,
+  "words": [
+    {
+      "text": "Толя,",
+      "start": 0,
+      "end": 0.32
+    },
+    {
+      "text": "тебе",
+      "start": 0.68,
+      "end": 0.86
+    },
+    {
+      "text": "слово.",
+      "start": 0.86,
+      "end": 1.26
+    },
+    {
+      "text": "Покажи",
+      "start": 1.8,
+      "end": 2.14
+    },
+    {
+      "text": "новые",
+      "start": 2.14,
+      "end": 2.52
+    },
+    {
+      "text": "билды,",
+      "start": 2.52,
+      "end": 2.98
+    },
+    {
+      "text": "общий",
+      "start": 3.38,
+      "end": 3.82
+    },
+    {
+      "text": "поток",
+      "start": 3.82,
+      "end": 4.16
+    },
+    {
+      "text": "недели",
+      "start": 4.16,
+      "end": 4.68
+    },
+    {
+      "text": "и",
+      "start": 4.68,
+      "end": 4.9
+    },
+    {
+      "text": "прошлую",
+      "start": 4.9,
+      "end": 5.42
+    },
+    {
+      "text": "домашку.",
+      "start": 5.42,
+      "end": 6.04
+    },
+    {
+      "text": "Слово",
+      "start": 6.6,
+      "end": 7.1
+    },
+    {
+      "text": "«готово»",
+      "start": 7.1,
+      "end": 7.64
+    },
+    {
+      "text": "желательно",
+      "start": 7.64,
+      "end": 8.32
+    },
+    {
+      "text": "подтвердить",
+      "start": 8.32,
+      "end": 9.04
+    },
+    {
+      "text": "чем-нибудь,",
+      "start": 9.04,
+      "end": 9.66
+    },
+    {
+      "text": "кроме",
+      "start": 9.9,
+      "end": 10.16
+    },
+    {
+      "text": "интонации.",
+      "start": 10.16,
+      "end": 10.88
+    }
+  ],
+  "audio_sha256": "adf1d36e017ca12d7633678c45136d4f13624bd0e57d016a12100c7647fc9e42",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "1Ak3ilM55ybVB8qTa7wk",
+  "repair": {
+    "source": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419.mp3",
+    "sourceSha256": "720f40a66d7d61b24c771cebcde0dbfda83e0e4c7b5add618c5b093ece28868f",
+    "cuts": [
+      [
+        7.6,
+        10.62,
+        0.05
+      ]
+    ],
+    "method": "local_edit_no_generation",
+    "heard": "Таля, тебе слово. Покажи новые билды, общий поток недели и прошлую домашку. Слово «готоз» желательно подтвердить чем -нибудь, кроме интонации.",
+    "coverage": 0.9,
+    "alignmentReview": []
+  }
+}

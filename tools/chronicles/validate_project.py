@@ -49,6 +49,8 @@ def validate(path=PROJECT):
             target=(ROOT/asset['path']).resolve()
             if not target.is_relative_to(ROOT) or not target.is_file():errors.append('Missing/outside asset: '+asset['id'])
     for scene in p['scenes']:
+        transition=scene.get('transition')
+        if transition and (transition.get('type') not in ('cut','line_lr','line_rl','line_tb','circle_iris','circle_iris_corner') or not isinstance(transition.get('duration'),(int,float)) or not math.isfinite(transition['duration']) or transition['duration']<=0):errors.append('Invalid transition: '+scene['id'])
         for uid in scene['utteranceIds']:
             if uid not in us:errors.append('Missing scene voice: '+uid)
     voice_starts={c['utteranceId']:c['start']['offset'] for c in p['clips'] if c['kind']=='voice' and c.get('utteranceId') and c['start']['type']=='scene'}
@@ -78,6 +80,9 @@ def validate(path=PROJECT):
             if ref['type']=='word' and ref.get('utteranceId') in us:
                 u=us[ref['utteranceId']]
                 if not 0<=ref.get('wordIndex',-1)<len(u.get('words',[])):pending.append(c['id']+': unresolved word anchor')
+    for cue in p.get('navigation',[]):
+        scene=scenes.get(cue['sceneId']);at=resolve_ref(cue['at'])
+        if not scene or at is None or not math.isfinite(at) or at<0 or cue['at'].get('utteranceId') and cue['at']['utteranceId'] not in scene['utteranceIds']:errors.append('Invalid navigation: '+cue['id'])
     for n in p['sequence']:
         if n['kind']=='scene' and n['sceneId'] not in scenes:errors.append('Missing route scene')
         if n['kind']=='stop' and not any(s['id']==n['stopId'] for s in p['stops']):errors.append('Missing route stop')

@@ -80,6 +80,12 @@ export function sceneDuration(project: Project, sceneId: string): number {
   return duration;
 }
 
+/** Sticker targets stay attached to speech after voice duration/ripple edits. */
+export function navigationRanges(project:Project){
+  const entries=(project.navigation??[]).map(cue=>({...cue,time:resolveTime(project,cue.sceneId,cue.at)})).filter((cue):cue is typeof cue & {time:number}=>cue.time!==null);
+  return entries.map(cue=>({...cue,end:Math.min(sceneDuration(project,cue.sceneId),...entries.filter(other=>other.sceneId===cue.sceneId&&other.time>cue.time).map(other=>other.time))}));
+}
+
 export function activeClips(project: Project, sceneId: string, time: number, event?: string): Clip[] {
   return project.clips.filter(clip => {
     const scene=project.scenes.find(s=>s.id===sceneId);
@@ -91,16 +97,24 @@ export function activeClips(project: Project, sceneId: string, time: number, eve
   }).sort((a, b) => (project.tracks.find(t => t.id === a.trackId)?.order ?? 0) - (project.tracks.find(t => t.id === b.trackId)?.order ?? 0));
 }
 
+/** Identical phrase boundaries drive the displayed captions and ⏮ / ⏭ buttons. */
+const phraseCache=new WeakMap<Utterance,{words:Utterance['words'];text:string;subtitle:Utterance['subtitleText'];phrases:{start:number;text:string}[]}>();
+export function captionPhrases(u: Utterance): {start:number;text:string}[] {
+  if(u.subtitleText!=null||!u.words?.length)return [{start:0,text:u.subtitleText??u.text}];
+  const cached=phraseCache.get(u);if(cached&&cached.words===u.words&&cached.text===u.text&&cached.subtitle===u.subtitleText)return cached.phrases;
+  const out:{start:number;text:string}[]=[];let start=0;
+  for(let end=0;end<u.words.length;end++)if(end===u.words.length-1||/[.!?…]$/.test(u.words[end].text)||end-start>=17){
+    out.push({start:u.words[start].start,text:u.words.slice(start,end+1).map(w=>w.text).join(' ')});start=end+1;
+  }
+  phraseCache.set(u,{words:u.words,text:u.text,subtitle:u.subtitleText,phrases:out});return out;
+}
 export function spokenCaption(u: Utterance, localTime: number): string {
+  if(localTime<0||u.duration!=null&&localTime>=u.duration)return '';
   if (u.subtitleText != null) return u.subtitleText;
   if (!u.words?.length) return u.text;
-  const i = u.words.findIndex(w => localTime >= w.start && localTime < w.end);
-  if (i < 0) return '';
-  // Sentence-sized captions share the same authored text and aligned word boundaries.
-  let start = i, end = i;
-  while (start > 0 && i - start < 14 && !/[.!?…]$/.test(u.words[start - 1].text)) start--;
-  while (end + 1 < u.words.length && end - start < 24 && !/[.!?…]$/.test(u.words[end].text)) end++;
-  return u.words.slice(start, end + 1).map(w => w.text).join(' ');
+  // Partition once by phrase boundaries. Hold each phrase through pauses;
+  // never slide the text window or blank it between adjacent spoken words.
+  const phrases=captionPhrases(u);let text='';for(const p of phrases){if(p.start>localTime)break;text=p.text;}return text;
 }
 
 export function validateProject(project: Project): Diagnostic[] {
@@ -117,6 +131,7 @@ export function validateProject(project: Project): Diagnostic[] {
   const tracks = new Set(project.tracks.map(t => t.id)), assets = new Set(project.assets.map(a => a.id));
   for (const scene of project.scenes) {
     if (!Number.isFinite(scene.duration) || scene.duration < 0) add('invalid_duration','Неверная длительность сцены.',scene.id);
+    if(scene.transition&&(!['cut','line_lr','line_rl','line_tb','circle_iris','circle_iris_corner'].includes(scene.transition.type)||!Number.isFinite(scene.transition.duration)||scene.transition.duration<=0))add('invalid_transition','Неверные параметры оптического перехода.',scene.id);
     for (const id of scene.utteranceIds) if (!utterances.has(id)) add('missing_utterance',`Сцена ссылается на отсутствующую реплику ${id}.`,scene.id);
   }
   for (const u of project.utterances) {
@@ -138,6 +153,7 @@ export function validateProject(project: Project): Diagnostic[] {
     if (c.sourceOut !== undefined && c.sourceOut < (c.sourceIn ?? 0)) add('invalid_source_range','Конец исходника раньше начала.',c.id);
     if (c.envelope?.some(p=>!Number.isFinite(p.time)||!Number.isFinite(p.value)||p.time<0||p.value<0)) add('invalid_envelope','Неверные точки огибающей.',c.id);
   }
+  for(const cue of project.navigation??[]){const scene=project.scenes.find(s=>s.id===cue.sceneId),at=resolveTime(project,cue.sceneId,cue.at);if(!scene||at===null||!Number.isFinite(at)||at<0||at>sceneDuration(project,cue.sceneId)||cue.at.utteranceId&&!scene.utteranceIds.includes(cue.at.utteranceId))add('invalid_navigation','Не удалось определить адрес наклейки.',cue.id);}
   for (const stop of project.stops) {
     if (![stop.handoffSceneId,stop.gameSceneId,stop.roomSceneId].every(id=>scenes.has(id))) add('missing_stop_scene','Не найдена сцена остановки.',stop.id);
     const g=stop.game;

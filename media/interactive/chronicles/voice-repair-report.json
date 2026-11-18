@@ -1,0 +1,228 @@
+{
+  "network": "not_used",
+  "repairs": [
+    {
+      "id": "I-04.ВХОД",
+      "file": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f-clean.mp3",
+      "duration": 10.250816,
+      "source": "media/interactive/chronicles/voice/d4ad30432ccce25ba9fa867f.mp3",
+      "sourceSha256": "23eec2d55c4bc9b36103a595b3f5ee2a081247ec7f01242dcaae28ac0a001275",
+      "cuts": [
+        [
+          5.54,
+          6.12,
+          0.04
+        ],
+        [
+          8.65,
+          10.1,
+          0.12
+        ]
+      ],
+      "method": "local_edit_no_generation",
+      "heard": "Толя, спасибо. Следующую страницу я поставил на кон. Играем в «Кто хочет стать миллионером ?» Главный приз — продолжение совещания.",
+      "coverage": 1.0,
+      "alignmentReview": []
+    },
+    {
+      "id": "PROLOGUE.P018",
+      "file": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded-clean.mp3",
+      "duration": 2.86,
+      "source": "media/interactive/chronicles/voice/bbf3e7e7db1c857ace786ded.mp3",
+      "sourceSha256": "3427c2272e9cb1200a6b0c6efa76c6c7cef4c9fa5d9c95dd081bee7187ea8ef4",
+      "cuts": [
+        [
+          2.85,
+          8.4885,
+          0
+        ]
+      ],
+      "method": "local_edit_no_generation",
+      "heard": "А когда завершается недельный круг страданий.",
+      "coverage": 1.0,
+      "alignmentReview": []
+    },
+    {
+      "id": "ROOM-II.P008",
+      "file": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb-clean.mp3",
+      "duration": 14.347211,
+      "source": "media/interactive/chronicles/voice/3f244b69185c7fb5227be2cb.mp3",
+      "sourceSha256": "340818ad30729ebe38ed62f4c49fcd6d9cd8c7744a97a2d90748022595764401",
+      "cuts": [
+        [
+          9.82,
+          10.4,
+          0.02
+        ]
+      ],
+      "method": "local_edit_no_generation",
+      "heard": "В пятницу Горин лично проверил шланги, приказал срочно выдать новообращенному послушнику Алексею 2D Playback. А то он отвалится так и не стартанув. Следите за давлением в трубках, господа Проджекты.",
+      "coverage": 0.9655172413793104,
+      "alignmentReview": []
+    }
+  ],
+  "montageChanges": {
+    "action": "apply-cache",
+    "ripple": true,
+    "updatedUtterances": [
+      "PROLOGUE.P018",
+      "I-04.ВХОД",
+      "ROOM-II.P008"
+    ],
+    "pending": [],
+    "voiceDurationChanges": [
+      {
+        "id": "voice.PROLOGUE.P018",
+        "sceneId": "PROLOGUE",
+        "oldEnd": 221.704,
+        "oldLength": 8.4985,
+        "newLength": 2.86,
+        "delta": -5.6385
+      },
+      {
+        "id": "voice.ROOM-II.P008",
+        "sceneId": "ROOM-II",
+        "oldEnd": 82.86710000000001,
+        "oldLength": 14.9072,
+        "newLength": 14.347211,
+        "delta": -0.559989
+      }
+    ],
+    "shiftedReferences": [
+      {
+        "id": "PROLOGUE.L27",
+        "edge": "end",
+        "delta": -5.6385
+      },
+      {
+        "id": "PROLOGUE.L90",
+        "edge": "end",
+        "delta": -5.6385
+      },
+      {
+        "id": "ROOM-II.L579",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L614",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L615",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L615",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L616",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L617",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L618",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L621",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L622",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "ROOM-II.L635",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "reveal.nick",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "reveal.alexey-novice",
+        "edge": "end",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.PROLOGUE.P019",
+        "edge": "start",
+        "delta": -5.6385
+      },
+      {
+        "id": "voice.PROLOGUE.P020",
+        "edge": "start",
+        "delta": -5.6385
+      },
+      {
+        "id": "voice.PROLOGUE.P021",
+        "edge": "start",
+        "delta": -5.6385
+      },
+      {
+        "id": "voice.PROLOGUE.P022",
+        "edge": "start",
+        "delta": -5.6385
+      },
+      {
+        "id": "voice.ROOM-II.P009",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.ROOM-II.P010",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.ROOM-II.P011",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.ROOM-II.P012",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.ROOM-II.P013",
+        "edge": "start",
+        "delta": -0.559989
+      },
+      {
+        "id": "voice.ROOM-II.P014",
+        "edge": "start",
+        "delta": -0.559989
+      }
+    ],
+    "diagnostics": [
+      {
+        "code": "word_anchor_review",
+        "severity": "warning",
+        "id": "ROOM-II.L610",
+        "utteranceId": "ROOM-II.P008"
+      },
+      {
+        "code": "word_anchor_review",
+        "severity": "warning",
+        "id": "reveal.alexey-novice",
+        "utteranceId": "ROOM-II.P008"
+      }
+    ]
+  }
+}

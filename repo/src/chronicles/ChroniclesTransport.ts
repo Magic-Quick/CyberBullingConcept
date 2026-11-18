@@ -5,19 +5,19 @@ import { SFX } from '../SoundEffects';
 import { after, cancelTween, ease, tween, updateTweens } from '../tween';
 import './chroniclesTransport.css';
 
-export interface TransportChapter { id: string; title: string; start: number; duration: number; sticker?: 'logo' | 'speech' | 'punishment' | 'reward' | 'song'; }
+export interface TransportChapter { sceneId?:string;sceneTime?:number;id: string; title: string; start: number; duration: number; sticker?: 'logo' | 'speech' | 'punishment' | 'reward' | 'song'; }
 export interface TransportMarker { id: string; label: string; time: number; state?: string; }
 export interface TransportState {
   playing: boolean; time: number; total: number; cc: boolean; muted: boolean;
   voiceVolume: number; musicVolume: number; sfxVolume: number;
   currentSceneId?: string; statusLabel?: string;
-  chapters?: TransportChapter[]; markers?: TransportMarker[];
+  chapters?: TransportChapter[]; stickers?:TransportChapter[]; markers?: TransportMarker[];
 }
 export interface TransportOptions {
   onPlay: () => void; onPause: () => void; onPrevious: () => void; onNext: () => void;
   onSeek: (ratio: number) => void; onCc: () => void; onFullscreen: () => void;
   onMute: () => void; onVolume: (kind: 'voice' | 'music' | 'sfx', value: number) => void;
-  onDirector: () => void; onChapter: (id: string) => void;
+  onDirector: () => void; onChapter: (id: string, sceneTime?:number) => void;
   onMarker: (id: string, kind: 'host' | 'game') => void;
 }
 interface Keycap { container: Container; sprite: Sprite; setLatched: (value: boolean) => void; pressAndRelease: () => void; }
@@ -53,6 +53,7 @@ export class ChroniclesTransport {
   private trackStart = 0; private trackWidth = 0; private innerStart = 0; private innerWidth = 0;
   private lcdOverrideUntil = 0; private dead = false; private dragging = false;
   private activeDrags = new Set<() => void>();
+  private revealState={p:1};private revealed=true;
   private animated = new Set<object>();
   private resizeHandler = () => this.resize(window.innerWidth, window.innerHeight);
 
@@ -112,11 +113,13 @@ export class ChroniclesTransport {
       }));
     }
     this.resize(window.innerWidth, window.innerHeight);
-    this.app.ticker.add(ticker => { updateTweens(Math.min(.1, ticker.deltaMS / 1000)); this.drawProgress(); this.updateLcd(); });
+    this.app.ticker.add(ticker => { updateTweens(Math.min(.1, ticker.deltaMS / 1000));this.element.style.transform=`translateY(${(this.barHeight+24)*(1-this.revealState.p)}px)`; this.drawProgress(); this.updateLcd(); });
     window.addEventListener('resize', this.resizeHandler);
   }
 
   get height(): number { return this.barHeight; }
+  get bottomOffset():number{return Math.max(0,(this.barHeight+24)*this.revealState.p-24);}
+  setRevealed(show:boolean):void{if(this.revealed===show)return;this.revealed=show;cancelTween(this.revealState);tween(this.revealState,{p:show?1:0},show?.45:.55,show?ease.outBack:ease.inBack);}
   private texture(key: string): Texture { return this.textures.get(key) || Texture.WHITE; }
   private click(): void { ClickTracker.exclude(); SFX.playClick(); }
 
@@ -128,17 +131,18 @@ export class ChroniclesTransport {
     this.ccKey.setLatched(this.state.cc); this.muteKey.setLatched(this.state.muted); this.modeKey.setLatched(Boolean(document.fullscreenElement));
     this.sliders.voice.setVol(this.state.voiceVolume, false); this.sliders.music.setVol(this.state.musicVolume, false); this.sliders.sfx.setVol(this.state.sfxVolume, false);
     SFX.setMuted(this.state.muted); SFX.setVolume(this.state.sfxVolume);
+    this.staticHotspots.get('Полный экран')?.element.setAttribute('aria-pressed',String(Boolean(document.fullscreenElement)));
     for (const name of ['Воспроизведение / пауза','Субтитры','Выключить звук']) this.staticHotspots.get(name)?.element.setAttribute('aria-pressed', String(name === 'Субтитры' ? this.state.cc : name === 'Выключить звук' ? this.state.muted : this.state.playing));
     const setRange = (name: string, value: number) => { const input = this.staticHotspots.get(name)?.element as HTMLInputElement | undefined; if (input) input.value = String(Math.round(clamp(value) * 10000)); };
     setRange('Голос', this.state.voiceVolume); setRange('Музыка', this.state.musicVolume); setRange('SFX', this.state.sfxVolume); setRange('Перейти к записанному фрагменту', this.state.total ? this.state.time / this.state.total : 0);
     const chapters = this.state.chapters || [], markers = this.state.markers || [];
-    const chapterSignature = chapters.map(c => `${c.id}:${c.title}:${c.start}:${c.duration}:${c.sticker || ''}`).join('|');
+    const chapterSignature = [...chapters,...this.state.stickers??[]].map(c => `${c.id}:${c.title}:${c.start}:${c.duration}:${c.sticker || ''}`).join('|');
     const markerSignature = markers.map(m => `${m.id}:${m.label}:${m.time}`).join('|');
-    if (chapterSignature !== this.chapterSignature) { this.chapterSignature = chapterSignature; this.rebuildChapters(chapters); }
+    if (chapterSignature !== this.chapterSignature) { this.chapterSignature = chapterSignature; this.rebuildChapters(chapters,this.state.stickers); }
     if (markerSignature !== this.markerSignature) { this.markerSignature = markerSignature; this.rebuildMarkers(markers); }
     if (previousTotal !== this.state.total) this.layoutChapterControls();
     for (const item of this.chapterButtons) { const active = item.chapter.id === this.state.currentSceneId; item.button.setLatched(active); item.button.setLampActive(active); }
-    for (const item of this.stickers) item.sprite.alpha = item.chapter.id === this.state.currentSceneId ? 1 : .88;
+    for (const item of this.stickers) item.sprite.alpha = (item.chapter.sceneId??item.chapter.id)===this.state.currentSceneId&&this.state.time>=item.chapter.start&&this.state.time<item.chapter.start+item.chapter.duration ? 1 : .88;
     for (const item of this.markerButtons) {
       const marker = markers.find(m => m.id === item.marker.id) || item.marker;
       const s = item.kind === 'host' && /В игре|game/i.test(marker.state || '') ? 'Пройдено' : marker.state || '', active = item.kind === 'host' ? /Ожидан|Передач|host|waiting/i.test(s) : /Интерактив|В игре|game/i.test(s);
@@ -207,7 +211,7 @@ export class ChroniclesTransport {
     let latched = false, pressed = false;
     const apply = (animate: boolean) => { const scale = pressed ? .72 : latched ? .86 : 1; cap.tint = pressed ? 0x8a8a8a : latched ? 0xc4c4c4 : 0xffffff; for (const target of [cap.scale, shadow.scale, shadow.position]) cancelTween(target); if (animate) { tween(cap.scale, { x: scale, y: scale }, .15, ease.outBack); tween(shadow.scale, { x: scale, y: scale }, .15, ease.outBack); tween(shadow.position, { x: -3.5 * scale, y: 4.5 * scale }, .15, ease.outBack); } else { cap.scale.set(scale); shadow.scale.set(scale); shadow.position.set(-3.5 * scale, 4.5 * scale); } };
     container.on('pointerdown', (e: FederatedPointerEvent) => { e.stopPropagation(); ClickTracker.exclude(); pressed = true; apply(false); });
-    container.on('pointerup', (e: FederatedPointerEvent) => { if (!pressed) return; pressed = false; e.stopPropagation(); this.click(); this.options.onChapter(chapter.id); apply(true); });
+    container.on('pointerup', (e: FederatedPointerEvent) => { if (!pressed) return; pressed = false; e.stopPropagation(); this.click(); this.options.onChapter(chapter.sceneId??chapter.id,chapter.sceneTime); apply(true); });
     const cancel = () => { if (pressed) { pressed = false; apply(true); } this.tooltip.hidden = true; };
     container.on('pointerupoutside', cancel); container.on('pointerout', cancel);
     container.on('pointerover', (e: FederatedPointerEvent) => this.showTooltip(chapter.title, e.global.x, e.global.y));
@@ -222,19 +226,19 @@ export class ChroniclesTransport {
     return { container, knob, setVol };
   }
 
-  private rebuildChapters(chapters: TransportChapter[]): void {
+  private rebuildChapters(chapters: TransportChapter[],stickers:TransportChapter[]=[]): void {
     for (const item of this.chapterButtons) { item.button.container.destroy({ children: true }); item.hotspot.element.remove(); }
     for (const item of this.stickers) { item.container.destroy({ children: true }); item.hotspot.element.remove(); }
     this.chapterButtons = []; this.stickers = [];
     for (const chapter of chapters) {
       const act = this.actButton(chapter); this.middle.addChild(act.container);
-      const hotspot = this.hotspot(chapter.title, () => { this.click(); this.options.onChapter(chapter.id); });
+      const hotspot = this.hotspot(chapter.title, () => { this.click(); this.options.onChapter(chapter.sceneId??chapter.id,chapter.sceneTime); });
       this.chapterButtons.push({ chapter, button: act, hotspot });
     }
     const stickerDefs: { chapter: TransportChapter; key: string; ratio?: number }[] = [];
     const add = (chapter: TransportChapter | undefined, key: string) => { if (chapter && !stickerDefs.some(d => d.key === key)) stickerDefs.push({ chapter, key }); };
-    for (const c of chapters.filter(c => c.sticker)) add(c, 'gui_sticker_' + c.sticker);
-    add(chapters.find(c => /INTRO|PLAYBOX/i.test(c.id)) || chapters[0], 'gui_sticker_logo');
+    for (const c of [...stickers,...chapters.filter(c => c.sticker)]) add(c, 'gui_sticker_' + c.sticker);
+    add(chapters.find(c => /OPENING|PLAYBOX/i.test(c.id)) || chapters.find(c=>/INTRO/i.test(c.id)) || chapters[0], 'gui_sticker_logo');
     add(chapters.find(c => /PROLOGUE/i.test(c.id)) || chapters[1], 'gui_sticker_speech');
     add(chapters.find(c => /PUNISH|VERDICT/i.test(c.id)), 'gui_sticker_punishment');
     add(chapters.find(c => /REWARD|VERDICT/i.test(c.id)), 'gui_sticker_reward');
@@ -242,7 +246,7 @@ export class ChroniclesTransport {
     if (!stickerDefs.some(def => def.key === 'gui_sticker_song')) stickerDefs.push({ chapter: { id: 'SONG', title: 'Дополнительный трек', start: 0, duration: 0 }, key: 'gui_sticker_song', ratio: .92 });
     for (const def of stickerDefs) {
       const container = new Container(), sprite = new Sprite(this.texture(def.key)); sprite.anchor.set(.5); sprite.alpha = .9; container.addChild(sprite); this.middle.addChild(container);
-      const hotspot = this.hotspot(def.chapter.title, () => { this.click(); this.options.onChapter(def.chapter.id); });
+      const hotspot = this.hotspot(def.chapter.title, () => { this.click(); this.options.onChapter(def.chapter.sceneId??def.chapter.id,def.chapter.sceneTime); });
       this.stickers.push({ chapter: def.chapter, sprite, container, hotspot, ratio: def.ratio });
     }
     this.layoutChapterControls();
@@ -322,5 +326,5 @@ export class ChroniclesTransport {
   private showSeekTooltip(x: number, y: number): void { const at = clamp((x - this.trackStart) / Math.max(1, this.innerWidth)) * this.state.total; const chapter = [...(this.state.chapters || [])].reverse().find(c => c.start <= at); this.showTooltip(`${clock(at)}${chapter ? ' · ' + chapter.title : ''}`, x, y, true); }
   private showTooltip(text: string, x: number, y: number, seek = false): void { this.tooltip.textContent = text; this.tooltip.classList.toggle('ct-seek-tooltip', seek); this.tooltip.hidden = false; this.tooltip.style.left = `${Math.max(100, Math.min(this.width - 100, x))}px`; this.tooltip.style.top = `${y - 11}px`; }
 
-  destroy(): void { if (this.dead) return; this.dead = true; for (const finish of [...this.activeDrags]) finish(); window.removeEventListener('resize', this.resizeHandler); this.animated.forEach(cancelTween); this.element.remove(); this.app.destroy(true, { children: true, texture: false, textureSource: false }); }
+  destroy(): void { if (this.dead) return; this.dead = true; for (const finish of [...this.activeDrags]) finish(); window.removeEventListener('resize', this.resizeHandler); this.animated.forEach(cancelTween); cancelTween(this.revealState); this.element.remove(); this.app.destroy(true, { children: true, texture: false, textureSource: false }); }
 }

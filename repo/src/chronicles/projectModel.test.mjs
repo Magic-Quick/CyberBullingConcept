@@ -231,10 +231,12 @@ test('there is no first, previous or last voice in a clean entrance or subtitle 
   assert.deepEqual(activeClips(project, 'ROOM-I', 14).filter(c => c.kind === 'voice').map(c => c.id), ['voice-2']);
 });
 
-test('aligned captions disappear between words and keep authored sentence text', () => {
+test('captions hold a stable phrase through word gaps and clear outside the utterance', () => {
   const utterance = fixture().utterances[0];
   assert.equal(spokenCaption(utterance, .5), 'Первое слово.');
-  for (const time of [-1, 1, 1.5, 3, 7, 9, 100]) assert.equal(spokenCaption(utterance, time), '', `time ${time}`);
+  for (const time of [1,1.5,3,7]) assert.equal(spokenCaption(utterance,time),'Первое слово.',`time ${time}`);
+  for (const time of [8,9,9.9]) assert.equal(spokenCaption(utterance,time),'Финал.',`time ${time}`);
+  for (const time of [-1,10,100]) assert.equal(spokenCaption(utterance,time),'',`time ${time}`);
   assert.equal(spokenCaption({ ...utterance, subtitleText: 'Явная экранная версия.' }, .5), 'Явная экранная версия.');
 });
 
@@ -444,4 +446,51 @@ test('the actual project reopens from its Markdown with every voice body intact'
   assert.deepEqual(reparsed, defaultProject);
   assert.deepEqual(reparsed.utterances.map(u => [u.id, u.text]), defaultProject.utterances.map(u => [u.id, u.text]));
   assert.ok(documentConfig(output).utterances.every(u => !Object.hasOwn(u, 'text')));
+});
+
+const {viewerShortcut}=await import(await moduleUrl(resolve(here,'viewerShortcuts.ts')));
+const {captionPhrases}=timelineModule;
+const {opticalWipe}=await import(await moduleUrl(resolve(here,'MoviePicture.ts')));
+test('restores original viewer shortcuts including physical Russian layout keys',()=>{
+  for(const [key,code,expected] of [
+    [' ','Space',{kind:'toggle'}],['K','KeyK',{kind:'toggle'}],['л','KeyK',{kind:'toggle'}],
+    ['j','KeyJ',{kind:'seek',seconds:-10}],['L','KeyL',{kind:'seek',seconds:10}],
+    ['ArrowLeft','ArrowLeft',{kind:'seek',seconds:-5}],['ArrowRight','ArrowRight',{kind:'seek',seconds:5}],
+    ['PageUp','PageUp',{kind:'chapter',direction:-1}],['PageDown','PageDown',{kind:'chapter',direction:1}],
+    ['m','KeyM',{kind:'mute'}],['f','KeyF',{kind:'fullscreen'}],['c','KeyC',{kind:'captions'}],
+    ['в','KeyD',{kind:'director'}],['t','KeyT',{kind:'introTrack'}],['p','KeyP',{kind:'introTitle'}]
+  ])assert.deepEqual(viewerShortcut({key,code}),expected,`${key} / ${code}`);
+  for(let i=0;i<=9;i++)assert.deepEqual(viewerShortcut({key:String(i)}),{kind:'percent',ratio:i/10});
+});
+test('shift arrows change chapters before the ordinary five-second seek',()=>{
+  for(const [key,direction] of [['ArrowLeft',-1],['ArrowRight',1]])assert.deepEqual(viewerShortcut({key,shiftKey:true}),{kind:'chapter',direction});
+});
+test('director audio keys retain cue type and bracket direction',()=>{
+  for(const [key,code,category] of [['t','KeyT','dread'],['е','KeyT','dread'],['p','KeyP','peace'],['з','KeyP','peace'],['x','KeyX','stop'],['ч','KeyX','stop']])assert.deepEqual(viewerShortcut({key,code},true),{kind:'cue',category});
+  for(const [key,code,seconds] of [['[','BracketLeft',-1],['х','BracketLeft',-1],[']','BracketRight',1],['ъ','BracketRight',1]])assert.deepEqual(viewerShortcut({key,code},true),{kind:'nudge',seconds});
+});
+test('visible choice owns A–D while editing shortcuts keep modifier combinations',()=>{
+  for(const option of ['a','b','c','d'])assert.deepEqual(viewerShortcut({key:option},false,true),{kind:'answer',option:option.toUpperCase()});
+  assert.deepEqual(viewerShortcut({key:'d'},true,false),{kind:'director'});
+  for(const modifier of ['ctrlKey','metaKey','altKey'])for(const key of ['d','s','c','v','z','j','ArrowRight'])assert.equal(viewerShortcut({key,[modifier]:true},true),undefined);
+});
+test('phrase navigation matches stable captions through silence and honors replacement text',()=>{
+  const u=fixture().utterances[0];assert.deepEqual(captionPhrases(u),[{start:0,text:'Первое слово.'},{start:8,text:'Финал.'}]);
+  assert.equal(spokenCaption(u,7.9),'Первое слово.');assert.equal(spokenCaption(u,8),'Финал.');
+  const previous=captionPhrases(u);u.words=[{text:'Новая.',start:1,end:2}];assert.notEqual(captionPhrases(u),previous);assert.equal(spokenCaption(u,1),'Новая.');
+  u.subtitleText='Экранная версия';assert.deepEqual(captionPhrases(u),[{start:0,text:'Экранная версия'}]);
+});
+test('optical wipes reveal only the incoming frame and reach every corner',()=>{
+  assert.equal(opticalWipe('line_lr',0,1280,720),'inset(0 100% 0 0)');assert.equal(opticalWipe('line_rl',1,1280,720),'inset(0 0 0 0%)');
+  assert.equal(opticalWipe('line_tb',.5,1280,720),'inset(0 0 50% 0)');
+  for(const type of ['circle_iris','circle_iris_corner']){const mask=opticalWipe(type,1,1280,720),radius=Number(mask.match(/circle\(([^p]+)/)[1]);assert.ok(radius>=Math.hypot(640,360));}
+});
+
+test('native logo/verdict/reward stickers retain distinct speech anchors after ripple edits',()=>{
+  const p=parseProject(defaultMarkdown).project;
+  const before=timelineModule.navigationRanges(p),opening=before.find(c=>c.sticker==='logo'),reward=before.find(c=>c.sticker==='reward'),verdict=before.find(c=>c.sticker==='punishment');
+  assert.equal(opening.sceneId,'OPENING');assert.equal(opening.time,0);assert.equal(reward.at.utteranceId,'VERDICT.P012');assert.equal(verdict.end,reward.time);assert.ok(reward.time>verdict.time);
+  const next=clone(p),voice=next.clips.find(c=>c.kind==='voice'&&c.utteranceId==='VERDICT.P012');voice.start.offset+=2;
+  assert.equal(timelineModule.navigationRanges(next).find(c=>c.sticker==='reward').time,reward.time+2);
+  next.navigation.find(c=>c.sticker==='reward').sceneId='INTRO';assert.ok(validateProject(next).some(d=>d.code==='invalid_navigation'));
 });

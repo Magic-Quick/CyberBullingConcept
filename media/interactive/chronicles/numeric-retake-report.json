@@ -1,0 +1,133 @@
+{
+  "id": "ROOM-I.P012",
+  "audioFile": "media/interactive/chronicles/voice/ec1563e2a42f58401309be52-spoken-number.mp3",
+  "originalTextUnchanged": true,
+  "ttsNormalization": "1783 → тысяча семьсот восемьдесят три; explicitly approved",
+  "independentRecognition": "А в четверг у кремниевой железяки окончательно сорвало крышу, и он выкатил сводку. 1783 данных Плейбла.",
+  "sync": {
+    "action": "apply-cache",
+    "ripple": true,
+    "updatedUtterances": [
+      "ROOM-I.P012"
+    ],
+    "pending": [],
+    "voiceDurationChanges": [
+      {
+        "id": "voice.ROOM-I.P012",
+        "sceneId": "ROOM-I",
+        "oldEnd": 90.2978,
+        "oldLength": 9.7524,
+        "newLength": 9.9846,
+        "delta": 0.2322
+      }
+    ],
+    "shiftedReferences": [
+      {
+        "id": "ROOM-I.L258",
+        "edge": "end",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L297",
+        "edge": "end",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L309",
+        "edge": "end",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L312",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L312",
+        "edge": "end",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L314",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L320",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L321",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "ROOM-I.L348",
+        "edge": "end",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P013",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P014",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P015",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P016",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P017",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P018",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P019",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P020",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P021",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P022",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P023",
+        "edge": "start",
+        "delta": 0.2322
+      },
+      {
+        "id": "voice.ROOM-I.P024",
+        "edge": "start",
+        "delta": 0.2322
+      }
+    ],
+    "diagnostics": []
+  }
+}

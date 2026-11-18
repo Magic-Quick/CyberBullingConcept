@@ -152,6 +152,14 @@ class ChroniclesImportTests(unittest.TestCase):
         self.assertEqual(song['duration'], 237.2)
         self.assertTrue(any(c['id'] == 'song.audio' for c in self.project['clips']))
 
+    def test_original_opening_is_preserved_before_narration_without_new_tts(self):
+        self.assertEqual(self.project['sequence'][0], {'kind':'scene','sceneId':'OPENING'})
+        opening=next(s for s in self.project['scenes'] if s['id']=='OPENING')
+        self.assertEqual(opening['utteranceIds'],[])
+        self.assertIn('не отражает точку зрения компании',opening['opening']['disclaimerText'])
+        self.assertEqual(opening['opening']['skullLogoKey'],'playbox_skull_logo')
+        self.assertEqual(opening['duration'],45.5)
+
 
 if __name__ == '__main__':
     unittest.main()

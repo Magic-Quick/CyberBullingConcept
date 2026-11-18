@@ -59,6 +59,14 @@ class ProductionValidationTests(unittest.TestCase):
         self.assertTrue(any('Invalid clip interval' in error for error in info['errors']))
         self.assertTrue(any('Invalid duckBaseTo' in error for error in info['errors']))
 
+    def test_broken_transition_and_cross_scene_navigation_are_rejected(self):
+        def change(config):
+            config['scenes'][0]['transition']={'type':'line_lr','duration':-2}
+            config['navigation'][0]['at']={'type':'utterance','utteranceId':'VERDICT.P012','offset':0}
+        info,_=self.validate_changed(change)
+        self.assertTrue(any('Invalid transition' in e for e in info['errors']))
+        self.assertTrue(any('Invalid navigation' in e for e in info['errors']))
+
 
 if __name__ == '__main__':
     unittest.main()

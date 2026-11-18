@@ -15,9 +15,10 @@ export interface DirectorPanelOptions {
   getMarkdown: () => string;
   onEditSpeech: (id: string, text: string) => void;
   diagnostics: () => Diagnostic[];
+  music: { dread:readonly {key:string;name:string;dur:number}[];peace:readonly {key:string;name:string;dur:number}[];transitions:readonly {key:string;name:string;gain:number}[];onCue:(category:'dread'|'peace'|'stop')=>void; onSelect:(category:'dread'|'peace',key:string)=>void; selected:(category:'dread'|'peace')=>string; onIntro:(variant:'desolate_cry'|'titan_forge')=>void; onTransition:(key:string,sceneId:string)=>void; onTest:(key?:string)=>void; onExport:()=>void; onReset:()=>void; };
 }
 
-type InspectorTab = 'clip' | 'speech' | 'game' | 'route' | 'source' | 'diagnostics';
+type InspectorTab = 'clip' | 'speech' | 'game' | 'route' | 'source' | 'diagnostics' | 'music';
 type DragMode = 'move' | 'left' | 'right';
 const KINDS: TrackKind[] = ['frame', 'image', 'nameplate', 'screen', 'subtitle', 'voice', 'audio', 'sfx', 'interactive'];
 const AUDIO = new Set<TrackKind>(['voice', 'audio', 'sfx']);
@@ -115,6 +116,11 @@ export class DirectorPanel {
   }
 
   get isVisible(): boolean { return this.visible; }
+  get selectedClipId(): string|undefined { return [...this.selected][0]; }
+  get selectedAssetId(): string { return this.selectedAsset; }
+
+  /** Keyboard commands and older public controls share undo/redo and file persistence. */
+  changeProject(title:string, action:(project:Project)=>void):void { this.mutate(title,action); }
 
   /** Loading/replacing a confirmed file establishes the same clean baseline as Save. */
   markSaved(): void {
@@ -413,12 +419,13 @@ export class DirectorPanel {
   private renderInspector(): void {
     const scroll = this.inspector.scrollTop; this.inspector.replaceChildren();
     const tabs = element('div', 'cd-tabs');
-    for (const [id, title] of [['clip', 'Клип'], ['speech', 'Речь'], ['game', 'Игра'], ['route', 'Маршрут'], ['source', 'Текст'], ['diagnostics', 'Проверка']] as [InspectorTab, string][]) {
+    for (const [id, title] of [['clip', 'Клип'], ['speech', 'Речь'], ['game', 'Игра'], ['music','Музыка'], ['route', 'Маршрут'], ['source', 'Текст'], ['diagnostics', 'Проверка']] as [InspectorTab, string][]) {
       const b = button(title, () => { this.tab = id; this.renderInspector(); }); b.classList.toggle('cd-active', this.tab === id); tabs.append(b);
     }
     this.inspector.append(tabs); const body = element('div', 'cd-inspector-body'); this.inspector.append(body);
     if (this.tab === 'clip') this.inspectClip(body);
     if (this.tab === 'speech') this.inspectSpeech(body);
+    if (this.tab === 'music') this.inspectMusic(body);
     if (this.tab === 'game') this.inspectGame(body);
     if (this.tab === 'route') this.inspectRoute(body);
     if (this.tab === 'source') this.inspectSource(body);
@@ -438,6 +445,18 @@ export class DirectorPanel {
   }
 
   private clipChange(id: string, title: string, change: (clip: Clip) => void): void { this.mutate(title, next => { const clip = next.clips.find(c => c.id === id); if (clip && !next.tracks.find(t => t.id === clip.trackId)?.locked) change(clip); }); }
+
+  private inspectMusic(body:HTMLElement):void{
+    const p=this.options.getProject(),scene=p.scenes.find(s=>s.id===this.sceneId),m=this.options.music;
+    body.append(element('h3','','Музыкальная режиссура'),element('p','cd-hint','T — нагнетание · P — передышка · X — стоп · [ / ] — сдвиг выбранного cue на секунду. Все команды отменяются Ctrl+Z и сохраняются в текст проекта.'));
+    body.append(element('h4','','Исходная заставка'),button('Desolate Cry',()=>m.onIntro('desolate_cry')),button('Titan Forge',()=>m.onIntro('titan_forge')));
+    for(const category of ['dread','peace'] as const){const options=category==='dread'?m.dread:m.peace;body.append(label(category==='dread'?'Нагнетание · T':'Передышка · P',select(options.map(o=>({value:o.key,label:o.name})),m.selected(category),value=>m.onSelect(category,value))),button('Вставить в точке курсора',()=>m.onCue(category)));}
+    body.append(button('Стоп / Fade Out · X',()=>m.onCue('stop')));
+    if(scene){const current=scene.transition?.type??'cut';body.append(element('h4','','Переход в текущую сцену'),label('Оптический переход',select([{value:'cut',label:'Склейка'},{value:'line_lr',label:'Слева направо'},{value:'line_rl',label:'Справа налево'},{value:'line_tb',label:'Сверху вниз'},{value:'circle_iris',label:'Диафрагма по центру'},{value:'circle_iris_corner',label:'Диафрагма из угла'}],current,value=>this.mutate('Вид оптического перехода',next=>{const target=next.scenes.find(s=>s.id===scene.id)!;target.transition={...target.transition,type:value as NonNullable<Scene['transition']>['type'],duration:target.transition?.duration??2.4};}))),label('Длительность перехода, с',this.numeric(scene.transition?.duration??2.4,value=>this.mutate('Длительность перехода',next=>{const target=next.scenes.find(s=>s.id===scene.id)!;target.transition={type:target.transition?.type??'line_lr',...target.transition,duration:value??2.4};}),.1,10)));
+      const clip=p.clips.find(c=>c.id===`transition.${scene.id}`),key=scene.transition?.randomSound?'random':p.assets.find(a=>a.id===clip?.assetId)?.key??'random';body.append(label('Звук перехода',select(m.transitions.map(o=>({value:o.key,label:o.name})),key,value=>m.onTransition(value,scene.id))),button('Прослушать переход',()=>m.onTest(key)));
+    }
+    body.append(button('Копировать музыку как JSON',()=>m.onExport()),button('Восстановить музыку открытого файла',()=>m.onReset()));
+  }
 
   private inspectClip(body: HTMLElement): void {
     const p = this.options.getProject();
@@ -511,16 +530,16 @@ export class DirectorPanel {
     }
   }
 
-  private inspectRef(body: HTMLElement, title: string, ref: TimeRef, update: (ref: TimeRef) => void): void {
+  private inspectRef(body: HTMLElement, title: string, ref: TimeRef, update: (ref: TimeRef) => void,ownerSceneId=this.sceneId): void {
     const p = this.options.getProject(), field = element('fieldset', 'cd-ref'); field.append(element('legend', '', title));
     field.append(label('Привязка', select([{ value: 'scene', label: 'Время внутри сцены' }, { value: 'utterance', label: 'Граница реплики' }, { value: 'word', label: 'Слово в записи' }], ref.type, value => {
-      const next = clone(ref); const resolved = resolveTime(p, this.sceneId, ref); next.type = value as TimeRef['type'];
+      const next = clone(ref); const resolved = resolveTime(p, ownerSceneId, ref); next.type = value as TimeRef['type'];
       if (next.type === 'scene') { next.offset = Math.max(0, resolved || 0); delete next.utteranceId; delete next.wordIndex; delete next.edge; }
-      else { next.utteranceId ||= p.scenes.find(s => s.id === this.sceneId)?.utteranceIds[0] || ''; next.edge ||= 'start'; next.offset = 0; if (next.type === 'word') next.wordIndex ||= 0; }
+      else { next.utteranceId ||= p.scenes.find(s => s.id === ownerSceneId)?.utteranceIds[0] || ''; next.edge ||= 'start'; next.offset = 0; if (next.type === 'word') next.wordIndex ||= 0; }
       update(next);
     })));
     if (ref.type !== 'scene') {
-      const ids = p.scenes.find(s => s.id === this.sceneId)?.utteranceIds || [];
+      const ids = p.scenes.find(s => s.id === ownerSceneId)?.utteranceIds || [];
       field.append(label('Реплика', select(ids.map(id => ({ value: id, label: `${id} · ${p.utterances.find(u => u.id === id)?.text.slice(0, 36) || ''}` })), ref.utteranceId || '', value => update({ ...ref, utteranceId: value, wordIndex: ref.type === 'word' ? 0 : undefined }))), label('Край', select([{ value: 'start', label: 'Начало' }, { value: 'end', label: 'Конец' }], ref.edge || 'start', value => update({ ...ref, edge: value as 'start' | 'end' }))));
       if (ref.type === 'word') {
         const u = p.utterances.find(u => u.id === ref.utteranceId);
@@ -541,6 +560,7 @@ export class DirectorPanel {
 
   private inspectScene(body: HTMLElement, scene?: Scene): void {
     if (!scene) return; body.append(element('h3', '', 'Текущая сцена'), element('p', 'cd-id', scene.id));
+    if(scene.opening){const source=this.input(JSON.stringify(scene.opening,null,2),()=>{},true) as HTMLTextAreaElement;source.rows=16;body.append(label('Исходная заставка · текст, ресурсы и тайминг',source),button('Применить параметры заставки',()=>{try{const settings=JSON.parse(source.value);if(!settings.disclaimerText||!Number.isFinite(settings.introEndTime)||settings.introEndTime<=0)throw new Error('Нужны текст дисклеймера и длительность заставки.');this.mutate('Параметры исходной заставки',p=>{const target=p.scenes.find(s=>s.id===scene.id)!;target.opening=settings;target.duration=settings.introEndTime;const music=p.clips.find(c=>c.sceneId===scene.id&&c.kind==='audio'&&c.assetId);if(music)music.duration=settings.introEndTime;});}catch(e){this.fail(e);}}));}
     body.append(label('Название сцены', this.input(scene.title, value => this.mutate('Название сцены', p => { p.scenes.find(s => s.id === scene.id)!.title = value; }))), label('Монтажный интервал, с', this.numeric(scene.duration, value => this.mutate('Длительность сцены', p => { p.scenes.find(s => s.id === scene.id)!.duration = value || 0; }), 0)));
     body.append(element('p', 'cd-hint', `Длительность по клипам: ${time(sceneDuration(this.options.getProject(), scene.id))}. Живое ожидание не имеет фиксированной длительности.`));
   }
@@ -595,6 +615,8 @@ export class DirectorPanel {
       for (const [offset, text] of [[-1, '↑'], [1, '↓']] as const) { const b = button(text, () => this.mutate('Порядок маршрута', next => { const target = index + offset; if (target >= 0 && target < next.sequence.length) [next.sequence[index], next.sequence[target]] = [next.sequence[target], next.sequence[index]]; })); b.disabled = index + offset < 0 || index + offset >= p.sequence.length; row.append(b); }
       body.append(row);
     });
+    body.append(element('h3','','Наклейки навигации'));
+    for(const cue of p.navigation??[]){const card=element('article','cd-speech-card');card.append(label('Подсказка',this.input(cue.title,value=>this.mutate('Подсказка навигации',next=>{next.navigation!.find(c=>c.id===cue.id)!.title=value;}))),label('Целевая сцена',select(p.scenes.filter(s=>s.kind!=='game'&&s.kind!=='handoff').map(s=>({value:s.id,label:s.title})),cue.sceneId,value=>this.mutate('Адрес наклейки',next=>{const target=next.navigation!.find(c=>c.id===cue.id)!;target.sceneId=value;target.at={type:'scene',offset:0};}))));this.inspectRef(card,'Точка перехода',cue.at,ref=>this.mutate('Привязка навигации',next=>{next.navigation!.find(c=>c.id===cue.id)!.at=ref;}),cue.sceneId);card.append(button('Показать точку',()=>{const at=resolveTime(this.options.getProject(),cue.sceneId,cue.at);if(at!==null){this.sceneId=cue.sceneId;this.currentTime=at;this.options.onSeek(cue.sceneId,at);this.refresh();}}));body.append(card);}
   }
 
   private inspectSource(body: HTMLElement): void {

@@ -1,0 +1,36 @@
+{
+  "characters": 142,
+  "heard": "Толя, тебе слово. Покажи новые билды. Общий поток недели и прошлую домашку. Слово готово. Желательно подтвердить чем -нибудь, кроме интонации.",
+  "take": "media/interactive/chronicles/voice/3e2317c7f042bb9a87a8e419-retake.mp3",
+  "changes": {
+    "action": "apply-cache",
+    "ripple": true,
+    "updatedUtterances": [
+      "HANDOFF-01"
+    ],
+    "pending": [],
+    "voiceDurationChanges": [
+      {
+        "id": "voice.HANDOFF-01",
+        "sceneId": "HANDOFF-01",
+        "oldEnd": 11.472812,
+        "oldLength": 11.472812,
+        "newLength": 11.8886,
+        "delta": 0.415788
+      }
+    ],
+    "shiftedReferences": [
+      {
+        "id": "HANDOFF-01.L138",
+        "edge": "end",
+        "delta": 0.415788
+      },
+      {
+        "id": "HANDOFF-01.L145",
+        "edge": "end",
+        "delta": 0.415788
+      }
+    ],
+    "diagnostics": []
+  }
+}
