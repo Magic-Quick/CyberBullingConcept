@@ -530,3 +530,17 @@ test('every game and common reaction bank keeps the Lord backdrop through all sp
   }
   assert.equal(p.clips.filter(c=>c.id.startsWith('context.')).length,5);
 });
+
+
+test('every imported identity has its original avatar card and every screenshot uses responsive composition',()=>{
+ const p=parseProject(defaultMarkdown).project;
+ for(const c of p.clips.filter(c=>c.kind==='nameplate')){assert.equal(c.layout,'character',c.id);assert.ok(p.assets.some(a=>a.id===c.avatarAssetId),c.text);assert.equal(typeof c.typewriter,'boolean');}
+ for(const c of p.clips.filter(c=>c.kind==='image'))assert.equal(c.layout,'screenshot',c.id);
+ const u=p.utterances.find(u=>u.id==='ROOM-IV.P022');assert.ok(u.text.includes('стоит :)'));assert.ok(u.duration<9);assert.ok(p.assets.find(a=>a.id===u.audioAssetId).path.includes('-pronunciation'));
+});
+
+
+test('Markdown save preserves avatar, typewriter and responsive composition settings',()=>{
+ const p=parseProject(defaultMarkdown).project,copy=parseProject(serializeProject(p,defaultMarkdown)).project;
+ for(const c of p.clips.filter(c=>c.layout||c.avatarAssetId))assert.deepEqual(copy.clips.find(item=>item.id===c.id),c);
+});

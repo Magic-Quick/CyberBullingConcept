@@ -151,7 +151,7 @@ export class DirectorPanel {
     }
     this.clipChange(id, title, target => {
       const values = clone(patch);
-      if (values.transform) values.transform = { ...target.transform, ...values.transform };
+      if (values.transform) { const placed=['x','y','width','height','scale','rotation'].some(key=>key in values.transform!); values.transform = { ...target.transform, ...values.transform }; if(placed)values.layout='manual'; }
       Object.assign(target, values, { id: original.id });
     });
   }
@@ -378,6 +378,7 @@ export class DirectorPanel {
     const x = event.clientX; let next = before, moved = false;
     this.dragActive = true; this.host.classList.add('cd-dragging');
     const update = (move: PointerEvent) => {
+      if(!moved&&Math.abs(move.clientX-x)<=2)return;
       let delta = (move.clientX - x) / this.pixelsPerSecond;
       const anchor = mode === 'right' ? origin.end : origin.start;
       if (!move.altKey) delta = this.snapTime(anchor + delta, ids, before) - anchor;
@@ -403,7 +404,7 @@ export class DirectorPanel {
       }
       this.inform(`${mode === 'move' ? 'Перемещение' : 'Обрезка'} · ${time(Math.max(0, anchor + delta))}${this.ripple ? ' · сдвиг следующих' : ''}`);
     };
-    const finish = () => { cleanup(); if (moved) this.applyProject(next, mode === 'move' ? 'Перемещение клипов' : 'Обрезка клипа', before); else this.renderTimeline(); };
+    const finish = () => { cleanup(); if (moved) this.applyProject(next, mode === 'move' ? 'Перемещение клипов' : 'Обрезка клипа', before); else this.updateSelection(); };
     const cancel = (key: KeyboardEvent) => { if (key.key === 'Escape') { key.preventDefault(); cleanup(); this.refresh(); this.inform('Перетаскивание отменено'); } };
     const cleanup = () => { window.removeEventListener('pointermove', update); window.removeEventListener('pointerup', finish); window.removeEventListener('pointercancel', finish); window.removeEventListener('keydown', cancel); this.dragActive = false; this.host.classList.remove('cd-dragging'); this.dragCleanup = undefined; };
     this.dragCleanup = cleanup; window.addEventListener('pointermove', update); window.addEventListener('pointerup', finish, { once: true }); window.addEventListener('pointercancel', finish, { once: true }); window.addEventListener('keydown', cancel);
@@ -521,8 +522,10 @@ export class DirectorPanel {
         exposure.placeholder = '0';
         body.append(label('Чистый кадр до появления плашек, с', exposure), element('p', 'cd-hint', 'До конца этого интервала скриншоты, имена и экранные подписи не закрывают новый кадр. Пусто — 0 секунд.'));
       }
+      if(clip.kind==='image'||clip.kind==='nameplate')body.append(label('Композиция',select([{value:'manual',label:'Вручную'},{value:clip.kind==='image'?'screenshot':'character',label:'Автоматически по экрану'}],clip.layout??'manual',value=>update('Размещение',c=>{c.layout=value as Clip['layout'];}))));
+      if(clip.kind==='nameplate')body.append(label('Аватарка',select([{value:'',label:'Без аватарки'},...p.assets.filter(a=>a.kind==='image').map(a=>({value:a.id,label:a.label??a.key??a.path??a.id}))],clip.avatarAssetId??'',value=>update('Аватарка',c=>{c.avatarAssetId=value||undefined;}))),this.toggle('Эффект печати',clip.typewriter!==false,value=>update('Эффект печати',c=>{c.typewriter=value;})));
       for (const [key, title, fallback] of [['x', 'Центр X · 0–1', .5], ['y', 'Центр Y · 0–1', .5], ['width', 'Ширина · доля экрана', 1], ['height', 'Высота · доля экрана', 1], ['scale', 'Масштаб', 1], ['opacity', 'Непрозрачность · 0–1', 1], ['rotation', 'Поворот, градусы', 0]] as const) {
-        const input = this.numeric(clip.transform?.[key], value => update(title, c => { c.transform = { ...c.transform, [key]: value }; }), key === 'rotation' ? undefined : 0, key === 'opacity' ? 1 : undefined); input.placeholder = String(fallback); body.append(label(title, input));
+        const input = this.numeric(clip.transform?.[key], value => update(title, c => { c.transform = { ...c.transform, [key]: value }; if(!['opacity'].includes(key))c.layout='manual'; }), key === 'rotation' ? undefined : 0, key === 'opacity' ? 1 : undefined); input.placeholder = String(fallback); body.append(label(title, input));
       }
       const crop = this.input(clip.transform?.crop ? JSON.stringify(clip.transform.crop) : '', () => {});
       body.append(label('Кадрирование: {x,y,width,height}', crop), button('Применить кадрирование', () => { try { const value = crop.value.trim() ? JSON.parse(crop.value) : undefined; if (value && (['x', 'y', 'width', 'height'].some(k => !Number.isFinite(value[k])) || value.width <= 0 || value.height <= 0 || value.x < 0 || value.y < 0 || value.x + value.width > 1 || value.y + value.height > 1)) throw new Error('Кадрирование задаётся долями изображения в пределах 0–1.'); update('Кадрирование', c => { c.transform = { ...c.transform, crop: value }; }); } catch (e) { this.fail(e); } }));

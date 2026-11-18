@@ -1,5 +1,6 @@
 import source from './default-project.md?raw';
 import './chronicles.css';
+import './presentation.css';
 import { DirectorPanel } from './DirectorPanel';
 import { ProjectStorage } from './persistence';
 import { parseProject, serializeProject, sha256 } from './markdown';
@@ -17,6 +18,8 @@ import { getAudioUrl } from '../assetsManager';
 import { SFX } from '../SoundEffects';
 import { MoviePicture } from './MoviePicture';
 import { ViewerHud } from './ViewerHud';
+import { createCharacterBadge, updateCharacterBadge } from './CharacterBadge';
+import { fitPicture } from './presentation';
 
 type Phase='idle'|'scene'|'handoff'|'host'|'game_intro'|'game_wait'|'reaction'|'game_done'|'end';
 const node=<T extends HTMLElement=HTMLElement>(tag:string,className='',text=''):T=>{const n=document.createElement(tag);n.className=className;n.textContent=text;return n as T};
@@ -46,6 +49,7 @@ export class ChroniclesApp {
   private gameView=node('section','chronicles-game');
   private gameQuestion=node('h2');
   private context=node<HTMLImageElement>('img','context');
+  private gameMedia=node('div','chronicles-game-media');
   private choices=node('div','chronicles-choices');
   private board=node('div','chronicles-wordboard');
   private answerForm=node<HTMLFormElement>('form','chronicles-answerline');
@@ -176,6 +180,9 @@ export class ChroniclesApp {
   private layoutStage():void{
     const r=this.stage.getBoundingClientRect(),key=`${r.width}:${r.height}`;if(key===this.captionLayout)return;this.captionLayout=key;this.opening?.resize(r.width,r.height);
     const portrait=r.height>r.width,scale=Math.max(.35,Math.min(1.25,portrait?Math.min(r.width/414,r.height/736):Math.min(r.width/1280,r.height/720))),font=Math.round((portrait?17:21)*scale);
+    this.stage.style.setProperty('--scene-font',font+'px');this.stage.style.setProperty('--scene-scale',String(scale));this.stage.classList.toggle('chronicles-portrait',portrait);
+    const badge=portrait?{avatar:52,pad:10,gap:12,name:15,role:11}:{avatar:62,pad:12,gap:16,name:17,role:13};
+    for(const [name,value]of Object.entries(badge))this.stage.style.setProperty('--badge-'+name,Math.round(value*scale)+'px');
     const values:Record<string,number>={font,line:Math.round(font*1.35),px:Math.round((portrait?20:26)*scale),py:Math.round((portrait?10:14)*scale),max:Math.min(r.width*.9,(portrait?520:960)*scale)+2*Math.round((portrait?20:26)*scale),minWidth:Math.round(200*scale),minHeight:Math.round(38*scale)};
     this.captions.style.setProperty('--caption-clearance',(portrait?36:24)+'px');this.captions.style.setProperty('--caption-gap',Math.round(20*scale)+'px');
     for(const [name,value]of Object.entries(values))this.captions.style.setProperty('--caption-'+name,value+'px');
@@ -199,8 +206,8 @@ export class ChroniclesApp {
     this.answer.addEventListener('input',()=>{if(this.round?.draft){if(this.answer.value.normalize('NFC').trim().length===this.round.letters?.answer.length)this.round.draft.startAt(0);this.round.draft.update(this.answer.value);this.renderBoard();}});
     this.answer.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!this.answer.value&&this.round?.draft){this.round.draft.clear();this.renderBoard();}});
     this.gameActions.append(button('Одна буква',()=>this.prompt('letter_prompt')),button('Слово целиком',()=>this.prompt('word_prompt')));
-    const zoom=button('Увеличить контекст',()=>this.zoomContext(),'chronicles-context-zoom');this.gameView.append(zoom);
-    this.feedback.setAttribute('aria-live','polite');this.gameView.append(this.gameQuestion,this.context,this.choices,this.board,this.answerForm,this.gameActions,this.feedback);this.gameView.hidden=true;this.stage.append(this.gameView);
+    const zoom=button('Увеличить контекст',()=>this.zoomContext(),'chronicles-context-zoom');this.gameMedia.append(zoom);
+    this.feedback.setAttribute('aria-live','polite');this.gameView.append(this.gameQuestion,this.gameMedia,this.gameActions,this.choices,this.board,this.answerForm,this.feedback);this.gameView.hidden=true;this.stage.append(this.gameView);
     this.missing.hidden=true;this.missing.append(this.missingText,this.missingNext);this.stage.append(this.missing);
     const bar=node('footer','chronicles-bar'),controls=node('div','chronicles-controls');
     this.playButton.setAttribute('aria-label','Воспроизведение / пауза');this.ccButton.setAttribute('aria-label','Субтитры');
@@ -425,7 +432,8 @@ export class ChroniclesApp {
   private totalDuration():number{if(this.extra)return sceneDuration(this.project,this.sceneId);return this.recordedDuration;}
   private globalTime():number{if(this.extra)return this.time;return(this.routeRecordedStarts[this.route]??(this.route>=this.project.sequence.length?this.recordedDuration:0))+(this.phase==='scene'&&!this.preview?this.time:0);}
   private playExtra():void{const entry=this.project.extras?.find(n=>n.kind==='scene');if(!entry||entry.kind!=='scene')return;this.cancel();this.extra=true;this.preview=false;this.stop=undefined;this.round=undefined;this.route=this.project.sequence.length;this.phase='scene';this.sceneId=entry.sceneId;this.time=0;this.playing=true;this.render();}
-  private zoomContext():void{const stop=this.stop;if(!stop)return;const clip=this.project.clips.find(c=>c.id==='context.'+stop.game.id);if(!clip||clip.enabled===false||this.project.tracks.find(t=>t.id===clip.trackId)?.hidden)return;const url=clip.assetId?assetUrl(this.project,clip.assetId):undefined;if(!url)return;const modal=node<HTMLDialogElement>('dialog','chronicles-context-dialog'),image=node<HTMLImageElement>('img');image.src=url;image.alt='Исходный контекст с сохранённой маской';modal.append(image,button('Закрыть',()=>modal.close()));modal.addEventListener('close',()=>modal.remove());document.body.append(modal);modal.showModal();}
+  private zoomContext():void{if(this.stop)this.zoomImage('context.'+this.stop.game.id);}
+  private zoomImage(id:string):void{const clip=this.project.clips.find(c=>c.id===id);if(!clip||clip.enabled===false||this.project.tracks.find(t=>t.id===clip.trackId)?.hidden)return;const url=clip.assetId?assetUrl(this.project,clip.assetId):undefined;if(!url)return;const modal=node<HTMLDialogElement>('dialog','chronicles-context-dialog'),image=node<HTMLImageElement>('img');image.src=url;image.alt='Исходный скриншот с сохранёнными масками';modal.append(image,button('Закрыть',()=>modal.close()));const resume=this.playing;this.pause();modal.addEventListener('close',()=>{modal.remove();if(resume&&!this.disposed)this.play();});document.body.append(modal);modal.showModal();}
   private buildMarkers():void{
     this.markers.clear();this.stopBar.replaceChildren();
     for(const stop of this.project.stops){const group=node('div','chronicles-stop'),n=stop.id.replace('STOP-','');const host=button('□ Слово Толе '+n,()=>this.startStop(stop,false)),game=button('◇ Интерактив '+n,()=>this.startStop(stop,true),'game-marker');host.title='Передача слова и живой блок';game.title='Запустить игровое вступление';group.append(host,game);this.stopBar.append(group);this.markers.set(stop.id,{host,game});}
@@ -442,6 +450,7 @@ export class ChroniclesApp {
     if(this.transport){const markers=this.transportStopPositions.map(p=>({...p,state:this.stopState.get(p.id)??'Впереди'}));const hud=this.hud.state(this.phase,this.playing,this.panel.isVisible,this.hudHovered,performance.now());this.transport.element.hidden=hud.hidden;this.shell.style.paddingBottom='0px';this.transport.setRevealed(hud.revealed);this.transport.update({playing:this.playing,time:this.globalTime(),total:this.totalDuration(),cc:this.cc,muted:this.audio.muted,voiceVolume:this.audio.voiceVolume,musicVolume:this.audio.musicVolume,sfxVolume:this.audio.effectsVolume,currentSceneId:this.sceneId,chapters:this.transportChapters,stickers:this.transportStickers,markers,statusLabel:waiting==='Ожидание'||waiting==='Интерактив'?waiting:undefined});}
     this.layoutStage();
     this.captions.style.setProperty('--caption-hud',this.transport&&!this.transport.element.hidden?this.transport.bottomOffset+'px':'0px');
+    this.picture.element.style.bottom=this.transport&&!this.transport.element.hidden?this.transport.height+'px':'0px';
     this.frame.hidden=this.phase==='idle'||Boolean(scene?.opening);this.picture.element.hidden=this.frame.hidden;if(scene?.opening)this.picture.cancel();this.captions.hidden=Boolean(scene?.opening);
     if(!scene?.opening)this.opening?.stop();
     this.timeLabel.textContent=`${waiting} / ${this.totalDuration()?clock(this.totalDuration()):'—'}`;this.progress.value=String(this.totalDuration()?10000*this.globalTime()/this.totalDuration():0);
@@ -472,12 +481,14 @@ export class ChroniclesApp {
     const keep=new Set<string>();
     for(const c of clips.filter(c=>!cleanPicture&&['image','nameplate','screen'].includes(c.kind))){
       keep.add(c.id);let layer=this.layers.get(c.id);
-      if(!layer){layer=c.kind==='image'?node('img','chronicles-layer'):node('div',c.kind==='nameplate'?'chronicles-name':'chronicles-screen-text');this.layers.set(c.id,layer);this.stage.insertBefore(layer,this.captions);}
+      if(!layer){layer=c.kind==='image'?node('img','chronicles-layer'):c.kind==='nameplate'?createCharacterBadge(c,c.avatarAssetId?assetUrl(this.project,c.avatarAssetId):undefined):node('div','chronicles-screen-text');if(c.kind==='image'){layer.title='Открыть скриншот крупно';layer.addEventListener('click',()=>{if(!this.panel.isVisible)this.zoomImage(c.id);});}this.layers.set(c.id,layer);this.stage.insertBefore(layer,this.captions);}
       layer.dataset.clipId=c.id;
       if(layer instanceof HTMLImageElement){const url=c.assetId?assetUrl(this.project,c.assetId):undefined;if(url&&layer.getAttribute('src')!==url)layer.src=url;layer.alt='Исходный материал хроник';}
+      else if(c.kind==='nameplate'){const start=resolveTime(this.project,c.sceneId,c.start)??0;const reveal=Math.max(start,frameStart!==null?frameStart+(frame?.cleanExposure??0):start);updateCharacterBadge(layer,c,Math.max(0,this.time-reveal),this.playing&&!seek,()=>SFX.playTypewriterTick(),c.avatarAssetId?assetUrl(this.project,c.avatarAssetId):undefined);}
       else layer.textContent=c.title?c.title+'\n'+(c.text??''):c.text??'';
       layer.style.zIndex=String(this.project.tracks.find(t=>t.id===c.trackId)?.order??1);if(this.draggingPreviewId!==c.id)this.transform(layer,c);layer.classList.toggle('chronicles-game-context',c.id.startsWith('context.'));
-      if(c.id.startsWith('context.')&&!this.gameView.hidden)layer.style.opacity=String(c.transform?.opacity??1);
+      if(c.id.startsWith('context.')&&!this.gameView.hidden){if(layer.parentElement!==this.gameMedia)this.gameMedia.prepend(layer);layer.style.opacity=String(c.transform?.opacity??1);}
+      else if(layer.parentElement!==this.stage)this.stage.insertBefore(layer,this.captions);
     }
     for(const [id,layer]of this.layers)if(!keep.has(id)){layer.remove();this.layers.delete(id)}
     const sub=clips.find(c=>c.kind==='subtitle');const u=this.project.utterances.find(u=>u.id===sub?.utteranceId);
@@ -487,6 +498,7 @@ export class ChroniclesApp {
     const caption=this.cc&&!hideCC&&this.missing.hidden?(u&&voice?spokenCaption(u,this.time-voice.start+sourceIn):sub?.text??''):'';if(this.captions.textContent!==caption)this.captions.textContent=caption;
     if(sub?.transform){this.captions.style.right='auto';this.captions.style.bottom='auto';this.transform(this.captions,sub);}else for(const prop of ['right','bottom','left','top','width','height','transform','opacity','clip-path'])this.captions.style.removeProperty(prop);
     this.captions.style.color=sub?.color??'';
+    this.layoutPictures(clips);
     this.captions.style.zIndex='15';this.gameView.style.zIndex='12';this.overlay.style.zIndex='20';this.missing.style.zIndex='25';
     const audible=clips.filter(c=>!(c.kind==='voice'&&this.project.utterances.some(u=>u.id===c.utteranceId&&u.textHash&&u.audioTextHash&&u.textHash!==u.audioTextHash))).map(c=>{if(c.id===`transition.${scene.id}`&&scene.transition?.randomSound){this.transitionSound??=this.getRandomFinTransitionSound();return {...c,assetId:this.project.assets.find(a=>a.key===this.transitionSound)?.id??c.assetId};}return c;});
     if(this.stop&&this.round&&!this.round.finished&&['game_wait','reaction'].includes(this.phase)){
@@ -497,15 +509,32 @@ export class ChroniclesApp {
     if(this.panel.isVisible)this.panel.sync(this.sceneId,this.time);
   }
   private transform(element:HTMLElement,c:Clip):void{
-    const t=c.transform??{};element.style.left=(t.x??.5)*100+'%';element.style.top=(t.y??.5)*100+'%';element.style.width=(t.width??(c.kind==='frame'?1:.55))*100+'%';element.style.height=t.height!==undefined?t.height*100+'%':c.kind==='frame'?'100%':'auto';element.style.transform=`translate(-50%,-50%) scale(${t.scale??1}) rotate(${t.rotation??0}deg)`;let opacity=t.opacity??1;const r=clipRange(this.project,c);if(r){if(c.fadeIn)opacity*=Math.min(1,Math.max(0,(this.time-r.start)/c.fadeIn));if(c.fadeOut)opacity*=Math.min(1,Math.max(0,(r.end-this.time)/c.fadeOut));}element.style.opacity=String(opacity);element.style.color=c.color??'';element.style.clipPath=t.crop?`inset(${t.crop.y*100}% ${(1-t.crop.x-t.crop.width)*100}% ${(1-t.crop.y-t.crop.height)*100}% ${t.crop.x*100}%)`:'';
+    const t=c.transform??{};element.classList.toggle('chronicles-auto-character',c.layout==='character');element.style.left=(t.x??.5)*100+'%';element.style.top=(t.y??.5)*100+'%';element.style.width=(t.width??(c.kind==='frame'?1:.55))*100+'%';element.style.height=t.height!==undefined?t.height*100+'%':c.kind==='frame'?'100%':'auto';element.style.transform=`translate(-50%,-50%) scale(${t.scale??1}) rotate(${t.rotation??0}deg)`;let opacity=t.opacity??1;const r=clipRange(this.project,c);if(r){if(c.fadeIn)opacity*=Math.min(1,Math.max(0,(this.time-r.start)/c.fadeIn));if(c.fadeOut)opacity*=Math.min(1,Math.max(0,(r.end-this.time)/c.fadeOut));}element.style.opacity=String(opacity);element.style.color=c.color??'';element.style.clipPath=t.crop?`inset(${t.crop.y*100}% ${(1-t.crop.x-t.crop.width)*100}% ${(1-t.crop.y-t.crop.height)*100}% ${t.crop.x*100}%)`:'';
+  }
+  private layoutPictures(clips:Clip[]):void{
+    const bounds=this.stage.getBoundingClientRect(),margin=Math.max(10,Math.min(bounds.width,bounds.height)*.035);
+    const caption=this.captions.textContent?this.captions.getBoundingClientRect():undefined;
+    const hud=this.transport&&!this.transport.element.hidden?this.transport.height:0;
+    const reserved=caption?Math.max(caption.height,parseFloat(this.stage.style.getPropertyValue('--scene-font'))*2.7)+2*margin:margin;
+    const bottom=Math.min(caption?caption.top-bounds.top-margin:Infinity,bounds.height-hud-reserved);
+    this.gameView.style.setProperty('--game-bottom',Math.max(margin,bounds.height-bottom)+'px');
+    const badges=[...this.layers.values()].filter(layer=>layer.classList.contains('chronicles-name'));
+    const top=Math.max(margin,...badges.map(layer=>layer.getBoundingClientRect().bottom-bounds.top+margin));
+    for(const clip of clips.filter(c=>c.kind==='image'&&c.layout==='screenshot')){
+      const image=this.layers.get(clip.id);if(!(image instanceof HTMLImageElement)||this.draggingPreviewId===clip.id)continue;
+      if(image.parentElement===this.gameMedia){for(const key of ['left','top','width','height','transform'])image.style.removeProperty(key);continue;}
+      const box=fitPicture(image.naturalWidth||16,image.naturalHeight||9,{x:margin,y:top,width:Math.max(1,bounds.width-2*margin),height:Math.max(1,bottom-top)});
+      image.style.left=box.x+'px';image.style.top=box.y+'px';image.style.width=box.width+'px';image.style.height=box.height+'px';image.style.transform='none';
+    }
+    this.gameMedia.hidden=!this.gameMedia.querySelector('img');
   }
   private dragPreview(e:PointerEvent):void{
     if(!this.panel.isVisible||e.button!==0)return;
     const target=(e.target as HTMLElement).closest<HTMLElement>('[data-clip-id]');const id=target?.dataset.clipId;if(!target||!id)return;
     const clip=this.project.clips.find(c=>c.id===id);if(!clip||this.project.tracks.find(t=>t.id===clip.trackId)?.locked)return;
-    e.preventDefault();this.draggingPreviewId=id;this.panel.selectClip(id);const bounds=this.stage.getBoundingClientRect(),x=e.clientX,y=e.clientY,base={...clip.transform};let nx=base.x??.5,ny=base.y??.5;
+    e.preventDefault();this.draggingPreviewId=id;this.panel.selectClip(id);const bounds=this.stage.getBoundingClientRect(),x=e.clientX,y=e.clientY,base={...clip.transform};if(clip.layout==='character'||clip.layout==='screenshot'){const box=target.getBoundingClientRect();Object.assign(base,{x:(box.left-bounds.left+box.width/2)/bounds.width,y:(box.top-bounds.top+box.height/2)/bounds.height,width:box.width/bounds.width,height:box.height/bounds.height});target.classList.remove('chronicles-auto-character');target.style.width=box.width+'px';target.style.height=box.height+'px';target.style.transform='translate(-50%,-50%)';}let nx=base.x??.5,ny=base.y??.5;
     const move=(event:PointerEvent)=>{nx=Math.max(0,Math.min(1,(base.x??.5)+(event.clientX-x)/bounds.width));ny=Math.max(0,Math.min(1,(base.y??.5)+(event.clientY-y)/bounds.height));target.style.left=nx*100+'%';target.style.top=ny*100+'%';};
-    const up=()=>{this.draggingPreviewId='';window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);this.panel.updateClip(id,{transform:{...base,x:nx,y:ny}},'Положение объекта на экране');};
+    const up=()=>{this.draggingPreviewId='';window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);this.panel.updateClip(id,{layout:'manual',transform:{...base,x:nx,y:ny}},'Положение объекта на экране');};
     window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true});
   }
   private tick=(now:number):void=>{

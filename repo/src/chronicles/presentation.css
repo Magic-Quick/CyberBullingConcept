@@ -1,0 +1,40 @@
+/* Preserve the approved MovieApp picture and corner badge, fitted to the stage. */
+.chronicles-frame{object-fit:contain}
+.chronicles-character-badge{display:flex;align-items:center;gap:var(--badge-gap,16px);padding:var(--badge-pad,12px);background:rgba(0,0,0,.94);border:0;border-radius:0;white-space:normal;height:auto!important;max-width:calc(100% - 56px);color:#fff;pointer-events:none}
+.chronicles-auto-character{width:max-content!important;left:28px!important;top:28px!important;transform:none!important}
+.chronicles-portrait .chronicles-auto-character{width:max-content!important;left:16px!important;top:24px!important;max-width:calc(100% - 32px)}
+.chronicles-badge-avatar{flex:none;width:var(--badge-avatar,62px);height:var(--badge-avatar,62px);object-fit:cover;border:2px solid #3338}
+.chronicles-badge-words{min-width:0;padding-right:12px;text-wrap:pretty;overflow-wrap:anywhere}
+.chronicles-badge-name,.chronicles-badge-title{display:grid;line-height:1.35;letter-spacing:.5px}
+.chronicles-badge-name{font-size:var(--badge-name,17px);font-weight:bold;color:#fff;text-shadow:0 0 8px #ff5e1abf;margin-bottom:5px}
+.chronicles-badge-title{font-size:var(--badge-role,13px);font-weight:500;color:#00f5d4;text-shadow:0 0 8px #00f5d4bf}
+.chronicles-badge-name>span,.chronicles-badge-title>span{grid-area:1/1}
+.chronicles-badge-measure{visibility:hidden}
+.chronicles-screen-text{font-size:calc(var(--scene-font,21px)*.95)}
+/* The source image takes all space left between the question and answer controls. */
+.chronicles-game{display:flex;inset:0;padding:18px 4% var(--game-bottom,100px);gap:10px;justify-content:flex-start;align-items:center}
+.chronicles-game h2{position:static;flex:none;max-height:none;overflow:visible;width:100%;max-width:1100px;font-size:calc(var(--scene-font,21px)*1.1);line-height:1.25;padding:8px 12px}
+.chronicles-game-media{position:relative;flex:1 1 0;min-height:0;width:100%;pointer-events:none}
+.chronicles-game-media>.chronicles-layer{inset:0;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;transform:none}
+.chronicles-game-media>.chronicles-context-zoom{pointer-events:auto;top:auto;bottom:0;right:0;font-size:12px!important;background:#050a12e6}
+.chronicles-game .chronicles-choices,.chronicles-game .chronicles-wordboard,.chronicles-game .chronicles-answerline,.chronicles-game .chronicles-game-actions,.chronicles-game .chronicles-feedback{position:static;flex:none;width:100%;max-width:1100px;transform:none;margin:0}
+.chronicles-game .chronicles-choices{gap:8px}
+.chronicles-game .chronicles-choices button{font-size:calc(var(--scene-font,21px)*.9);min-height:44px;line-height:1.25;padding:8px 12px;letter-spacing:.3px}
+.chronicles-game .chronicles-wordboard{gap:4px;max-width:900px}
+.chronicles-game .chronicles-wordboard button{flex:1 1 0;min-width:0;max-width:calc(var(--scene-font,21px)*3.7);width:auto;height:calc(var(--scene-font,21px)*3.3);font-size:calc(var(--scene-font,21px)*2.2);border-width:3px}
+.chronicles-game .chronicles-game-actions{justify-content:center;gap:8px}
+.chronicles-game .chronicles-game-actions button{font-size:max(12px,calc(var(--scene-font,21px)*.7));min-height:34px;padding:6px 10px}
+.chronicles-game .chronicles-answerline{justify-content:center;gap:8px;max-width:720px}
+.chronicles-game .chronicles-answerline input,.chronicles-game .chronicles-answerline button{font-size:calc(var(--scene-font,21px)*.85);min-height:38px;padding:8px 12px}
+.chronicles-game .chronicles-answerline button{min-width:110px}
+.chronicles-game .chronicles-feedback{font-size:calc(var(--scene-font,21px)*.8);min-height:0;padding:5px 10px}
+.chronicles-game .chronicles-feedback:empty{display:none}
+.chronicles-portrait .chronicles-game{gap:8px;padding-top:12px}
+.chronicles-portrait .chronicles-game .chronicles-wordboard button{height:calc(var(--scene-font,17px)*2.8);font-size:calc(var(--scene-font,17px)*1.8)}
+@media(max-height:500px) and (orientation:landscape){.chronicles-game{gap:5px;padding-top:6px}.chronicles-game h2{font-size:14px;padding:4px 8px}.chronicles-game .chronicles-choices button{min-height:28px;padding:4px 8px;font-size:12px}}
+
+.chronicles-context-dialog{overflow:auto}.chronicles-context-dialog img{max-width:none;max-height:80vh;width:auto;height:auto}
+
+.chronicles-layer{pointer-events:auto;cursor:zoom-in}.chronicles-context-dialog button{position:sticky;bottom:0;left:0;display:block;background:#111820}
+
+.chronicles-context-dialog{box-sizing:border-box}.chronicles-context-dialog button{color:#ecedf3;border:1px solid #738197;font:14px 'Share Tech Mono',monospace;cursor:pointer}

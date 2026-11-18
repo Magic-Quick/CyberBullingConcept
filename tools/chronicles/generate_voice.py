@@ -23,6 +23,10 @@ ROOT = Path(__file__).resolve().parents[2]
 FOLDER = ROOT / 'media/interactive/chronicles'
 RECIPE = {'stability': 0.5, 'similarity_boost': 0.75, 'style': 0.0, 'use_speaker_boost': True}
 
+def spoken_text(text):
+    """Emoticons remain in authored screen text; they have no spoken equivalent."""
+    return re.sub(r'(?<!\w)[:;]-?[()](?!\w)', '', text)
+
 def save_json(path, value):
     """Windows readers/AV may briefly deny replacement; retain the completed checkpoint."""
     temporary=path.with_name(path.name+'.tmp')
@@ -98,7 +102,7 @@ def main():
         if path.exists():
             # Never spend credits twice just because the process lost its aggregate manifest.
             stop.set();return {'error':'existing_audio_needs_local_recovery','id':u['id']}
-        request={'text':text,'model_id':manifest['model_id'],'voice_settings':RECIPE}
+        request={'text':spoken_text(text),'model_id':manifest['model_id'],'voice_settings':RECIPE}
         try:
             response=requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{manifest['voice_id']}/with-timestamps",headers={'xi-api-key':key,'Content-Type':'application/json'},json=request,timeout=60)
         except requests.RequestException as e:
@@ -115,6 +119,7 @@ def main():
         path.write_bytes(body)
         words=aligned_words(text,data.get('alignment'))
         meta={'text':text,'text_sha256':u['text_sha256'],'file':path.relative_to(ROOT).as_posix(),'duration':duration(path),'words':words,'audio_sha256':hashlib.sha256(body).hexdigest(),'voice_id':manifest['voice_id'],'model_id':manifest['model_id'],'settings':RECIPE,'request_id':response.headers.get('request-id')}
+        if request['text']!=text:meta['tts_text']=request['text']
         save_json(sidecar,meta)
         return {'group':group,'meta':meta,'characters':response.headers.get('x-character-count')}
     errors=[];done=0

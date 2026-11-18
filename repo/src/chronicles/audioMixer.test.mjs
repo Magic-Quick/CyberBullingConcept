@@ -250,7 +250,7 @@ test('DREAD uses its explicit BASE gain ceiling, not an unconditional mute or ex
   f.mixer.sync(f.p, [f.base, f.cue], 3, true, 'owner');
   assert.equal(f.media('base').volume, .005 * .5);
   assert.equal(f.media('base').paused, false);
-  assert.equal(f.media('dread').volume, .28 * .5);
+  assert.equal(f.media('dread').volume, .28 * (.5/.85));
 });
 
 test('an explicit zero silences BASE while an omitted duck value preserves the old mix', () => {
@@ -414,4 +414,25 @@ test('a background fade rises and falls smoothly on the same audio source',async
   f.mixer.sync(f.p,[f.clip],0,true,'owner');await flush();const audio=f.audio;assert.equal(audio.volume,0);
   for(const [at,gain] of [[1.25,.25],[2.5,.5],[7.5,.5],[8.75,.25]]){f.mixer.sync(f.p,[f.clip],at,true,'owner');assert.ok(Math.abs(audio.volume-gain)<1e-8);assert.equal(f.audio,audio);}
   assert.equal(audio.plays,1);
+});
+
+
+test('dramatic music retains original calibration beneath voice, while silence commands still win',()=>{
+  for(const channel of ['DREAD','PEACE']){
+    const f=fixture(audioClip({id:'dramatic',kind:'audio',trackId:'A3',gain:.3}),{channel});
+    const voice=audioClip({id:'voice',kind:'voice',trackId:'A1',assetId:'voice',utteranceId:'u'});f.p.tracks.push({id:'A1',kind:'voice',order:0});f.p.assets.push({id:'voice',kind:'audio',duration:10});f.p.clips.push(voice);
+    f.mixer.sync(f.p,[f.clip,voice],1,true,'owner');const cue=FakeAudio.instances[0];assert.ok(Math.abs(cue.volume-.3*(.5/.85)*.45)<1e-8);
+    const stop=controlClip(channel,'silence');f.p.clips.push(stop);f.mixer.sync(f.p,[f.clip,voice,stop],3,true,'owner');assert.equal(cue.volume,0);assert.equal(cue.paused,false);
+  }
+});
+
+
+test('every authored DREAD and PEACE cue starts audibly at its speech anchor',async()=>{
+  const {activeClips,clipRange}=await import(timeline);
+  const markdown=await readFile(new URL('./default-project.md',import.meta.url),'utf8');const p=JSON.parse(markdown.replaceAll('\r\n','\n').split('```chronicles-config\n')[1].split('\n```')[0]);
+  const cues=p.clips.filter(c=>c.kind==='audio'&&c.assetId&&['DREAD','PEACE'].includes(p.tracks.find(t=>t.id===c.trackId)?.channel));assert.ok(cues.length>=15);
+  for(const cue of cues){
+    FakeAudio.instances=[];const mixer=new AudioMixer(id=>'/'+id);const range=clipRange(p,cue),at=range.start+.75;const clips=activeClips(p,cue.sceneId,at,cue.event);mixer.sync(p,clips,at,true,'cue-check');
+    const audio=FakeAudio.instances.find(a=>a.src==='/'+cue.assetId);assert.ok(audio,`${cue.id}: no source`);assert.ok(audio.volume>.02,`${cue.id}: inaudible ${audio.volume}`);assert.equal(audio.paused,false);mixer.stop();
+  }
 });

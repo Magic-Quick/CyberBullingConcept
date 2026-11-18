@@ -19,6 +19,7 @@ export class MoviePicture {
     const outgoing=this.image.cloneNode() as HTMLImageElement;
     this.cancel();this.source=url;this.sceneId=scene.id;
     if(canWipe){
+      outgoing.style.width=this.image.offsetWidth+'px';outgoing.style.height=this.image.offsetHeight+'px';outgoing.style.left=this.image.offsetLeft+'px';outgoing.style.top=this.image.offsetTop+'px';
       outgoing.removeAttribute('data-clip-id');outgoing.className='chronicles-frame chronicles-previous-picture';outgoing.hidden=false;
       this.previous=outgoing;this.element.before(outgoing);this.pendingScene=scene.id;this.element.style.clipPath='inset(0 100% 0 0)';
       this.image.onload=()=>{if(this.pendingScene!==scene.id)return;this.pendingScene='';this.transition=scene.transition;this.start=time;this.update(time);};

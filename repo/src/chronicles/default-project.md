@@ -3343,14 +3343,6 @@
       "sha256": "0ad4503c012a701511fe069e351f1f8ced7d687c663d455fedb79e7786211626"
     },
     {
-      "id": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3",
-      "kind": "audio",
-      "path": "media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3",
-      "label": "ROOM-IV.P022",
-      "duration": 14.8608,
-      "sha256": "4074538b702e2ee9c08952949efc3c1f980d5b541d5317e48b6798e1ece8e56d"
-    },
-    {
       "id": "audio:media/interactive/chronicles/voice/16e711e4ed11db95086aef6f.mp3",
       "kind": "audio",
       "path": "media/interactive/chronicles/voice/16e711e4ed11db95086aef6f.mp3",
@@ -4436,37 +4428,37 @@
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/danial-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/danial-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/danial-identity.webp",
       "label": "Чистый портрет · Даниал Искаков"
     },
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/egor-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/egor-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/egor-identity.webp",
       "label": "Чистый портрет · Егор Ткачёв"
     },
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/nick-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/nick-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/nick-identity.webp",
       "label": "Чистый портрет · Ник Егоров"
     },
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/artem-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/artem-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/artem-identity.webp",
       "label": "Чистый портрет · Артём Хухро"
     },
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/alexey-novice-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/alexey-novice-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/alexey-novice-identity.webp",
       "label": "Чистый портрет · Алексей (новенький)"
     },
     {
       "id": "image:media/visual/generated/Gui/neutral-portraits/kristian-neutral.webp",
       "kind": "image",
-      "path": "media/visual/generated/Gui/neutral-portraits/kristian-neutral.webp",
+      "path": "media/visual/generated/Gui/neutral-portraits/kristian-identity.webp",
       "label": "Чистый портрет · Кристиан"
     },
     {
@@ -4574,6 +4566,59 @@
       "kind": "audio",
       "key": "melodic_tension_mournful_vocal_drone",
       "label": "melodic_tension_mournful_vocal_drone"
+    },
+    {
+      "id": "image:avatar_hoodie",
+      "kind": "image",
+      "key": "avatar_hoodie"
+    },
+    {
+      "id": "image:avatar_egor",
+      "kind": "image",
+      "key": "avatar_egor"
+    },
+    {
+      "id": "image:avatar_gorin",
+      "kind": "image",
+      "key": "avatar_gorin"
+    },
+    {
+      "id": "image:avatar_nick_egorov",
+      "kind": "image",
+      "key": "avatar_nick_egorov"
+    },
+    {
+      "id": "image:avatar_mamusin",
+      "kind": "image",
+      "key": "avatar_mamusin"
+    },
+    {
+      "id": "image:avatar_eduard",
+      "kind": "image",
+      "key": "avatar_eduard"
+    },
+    {
+      "id": "image:avatar_christian",
+      "kind": "image",
+      "key": "avatar_christian"
+    },
+    {
+      "id": "image:avatar_huhro",
+      "kind": "image",
+      "key": "avatar_huhro"
+    },
+    {
+      "id": "image:avatar_kirill",
+      "kind": "image",
+      "key": "avatar_kirill"
+    },
+    {
+      "id": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d-pronunciation.mp3",
+      "kind": "audio",
+      "path": "media/interactive/chronicles/voice/5604a54bd34f00d714ab805d-pronunciation.mp3",
+      "label": "ROOM-IV.P022",
+      "duration": 7.4768,
+      "sha256": "5c2efcae5390e6624b3f23aa5b618c96e54317972d9568d69cd64a6f4d4529b2"
     }
   ],
   "utterances": [
@@ -19784,89 +19829,89 @@
       "subtitleText": null,
       "sourceLine": 1006,
       "textHash": "5604a54bd34f00d714ab805d293ef89222b7a2ba3858820b2a9375df2ddca161",
-      "duration": 14.8608,
-      "audioAssetId": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3",
+      "duration": 7.4768,
+      "audioAssetId": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d-pronunciation.mp3",
       "audioTextHash": "5604a54bd34f00d714ab805d293ef89222b7a2ba3858820b2a9375df2ddca161",
       "words": [
         {
           "text": "А",
           "start": 0,
-          "end": 0.093
+          "end": 0.12
         },
         {
           "text": "когда",
-          "start": 0.209,
-          "end": 0.488
+          "start": 0.12,
+          "end": 0.42
         },
         {
           "text": "Клиентархи",
-          "start": 0.534,
-          "end": 1.265
+          "start": 0.42,
+          "end": 1.28
         },
         {
           "text": "из",
-          "start": 1.335,
-          "end": 1.486
+          "start": 1.28,
+          "end": 1.54
         },
         {
           "text": "GameGears",
-          "start": 1.567,
-          "end": 2.252
+          "start": 1.54,
+          "end": 2.14
         },
         {
           "text": "прислали",
-          "start": 2.461,
-          "end": 2.961
+          "start": 2.14,
+          "end": 2.66
         },
         {
           "text": "депешу:",
-          "start": 3.007,
-          "end": 3.646
+          "start": 2.66,
+          "end": 3.32
         },
         {
           "text": "«Из",
-          "start": 3.762,
-          "end": 4.145
+          "start": 3.8,
+          "end": 4.04
         },
         {
           "text": "вами",
-          "start": 4.238,
-          "end": 4.516
+          "start": 4.04,
+          "end": 4.24
         },
         {
           "text": "сделанных",
-          "start": 4.563,
-          "end": 5.085
+          "start": 4.24,
+          "end": 4.92
         },
         {
           "text": "плейблов",
-          "start": 5.155,
-          "end": 5.654
+          "start": 4.92,
+          "end": 5.44
         },
         {
           "text": "визуал",
-          "start": 5.77,
-          "end": 6.223
+          "start": 5.44,
+          "end": 6.08
         },
         {
           "text": "брать",
-          "start": 6.304,
-          "end": 6.548
+          "start": 6.08,
+          "end": 6.36
         },
         {
           "text": "не",
-          "start": 6.594,
-          "end": 6.676
+          "start": 6.36,
+          "end": 6.58
         },
         {
           "text": "стоит",
-          "start": 6.734,
-          "end": 7.163
+          "start": 6.58,
+          "end": 6.84
         },
         {
           "text": ":)»,",
-          "start": 7.256,
-          "end": 14.861
+          "start": 6.84,
+          "end": 6.84
         }
       ]
     },
@@ -25783,7 +25828,7 @@
         "ROOM-IV.P022",
         "ROOM-IV.P023"
       ],
-      "duration": 231.2984,
+      "duration": 223.9144,
       "transition": {
         "type": "line_lr",
         "duration": 2.4,
@@ -27434,7 +27479,8 @@
         "wordIndex": 62,
         "edge": "start",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "SHARED-I-04.L248",
@@ -27626,7 +27672,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_hoodie"
     },
     {
       "id": "ROOM-I.L274",
@@ -27655,7 +27704,8 @@
         "utteranceId": "ROOM-I.P003",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-I.L278",
@@ -27702,7 +27752,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:retro_film_voron_arch_abbot_v7"
     },
     {
       "id": "ROOM-I.L283",
@@ -27731,7 +27784,8 @@
         "utteranceId": "ROOM-I.P005",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-I.L287",
@@ -28032,7 +28086,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_egor"
     },
     {
       "id": "ROOM-I.L317",
@@ -28061,7 +28118,8 @@
         "utteranceId": "ROOM-I.P016",
         "edge": "start",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-I.L320",
@@ -28108,7 +28166,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_gorin"
     },
     {
       "id": "ROOM-I.L322",
@@ -28137,7 +28198,8 @@
         "utteranceId": "ROOM-I.P016",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-I.L327",
@@ -29733,7 +29795,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_gorin"
     },
     {
       "id": "ROOM-II.L594",
@@ -29924,7 +29989,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:retro_film_alexey_novice_v4"
     },
     {
       "id": "ROOM-II.L614",
@@ -29996,7 +30064,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_nick_egorov"
     },
     {
       "id": "ROOM-II.L617",
@@ -30043,7 +30114,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_mamusin"
     },
     {
       "id": "ROOM-II.L621",
@@ -30090,7 +30164,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_eduard"
     },
     {
       "id": "ROOM-II.L625",
@@ -30177,7 +30254,8 @@
         "utteranceId": "ROOM-II.P012",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-II.L634",
@@ -30260,7 +30338,8 @@
         "utteranceId": "ROOM-II.P013",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-II.L640",
@@ -30319,7 +30398,8 @@
         "utteranceId": "ROOM-II.P014",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "HANDOFF-03.L650",
@@ -30656,7 +30736,8 @@
         "wordIndex": 29,
         "edge": "start",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "SHARED-I-03.L734",
@@ -30937,7 +31018,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_christian"
     },
     {
       "id": "ROOM-III.L770",
@@ -31009,7 +31093,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_huhro"
     },
     {
       "id": "ROOM-III.L776",
@@ -31166,7 +31253,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_gorin"
     },
     {
       "id": "ROOM-III.L791",
@@ -31435,7 +31525,8 @@
         "utteranceId": "I-02.ИСТОРИЯ.2",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "SHARED-I-02.L894",
@@ -31543,7 +31634,7 @@
       "duration": 0,
       "end": {
         "type": "scene",
-        "offset": 231.2984
+        "offset": 223.9144
       }
     },
     {
@@ -31765,7 +31856,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_mamusin"
     },
     {
       "id": "ROOM-IV.L934",
@@ -31852,7 +31946,8 @@
         "utteranceId": "ROOM-IV.P006",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L944",
@@ -31910,7 +32005,8 @@
         "utteranceId": "ROOM-IV.P008",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L951",
@@ -32017,7 +32113,8 @@
         "utteranceId": "ROOM-IV.P011",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L963",
@@ -32070,7 +32167,7 @@
       "duckBaseTo": 0.005,
       "end": {
         "type": "scene",
-        "offset": 231.2984
+        "offset": 223.9144
       }
     },
     {
@@ -32195,7 +32292,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_huhro"
     },
     {
       "id": "ROOM-IV.L976",
@@ -32224,7 +32324,8 @@
         "utteranceId": "ROOM-IV.P016",
         "edge": "start",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L979",
@@ -32271,7 +32372,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_egor"
     },
     {
       "id": "ROOM-IV.L981",
@@ -32300,7 +32404,8 @@
         "utteranceId": "ROOM-IV.P016",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L985",
@@ -32403,7 +32508,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_eduard"
     },
     {
       "id": "ROOM-IV.L995",
@@ -32432,7 +32540,8 @@
         "utteranceId": "ROOM-IV.P019",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "ROOM-IV.L999",
@@ -32516,7 +32625,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 216.0755
+        "offset": 208.6915
       }
     },
     {
@@ -32524,7 +32633,7 @@
       "sceneId": "ROOM-IV",
       "start": {
         "type": "scene",
-        "offset": 216.0755
+        "offset": 208.6915
       },
       "trackId": "V1",
       "kind": "frame",
@@ -32551,7 +32660,7 @@
       "sceneId": "ROOM-IV",
       "start": {
         "type": "scene",
-        "offset": 219.0755
+        "offset": 211.6915
       },
       "trackId": "V3",
       "kind": "nameplate",
@@ -32564,7 +32673,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_mamusin"
     },
     {
       "id": "ROOM-IV.L1013",
@@ -32590,7 +32702,7 @@
       "cleanExposure": 3,
       "end": {
         "type": "scene",
-        "offset": 231.2984
+        "offset": 223.9144
       }
     },
     {
@@ -34275,7 +34387,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": true,
+      "avatarAssetId": "image:avatar_kirill"
     },
     {
       "id": "VERDICT.L1307",
@@ -34295,7 +34410,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_christian"
     },
     {
       "id": "VERDICT.L1310",
@@ -34398,7 +34516,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_christian"
     },
     {
       "id": "VERDICT.L1320",
@@ -34698,7 +34819,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_gorin"
     },
     {
       "id": "VERDICT.L1352",
@@ -34772,7 +34896,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:retro_film_alexey_novice_v4"
     },
     {
       "id": "VERDICT.L1359",
@@ -34954,7 +35081,10 @@
         "y": 0.72,
         "width": 0.55,
         "opacity": 1
-      }
+      },
+      "layout": "character",
+      "typewriter": false,
+      "avatarAssetId": "image:avatar_gorin"
     },
     {
       "id": "VERDICT.L1376",
@@ -35152,7 +35282,8 @@
         "utteranceId": "EPILOGUE.P003",
         "edge": "end",
         "offset": 0
-      }
+      },
+      "layout": "screenshot"
     },
     {
       "id": "EPILOGUE.L1401",
@@ -41583,9 +41714,9 @@
         "type": "scene",
         "offset": 201.2147
       },
-      "duration": 14.8608,
+      "duration": 7.4768,
       "gain": 1,
-      "assetId": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3"
+      "assetId": "audio:media/interactive/chronicles/voice/5604a54bd34f00d714ab805d-pronunciation.mp3"
     },
     {
       "id": "subtitle.ROOM-IV.P022",
@@ -41616,7 +41747,7 @@
       "label": "ROOM-IV.P023",
       "start": {
         "type": "scene",
-        "offset": 222.0755
+        "offset": 214.6915
       },
       "duration": 6.2229,
       "gain": 1,
@@ -44292,7 +44423,8 @@
         "opacity": 1
       },
       "fadeIn": 0.15,
-      "fadeOut": 0.15
+      "fadeOut": 0.15,
+      "layout": "screenshot"
     },
     {
       "id": "context.I-01",
@@ -44318,7 +44450,8 @@
         "opacity": 1
       },
       "fadeIn": 0.15,
-      "fadeOut": 0.15
+      "fadeOut": 0.15,
+      "layout": "screenshot"
     },
     {
       "id": "context.I-03",
@@ -44345,7 +44478,8 @@
         "opacity": 1
       },
       "fadeIn": 0.15,
-      "fadeOut": 0.15
+      "fadeOut": 0.15,
+      "layout": "screenshot"
     },
     {
       "id": "context.I-02",
@@ -44371,7 +44505,8 @@
         "opacity": 1
       },
       "fadeIn": 0.15,
-      "fadeOut": 0.15
+      "fadeOut": 0.15,
+      "layout": "screenshot"
     },
     {
       "id": "context.I-05",
@@ -44397,7 +44532,8 @@
         "opacity": 1
       },
       "fadeIn": 0.15,
-      "fadeOut": 0.15
+      "fadeOut": 0.15,
+      "layout": "screenshot"
     },
     {
       "id": "song.audio",

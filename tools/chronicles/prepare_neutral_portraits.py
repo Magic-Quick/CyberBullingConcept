@@ -73,10 +73,12 @@ def main():
         crops[pid] = crop
         target = OUTPUT / (pid + '-neutral.webp')
         matte(crop).save(target, 'WEBP', quality=96, method=6)
+        responsive = OUTPUT / (pid + '-identity.webp')
+        crop.save(responsive, 'WEBP', quality=96, method=6)
         records[pid] = {'name': name, 'path': target.relative_to(ROOT).as_posix(), 'width': 1280, 'height': 720,
                         'sha256': sha(target), 'source': {'path': relative, 'sha256': sha(source),
                                                        'width': image.width, 'height': image.height},
-                        'crop': list(rectangle), 'mode': 'face_and_shoulders_crop_black_matte', 'note': note}
+                        'crop': list(rectangle), 'responsivePath': responsive.relative_to(ROOT).as_posix(), 'mode': 'face_and_shoulders_crop_black_matte', 'note': note}
     # The shared source frame presents both men on the future punishment deck.
     # Preserve two identities without inventing a new scene: two existing crops
     # laid side by side on a plain presentation matte.

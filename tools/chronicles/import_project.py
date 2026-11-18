@@ -48,8 +48,8 @@ def digest(text: str) -> str:
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 
-def point(utterance: str, word: int = 0, end: bool = False) -> dict:
-    if word:
+def point(utterance: str, word: int | None = None, end: bool = False) -> dict:
+    if word is not None:
         return {'type': 'word', 'utteranceId': utterance, 'wordIndex': word, 'edge': 'end' if end else 'start', 'offset': 0}
     return {'type': 'utterance', 'utteranceId': utterance, 'edge': 'end' if end else 'start', 'offset': 0}
 
@@ -667,6 +667,8 @@ class Importer:
                    'sourceScript': SOURCE.relative_to(ROOT).as_posix(), 'tracks': TRACKS, 'assets': list(self.assets.values()),
                    'utterances': [{k: v for k, v in u.items() if k != 'text'} for u in self.utterances],
                    'scenes': list(self.scenes.values()), 'clips': self.clips, 'stops': stops, 'sequence': sequence, 'extras': extras}
+        from presentation import apply_presentation
+        apply_presentation(project)
         return project, manifest
 
     def markdown(self, project: dict) -> str:

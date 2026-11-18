@@ -4,6 +4,7 @@ import { ClickTracker } from '../ClickTracker';
 import { SFX } from '../SoundEffects';
 import { after, cancelTween, ease, tween, updateTweens } from '../tween';
 import './chroniclesTransport.css';
+import { packStickers } from './presentation';
 
 export interface TransportChapter { sceneId?:string;sceneTime?:number;id: string; title: string; start: number; duration: number; sticker?: 'logo' | 'speech' | 'punishment' | 'reward' | 'song'; }
 export interface TransportMarker { id: string; label: string; time: number; state?: string; }
@@ -155,7 +156,7 @@ export class ChroniclesTransport {
 
   resize(width: number, _height: number): void {
     if (this.dead || width <= 0) return;
-    this.width = width; this.scale = Math.min(1, Math.max(.48, (width - 30) / 1535)) * .70;
+    this.width = width; this.scale = Math.min(Math.min(1, Math.max(.48, (width - 30) / 1535)) * .70,width/1600);
     const g = this.scale; this.barHeight = 161 * g; this.leftWidth = 841 * g;
     const rightWidth = 346 * g, pad = 10 * g; this.midWidth = Math.max(200 * g, width - this.leftWidth - rightWidth);
     this.element.style.height = `${this.barHeight}px`; this.element.style.setProperty('--transport-height', `${this.barHeight}px`);
@@ -269,17 +270,17 @@ export class ChroniclesTransport {
 
   private layoutChapterControls(): void {
     const g = this.scale, ratio = (seconds: number) => this.state.total > 0 ? clamp(seconds / this.state.total) : 0;
-    for (const item of this.chapterButtons) {
-      const x = this.innerStart + ratio(item.chapter.start + item.chapter.duration / 2) * this.innerWidth;
-      item.button.container.position.set(x, 136 * g); item.button.container.scale.set(g);
-      item.hotspot.setRect(this.leftWidth + x - 12 * g, 106 * g, 24 * g, 48 * g);
+    const chapterScale=Math.min(g,this.innerWidth/Math.max(1,this.chapterButtons.length*26));
+    const chapterXs=packStickers(this.chapterButtons.map(item=>({x:this.innerStart+ratio(item.chapter.start+item.chapter.duration/2)*this.innerWidth,width:24*chapterScale})),this.innerStart,this.innerStart+this.innerWidth,2*chapterScale);
+    for (const [index,item] of this.chapterButtons.entries()) {
+      const x=chapterXs[index];item.button.container.position.set(x,136*g);item.button.container.scale.set(chapterScale);
+      item.hotspot.setRect(this.leftWidth+x-12*chapterScale,124*g,24*chapterScale,24*g);
     }
-    for (const item of this.stickers) {
-      let r = item.ratio ?? ratio(item.chapter.start + item.chapter.duration / 2);
-      // A combined verdict still carries the original two distinct chapter stickers.
-      if (this.stickers.some(s => s !== item && s.chapter.id === item.chapter.id)) r = ratio(item.chapter.start + item.chapter.duration * (item.sprite.texture === this.texture('gui_sticker_punishment') ? .28 : .72));
-      const x = this.innerStart + r * this.innerWidth; item.container.position.set(x, 33 * g); item.container.scale.set(g);
-      item.hotspot.setRect(this.leftWidth + x - item.sprite.width * g / 2, 33 * g - item.sprite.height * g / 2, item.sprite.width * g, item.sprite.height * g);
+    const stickerScale=Math.min(g,this.innerWidth/Math.max(1,this.stickers.reduce((n,item)=>n+item.sprite.width+10,0)));
+    const stickerXs=packStickers(this.stickers.map(item=>({x:this.innerStart+(item.ratio??ratio(item.chapter.start+item.chapter.duration/2))*this.innerWidth,width:item.sprite.width*stickerScale})),this.innerStart,this.innerStart+this.innerWidth,10*stickerScale);
+    for (const [index,item] of this.stickers.entries()) {
+      const x=stickerXs[index];item.container.position.set(x,33*g);item.container.scale.set(stickerScale);
+      item.hotspot.setRect(this.leftWidth+x-item.sprite.width*stickerScale/2,33*g-item.sprite.height*stickerScale/2,item.sprite.width*stickerScale,item.sprite.height*stickerScale);
     }
     for (const item of this.markerButtons) {
       const current = this.state.markers?.find(m => m.id === item.marker.id) || item.marker;

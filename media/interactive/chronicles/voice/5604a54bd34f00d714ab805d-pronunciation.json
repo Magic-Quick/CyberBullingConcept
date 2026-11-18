@@ -1,0 +1,105 @@
+{
+  "text": "А когда Клиентархи из GameGears прислали депешу: «Из вами сделанных плейблов визуал брать не стоит :)»,",
+  "text_sha256": "5604a54bd34f00d714ab805d293ef89222b7a2ba3858820b2a9375df2ddca161",
+  "file": "media/interactive/chronicles/voice/5604a54bd34f00d714ab805d-pronunciation.mp3",
+  "duration": 7.4768,
+  "words": [
+    {
+      "text": "А",
+      "start": 0,
+      "end": 0.12
+    },
+    {
+      "text": "когда",
+      "start": 0.12,
+      "end": 0.42
+    },
+    {
+      "text": "Клиентархи",
+      "start": 0.42,
+      "end": 1.28
+    },
+    {
+      "text": "из",
+      "start": 1.28,
+      "end": 1.54
+    },
+    {
+      "text": "GameGears",
+      "start": 1.54,
+      "end": 2.14
+    },
+    {
+      "text": "прислали",
+      "start": 2.14,
+      "end": 2.66
+    },
+    {
+      "text": "депешу:",
+      "start": 2.66,
+      "end": 3.32
+    },
+    {
+      "text": "«Из",
+      "start": 3.8,
+      "end": 4.04
+    },
+    {
+      "text": "вами",
+      "start": 4.04,
+      "end": 4.24
+    },
+    {
+      "text": "сделанных",
+      "start": 4.24,
+      "end": 4.92
+    },
+    {
+      "text": "плейблов",
+      "start": 4.92,
+      "end": 5.44
+    },
+    {
+      "text": "визуал",
+      "start": 5.44,
+      "end": 6.08
+    },
+    {
+      "text": "брать",
+      "start": 6.08,
+      "end": 6.36
+    },
+    {
+      "text": "не",
+      "start": 6.36,
+      "end": 6.58
+    },
+    {
+      "text": "стоит",
+      "start": 6.58,
+      "end": 6.84
+    },
+    {
+      "text": ":)»,",
+      "start": 6.84,
+      "end": 6.84
+    }
+  ],
+  "audio_sha256": "5c2efcae5390e6624b3f23aa5b618c96e54317972d9568d69cd64a6f4d4529b2",
+  "voice_id": "GquPFn9xormgmHaJ2KdN",
+  "model_id": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.75,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true
+  },
+  "request_id": "COyaLpeuxJMAbcRE0Jub",
+  "tts_text": "А когда Клиентархи из GameGears прислали депешу: «Из вами сделанных плейблов визуал брать не сто́ит»,",
+  "repair": {
+    "method": "pronunciation_retake",
+    "reason": "User reported gibberish and wrong stress; omit spoken emoticon, stress сто́ит",
+    "source": "media/interactive/chronicles/voice/5604a54bd34f00d714ab805d.mp3",
+    "heard": "А когда клиент архи из Game Gears прислали Депешу Из вами сделанных плейблов визуал брать не стоит"
+  }
+}

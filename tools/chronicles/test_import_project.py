@@ -37,7 +37,9 @@ class ChroniclesImportTests(unittest.TestCase):
         tokens = lambda obj: re.findall(r'\w+|[^\w\s]', ' '.join(u['text'] for u in obj.utterances).lower())
         self.assertEqual(tokens(author), tokens(self.importer))
         self.assertEqual(len(self.importer.explicit_ids), 107)
-        self.assertEqual(len(self.importer.utterances), 242)
+        # Author editions can gain paragraphs; the token comparison above guards
+        # exact speech, independently of paragraph boundaries.
+        self.assertGreaterEqual(len(self.importer.utterances), 242)
 
     def test_conditional_reactions_never_enter_the_linear_route(self):
         route = self.project['sequence']
@@ -79,7 +81,7 @@ class ChroniclesImportTests(unittest.TestCase):
         config = json.loads(raw.split('\n```', 1)[0])
         self.assertFalse(any('text' in u for u in config['utterances']))
         voices = re.findall(r'\[ГОЛОС ЛОРДА ([^\]]+)\]\n([\s\S]*?)\n\[КОНЕЦ РЕПЛИКИ\]', content)
-        self.assertEqual(len(voices), 242)
+        self.assertEqual(len(voices), len(self.importer.utterances))
         self.assertEqual(dict(voices), {u['id']: u['text'] for u in self.importer.utterances})
         self.assertIn('[СОБЫТИЕ:', content)
         self.assertIn('Сценарные заметки импорта', content)
@@ -137,6 +139,10 @@ class ChroniclesImportTests(unittest.TestCase):
                     self.assertEqual(context_clip['start']['utteranceId'], 'I-03.КОНТЕКСТ')
                 else:
                     self.assertEqual(context_clip['start']['edge'], 'end')
+
+    def test_word_zero_is_a_word_anchor(self):
+        self.assertEqual(module.point('I-03.КОНТЕКСТ', 0)['type'], 'word')
+        self.assertEqual(module.point('I-03.КОНТЕКСТ', 0)['wordIndex'], 0)
 
     def test_import_is_deterministic(self):
         first = self.importer.markdown(self.project)

@@ -24,7 +24,8 @@
         570
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убраны мина, инструменты и руки до аналогии с минным полем."
+      "note": "Убраны мина, инструменты и руки до аналогии с минным полем.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/danial-identity.webp"
     },
     "egor": {
       "name": "Егор Ткачёв",
@@ -45,7 +46,8 @@
         700
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убраны силуэт Микки и стазис-колба до истории Disney/Mintegral."
+      "note": "Убраны силуэт Микки и стазис-колба до истории Disney/Mintegral.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/egor-identity.webp"
     },
     "nick": {
       "name": "Ник Егоров",
@@ -66,7 +68,8 @@
         620
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убраны часы и экран TIME DILATION / SHIFT DEADLINE до хроно-реактора."
+      "note": "Убраны часы и экран TIME DILATION / SHIFT DEADLINE до хроно-реактора.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/nick-identity.webp"
     },
     "artem": {
       "name": "Артём Хухро",
@@ -87,7 +90,8 @@
         360
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убрана голограмма коровы до её первого упоминания в зале IV."
+      "note": "Убрана голограмма коровы до её первого упоминания в зале IV.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/artem-identity.webp"
     },
     "alexey-novice": {
       "name": "Алексей (новенький)",
@@ -108,7 +112,8 @@
         570
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убран планшет с надписью 2D PLAYABLE TASK до выдачи 2D-плейбака."
+      "note": "Убран планшет с надписью 2D PLAYABLE TASK до выдачи 2D-плейбака.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/alexey-novice-identity.webp"
     },
     "kristian": {
       "name": "Кристиан",
@@ -129,7 +134,8 @@
         540
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Убран церемониальный предмет в руках до оглашения кары."
+      "note": "Убран церемониальный предмет в руках до оглашения кары.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/kristian-identity.webp"
     },
     "kirill": {
       "name": "Кирилл Берёзкин",
@@ -150,7 +156,8 @@
         600
       ],
       "mode": "face_and_shoulders_crop_black_matte",
-      "note": "Нейтральная идентификация вместо эшафота, решёток и предметов будущего приговора."
+      "note": "Нейтральная идентификация вместо эшафота, решёток и предметов будущего приговора.",
+      "responsivePath": "media/visual/generated/Gui/neutral-portraits/kirill-identity.webp"
     },
     "kirill-kristian-pair": {
       "name": "Кирилл Берёзкин и Кристиан",

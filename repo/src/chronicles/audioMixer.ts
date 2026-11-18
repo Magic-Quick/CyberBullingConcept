@@ -198,8 +198,12 @@ export class AudioMixer {
       gain *= envelope(clip, local);
       if (clip.fadeIn) gain *= Math.min(1, local / clip.fadeIn);
       if (clip.fadeOut) gain *= Math.min(1, Math.max(0, (end - time) / clip.fadeOut));
-      const master = clip.kind === 'voice' ? this.voiceVolume : clip.kind === 'sfx' ? this.effectsVolume : this.musicVolume;
-      audio.volume = this.muted ? 0 : clamp(gain * master * (clip.kind === 'audio' && voiceActive && commandGain === undefined ? .2 : 1));
+      // Cinematic gains were calibrated by AmbientManager at master .85 and -7 dB
+      // speech ducking. Applying BASE's .2 again made every dread/peace cue disappear.
+      const cinematic=['DREAD','PEACE'].includes(cueChannel??'');
+      const master = clip.kind === 'voice' ? this.voiceVolume : clip.kind === 'sfx' ? this.effectsVolume : cinematic ? this.musicVolume/.85 : this.musicVolume;
+      const speechDuck=clip.kind==='audio'&&voiceActive&&commandGain===undefined?(cinematic ? .45 : .2):1;
+      audio.volume = this.muted ? 0 : clamp(gain * master * speechDuck);
       this.transport(sound, playing, () => this.epoch === epoch && this.sounds.get(key) === sound);
     }
     for (const [key, sound] of this.sounds) if (!keep.has(key)) { this.sounds.delete(key); this.release(sound); }
