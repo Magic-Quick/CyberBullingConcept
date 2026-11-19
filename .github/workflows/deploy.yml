@@ -28,15 +28,13 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Prune non-web source files before packaging
-        run: |
-          rm -rf repo tools scripts docs .agents .github .git
-          ls -la
+      - name: Package only referenced public files
+        run: python tools/package_site.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
